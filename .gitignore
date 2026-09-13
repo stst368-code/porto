@@ -1,0 +1,45 @@
+# Good Boy Records: local Windows launchers are useful locally, not on GitHub.
+good-boy-records/*.bat
+
+# Python caches / environments
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+good-boy-records/.venv/
+good-boy-records/venv/
+
+# Local/deployment build output
+good-boy-records/_site/
+good-boy-records/music/
+
+# Generated showcase derivatives. Source of truth is good-boy-records/showcase/.
+good-boy-records/index.html
+good-boy-records/content-source/showcase-manifest.json
+good-boy-records/content-source/tracks/showcase/*
+!good-boy-records/content-source/tracks/showcase/.gitkeep
+good-boy-records/content-source/songs/showcase/*
+!good-boy-records/content-source/songs/showcase/.gitkeep
+good-boy-records/masters/*
+!good-boy-records/masters/.gitkeep
+good-boy-records/assets/img/sleeves/*
+!good-boy-records/assets/img/sleeves/.gitkeep
+good-boy-records/data/catalogue.json
+good-boy-records/data/live-lyrics/*
+!good-boy-records/data/live-lyrics/.gitkeep
+good-boy-records/data/yaml/*
+!good-boy-records/data/yaml/.gitkeep
+good-boy-records/assets/workflow-media/audio/*
+!good-boy-records/assets/workflow-media/audio/.gitkeep
+good-boy-records/assets/workflow-media/images/*
+!good-boy-records/assets/workflow-media/images/.gitkeep
+
+# Legacy duplicate audio caches must remain empty.
+good-boy-records/assets/audio/tracks/*
+!good-boy-records/assets/audio/tracks/.gitkeep
+good-boy-records/assets/audio/atr/*
+!good-boy-records/assets/audio/atr/.gitkeep
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini

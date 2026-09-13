@@ -1,0 +1,3966 @@
+{
+  "format": "gbr-word-lyrics-v1",
+  "version": 2,
+  "title": "moses-supposes",
+  "song_version": "orchestral",
+  "source_yaml": "moses-supposes/moses-supposes-orchestral/moses-supposes-orchestral.yaml",
+  "source_audio": "moses-supposes-orchestral.flac",
+  "language": "en",
+  "engine": "demucs:htdemucs+whisperx:large-v3",
+  "runtime": {
+    "requested_device": "auto",
+    "demucs_device": "cuda",
+    "whisperx_device": "cuda",
+    "whisperx_compute_type": "float16",
+    "batch_size": 4,
+    "cpu_fallback_used": false
+  },
+  "generated_at": "2026-09-12T16:57:57+00:00",
+  "stats": {
+    "lyric_words": 510,
+    "recognised_words": 460,
+    "matched_words": 387,
+    "coverage": 0.7588
+  },
+  "quality": {
+    "rating": "review",
+    "review_threshold": 0.8,
+    "review_required": true,
+    "approved": true,
+    "usable_for_live_lyrics": true
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Moses...",
+      "start": 1.098,
+      "end": 1.659,
+      "words": [
+        {
+          "text": "Moses...",
+          "start": 1.098,
+          "end": 1.659,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "text": "supposes... (hmm?)",
+      "start": 2.119,
+      "end": 5.043,
+      "words": [
+        {
+          "text": "supposes...",
+          "start": 2.119,
+          "end": 3.421,
+          "matched": true
+        },
+        {
+          "text": "(hmm?)",
+          "start": 3.421,
+          "end": 5.043,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "text": "his toeses...",
+      "start": 5.043,
+      "end": 7.726,
+      "words": [
+        {
+          "text": "his",
+          "start": 5.043,
+          "end": 6.665,
+          "matched": false
+        },
+        {
+          "text": "toeses...",
+          "start": 6.665,
+          "end": 7.726,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "text": "are Roses... (yeah)",
+      "start": 7.726,
+      "end": 9.067,
+      "words": [
+        {
+          "text": "are",
+          "start": 7.726,
+          "end": 8.086,
+          "matched": false
+        },
+        {
+          "text": "Roses...",
+          "start": 8.086,
+          "end": 8.767,
+          "matched": true
+        },
+        {
+          "text": "(yeah)",
+          "start": 8.807,
+          "end": 9.067,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "text": "But Moses...",
+      "start": 10.569,
+      "end": 11.53,
+      "words": [
+        {
+          "text": "But",
+          "start": 10.569,
+          "end": 10.729,
+          "matched": true
+        },
+        {
+          "text": "Moses...",
+          "start": 10.929,
+          "end": 11.53,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "text": "supposes...",
+      "start": 11.95,
+      "end": 13.332,
+      "words": [
+        {
+          "text": "supposes...",
+          "start": 11.95,
+          "end": 13.332,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "text": "Erroneously... (oh no!)",
+      "start": 13.532,
+      "end": 15.494,
+      "words": [
+        {
+          "text": "Erroneously...",
+          "start": 13.532,
+          "end": 14.633,
+          "matched": true
+        },
+        {
+          "text": "(oh",
+          "start": 14.874,
+          "end": 14.954,
+          "matched": true
+        },
+        {
+          "text": "no!)",
+          "start": 15.094,
+          "end": 15.494,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l8",
+      "text": "Moses supposes his toeses are Roses",
+      "start": 16.556,
+      "end": 18.538,
+      "words": [
+        {
+          "text": "Moses",
+          "start": 16.556,
+          "end": 16.896,
+          "matched": true
+        },
+        {
+          "text": "supposes",
+          "start": 16.916,
+          "end": 17.417,
+          "matched": true
+        },
+        {
+          "text": "his",
+          "start": 17.457,
+          "end": 17.537,
+          "matched": true
+        },
+        {
+          "text": "toeses",
+          "start": 17.577,
+          "end": 17.777,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 17.837,
+          "end": 17.937,
+          "matched": true
+        },
+        {
+          "text": "Roses",
+          "start": 17.977,
+          "end": 18.538,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l9",
+      "text": "But Moses supposes Erroneously",
+      "start": 18.978,
+      "end": 20.961,
+      "words": [
+        {
+          "text": "But",
+          "start": 18.978,
+          "end": 19.159,
+          "matched": true
+        },
+        {
+          "text": "Moses",
+          "start": 19.319,
+          "end": 19.659,
+          "matched": true
+        },
+        {
+          "text": "supposes",
+          "start": 19.679,
+          "end": 20.2,
+          "matched": true
+        },
+        {
+          "text": "Erroneously",
+          "start": 20.28,
+          "end": 20.961,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l10",
+      "text": "Moses he knowses his toeses aren't roses",
+      "start": 22.128,
+      "end": 24.593,
+      "words": [
+        {
+          "text": "Moses",
+          "start": 22.128,
+          "end": 22.489,
+          "matched": true
+        },
+        {
+          "text": "he",
+          "start": 22.509,
+          "end": 22.629,
+          "matched": true
+        },
+        {
+          "text": "knowses",
+          "start": 22.669,
+          "end": 23.01,
+          "matched": true
+        },
+        {
+          "text": "his",
+          "start": 23.05,
+          "end": 23.15,
+          "matched": true
+        },
+        {
+          "text": "toeses",
+          "start": 23.19,
+          "end": 23.391,
+          "matched": true
+        },
+        {
+          "text": "aren't",
+          "start": 23.451,
+          "end": 23.551,
+          "matched": true
+        },
+        {
+          "text": "roses",
+          "start": 23.591,
+          "end": 24.593,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l11",
+      "text": "As Moses supposes his toeses to be!",
+      "start": 24.713,
+      "end": 27.038,
+      "words": [
+        {
+          "text": "As",
+          "start": 24.713,
+          "end": 24.814,
+          "matched": true
+        },
+        {
+          "text": "Moses",
+          "start": 24.954,
+          "end": 25.295,
+          "matched": true
+        },
+        {
+          "text": "supposes",
+          "start": 25.335,
+          "end": 25.816,
+          "matched": true
+        },
+        {
+          "text": "his",
+          "start": 25.876,
+          "end": 25.976,
+          "matched": true
+        },
+        {
+          "text": "toeses",
+          "start": 25.996,
+          "end": 26.216,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 26.377,
+          "end": 26.577,
+          "matched": true
+        },
+        {
+          "text": "be!",
+          "start": 26.737,
+          "end": 27.038,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l12",
+      "text": "Moses supposes his toeses are Roses",
+      "start": 27.78,
+      "end": 30.124,
+      "words": [
+        {
+          "text": "Moses",
+          "start": 27.78,
+          "end": 28.12,
+          "matched": true
+        },
+        {
+          "text": "supposes",
+          "start": 28.16,
+          "end": 28.641,
+          "matched": true
+        },
+        {
+          "text": "his",
+          "start": 28.681,
+          "end": 28.782,
+          "matched": true
+        },
+        {
+          "text": "toeses",
+          "start": 28.822,
+          "end": 29.022,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 29.082,
+          "end": 29.182,
+          "matched": true
+        },
+        {
+          "text": "Roses",
+          "start": 29.222,
+          "end": 30.124,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l13",
+      "text": "But Moses supposes Erroneously",
+      "start": 30.244,
+      "end": 33.324,
+      "words": [
+        {
+          "text": "But",
+          "start": 30.244,
+          "end": 30.425,
+          "matched": true
+        },
+        {
+          "text": "Moses",
+          "start": 30.585,
+          "end": 30.926,
+          "matched": true
+        },
+        {
+          "text": "supposes",
+          "start": 30.966,
+          "end": 31.467,
+          "matched": true
+        },
+        {
+          "text": "Erroneously",
+          "start": 31.467,
+          "end": 33.324,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l14",
+      "text": "A mose is a mose! (mose)",
+      "start": 33.324,
+      "end": 34.545,
+      "words": [
+        {
+          "text": "A",
+          "start": 33.324,
+          "end": 33.424,
+          "matched": true
+        },
+        {
+          "text": "mose",
+          "start": 33.464,
+          "end": 33.884,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 33.904,
+          "end": 34.004,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 34.084,
+          "end": 34.165,
+          "matched": true
+        },
+        {
+          "text": "mose!",
+          "start": 34.165,
+          "end": 34.185,
+          "matched": false
+        },
+        {
+          "text": "(mose)",
+          "start": 34.185,
+          "end": 34.545,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l15",
+      "text": "A rose is a rose! (rose)",
+      "start": 34.645,
+      "end": 35.946,
+      "words": [
+        {
+          "text": "A",
+          "start": 34.645,
+          "end": 34.705,
+          "matched": true
+        },
+        {
+          "text": "rose",
+          "start": 34.745,
+          "end": 35.225,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 35.325,
+          "end": 35.425,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 35.505,
+          "end": 35.565,
+          "matched": true
+        },
+        {
+          "text": "rose!",
+          "start": 35.565,
+          "end": 35.605,
+          "matched": false
+        },
+        {
+          "text": "(rose)",
+          "start": 35.605,
+          "end": 35.946,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l16",
+      "text": "A toes is a toes! (toes)",
+      "start": 36.046,
+      "end": 36.986,
+      "words": [
+        {
+          "text": "A",
+          "start": 36.046,
+          "end": 36.086,
+          "matched": true
+        },
+        {
+          "text": "toes",
+          "start": 36.126,
+          "end": 36.626,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 36.726,
+          "end": 36.826,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 36.906,
+          "end": 36.966,
+          "matched": true
+        },
+        {
+          "text": "toes!",
+          "start": 36.966,
+          "end": 36.976,
+          "matched": false
+        },
+        {
+          "text": "(toes)",
+          "start": 36.976,
+          "end": 36.986,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l17",
+      "text": "mose (mose) rose (rose) toes (toes)",
+      "start": 36.986,
+      "end": 40.548,
+      "words": [
+        {
+          "text": "mose",
+          "start": 36.986,
+          "end": 37.366,
+          "matched": true
+        },
+        {
+          "text": "(mose)",
+          "start": 37.366,
+          "end": 37.916,
+          "matched": false
+        },
+        {
+          "text": "rose",
+          "start": 37.916,
+          "end": 38.467,
+          "matched": false
+        },
+        {
+          "text": "(rose)",
+          "start": 38.467,
+          "end": 39.067,
+          "matched": true
+        },
+        {
+          "text": "toes",
+          "start": 39.187,
+          "end": 39.808,
+          "matched": true
+        },
+        {
+          "text": "(toes)",
+          "start": 39.888,
+          "end": 40.548,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l18",
+      "text": "Hooptie doodie doodle",
+      "start": 40.628,
+      "end": 41.248,
+      "words": [
+        {
+          "text": "Hooptie",
+          "start": 40.628,
+          "end": 40.888,
+          "matched": true
+        },
+        {
+          "text": "doodie",
+          "start": 40.888,
+          "end": 40.928,
+          "matched": false
+        },
+        {
+          "text": "doodle",
+          "start": 40.928,
+          "end": 41.248,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l19",
+      "text": "doodle doodie hooptie",
+      "start": 41.288,
+      "end": 42.309,
+      "words": [
+        {
+          "text": "doodle",
+          "start": 41.288,
+          "end": 41.609,
+          "matched": true
+        },
+        {
+          "text": "doodie",
+          "start": 41.649,
+          "end": 41.949,
+          "matched": true
+        },
+        {
+          "text": "hooptie",
+          "start": 42.009,
+          "end": 42.309,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l20",
+      "text": "(ha ha ha ha ha ha)",
+      "start": 42.309,
+      "end": 43.39,
+      "words": [
+        {
+          "text": "(ha",
+          "start": 42.309,
+          "end": 42.489,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 42.489,
+          "end": 42.669,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 42.669,
+          "end": 42.849,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 42.849,
+          "end": 43.03,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 43.03,
+          "end": 43.21,
+          "matched": false
+        },
+        {
+          "text": "ha)",
+          "start": 43.21,
+          "end": 43.39,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l21",
+      "text": "Peter (Peter)",
+      "start": 43.39,
+      "end": 44.05,
+      "words": [
+        {
+          "text": "Peter",
+          "start": 43.39,
+          "end": 43.71,
+          "matched": true
+        },
+        {
+          "text": "(Peter)",
+          "start": 43.73,
+          "end": 44.05,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l22",
+      "text": "Piper (Piper)",
+      "start": 44.09,
+      "end": 45.111,
+      "words": [
+        {
+          "text": "Piper",
+          "start": 44.09,
+          "end": 44.41,
+          "matched": true
+        },
+        {
+          "text": "(Piper)",
+          "start": 44.79,
+          "end": 45.111,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l23",
+      "text": "Peter Piper picked a peck of pickled peppers (peppers)",
+      "start": 45.131,
+      "end": 47.532,
+      "words": [
+        {
+          "text": "Peter",
+          "start": 45.131,
+          "end": 45.451,
+          "matched": true
+        },
+        {
+          "text": "Piper",
+          "start": 45.491,
+          "end": 45.791,
+          "matched": true
+        },
+        {
+          "text": "picked",
+          "start": 45.831,
+          "end": 46.031,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 46.071,
+          "end": 46.131,
+          "matched": true
+        },
+        {
+          "text": "peck",
+          "start": 46.171,
+          "end": 46.371,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 46.411,
+          "end": 46.471,
+          "matched": true
+        },
+        {
+          "text": "pickled",
+          "start": 46.511,
+          "end": 46.832,
+          "matched": true
+        },
+        {
+          "text": "peppers",
+          "start": 46.872,
+          "end": 47.212,
+          "matched": true
+        },
+        {
+          "text": "(peppers)",
+          "start": 47.232,
+          "end": 47.532,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l24",
+      "text": "A peck of pickled peppers Peter Piper picked (picked)",
+      "start": 47.532,
+      "end": 48.625,
+      "words": [
+        {
+          "text": "A",
+          "start": 47.532,
+          "end": 47.572,
+          "matched": false
+        },
+        {
+          "text": "peck",
+          "start": 47.572,
+          "end": 47.772,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 47.792,
+          "end": 47.872,
+          "matched": true
+        },
+        {
+          "text": "pickled",
+          "start": 47.912,
+          "end": 48.232,
+          "matched": true
+        },
+        {
+          "text": "peppers",
+          "start": 48.272,
+          "end": 48.592,
+          "matched": true
+        },
+        {
+          "text": "Peter",
+          "start": 48.592,
+          "end": 48.6,
+          "matched": false
+        },
+        {
+          "text": "Piper",
+          "start": 48.6,
+          "end": 48.608,
+          "matched": false
+        },
+        {
+          "text": "picked",
+          "start": 48.608,
+          "end": 48.617,
+          "matched": false
+        },
+        {
+          "text": "(picked)",
+          "start": 48.617,
+          "end": 48.625,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l25",
+      "text": "If Peter Piper picked a peck of pickled peppers (hmm)",
+      "start": 48.625,
+      "end": 51.394,
+      "words": [
+        {
+          "text": "If",
+          "start": 48.625,
+          "end": 48.633,
+          "matched": false
+        },
+        {
+          "text": "Peter",
+          "start": 48.633,
+          "end": 48.933,
+          "matched": true
+        },
+        {
+          "text": "Piper",
+          "start": 48.973,
+          "end": 49.293,
+          "matched": true
+        },
+        {
+          "text": "picked",
+          "start": 49.313,
+          "end": 49.533,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 49.573,
+          "end": 49.633,
+          "matched": true
+        },
+        {
+          "text": "peck",
+          "start": 49.673,
+          "end": 49.873,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 49.913,
+          "end": 49.973,
+          "matched": true
+        },
+        {
+          "text": "pickled",
+          "start": 50.013,
+          "end": 50.333,
+          "matched": true
+        },
+        {
+          "text": "peppers",
+          "start": 50.373,
+          "end": 50.974,
+          "matched": true
+        },
+        {
+          "text": "(hmm)",
+          "start": 50.974,
+          "end": 51.394,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l26",
+      "text": "Where's the peck of pickled peppers Peter Piper picked? (where is it?)",
+      "start": 51.394,
+      "end": 54.416,
+      "words": [
+        {
+          "text": "Where's",
+          "start": 51.394,
+          "end": 51.614,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 51.634,
+          "end": 51.754,
+          "matched": true
+        },
+        {
+          "text": "peck",
+          "start": 51.774,
+          "end": 51.974,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 52.014,
+          "end": 52.074,
+          "matched": true
+        },
+        {
+          "text": "pickled",
+          "start": 52.114,
+          "end": 52.435,
+          "matched": true
+        },
+        {
+          "text": "peppers",
+          "start": 52.475,
+          "end": 52.795,
+          "matched": true
+        },
+        {
+          "text": "Peter",
+          "start": 52.835,
+          "end": 53.135,
+          "matched": true
+        },
+        {
+          "text": "Piper",
+          "start": 53.175,
+          "end": 53.475,
+          "matched": true
+        },
+        {
+          "text": "picked?",
+          "start": 53.515,
+          "end": 53.775,
+          "matched": true
+        },
+        {
+          "text": "(where",
+          "start": 53.835,
+          "end": 54.096,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 54.156,
+          "end": 54.256,
+          "matched": true
+        },
+        {
+          "text": "it?)",
+          "start": 54.336,
+          "end": 54.416,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l27",
+      "text": "(But)",
+      "start": 54.416,
+      "end": 55.276,
+      "words": [
+        {
+          "text": "(But)",
+          "start": 54.416,
+          "end": 55.276,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l28",
+      "text": "How much wood would a woodchuck chuck if a woodchuck could chuck wood?",
+      "start": 55.276,
+      "end": 59.838,
+      "words": [
+        {
+          "text": "How",
+          "start": 55.276,
+          "end": 55.436,
+          "matched": true
+        },
+        {
+          "text": "much",
+          "start": 55.496,
+          "end": 55.756,
+          "matched": true
+        },
+        {
+          "text": "wood",
+          "start": 55.956,
+          "end": 56.256,
+          "matched": true
+        },
+        {
+          "text": "would",
+          "start": 56.316,
+          "end": 56.537,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 56.577,
+          "end": 56.637,
+          "matched": true
+        },
+        {
+          "text": "woodchuck",
+          "start": 56.677,
+          "end": 57.257,
+          "matched": true
+        },
+        {
+          "text": "chuck",
+          "start": 57.337,
+          "end": 57.657,
+          "matched": true
+        },
+        {
+          "text": "if",
+          "start": 57.777,
+          "end": 57.877,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 57.957,
+          "end": 58.057,
+          "matched": true
+        },
+        {
+          "text": "woodchuck",
+          "start": 58.097,
+          "end": 58.637,
+          "matched": true
+        },
+        {
+          "text": "could",
+          "start": 58.737,
+          "end": 58.977,
+          "matched": true
+        },
+        {
+          "text": "chuck",
+          "start": 59.057,
+          "end": 59.358,
+          "matched": true
+        },
+        {
+          "text": "wood?",
+          "start": 59.458,
+          "end": 59.838,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l29",
+      "text": "if a woodchuck could chuck wood How much wood would a woodchuck chuck",
+      "start": 59.898,
+      "end": 63.219,
+      "words": [
+        {
+          "text": "if",
+          "start": 59.898,
+          "end": 59.998,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 60.058,
+          "end": 60.138,
+          "matched": true
+        },
+        {
+          "text": "woodchuck",
+          "start": 60.178,
+          "end": 60.678,
+          "matched": true
+        },
+        {
+          "text": "could",
+          "start": 60.698,
+          "end": 60.818,
+          "matched": true
+        },
+        {
+          "text": "chuck",
+          "start": 60.838,
+          "end": 61.038,
+          "matched": true
+        },
+        {
+          "text": "wood",
+          "start": 61.078,
+          "end": 61.218,
+          "matched": true
+        },
+        {
+          "text": "How",
+          "start": 61.238,
+          "end": 61.358,
+          "matched": true
+        },
+        {
+          "text": "much",
+          "start": 61.378,
+          "end": 61.538,
+          "matched": true
+        },
+        {
+          "text": "wood",
+          "start": 61.598,
+          "end": 61.899,
+          "matched": true
+        },
+        {
+          "text": "would",
+          "start": 61.959,
+          "end": 62.119,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 62.179,
+          "end": 62.259,
+          "matched": true
+        },
+        {
+          "text": "woodchuck",
+          "start": 62.279,
+          "end": 62.859,
+          "matched": true
+        },
+        {
+          "text": "chuck",
+          "start": 62.919,
+          "end": 63.219,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l30",
+      "text": "(What about Mary?)",
+      "start": 63.739,
+      "end": 64.74,
+      "words": [
+        {
+          "text": "(What",
+          "start": 63.739,
+          "end": 63.899,
+          "matched": true
+        },
+        {
+          "text": "about",
+          "start": 63.939,
+          "end": 64.179,
+          "matched": true
+        },
+        {
+          "text": "Mary?)",
+          "start": 64.259,
+          "end": 64.74,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l31",
+      "text": "Well, she sells seashells by the seashore.",
+      "start": 65.1,
+      "end": 68.261,
+      "words": [
+        {
+          "text": "Well,",
+          "start": 65.1,
+          "end": 65.34,
+          "matched": true
+        },
+        {
+          "text": "she",
+          "start": 65.42,
+          "end": 65.62,
+          "matched": true
+        },
+        {
+          "text": "sells",
+          "start": 65.74,
+          "end": 66.1,
+          "matched": true
+        },
+        {
+          "text": "seashells",
+          "start": 66.16,
+          "end": 66.86,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 66.9,
+          "end": 67.06,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 67.1,
+          "end": 67.18,
+          "matched": true
+        },
+        {
+          "text": "seashore.",
+          "start": 67.26,
+          "end": 68.261,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l32",
+      "text": "the shells she sells are seashells, I'm sure (sure)",
+      "start": 68.361,
+      "end": 71.042,
+      "words": [
+        {
+          "text": "the",
+          "start": 68.361,
+          "end": 68.481,
+          "matched": true
+        },
+        {
+          "text": "shells",
+          "start": 68.521,
+          "end": 68.841,
+          "matched": true
+        },
+        {
+          "text": "she",
+          "start": 68.881,
+          "end": 69.001,
+          "matched": true
+        },
+        {
+          "text": "sells",
+          "start": 69.041,
+          "end": 69.261,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 69.321,
+          "end": 69.421,
+          "matched": true
+        },
+        {
+          "text": "seashells,",
+          "start": 69.481,
+          "end": 70.202,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 70.302,
+          "end": 70.462,
+          "matched": true
+        },
+        {
+          "text": "sure",
+          "start": 70.462,
+          "end": 70.582,
+          "matched": false
+        },
+        {
+          "text": "(sure)",
+          "start": 70.582,
+          "end": 71.042,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l33",
+      "text": "A mose is a mose! (mose)",
+      "start": 72.98,
+      "end": 74.182,
+      "words": [
+        {
+          "text": "A",
+          "start": 72.98,
+          "end": 73.06,
+          "matched": true
+        },
+        {
+          "text": "mose",
+          "start": 73.1,
+          "end": 73.521,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 73.561,
+          "end": 73.661,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 73.741,
+          "end": 73.801,
+          "matched": true
+        },
+        {
+          "text": "mose!",
+          "start": 73.801,
+          "end": 73.841,
+          "matched": false
+        },
+        {
+          "text": "(mose)",
+          "start": 73.841,
+          "end": 74.182,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l34",
+      "text": "A rose is a rose! (rose)",
+      "start": 74.282,
+      "end": 75.584,
+      "words": [
+        {
+          "text": "A",
+          "start": 74.282,
+          "end": 74.342,
+          "matched": true
+        },
+        {
+          "text": "rose",
+          "start": 74.382,
+          "end": 74.903,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 74.963,
+          "end": 75.063,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 75.143,
+          "end": 75.203,
+          "matched": true
+        },
+        {
+          "text": "rose!",
+          "start": 75.203,
+          "end": 75.243,
+          "matched": false
+        },
+        {
+          "text": "(rose)",
+          "start": 75.243,
+          "end": 75.584,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l35",
+      "text": "A toes is a toes! (toes)",
+      "start": 75.684,
+      "end": 77.026,
+      "words": [
+        {
+          "text": "A",
+          "start": 75.684,
+          "end": 75.744,
+          "matched": true
+        },
+        {
+          "text": "toes",
+          "start": 75.784,
+          "end": 76.305,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 76.385,
+          "end": 76.485,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 76.565,
+          "end": 76.605,
+          "matched": true
+        },
+        {
+          "text": "toes!",
+          "start": 76.605,
+          "end": 76.646,
+          "matched": false
+        },
+        {
+          "text": "(toes)",
+          "start": 76.646,
+          "end": 77.026,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l36",
+      "text": "mose (mose) rose (rose) toes (toes)",
+      "start": 77.026,
+      "end": 80.191,
+      "words": [
+        {
+          "text": "mose",
+          "start": 77.026,
+          "end": 77.393,
+          "matched": false
+        },
+        {
+          "text": "(mose)",
+          "start": 77.393,
+          "end": 77.761,
+          "matched": false
+        },
+        {
+          "text": "rose",
+          "start": 77.761,
+          "end": 78.128,
+          "matched": false
+        },
+        {
+          "text": "(rose)",
+          "start": 78.128,
+          "end": 78.749,
+          "matched": true
+        },
+        {
+          "text": "toes",
+          "start": 78.829,
+          "end": 79.47,
+          "matched": true
+        },
+        {
+          "text": "(toes)",
+          "start": 79.55,
+          "end": 80.191,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l37",
+      "text": "Hooptie doodie doodle",
+      "start": 80.191,
+      "end": 80.952,
+      "words": [
+        {
+          "text": "Hooptie",
+          "start": 80.191,
+          "end": 80.445,
+          "matched": false
+        },
+        {
+          "text": "doodie",
+          "start": 80.445,
+          "end": 80.698,
+          "matched": false
+        },
+        {
+          "text": "doodle",
+          "start": 80.698,
+          "end": 80.952,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l38",
+      "text": "doodle doodie hooptie",
+      "start": 80.952,
+      "end": 81.623,
+      "words": [
+        {
+          "text": "doodle",
+          "start": 80.952,
+          "end": 81.272,
+          "matched": true
+        },
+        {
+          "text": "doodie",
+          "start": 81.272,
+          "end": 81.447,
+          "matched": false
+        },
+        {
+          "text": "hooptie",
+          "start": 81.447,
+          "end": 81.623,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l39",
+      "text": "(ha ha ha ha ha ha)",
+      "start": 81.623,
+      "end": 82.674,
+      "words": [
+        {
+          "text": "(ha",
+          "start": 81.623,
+          "end": 81.798,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 81.798,
+          "end": 81.973,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 81.973,
+          "end": 82.148,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 82.148,
+          "end": 82.324,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 82.324,
+          "end": 82.499,
+          "matched": false
+        },
+        {
+          "text": "ha)",
+          "start": 82.499,
+          "end": 82.674,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l40",
+      "text": "well",
+      "start": 82.674,
+      "end": 82.995,
+      "words": [
+        {
+          "text": "well",
+          "start": 82.674,
+          "end": 82.995,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l41",
+      "text": "I wish to wish the wish you wish to wish",
+      "start": 83.295,
+      "end": 85.118,
+      "words": [
+        {
+          "text": "I",
+          "start": 83.295,
+          "end": 83.355,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 83.395,
+          "end": 83.576,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 83.596,
+          "end": 83.716,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 83.756,
+          "end": 83.916,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 83.956,
+          "end": 84.076,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 84.096,
+          "end": 84.277,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 84.297,
+          "end": 84.417,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 84.457,
+          "end": 84.637,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 84.677,
+          "end": 84.797,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 84.858,
+          "end": 85.118,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l42",
+      "text": "but if you wish the wish the witch wishes",
+      "start": 85.338,
+      "end": 87.381,
+      "words": [
+        {
+          "text": "but",
+          "start": 85.338,
+          "end": 85.539,
+          "matched": true
+        },
+        {
+          "text": "if",
+          "start": 85.599,
+          "end": 85.679,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 85.699,
+          "end": 85.839,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 85.879,
+          "end": 86.039,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 86.079,
+          "end": 86.18,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 86.2,
+          "end": 86.38,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 86.42,
+          "end": 86.56,
+          "matched": true
+        },
+        {
+          "text": "witch",
+          "start": 86.6,
+          "end": 86.84,
+          "matched": true
+        },
+        {
+          "text": "wishes",
+          "start": 86.941,
+          "end": 87.381,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l43",
+      "text": "I won't wish the wish you wish to wish",
+      "start": 88.182,
+      "end": 90.364,
+      "words": [
+        {
+          "text": "I",
+          "start": 88.182,
+          "end": 88.262,
+          "matched": true
+        },
+        {
+          "text": "won't",
+          "start": 88.342,
+          "end": 88.943,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 89.023,
+          "end": 89.203,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 89.223,
+          "end": 89.323,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 89.363,
+          "end": 89.543,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 89.583,
+          "end": 89.683,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 89.723,
+          "end": 89.903,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 89.923,
+          "end": 90.043,
+          "matched": true
+        },
+        {
+          "text": "wish",
+          "start": 90.103,
+          "end": 90.364,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l44",
+      "text": "One one was a racehorse",
+      "start": 90.564,
+      "end": 92.145,
+      "words": [
+        {
+          "text": "One",
+          "start": 90.564,
+          "end": 90.724,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 90.924,
+          "end": 91.064,
+          "matched": true
+        },
+        {
+          "text": "was",
+          "start": 91.164,
+          "end": 91.344,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 91.404,
+          "end": 91.464,
+          "matched": true
+        },
+        {
+          "text": "racehorse",
+          "start": 91.524,
+          "end": 92.145,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l45",
+      "text": "two two was one too",
+      "start": 92.205,
+      "end": 93.766,
+      "words": [
+        {
+          "text": "two",
+          "start": 92.205,
+          "end": 92.445,
+          "matched": true
+        },
+        {
+          "text": "two",
+          "start": 92.545,
+          "end": 92.725,
+          "matched": true
+        },
+        {
+          "text": "was",
+          "start": 92.765,
+          "end": 92.905,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 93.045,
+          "end": 93.205,
+          "matched": true
+        },
+        {
+          "text": "too",
+          "start": 93.205,
+          "end": 93.766,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l46",
+      "text": "one one won one race",
+      "start": 93.766,
+      "end": 95.427,
+      "words": [
+        {
+          "text": "one",
+          "start": 93.766,
+          "end": 93.906,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 94.126,
+          "end": 94.286,
+          "matched": true
+        },
+        {
+          "text": "won",
+          "start": 94.286,
+          "end": 94.486,
+          "matched": false
+        },
+        {
+          "text": "one",
+          "start": 94.486,
+          "end": 94.626,
+          "matched": true
+        },
+        {
+          "text": "race",
+          "start": 94.746,
+          "end": 95.427,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l47",
+      "text": "and two two won one too",
+      "start": 95.527,
+      "end": 97.968,
+      "words": [
+        {
+          "text": "and",
+          "start": 95.527,
+          "end": 95.707,
+          "matched": true
+        },
+        {
+          "text": "two",
+          "start": 95.787,
+          "end": 96.067,
+          "matched": true
+        },
+        {
+          "text": "two",
+          "start": 96.167,
+          "end": 96.467,
+          "matched": true
+        },
+        {
+          "text": "won",
+          "start": 96.467,
+          "end": 97.028,
+          "matched": false
+        },
+        {
+          "text": "one",
+          "start": 97.028,
+          "end": 97.208,
+          "matched": true
+        },
+        {
+          "text": "too",
+          "start": 97.208,
+          "end": 97.968,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l48",
+      "text": "I thought a thought (tell me more?)",
+      "start": 97.968,
+      "end": 99.469,
+      "words": [
+        {
+          "text": "I",
+          "start": 97.968,
+          "end": 98.028,
+          "matched": true
+        },
+        {
+          "text": "thought",
+          "start": 98.048,
+          "end": 98.289,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 98.289,
+          "end": 98.409,
+          "matched": false
+        },
+        {
+          "text": "thought",
+          "start": 98.409,
+          "end": 98.669,
+          "matched": true
+        },
+        {
+          "text": "(tell",
+          "start": 98.769,
+          "end": 98.989,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 99.009,
+          "end": 99.109,
+          "matched": true
+        },
+        {
+          "text": "more?)",
+          "start": 99.169,
+          "end": 99.469,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l49",
+      "text": "but the thought I thought",
+      "start": 99.529,
+      "end": 100.93,
+      "words": [
+        {
+          "text": "but",
+          "start": 99.529,
+          "end": 99.649,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 99.689,
+          "end": 99.81,
+          "matched": true
+        },
+        {
+          "text": "thought",
+          "start": 99.87,
+          "end": 100.27,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 100.35,
+          "end": 100.41,
+          "matched": true
+        },
+        {
+          "text": "thought",
+          "start": 100.57,
+          "end": 100.93,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l50",
+      "text": "wasn't the thought I thought I thought (hmmmmmmm)",
+      "start": 100.99,
+      "end": 104.595,
+      "words": [
+        {
+          "text": "wasn't",
+          "start": 100.99,
+          "end": 101.291,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 101.331,
+          "end": 101.431,
+          "matched": true
+        },
+        {
+          "text": "thought",
+          "start": 101.511,
+          "end": 101.891,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 101.931,
+          "end": 101.991,
+          "matched": true
+        },
+        {
+          "text": "thought",
+          "start": 102.051,
+          "end": 102.311,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 102.411,
+          "end": 102.491,
+          "matched": true
+        },
+        {
+          "text": "thought",
+          "start": 102.571,
+          "end": 103.352,
+          "matched": true
+        },
+        {
+          "text": "(hmmmmmmm)",
+          "start": 103.352,
+          "end": 104.595,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l51",
+      "text": "(ha ha)",
+      "start": 104.595,
+      "end": 107.082,
+      "words": [
+        {
+          "text": "(ha",
+          "start": 104.595,
+          "end": 105.839,
+          "matched": false
+        },
+        {
+          "text": "ha)",
+          "start": 105.839,
+          "end": 107.082,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l52",
+      "text": "A mose is a mose! (mose)",
+      "start": 107.082,
+      "end": 108.283,
+      "words": [
+        {
+          "text": "A",
+          "start": 107.082,
+          "end": 107.182,
+          "matched": true
+        },
+        {
+          "text": "mose",
+          "start": 107.222,
+          "end": 107.642,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 107.662,
+          "end": 107.762,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 107.863,
+          "end": 107.923,
+          "matched": true
+        },
+        {
+          "text": "mose!",
+          "start": 107.923,
+          "end": 107.943,
+          "matched": false
+        },
+        {
+          "text": "(mose)",
+          "start": 107.943,
+          "end": 108.283,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l53",
+      "text": "A rose is a rose! (rose)",
+      "start": 108.383,
+      "end": 109.704,
+      "words": [
+        {
+          "text": "A",
+          "start": 108.383,
+          "end": 108.443,
+          "matched": true
+        },
+        {
+          "text": "rose",
+          "start": 108.463,
+          "end": 108.983,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 109.083,
+          "end": 109.183,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 109.263,
+          "end": 109.303,
+          "matched": true
+        },
+        {
+          "text": "rose!",
+          "start": 109.303,
+          "end": 109.343,
+          "matched": false
+        },
+        {
+          "text": "(rose)",
+          "start": 109.343,
+          "end": 109.704,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l54",
+      "text": "A toes is a toes! (toes)",
+      "start": 109.804,
+      "end": 111.105,
+      "words": [
+        {
+          "text": "A",
+          "start": 109.804,
+          "end": 109.864,
+          "matched": true
+        },
+        {
+          "text": "toes",
+          "start": 109.884,
+          "end": 110.404,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 110.484,
+          "end": 110.584,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 110.664,
+          "end": 110.704,
+          "matched": true
+        },
+        {
+          "text": "toes!",
+          "start": 110.704,
+          "end": 110.744,
+          "matched": false
+        },
+        {
+          "text": "(toes)",
+          "start": 110.744,
+          "end": 111.105,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l55",
+      "text": "mose (mose) rose (rose) toes (toes)",
+      "start": 111.105,
+      "end": 116.888,
+      "words": [
+        {
+          "text": "mose",
+          "start": 111.105,
+          "end": 111.945,
+          "matched": false
+        },
+        {
+          "text": "(mose)",
+          "start": 111.945,
+          "end": 112.786,
+          "matched": false
+        },
+        {
+          "text": "rose",
+          "start": 112.786,
+          "end": 113.626,
+          "matched": false
+        },
+        {
+          "text": "(rose)",
+          "start": 113.626,
+          "end": 114.827,
+          "matched": true
+        },
+        {
+          "text": "toes",
+          "start": 114.867,
+          "end": 115.547,
+          "matched": true
+        },
+        {
+          "text": "(toes)",
+          "start": 115.587,
+          "end": 116.888,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l56",
+      "text": "Hooptie doodie doodle",
+      "start": 116.888,
+      "end": 116.948,
+      "words": [
+        {
+          "text": "Hooptie",
+          "start": 116.888,
+          "end": 116.908,
+          "matched": false
+        },
+        {
+          "text": "doodie",
+          "start": 116.908,
+          "end": 116.928,
+          "matched": false
+        },
+        {
+          "text": "doodle",
+          "start": 116.928,
+          "end": 116.948,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l57",
+      "text": "doodle doodie hooptie",
+      "start": 116.948,
+      "end": 117.008,
+      "words": [
+        {
+          "text": "doodle",
+          "start": 116.948,
+          "end": 116.968,
+          "matched": false
+        },
+        {
+          "text": "doodie",
+          "start": 116.968,
+          "end": 116.988,
+          "matched": false
+        },
+        {
+          "text": "hooptie",
+          "start": 116.988,
+          "end": 117.008,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l58",
+      "text": "(ha ha ha ha ha ha)",
+      "start": 117.008,
+      "end": 117.128,
+      "words": [
+        {
+          "text": "(ha",
+          "start": 117.008,
+          "end": 117.028,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 117.028,
+          "end": 117.048,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 117.048,
+          "end": 117.068,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 117.068,
+          "end": 117.088,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 117.088,
+          "end": 117.108,
+          "matched": false
+        },
+        {
+          "text": "ha)",
+          "start": 117.108,
+          "end": 117.128,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l59",
+      "text": "Red lorry, yellow lorry",
+      "start": 117.128,
+      "end": 118.509,
+      "words": [
+        {
+          "text": "Red",
+          "start": 117.128,
+          "end": 117.348,
+          "matched": true
+        },
+        {
+          "text": "lorry,",
+          "start": 117.468,
+          "end": 117.829,
+          "matched": true
+        },
+        {
+          "text": "yellow",
+          "start": 117.849,
+          "end": 118.149,
+          "matched": true
+        },
+        {
+          "text": "lorry",
+          "start": 118.189,
+          "end": 118.509,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l60",
+      "text": "lorry yellow, lorry red (vroom vroom)",
+      "start": 118.549,
+      "end": 120.61,
+      "words": [
+        {
+          "text": "lorry",
+          "start": 118.549,
+          "end": 118.869,
+          "matched": true
+        },
+        {
+          "text": "yellow,",
+          "start": 118.909,
+          "end": 119.19,
+          "matched": true
+        },
+        {
+          "text": "lorry",
+          "start": 119.25,
+          "end": 119.57,
+          "matched": true
+        },
+        {
+          "text": "red",
+          "start": 119.61,
+          "end": 119.87,
+          "matched": true
+        },
+        {
+          "text": "(vroom",
+          "start": 119.93,
+          "end": 120.25,
+          "matched": true
+        },
+        {
+          "text": "vroom)",
+          "start": 120.27,
+          "end": 120.61,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l61",
+      "text": "Red lorry, yellow lorry",
+      "start": 120.65,
+      "end": 121.551,
+      "words": [
+        {
+          "text": "Red",
+          "start": 120.65,
+          "end": 120.79,
+          "matched": true
+        },
+        {
+          "text": "lorry,",
+          "start": 120.831,
+          "end": 121.151,
+          "matched": true
+        },
+        {
+          "text": "yellow",
+          "start": 121.191,
+          "end": 121.491,
+          "matched": true
+        },
+        {
+          "text": "lorry",
+          "start": 121.491,
+          "end": 121.551,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l62",
+      "text": "lorry yellow, lorry red (vroom vroom)",
+      "start": 121.551,
+      "end": 122.772,
+      "words": [
+        {
+          "text": "lorry",
+          "start": 121.551,
+          "end": 121.851,
+          "matched": true
+        },
+        {
+          "text": "yellow,",
+          "start": 121.851,
+          "end": 121.891,
+          "matched": false
+        },
+        {
+          "text": "lorry",
+          "start": 121.891,
+          "end": 122.211,
+          "matched": true
+        },
+        {
+          "text": "red",
+          "start": 122.231,
+          "end": 122.472,
+          "matched": true
+        },
+        {
+          "text": "(vroom",
+          "start": 122.472,
+          "end": 122.622,
+          "matched": false
+        },
+        {
+          "text": "vroom)",
+          "start": 122.622,
+          "end": 122.772,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l63",
+      "text": "Red lorry, yellow lorry",
+      "start": 122.772,
+      "end": 124.113,
+      "words": [
+        {
+          "text": "Red",
+          "start": 122.772,
+          "end": 123.012,
+          "matched": true
+        },
+        {
+          "text": "lorry,",
+          "start": 123.092,
+          "end": 123.432,
+          "matched": true
+        },
+        {
+          "text": "yellow",
+          "start": 123.452,
+          "end": 123.752,
+          "matched": true
+        },
+        {
+          "text": "lorry",
+          "start": 123.792,
+          "end": 124.113,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l64",
+      "text": "lorry yellow, lorry red (vroom vroom)",
+      "start": 124.153,
+      "end": 125.513,
+      "words": [
+        {
+          "text": "lorry",
+          "start": 124.153,
+          "end": 124.473,
+          "matched": true
+        },
+        {
+          "text": "yellow,",
+          "start": 124.513,
+          "end": 124.813,
+          "matched": true
+        },
+        {
+          "text": "lorry",
+          "start": 124.853,
+          "end": 125.173,
+          "matched": true
+        },
+        {
+          "text": "red",
+          "start": 125.193,
+          "end": 125.433,
+          "matched": true
+        },
+        {
+          "text": "(vroom",
+          "start": 125.433,
+          "end": 125.473,
+          "matched": false
+        },
+        {
+          "text": "vroom)",
+          "start": 125.473,
+          "end": 125.513,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l65",
+      "text": "Crisp crusts crackle crunchily (crackle)",
+      "start": 125.513,
+      "end": 127.655,
+      "words": [
+        {
+          "text": "Crisp",
+          "start": 125.513,
+          "end": 125.814,
+          "matched": true
+        },
+        {
+          "text": "crusts",
+          "start": 125.894,
+          "end": 126.174,
+          "matched": true
+        },
+        {
+          "text": "crackle",
+          "start": 126.274,
+          "end": 126.574,
+          "matched": true
+        },
+        {
+          "text": "crunchily",
+          "start": 126.594,
+          "end": 127.174,
+          "matched": true
+        },
+        {
+          "text": "(crackle)",
+          "start": 127.295,
+          "end": 127.655,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l66",
+      "text": "Round the rugged rock, the ragged rascal ran",
+      "start": 128.255,
+      "end": 130.919,
+      "words": [
+        {
+          "text": "Round",
+          "start": 128.255,
+          "end": 128.596,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 128.636,
+          "end": 128.736,
+          "matched": true
+        },
+        {
+          "text": "rugged",
+          "start": 128.796,
+          "end": 129.096,
+          "matched": true
+        },
+        {
+          "text": "rock,",
+          "start": 129.157,
+          "end": 129.397,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 129.497,
+          "end": 129.637,
+          "matched": true
+        },
+        {
+          "text": "ragged",
+          "start": 129.677,
+          "end": 129.978,
+          "matched": true
+        },
+        {
+          "text": "rascal",
+          "start": 130.038,
+          "end": 130.458,
+          "matched": true
+        },
+        {
+          "text": "ran",
+          "start": 130.559,
+          "end": 130.919,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l67",
+      "text": "If two witches were watching two wrist watches",
+      "start": 130.959,
+      "end": 133.823,
+      "words": [
+        {
+          "text": "If",
+          "start": 130.959,
+          "end": 131.039,
+          "matched": true
+        },
+        {
+          "text": "two",
+          "start": 131.079,
+          "end": 131.22,
+          "matched": true
+        },
+        {
+          "text": "witches",
+          "start": 131.28,
+          "end": 131.78,
+          "matched": true
+        },
+        {
+          "text": "were",
+          "start": 131.8,
+          "end": 131.961,
+          "matched": true
+        },
+        {
+          "text": "watching",
+          "start": 132.001,
+          "end": 132.301,
+          "matched": true
+        },
+        {
+          "text": "two",
+          "start": 132.361,
+          "end": 132.602,
+          "matched": true
+        },
+        {
+          "text": "wrist",
+          "start": 132.702,
+          "end": 133.723,
+          "matched": true
+        },
+        {
+          "text": "watches",
+          "start": 133.723,
+          "end": 133.823,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l68",
+      "text": "which witch would watch which wrist watch? (tick tock)",
+      "start": 133.823,
+      "end": 136.748,
+      "words": [
+        {
+          "text": "which",
+          "start": 133.823,
+          "end": 134.024,
+          "matched": true
+        },
+        {
+          "text": "witch",
+          "start": 134.144,
+          "end": 134.384,
+          "matched": true
+        },
+        {
+          "text": "would",
+          "start": 134.504,
+          "end": 134.685,
+          "matched": true
+        },
+        {
+          "text": "watch",
+          "start": 134.725,
+          "end": 134.985,
+          "matched": true
+        },
+        {
+          "text": "which",
+          "start": 135.065,
+          "end": 135.285,
+          "matched": true
+        },
+        {
+          "text": "wrist",
+          "start": 135.366,
+          "end": 135.866,
+          "matched": true
+        },
+        {
+          "text": "watch?",
+          "start": 135.866,
+          "end": 135.906,
+          "matched": false
+        },
+        {
+          "text": "(tick",
+          "start": 135.906,
+          "end": 136.627,
+          "matched": true
+        },
+        {
+          "text": "tock)",
+          "start": 136.627,
+          "end": 136.748,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l69",
+      "text": "If “there” is there (there)",
+      "start": 136.748,
+      "end": 138.07,
+      "words": [
+        {
+          "text": "If",
+          "start": 136.748,
+          "end": 136.848,
+          "matched": true
+        },
+        {
+          "text": "“there”",
+          "start": 137.008,
+          "end": 137.369,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 137.489,
+          "end": 137.589,
+          "matched": true
+        },
+        {
+          "text": "there",
+          "start": 137.589,
+          "end": 137.689,
+          "matched": false
+        },
+        {
+          "text": "(there)",
+          "start": 137.689,
+          "end": 138.07,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l70",
+      "text": "and “their” is theirs (their)",
+      "start": 138.15,
+      "end": 139.532,
+      "words": [
+        {
+          "text": "and",
+          "start": 138.15,
+          "end": 138.23,
+          "matched": true
+        },
+        {
+          "text": "“their”",
+          "start": 138.27,
+          "end": 138.771,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 138.891,
+          "end": 138.991,
+          "matched": true
+        },
+        {
+          "text": "theirs",
+          "start": 139.111,
+          "end": 139.472,
+          "matched": true
+        },
+        {
+          "text": "(their)",
+          "start": 139.472,
+          "end": 139.532,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l71",
+      "text": "and “they’re” means they are (they're)",
+      "start": 139.532,
+      "end": 141.434,
+      "words": [
+        {
+          "text": "and",
+          "start": 139.532,
+          "end": 139.632,
+          "matched": true
+        },
+        {
+          "text": "“they’re”",
+          "start": 139.672,
+          "end": 140.092,
+          "matched": true
+        },
+        {
+          "text": "means",
+          "start": 140.153,
+          "end": 140.433,
+          "matched": true
+        },
+        {
+          "text": "they",
+          "start": 140.513,
+          "end": 140.693,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 140.954,
+          "end": 141.134,
+          "matched": true
+        },
+        {
+          "text": "(they're)",
+          "start": 141.214,
+          "end": 141.434,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l72",
+      "text": "then where are they? (huh?)",
+      "start": 142.884,
+      "end": 144.866,
+      "words": [
+        {
+          "text": "then",
+          "start": 142.884,
+          "end": 143.184,
+          "matched": true
+        },
+        {
+          "text": "where",
+          "start": 143.585,
+          "end": 143.925,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 144.105,
+          "end": 144.265,
+          "matched": true
+        },
+        {
+          "text": "they?",
+          "start": 144.326,
+          "end": 144.586,
+          "matched": true
+        },
+        {
+          "text": "(huh?)",
+          "start": 144.686,
+          "end": 144.866,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l73",
+      "text": "(ha ha)",
+      "start": 144.866,
+      "end": 145.687,
+      "words": [
+        {
+          "text": "(ha",
+          "start": 144.866,
+          "end": 145.276,
+          "matched": false
+        },
+        {
+          "text": "ha)",
+          "start": 145.276,
+          "end": 145.687,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l74",
+      "text": "A mose is a mose! (mose)",
+      "start": 145.687,
+      "end": 146.848,
+      "words": [
+        {
+          "text": "A",
+          "start": 145.687,
+          "end": 145.747,
+          "matched": true
+        },
+        {
+          "text": "mose",
+          "start": 145.787,
+          "end": 146.207,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 146.227,
+          "end": 146.328,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 146.408,
+          "end": 146.488,
+          "matched": true
+        },
+        {
+          "text": "mose!",
+          "start": 146.488,
+          "end": 146.508,
+          "matched": false
+        },
+        {
+          "text": "(mose)",
+          "start": 146.508,
+          "end": 146.848,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l75",
+      "text": "A rose is a rose! (rose)",
+      "start": 146.968,
+      "end": 148.27,
+      "words": [
+        {
+          "text": "A",
+          "start": 146.968,
+          "end": 147.028,
+          "matched": true
+        },
+        {
+          "text": "rose",
+          "start": 147.068,
+          "end": 147.549,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 147.629,
+          "end": 147.729,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 147.829,
+          "end": 147.889,
+          "matched": true
+        },
+        {
+          "text": "rose!",
+          "start": 147.889,
+          "end": 147.909,
+          "matched": false
+        },
+        {
+          "text": "(rose)",
+          "start": 147.909,
+          "end": 148.27,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l76",
+      "text": "A toes is a toes! (toes)",
+      "start": 148.37,
+      "end": 149.311,
+      "words": [
+        {
+          "text": "A",
+          "start": 148.37,
+          "end": 148.45,
+          "matched": true
+        },
+        {
+          "text": "toes",
+          "start": 148.47,
+          "end": 148.95,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 149.03,
+          "end": 149.13,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 149.231,
+          "end": 149.291,
+          "matched": true
+        },
+        {
+          "text": "toes!",
+          "start": 149.291,
+          "end": 149.301,
+          "matched": false
+        },
+        {
+          "text": "(toes)",
+          "start": 149.301,
+          "end": 149.311,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l77",
+      "text": "mose (mose) rose (rose) toes (toes)",
+      "start": 149.311,
+      "end": 153.014,
+      "words": [
+        {
+          "text": "mose",
+          "start": 149.311,
+          "end": 149.871,
+          "matched": true
+        },
+        {
+          "text": "(mose)",
+          "start": 150.071,
+          "end": 150.672,
+          "matched": true
+        },
+        {
+          "text": "rose",
+          "start": 150.772,
+          "end": 151.373,
+          "matched": true
+        },
+        {
+          "text": "(rose)",
+          "start": 151.493,
+          "end": 152.094,
+          "matched": true
+        },
+        {
+          "text": "toes",
+          "start": 152.094,
+          "end": 152.194,
+          "matched": false
+        },
+        {
+          "text": "(toes)",
+          "start": 152.194,
+          "end": 153.014,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l78",
+      "text": "Hooptie doodie doodle",
+      "start": 153.014,
+      "end": 153.019,
+      "words": [
+        {
+          "text": "Hooptie",
+          "start": 153.014,
+          "end": 153.016,
+          "matched": false
+        },
+        {
+          "text": "doodie",
+          "start": 153.016,
+          "end": 153.017,
+          "matched": false
+        },
+        {
+          "text": "doodle",
+          "start": 153.017,
+          "end": 153.019,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l79",
+      "text": "doodle doodie hooptie",
+      "start": 153.019,
+      "end": 153.024,
+      "words": [
+        {
+          "text": "doodle",
+          "start": 153.019,
+          "end": 153.021,
+          "matched": false
+        },
+        {
+          "text": "doodie",
+          "start": 153.021,
+          "end": 153.022,
+          "matched": false
+        },
+        {
+          "text": "hooptie",
+          "start": 153.022,
+          "end": 153.024,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l80",
+      "text": "(ha ha ha ha ha ha)",
+      "start": 153.024,
+      "end": 153.034,
+      "words": [
+        {
+          "text": "(ha",
+          "start": 153.024,
+          "end": 153.026,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 153.026,
+          "end": 153.027,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 153.027,
+          "end": 153.029,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 153.029,
+          "end": 153.031,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 153.031,
+          "end": 153.032,
+          "matched": false
+        },
+        {
+          "text": "ha)",
+          "start": 153.032,
+          "end": 153.034,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l81",
+      "text": "Very well, very well, very well...",
+      "start": 153.034,
+      "end": 156.338,
+      "words": [
+        {
+          "text": "Very",
+          "start": 153.034,
+          "end": 153.535,
+          "matched": true
+        },
+        {
+          "text": "well,",
+          "start": 153.575,
+          "end": 154.076,
+          "matched": true
+        },
+        {
+          "text": "very",
+          "start": 154.096,
+          "end": 154.596,
+          "matched": true
+        },
+        {
+          "text": "well,",
+          "start": 154.636,
+          "end": 154.996,
+          "matched": true
+        },
+        {
+          "text": "very",
+          "start": 155.717,
+          "end": 156.018,
+          "matched": true
+        },
+        {
+          "text": "well...",
+          "start": 156.078,
+          "end": 156.338,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l82",
+      "text": "(huh?)",
+      "start": 156.338,
+      "end": 158.62,
+      "words": [
+        {
+          "text": "(huh?)",
+          "start": 156.338,
+          "end": 158.62,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l83",
+      "text": "Birming-ham",
+      "start": 158.62,
+      "end": 159.301,
+      "words": [
+        {
+          "text": "Birming-ham",
+          "start": 158.62,
+          "end": 159.301,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l84",
+      "text": "Notting-ham",
+      "start": 159.361,
+      "end": 160.021,
+      "words": [
+        {
+          "text": "Notting-ham",
+          "start": 159.361,
+          "end": 160.021,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l85",
+      "text": "Bucking-ham",
+      "start": 160.062,
+      "end": 160.762,
+      "words": [
+        {
+          "text": "Bucking-ham",
+          "start": 160.062,
+          "end": 160.762,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l86",
+      "text": "Rotherham, Oldham, Durham, Grantham",
+      "start": 160.782,
+      "end": 163.224,
+      "words": [
+        {
+          "text": "Rotherham,",
+          "start": 160.782,
+          "end": 161.503,
+          "matched": true
+        },
+        {
+          "text": "Oldham,",
+          "start": 161.643,
+          "end": 162.143,
+          "matched": true
+        },
+        {
+          "text": "Durham,",
+          "start": 162.204,
+          "end": 162.564,
+          "matched": true
+        },
+        {
+          "text": "Grantham",
+          "start": 162.584,
+          "end": 163.224,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l87",
+      "text": "Dagenham, Chatham, Rainham, Gillingham",
+      "start": 163.305,
+      "end": 166.147,
+      "words": [
+        {
+          "text": "Dagenham,",
+          "start": 163.305,
+          "end": 163.985,
+          "matched": true
+        },
+        {
+          "text": "Chatham,",
+          "start": 164.025,
+          "end": 164.706,
+          "matched": true
+        },
+        {
+          "text": "Rainham,",
+          "start": 164.766,
+          "end": 165.426,
+          "matched": true
+        },
+        {
+          "text": "Gillingham",
+          "start": 165.487,
+          "end": 166.147,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l88",
+      "text": "Faversham, Fareham, Horsham, Chesham",
+      "start": 166.207,
+      "end": 169.11,
+      "words": [
+        {
+          "text": "Faversham,",
+          "start": 166.207,
+          "end": 166.908,
+          "matched": true
+        },
+        {
+          "text": "Fareham,",
+          "start": 166.928,
+          "end": 167.649,
+          "matched": true
+        },
+        {
+          "text": "Horsham,",
+          "start": 167.689,
+          "end": 168.309,
+          "matched": true
+        },
+        {
+          "text": "Chesham",
+          "start": 168.389,
+          "end": 169.11,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l89",
+      "text": "Evesham-Melksham-Chippenham-Hexham",
+      "start": 169.11,
+      "end": 171.973,
+      "words": [
+        {
+          "text": "Evesham-Melksham-Chippenham-Hexham",
+          "start": 169.11,
+          "end": 171.973,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l90",
+      "text": "Swaffham-Dereham-Wymondham-Downham",
+      "start": 171.973,
+      "end": 174.835,
+      "words": [
+        {
+          "text": "Swaffham-Dereham-Wymondham-Downham",
+          "start": 171.973,
+          "end": 174.835,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l91",
+      "text": "Tottenham-Twickenham-Altrincham-Amersham",
+      "start": 174.835,
+      "end": 175.516,
+      "words": [
+        {
+          "text": "Tottenham-Twickenham-Altrincham-Amersham",
+          "start": 174.835,
+          "end": 175.516,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l92",
+      "text": "(ha ha)",
+      "start": 175.516,
+      "end": 177.698,
+      "words": [
+        {
+          "text": "(ha",
+          "start": 175.516,
+          "end": 176.607,
+          "matched": false
+        },
+        {
+          "text": "ha)",
+          "start": 176.607,
+          "end": 177.698,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l93",
+      "text": "Ports-mouth (mouth)",
+      "start": 177.698,
+      "end": 178.719,
+      "words": [
+        {
+          "text": "Ports-mouth",
+          "start": 177.698,
+          "end": 178.378,
+          "matched": true
+        },
+        {
+          "text": "(mouth)",
+          "start": 178.419,
+          "end": 178.719,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l94",
+      "text": "Plymouth, Falmouth, Exmouth",
+      "start": 178.759,
+      "end": 180.5,
+      "words": [
+        {
+          "text": "Plymouth,",
+          "start": 178.759,
+          "end": 179.139,
+          "matched": true
+        },
+        {
+          "text": "Falmouth,",
+          "start": 179.159,
+          "end": 179.82,
+          "matched": true
+        },
+        {
+          "text": "Exmouth",
+          "start": 179.9,
+          "end": 180.5,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l95",
+      "text": "Teignmouth-Weymouth,",
+      "start": 180.5,
+      "end": 181.952,
+      "words": [
+        {
+          "text": "Teignmouth-Weymouth,",
+          "start": 180.5,
+          "end": 181.952,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l96",
+      "text": "Tynemouth-Bournemouth",
+      "start": 181.952,
+      "end": 183.403,
+      "words": [
+        {
+          "text": "Tynemouth-Bournemouth",
+          "start": 181.952,
+          "end": 183.403,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l97",
+      "text": "Norwich-Ipswich-Harwich-Sandwich",
+      "start": 183.403,
+      "end": 183.743,
+      "words": [
+        {
+          "text": "Norwich-Ipswich-Harwich-Sandwich",
+          "start": 183.403,
+          "end": 183.743,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l98",
+      "text": "Northwich-Middlewich-Nantwich-Droitwich",
+      "start": 185.525,
+      "end": 185.865,
+      "words": [
+        {
+          "text": "Northwich-Middlewich-Nantwich-Droitwich",
+          "start": 185.525,
+          "end": 185.865,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l99",
+      "text": "Manchester-Winchester-Chester",
+      "start": 185.865,
+      "end": 190.13,
+      "words": [
+        {
+          "text": "Manchester-Winchester-Chester",
+          "start": 185.865,
+          "end": 190.13,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l100",
+      "text": "Colchester-Dorchester-Cirencester",
+      "start": 190.13,
+      "end": 190.83,
+      "words": [
+        {
+          "text": "Colchester-Dorchester-Cirencester",
+          "start": 190.13,
+          "end": 190.83,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l101",
+      "text": "Oxford-Watford-Guildford-Salford",
+      "start": 193.433,
+      "end": 193.893,
+      "words": [
+        {
+          "text": "Oxford-Watford-Guildford-Salford",
+          "start": 193.433,
+          "end": 193.893,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l102",
+      "text": "Hereford-Chelmsford-Stamford-Bedford",
+      "start": 195.935,
+      "end": 196.476,
+      "words": [
+        {
+          "text": "Hereford-Chelmsford-Stamford-Bedford",
+          "start": 195.935,
+          "end": 196.476,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l103",
+      "text": "Bradford-Stafford-Dartford",
+      "start": 198.858,
+      "end": 199.458,
+      "words": [
+        {
+          "text": "Bradford-Stafford-Dartford",
+          "start": 198.858,
+          "end": 199.458,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l104",
+      "text": "(you've lost me)",
+      "start": 201.34,
+      "end": 202.061,
+      "words": [
+        {
+          "text": "(you've",
+          "start": 201.34,
+          "end": 201.52,
+          "matched": true
+        },
+        {
+          "text": "lost",
+          "start": 201.56,
+          "end": 201.881,
+          "matched": true
+        },
+        {
+          "text": "me)",
+          "start": 201.941,
+          "end": 202.061,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l105",
+      "text": "ha ha",
+      "start": 202.061,
+      "end": 202.88,
+      "words": [
+        {
+          "text": "ha",
+          "start": 202.061,
+          "end": 202.471,
+          "matched": false
+        },
+        {
+          "text": "ha",
+          "start": 202.471,
+          "end": 202.88,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l106",
+      "text": "A mose a rose a tose (tose)",
+      "start": 202.88,
+      "end": 206.221,
+      "words": [
+        {
+          "text": "A",
+          "start": 202.88,
+          "end": 203.29,
+          "matched": false
+        },
+        {
+          "text": "mose",
+          "start": 203.29,
+          "end": 203.7,
+          "matched": false
+        },
+        {
+          "text": "a",
+          "start": 203.7,
+          "end": 203.78,
+          "matched": true
+        },
+        {
+          "text": "rose",
+          "start": 203.78,
+          "end": 204.14,
+          "matched": false
+        },
+        {
+          "text": "a",
+          "start": 204.14,
+          "end": 204.501,
+          "matched": false
+        },
+        {
+          "text": "tose",
+          "start": 204.501,
+          "end": 204.861,
+          "matched": false
+        },
+        {
+          "text": "(tose)",
+          "start": 204.861,
+          "end": 206.221,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l107",
+      "text": "A rose a tose a mose (mose)",
+      "start": 206.261,
+      "end": 208.783,
+      "words": [
+        {
+          "text": "A",
+          "start": 206.261,
+          "end": 206.301,
+          "matched": true
+        },
+        {
+          "text": "rose",
+          "start": 206.301,
+          "end": 206.741,
+          "matched": false
+        },
+        {
+          "text": "a",
+          "start": 206.741,
+          "end": 207.182,
+          "matched": false
+        },
+        {
+          "text": "tose",
+          "start": 207.182,
+          "end": 207.542,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 207.622,
+          "end": 207.702,
+          "matched": true
+        },
+        {
+          "text": "mose",
+          "start": 207.702,
+          "end": 208.242,
+          "matched": false
+        },
+        {
+          "text": "(mose)",
+          "start": 208.242,
+          "end": 208.783,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l108",
+      "text": "A tose a mose a rose (rose)",
+      "start": 208.783,
+      "end": 212.505,
+      "words": [
+        {
+          "text": "A",
+          "start": 208.783,
+          "end": 209.323,
+          "matched": false
+        },
+        {
+          "text": "tose",
+          "start": 209.323,
+          "end": 209.823,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 209.903,
+          "end": 210.003,
+          "matched": true
+        },
+        {
+          "text": "mose",
+          "start": 210.003,
+          "end": 210.628,
+          "matched": false
+        },
+        {
+          "text": "a",
+          "start": 210.628,
+          "end": 211.254,
+          "matched": false
+        },
+        {
+          "text": "rose",
+          "start": 211.254,
+          "end": 211.88,
+          "matched": false
+        },
+        {
+          "text": "(rose)",
+          "start": 211.88,
+          "end": 212.505,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l109",
+      "text": "(ha ha ha ha ha ha)",
+      "start": 212.505,
+      "end": 213.485,
+      "words": [
+        {
+          "text": "(ha",
+          "start": 212.505,
+          "end": 212.645,
+          "matched": true
+        },
+        {
+          "text": "ha",
+          "start": 212.685,
+          "end": 212.805,
+          "matched": true
+        },
+        {
+          "text": "ha",
+          "start": 212.845,
+          "end": 212.985,
+          "matched": true
+        },
+        {
+          "text": "ha",
+          "start": 213.025,
+          "end": 213.165,
+          "matched": true
+        },
+        {
+          "text": "ha",
+          "start": 213.205,
+          "end": 213.345,
+          "matched": true
+        },
+        {
+          "text": "ha)",
+          "start": 213.385,
+          "end": 213.485,
+          "matched": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2872 @@
+{
+  "format": "gbr-word-lyrics-v1",
+  "version": 2,
+  "title": "gimmie-gimmie-ball",
+  "song_version": "country",
+  "source_yaml": "gimmie-gimmie-ball/gimmie-gimmie-ball-country/gimmie-gimmie-ball-country.yaml",
+  "source_audio": "gimmie-gimmie-ball-country.flac",
+  "language": "en",
+  "engine": "demucs:htdemucs+whisperx:large-v3",
+  "runtime": {
+    "requested_device": "auto",
+    "demucs_device": "cuda",
+    "whisperx_device": "cuda",
+    "whisperx_compute_type": "float16",
+    "batch_size": 4,
+    "cpu_fallback_used": false
+  },
+  "generated_at": "2026-09-12T16:56:35+00:00",
+  "stats": {
+    "lyric_words": 389,
+    "recognised_words": 392,
+    "matched_words": 381,
+    "coverage": 0.9794
+  },
+  "quality": {
+    "rating": "excellent",
+    "review_threshold": 0.8,
+    "review_required": false,
+    "approved": false,
+    "usable_for_live_lyrics": true
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "uh-huh",
+      "start": 6.199,
+      "end": 6.539,
+      "words": [
+        {
+          "text": "uh-huh",
+          "start": 6.199,
+          "end": 6.539,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "text": "we goin' down the road together",
+      "start": 6.539,
+      "end": 8.98,
+      "words": [
+        {
+          "text": "we",
+          "start": 6.539,
+          "end": 6.719,
+          "matched": true
+        },
+        {
+          "text": "goin'",
+          "start": 6.739,
+          "end": 7.079,
+          "matched": true
+        },
+        {
+          "text": "down",
+          "start": 7.119,
+          "end": 7.459,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 7.519,
+          "end": 7.619,
+          "matched": true
+        },
+        {
+          "text": "road",
+          "start": 7.659,
+          "end": 8.379,
+          "matched": true
+        },
+        {
+          "text": "together",
+          "start": 8.439,
+          "end": 8.98,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "text": "im here to tell y'all 'bout where my life has gone",
+      "start": 10.28,
+      "end": 13.582,
+      "words": [
+        {
+          "text": "im",
+          "start": 10.28,
+          "end": 10.4,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 10.44,
+          "end": 10.6,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 10.64,
+          "end": 10.72,
+          "matched": true
+        },
+        {
+          "text": "tell",
+          "start": 10.8,
+          "end": 11.121,
+          "matched": true
+        },
+        {
+          "text": "y'all",
+          "start": 11.141,
+          "end": 11.481,
+          "matched": true
+        },
+        {
+          "text": "'bout",
+          "start": 11.521,
+          "end": 11.841,
+          "matched": true
+        },
+        {
+          "text": "where",
+          "start": 11.881,
+          "end": 12.081,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 12.121,
+          "end": 12.221,
+          "matched": true
+        },
+        {
+          "text": "life",
+          "start": 12.301,
+          "end": 12.621,
+          "matched": true
+        },
+        {
+          "text": "has",
+          "start": 12.641,
+          "end": 12.781,
+          "matched": true
+        },
+        {
+          "text": "gone",
+          "start": 12.821,
+          "end": 13.582,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "text": "well it'sa half past chunk",
+      "start": 18.323,
+      "end": 19.944,
+      "words": [
+        {
+          "text": "well",
+          "start": 18.323,
+          "end": 18.543,
+          "matched": true
+        },
+        {
+          "text": "it'sa",
+          "start": 18.603,
+          "end": 18.764,
+          "matched": true
+        },
+        {
+          "text": "half",
+          "start": 18.944,
+          "end": 19.204,
+          "matched": true
+        },
+        {
+          "text": "past",
+          "start": 19.264,
+          "end": 19.584,
+          "matched": true
+        },
+        {
+          "text": "chunk",
+          "start": 19.624,
+          "end": 19.944,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "text": "the air is thick, my lungs are full",
+      "start": 20.244,
+      "end": 22.225,
+      "words": [
+        {
+          "text": "the",
+          "start": 20.244,
+          "end": 20.384,
+          "matched": true
+        },
+        {
+          "text": "air",
+          "start": 20.584,
+          "end": 20.764,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 20.784,
+          "end": 20.864,
+          "matched": true
+        },
+        {
+          "text": "thick,",
+          "start": 20.944,
+          "end": 21.265,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 21.325,
+          "end": 21.445,
+          "matched": true
+        },
+        {
+          "text": "lungs",
+          "start": 21.485,
+          "end": 21.725,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 21.765,
+          "end": 21.825,
+          "matched": true
+        },
+        {
+          "text": "full",
+          "start": 21.865,
+          "end": 22.225,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "text": "this summer heat, it's got me panting, feelin' dull",
+      "start": 22.265,
+      "end": 25.166,
+      "words": [
+        {
+          "text": "this",
+          "start": 22.265,
+          "end": 22.465,
+          "matched": true
+        },
+        {
+          "text": "summer",
+          "start": 22.565,
+          "end": 22.925,
+          "matched": true
+        },
+        {
+          "text": "heat,",
+          "start": 22.985,
+          "end": 23.345,
+          "matched": true
+        },
+        {
+          "text": "it's",
+          "start": 23.345,
+          "end": 23.505,
+          "matched": false
+        },
+        {
+          "text": "got",
+          "start": 23.505,
+          "end": 23.665,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 23.685,
+          "end": 23.826,
+          "matched": true
+        },
+        {
+          "text": "panting,",
+          "start": 23.886,
+          "end": 24.346,
+          "matched": true
+        },
+        {
+          "text": "feelin'",
+          "start": 24.406,
+          "end": 24.746,
+          "matched": true
+        },
+        {
+          "text": "dull",
+          "start": 24.786,
+          "end": 25.166,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "text": "i'm strugglin' to keep on goin, mama ain't here no more",
+      "start": 25.246,
+      "end": 29.932,
+      "words": [
+        {
+          "text": "i'm",
+          "start": 25.246,
+          "end": 25.366,
+          "matched": true
+        },
+        {
+          "text": "strugglin'",
+          "start": 25.426,
+          "end": 26.046,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 26.086,
+          "end": 26.166,
+          "matched": true
+        },
+        {
+          "text": "keep",
+          "start": 26.227,
+          "end": 26.427,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 26.587,
+          "end": 26.727,
+          "matched": true
+        },
+        {
+          "text": "goin,",
+          "start": 26.787,
+          "end": 27.307,
+          "matched": true
+        },
+        {
+          "text": "mama",
+          "start": 28.751,
+          "end": 29.111,
+          "matched": true
+        },
+        {
+          "text": "ain't",
+          "start": 29.171,
+          "end": 29.311,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 29.351,
+          "end": 29.472,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 29.512,
+          "end": 29.632,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 29.672,
+          "end": 29.932,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l8",
+      "text": "that moons sittin' high, up in the sky outside",
+      "start": 30.212,
+      "end": 33.514,
+      "words": [
+        {
+          "text": "that",
+          "start": 30.212,
+          "end": 30.552,
+          "matched": true
+        },
+        {
+          "text": "moons",
+          "start": 30.592,
+          "end": 30.892,
+          "matched": true
+        },
+        {
+          "text": "sittin'",
+          "start": 30.932,
+          "end": 31.293,
+          "matched": true
+        },
+        {
+          "text": "high,",
+          "start": 31.333,
+          "end": 31.853,
+          "matched": true
+        },
+        {
+          "text": "up",
+          "start": 31.953,
+          "end": 32.033,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 32.113,
+          "end": 32.193,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 32.213,
+          "end": 32.293,
+          "matched": true
+        },
+        {
+          "text": "sky",
+          "start": 32.333,
+          "end": 32.774,
+          "matched": true
+        },
+        {
+          "text": "outside",
+          "start": 32.894,
+          "end": 33.514,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l9",
+      "text": "ain't nothin' moving around",
+      "start": 33.554,
+      "end": 35.235,
+      "words": [
+        {
+          "text": "ain't",
+          "start": 33.554,
+          "end": 33.694,
+          "matched": true
+        },
+        {
+          "text": "nothin'",
+          "start": 33.714,
+          "end": 34.174,
+          "matched": true
+        },
+        {
+          "text": "moving",
+          "start": 34.214,
+          "end": 34.595,
+          "matched": true
+        },
+        {
+          "text": "around",
+          "start": 34.655,
+          "end": 35.235,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l10",
+      "text": "not a thing out there on the ground",
+      "start": 35.996,
+      "end": 37.797,
+      "words": [
+        {
+          "text": "not",
+          "start": 35.996,
+          "end": 36.176,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 36.236,
+          "end": 36.276,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 36.336,
+          "end": 36.716,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 36.796,
+          "end": 36.876,
+          "matched": true
+        },
+        {
+          "text": "there",
+          "start": 36.916,
+          "end": 37.116,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 37.196,
+          "end": 37.256,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 37.296,
+          "end": 37.376,
+          "matched": true
+        },
+        {
+          "text": "ground",
+          "start": 37.416,
+          "end": 37.797,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l11",
+      "text": "feels like my time ain't commin' soon",
+      "start": 37.957,
+      "end": 39.918,
+      "words": [
+        {
+          "text": "feels",
+          "start": 37.957,
+          "end": 38.157,
+          "matched": true
+        },
+        {
+          "text": "like",
+          "start": 38.177,
+          "end": 38.317,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 38.357,
+          "end": 38.457,
+          "matched": true
+        },
+        {
+          "text": "time",
+          "start": 38.517,
+          "end": 38.877,
+          "matched": true
+        },
+        {
+          "text": "ain't",
+          "start": 38.897,
+          "end": 39.157,
+          "matched": true
+        },
+        {
+          "text": "commin'",
+          "start": 39.217,
+          "end": 39.538,
+          "matched": true
+        },
+        {
+          "text": "soon",
+          "start": 39.598,
+          "end": 39.918,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l12",
+      "text": "No one throwing",
+      "start": 42.295,
+      "end": 43.136,
+      "words": [
+        {
+          "text": "No",
+          "start": 42.295,
+          "end": 42.535,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 42.635,
+          "end": 42.715,
+          "matched": true
+        },
+        {
+          "text": "throwing",
+          "start": 42.775,
+          "end": 43.136,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l13",
+      "text": "No one to chase",
+      "start": 43.176,
+      "end": 44.096,
+      "words": [
+        {
+          "text": "No",
+          "start": 43.176,
+          "end": 43.316,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 43.416,
+          "end": 43.476,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 43.496,
+          "end": 43.636,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 43.696,
+          "end": 44.096,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l14",
+      "text": "There's no grace or mercy to be found in this place",
+      "start": 44.236,
+      "end": 47.098,
+      "words": [
+        {
+          "text": "There's",
+          "start": 44.236,
+          "end": 44.556,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 44.616,
+          "end": 44.897,
+          "matched": true
+        },
+        {
+          "text": "grace",
+          "start": 44.937,
+          "end": 45.177,
+          "matched": true
+        },
+        {
+          "text": "or",
+          "start": 45.217,
+          "end": 45.277,
+          "matched": true
+        },
+        {
+          "text": "mercy",
+          "start": 45.317,
+          "end": 45.617,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 45.657,
+          "end": 45.837,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 45.877,
+          "end": 45.957,
+          "matched": true
+        },
+        {
+          "text": "found",
+          "start": 46.017,
+          "end": 46.398,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 46.458,
+          "end": 46.538,
+          "matched": true
+        },
+        {
+          "text": "this",
+          "start": 46.558,
+          "end": 46.698,
+          "matched": true
+        },
+        {
+          "text": "place",
+          "start": 46.738,
+          "end": 47.098,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l15",
+      "text": "well",
+      "start": 47.138,
+      "end": 47.498,
+      "words": [
+        {
+          "text": "well",
+          "start": 47.138,
+          "end": 47.498,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l16",
+      "text": "gimmie, gimmie, gimmie, a ball after midnight",
+      "start": 47.798,
+      "end": 50.62,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 47.798,
+          "end": 48.139,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 48.159,
+          "end": 48.499,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 48.519,
+          "end": 48.919,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 48.959,
+          "end": 48.999,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 49.059,
+          "end": 49.6,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 49.68,
+          "end": 49.9,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 49.96,
+          "end": 50.62,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l17",
+      "text": "send it on a train, a bus or a flight",
+      "start": 50.68,
+      "end": 53.042,
+      "words": [
+        {
+          "text": "send",
+          "start": 50.68,
+          "end": 50.86,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 50.96,
+          "end": 51.061,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 51.141,
+          "end": 51.241,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 51.281,
+          "end": 51.301,
+          "matched": true
+        },
+        {
+          "text": "train,",
+          "start": 51.381,
+          "end": 51.781,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 51.821,
+          "end": 51.861,
+          "matched": true
+        },
+        {
+          "text": "bus",
+          "start": 51.921,
+          "end": 52.261,
+          "matched": true
+        },
+        {
+          "text": "or",
+          "start": 52.381,
+          "end": 52.501,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 52.521,
+          "end": 52.541,
+          "matched": true
+        },
+        {
+          "text": "flight",
+          "start": 52.601,
+          "end": 53.042,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l18",
+      "text": "gimmie, gimmie, gimmie, a ball after midnight",
+      "start": 53.522,
+      "end": 56.424,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 53.522,
+          "end": 53.862,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 53.882,
+          "end": 54.223,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 54.243,
+          "end": 54.623,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 54.683,
+          "end": 54.723,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 54.783,
+          "end": 55.323,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 55.403,
+          "end": 55.623,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 55.683,
+          "end": 56.424,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l19",
+      "text": "i will chase that ball if it's the end of my life",
+      "start": 56.464,
+      "end": 58.845,
+      "words": [
+        {
+          "text": "i",
+          "start": 56.464,
+          "end": 56.524,
+          "matched": true
+        },
+        {
+          "text": "will",
+          "start": 56.544,
+          "end": 56.704,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 56.724,
+          "end": 56.924,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 56.944,
+          "end": 57.044,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 57.084,
+          "end": 57.344,
+          "matched": true
+        },
+        {
+          "text": "if",
+          "start": 57.364,
+          "end": 57.425,
+          "matched": true
+        },
+        {
+          "text": "it's",
+          "start": 57.525,
+          "end": 57.645,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 57.685,
+          "end": 57.805,
+          "matched": true
+        },
+        {
+          "text": "end",
+          "start": 57.885,
+          "end": 58.025,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 58.065,
+          "end": 58.125,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 58.185,
+          "end": 58.425,
+          "matched": true
+        },
+        {
+          "text": "life",
+          "start": 58.525,
+          "end": 58.845,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l20",
+      "text": "no more sleepless nights...",
+      "start": 58.885,
+      "end": 61.247,
+      "words": [
+        {
+          "text": "no",
+          "start": 58.885,
+          "end": 59.026,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 59.066,
+          "end": 59.266,
+          "matched": true
+        },
+        {
+          "text": "sleepless",
+          "start": 59.306,
+          "end": 59.866,
+          "matched": true
+        },
+        {
+          "text": "nights...",
+          "start": 59.946,
+          "end": 61.247,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l21",
+      "text": "no more waitin' for you to throw it again",
+      "start": 61.587,
+      "end": 64.269,
+      "words": [
+        {
+          "text": "no",
+          "start": 61.587,
+          "end": 61.727,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 61.767,
+          "end": 62.027,
+          "matched": true
+        },
+        {
+          "text": "waitin'",
+          "start": 62.107,
+          "end": 62.428,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 62.468,
+          "end": 62.768,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 62.828,
+          "end": 63.148,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 63.188,
+          "end": 63.288,
+          "matched": true
+        },
+        {
+          "text": "throw",
+          "start": 63.328,
+          "end": 63.568,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 63.688,
+          "end": 63.768,
+          "matched": true
+        },
+        {
+          "text": "again",
+          "start": 63.849,
+          "end": 64.269,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l22",
+      "text": "no more mama takin' it away",
+      "start": 64.949,
+      "end": 67.771,
+      "words": [
+        {
+          "text": "no",
+          "start": 64.949,
+          "end": 65.129,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 65.169,
+          "end": 65.65,
+          "matched": true
+        },
+        {
+          "text": "mama",
+          "start": 65.69,
+          "end": 66.17,
+          "matched": true
+        },
+        {
+          "text": "takin'",
+          "start": 66.19,
+          "end": 66.57,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 66.67,
+          "end": 66.75,
+          "matched": true
+        },
+        {
+          "text": "away",
+          "start": 66.85,
+          "end": 67.771,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l23",
+      "text": "gimmie, gimmie, gimmie",
+      "start": 67.791,
+      "end": 68.852,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 67.791,
+          "end": 68.131,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 68.171,
+          "end": 68.491,
+          "matched": true
+        },
+        {
+          "text": "gimmie",
+          "start": 68.531,
+          "end": 68.852,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l24",
+      "text": "gimmie the ball",
+      "start": 69.972,
+      "end": 70.813,
+      "words": [
+        {
+          "text": "gimmie",
+          "start": 69.972,
+          "end": 70.313,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 70.313,
+          "end": 70.493,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 70.493,
+          "end": 70.813,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l25",
+      "text": "that doja dog and i are livin' in two different worlds",
+      "start": 75.82,
+      "end": 80.561,
+      "words": [
+        {
+          "text": "that",
+          "start": 75.82,
+          "end": 75.98,
+          "matched": true
+        },
+        {
+          "text": "doja",
+          "start": 76.0,
+          "end": 76.34,
+          "matched": true
+        },
+        {
+          "text": "dog",
+          "start": 76.38,
+          "end": 76.74,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 76.78,
+          "end": 76.86,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 77.24,
+          "end": 77.44,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 77.48,
+          "end": 77.54,
+          "matched": true
+        },
+        {
+          "text": "livin'",
+          "start": 77.601,
+          "end": 78.521,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 78.541,
+          "end": 78.581,
+          "matched": true
+        },
+        {
+          "text": "two",
+          "start": 78.861,
+          "end": 79.161,
+          "matched": true
+        },
+        {
+          "text": "different",
+          "start": 79.241,
+          "end": 79.861,
+          "matched": true
+        },
+        {
+          "text": "worlds",
+          "start": 79.961,
+          "end": 80.561,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l26",
+      "text": "she's asleep, i'm awake",
+      "start": 81.502,
+      "end": 83.622,
+      "words": [
+        {
+          "text": "she's",
+          "start": 81.502,
+          "end": 81.722,
+          "matched": true
+        },
+        {
+          "text": "asleep,",
+          "start": 81.762,
+          "end": 82.242,
+          "matched": true
+        },
+        {
+          "text": "i'm",
+          "start": 83.002,
+          "end": 83.162,
+          "matched": true
+        },
+        {
+          "text": "awake",
+          "start": 83.222,
+          "end": 83.622,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l27",
+      "text": "her minds at peace, mines in flames",
+      "start": 83.822,
+      "end": 86.643,
+      "words": [
+        {
+          "text": "her",
+          "start": 83.822,
+          "end": 83.962,
+          "matched": true
+        },
+        {
+          "text": "minds",
+          "start": 84.022,
+          "end": 84.402,
+          "matched": true
+        },
+        {
+          "text": "at",
+          "start": 84.462,
+          "end": 84.502,
+          "matched": true
+        },
+        {
+          "text": "peace,",
+          "start": 84.563,
+          "end": 84.983,
+          "matched": true
+        },
+        {
+          "text": "mines",
+          "start": 85.083,
+          "end": 85.643,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 85.723,
+          "end": 85.823,
+          "matched": true
+        },
+        {
+          "text": "flames",
+          "start": 85.923,
+          "end": 86.643,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l28",
+      "text": "i sit and stare into the darkness",
+      "start": 86.803,
+      "end": 89.084,
+      "words": [
+        {
+          "text": "i",
+          "start": 86.803,
+          "end": 86.883,
+          "matched": true
+        },
+        {
+          "text": "sit",
+          "start": 86.983,
+          "end": 87.243,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 87.303,
+          "end": 87.403,
+          "matched": true
+        },
+        {
+          "text": "stare",
+          "start": 87.483,
+          "end": 87.943,
+          "matched": true
+        },
+        {
+          "text": "into",
+          "start": 87.983,
+          "end": 88.284,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 88.304,
+          "end": 88.404,
+          "matched": true
+        },
+        {
+          "text": "darkness",
+          "start": 88.464,
+          "end": 89.084,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l29",
+      "text": "hoping for some hope or progress",
+      "start": 89.844,
+      "end": 91.985,
+      "words": [
+        {
+          "text": "hoping",
+          "start": 89.844,
+          "end": 90.164,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 90.204,
+          "end": 90.364,
+          "matched": true
+        },
+        {
+          "text": "some",
+          "start": 90.404,
+          "end": 90.564,
+          "matched": true
+        },
+        {
+          "text": "hope",
+          "start": 90.644,
+          "end": 90.904,
+          "matched": true
+        },
+        {
+          "text": "or",
+          "start": 91.084,
+          "end": 91.224,
+          "matched": true
+        },
+        {
+          "text": "progress",
+          "start": 91.284,
+          "end": 91.985,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l30",
+      "text": "something moves, i shout thank goodness",
+      "start": 92.665,
+      "end": 94.705,
+      "words": [
+        {
+          "text": "something",
+          "start": 92.665,
+          "end": 93.025,
+          "matched": true
+        },
+        {
+          "text": "moves,",
+          "start": 93.065,
+          "end": 93.285,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 93.305,
+          "end": 93.365,
+          "matched": true
+        },
+        {
+          "text": "shout",
+          "start": 93.405,
+          "end": 93.705,
+          "matched": true
+        },
+        {
+          "text": "thank",
+          "start": 93.765,
+          "end": 94.085,
+          "matched": true
+        },
+        {
+          "text": "goodness",
+          "start": 94.145,
+          "end": 94.705,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l31",
+      "text": "but it was all in my mind",
+      "start": 95.006,
+      "end": 97.006,
+      "words": [
+        {
+          "text": "but",
+          "start": 95.006,
+          "end": 95.206,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 95.286,
+          "end": 95.366,
+          "matched": true
+        },
+        {
+          "text": "was",
+          "start": 95.406,
+          "end": 95.546,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 95.846,
+          "end": 96.066,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 96.186,
+          "end": 96.286,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 96.346,
+          "end": 96.526,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 96.606,
+          "end": 97.006,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l32",
+      "text": "there's nothing out there answerin'",
+      "start": 98.126,
+      "end": 99.807,
+      "words": [
+        {
+          "text": "there's",
+          "start": 98.126,
+          "end": 98.306,
+          "matched": true
+        },
+        {
+          "text": "nothing",
+          "start": 98.346,
+          "end": 98.647,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 98.787,
+          "end": 98.867,
+          "matched": true
+        },
+        {
+          "text": "there",
+          "start": 98.887,
+          "end": 99.107,
+          "matched": true
+        },
+        {
+          "text": "answerin'",
+          "start": 99.387,
+          "end": 99.807,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l33",
+      "text": "nothing out there bouncin'",
+      "start": 101.187,
+      "end": 102.668,
+      "words": [
+        {
+          "text": "nothing",
+          "start": 101.187,
+          "end": 101.487,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 101.627,
+          "end": 101.707,
+          "matched": true
+        },
+        {
+          "text": "there",
+          "start": 101.747,
+          "end": 101.887,
+          "matched": true
+        },
+        {
+          "text": "bouncin'",
+          "start": 101.927,
+          "end": 102.668,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l34",
+      "text": "nothing...",
+      "start": 103.328,
+      "end": 103.668,
+      "words": [
+        {
+          "text": "nothing...",
+          "start": 103.328,
+          "end": 103.668,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l35",
+      "text": "...rolling back",
+      "start": 104.885,
+      "end": 105.505,
+      "words": [
+        {
+          "text": "...rolling",
+          "start": 104.885,
+          "end": 105.225,
+          "matched": true
+        },
+        {
+          "text": "back",
+          "start": 105.265,
+          "end": 105.505,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l36",
+      "text": "no one throwing",
+      "start": 106.305,
+      "end": 107.185,
+      "words": [
+        {
+          "text": "no",
+          "start": 106.305,
+          "end": 106.565,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 106.665,
+          "end": 106.765,
+          "matched": true
+        },
+        {
+          "text": "throwing",
+          "start": 106.805,
+          "end": 107.185,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l37",
+      "text": "no one to chase",
+      "start": 107.205,
+      "end": 108.166,
+      "words": [
+        {
+          "text": "no",
+          "start": 107.205,
+          "end": 107.365,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 107.445,
+          "end": 107.545,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 107.565,
+          "end": 107.665,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 107.705,
+          "end": 108.166,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l38",
+      "text": "there's no grace or mercy to be found in this place",
+      "start": 108.246,
+      "end": 111.066,
+      "words": [
+        {
+          "text": "there's",
+          "start": 108.246,
+          "end": 108.566,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 108.626,
+          "end": 108.886,
+          "matched": true
+        },
+        {
+          "text": "grace",
+          "start": 108.946,
+          "end": 109.166,
+          "matched": true
+        },
+        {
+          "text": "or",
+          "start": 109.206,
+          "end": 109.286,
+          "matched": true
+        },
+        {
+          "text": "mercy",
+          "start": 109.306,
+          "end": 109.606,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 109.646,
+          "end": 109.826,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 109.866,
+          "end": 109.946,
+          "matched": true
+        },
+        {
+          "text": "found",
+          "start": 110.006,
+          "end": 110.386,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 110.466,
+          "end": 110.526,
+          "matched": true
+        },
+        {
+          "text": "this",
+          "start": 110.546,
+          "end": 110.666,
+          "matched": true
+        },
+        {
+          "text": "place",
+          "start": 110.726,
+          "end": 111.066,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l39",
+      "text": "well",
+      "start": 111.126,
+      "end": 111.706,
+      "words": [
+        {
+          "text": "well",
+          "start": 111.126,
+          "end": 111.706,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l40",
+      "text": "gimmie, gimmie, gimmie, a ball after midnight",
+      "start": 111.786,
+      "end": 114.507,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 111.786,
+          "end": 112.086,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 112.126,
+          "end": 112.426,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 112.486,
+          "end": 112.866,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 112.926,
+          "end": 112.966,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 113.006,
+          "end": 113.526,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 113.626,
+          "end": 113.847,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 113.907,
+          "end": 114.507,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l41",
+      "text": "send it on a train, a bus or a flight",
+      "start": 114.587,
+      "end": 116.887,
+      "words": [
+        {
+          "text": "send",
+          "start": 114.587,
+          "end": 114.807,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 114.867,
+          "end": 114.987,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 115.067,
+          "end": 115.147,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 115.207,
+          "end": 115.227,
+          "matched": true
+        },
+        {
+          "text": "train,",
+          "start": 115.287,
+          "end": 115.707,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 115.747,
+          "end": 115.787,
+          "matched": true
+        },
+        {
+          "text": "bus",
+          "start": 115.827,
+          "end": 116.147,
+          "matched": true
+        },
+        {
+          "text": "or",
+          "start": 116.287,
+          "end": 116.407,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 116.427,
+          "end": 116.447,
+          "matched": true
+        },
+        {
+          "text": "flight",
+          "start": 116.507,
+          "end": 116.887,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l42",
+      "text": "gimmie, gimmie, gimmie, a ball after midnight",
+      "start": 117.387,
+      "end": 120.268,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 117.387,
+          "end": 117.727,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 117.767,
+          "end": 118.067,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 118.127,
+          "end": 118.487,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 118.547,
+          "end": 118.587,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 118.647,
+          "end": 119.167,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 119.227,
+          "end": 119.467,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 119.527,
+          "end": 120.268,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l43",
+      "text": "i will chase that ball if it's the end of my life",
+      "start": 120.308,
+      "end": 122.668,
+      "words": [
+        {
+          "text": "i",
+          "start": 120.308,
+          "end": 120.348,
+          "matched": true
+        },
+        {
+          "text": "will",
+          "start": 120.368,
+          "end": 120.528,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 120.548,
+          "end": 120.728,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 120.768,
+          "end": 120.888,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 120.908,
+          "end": 121.108,
+          "matched": true
+        },
+        {
+          "text": "if",
+          "start": 121.108,
+          "end": 121.288,
+          "matched": false
+        },
+        {
+          "text": "it's",
+          "start": 121.288,
+          "end": 121.468,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 121.468,
+          "end": 121.608,
+          "matched": true
+        },
+        {
+          "text": "end",
+          "start": 121.688,
+          "end": 121.828,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 121.888,
+          "end": 121.928,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 121.968,
+          "end": 122.288,
+          "matched": true
+        },
+        {
+          "text": "life",
+          "start": 122.328,
+          "end": 122.668,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l44",
+      "text": "no more sleepless nights...",
+      "start": 122.688,
+      "end": 124.348,
+      "words": [
+        {
+          "text": "no",
+          "start": 122.688,
+          "end": 122.828,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 122.868,
+          "end": 123.048,
+          "matched": true
+        },
+        {
+          "text": "sleepless",
+          "start": 123.088,
+          "end": 123.668,
+          "matched": true
+        },
+        {
+          "text": "nights...",
+          "start": 123.728,
+          "end": 124.348,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l45",
+      "text": "no more waitin' for you to throw it again",
+      "start": 125.308,
+      "end": 127.989,
+      "words": [
+        {
+          "text": "no",
+          "start": 125.308,
+          "end": 125.508,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 125.569,
+          "end": 125.749,
+          "matched": true
+        },
+        {
+          "text": "waitin'",
+          "start": 125.829,
+          "end": 126.149,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 126.189,
+          "end": 126.489,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 126.549,
+          "end": 126.869,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 126.909,
+          "end": 126.989,
+          "matched": true
+        },
+        {
+          "text": "throw",
+          "start": 127.049,
+          "end": 127.309,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 127.389,
+          "end": 127.449,
+          "matched": true
+        },
+        {
+          "text": "again",
+          "start": 127.509,
+          "end": 127.989,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l46",
+      "text": "no more mama takin' it away",
+      "start": 128.629,
+      "end": 131.349,
+      "words": [
+        {
+          "text": "no",
+          "start": 128.629,
+          "end": 128.809,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 128.829,
+          "end": 129.309,
+          "matched": true
+        },
+        {
+          "text": "mama",
+          "start": 129.349,
+          "end": 129.829,
+          "matched": true
+        },
+        {
+          "text": "takin'",
+          "start": 129.869,
+          "end": 130.229,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 130.329,
+          "end": 130.389,
+          "matched": true
+        },
+        {
+          "text": "away",
+          "start": 130.489,
+          "end": 131.349,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l47",
+      "text": "gimmie, gimmie, gimmie",
+      "start": 131.81,
+      "end": 132.81,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 131.81,
+          "end": 132.03,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 132.17,
+          "end": 132.39,
+          "matched": true
+        },
+        {
+          "text": "gimmie",
+          "start": 132.51,
+          "end": 132.81,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l48",
+      "text": "gimmie the ball",
+      "start": 133.55,
+      "end": 134.37,
+      "words": [
+        {
+          "text": "gimmie",
+          "start": 133.55,
+          "end": 133.89,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 133.93,
+          "end": 134.03,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 134.05,
+          "end": 134.37,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l49",
+      "text": "rest my chin on the windowsil",
+      "start": 151.284,
+      "end": 152.905,
+      "words": [
+        {
+          "text": "rest",
+          "start": 151.284,
+          "end": 151.504,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 151.544,
+          "end": 151.684,
+          "matched": true
+        },
+        {
+          "text": "chin",
+          "start": 151.704,
+          "end": 152.145,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 152.225,
+          "end": 152.325,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 152.345,
+          "end": 152.445,
+          "matched": true
+        },
+        {
+          "text": "windowsil",
+          "start": 152.485,
+          "end": 152.905,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l50",
+      "text": "sit my paws down on the floor",
+      "start": 153.485,
+      "end": 155.366,
+      "words": [
+        {
+          "text": "sit",
+          "start": 153.485,
+          "end": 153.705,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 153.725,
+          "end": 153.866,
+          "matched": true
+        },
+        {
+          "text": "paws",
+          "start": 153.886,
+          "end": 154.206,
+          "matched": true
+        },
+        {
+          "text": "down",
+          "start": 154.246,
+          "end": 154.606,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 154.766,
+          "end": 154.906,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 154.926,
+          "end": 155.026,
+          "matched": true
+        },
+        {
+          "text": "floor",
+          "start": 155.086,
+          "end": 155.366,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l51",
+      "text": "if i could just hear a ball bounc",
+      "start": 156.567,
+      "end": 158.508,
+      "words": [
+        {
+          "text": "if",
+          "start": 156.567,
+          "end": 156.667,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 156.767,
+          "end": 156.827,
+          "matched": true
+        },
+        {
+          "text": "could",
+          "start": 156.867,
+          "end": 157.007,
+          "matched": true
+        },
+        {
+          "text": "just",
+          "start": 157.047,
+          "end": 157.327,
+          "matched": true
+        },
+        {
+          "text": "hear",
+          "start": 157.367,
+          "end": 157.607,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 157.647,
+          "end": 157.688,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 157.748,
+          "end": 158.048,
+          "matched": true
+        },
+        {
+          "text": "bounc",
+          "start": 158.088,
+          "end": 158.508,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l52",
+      "text": "i'd be bustin' out the door",
+      "start": 159.168,
+      "end": 160.649,
+      "words": [
+        {
+          "text": "i'd",
+          "start": 159.168,
+          "end": 159.328,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 159.348,
+          "end": 159.448,
+          "matched": true
+        },
+        {
+          "text": "bustin'",
+          "start": 159.488,
+          "end": 159.869,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 159.889,
+          "end": 160.009,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 160.049,
+          "end": 160.149,
+          "matched": true
+        },
+        {
+          "text": "door",
+          "start": 160.209,
+          "end": 160.649,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l53",
+      "text": "well",
+      "start": 173.093,
+      "end": 173.454,
+      "words": [
+        {
+          "text": "well",
+          "start": 173.093,
+          "end": 173.454,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l54",
+      "text": "gimmie, gimmie, gimmie, a ball after midnight",
+      "start": 173.474,
+      "end": 176.235,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 173.474,
+          "end": 173.814,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 173.834,
+          "end": 174.154,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 174.194,
+          "end": 174.594,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 174.614,
+          "end": 174.634,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 174.734,
+          "end": 175.234,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 175.314,
+          "end": 175.554,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 175.615,
+          "end": 176.235,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l55",
+      "text": "send it on a train, a bus or a flight",
+      "start": 176.295,
+      "end": 178.556,
+      "words": [
+        {
+          "text": "send",
+          "start": 176.295,
+          "end": 176.495,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 176.575,
+          "end": 176.675,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 176.735,
+          "end": 176.835,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 176.895,
+          "end": 176.915,
+          "matched": true
+        },
+        {
+          "text": "train,",
+          "start": 176.995,
+          "end": 177.335,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 177.355,
+          "end": 177.375,
+          "matched": true
+        },
+        {
+          "text": "bus",
+          "start": 177.495,
+          "end": 177.735,
+          "matched": true
+        },
+        {
+          "text": "or",
+          "start": 177.755,
+          "end": 177.796,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 177.976,
+          "end": 178.156,
+          "matched": true
+        },
+        {
+          "text": "flight",
+          "start": 178.196,
+          "end": 178.556,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l56",
+      "text": "gimmie, gimmie, gimmie, a ball after midnight",
+      "start": 179.096,
+      "end": 181.937,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 179.096,
+          "end": 179.436,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 179.456,
+          "end": 179.776,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 179.816,
+          "end": 180.197,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 180.217,
+          "end": 180.237,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 180.337,
+          "end": 180.857,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 180.937,
+          "end": 181.157,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 181.217,
+          "end": 181.937,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l57",
+      "text": "i will chase that ball if it's the end of my life",
+      "start": 181.997,
+      "end": 184.319,
+      "words": [
+        {
+          "text": "i",
+          "start": 181.997,
+          "end": 182.037,
+          "matched": true
+        },
+        {
+          "text": "will",
+          "start": 182.077,
+          "end": 182.238,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 182.258,
+          "end": 182.418,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 182.458,
+          "end": 182.578,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 182.618,
+          "end": 182.818,
+          "matched": true
+        },
+        {
+          "text": "if",
+          "start": 182.878,
+          "end": 182.938,
+          "matched": true
+        },
+        {
+          "text": "it's",
+          "start": 183.038,
+          "end": 183.138,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 183.158,
+          "end": 183.278,
+          "matched": true
+        },
+        {
+          "text": "end",
+          "start": 183.358,
+          "end": 183.518,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 183.558,
+          "end": 183.618,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 183.678,
+          "end": 183.918,
+          "matched": true
+        },
+        {
+          "text": "life",
+          "start": 183.998,
+          "end": 184.319,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l58",
+      "text": "no more sleepless nights...",
+      "start": 184.359,
+      "end": 185.739,
+      "words": [
+        {
+          "text": "no",
+          "start": 184.359,
+          "end": 184.499,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 184.539,
+          "end": 184.739,
+          "matched": true
+        },
+        {
+          "text": "sleepless",
+          "start": 184.759,
+          "end": 185.339,
+          "matched": true
+        },
+        {
+          "text": "nights...",
+          "start": 185.399,
+          "end": 185.739,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l59",
+      "text": "no more waitin' for you to throw it again",
+      "start": 187.0,
+      "end": 189.641,
+      "words": [
+        {
+          "text": "no",
+          "start": 187.0,
+          "end": 187.16,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 187.2,
+          "end": 187.46,
+          "matched": true
+        },
+        {
+          "text": "waitin'",
+          "start": 187.52,
+          "end": 187.84,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 187.88,
+          "end": 188.16,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 188.22,
+          "end": 188.5,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 188.54,
+          "end": 188.721,
+          "matched": true
+        },
+        {
+          "text": "throw",
+          "start": 188.721,
+          "end": 188.891,
+          "matched": false
+        },
+        {
+          "text": "it",
+          "start": 188.891,
+          "end": 189.061,
+          "matched": false
+        },
+        {
+          "text": "again",
+          "start": 189.061,
+          "end": 189.641,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l60",
+      "text": "no more mama takin' it away",
+      "start": 189.661,
+      "end": 192.922,
+      "words": [
+        {
+          "text": "no",
+          "start": 189.661,
+          "end": 189.701,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 190.501,
+          "end": 190.962,
+          "matched": true
+        },
+        {
+          "text": "mama",
+          "start": 191.022,
+          "end": 191.522,
+          "matched": true
+        },
+        {
+          "text": "takin'",
+          "start": 191.542,
+          "end": 191.902,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 192.002,
+          "end": 192.082,
+          "matched": true
+        },
+        {
+          "text": "away",
+          "start": 192.162,
+          "end": 192.922,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l61",
+      "text": "gimmie, gimmie, gimmie",
+      "start": 193.123,
+      "end": 194.283,
+      "words": [
+        {
+          "text": "gimmie,",
+          "start": 193.123,
+          "end": 193.443,
+          "matched": true
+        },
+        {
+          "text": "gimmie,",
+          "start": 193.483,
+          "end": 193.803,
+          "matched": true
+        },
+        {
+          "text": "gimmie",
+          "start": 193.823,
+          "end": 194.283,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l62",
+      "text": "gimmie the ball",
+      "start": 195.203,
+      "end": 196.024,
+      "words": [
+        {
+          "text": "gimmie",
+          "start": 195.203,
+          "end": 195.544,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 195.584,
+          "end": 195.704,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 195.744,
+          "end": 196.024,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l63",
+      "text": "woooooooooooof",
+      "start": 196.024,
+      "end": 196.364,
+      "words": [
+        {
+          "text": "woooooooooooof",
+          "start": 196.024,
+          "end": 196.364,
+          "matched": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2458 @@
+{
+  "format": "gbr-word-lyrics-v1",
+  "version": 2,
+  "title": "gimmie-gimmie-ball",
+  "song_version": "metal",
+  "source_yaml": "gimmie-gimmie-ball/gimmie-gimmie-ball-metal/gimmie-gimmie-ball-metal.yaml",
+  "source_audio": "gimmie-gimmie-ball-metal.flac",
+  "language": "en",
+  "engine": "demucs:htdemucs+whisperx:large-v3",
+  "runtime": {
+    "requested_device": "auto",
+    "demucs_device": "cuda",
+    "whisperx_device": "cuda",
+    "whisperx_compute_type": "float16",
+    "batch_size": 4,
+    "cpu_fallback_used": false
+  },
+  "generated_at": "2026-09-12T13:06:45+00:00",
+  "stats": {
+    "lyric_words": 324,
+    "recognised_words": 248,
+    "matched_words": 230,
+    "coverage": 0.7099
+  },
+  "quality": {
+    "rating": "review",
+    "review_threshold": 0.8,
+    "review_required": true,
+    "approved": false,
+    "usable_for_live_lyrics": true
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "ooo woof woof woof woof",
+      "start": 19.157,
+      "end": 20.857,
+      "words": [
+        {
+          "text": "ooo",
+          "start": 19.157,
+          "end": 19.497,
+          "matched": false
+        },
+        {
+          "text": "woof",
+          "start": 19.497,
+          "end": 19.837,
+          "matched": false
+        },
+        {
+          "text": "woof",
+          "start": 19.837,
+          "end": 20.177,
+          "matched": false
+        },
+        {
+          "text": "woof",
+          "start": 20.177,
+          "end": 20.517,
+          "matched": false
+        },
+        {
+          "text": "woof",
+          "start": 20.517,
+          "end": 20.857,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "text": "woooooooooooooooooooof",
+      "start": 20.857,
+      "end": 21.197,
+      "words": [
+        {
+          "text": "woooooooooooooooooooof",
+          "start": 20.857,
+          "end": 21.197,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "text": "Half past chunk",
+      "start": 21.197,
+      "end": 22.398,
+      "words": [
+        {
+          "text": "Half",
+          "start": 21.197,
+          "end": 21.457,
+          "matched": true
+        },
+        {
+          "text": "past",
+          "start": 21.517,
+          "end": 21.858,
+          "matched": true
+        },
+        {
+          "text": "chunk",
+          "start": 21.858,
+          "end": 22.398,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "text": "Lungs on fire on the floor",
+      "start": 22.398,
+      "end": 24.198,
+      "words": [
+        {
+          "text": "Lungs",
+          "start": 22.398,
+          "end": 22.698,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 22.818,
+          "end": 22.958,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 23.018,
+          "end": 23.358,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 23.418,
+          "end": 23.518,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 23.538,
+          "end": 23.618,
+          "matched": true
+        },
+        {
+          "text": "floor",
+          "start": 23.658,
+          "end": 24.198,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "text": "Summer heat",
+      "start": 26.439,
+      "end": 27.339,
+      "words": [
+        {
+          "text": "Summer",
+          "start": 26.439,
+          "end": 26.919,
+          "matched": true
+        },
+        {
+          "text": "heat",
+          "start": 26.979,
+          "end": 27.339,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "text": "I cannot abide a moment more",
+      "start": 27.699,
+      "end": 29.38,
+      "words": [
+        {
+          "text": "I",
+          "start": 27.699,
+          "end": 27.739,
+          "matched": true
+        },
+        {
+          "text": "cannot",
+          "start": 27.779,
+          "end": 28.179,
+          "matched": true
+        },
+        {
+          "text": "abide",
+          "start": 28.219,
+          "end": 28.52,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 28.58,
+          "end": 28.64,
+          "matched": true
+        },
+        {
+          "text": "moment",
+          "start": 28.66,
+          "end": 28.94,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 29.0,
+          "end": 29.38,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "text": "Moon outside",
+      "start": 31.721,
+      "end": 32.841,
+      "words": [
+        {
+          "text": "Moon",
+          "start": 31.721,
+          "end": 32.101,
+          "matched": true
+        },
+        {
+          "text": "outside",
+          "start": 32.201,
+          "end": 32.841,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l8",
+      "text": "Laughing down upon my room",
+      "start": 32.921,
+      "end": 34.782,
+      "words": [
+        {
+          "text": "Laughing",
+          "start": 32.921,
+          "end": 33.241,
+          "matched": true
+        },
+        {
+          "text": "down",
+          "start": 33.281,
+          "end": 33.602,
+          "matched": true
+        },
+        {
+          "text": "upon",
+          "start": 33.682,
+          "end": 34.002,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 34.022,
+          "end": 34.062,
+          "matched": true
+        },
+        {
+          "text": "room",
+          "start": 34.402,
+          "end": 34.782,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l9",
+      "text": "Nothing moving",
+      "start": 35.082,
+      "end": 36.122,
+      "words": [
+        {
+          "text": "Nothing",
+          "start": 35.082,
+          "end": 35.442,
+          "matched": true
+        },
+        {
+          "text": "moving",
+          "start": 35.562,
+          "end": 36.122,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l10",
+      "text": "Nothing rolling",
+      "start": 36.242,
+      "end": 37.423,
+      "words": [
+        {
+          "text": "Nothing",
+          "start": 36.242,
+          "end": 36.762,
+          "matched": true
+        },
+        {
+          "text": "rolling",
+          "start": 36.862,
+          "end": 37.423,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l11",
+      "text": "Nothing coming soon",
+      "start": 37.703,
+      "end": 41.284,
+      "words": [
+        {
+          "text": "Nothing",
+          "start": 37.703,
+          "end": 38.083,
+          "matched": true
+        },
+        {
+          "text": "coming",
+          "start": 38.203,
+          "end": 39.223,
+          "matched": true
+        },
+        {
+          "text": "soon",
+          "start": 39.323,
+          "end": 41.284,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l12",
+      "text": "No one throwing",
+      "start": 42.304,
+      "end": 42.984,
+      "words": [
+        {
+          "text": "No",
+          "start": 42.304,
+          "end": 42.444,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 42.504,
+          "end": 42.624,
+          "matched": true
+        },
+        {
+          "text": "throwing",
+          "start": 42.644,
+          "end": 42.984,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l13",
+      "text": "No one to chase",
+      "start": 43.024,
+      "end": 43.804,
+      "words": [
+        {
+          "text": "No",
+          "start": 43.024,
+          "end": 43.144,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 43.204,
+          "end": 43.304,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 43.324,
+          "end": 43.424,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 43.464,
+          "end": 43.804,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l14",
+      "text": "No mercy in this cursed place",
+      "start": 43.844,
+      "end": 47.605,
+      "words": [
+        {
+          "text": "No",
+          "start": 43.844,
+          "end": 44.084,
+          "matched": true
+        },
+        {
+          "text": "mercy",
+          "start": 44.164,
+          "end": 44.845,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 44.945,
+          "end": 45.105,
+          "matched": true
+        },
+        {
+          "text": "this",
+          "start": 45.165,
+          "end": 45.385,
+          "matched": true
+        },
+        {
+          "text": "cursed",
+          "start": 45.465,
+          "end": 46.065,
+          "matched": true
+        },
+        {
+          "text": "place",
+          "start": 46.105,
+          "end": 47.605,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l15",
+      "text": "Give me, Give me, Give me a ball after midnight",
+      "start": 47.605,
+      "end": 51.166,
+      "words": [
+        {
+          "text": "Give",
+          "start": 47.605,
+          "end": 47.785,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 47.785,
+          "end": 47.965,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 47.965,
+          "end": 48.145,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 48.145,
+          "end": 48.326,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 48.326,
+          "end": 48.506,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 48.506,
+          "end": 48.686,
+          "matched": false
+        },
+        {
+          "text": "a",
+          "start": 48.686,
+          "end": 48.726,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 48.786,
+          "end": 49.406,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 49.566,
+          "end": 49.926,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 50.106,
+          "end": 51.166,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l16",
+      "text": "Send it screaming through the dark and let me run",
+      "start": 52.847,
+      "end": 56.508,
+      "words": [
+        {
+          "text": "Send",
+          "start": 52.847,
+          "end": 53.067,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 53.127,
+          "end": 53.187,
+          "matched": true
+        },
+        {
+          "text": "screaming",
+          "start": 53.207,
+          "end": 53.547,
+          "matched": true
+        },
+        {
+          "text": "through",
+          "start": 53.567,
+          "end": 53.907,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 53.947,
+          "end": 54.047,
+          "matched": true
+        },
+        {
+          "text": "dark",
+          "start": 54.067,
+          "end": 54.567,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 54.627,
+          "end": 54.707,
+          "matched": true
+        },
+        {
+          "text": "let",
+          "start": 54.747,
+          "end": 55.007,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 55.067,
+          "end": 55.227,
+          "matched": true
+        },
+        {
+          "text": "run",
+          "start": 55.348,
+          "end": 56.508,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l17",
+      "text": "Give me, Give me, Give me a ball after midnight",
+      "start": 56.508,
+      "end": 61.763,
+      "words": [
+        {
+          "text": "Give",
+          "start": 56.508,
+          "end": 56.967,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 56.967,
+          "end": 57.426,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 57.426,
+          "end": 57.885,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 57.885,
+          "end": 58.344,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 58.344,
+          "end": 58.803,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 58.803,
+          "end": 59.262,
+          "matched": false
+        },
+        {
+          "text": "a",
+          "start": 59.262,
+          "end": 59.302,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 59.362,
+          "end": 60.062,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 60.122,
+          "end": 60.582,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 60.682,
+          "end": 61.763,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l18",
+      "text": "I will chase it till the morning kills the sun!",
+      "start": 61.783,
+      "end": 67.185,
+      "words": [
+        {
+          "text": "I",
+          "start": 61.783,
+          "end": 61.803,
+          "matched": true
+        },
+        {
+          "text": "will",
+          "start": 63.644,
+          "end": 63.804,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 63.824,
+          "end": 63.984,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 64.064,
+          "end": 64.124,
+          "matched": true
+        },
+        {
+          "text": "till",
+          "start": 64.144,
+          "end": 64.464,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 64.504,
+          "end": 64.584,
+          "matched": true
+        },
+        {
+          "text": "morning",
+          "start": 64.644,
+          "end": 65.204,
+          "matched": true
+        },
+        {
+          "text": "kills",
+          "start": 65.265,
+          "end": 65.605,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 65.665,
+          "end": 65.825,
+          "matched": true
+        },
+        {
+          "text": "sun!",
+          "start": 65.925,
+          "end": 67.185,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l19",
+      "text": "No, more, torture!",
+      "start": 68.746,
+      "end": 70.607,
+      "words": [
+        {
+          "text": "No,",
+          "start": 68.746,
+          "end": 69.206,
+          "matched": true
+        },
+        {
+          "text": "more,",
+          "start": 69.387,
+          "end": 69.827,
+          "matched": true
+        },
+        {
+          "text": "torture!",
+          "start": 70.047,
+          "end": 70.607,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l20",
+      "text": "No, more, waiting!",
+      "start": 71.388,
+      "end": 73.208,
+      "words": [
+        {
+          "text": "No,",
+          "start": 71.388,
+          "end": 71.828,
+          "matched": true
+        },
+        {
+          "text": "more,",
+          "start": 72.028,
+          "end": 72.508,
+          "matched": true
+        },
+        {
+          "text": "waiting!",
+          "start": 72.688,
+          "end": 73.208,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l21",
+      "text": "No, more, staring at, the wall!",
+      "start": 73.228,
+      "end": 77.991,
+      "words": [
+        {
+          "text": "No,",
+          "start": 73.228,
+          "end": 73.268,
+          "matched": true
+        },
+        {
+          "text": "more,",
+          "start": 74.689,
+          "end": 75.129,
+          "matched": true
+        },
+        {
+          "text": "staring",
+          "start": 75.289,
+          "end": 75.89,
+          "matched": true
+        },
+        {
+          "text": "at,",
+          "start": 76.01,
+          "end": 76.11,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 76.19,
+          "end": 76.35,
+          "matched": true
+        },
+        {
+          "text": "wall!",
+          "start": 76.39,
+          "end": 77.991,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l22",
+      "text": "Give me, Give me, Give me",
+      "start": 77.991,
+      "end": 79.282,
+      "words": [
+        {
+          "text": "Give",
+          "start": 77.991,
+          "end": 78.206,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 78.206,
+          "end": 78.421,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 78.421,
+          "end": 78.636,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 78.636,
+          "end": 78.852,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 78.852,
+          "end": 79.067,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 79.067,
+          "end": 79.282,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l23",
+      "text": "Give me the ball",
+      "start": 79.282,
+      "end": 80.272,
+      "words": [
+        {
+          "text": "Give",
+          "start": 79.282,
+          "end": 79.497,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 79.497,
+          "end": 79.712,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 79.712,
+          "end": 79.812,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 79.852,
+          "end": 80.272,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l24",
+      "text": "at night she sleeps",
+      "start": 84.492,
+      "end": 85.553,
+      "words": [
+        {
+          "text": "at",
+          "start": 84.492,
+          "end": 84.572,
+          "matched": true
+        },
+        {
+          "text": "night",
+          "start": 84.632,
+          "end": 84.892,
+          "matched": true
+        },
+        {
+          "text": "she",
+          "start": 84.932,
+          "end": 85.193,
+          "matched": true
+        },
+        {
+          "text": "sleeps",
+          "start": 85.213,
+          "end": 85.553,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l25",
+      "text": "that doja dog her mind is clear",
+      "start": 85.593,
+      "end": 87.634,
+      "words": [
+        {
+          "text": "that",
+          "start": 85.593,
+          "end": 85.773,
+          "matched": true
+        },
+        {
+          "text": "doja",
+          "start": 85.793,
+          "end": 86.133,
+          "matched": true
+        },
+        {
+          "text": "dog",
+          "start": 86.153,
+          "end": 86.414,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 86.454,
+          "end": 86.594,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 86.614,
+          "end": 86.934,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 87.054,
+          "end": 87.174,
+          "matched": true
+        },
+        {
+          "text": "clear",
+          "start": 87.234,
+          "end": 87.634,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l26",
+      "text": "that's not the world i'm living in",
+      "start": 87.895,
+      "end": 89.896,
+      "words": [
+        {
+          "text": "that's",
+          "start": 87.895,
+          "end": 88.075,
+          "matched": true
+        },
+        {
+          "text": "not",
+          "start": 88.115,
+          "end": 88.235,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 88.275,
+          "end": 88.375,
+          "matched": true
+        },
+        {
+          "text": "world",
+          "start": 88.435,
+          "end": 88.775,
+          "matched": true
+        },
+        {
+          "text": "i'm",
+          "start": 88.855,
+          "end": 89.036,
+          "matched": true
+        },
+        {
+          "text": "living",
+          "start": 89.096,
+          "end": 89.616,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 89.716,
+          "end": 89.896,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l27",
+      "text": "I stay awake, my mind is insane",
+      "start": 90.417,
+      "end": 92.879,
+      "words": [
+        {
+          "text": "I",
+          "start": 90.417,
+          "end": 90.497,
+          "matched": true
+        },
+        {
+          "text": "stay",
+          "start": 90.517,
+          "end": 90.817,
+          "matched": true
+        },
+        {
+          "text": "awake,",
+          "start": 90.837,
+          "end": 91.217,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 91.417,
+          "end": 91.638,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 91.718,
+          "end": 92.058,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 92.138,
+          "end": 92.218,
+          "matched": true
+        },
+        {
+          "text": "insane",
+          "start": 92.318,
+          "end": 92.879,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l28",
+      "text": "i watch the midnight, ready to bring the pain",
+      "start": 93.079,
+      "end": 95.2,
+      "words": [
+        {
+          "text": "i",
+          "start": 93.079,
+          "end": 93.139,
+          "matched": true
+        },
+        {
+          "text": "watch",
+          "start": 93.159,
+          "end": 93.359,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 93.379,
+          "end": 93.499,
+          "matched": true
+        },
+        {
+          "text": "midnight,",
+          "start": 93.539,
+          "end": 93.859,
+          "matched": true
+        },
+        {
+          "text": "ready",
+          "start": 93.899,
+          "end": 94.18,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 94.22,
+          "end": 94.32,
+          "matched": true
+        },
+        {
+          "text": "bring",
+          "start": 94.38,
+          "end": 94.66,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 94.72,
+          "end": 94.8,
+          "matched": true
+        },
+        {
+          "text": "pain",
+          "start": 94.86,
+          "end": 95.2,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l29",
+      "text": "Window wide, something moved, something cried",
+      "start": 95.501,
+      "end": 97.782,
+      "words": [
+        {
+          "text": "Window",
+          "start": 95.501,
+          "end": 95.901,
+          "matched": true
+        },
+        {
+          "text": "wide,",
+          "start": 95.941,
+          "end": 96.301,
+          "matched": true
+        },
+        {
+          "text": "something",
+          "start": 96.341,
+          "end": 96.661,
+          "matched": true
+        },
+        {
+          "text": "moved,",
+          "start": 96.701,
+          "end": 96.982,
+          "matched": true
+        },
+        {
+          "text": "something",
+          "start": 97.002,
+          "end": 97.282,
+          "matched": true
+        },
+        {
+          "text": "cried",
+          "start": 97.322,
+          "end": 97.782,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l30",
+      "text": "I throw my voice into the black",
+      "start": 98.163,
+      "end": 100.424,
+      "words": [
+        {
+          "text": "I",
+          "start": 98.163,
+          "end": 98.283,
+          "matched": true
+        },
+        {
+          "text": "throw",
+          "start": 98.323,
+          "end": 98.583,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 98.623,
+          "end": 98.943,
+          "matched": true
+        },
+        {
+          "text": "voice",
+          "start": 99.003,
+          "end": 99.283,
+          "matched": true
+        },
+        {
+          "text": "into",
+          "start": 99.404,
+          "end": 99.984,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 100.004,
+          "end": 100.124,
+          "matched": true
+        },
+        {
+          "text": "black",
+          "start": 100.144,
+          "end": 100.424,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l31",
+      "text": "but..",
+      "start": 100.484,
+      "end": 100.845,
+      "words": [
+        {
+          "text": "but..",
+          "start": 100.484,
+          "end": 100.845,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l32",
+      "text": "Nothing answers",
+      "start": 101.145,
+      "end": 102.086,
+      "words": [
+        {
+          "text": "Nothing",
+          "start": 101.145,
+          "end": 101.465,
+          "matched": true
+        },
+        {
+          "text": "answers",
+          "start": 101.605,
+          "end": 102.086,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l33",
+      "text": "Nothing bounces",
+      "start": 102.466,
+      "end": 103.407,
+      "words": [
+        {
+          "text": "Nothing",
+          "start": 102.466,
+          "end": 102.746,
+          "matched": true
+        },
+        {
+          "text": "bounces",
+          "start": 102.806,
+          "end": 103.407,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l34",
+      "text": "Nothing rolling back!",
+      "start": 103.487,
+      "end": 104.888,
+      "words": [
+        {
+          "text": "Nothing",
+          "start": 103.487,
+          "end": 103.847,
+          "matched": true
+        },
+        {
+          "text": "rolling",
+          "start": 103.927,
+          "end": 104.367,
+          "matched": true
+        },
+        {
+          "text": "back!",
+          "start": 104.447,
+          "end": 104.888,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l35",
+      "text": "No one throwing",
+      "start": 105.748,
+      "end": 106.409,
+      "words": [
+        {
+          "text": "No",
+          "start": 105.748,
+          "end": 105.868,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 105.928,
+          "end": 106.029,
+          "matched": true
+        },
+        {
+          "text": "throwing",
+          "start": 106.069,
+          "end": 106.409,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l36",
+      "text": "No one to chase",
+      "start": 106.469,
+      "end": 107.25,
+      "words": [
+        {
+          "text": "No",
+          "start": 106.469,
+          "end": 106.569,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 106.629,
+          "end": 106.729,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 106.769,
+          "end": 106.849,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 106.889,
+          "end": 107.25,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l37",
+      "text": "No mercy in this cursed place",
+      "start": 107.29,
+      "end": 110.452,
+      "words": [
+        {
+          "text": "No",
+          "start": 107.29,
+          "end": 107.53,
+          "matched": true
+        },
+        {
+          "text": "mercy",
+          "start": 107.59,
+          "end": 108.29,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 108.39,
+          "end": 108.53,
+          "matched": true
+        },
+        {
+          "text": "this",
+          "start": 108.591,
+          "end": 108.831,
+          "matched": true
+        },
+        {
+          "text": "cursed",
+          "start": 108.911,
+          "end": 109.471,
+          "matched": true
+        },
+        {
+          "text": "place",
+          "start": 109.551,
+          "end": 110.452,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l38",
+      "text": "Give me, Give me, Give me a ball after midnight",
+      "start": 113.691,
+      "end": 117.114,
+      "words": [
+        {
+          "text": "Give",
+          "start": 113.691,
+          "end": 113.851,
+          "matched": true
+        },
+        {
+          "text": "me,",
+          "start": 113.871,
+          "end": 113.991,
+          "matched": true
+        },
+        {
+          "text": "Give",
+          "start": 114.011,
+          "end": 114.172,
+          "matched": true
+        },
+        {
+          "text": "me,",
+          "start": 114.192,
+          "end": 114.312,
+          "matched": true
+        },
+        {
+          "text": "Give",
+          "start": 114.332,
+          "end": 114.512,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 114.532,
+          "end": 114.692,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 114.752,
+          "end": 114.792,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 114.852,
+          "end": 115.512,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 115.653,
+          "end": 116.013,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 116.153,
+          "end": 117.114,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l39",
+      "text": "Send it screaming through the dark and let me run",
+      "start": 117.134,
+      "end": 122.597,
+      "words": [
+        {
+          "text": "Send",
+          "start": 117.134,
+          "end": 117.214,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 119.195,
+          "end": 119.255,
+          "matched": true
+        },
+        {
+          "text": "screaming",
+          "start": 119.275,
+          "end": 119.595,
+          "matched": true
+        },
+        {
+          "text": "through",
+          "start": 119.615,
+          "end": 119.895,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 119.996,
+          "end": 120.096,
+          "matched": true
+        },
+        {
+          "text": "dark",
+          "start": 120.136,
+          "end": 120.616,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 120.676,
+          "end": 120.776,
+          "matched": true
+        },
+        {
+          "text": "let",
+          "start": 120.816,
+          "end": 121.036,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 121.116,
+          "end": 121.296,
+          "matched": true
+        },
+        {
+          "text": "run",
+          "start": 121.437,
+          "end": 122.597,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l40",
+      "text": "Give me, Give me, Give me a ball after midnight",
+      "start": 122.617,
+      "end": 127.701,
+      "words": [
+        {
+          "text": "Give",
+          "start": 122.617,
+          "end": 124.399,
+          "matched": true
+        },
+        {
+          "text": "me,",
+          "start": 124.439,
+          "end": 124.559,
+          "matched": true
+        },
+        {
+          "text": "Give",
+          "start": 124.579,
+          "end": 124.759,
+          "matched": true
+        },
+        {
+          "text": "me,",
+          "start": 124.779,
+          "end": 124.879,
+          "matched": true
+        },
+        {
+          "text": "Give",
+          "start": 124.899,
+          "end": 125.079,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 125.119,
+          "end": 125.259,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 125.339,
+          "end": 125.379,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 125.439,
+          "end": 126.08,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 126.22,
+          "end": 126.58,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 126.72,
+          "end": 127.701,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l41",
+      "text": "I will chase it till the morning kills the sun!",
+      "start": 127.721,
+      "end": 133.145,
+      "words": [
+        {
+          "text": "I",
+          "start": 127.721,
+          "end": 127.741,
+          "matched": true
+        },
+        {
+          "text": "will",
+          "start": 129.702,
+          "end": 129.842,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 129.882,
+          "end": 130.062,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 130.143,
+          "end": 130.203,
+          "matched": true
+        },
+        {
+          "text": "till",
+          "start": 130.223,
+          "end": 130.523,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 130.563,
+          "end": 130.663,
+          "matched": true
+        },
+        {
+          "text": "morning",
+          "start": 130.703,
+          "end": 131.283,
+          "matched": true
+        },
+        {
+          "text": "kills",
+          "start": 131.343,
+          "end": 131.684,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 131.744,
+          "end": 131.864,
+          "matched": true
+        },
+        {
+          "text": "sun!",
+          "start": 132.004,
+          "end": 133.145,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l42",
+      "text": "No, more, torture!",
+      "start": 134.797,
+      "end": 136.758,
+      "words": [
+        {
+          "text": "No,",
+          "start": 134.797,
+          "end": 135.197,
+          "matched": true
+        },
+        {
+          "text": "more,",
+          "start": 135.457,
+          "end": 135.918,
+          "matched": true
+        },
+        {
+          "text": "torture!",
+          "start": 136.118,
+          "end": 136.758,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l43",
+      "text": "No, more, waiting!",
+      "start": 137.458,
+      "end": 139.319,
+      "words": [
+        {
+          "text": "No,",
+          "start": 137.458,
+          "end": 137.859,
+          "matched": true
+        },
+        {
+          "text": "more,",
+          "start": 138.099,
+          "end": 138.539,
+          "matched": true
+        },
+        {
+          "text": "waiting!",
+          "start": 138.739,
+          "end": 139.319,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l44",
+      "text": "No, more, staring at, the wall!",
+      "start": 140.1,
+      "end": 144.002,
+      "words": [
+        {
+          "text": "No,",
+          "start": 140.1,
+          "end": 140.48,
+          "matched": true
+        },
+        {
+          "text": "more,",
+          "start": 140.72,
+          "end": 141.261,
+          "matched": true
+        },
+        {
+          "text": "staring",
+          "start": 141.301,
+          "end": 141.921,
+          "matched": true
+        },
+        {
+          "text": "at,",
+          "start": 142.061,
+          "end": 142.201,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 142.241,
+          "end": 142.541,
+          "matched": true
+        },
+        {
+          "text": "wall!",
+          "start": 142.561,
+          "end": 144.002,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l45",
+      "text": "Give me, Give me, Give me",
+      "start": 144.002,
+      "end": 145.323,
+      "words": [
+        {
+          "text": "Give",
+          "start": 144.002,
+          "end": 144.222,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 144.222,
+          "end": 144.442,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 144.442,
+          "end": 144.662,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 144.662,
+          "end": 144.882,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 144.882,
+          "end": 145.103,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 145.103,
+          "end": 145.323,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l46",
+      "text": "Give me the ball",
+      "start": 145.323,
+      "end": 146.363,
+      "words": [
+        {
+          "text": "Give",
+          "start": 145.323,
+          "end": 145.543,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 145.543,
+          "end": 145.763,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 145.763,
+          "end": 145.863,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 145.903,
+          "end": 146.363,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l47",
+      "text": "Teeth on the windowsill",
+      "start": 150.666,
+      "end": 153.467,
+      "words": [
+        {
+          "text": "Teeth",
+          "start": 150.666,
+          "end": 151.246,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 151.426,
+          "end": 151.666,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 151.706,
+          "end": 151.966,
+          "matched": true
+        },
+        {
+          "text": "windowsill",
+          "start": 152.026,
+          "end": 153.467,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l48",
+      "text": "Claws on the floor",
+      "start": 155.888,
+      "end": 160.631,
+      "words": [
+        {
+          "text": "Claws",
+          "start": 155.888,
+          "end": 157.269,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 157.529,
+          "end": 157.749,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 157.849,
+          "end": 157.99,
+          "matched": true
+        },
+        {
+          "text": "floor",
+          "start": 158.21,
+          "end": 160.631,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l49",
+      "text": "I hear one tiny bounce",
+      "start": 161.091,
+      "end": 163.933,
+      "words": [
+        {
+          "text": "I",
+          "start": 161.091,
+          "end": 161.211,
+          "matched": true
+        },
+        {
+          "text": "hear",
+          "start": 161.311,
+          "end": 161.692,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 162.252,
+          "end": 162.492,
+          "matched": true
+        },
+        {
+          "text": "tiny",
+          "start": 162.572,
+          "end": 163.473,
+          "matched": true
+        },
+        {
+          "text": "bounce",
+          "start": 163.553,
+          "end": 163.933,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l50",
+      "text": "And I am at the door",
+      "start": 166.285,
+      "end": 171.687,
+      "words": [
+        {
+          "text": "And",
+          "start": 166.285,
+          "end": 166.505,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 167.585,
+          "end": 167.706,
+          "matched": true
+        },
+        {
+          "text": "am",
+          "start": 167.746,
+          "end": 167.846,
+          "matched": true
+        },
+        {
+          "text": "at",
+          "start": 168.146,
+          "end": 168.326,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 168.366,
+          "end": 168.766,
+          "matched": true
+        },
+        {
+          "text": "door",
+          "start": 168.826,
+          "end": 171.687,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l51",
+      "text": "Give me, Give me, Give me a ball after midnight",
+      "start": 171.687,
+      "end": 180.269,
+      "words": [
+        {
+          "text": "Give",
+          "start": 171.687,
+          "end": 172.545,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 172.545,
+          "end": 173.403,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 173.403,
+          "end": 174.262,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 174.262,
+          "end": 175.12,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 175.12,
+          "end": 175.978,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 175.978,
+          "end": 176.836,
+          "matched": false
+        },
+        {
+          "text": "a",
+          "start": 176.836,
+          "end": 177.695,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 177.695,
+          "end": 178.553,
+          "matched": false
+        },
+        {
+          "text": "after",
+          "start": 178.553,
+          "end": 179.411,
+          "matched": false
+        },
+        {
+          "text": "midnight",
+          "start": 179.411,
+          "end": 180.269,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l52",
+      "text": "Send it screaming through the dark and let me run",
+      "start": 180.269,
+      "end": 188.852,
+      "words": [
+        {
+          "text": "Send",
+          "start": 180.269,
+          "end": 181.128,
+          "matched": false
+        },
+        {
+          "text": "it",
+          "start": 181.128,
+          "end": 181.986,
+          "matched": false
+        },
+        {
+          "text": "screaming",
+          "start": 181.986,
+          "end": 182.844,
+          "matched": false
+        },
+        {
+          "text": "through",
+          "start": 182.844,
+          "end": 183.702,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 183.702,
+          "end": 184.56,
+          "matched": false
+        },
+        {
+          "text": "dark",
+          "start": 184.56,
+          "end": 185.419,
+          "matched": false
+        },
+        {
+          "text": "and",
+          "start": 185.419,
+          "end": 186.277,
+          "matched": false
+        },
+        {
+          "text": "let",
+          "start": 186.277,
+          "end": 187.135,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 187.135,
+          "end": 187.993,
+          "matched": false
+        },
+        {
+          "text": "run",
+          "start": 187.993,
+          "end": 188.852,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l53",
+      "text": "Give me, Give me, Give me a ball after midnight",
+      "start": 188.852,
+      "end": 196.091,
+      "words": [
+        {
+          "text": "Give",
+          "start": 188.852,
+          "end": 189.71,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 189.71,
+          "end": 190.568,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 190.568,
+          "end": 191.426,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 191.426,
+          "end": 192.285,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 192.285,
+          "end": 193.143,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 193.143,
+          "end": 194.001,
+          "matched": false
+        },
+        {
+          "text": "a",
+          "start": 194.001,
+          "end": 194.041,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 194.081,
+          "end": 194.744,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 194.905,
+          "end": 195.227,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 195.408,
+          "end": 196.091,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l54",
+      "text": "I will chase it till the morning kills the sun!",
+      "start": 196.091,
+      "end": 199.491,
+      "words": [
+        {
+          "text": "I",
+          "start": 196.091,
+          "end": 196.431,
+          "matched": false
+        },
+        {
+          "text": "will",
+          "start": 196.431,
+          "end": 196.771,
+          "matched": false
+        },
+        {
+          "text": "chase",
+          "start": 196.771,
+          "end": 197.111,
+          "matched": false
+        },
+        {
+          "text": "it",
+          "start": 197.111,
+          "end": 197.451,
+          "matched": false
+        },
+        {
+          "text": "till",
+          "start": 197.451,
+          "end": 197.791,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 197.791,
+          "end": 198.131,
+          "matched": false
+        },
+        {
+          "text": "morning",
+          "start": 198.131,
+          "end": 198.471,
+          "matched": false
+        },
+        {
+          "text": "kills",
+          "start": 198.471,
+          "end": 198.811,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 198.811,
+          "end": 199.151,
+          "matched": false
+        },
+        {
+          "text": "sun!",
+          "start": 199.151,
+          "end": 199.491,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l55",
+      "text": "No, more, torture!",
+      "start": 199.491,
+      "end": 200.511,
+      "words": [
+        {
+          "text": "No,",
+          "start": 199.491,
+          "end": 199.831,
+          "matched": false
+        },
+        {
+          "text": "more,",
+          "start": 199.831,
+          "end": 200.171,
+          "matched": false
+        },
+        {
+          "text": "torture!",
+          "start": 200.171,
+          "end": 200.511,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l56",
+      "text": "No, more, waiting!",
+      "start": 200.511,
+      "end": 201.531,
+      "words": [
+        {
+          "text": "No,",
+          "start": 200.511,
+          "end": 200.851,
+          "matched": false
+        },
+        {
+          "text": "more,",
+          "start": 200.851,
+          "end": 201.191,
+          "matched": false
+        },
+        {
+          "text": "waiting!",
+          "start": 201.191,
+          "end": 201.531,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l57",
+      "text": "No, more, staring at, the wall!",
+      "start": 201.531,
+      "end": 203.571,
+      "words": [
+        {
+          "text": "No,",
+          "start": 201.531,
+          "end": 201.871,
+          "matched": false
+        },
+        {
+          "text": "more,",
+          "start": 201.871,
+          "end": 202.211,
+          "matched": false
+        },
+        {
+          "text": "staring",
+          "start": 202.211,
+          "end": 202.551,
+          "matched": false
+        },
+        {
+          "text": "at,",
+          "start": 202.551,
+          "end": 202.891,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 202.891,
+          "end": 203.231,
+          "matched": false
+        },
+        {
+          "text": "wall!",
+          "start": 203.231,
+          "end": 203.571,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l58",
+      "text": "Give me, Give me, Give me",
+      "start": 203.571,
+      "end": 205.611,
+      "words": [
+        {
+          "text": "Give",
+          "start": 203.571,
+          "end": 203.911,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 203.911,
+          "end": 204.251,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 204.251,
+          "end": 204.591,
+          "matched": false
+        },
+        {
+          "text": "me,",
+          "start": 204.591,
+          "end": 204.931,
+          "matched": false
+        },
+        {
+          "text": "Give",
+          "start": 204.931,
+          "end": 205.271,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 205.271,
+          "end": 205.611,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l59",
+      "text": "Give me the ball",
+      "start": 205.611,
+      "end": 206.971,
+      "words": [
+        {
+          "text": "Give",
+          "start": 205.611,
+          "end": 205.951,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 205.951,
+          "end": 206.291,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 206.291,
+          "end": 206.631,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 206.631,
+          "end": 206.971,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l60",
+      "text": "Woooooooooooof",
+      "start": 206.971,
+      "end": 207.311,
+      "words": [
+        {
+          "text": "Woooooooooooof",
+          "start": 206.971,
+          "end": 207.311,
+          "matched": false
+        }
+      ]
+    }
+  ]
+}

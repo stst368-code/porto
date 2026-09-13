@@ -1,0 +1,144 @@
+title: moses-supposes
+version: orchestral
+model: minimax H3
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.7
+encoder_seed: 2267291398
+top_k: 50
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.6
+sampler_seed: 2267291398
+sampler_steps: 37
+inspiration:
+inspirationyt:
+story:
+caption: |-
+  Global Metadata
+  Dark Mountain / Ritual Balkan Folk. Keep the pulse near 68–70 BPM so the existing lyric phrasing still fits. Rebuild the song as a dark Balkan mountain performance: modal, spacious and ritualistic, but still recognisably the same composition rather than generic soundtrack music. Keep the source song’s exaggerated contrasts, vocal attitude and abrupt structural humour, but realise the shocks acoustically through ensemble cuts, shrill folk winds, percussion breaks and sudden massed voices. The emotional arc begins solitary and weathered, grows into a communal procession, then reaches a severe but cathartic final peak. Use gaida-style bagpipe drone, low bowed strings or gusle-like timbre, kaval, dark clarinet, frame drum, tapan, sparse hammered or plucked strings and low male or mixed folk voices where the source permits backing vocals. Favour natural modes, open fifths, drones and tense seconds over lush modern harmony. Production should be raw and dynamic, with natural stone-room or mountain-valley reflections. Avoid trailer percussion, glossy cinematic strings, synthesizer beds and modern metal guitars.
+  Vocal Details
+  Singer A (Female): retain the established source identity and register. Preserve the source cast exactly, but darken the performance through restrained folk ornament, stronger chest resonance and more exposed phrasing. Verses should feel close, serious and almost documentary in their directness. At emotional peaks, allow sustained notes, rough edges, narrow folk vibrato and antiphonal answers from a small distant group. Do not replace established melodic or spoken roles with a generic choir. If the source uses humour, keep the delivery straight-faced so the contrast survives. Effects remain acoustic: room reflections, distance and ensemble placement instead of obvious studio processing.
+  Arrangement
+  Section Timeline: [intro] to [verse] to [chorus] to [verse] to [chorus] to [verse] to [chorus] to [verse] to [chorus] to [bridge] to [outro]. Begin with drone alone or one exposed kaval, bowed string or clarinet phrase, leaving significant silence around the motif. The first vocal section adds only a low sustained foundation and occasional plucked accents. Introduce frame drum or tapan gradually, using weighty uneven accents and long gaps rather than a continuous modern beat. Repeated hooks gain a second drone voice, bowed counter-line or austere group response. Instrumental and solo passages should feel improvised and ancient, with breathy kaval, scraping bow texture, clarinet cries or bagpipe ornaments circling the melody. In a bridge, reduce almost to voice and drone before a processional drum pattern starts the rebuild. The final recurring section should be the largest point: layered acoustic drones, forceful tapan, high folk wind, low ensemble voices and the lead still clearly in front. Resolve with instruments dropping away one by one until only drone or a final unaccompanied cadence remains.
+lyrics: |-
+  [intro]
+  Moses...
+  supposes... (hmm?)
+  his toeses...
+  are Roses... (yeah)
+  But Moses...
+  supposes...
+  Erroneously... (oh no!)
+  [verse]
+  Moses supposes his toeses are Roses
+  But Moses supposes Erroneously
+  Moses he knowses his toeses aren't roses
+  As Moses supposes his toeses to be!
+  Moses supposes his toeses are Roses
+  But Moses supposes Erroneously
+  [chorus]
+  A mose is a mose! (mose)
+  A rose is a rose! (rose)
+  A toes is a toes! (toes)
+  mose (mose) rose (rose) toes (toes)
+  Hooptie doodie doodle
+  doodle doodie hooptie
+  (ha ha ha ha ha ha)
+  [verse]
+  Peter (Peter)
+  Piper (Piper)
+  Peter Piper picked a peck of pickled peppers (peppers)
+  A peck of pickled peppers Peter Piper picked (picked)
+  If Peter Piper picked a peck of pickled peppers (hmm)
+  Where's the peck of pickled peppers Peter Piper picked? (where is it?)
+  (But)
+  How much wood would a woodchuck chuck if a woodchuck could chuck wood?
+  if a woodchuck could chuck wood How much wood would a woodchuck chuck
+  (What about Mary?)
+  Well, she sells seashells by the seashore.
+  the shells she sells are seashells, I'm sure (sure)
+  [chorus]
+  A mose is a mose! (mose)
+  A rose is a rose! (rose)
+  A toes is a toes! (toes)
+  mose (mose) rose (rose) toes (toes)
+  Hooptie doodie doodle
+  doodle doodie hooptie
+  (ha ha ha ha ha ha)
+  [verse]
+  well
+  I wish to wish the wish you wish to wish
+  but if you wish the wish the witch wishes
+  I won't wish the wish you wish to wish
+  One one was a racehorse
+  two two was one too
+  one one won one race
+  and two two won one too
+  I thought a thought (tell me more?)
+  but the thought I thought
+  wasn't the thought I thought I thought (hmmmmmmm)
+  (ha ha)
+  [chorus]
+  A mose is a mose! (mose)
+  A rose is a rose! (rose)
+  A toes is a toes! (toes)
+  mose (mose) rose (rose) toes (toes)
+  Hooptie doodie doodle
+  doodle doodie hooptie
+  (ha ha ha ha ha ha)
+  [verse]
+  Red lorry, yellow lorry
+  lorry yellow, lorry red (vroom vroom)
+  Red lorry, yellow lorry
+  lorry yellow, lorry red (vroom vroom)
+  Red lorry, yellow lorry
+  lorry yellow, lorry red (vroom vroom)
+  Crisp crusts crackle crunchily (crackle)
+  Round the rugged rock, the ragged rascal ran
+  If two witches were watching two wrist watches
+  which witch would watch which wrist watch? (tick tock)
+  If “there” is there (there)
+  and “their” is theirs (their)
+  and “they’re” means they are (they're)
+  then where are they? (huh?)
+  (ha ha)
+  [chorus]
+  A mose is a mose! (mose)
+  A rose is a rose! (rose)
+  A toes is a toes! (toes)
+  mose (mose) rose (rose) toes (toes)
+  Hooptie doodie doodle
+  doodle doodie hooptie
+  (ha ha ha ha ha ha)
+  [bridge]
+  Very well, very well, very well...
+  (huh?)
+  Birming-ham
+  Notting-ham
+  Bucking-ham
+  Rotherham, Oldham, Durham, Grantham
+  Dagenham, Chatham, Rainham, Gillingham
+  Faversham, Fareham, Horsham, Chesham
+  Evesham-Melksham-Chippenham-Hexham
+  Swaffham-Dereham-Wymondham-Downham
+  Tottenham-Twickenham-Altrincham-Amersham
+  (ha ha)
+  Ports-mouth (mouth)
+  Plymouth, Falmouth, Exmouth
+  Teignmouth-Weymouth,
+  Tynemouth-Bournemouth
+  Norwich-Ipswich-Harwich-Sandwich
+  Northwich-Middlewich-Nantwich-Droitwich
+  Manchester-Winchester-Chester
+  Colchester-Dorchester-Cirencester
+  Oxford-Watford-Guildford-Salford
+  Hereford-Chelmsford-Stamford-Bedford
+  Bradford-Stafford-Dartford
+  (you've lost me)
+  ha ha
+  [outro]
+  A mose a rose a tose (tose)
+  A rose a tose a mose (mose)
+  A tose a mose a rose (rose)
+  (ha ha ha ha ha ha)
