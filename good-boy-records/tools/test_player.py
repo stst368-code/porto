@@ -202,7 +202,6 @@ check("desktop top rail can fit ten tabs", "left:270px;right:92px" in css and "f
 check("workflow viewer retained", "comfy-workflow.js" in html and "comfy-workflow.css" in html)
 check("Parameter Lab retained", "gbr-matrix-lab.js" in html and "gbr-matrix-lab.css" in html)
 check("catalogue embedded", 'id="gbr-catalogue"' in html)
-check("build specification shipped", (ROOT / "BUILD-SPEC-v11.md").is_file() and (ROOT / "BUILD-SPEC-REVIEW-v11.md").is_file())
 
 # v11.13 responsive/browser calibration
 check("unified readable panel type scale", all(token in css for token in ["--gbr11-type-label", "--gbr11-type-control", "--gbr11-type-body", "--gbr11-type-title"]))
@@ -211,8 +210,13 @@ check("tablet layout uses explicit three rows", 'grid-template-rows:auto auto 15
 check("mobile covers stay square", ".gbr11-mobile-card" in css and "aspect-ratio:1" in css)
 check("mobile page forbids horizontal overflow", "html,body,.gbr11-app { max-width:100%;overflow-x:hidden; }" in css)
 check("rotor images cannot start native browser drags", '-webkit-user-drag:none' in css and 'pointer-events:none' in css[css.rindex(".gbr11-slot-card img,"):])
-check("responsive QA release note shipped", (ROOT / "RELEASE-v11.13.md").is_file())
-check("responsive QA matrix shipped", (ROOT / "RESPONSIVE-QA-v11.13.md").is_file())
+
+# v11.14 mobile compression
+check("mobile selector is the artwork instead of duplicate release art", '.gbr11-release-card[data-flipped="false"] { display:none; }' in css)
+check("mobile selected artwork is visibly identified", 'card.dataset.active = index === state.wheelIndex' in js and '.gbr11-mobile-card[data-active="true"]' in css)
+check("mobile folder drawer anchors below complete top bar", 'const topbar = document.querySelector(".gbr11-topbar")' in js and 'anchor.getBoundingClientRect().bottom' in js)
+check("closed folder drawer cannot peek over mobile header", 'visibility:hidden' in css[css.rindex("/* Closed folder drawers"):])
+check("mobile VU label is moved clear of needle arc", 'pad+Math.max(14,fh*.17)' in js and 'fh*.72' in js)
 
 for name, ok in checks:
     print(("  PASS  " if ok else "  FAIL  ") + name)

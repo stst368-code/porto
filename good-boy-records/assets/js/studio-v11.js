@@ -386,6 +386,7 @@
       const card = document.createElement("button");
       card.type = "button";
       card.className = "gbr11-mobile-card";
+      card.dataset.active = index === state.wheelIndex ? "true" : "false";
       if (state.easter) {
         const track = easterTracks[index] || null;
         card.dataset.ready = track ? "true" : "false";
@@ -1034,9 +1035,9 @@
       ctx.save();
       const bezel=ctx.createLinearGradient(0,0,0,h); bezel.addColorStop(0,"#2c2925"); bezel.addColorStop(1,"#050403"); ctx.fillStyle=bezel; roundRect(ctx,x+2,2,meterW-4,h-4,8); ctx.fill();
       const face=ctx.createLinearGradient(0,pad,0,pad+fh); face.addColorStop(0,state.power?"#ead8b1":"#575147"); face.addColorStop(.75,state.power?"#d0ac78":"#342f29"); face.addColorStop(1,state.power?"#a27648":"#201d1a"); ctx.fillStyle=face; roundRect(ctx,x+pad,pad,fw,fh,7); ctx.fill();
-      const cx=x+meterW/2, cy=pad+fh*.95, radius=Math.min(fw*.46,fh*.78);
+      const cx=x+meterW/2, cy=pad+fh*.95, radius=Math.min(fw*.46,fh*.72);
       for(let i=0;i<=10;i++){ const frac=i/10, angle=-Math.PI*.82+frac*Math.PI*.64; const r1=radius*.78,r2=radius*.92; ctx.strokeStyle=i>8?"#a1322d":"#3f3428"; ctx.lineWidth=i===8?1.5:1; ctx.beginPath(); ctx.moveTo(cx+Math.cos(angle)*r1,cy+Math.sin(angle)*r1); ctx.lineTo(cx+Math.cos(angle)*r2,cy+Math.sin(angle)*r2); ctx.stroke(); }
-      ctx.fillStyle="#35281d"; ctx.textAlign="center"; ctx.font=`700 ${Math.max(9,Math.min(14,meterW*.045))}px ui-monospace,monospace`; ctx.fillText(index===0?"LEFT VU":"RIGHT VU",cx,pad+fh*.56);
+      ctx.fillStyle="#35281d"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.font=`700 ${Math.max(8,Math.min(12,meterW*.042))}px ui-monospace,monospace`; ctx.fillText(index===0?"LEFT VU":"RIGHT VU",cx,pad+Math.max(14,fh*.17));
       const angle=-Math.PI*.82+clamp(0,level,1)*Math.PI*.64; ctx.strokeStyle="#17100b"; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(angle)*radius,cy+Math.sin(angle)*radius); ctx.stroke(); ctx.fillStyle="#25180f"; ctx.beginPath(); ctx.arc(cx,cy,4,0,Math.PI*2); ctx.fill();
       ctx.restore();
     });
@@ -1060,7 +1061,11 @@
     const root = $("gbr-folders"); if (!root) return;
     const drawer = $("gbr-folder-drawer"), resizer = $("gbr-folder-resizer");
     const tabs = [...root.querySelectorAll(".gbr-folder-tab")], sheets = [...root.querySelectorAll(".gbr-folder-sheet")];
-    const setTop = () => root.style.setProperty("--folder-drawer-top", `${Math.round(root.getBoundingClientRect().bottom)}px`);
+    const setTop = () => {
+      const topbar = document.querySelector(".gbr11-topbar");
+      const anchor = topbar || root;
+      root.style.setProperty("--folder-drawer-top", `${Math.round(anchor.getBoundingClientRect().bottom)}px`);
+    };
     const close = () => { root.dataset.open=""; tabs.forEach((tab)=>tab.setAttribute("aria-selected","false")); };
     const open = (id) => { root.dataset.open=id; tabs.forEach((tab)=>tab.setAttribute("aria-selected",tab.dataset.folder===id?"true":"false")); sheets.forEach((sheet)=>sheet.hidden=sheet.id!==`gbr-folder-${id}`); setTop(); };
     tabs.forEach((tab,index)=>{

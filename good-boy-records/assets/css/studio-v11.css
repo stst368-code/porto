@@ -1342,3 +1342,185 @@ html[data-easter="true"] .gbr11-lyric-line { color:#d45b46;font-family:var(--gbr
     grid-template-areas:"magazine" "release" "console" "lyrics";
   }
 }
+
+/* ========================================================================
+   v11.14 mobile compression pass
+   - The mobile song rail is the primary artwork selector, so the loaded
+     release does not repeat the same cover underneath it.
+   - Folder drawers anchor below the complete top bar.
+   - Meter geometry and control spacing are compressed for phone viewports.
+   ======================================================================== */
+@media (max-width:900px) {
+  .gbr11-app { padding:.28rem max(.28rem,env(safe-area-inset-right)) max(.28rem,env(safe-area-inset-bottom)) max(.28rem,env(safe-area-inset-left)); }
+  .gbr11-topbar {
+    min-height:96px;
+    padding:.42rem .55rem;
+    gap:.42rem;
+  }
+  .gbr11-brand-block strong { font-size:.68rem;letter-spacing:.12em; }
+  .gbr11-top-power { gap:.34rem; }
+  .gbr11-top-lamp { padding-right:.34rem; }
+  .gbr11-top-lamp .gbr11-knob { width:38px;height:38px; }
+  .gbr11-power-switch { width:26px;height:40px; }
+
+  .gbr-folders { top:44px;width:calc(100% - .6rem); }
+  .gbr-folder-tabs { gap:4px;padding:0 2px; }
+  .gbr-folder-tab {
+    min-width:104px;
+    max-width:132px;
+    height:30px;
+    padding-inline:23px 8px;
+    font-size:.48rem;
+  }
+  .gbr-folder-tab::before { left:6px;top:10px;font-size:6px; }
+  .gbr-folder-drawer {
+    width:calc(100vw - 10px);
+    max-height:calc(100dvh - var(--folder-drawer-top) - 5px);
+    min-height:min(260px,calc(100dvh - var(--folder-drawer-top) - 5px));
+    border-radius:0 0 6px 6px;
+  }
+  .gbr-folder-sheet { padding:.9rem .8rem 1.25rem; }
+  .gbr-folder-body { line-height:1.48; }
+
+  .gbr11-machine { padding:.3rem;gap:.42rem; }
+  .gbr11-genre-bank {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:4px;
+    padding:.46rem .48rem .16rem;
+  }
+  .gbr11-genre-button {
+    min-height:38px;
+    padding:0 .28rem;
+    font-size:.49rem;
+    line-height:1.12;
+    letter-spacing:.035em;
+    white-space:normal;
+  }
+  .gbr11-genre-button::after { right:5px;top:5px;width:3px;height:3px; }
+
+  .gbr11-mobile-rail {
+    gap:.48rem;
+    padding:.5rem .5rem .62rem;
+    scroll-padding-inline:24vw;
+  }
+  .gbr11-mobile-card {
+    flex:0 0 min(52vw,200px);
+    border-width:1px;
+    border-radius:5px;
+    opacity:.78;
+    transform:scale(.94);
+    transition:transform .16s ease,opacity .16s ease,border-color .16s ease,box-shadow .16s ease;
+  }
+  .gbr11-mobile-card[data-active="true"] {
+    opacity:1;
+    transform:scale(1);
+    border-color:var(--gbr-accent);
+    box-shadow:0 0 14px var(--gbr-glow),0 8px 18px rgba(0,0,0,.48);
+  }
+
+  /* The selector artwork is the artwork on mobile. Do not print it twice. */
+  .gbr11-release { overflow:visible; }
+  .gbr11-release-head {
+    min-height:50px;
+    padding:.46rem .55rem;
+    gap:.45rem;
+  }
+  .gbr11-release-head strong { margin-top:.22rem;font-size:.55rem; }
+  .gbr11-release-head-actions { gap:.3rem; }
+  .gbr11-release-head-actions .gbr11-hw-button { min-width:66px;min-height:34px;padding:0 .48rem; }
+  .gbr11-release-card[data-flipped="false"] { display:none; }
+  .gbr11-release-card[data-flipped="true"] {
+    display:block;
+    width:calc(100% - .9rem);
+    height:auto;
+    min-height:0;
+    max-height:none;
+    aspect-ratio:auto;
+    margin:.42rem auto .24rem;
+    perspective:none;
+  }
+  .gbr11-release-card[data-flipped="true"] .gbr11-release-card-inner {
+    position:relative;
+    inset:auto;
+    transform:none;
+    min-height:0;
+  }
+  .gbr11-release-card[data-flipped="true"] .gbr11-release-face--front { display:none; }
+  .gbr11-release-card[data-flipped="true"] .gbr11-release-face--back {
+    position:relative;
+    inset:auto;
+    transform:none;
+    backface-visibility:visible;
+    overflow:visible;
+  }
+  .gbr11-release-card[data-flipped="true"] .gbr11-card-backplate {
+    height:auto;
+    padding:.65rem;
+    grid-template-rows:auto auto auto;
+  }
+  .gbr11-release-card[data-flipped="true"] .gbr11-card-backplate h2 { margin:.35rem 0 .55rem;font-size:1rem; }
+  .gbr11-release-card[data-flipped="true"] .gbr11-card-backplate dl {
+    grid-auto-rows:auto;
+    gap:.34rem;
+  }
+  .gbr11-release-card[data-flipped="true"] .gbr11-card-backplate dl div { min-height:46px;padding:.38rem .45rem; }
+  .gbr11-release-actions { margin:.12rem .45rem .42rem;padding-top:.35rem; }
+  .gbr11-release-actions .gbr11-hw-button { min-height:34px; }
+
+  .gbr11-console-stack {
+    grid-template-columns:1fr;
+    grid-template-rows:118px 176px auto;
+    gap:.42rem;
+  }
+  .gbr11-module-label { height:28px;padding:0 .52rem;font-size:.56rem;letter-spacing:.10em; }
+  .gbr11-canvas-well { margin:0 .42rem .42rem; }
+  .gbr11-spectrum-well { height:78px; }
+  .gbr11-vu-well { height:134px; }
+
+  .gbr11-volume-layout { min-height:72px;padding:.2rem .55rem .25rem 82px; }
+  .gbr11-knob--volume { left:13px;top:7px;width:58px;height:58px; }
+  .gbr11-volume-meter { height:27px;gap:2px;padding:3px 4px; }
+  .gbr11-volume-scale { margin-top:.3rem;font-size:.31rem; }
+  .gbr11-console-transport { margin:.04rem .42rem .18rem;padding:.34rem .38rem;gap:.34rem; }
+  .gbr11-transport-button { min-height:38px; }
+  .gbr11-transport-button--main { min-height:40px; }
+  .gbr11-quality button,.gbr11-side-switch button { height:32px; }
+  .gbr11-seek-block { height:24px; }
+  .gbr11-playback-info { margin:.04rem .42rem .4rem;padding:.48rem .5rem .55rem; }
+  .gbr11-now-playing { padding-bottom:.28rem; }
+  .gbr11-inspiration { margin-top:.26rem;padding:.26rem .38rem;font-size:.58rem; }
+  .gbr11-playback-story { margin-top:.26rem;padding-top:.26rem; }
+  .gbr11-playback-story p { margin-top:.28rem;font-size:.86rem;line-height:1.38; }
+  .gbr11-lyrics { min-height:118px;height:auto;padding:.52rem .65rem; }
+  .gbr11-lyric-line { font-size:clamp(1.06rem,4.7vw,1.42rem); }
+}
+
+@media (max-width:560px) {
+  .gbr11-topbar { min-height:94px; }
+  .gbr11-top-power strong { display:none; }
+  .gbr11-genre-button { min-height:36px;font-size:.47rem; }
+  .gbr11-mobile-card { flex-basis:min(54vw,188px); }
+  .gbr11-console-transport { gap:.38rem; }
+  .gbr11-transport-controls { gap:.3rem; }
+  .gbr11-transport-button { min-height:38px;padding:0 .2rem; }
+  .gbr11-quality { min-width:108px; }
+  .gbr11-seek-block { grid-template-columns:38px minmax(0,1fr) 38px; }
+  .gbr11-now-playing { gap:.28rem; }
+  .gbr11-now-playing strong { font-size:1.05rem; }
+  .gbr11-card-backplate dt { font-size:.50rem; }
+  .gbr11-card-backplate dd { font-size:.64rem; }
+}
+
+/* Closed folder drawers must be genuinely absent, not merely translated above
+   the viewport. This prevents a sliver of the sheet/resizer from covering the
+   mobile top bar while the drawer is closed. */
+.gbr-folder-drawer {
+  visibility:hidden;
+  opacity:0;
+  pointer-events:none;
+}
+.gbr-folders[data-open]:not([data-open=""]) .gbr-folder-drawer {
+  visibility:visible;
+  opacity:1;
+  pointer-events:auto;
+}
