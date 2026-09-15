@@ -12,6 +12,8 @@
   const GENRES = Array.isArray(catalogue.variantSlots) && catalogue.variantSlots.length
     ? catalogue.variantSlots
     : ["metal", "pop", "country", "disco", "orchestral", "special"];
+  const ONE_OFF_GENRE = "one-off";
+  const BROWSE_GENRES = [...GENRES, ONE_OFF_GENRE];
   const GENRE_LABEL = {
     metal: "METAL/ROCK",
     pop: "POP/HIP-HOP",
@@ -19,12 +21,14 @@
     disco: "DISCO/ELECTRONIC",
     orchestral: "ORCHESTRAL/CLASSICAL",
     special: "SPECIAL",
+    "one-off": "ONE-OFF",
   };
   const songs = Array.isArray(catalogue.songs) ? catalogue.songs.slice(0, 10) : [];
+  const oneOffSongs = Array.isArray(catalogue.oneOff && catalogue.oneOff.songs) ? catalogue.oneOff.songs.slice(0, 10) : [];
   const tracks = Array.isArray(catalogue.tracks) ? catalogue.tracks : [];
   const easterTracks = Array.isArray(catalogue.easter && catalogue.easter.tracks) ? catalogue.easter.tracks.slice(0, 10) : [];
   const trackById = Object.fromEntries(tracks.map((track) => [String(track.id), track]));
-  const songById = Object.fromEntries(songs.map((song) => [String(song.id), song]));
+  const songById = Object.fromEntries([...songs, ...oneOffSongs].map((song) => [String(song.id), song]));
 
   const el = {
     app: $("gbr11-app"), status: $("gbr11-status"), audio: $("gbr11-audio"),
@@ -49,14 +53,15 @@
 
   const state = {
     browseGenre: recall("gbr11:browse-genre") || "disco",
+    mobileLastTap: { index: -1, time: 0 },
     wheelIndex: 0,
     wheelSpin: 0,
     currentTrack: null,
     currentSong: null,
     quality: recall("gbr11:quality") || "stream",
     shuffle: recall("gbr11:shuffle") === "true",
-    lamp: numberOr(recall("gbr11:lamp"), .62),
-    volume: numberOr(recall("gbr11:volume"), .9),
+    lamp: numberOr(recall("gbr11:lamp"), .5),
+    volume: numberOr(recall("gbr11:volume"), .5),
     power: recall("gbr11:power") !== "false",
     easter: false,
     savedNormalTrack: null,
@@ -69,7 +74,7 @@
     lyricLastWord: -2,
     draggingWheel: null,
   };
-  if (!GENRES.includes(state.browseGenre)) state.browseGenre = GENRES.includes("disco") ? "disco" : GENRES[0];
+  if (!BROWSE_GENRES.includes(state.browseGenre)) state.browseGenre = GENRES.includes("disco") ? "disco" : GENRES[0];
 
   const graph = { ctx: null, source: null, analyser: null, analyserL: null, analyserR: null, freq: null, timeMain: null, timeL: null, timeR: null, ready: false };
   const lyricCache = new Map();
@@ -86,6 +91,7 @@
   function humanise(value) { return String(value || "").replace(/[-_]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()); }
   function clock(value) { const s = Number(value); if (!Number.isFinite(s) || s < 0) return "--:--"; const whole = Math.floor(s); return `${Math.floor(whole/60)}:${String(whole%60).padStart(2,"0")}`; }
   function songForTrack(track) { return track ? songById[String(track.composition)] || null : null; }
+  function songsForGenre(genre) { return genre === ONE_OFF_GENRE ? oneOffSongs : songs; }
   function sideIds(song, genre) { return song && song.sideIds && song.sideIds[genre] && typeof song.sideIds[genre] === "object" ? song.sideIds[genre] : {}; }
   function sidesFor(song, genre) { const ids = sideIds(song, genre); const out = {}; ["A","B"].forEach((side) => { if (ids[side] && trackById[ids[side]]) out[side] = trackById[ids[side]]; }); if (!out.A && song && song.variantIds && song.variantIds[genre] && trackById[song.variantIds[genre]]) out.A = trackById[song.variantIds[genre]]; return out; }
   function primaryTrack(song, genre) { const sides = sidesFor(song, genre); return sides.A || sides.B || null; }
@@ -101,14 +107,14 @@
     artworkPreload.set(src, image);
   }
   function preloadGenreArtwork(genre) {
-    songs.forEach((song) => {
+    songsForGenre(genre).forEach((song) => {
       const sides = sidesFor(song, genre);
       if (sides.A) preloadArtwork(sides.A);
       if (sides.B) preloadArtwork(sides.B);
     });
   }
   function preloadAllWheelArtwork() {
-    GENRES.forEach(preloadGenreArtwork);
+    BROWSE_GENRES.forEach(preloadGenreArtwork);
   }
   function sourceFor(track) {
     const sources = track && track.audio && track.audio.sources || {};
@@ -197,7 +203,7 @@
       el.genreBank.appendChild(plate);
       return;
     }
-    GENRES.forEach((genre) => {
+    BROWSE_GENRES.forEach((genre) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "gbr11-genre-button";
@@ -210,12 +216,14 @@
   }
 
   function setBrowseGenre(genre) {
-    if (state.easter || !GENRES.includes(genre)) return;
+    if (state.easter || !BROWSE_GENRES.includes(genre)) return;
     state.browseGenre = genre;
     remember("gbr11:browse-genre", genre);
     document.documentElement.dataset.browseGenre = genre;
     [...el.genreBank.children].forEach((button) => button.setAttribute("aria-pressed", button.dataset.genre === genre ? "true" : "false"));
     preloadGenreArtwork(genre);
+    const bankSongs = songsForGenre(genre);
+    if (bankSongs.length && !bankSongs[state.wheelIndex]) setWheelIndex(0, true);
     renderWheelContents();
     renderMobileRail();
     updateThemeMeta();
@@ -223,7 +231,7 @@
   }
 
   function updateThemeMeta() {
-    const colours = { metal: "#c64b3b", pop: "#df6f9f", country: "#d18b3c", disco: "#9e65ef", orchestral: "#b68d55", special: "#39bfa9" };
+    const colours = { metal: "#c64b3b", pop: "#df6f9f", country: "#d18b3c", disco: "#9e65ef", orchestral: "#b68d55", special: "#39bfa9", "one-off": "#d8a55f" };
     let meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.content = state.easter ? "#d64a35" : (colours[state.browseGenre] || "#c47b21");
   }
@@ -274,7 +282,8 @@
 
       rejectLabel.hidden = true;
       img.hidden = false;
-      const song = songs[index] || null;
+      const bankSongs = songsForGenre(state.browseGenre);
+      const song = bankSongs[index] || null;
       const track = song ? primaryTrack(song, state.browseGenre) : null;
       const sideMap = song ? sidesFor(song, state.browseGenre) : {};
       const ready = !!track;
@@ -361,7 +370,7 @@
     }
     const song = songForTrack(track);
     if (!song) return;
-    const index = songs.findIndex((item) => item.id === song.id);
+    const index = songsForGenre(track.variantSlot).findIndex((item) => item.id === song.id);
     if (index < 0 || index === state.wheelIndex) return;
     setWheelIndex(index);
   }
@@ -374,7 +383,7 @@
       if (track) selectEasterTrack(track, continuePlaying);
       return;
     }
-    const song = songs[index];
+    const song = songsForGenre(state.browseGenre)[index];
     const track = song ? primaryTrack(song, state.browseGenre) : null;
     if (!track) return;
     selectTrack(track, continuePlaying);
@@ -395,7 +404,7 @@
         card.innerHTML = `<strong>REJECT ${String(index+1).padStart(2,"0")}</strong><small>${track ? esc(track.displayTitle || track.filename) : "EMPTY"}</small>`;
         card.setAttribute("aria-label", track ? `Reject ${index+1}: ${track.displayTitle || track.filename}` : `Reject slot ${index+1} empty`);
       } else {
-        const song = songs[index] || null;
+        const song = songsForGenre(state.browseGenre)[index] || null;
         const track = song ? primaryTrack(song, state.browseGenre) : null;
         card.dataset.ready = track ? "true" : "false";
         card.disabled = !track;
@@ -404,7 +413,16 @@
         card.setAttribute("aria-label", track ? `${title} — ${track.variantLabel || humanise(state.browseGenre)}` : `${title} — not built`);
       }
       card.title = card.getAttribute("aria-label");
-      card.addEventListener("click", () => activateWheelSlot(index));
+      card.addEventListener("click", () => {
+        const now = Date.now();
+        const doubleTap = state.mobileLastTap.index === index && (now - state.mobileLastTap.time) <= 360;
+        state.mobileLastTap = { index, time: now };
+        activateWheelSlot(index);
+        if (doubleTap) {
+          state.mobileLastTap = { index: -1, time: 0 };
+          playAudio();
+        }
+      });
       el.mobileRail.appendChild(card);
     }
   }
@@ -676,7 +694,8 @@
   async function playAudio() {
     if (!state.power) { setStatus("POWER OFF", ""); return; }
     if (!state.currentTrack) {
-      const song = songs[state.wheelIndex] || songs[0];
+      const bankSongs = songsForGenre(state.browseGenre);
+      const song = bankSongs[state.wheelIndex] || bankSongs[0];
       const track = song ? primaryTrack(song, state.browseGenre) : null;
       if (track) selectTrack(track, false);
     }
@@ -743,7 +762,7 @@
 
   function tracksForGenre(genre) {
     const out = [];
-    songs.forEach((song) => {
+    songsForGenre(genre).forEach((song) => {
       const sides = sidesFor(song, genre);
       if (sides.A) out.push(sides.A);
       if (sides.B) out.push(sides.B);
@@ -753,7 +772,7 @@
   function allPlayableTracks() {
     const seen = new Set();
     const out = [];
-    GENRES.forEach((genre) => {
+    BROWSE_GENRES.forEach((genre) => {
       tracksForGenre(genre).forEach((track) => {
         const id = String(track && track.id || "");
         if (!id || seen.has(id) || !sourceFor(track)) return;
@@ -763,24 +782,26 @@
     });
     return out;
   }
-  function stepPlayback(delta) {
+  function stepPlayback(delta, autoplay = null) {
     if (!state.currentTrack) return;
     if (state.easter) {
       const list = easterTracks.filter((track) => sourceFor(track));
       if (!list.length) return;
       let index = list.findIndex((track) => track.id === state.currentTrack.id);
       index = index < 0 ? 0 : (index + delta + list.length) % list.length;
-      selectEasterTrack(list[index], !el.audio.paused && !el.audio.ended);
+      const continuePlaying = autoplay == null ? (!el.audio.paused && !el.audio.ended) : !!autoplay;
+      selectEasterTrack(list[index], continuePlaying);
       return;
     }
     const list = tracksForGenre(state.currentTrack.variantSlot);
     if (!list.length) return;
     let index = list.findIndex((track) => track.id === state.currentTrack.id);
     index = index < 0 ? 0 : (index + delta + list.length) % list.length;
-    selectTrack(list[index], !el.audio.paused && !el.audio.ended);
+    const continuePlaying = autoplay == null ? (!el.audio.paused && !el.audio.ended) : !!autoplay;
+    selectTrack(list[index], continuePlaying);
   }
 
-  function nextPlayback() {
+  function nextPlayback(autoplay = null) {
     if (!state.currentTrack) return;
     if (state.easter) {
       const list = easterTracks.filter((track) => sourceFor(track));
@@ -790,7 +811,7 @@
         if (!pool.length) return;
         selectEasterTrack(pool[Math.floor(Math.random() * pool.length)], true);
       } else {
-        stepPlayback(1);
+        stepPlayback(1, autoplay);
       }
       return;
     }
@@ -802,13 +823,13 @@
       /* Shuffle is playback navigation, not passive browsing. Move the bank
          to the shuffled cut so the wheel immediately shows the master that
          is actually playing, even when the genre changes. */
-      if (next.variantSlot && GENRES.includes(next.variantSlot) && next.variantSlot !== state.browseGenre) {
+      if (next.variantSlot && BROWSE_GENRES.includes(next.variantSlot) && next.variantSlot !== state.browseGenre) {
         setBrowseGenre(next.variantSlot);
       }
       selectTrack(next, true);
       return;
     }
-    stepPlayback(1);
+    stepPlayback(1, autoplay);
   }
 
   function setQuality(quality, userChange = true) {
@@ -1124,7 +1145,7 @@
       setStatus("SERVICE BANK", "fault");
     } else {
       const restore = state.savedNormalTrack || initialTrack();
-      if (state.savedBrowseGenre && GENRES.includes(state.savedBrowseGenre)) {
+      if (state.savedBrowseGenre && BROWSE_GENRES.includes(state.savedBrowseGenre)) {
         state.browseGenre = state.savedBrowseGenre;
         remember("gbr11:browse-genre", state.browseGenre);
         document.documentElement.dataset.browseGenre = state.browseGenre;
@@ -1202,7 +1223,7 @@
     el.audio.addEventListener("play",()=>{syncWheelToTrack(state.currentTrack);el.play.textContent="❚❚";setStatus("PLAYING","live");});
     el.audio.addEventListener("pause",()=>{el.play.textContent="▶";if(!el.audio.ended)setStatus(state.power ? "PAUSED" : "POWER OFF","");});
     el.audio.addEventListener("timeupdate",updateTransport); el.audio.addEventListener("loadedmetadata",()=>{updateTransport(); if(!state.lyricLines.length&&state.currentTrack)state.lyricLines=fallbackLyricLines(state.currentTrack);});
-    el.audio.addEventListener("ended",nextPlayback);
+    el.audio.addEventListener("ended",()=>nextPlayback(true));
     el.audio.addEventListener("canplay",()=>{ if (el.audio.paused) setStatus("LOADED",""); });
     el.audio.addEventListener("error",()=>{
       const err = el.audio.error;
@@ -1228,9 +1249,10 @@
   function initialTrack() {
     const requested = new URLSearchParams(location.search).get("track");
     if (requested && trackById[requested]) return trackById[requested];
-    const firstSong = songs[0];
+    const bankSongs = songsForGenre(state.browseGenre);
+    const firstSong = bankSongs[0] || songs[0] || oneOffSongs[0];
     if (!firstSong) return tracks[0] || null;
-    return primaryTrack(firstSong, state.browseGenre) || GENRES.map((genre)=>primaryTrack(firstSong,genre)).find(Boolean) || tracks[0] || null;
+    return primaryTrack(firstSong, state.browseGenre) || BROWSE_GENRES.map((genre)=>primaryTrack(firstSong,genre)).find(Boolean) || tracks[0] || null;
   }
 
   function init() {
@@ -1242,9 +1264,10 @@
     applyVolume(false); paintQuality();
     const track = initialTrack();
     if (track) {
-      const song = songForTrack(track); const idx = songs.findIndex((item)=>item.id===(song&&song.id)); if(idx>=0)setWheelIndex(idx,true);
+      const targetGenre = track.variantSlot && BROWSE_GENRES.includes(track.variantSlot) ? track.variantSlot : state.browseGenre;
+      if (targetGenre !== state.browseGenre) setBrowseGenre(targetGenre);
+      const song = songForTrack(track); const idx = songsForGenre(targetGenre).findIndex((item)=>item.id===(song&&song.id)); if(idx>=0)setWheelIndex(idx,true);
       selectTrack(track,false);
-      setBrowseGenre(track.variantSlot && GENRES.includes(track.variantSlot) ? track.variantSlot : state.browseGenre);
       positionWheel();
     } else { setStatus("EMPTY","fault"); }
     setPower(state.power, false);

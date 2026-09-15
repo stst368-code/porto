@@ -1,0 +1,110 @@
+title: johnny-three-fridges
+version: country
+model: minimax H3
+dit: fp16
+text_encoder: bf16
+encoder_cfg: 1.7
+encoder_seed: 9342696014
+top_k: 40
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.8
+sampler_seed: 399158954821553
+sampler_steps: 37
+inspiration:
+inspirationyt:
+story:
+caption: |
+  Global Metadata
+  Basic Attributes: roughly 128–138 BPM. 1950s–60s Rockabilly / Traditional Country / Outlaw Country / Country Blues. A brisk, infectious boom-chicka-boom rhythm with a darkly comic murder-ballad character. The music should sound playful, swaggering and unmistakably old-school country while the storytelling becomes progressively more sinister. Use simple blues-influenced harmony, memorable repeating guitar figures and a strong walking pulse rather than modern country-rock weight.
+  Global Emotional Progression: Open sparse and suspicious, as though the singer is leaning in to tell the listener a ridiculous local legend. The first verse settles into an easy, confident storytelling groove. Each pre-chorus should tighten the tension without slowing the rhythm, while every chorus becomes louder, catchier and more gleefully ominous. The post-choruses should feel like the narrator leaning closer to share something he probably should not know. As the story progresses, the contrast between the jaunty music and increasingly unsettling implications should become funnier. The final verse should briefly feel genuinely suspenseful before the outro returns to dry, understated menace.
+  Application Scenarios & Imagery: A roadside bar somewhere in rural Minnesota, neon beer signs glowing over worn wooden tables while a travelling country band tells an increasingly questionable story about the local family man nobody asks too many questions about.
+  Sonics & Production Profile: Warm, dry, vintage studio character with narrow-to-moderate stereo width. Natural dynamics, light tape saturation, woody acoustic instruments and minimal modern polish. Keep the vocal prominent and intelligible. Avoid glossy contemporary country production, huge arena drums, synthesizers or cinematic orchestration.
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Male), a very deep, resonant baritone with a dry, slightly rough-edged country timbre.
+  Vocal Style: The [intro] begins with low, near-spoken storytelling, sparse and conspiratorial. The [verse] sections use conversational, deadpan phrasing with clipped rhythmic delivery and restrained melodic movement. The [pre-chorus] sections become more animated and suspicious, tightening the vocal rhythm as though the narrator is preparing another revelation. The [chorus] broadens into a strong, memorable country refrain with more projection and swagger, while remaining grounded in a deep baritone rather than becoming a pop belt. The [post-chorus] sections return to a lower, more confidential delivery. The final [verse] should become slightly more tense and deliberate as the basement fridge is revealed. The [outro] returns to calm, understated storytelling with an ominously friendly final line.
+  Harmony/Backing Vocals: Keep backing vocals sparse. Add low male unison or simple close-harmony responses during selected lines of the [chorus]. The [post-chorus] may use occasional quiet background responses, but verses should remain dominated by the solo narrator. Avoid lush harmony stacks.
+  Vocal FX: Very short vintage room ambience, subtle plate reverb, mild slapback echo and light tape saturation. Keep the lead close, dry and immediate throughout.
+  Arrangement
+  Instrument Lifecycle: [intro] begins with a low muted hollow-body electric guitar figure or picked acoustic guitar beneath the exposed vocal, with no full rhythm section at first. Let upright bass enter near the end of the intro to establish anticipation.
+  The first [verse] introduces the full boom-chicka foundation: upright bass, acoustic rhythm guitar, lightly struck snare and restrained kick. Add short twangy electric guitar answers between vocal phrases. Keep the texture uncluttered so the storytelling dominates.
+  During each [pre-chorus], tighten the groove with stronger snare accents, slightly busier walking bass and a repeated descending electric guitar figure. Build tension through rhythmic insistence rather than added volume or orchestration.
+  Each [chorus] brings the whole rockabilly band forward. Increase acoustic strumming intensity, make the upright bass more animated, strengthen the train-beat drum pattern and add bright twangy guitar fills around the vocal. Low male backing voices may answer selected phrases. The chorus should feel catchy and almost cheerful despite the sinister subject matter.
+  The [post-chorus] should pull back slightly. Reduce the drums, return the guitar to shorter fills and let the singer move back toward confidential storytelling. Keep the pulse running so the song never loses momentum.
+  The second [verse] returns to the established rockabilly groove but with slightly more instrumental activity: stronger bass movement, more frequent electric guitar replies and occasional short stop-time accents around lyrical punchlines.
+  The second [pre-chorus] should build more tension than the first, with stronger snare emphasis and a slightly darker low-register guitar response before releasing into the next [chorus].
+  The second [chorus] should be the fullest and most energetic chorus so far, maintaining the same basic arrangement but with more forceful guitar strumming, stronger backing responses and more animated upright bass.
+  The following [post-chorus] should become more playful again as the family-man explanation briefly reduces the apparent danger. Let the rhythm relax slightly without changing tempo.
+  In the final [verse], gradually strip instruments away as the lyrics approach the third fridge. Begin with the normal rhythm section, then reduce to upright bass, muted guitar and sparse snare as the basement-door revelation approaches. Keep the tempo steady but make the space between instrumental hits feel increasingly tense. On the final revelation, use a brief stop-time pause or near-silence before the vocal completes the thought.
+  The [outro] returns with minimal acoustic guitar, upright bass and perhaps one subdued electric guitar answer. Do not build to a dramatic finale. Let the final warning land almost casually, then finish with a dry final chord or short descending rockabilly guitar lick.
+  Embellishments, Textures & Spatial FX: Use short slapback guitar fills, occasional low-string bends, restrained pick slides and brief stop-time accents before major punchlines. Avoid extended solos, fiddle-led bluegrass passages, modern country-rock distortion or cinematic tension effects. Keep every transition rooted in vintage rockabilly band playing.
+lyrics: |
+  [intro]
+  they call him Johnny
+  ...
+  Johnny, Three Fridges
+  a name enough to chill the bone
+  once you've heard my story
+  i'll let you judge if you're safe at home
+  [verse]
+  so, what's a man to do with three whole fridges
+  one for food, one for beer
+  third one you'll never get near
+  he'll have you over, n' cook you dinner
+  delicious to eat, calories for a sinner
+  hear it hum, hear it shiver
+  go near fridge three and you'll hear him snigger
+  [pre-chorus]
+  so what he heck is going down
+  in that sweet ol' minnesota town?
+  well keep on 'a listenin'
+  cuz I know the story, i wrote it down
+  [chorus]
+  ol' Johnny Three Fridges, sinister by name
+  livin' the dream, playin' his all American game
+  what's he got in 'em?
+  day to day, never the same
+  don't get nosey, don't go pryin'
+  else you'll be the one runnin' away cryin'
+  [post-chorus]
+  so, listen up and listen real close
+  won't be long before i'm gone ghost
+  i'm spillin' the beans
+  on ol Johnny Three Fridges dreams
+  [verse]
+  see, ain't nothin' sinister
+  ain't nothin' chillin'
+  except a white tailed deer
+  and some ruffed grouse dead from killin'
+  that's it that's all
+  least that's all he'll tell ya' he got chilling'
+  [pre-chorus]
+  so, listen again, listen well
+  my song my story should ring a bell
+  what's in fridge number three ain' nobody around to tell
+  [chorus]
+  ol' Johnny Three Fridges, sinister by name
+  livin' the dream, playin' his all American game
+  what's he got in 'em?
+  day to day, never the same
+  don't get nosey, don't go pryin'
+  else you'll be the one runnin' away cryin'
+  [post-chorus]
+  family man, family man
+  ol' Johnny Three Fridges got a big family, man
+  mouths to feed from dawn till eve
+  maybe three fridges ain't so hard to believe
+  [verse]
+  bet with that revelation
+  you're startin' to relax now but hear my hesitation
+  one's in the kitchen, ordinary as can be
+  second in the garage, nothin' hauntin' there still
+  but when you find that third fridge
+  tucked behind the basement door
+  you'll see why Johnny told me
+  I ain't welcome anymore
+  [outro]
+  so dear friend
+  time's now for this here song to end
+  hear my message, understand my warnin'
+  maybe you'll wake to a delicious breakfast in the mornin'

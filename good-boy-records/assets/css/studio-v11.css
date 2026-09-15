@@ -1405,6 +1405,10 @@ html[data-easter="true"] .gbr11-lyric-line { color:#d45b46;font-family:var(--gbr
   }
   .gbr11-mobile-card {
     flex:0 0 min(52vw,200px);
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
+    -webkit-user-select:none;
     border-width:1px;
     border-radius:5px;
     opacity:.78;
@@ -1523,4 +1527,52 @@ html[data-easter="true"] .gbr11-lyric-line { color:#d45b46;font-family:var(--gbr
   visibility:visible;
   opacity:1;
   pointer-events:auto;
+}
+
+/* v11.15 mobile cover gesture: reserve double-tap for playback, not browser zoom. */
+.gbr11-mobile-card {
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+/* v11.17: public standalone / one-off bank. The six-cut matrix remains a
+   3×2 control block; ONE-OFF occupies one compact full-width auxiliary row so
+   adding the seventh browse target does not squeeze the existing labels. */
+.gbr11-genre-button[data-genre="one-off"] {
+  grid-column:1 / -1;
+  min-height:30px;
+  letter-spacing:.14em;
+  border-style:double;
+}
+html[data-browse-genre="one-off"] {
+  --gbr-panel:#12100b;
+  --gbr-panel-hi:#211b11;
+  --gbr-panel-lo:#080705;
+  --gbr-line:#685438;
+  --gbr-line-hi:#a47d49;
+  --gbr-legend:#a58d6b;
+  --gbr-accent:#d8a55f;
+  --gbr-hot:#ffe0a5;
+  --gbr-glow:rgba(216,165,95,.22);
+  --gbr-wood-a:#18140d;
+  --gbr-wood-b:#080604;
+}
+html[data-browse-genre="one-off"] .gbr11-panel,
+html[data-browse-genre="one-off"] .gbr11-topbar,
+html[data-browse-genre="one-off"] .gbr-folder-tabs {
+  background-image:repeating-linear-gradient(135deg,rgba(255,219,157,.025) 0 1px,transparent 1px 8px),linear-gradient(180deg,#211b11,#080705);
+}
+html[data-browse-genre="one-off"] .gbr11-genre-button[data-genre="one-off"] {
+  border-style:double;
+}
+@media (max-width:900px) {
+  .gbr11-genre-button[data-genre="one-off"] { min-height:28px; }
+}
+@media (max-width:560px) {
+  .gbr11-genre-button[data-genre="one-off"] {
+    min-height:30px;
+    font-size:.52rem;
+  }
 }

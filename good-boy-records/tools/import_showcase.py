@@ -60,6 +60,8 @@ AUDIO_EXTS = {".flac", ".mp3"}
 ATR_AUDIO_EXTS = {".flac", ".mp3", ".wav", ".m4a", ".ogg", ".opus", ".webm"}
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp"}
 VARIANT_SLOTS = ("metal", "pop", "country", "disco", "orchestral", "special")
+ONE_OFF_SLOT = "one-off"
+ONE_OFF_DIR = DROP / "one-off"
 
 
 def slugify(value: str) -> str:
@@ -419,20 +421,147 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
     return record, manifest_entry
 
 
+def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Stage a standalone public release from showcase/one-off/.
+
+    One-off songs deliberately do not participate in the six-cut composition
+    matrix. Each release is one song, one public cassette position, and one
+    generated metadata record. ``version`` is optional and is used only as a
+    display label; the selectable bank remains ONE-OFF.
+    """
+    title = slugify(raw.get("title") or source_yaml.parent.name)
+    label = str(raw.get("one_off_label") or raw.get("version") or "One-Off").strip() or "One-Off"
+    release_id = slugify(f"{title}-one-off")
+
+    artwork = resolve_artwork(source_yaml, raw, release_id)
+    audio = resolve_audio(source_yaml, release_id)
+    lyric_path, lyric_data = resolve_lyrics(source_yaml, release_id)
+
+    art_base = release_id
+    staged_art = None
+    if artwork:
+        staged_art = MASTERS / f"{art_base}{artwork.suffix.lower()}"
+        shutil.copy2(artwork, staged_art)
+    else:
+        art_base = "gbr-placeholder"
+        print(f"warn {source_yaml.relative_to(DROP)}: no album artwork found; using placeholder")
+
+    staged_audio = {fmt: source.relative_to(ROOT).as_posix() for fmt, source in audio.items()}
+
+    raw_yaml_target = RAW_YAML_OUT / f"{release_id}.yaml"
+    shutil.copy2(source_yaml, raw_yaml_target)
+
+    word_timing = None
+    staged_lyrics = None
+    if lyric_path and lyric_data:
+        staged_lyrics = LIVE_LYRICS_OUT / f"{release_id}.json"
+        shutil.copy2(lyric_path, staged_lyrics)
+        stats = lyric_data.get("stats") if isinstance(lyric_data.get("stats"), dict) else {}
+        quality = lyric_data.get("quality") if isinstance(lyric_data.get("quality"), dict) else {}
+        coverage = stats.get("coverage")
+        inferred_review = isinstance(coverage, (int, float)) and float(coverage) < 0.80
+        review_required = bool(quality.get("review_required", inferred_review))
+        approved = bool(quality.get("approved", False))
+        usable = bool(quality.get("usable_for_live_lyrics", approved or not review_required))
+        word_timing = {
+            "src": f"data/live-lyrics/{release_id}.json",
+            "format": LIVE_LYRICS_FORMAT,
+            "coverage": coverage,
+            "rating": quality.get("rating"),
+            "reviewRequired": review_required,
+            "approved": approved,
+            "usable": usable,
+        }
+
+    record = {
+        "id": release_id,
+        "oneOff": True,
+        "composition": release_id,
+        "title": title,
+        "displayTitle": humanise(title),
+        "slug": release_id,
+        "variant": ONE_OFF_SLOT,
+        "variantSlot": ONE_OFF_SLOT,
+        "variantLabel": label,
+        "side": "A",
+        "model": {
+            "name": str(raw.get("model") or "").strip(),
+            "dit": str(raw.get("dit") or "").strip(),
+            "textEncoder": str(raw.get("text_encoder") or raw.get("textenc") or raw.get("text_encoder_model") or "").strip(),
+        },
+        "generation": {
+            "encoderCfg": number(raw, "encoder_cfg"),
+            "encoderSeed": number(raw, "encoder_seed"),
+            "topK": number(raw, "top_k", "topk"),
+            "sampler": str(raw.get("sampler") or "").strip(),
+            "scheduler": str(raw.get("scheduler") or "").strip(),
+            "samplerCfg": number(raw, "sampler_cfg", "cfg"),
+            "samplerSeed": number(raw, "sampler_seed", "seed"),
+            "steps": number(raw, "sampler_steps", "steps"),
+        },
+        "style": {
+            "inspiration": str(raw.get("inspiration") or "").strip(),
+            "inspirationUrl": str(raw.get("inspirationyt") or raw.get("inspiration_url") or "").strip(),
+        },
+        "story": str(raw.get("story") or "").strip(),
+        "audio": {
+            "available": bool(staged_audio),
+            "sources": {"mp3": staged_audio.get("mp3"), "flac": staged_audio.get("flac")},
+        },
+        "artwork": {
+            "base": art_base,
+            "alt": f"Album artwork for {humanise(title)} — {label}",
+            "placeholder": artwork is None,
+        },
+        "lyrics": {
+            "raw": str(raw.get("lyrics") or "").rstrip(),
+            "wordTiming": word_timing,
+        },
+        "yamlUrl": f"data/yaml/{release_id}.yaml",
+        "source": {
+            "yaml": str(source_yaml.relative_to(DROP)).replace("\\", "/"),
+            "directory": str(source_yaml.parent.relative_to(DROP)).replace("\\", "/"),
+        },
+    }
+
+    out = TRACK_OUT / f"{release_id}.yaml"
+    out.write_text(yaml.safe_dump(record, sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
+
+    manifest_entry = {
+        "id": release_id,
+        "composition": release_id,
+        "variant": ONE_OFF_SLOT,
+        "slot": ONE_OFF_SLOT,
+        "side": "A",
+        "oneOff": True,
+        "source": record["source"]["directory"],
+        "songYaml": None,
+        "yaml": raw_yaml_target.name,
+        "artwork": staged_art.name if staged_art else None,
+        "audio": staged_audio,
+        "lyrics": staged_lyrics.name if staged_lyrics else None,
+        "atrCount": 0,
+    }
+    return record, manifest_entry
+
+
 def main() -> int:
     DROP.mkdir(parents=True, exist_ok=True)
     clean_generated()
 
     all_yamls = sorted([*DROP.rglob("*.yaml"), *DROP.rglob("*.yml")])
-    # showcase/easter is a deliberately metadata-free hidden bank. Never feed
-    # anything inside it into the normal song/variant importer.
-    def is_easter_path(path: Path) -> bool:
+    # Reserved banks are not part of the normal six-cut composition matrix.
+    # Easter is hidden and metadata-free; one-off is public and intentionally
+    # contains standalone releases that will never need six genre variants.
+    def reserved_bank(path: Path) -> str | None:
         try:
-            return path.relative_to(DROP).parts[0].lower() == "easter"
+            first = path.relative_to(DROP).parts[0].lower()
         except (ValueError, IndexError):
-            return False
+            return None
+        return first if first in {"easter", "one-off", "oneoff"} else None
 
-    normal_yamls = [path for path in all_yamls if not is_easter_path(path)]
+    normal_yamls = [path for path in all_yamls if reserved_bank(path) is None]
+    one_off_yamls = [path for path in all_yamls if reserved_bank(path) in {"one-off", "oneoff"}]
     song_yamls = {path.parent: path for path in normal_yamls if is_song_yaml(path)}
     variant_yamls = [path for path in normal_yamls if not is_song_yaml(path)]
 
@@ -441,7 +570,7 @@ def main() -> int:
     # making the new composition metadata contract available immediately.
     song_dirs = sorted(
         p for p in DROP.iterdir()
-        if p.is_dir() and not p.name.startswith(".") and p.name.lower() != "easter"
+        if p.is_dir() and not p.name.startswith(".") and p.name.lower() not in {"easter", "one-off", "oneoff"}
     )
     song_records: dict[str, dict[str, Any]] = {}
     for song_dir in song_dirs:
@@ -454,9 +583,9 @@ def main() -> int:
         atr_count = len(record.get("atr") or [])
         print(f"song {record['id']}: common metadata{' + ' + str(atr_count) + ' ATR' if atr_count else ''}")
 
-    if not variant_yamls:
-        print(f"No variant YAML files under {DROP}")
-        print("Expected showcase/<song>/<song>-<variant>/<song>-<variant>.yaml")
+    if not variant_yamls and not one_off_yamls:
+        print(f"No release YAML files under {DROP}")
+        print("Expected showcase/<song>/<song>-<variant>/<song>-<variant>.yaml or showcase/one-off/<song>/<song>.yaml")
         MANIFEST.parent.mkdir(parents=True, exist_ok=True)
         MANIFEST.write_text("[]\n", encoding="utf-8")
         return 0
@@ -495,10 +624,32 @@ def main() -> int:
             timing_note = f" | lyrics {float(cov)*100:.1f}%" if isinstance(cov, (int, float)) else " | lyrics staged"
         print(f"{record['id']} [Side {record['side']}]: {' + '.join(available) if available else 'NO AUDIO'}{timing_note}")
 
+    for source_yaml in one_off_yamls:
+        raw = load_mapping(source_yaml)
+        if raw is None:
+            continue
+        if not raw.get("title"):
+            raw["title"] = source_yaml.parent.name
+            print(f"warn {source_yaml.relative_to(DROP)}: no title; inferred {raw['title']!r} from directory")
+        record, entry = stage_one_off(source_yaml, raw)
+        if record["id"] in seen:
+            raise SystemExit(f"Duplicate release id {record['id']!r}; check one-off title/folder names")
+        seen.add(record["id"])
+        manifest.append(entry)
+        sources = record["audio"]["sources"]
+        available = [key.upper() for key, value in sources.items() if value]
+        timing = record["lyrics"].get("wordTiming") or {}
+        timing_note = ""
+        if timing:
+            cov = timing.get("coverage")
+            timing_note = f" | lyrics {float(cov)*100:.1f}%" if isinstance(cov, (int, float)) else " | lyrics staged"
+        print(f"{record['id']} [ONE-OFF]: {' + '.join(available) if available else 'NO AUDIO'}{timing_note}")
+
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     songs = {item["composition"] for item in manifest}
-    print(f"Imported {len(manifest)} recording(s) across {len(songs)} song(s).")
+    one_off_count = sum(1 for item in manifest if item.get("oneOff"))
+    print(f"Imported {len(manifest)} recording(s) across {len(songs)} song(s), including {one_off_count} one-off(s).")
     return 0
 
 
