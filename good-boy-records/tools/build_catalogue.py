@@ -36,6 +36,7 @@ ATR_AUDIO_DIR = ROOT / "assets" / "audio" / "atr"
 LEGACY_MUSIC_DIR = ROOT / "music"
 VARIANT_SLOTS = ("metal", "pop", "country", "disco", "orchestral", "special")
 ONE_OFF_SLOT = "one-off"
+VALID_SIDES = ("A", "B", "C")
 MAX_SONGS = 10
 EASTER_DIR = ROOT / "showcase" / "easter"
 EASTER_AUDIO_EXTS = (".mp3", ".flac", ".wav", ".m4a", ".ogg", ".opus", ".webm")
@@ -155,8 +156,8 @@ def validate_track(track: dict[str, Any], where: str, report: Report) -> None:
         report.error(where, f"variantSlot {slot!r} is not one of {', '.join(allowed_slots)}")
 
     side = str(track.get("side") or "A").upper()
-    if side not in {"A", "B"}:
-        report.error(where, f"side {side!r} must be A or B")
+    if side not in VALID_SIDES:
+        report.error(where, f"side {side!r} must be one of {', '.join(VALID_SIDES)}")
 
     art = track.get("artwork") or {}
     base = art.get("base") or "gbr-placeholder"
@@ -266,7 +267,7 @@ def load_tracks(report: Report) -> list[dict[str, Any]]:
         tracks.append(track)
 
     slot_rank = {name: index for index, name in enumerate((*VARIANT_SLOTS, ONE_OFF_SLOT))}
-    side_rank = {"A": 0, "B": 1}
+    side_rank = {side: index for index, side in enumerate(VALID_SIDES)}
     tracks.sort(key=lambda t: (
         str(t.get("displayTitle") or t.get("title") or t.get("composition") or "").casefold(),
         slot_rank.get(str(t.get("variantSlot")), 99),
@@ -302,13 +303,13 @@ def group_songs(tracks: list[dict[str, Any]], song_meta: dict[str, dict[str, Any
             sides_by_slot.setdefault(slot, {})[side] = track
 
         # ``variants`` remains the primary physical cassette for wheel
-        # rendering: Side A where present, otherwise Side B. ``sides`` carries
-        # both playable cuts without creating another magazine position.
+        # rendering: Side A where present, otherwise the first available side.
+        # ``sides`` carries A/B/C without creating another magazine position.
         variants_by_slot = {
-            slot: side_map.get("A") or side_map.get("B")
+            slot: next((side_map.get(side) for side in VALID_SIDES if side_map.get(side)), None)
             for slot, side_map in sides_by_slot.items()
-            if side_map.get("A") or side_map.get("B")
         }
+        variants_by_slot = {slot: track for slot, track in variants_by_slot.items() if track}
         lead = variants_by_slot.get("disco") or next(
             (variants_by_slot.get(slot) for slot in VARIANT_SLOTS if variants_by_slot.get(slot)),
             releases[0],
@@ -380,14 +381,15 @@ def render_mobile_library(songs: list[dict[str, Any]]) -> str:
             ready = track is not None
             track_id = str(track["id"]) if ready else ""
             song_id = str(song["id"]) if song else ""
-            has_b = bool(side_map.get("B"))
+            available_sides = [side for side in VALID_SIDES if side_map.get(side)]
+            has_extra_sides = len(available_sides) > 1
             disabled = "" if ready else " disabled"
             state = (track.get("variantLabel") if track else None) or ("READY" if ready else "NOT CUT")
-            if ready and has_b:
-                state = f"{state} · A/B"
+            if ready and has_extra_sides:
+                state = f"{state} · {'/'.join(available_sides)}"
             cards.append(
                 f'<button class="showcase-mobile-cassette" type="button" data-track="{esc(track_id)}" '
-                f'data-song="{esc(song_id)}" data-slot="{genre}" data-has-side-b="{"true" if has_b else "false"}" '
+                f'data-song="{esc(song_id)}" data-slot="{genre}" data-has-side-b="{"true" if has_extra_sides else "false"}" '
                 f'data-ready="{"true" if ready else "false"}"{disabled}>'
                 f'<span>{index + 1:02d}</span><strong>{esc(title)}</strong>'
                 f'<small>{esc(state)}</small>'
@@ -423,8 +425,8 @@ def build(strict: bool) -> int:
     easter_tracks = load_easter_tracks(report)
     if len(songs) > MAX_SONGS:
         report.error("showcase", f"contains {len(songs)} matrix songs; rotary magazine supports a maximum of {MAX_SONGS}")
-    if len(one_off_songs) > MAX_SONGS:
-        report.error("one-off", f"contains {len(one_off_songs)} standalone songs; one-off bank supports a maximum of {MAX_SONGS}")
+    # ONE-OFF is not limited to one physical magazine. Runtime pages the
+    # independent bank in groups of ten while playback/navigation sees all.
     if report.errors:
         return report.summarise(strict)
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -444,7 +446,7 @@ def build(strict: bool) -> int:
                 "atr": song.get("atr") or [],
                 "variantIds": {slot: song["variants"][slot]["id"] for slot in VARIANT_SLOTS if slot in song["variants"]},
                 "sideIds": {
-                    slot: {side: side_map[side]["id"] for side in ("A", "B") if side in side_map}
+                    slot: {side: side_map[side]["id"] for side in VALID_SIDES if side in side_map}
                     for slot, side_map in song.get("sides", {}).items()
                 },
             }
@@ -463,7 +465,14 @@ def build(strict: bool) -> int:
                     "yamlUrl": song.get("yamlUrl") or song["lead"].get("yamlUrl"),
                     "atr": [],
                     "variantIds": {ONE_OFF_SLOT: song["variants"][ONE_OFF_SLOT]["id"]} if ONE_OFF_SLOT in song["variants"] else {},
-                    "sideIds": {ONE_OFF_SLOT: {"A": song["lead"]["id"]}},
+                    "sideIds": {
+                        ONE_OFF_SLOT: {
+                            side: side_map[side]["id"]
+                            for side in VALID_SIDES if side in side_map
+                        }
+                        for slot, side_map in song.get("sides", {}).items()
+                        if slot == ONE_OFF_SLOT
+                    },
                 }
                 for song in one_off_songs
             ],
@@ -491,9 +500,9 @@ def build(strict: bool) -> int:
     (ROOT / "index.html").write_text(output, encoding="utf-8")
 
     print(f"Built {len(songs)} matrix song(s), {len(one_off_songs)} one-off(s), {len(tracks)} recording(s)")
-    print(f"  one-off bank    {len(one_off_songs)} standalone public master(s)")
+    print(f"  one-off bank    {len(one_off_songs)} standalone song(s), paged 10 per magazine")
     print(f"  easter bank     {len(easter_tracks)} hidden reject master(s)")
-    print(f"  target matrix   {MAX_SONGS} song positions × {len(VARIANT_SLOTS)} selectable genre cuts (+ optional Side B recordings)")
+    print(f"  target matrix   {MAX_SONGS} song positions × {len(VARIANT_SLOTS)} selectable genre cuts (+ optional A/B/C sides)")
     print(f"  catalogue.json  {(DATA_DIR / 'catalogue.json').stat().st_size / 1024:.1f} KB")
     print(f"  index.html      {(ROOT / 'index.html').stat().st_size / 1024:.1f} KB")
     return report.summarise(strict)

@@ -13,6 +13,8 @@
     ? catalogue.variantSlots
     : ["metal", "pop", "country", "disco", "orchestral", "special"];
   const ONE_OFF_GENRE = "one-off";
+  const ONE_OFF_PAGE_SIZE = 10;
+  const SIDE_ORDER = ["A", "B", "C"];
   const BROWSE_GENRES = [...GENRES, ONE_OFF_GENRE];
   const GENRE_LABEL = {
     metal: "METAL/ROCK",
@@ -24,7 +26,7 @@
     "one-off": "ONE-OFF",
   };
   const songs = Array.isArray(catalogue.songs) ? catalogue.songs.slice(0, 10) : [];
-  const oneOffSongs = Array.isArray(catalogue.oneOff && catalogue.oneOff.songs) ? catalogue.oneOff.songs.slice(0, 10) : [];
+  const oneOffSongs = Array.isArray(catalogue.oneOff && catalogue.oneOff.songs) ? catalogue.oneOff.songs : [];
   const tracks = Array.isArray(catalogue.tracks) ? catalogue.tracks : [];
   const easterTracks = Array.isArray(catalogue.easter && catalogue.easter.tracks) ? catalogue.easter.tracks.slice(0, 10) : [];
   const trackById = Object.fromEntries(tracks.map((track) => [String(track.id), track]));
@@ -54,6 +56,7 @@
   const state = {
     browseGenre: recall("gbr11:browse-genre") || "disco",
     mobileLastTap: { index: -1, time: 0 },
+    oneOffPage: 0,
     wheelIndex: 0,
     wheelSpin: 0,
     currentTrack: null,
@@ -92,10 +95,24 @@
   function clock(value) { const s = Number(value); if (!Number.isFinite(s) || s < 0) return "--:--"; const whole = Math.floor(s); return `${Math.floor(whole/60)}:${String(whole%60).padStart(2,"0")}`; }
   function songForTrack(track) { return track ? songById[String(track.composition)] || null : null; }
   function songsForGenre(genre) { return genre === ONE_OFF_GENRE ? oneOffSongs : songs; }
+  function oneOffPageCount() { return Math.max(1, Math.ceil(oneOffSongs.length / ONE_OFF_PAGE_SIZE)); }
+  function visibleSongsForGenre(genre) {
+    if (genre !== ONE_OFF_GENRE) return songsForGenre(genre);
+    const page = Math.min(Math.max(0, state.oneOffPage), oneOffPageCount() - 1);
+    const start = page * ONE_OFF_PAGE_SIZE;
+    return oneOffSongs.slice(start, start + ONE_OFF_PAGE_SIZE);
+  }
   function sideIds(song, genre) { return song && song.sideIds && song.sideIds[genre] && typeof song.sideIds[genre] === "object" ? song.sideIds[genre] : {}; }
-  function sidesFor(song, genre) { const ids = sideIds(song, genre); const out = {}; ["A","B"].forEach((side) => { if (ids[side] && trackById[ids[side]]) out[side] = trackById[ids[side]]; }); if (!out.A && song && song.variantIds && song.variantIds[genre] && trackById[song.variantIds[genre]]) out.A = trackById[song.variantIds[genre]]; return out; }
-  function primaryTrack(song, genre) { const sides = sidesFor(song, genre); return sides.A || sides.B || null; }
-  function sideOf(track) { return String(track && track.side || "A").toUpperCase() === "B" ? "B" : "A"; }
+  function sidesFor(song, genre) {
+    const ids = sideIds(song, genre);
+    const out = {};
+    SIDE_ORDER.forEach((side) => { if (ids[side] && trackById[ids[side]]) out[side] = trackById[ids[side]]; });
+    if (!Object.keys(out).length && song && song.variantIds && song.variantIds[genre] && trackById[song.variantIds[genre]]) out.A = trackById[song.variantIds[genre]];
+    return out;
+  }
+  function sideKeys(sides) { return SIDE_ORDER.filter((side) => sides && sides[side]); }
+  function primaryTrack(song, genre) { const sides = sidesFor(song, genre); return sideKeys(sides).map((side) => sides[side])[0] || null; }
+  function sideOf(track) { const side = String(track && track.side || "A").toUpperCase(); return SIDE_ORDER.includes(side) ? side : "A"; }
   function artworkUrl(track, size = 640, ext = "webp") { const base = track && track.artwork && track.artwork.base ? track.artwork.base : "gbr-placeholder"; return `assets/img/sleeves/${base}-${size}.${ext}`; }
   function preloadArtwork(track, size = 640) {
     if (!track) return;
@@ -107,10 +124,10 @@
     artworkPreload.set(src, image);
   }
   function preloadGenreArtwork(genre) {
-    songsForGenre(genre).forEach((song) => {
+    const bank = genre === ONE_OFF_GENRE ? visibleSongsForGenre(genre) : songsForGenre(genre);
+    bank.forEach((song) => {
       const sides = sidesFor(song, genre);
-      if (sides.A) preloadArtwork(sides.A);
-      if (sides.B) preloadArtwork(sides.B);
+      sideKeys(sides).forEach((side) => preloadArtwork(sides[side]));
     });
   }
   function preloadAllWheelArtwork() {
@@ -194,6 +211,41 @@
   }
 
   /* ----------------------------------------------------------- genre bank */
+  function renderOneOffPager() {
+    if (state.easter) return;
+    let pager = el.genreBank.querySelector(".gbr11-oneoff-pager");
+    const pages = oneOffPageCount();
+    const shouldShow = state.browseGenre === ONE_OFF_GENRE && pages > 1;
+    if (!shouldShow) {
+      if (pager) pager.remove();
+      return;
+    }
+    if (!pager) {
+      pager = document.createElement("div");
+      pager.className = "gbr11-oneoff-pager";
+      pager.innerHTML = '<button type="button" data-oneoff-page="prev" aria-label="Previous one-off magazine">◀</button><span></span><button type="button" data-oneoff-page="next" aria-label="Next one-off magazine">▶</button>';
+      pager.querySelector('[data-oneoff-page="prev"]').addEventListener("click", () => setOneOffPage(state.oneOffPage - 1));
+      pager.querySelector('[data-oneoff-page="next"]').addEventListener("click", () => setOneOffPage(state.oneOffPage + 1));
+      el.genreBank.appendChild(pager);
+    }
+    pager.querySelector("span").textContent = `MAGAZINE ${state.oneOffPage + 1}/${pages}`;
+  }
+
+  function setOneOffPage(page, preferredIndex = 0, immediate = true) {
+    const pages = oneOffPageCount();
+    const next = ((Number(page) || 0) % pages + pages) % pages;
+    state.oneOffPage = next;
+    const visible = visibleSongsForGenre(ONE_OFF_GENRE);
+    const maxIndex = Math.max(0, visible.length - 1);
+    setWheelIndex(Math.min(Math.max(0, preferredIndex), maxIndex), immediate);
+    if (state.browseGenre === ONE_OFF_GENRE) {
+      preloadGenreArtwork(ONE_OFF_GENRE);
+      renderWheelContents();
+      renderMobileRail();
+      renderOneOffPager();
+    }
+  }
+
   function renderGenreBank() {
     el.genreBank.replaceChildren();
     if (state.easter) {
@@ -213,6 +265,7 @@
       button.addEventListener("click", () => setBrowseGenre(genre));
       el.genreBank.appendChild(button);
     });
+    renderOneOffPager();
   }
 
   function setBrowseGenre(genre) {
@@ -220,12 +273,13 @@
     state.browseGenre = genre;
     remember("gbr11:browse-genre", genre);
     document.documentElement.dataset.browseGenre = genre;
-    [...el.genreBank.children].forEach((button) => button.setAttribute("aria-pressed", button.dataset.genre === genre ? "true" : "false"));
+    [...el.genreBank.querySelectorAll(".gbr11-genre-button")].forEach((button) => button.setAttribute("aria-pressed", button.dataset.genre === genre ? "true" : "false"));
     preloadGenreArtwork(genre);
-    const bankSongs = songsForGenre(genre);
+    const bankSongs = visibleSongsForGenre(genre);
     if (bankSongs.length && !bankSongs[state.wheelIndex]) setWheelIndex(0, true);
     renderWheelContents();
     renderMobileRail();
+    renderOneOffPager();
     updateThemeMeta();
     /* Deliberate boundary: browsing a genre does not touch el.audio, currentTrack, currentTime or play state. */
   }
@@ -282,7 +336,7 @@
 
       rejectLabel.hidden = true;
       img.hidden = false;
-      const bankSongs = songsForGenre(state.browseGenre);
+      const bankSongs = visibleSongsForGenre(state.browseGenre);
       const song = bankSongs[index] || null;
       const track = song ? primaryTrack(song, state.browseGenre) : null;
       const sideMap = song ? sidesFor(song, state.browseGenre) : {};
@@ -300,7 +354,8 @@
       button.dataset.atGate = index === state.wheelIndex ? "true" : "false";
       const playing = !!(state.currentTrack && song && state.currentTrack.composition === song.id && state.currentTrack.variantSlot === state.browseGenre);
       button.dataset.playing = playing ? "true" : "false";
-      const sideNote = sideMap.B ? " — Side A/B" : "";
+      const availableSides = sideKeys(sideMap);
+      const sideNote = availableSides.length > 1 ? ` — Sides ${availableSides.join("/")}` : "";
       button.setAttribute("aria-label", ready ? `${title} — ${track.variantLabel || humanise(state.browseGenre)}${sideNote}` : `${title} — ${humanise(state.browseGenre)} not built`);
       button.title = button.getAttribute("aria-label");
     });
@@ -357,6 +412,20 @@
 
   function rotateWheel(delta) {
     const step = delta < 0 ? -1 : 1;
+    if (!state.easter && state.browseGenre === ONE_OFF_GENRE && oneOffPageCount() > 1) {
+      const visible = visibleSongsForGenre(ONE_OFF_GENRE);
+      if (step > 0 && state.wheelIndex >= Math.max(0, visible.length - 1)) {
+        setOneOffPage(state.oneOffPage + 1, 0, false);
+        return;
+      }
+      if (step < 0 && state.wheelIndex === 0) {
+        const prevPage = ((state.oneOffPage - 1) % oneOffPageCount() + oneOffPageCount()) % oneOffPageCount();
+        const start = prevPage * ONE_OFF_PAGE_SIZE;
+        const count = Math.min(ONE_OFF_PAGE_SIZE, Math.max(0, oneOffSongs.length - start));
+        setOneOffPage(prevPage, Math.max(0, count - 1), false);
+        return;
+      }
+    }
     setWheelIndex(state.wheelIndex + step);
   }
 
@@ -370,9 +439,24 @@
     }
     const song = songForTrack(track);
     if (!song) return;
-    const index = songsForGenre(track.variantSlot).findIndex((item) => item.id === song.id);
-    if (index < 0 || index === state.wheelIndex) return;
-    setWheelIndex(index);
+    const allSongs = songsForGenre(track.variantSlot);
+    const absoluteIndex = allSongs.findIndex((item) => item.id === song.id);
+    if (absoluteIndex < 0) return;
+    if (track.variantSlot === ONE_OFF_GENRE) {
+      const page = Math.floor(absoluteIndex / ONE_OFF_PAGE_SIZE);
+      const localIndex = absoluteIndex % ONE_OFF_PAGE_SIZE;
+      if (page !== state.oneOffPage) {
+        state.oneOffPage = page;
+        if (state.browseGenre === ONE_OFF_GENRE) {
+          renderWheelContents();
+          renderMobileRail();
+          renderOneOffPager();
+        }
+      }
+      if (localIndex !== state.wheelIndex) setWheelIndex(localIndex);
+      return;
+    }
+    if (absoluteIndex !== state.wheelIndex) setWheelIndex(absoluteIndex);
   }
 
   function activateWheelSlot(index) {
@@ -383,7 +467,7 @@
       if (track) selectEasterTrack(track, continuePlaying);
       return;
     }
-    const song = songsForGenre(state.browseGenre)[index];
+    const song = visibleSongsForGenre(state.browseGenre)[index];
     const track = song ? primaryTrack(song, state.browseGenre) : null;
     if (!track) return;
     selectTrack(track, continuePlaying);
@@ -404,7 +488,7 @@
         card.innerHTML = `<strong>REJECT ${String(index+1).padStart(2,"0")}</strong><small>${track ? esc(track.displayTitle || track.filename) : "EMPTY"}</small>`;
         card.setAttribute("aria-label", track ? `Reject ${index+1}: ${track.displayTitle || track.filename}` : `Reject slot ${index+1} empty`);
       } else {
-        const song = songsForGenre(state.browseGenre)[index] || null;
+        const song = visibleSongsForGenre(state.browseGenre)[index] || null;
         const track = song ? primaryTrack(song, state.browseGenre) : null;
         card.dataset.ready = track ? "true" : "false";
         card.disabled = !track;
@@ -694,7 +778,7 @@
   async function playAudio() {
     if (!state.power) { setStatus("POWER OFF", ""); return; }
     if (!state.currentTrack) {
-      const bankSongs = songsForGenre(state.browseGenre);
+      const bankSongs = visibleSongsForGenre(state.browseGenre);
       const song = bankSongs[state.wheelIndex] || bankSongs[0];
       const track = song ? primaryTrack(song, state.browseGenre) : null;
       if (track) selectTrack(track, false);
@@ -732,8 +816,9 @@
     const variant = track.variantLabel || humanise(track.variantSlot || track.variant);
     const song = songForTrack(track);
     const sides = song ? sidesFor(song, track.variantSlot) : {};
+    const availableSides = sideKeys(sides);
     el.nowTitle.textContent = title;
-    el.nowVersion.textContent = `${variant}${sides.B ? ` · SIDE ${sideOf(track)}` : ""}`;
+    el.nowVersion.textContent = `${variant}${availableSides.length > 1 ? ` · SIDE ${sideOf(track)}` : ""}`;
     if ("mediaSession" in navigator) {
       try { navigator.mediaSession.metadata = new MediaMetadata({ title, artist: "Good Boy Records", album: variant, artwork: [{ src: artworkUrl(track,640,"webp"), sizes: "640x640", type: "image/webp" }] }); } catch (_) {}
     }
@@ -746,9 +831,16 @@
     }
     const track = state.currentTrack, song = state.currentSong;
     const sides = track && song ? sidesFor(song, track.variantSlot) : {};
-    const multi = !!(sides.A && sides.B);
-    el.sideSwitch.hidden = !multi;
-    sideButtons.forEach((button) => { const side = button.dataset.side; button.disabled = !sides[side]; button.setAttribute("aria-pressed", side === sideOf(track) ? "true" : "false"); });
+    const available = sideKeys(sides);
+    el.sideSwitch.hidden = available.length <= 1;
+    el.sideSwitch.style.setProperty("--gbr-side-count", String(Math.max(1, available.length)));
+    sideButtons.forEach((button) => {
+      const side = button.dataset.side;
+      const exists = !!sides[side];
+      button.hidden = !exists;
+      button.disabled = !exists;
+      button.setAttribute("aria-pressed", exists && side === sideOf(track) ? "true" : "false");
+    });
   }
 
   function selectSide(side) {
@@ -764,8 +856,7 @@
     const out = [];
     songsForGenre(genre).forEach((song) => {
       const sides = sidesFor(song, genre);
-      if (sides.A) out.push(sides.A);
-      if (sides.B) out.push(sides.B);
+      sideKeys(sides).forEach((side) => out.push(sides[side]));
     });
     return out;
   }

@@ -1,40 +1,43 @@
-GOOD BOY RECORDS - ONE-OFF BANK
+GOOD BOY RECORDS — ONE-OFF BANK
 
-Use this folder for standalone songs that are NOT part of the normal six-cut
-metal/pop/country/disco/orchestral/special matrix.
+Put standalone songs here when they will not participate in the normal six-genre matrix.
+The ONE-OFF bank is independent from the normal 10 song positions.
 
-Each one-off gets its own folder:
+There is NO total one-off limit. The UI presents them in magazines of 10.
+Use the compact MAGAZINE x/y control, or keep scrolling the wheel past an edge, to move between pages.
+Playback previous/next and autoplay continue across the complete one-off collection, not just the visible page.
 
-showcase/one-off/
-  johnny-three-fridges/
+Basic single-side example:
+
+showcase/one-off/johnny-three-fridges/
     johnny-three-fridges.yaml
     johnny-three-fridges.png
     johnny-three-fridges.mp3
-    johnny-three-fridges.flac          (optional)
-    johnny-three-fridges.lyrics.json   (optional)
+    johnny-three-fridges.flac        optional
+    johnny-three-fridges.lyrics.json optional
 
-The YAML uses the same generation fields as an ordinary version YAML.
-Required/recommended:
+A/B/C sides are supported and share one magazine position. You can declare the side in YAML:
 
-  title: johnny-three-fridges
-  version: murder-ballad   # optional display label; defaults to One-Off
-  model: minimax H3
-  ... normal generation metadata ...
-  inspiration:
-  inspirationyt:
-  story:
-  caption: |
-    ...
-  lyrics: |
-    ...
+    title: johnny-three-fridges
+    side: B
 
-The folder is a separate public ten-position bank. One-off songs do NOT consume
-normal 10 x 6 song positions and do NOT need empty genre variants.
+or use -a / -b / -c on the YAML filename or containing directory and the importer will infer it.
+A practical same-folder layout is:
 
-ONE-OFF behaviour:
-- selectable from the seventh ONE-OFF control
-- desktop/mobile wheel/rail remains ten positions
-- previous/next and non-shuffle autoplay stay inside ONE-OFF
-- shuffle includes ONE-OFF alongside the normal six genres
-- mobile single tap loads; double tap loads/plays as normal
-- MP3/FLAC, artwork, lyrics, YAML details and Media Session all work normally
+showcase/one-off/johnny-three-fridges/
+    johnny-three-fridges.yaml       # Side A by default
+    johnny-three-fridges.mp3
+    johnny-three-fridges.png
+
+    johnny-three-fridges-b.yaml     # inferred Side B
+    johnny-three-fridges-b.mp3
+    johnny-three-fridges-b.png      # optional; can also point cover: at shared artwork
+
+    johnny-three-fridges-c.yaml     # inferred Side C
+    johnny-three-fridges-c.mp3
+    johnny-three-fridges-c.png
+
+All sides MUST use the same title value if they are meant to share one position.
+Version / one_off_label may differ per side if desired.
+
+Supported public sides: A, B, C.

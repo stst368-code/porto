@@ -1576,3 +1576,45 @@ html[data-browse-genre="one-off"] .gbr11-genre-button[data-genre="one-off"] {
     font-size:.52rem;
   }
 }
+
+/* v11.18: scalable ONE-OFF bank + third side without disturbing the six-cut matrix. */
+.gbr11-side-switch {
+  grid-template-columns:auto repeat(var(--gbr-side-count,2),30px);
+}
+.gbr11-oneoff-pager {
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) 34px;
+  align-items:center;
+  gap:4px;
+  min-height:26px;
+  margin-top:-2px;
+  padding:2px 3px;
+  border:1px solid color-mix(in srgb,var(--gbr-line) 75%,transparent);
+  border-radius:3px;
+  background:#090604;
+  color:var(--gbr-legend);
+  font:800 var(--gbr11-type-micro)/1 var(--gbr-mono);
+  letter-spacing:.09em;
+}
+.gbr11-oneoff-pager span { text-align:center;white-space:nowrap; }
+.gbr11-oneoff-pager button {
+  min-width:0;
+  height:22px;
+  border:1px solid var(--gbr-line);
+  border-radius:2px;
+  background:linear-gradient(180deg,#1a120c,#080503);
+  color:var(--gbr-hot);
+  font:900 .56rem/1 var(--gbr-mono);
+  cursor:pointer;
+}
+.gbr11-oneoff-pager button:active { transform:translateY(1px); }
+@media (max-width:900px) {
+  .gbr11-side-switch { grid-template-columns:repeat(var(--gbr-side-count,2),28px); }
+  .gbr11-side-switch > span { display:none; }
+  .gbr11-oneoff-pager { min-height:24px;grid-template-columns:32px minmax(0,1fr) 32px; }
+}
+@media (max-width:560px) {
+  .gbr11-side-switch { grid-template-columns:repeat(var(--gbr-side-count,2),30px); }
+  .gbr11-oneoff-pager { min-height:24px;margin-top:-3px;font-size:.46rem; }
+}

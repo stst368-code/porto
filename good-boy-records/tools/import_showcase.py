@@ -74,11 +74,17 @@ def humanise(value: str) -> str:
     return re.sub(r"[-_]+", " ", str(value or "")).strip().title()
 
 
+VALID_SIDES = ("A", "B", "C")
+
 def normalise_side(value: Any) -> str:
     side = str(value or "A").strip().upper()
-    aliases = {"1": "A", "SIDE A": "A", "SIDE-A": "A", "2": "B", "SIDE B": "B", "SIDE-B": "B"}
+    aliases = {
+        "1": "A", "SIDE A": "A", "SIDE-A": "A",
+        "2": "B", "SIDE B": "B", "SIDE-B": "B",
+        "3": "C", "SIDE C": "C", "SIDE-C": "C",
+    }
     side = aliases.get(side, side)
-    return side if side in {"A", "B"} else "A"
+    return side if side in VALID_SIDES else "A"
 
 
 def choose_file(directory: Path, expected_stem: str, suffixes: set[str]) -> Path | None:
@@ -101,15 +107,25 @@ def resolve_artwork(source_yaml: Path, raw: dict[str, Any], release_id: str) -> 
             with_ext = source_yaml.parent / (str(explicit) + ext)
             if with_ext.is_file():
                 return with_ext
-    return choose_file(source_yaml.parent, release_id, IMAGE_EXTS)
+    # Side-aware one-offs are often named song-b.yaml + song-b.png rather
+    # than the generated catalogue id song-one-off-b. Honour the YAML stem
+    # before falling back to the older release-id/single-file behaviour.
+    for expected in (release_id, source_yaml.stem):
+        found = choose_file(source_yaml.parent, expected, IMAGE_EXTS)
+        if found:
+            return found
+    return None
 
 
 def resolve_audio(source_yaml: Path, release_id: str) -> dict[str, Path]:
     found: dict[str, Path] = {}
     for ext, key in ((".mp3", "mp3"), (".flac", "flac")):
-        exact = source_yaml.parent / f"{release_id}{ext}"
-        if exact.is_file():
-            found[key] = exact
+        for stem in (release_id, source_yaml.stem):
+            exact = source_yaml.parent / f"{stem}{ext}"
+            if exact.is_file():
+                found[key] = exact
+                break
+        if key in found:
             continue
         files = sorted(source_yaml.parent.glob(f"*{ext}"))
         if len(files) == 1:
@@ -121,6 +137,8 @@ def resolve_lyrics(source_yaml: Path, release_id: str) -> tuple[Path | None, dic
     candidates = [
         source_yaml.parent / f"{release_id}.lyrics.json",
         source_yaml.parent / f"{release_id}.live-lyrics.json",
+        source_yaml.parent / f"{source_yaml.stem}.lyrics.json",
+        source_yaml.parent / f"{source_yaml.stem}.live-lyrics.json",
     ]
     candidates.extend(sorted(source_yaml.parent.glob("*.lyrics.json")))
     seen: set[Path] = set()
@@ -266,40 +284,39 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
     side_explicit = side_value is not None and str(side_value).strip() != ""
     side_raw = str(side_value).strip() if side_explicit else ""
     side = normalise_side(side_raw or "A")
-    if side_explicit and side_raw.upper() not in {"A", "B", "1", "2", "SIDE A", "SIDE B", "SIDE-A", "SIDE-B"}:
+    supported_side_tokens = {"A", "B", "C", "1", "2", "3", "SIDE A", "SIDE B", "SIDE C", "SIDE-A", "SIDE-B", "SIDE-C"}
+    if side_explicit and side_raw.upper() not in supported_side_tokens:
         print(f"warn {source_yaml.relative_to(DROP)}: unsupported side {side_raw!r}; defaulting to Side A")
 
     if not side_explicit:
         inferred_side = None
-        if variant_slug.endswith("-b") and variant_slug[:-2] in VARIANT_SLOTS:
-            variant_slug = variant_slug[:-2]
-            variant_raw = humanise(variant_slug)
-            inferred_side = "B"
-        elif variant_slug.endswith("-a") and variant_slug[:-2] in VARIANT_SLOTS:
-            variant_slug = variant_slug[:-2]
-            variant_raw = humanise(variant_slug)
-            inferred_side = "A"
-        else:
+        for suffix, candidate_side in (("-c", "C"), ("-b", "B"), ("-a", "A")):
+            if variant_slug.endswith(suffix) and variant_slug[:-2] in VARIANT_SLOTS:
+                variant_slug = variant_slug[:-2]
+                variant_raw = humanise(variant_slug)
+                inferred_side = candidate_side
+                break
+        if inferred_side is None:
             folder_slug = slugify(source_yaml.parent.name)
             stem_slug = slugify(source_yaml.stem)
-            if folder_slug.endswith("-b") or stem_slug.endswith("-b"):
-                inferred_side = "B"
-            elif folder_slug.endswith("-a") or stem_slug.endswith("-a"):
-                inferred_side = "A"
+            for suffix, candidate_side in (("-c", "C"), ("-b", "B"), ("-a", "A")):
+                if folder_slug.endswith(suffix) or stem_slug.endswith(suffix):
+                    inferred_side = candidate_side
+                    break
         if inferred_side:
             side = inferred_side
             print(f"info {source_yaml.relative_to(DROP)}: inferred Side {side} from curated filename/directory")
 
     slot = variant_slug if variant_slug in VARIANT_SLOTS else "special"
     base_release_id = slugify(f"{title}-{variant_slug}")
-    release_id = base_release_id if side == "A" else slugify(f"{base_release_id}-b")
+    release_id = base_release_id if side == "A" else slugify(f"{base_release_id}-{side.lower()}")
     expected_dir = base_release_id
     accepted_dirs = {expected_dir, release_id}
     if side == "A":
         accepted_dirs.add(slugify(f"{base_release_id}-a"))
     actual_dir = slugify(source_yaml.parent.name)
     if actual_dir not in accepted_dirs:
-        expected_note = expected_dir if side == "A" else slugify(f"{base_release_id}-b")
+        expected_note = expected_dir if side == "A" else slugify(f"{base_release_id}-{side.lower()}")
         print(f"warn {source_yaml.relative_to(DROP)}: directory is {source_yaml.parent.name!r}; expected {expected_note!r}")
 
     artwork = resolve_artwork(source_yaml, raw, release_id)
@@ -422,16 +439,34 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
 
 
 def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Stage a standalone public release from showcase/one-off/.
+    """Stage one public standalone release, optionally as Side A/B/C.
 
-    One-off songs deliberately do not participate in the six-cut composition
-    matrix. Each release is one song, one public cassette position, and one
-    generated metadata record. ``version`` is optional and is used only as a
-    display label; the selectable bank remains ONE-OFF.
+    Multiple YAMLs with the same title are grouped into one ONE-OFF magazine
+    position. Side can be declared with ``side: A|B|C`` or inferred from a
+    ``-a``/``-b``/``-c`` YAML filename or directory suffix.
     """
     title = slugify(raw.get("title") or source_yaml.parent.name)
     label = str(raw.get("one_off_label") or raw.get("version") or "One-Off").strip() or "One-Off"
-    release_id = slugify(f"{title}-one-off")
+
+    side_value = raw.get("side")
+    side_explicit = side_value is not None and str(side_value).strip() != ""
+    side_raw = str(side_value).strip() if side_explicit else ""
+    side = normalise_side(side_raw or "A")
+    supported_side_tokens = {"A", "B", "C", "1", "2", "3", "SIDE A", "SIDE B", "SIDE C", "SIDE-A", "SIDE-B", "SIDE-C"}
+    if side_explicit and side_raw.upper() not in supported_side_tokens:
+        print(f"warn {source_yaml.relative_to(DROP)}: unsupported side {side_raw!r}; defaulting to Side A")
+
+    if not side_explicit:
+        folder_slug = slugify(source_yaml.parent.name)
+        stem_slug = slugify(source_yaml.stem)
+        for suffix, candidate_side in (("-c", "C"), ("-b", "B"), ("-a", "A")):
+            if folder_slug.endswith(suffix) or stem_slug.endswith(suffix):
+                side = candidate_side
+                print(f"info {source_yaml.relative_to(DROP)}: inferred Side {side} from one-off filename/directory")
+                break
+
+    composition_id = slugify(f"{title}-one-off")
+    release_id = composition_id if side == "A" else slugify(f"{composition_id}-{side.lower()}")
 
     artwork = resolve_artwork(source_yaml, raw, release_id)
     audio = resolve_audio(source_yaml, release_id)
@@ -476,14 +511,14 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
     record = {
         "id": release_id,
         "oneOff": True,
-        "composition": release_id,
+        "composition": composition_id,
         "title": title,
         "displayTitle": humanise(title),
         "slug": release_id,
         "variant": ONE_OFF_SLOT,
         "variantSlot": ONE_OFF_SLOT,
         "variantLabel": label,
-        "side": "A",
+        "side": side,
         "model": {
             "name": str(raw.get("model") or "").strip(),
             "dit": str(raw.get("dit") or "").strip(),
@@ -510,7 +545,7 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
         },
         "artwork": {
             "base": art_base,
-            "alt": f"Album artwork for {humanise(title)} — {label}",
+            "alt": f"Album artwork for {humanise(title)} — {label} — Side {side}",
             "placeholder": artwork is None,
         },
         "lyrics": {
@@ -529,10 +564,10 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
 
     manifest_entry = {
         "id": release_id,
-        "composition": release_id,
+        "composition": composition_id,
         "variant": ONE_OFF_SLOT,
         "slot": ONE_OFF_SLOT,
-        "side": "A",
+        "side": side,
         "oneOff": True,
         "source": record["source"]["directory"],
         "songYaml": None,
@@ -643,7 +678,7 @@ def main() -> int:
         if timing:
             cov = timing.get("coverage")
             timing_note = f" | lyrics {float(cov)*100:.1f}%" if isinstance(cov, (int, float)) else " | lyrics staged"
-        print(f"{record['id']} [ONE-OFF]: {' + '.join(available) if available else 'NO AUDIO'}{timing_note}")
+        print(f"{record['id']} [ONE-OFF Side {record['side']}]: {' + '.join(available) if available else 'NO AUDIO'}{timing_note}")
 
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
