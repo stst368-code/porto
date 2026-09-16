@@ -13,7 +13,6 @@
     ? catalogue.variantSlots
     : ["metal", "pop", "country", "disco", "orchestral", "special"];
   const ONE_OFF_GENRE = "one-off";
-  const ONE_OFF_PAGE_SIZE = 10;
   const SIDE_ORDER = ["A", "B", "C"];
   const BROWSE_GENRES = [...GENRES, ONE_OFF_GENRE];
   const GENRE_LABEL = {
@@ -36,7 +35,7 @@
     app: $("gbr11-app"), status: $("gbr11-status"), audio: $("gbr11-audio"),
     genreBank: $("gbr11-genre-bank"), magazineModeLabel: $("gbr11-magazine-mode-label"),
     wheelStage: $("gbr11-wheel-stage"), wheelDisc: $("gbr11-wheel-disc"), wheelSlots: $("gbr11-wheel-slots"),
-    mobileRail: $("gbr11-mobile-rail"),
+    mobileRail: $("gbr11-mobile-rail"), oneOffWall: $("gbr11-oneoff-wall"),
     lampKnob: $("gbr11-lamp-knob"),
     releaseLabel: $("gbr11-release-label"), artwork: $("gbr11-artwork"), releaseArtWrap: $("gbr11-release-art-wrap"),
     easterTerminal: $("gbr11-easter-terminal"), easterReject: $("gbr11-easter-reject"), easterFilename: $("gbr11-easter-filename"), description: $("gbr11-description"),
@@ -55,8 +54,7 @@
 
   const state = {
     browseGenre: recall("gbr11:browse-genre") || "disco",
-    mobileLastTap: { index: -1, time: 0 },
-    oneOffPage: 0,
+    mobileLastTap: { key: "", time: 0 },
     wheelIndex: 0,
     wheelSpin: 0,
     currentTrack: null,
@@ -95,13 +93,7 @@
   function clock(value) { const s = Number(value); if (!Number.isFinite(s) || s < 0) return "--:--"; const whole = Math.floor(s); return `${Math.floor(whole/60)}:${String(whole%60).padStart(2,"0")}`; }
   function songForTrack(track) { return track ? songById[String(track.composition)] || null : null; }
   function songsForGenre(genre) { return genre === ONE_OFF_GENRE ? oneOffSongs : songs; }
-  function oneOffPageCount() { return Math.max(1, Math.ceil(oneOffSongs.length / ONE_OFF_PAGE_SIZE)); }
-  function visibleSongsForGenre(genre) {
-    if (genre !== ONE_OFF_GENRE) return songsForGenre(genre);
-    const page = Math.min(Math.max(0, state.oneOffPage), oneOffPageCount() - 1);
-    const start = page * ONE_OFF_PAGE_SIZE;
-    return oneOffSongs.slice(start, start + ONE_OFF_PAGE_SIZE);
-  }
+  function visibleSongsForGenre(genre) { return songsForGenre(genre); }
   function sideIds(song, genre) { return song && song.sideIds && song.sideIds[genre] && typeof song.sideIds[genre] === "object" ? song.sideIds[genre] : {}; }
   function sidesFor(song, genre) {
     const ids = sideIds(song, genre);
@@ -124,8 +116,11 @@
     artworkPreload.set(src, image);
   }
   function preloadGenreArtwork(genre) {
-    const bank = genre === ONE_OFF_GENRE ? visibleSongsForGenre(genre) : songsForGenre(genre);
-    bank.forEach((song) => {
+    const bank = songsForGenre(genre);
+    /* The ONE-OFF wall can be arbitrarily large. Preload only its first shelf;
+       the wall images themselves are lazy-loaded as the user scrolls. */
+    const preloadBank = genre === ONE_OFF_GENRE ? bank.slice(0, 12) : bank;
+    preloadBank.forEach((song) => {
       const sides = sidesFor(song, genre);
       sideKeys(sides).forEach((side) => preloadArtwork(sides[side]));
     });
@@ -211,39 +206,80 @@
   }
 
   /* ----------------------------------------------------------- genre bank */
-  function renderOneOffPager() {
-    if (state.easter) return;
-    let pager = el.genreBank.querySelector(".gbr11-oneoff-pager");
-    const pages = oneOffPageCount();
-    const shouldShow = state.browseGenre === ONE_OFF_GENRE && pages > 1;
-    if (!shouldShow) {
-      if (pager) pager.remove();
-      return;
-    }
-    if (!pager) {
-      pager = document.createElement("div");
-      pager.className = "gbr11-oneoff-pager";
-      pager.innerHTML = '<button type="button" data-oneoff-page="prev" aria-label="Previous one-off magazine">◀</button><span></span><button type="button" data-oneoff-page="next" aria-label="Next one-off magazine">▶</button>';
-      pager.querySelector('[data-oneoff-page="prev"]').addEventListener("click", () => setOneOffPage(state.oneOffPage - 1));
-      pager.querySelector('[data-oneoff-page="next"]').addEventListener("click", () => setOneOffPage(state.oneOffPage + 1));
-      el.genreBank.appendChild(pager);
-    }
-    pager.querySelector("span").textContent = `MAGAZINE ${state.oneOffPage + 1}/${pages}`;
+  function oneOffWallItems() {
+    const items = [];
+    oneOffSongs.forEach((song) => {
+      const sides = sidesFor(song, ONE_OFF_GENRE);
+      const keys = sideKeys(sides);
+      keys.forEach((side) => items.push({ song, side, track: sides[side], multiSide: keys.length > 1 }));
+    });
+    return items;
   }
 
-  function setOneOffPage(page, preferredIndex = 0, immediate = true) {
-    const pages = oneOffPageCount();
-    const next = ((Number(page) || 0) % pages + pages) % pages;
-    state.oneOffPage = next;
-    const visible = visibleSongsForGenre(ONE_OFF_GENRE);
-    const maxIndex = Math.max(0, visible.length - 1);
-    setWheelIndex(Math.min(Math.max(0, preferredIndex), maxIndex), immediate);
-    if (state.browseGenre === ONE_OFF_GENRE) {
-      preloadGenreArtwork(ONE_OFF_GENRE);
-      renderWheelContents();
-      renderMobileRail();
-      renderOneOffPager();
+  function paintOneOffWallState() {
+    if (!el.oneOffWall) return;
+    [...el.oneOffWall.querySelectorAll(".gbr11-wall-cassette")].forEach((card) => {
+      const loaded = !!(state.currentTrack && card.dataset.trackId === String(state.currentTrack.id));
+      card.dataset.loaded = loaded ? "true" : "false";
+      card.dataset.playing = loaded && !el.audio.paused && !el.audio.ended ? "true" : "false";
+    });
+  }
+
+  function handleWallCassette(track, key) {
+    const continuePlaying = !!(el.audio && !el.audio.paused && !el.audio.ended);
+    selectTrack(track, continuePlaying);
+    if (!matchMedia("(max-width: 900px)").matches) return;
+    const now = Date.now();
+    const doubleTap = state.mobileLastTap.key === key && (now - state.mobileLastTap.time) <= 360;
+    state.mobileLastTap = { key, time: now };
+    if (doubleTap) {
+      state.mobileLastTap = { key: "", time: 0 };
+      playAudio();
     }
+  }
+
+  function renderOneOffWall() {
+    if (!el.oneOffWall) return;
+    el.oneOffWall.replaceChildren();
+    const items = oneOffWallItems();
+    if (!items.length) {
+      const empty = document.createElement("div");
+      empty.className = "gbr11-wall-empty";
+      empty.innerHTML = "<strong>ONE-OFF WALL EMPTY</strong><span>DROP RELEASES INTO showcase/one-off/</span>";
+      el.oneOffWall.appendChild(empty);
+      return;
+    }
+
+    const rotations = [-1.8, .9, -.7, 1.5, -.35, 1.15, -1.25, .45, 1.85, -.9, .65, -1.55];
+    const shiftsX = [-2, 1, 3, -1, 0, 2, -3, 1, -1, 2, 0, -2];
+    const shiftsY = [1, -2, 2, 0, -1, 2, 0, -2, 1, -1, 2, 0];
+    items.forEach((item, index) => {
+      const { song, track, side, multiSide } = item;
+      if (!track) return;
+      const title = song.title || track.displayTitle || humanise(song.id);
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "gbr11-wall-cassette";
+      card.dataset.trackId = String(track.id);
+      card.dataset.side = side;
+      card.style.setProperty("--wall-rot", `${rotations[index % rotations.length]}deg`);
+      card.style.setProperty("--wall-x", `${shiftsX[index % shiftsX.length]}px`);
+      card.style.setProperty("--wall-y", `${shiftsY[index % shiftsY.length]}px`);
+      const sideBadge = multiSide || side !== "A" ? `<span class="gbr11-wall-side">SIDE ${esc(side)}</span>` : "";
+      card.innerHTML = `<span class="gbr11-wall-case"><img src="${artworkUrl(track,640,"webp")}" alt="${esc(`Album artwork for ${title}${multiSide ? `, Side ${side}` : ""}`)}" loading="lazy" decoding="async">${sideBadge}</span><span class="gbr11-wall-label"><strong>${esc(title)}</strong><small>${esc(track.variantLabel || "ONE-OFF")}</small></span>`;
+      card.setAttribute("aria-label", `${title}${multiSide || side !== "A" ? `, Side ${side}` : ""} — ${track.variantLabel || "One-off"}`);
+      card.title = card.getAttribute("aria-label");
+      card.addEventListener("click", () => handleWallCassette(track, String(track.id)));
+      el.oneOffWall.appendChild(card);
+    });
+    paintOneOffWallState();
+  }
+
+  function updateMagazineModeLabel() {
+    if (!el.magazineModeLabel) return;
+    if (state.easter) el.magazineModeLabel.textContent = "SERVICE BANK // REJECT MASTERS";
+    else if (state.browseGenre === ONE_OFF_GENRE) el.magazineModeLabel.textContent = "ONE-OFF CASSETTE WALL · ALL RELEASES AND SIDES";
+    else el.magazineModeLabel.textContent = "10 SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK";
   }
 
   function renderGenreBank() {
@@ -265,7 +301,7 @@
       button.addEventListener("click", () => setBrowseGenre(genre));
       el.genreBank.appendChild(button);
     });
-    renderOneOffPager();
+    updateMagazineModeLabel();
   }
 
   function setBrowseGenre(genre) {
@@ -279,7 +315,8 @@
     if (bankSongs.length && !bankSongs[state.wheelIndex]) setWheelIndex(0, true);
     renderWheelContents();
     renderMobileRail();
-    renderOneOffPager();
+    renderOneOffWall();
+    updateMagazineModeLabel();
     updateThemeMeta();
     /* Deliberate boundary: browsing a genre does not touch el.audio, currentTrack, currentTime or play state. */
   }
@@ -412,20 +449,6 @@
 
   function rotateWheel(delta) {
     const step = delta < 0 ? -1 : 1;
-    if (!state.easter && state.browseGenre === ONE_OFF_GENRE && oneOffPageCount() > 1) {
-      const visible = visibleSongsForGenre(ONE_OFF_GENRE);
-      if (step > 0 && state.wheelIndex >= Math.max(0, visible.length - 1)) {
-        setOneOffPage(state.oneOffPage + 1, 0, false);
-        return;
-      }
-      if (step < 0 && state.wheelIndex === 0) {
-        const prevPage = ((state.oneOffPage - 1) % oneOffPageCount() + oneOffPageCount()) % oneOffPageCount();
-        const start = prevPage * ONE_OFF_PAGE_SIZE;
-        const count = Math.min(ONE_OFF_PAGE_SIZE, Math.max(0, oneOffSongs.length - start));
-        setOneOffPage(prevPage, Math.max(0, count - 1), false);
-        return;
-      }
-    }
     setWheelIndex(state.wheelIndex + step);
   }
 
@@ -443,17 +466,7 @@
     const absoluteIndex = allSongs.findIndex((item) => item.id === song.id);
     if (absoluteIndex < 0) return;
     if (track.variantSlot === ONE_OFF_GENRE) {
-      const page = Math.floor(absoluteIndex / ONE_OFF_PAGE_SIZE);
-      const localIndex = absoluteIndex % ONE_OFF_PAGE_SIZE;
-      if (page !== state.oneOffPage) {
-        state.oneOffPage = page;
-        if (state.browseGenre === ONE_OFF_GENRE) {
-          renderWheelContents();
-          renderMobileRail();
-          renderOneOffPager();
-        }
-      }
-      if (localIndex !== state.wheelIndex) setWheelIndex(localIndex);
+      paintOneOffWallState();
       return;
     }
     if (absoluteIndex !== state.wheelIndex) setWheelIndex(absoluteIndex);
@@ -475,6 +488,7 @@
 
   function renderMobileRail() {
     el.mobileRail.replaceChildren();
+    if (!state.easter && state.browseGenre === ONE_OFF_GENRE) return;
     for (let index = 0; index < 10; index++) {
       const card = document.createElement("button");
       card.type = "button";
@@ -499,11 +513,12 @@
       card.title = card.getAttribute("aria-label");
       card.addEventListener("click", () => {
         const now = Date.now();
-        const doubleTap = state.mobileLastTap.index === index && (now - state.mobileLastTap.time) <= 360;
-        state.mobileLastTap = { index, time: now };
+        const key = `rail:${index}`;
+        const doubleTap = state.mobileLastTap.key === key && (now - state.mobileLastTap.time) <= 360;
+        state.mobileLastTap = { key, time: now };
         activateWheelSlot(index);
         if (doubleTap) {
-          state.mobileLastTap = { index: -1, time: 0 };
+          state.mobileLastTap = { key: "", time: 0 };
           playAudio();
         }
       });
@@ -761,6 +776,7 @@
     renderPlaybackIdentity();
     renderWheelContents();
     renderMobileRail();
+    paintOneOffWallState();
     loadLyrics(track);
     paintQuality();
     updateSideSwitch();
@@ -1224,11 +1240,12 @@
     state.easter = next;
     el.app.dataset.easter = state.easter ? "true" : "false";
     document.documentElement.dataset.easter = state.easter ? "true" : "false";
-    if (el.magazineModeLabel) el.magazineModeLabel.textContent = state.easter ? "SERVICE BANK // REJECT MASTERS" : "10 SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK";
+    updateMagazineModeLabel();
     renderGenreBank();
     state.wheelIndex = 0;
     renderWheelContents();
     renderMobileRail();
+    renderOneOffWall();
 
     if (state.easter) {
       if (easterTracks.length) selectEasterTrack(easterTracks[0], false);
@@ -1256,6 +1273,8 @@
       renderGenreBank();
       renderWheelContents();
       renderMobileRail();
+      renderOneOffWall();
+      updateMagazineModeLabel();
       setStatus(restore ? "PAUSED" : "READY", "");
     }
     updateThemeMeta();
@@ -1311,8 +1330,8 @@
     qualityButtons.forEach((button)=>button.addEventListener("click",()=>setQuality(button.dataset.quality,true)));
     el.progress.addEventListener("input",()=>{if(Number.isFinite(el.audio.duration))el.audio.currentTime=Number(el.progress.value)||0;updateTransport();});
 
-    el.audio.addEventListener("play",()=>{syncWheelToTrack(state.currentTrack);el.play.textContent="❚❚";setStatus("PLAYING","live");});
-    el.audio.addEventListener("pause",()=>{el.play.textContent="▶";if(!el.audio.ended)setStatus(state.power ? "PAUSED" : "POWER OFF","");});
+    el.audio.addEventListener("play",()=>{syncWheelToTrack(state.currentTrack);paintOneOffWallState();el.play.textContent="❚❚";setStatus("PLAYING","live");});
+    el.audio.addEventListener("pause",()=>{paintOneOffWallState();el.play.textContent="▶";if(!el.audio.ended)setStatus(state.power ? "PAUSED" : "POWER OFF","");});
     el.audio.addEventListener("timeupdate",updateTransport); el.audio.addEventListener("loadedmetadata",()=>{updateTransport(); if(!state.lyricLines.length&&state.currentTrack)state.lyricLines=fallbackLyricLines(state.currentTrack);});
     el.audio.addEventListener("ended",()=>nextPlayback(true));
     el.audio.addEventListener("canplay",()=>{ if (el.audio.paused) setStatus("LOADED",""); });
@@ -1350,14 +1369,14 @@
     el.app.dataset.easter = "false";
     document.documentElement.dataset.easter = "false";
     document.documentElement.dataset.browseGenre = state.browseGenre;
-    renderGenreBank(); preloadAllWheelArtwork(); buildWheel(); renderMobileRail(); setupWheelInput(); buildVolumeMeter(); setupFolders(); wireControls();
+    renderGenreBank(); preloadAllWheelArtwork(); buildWheel(); renderMobileRail(); renderOneOffWall(); setupWheelInput(); buildVolumeMeter(); setupFolders(); wireControls();
     el.shuffle.setAttribute("aria-pressed", state.shuffle ? "true" : "false");
     applyVolume(false); paintQuality();
     const track = initialTrack();
     if (track) {
       const targetGenre = track.variantSlot && BROWSE_GENRES.includes(track.variantSlot) ? track.variantSlot : state.browseGenre;
       if (targetGenre !== state.browseGenre) setBrowseGenre(targetGenre);
-      const song = songForTrack(track); const idx = songsForGenre(targetGenre).findIndex((item)=>item.id===(song&&song.id)); if(idx>=0)setWheelIndex(idx,true);
+      const song = songForTrack(track); const idx = songsForGenre(targetGenre).findIndex((item)=>item.id===(song&&song.id)); if(idx>=0 && targetGenre !== ONE_OFF_GENRE)setWheelIndex(idx,true);
       selectTrack(track,false);
       positionWheel();
     } else { setStatus("EMPTY","fault"); }
