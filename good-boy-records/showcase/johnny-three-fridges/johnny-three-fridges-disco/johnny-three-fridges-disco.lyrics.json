@@ -2,9 +2,9 @@
   "format": "gbr-word-lyrics-v1",
   "version": 2,
   "title": "johnny-three-fridges",
-  "song_version": "country",
-  "source_yaml": "one-off/johnny-three-fridges/johnny-three-fridges.yaml",
-  "source_audio": "johnny-three-fridges.flac",
+  "song_version": "disco",
+  "source_yaml": "johnny-three-fridges/johnny-three-fridges-disco/johnny-three-fridges-disco.yaml",
+  "source_audio": "johnny-three-fridges-disco.flac",
   "language": "en",
   "engine": "demucs:htdemucs+whisperx:large-v3",
   "runtime": {
@@ -15,12 +15,12 @@
     "batch_size": 4,
     "cpu_fallback_used": false
   },
-  "generated_at": "2026-09-16T20:03:14+00:00",
+  "generated_at": "2026-09-22T21:42:16+00:00",
   "stats": {
-    "lyric_words": 373,
-    "recognised_words": 376,
-    "matched_words": 357,
-    "coverage": 0.9571
+    "lyric_words": 425,
+    "recognised_words": 421,
+    "matched_words": 395,
+    "coverage": 0.9294
   },
   "quality": {
     "rating": "excellent",
@@ -33,31 +33,31 @@
     {
       "id": "l1",
       "text": "they call him Johnny",
-      "start": 0.131,
-      "end": 2.213,
+      "start": 0.071,
+      "end": 1.893,
       "words": [
         {
           "text": "they",
-          "start": 0.131,
-          "end": 0.351,
+          "start": 0.071,
+          "end": 0.271,
           "matched": true
         },
         {
           "text": "call",
-          "start": 0.451,
-          "end": 0.992,
+          "start": 0.331,
+          "end": 0.632,
           "matched": true
         },
         {
           "text": "him",
-          "start": 1.052,
-          "end": 1.212,
+          "start": 0.672,
+          "end": 0.792,
           "matched": true
         },
         {
           "text": "Johnny",
-          "start": 1.332,
-          "end": 2.213,
+          "start": 1.132,
+          "end": 1.893,
           "matched": true
         }
       ]
@@ -65,25 +65,25 @@
     {
       "id": "l2",
       "text": "Johnny, Three Fridges",
-      "start": 3.994,
-      "end": 5.635,
+      "start": 3.774,
+      "end": 5.576,
       "words": [
         {
           "text": "Johnny,",
-          "start": 3.994,
-          "end": 4.515,
+          "start": 3.774,
+          "end": 4.495,
           "matched": true
         },
         {
           "text": "Three",
           "start": 4.555,
-          "end": 4.795,
+          "end": 4.815,
           "matched": true
         },
         {
           "text": "Fridges",
-          "start": 4.855,
-          "end": 5.635,
+          "start": 4.936,
+          "end": 5.576,
           "matched": true
         }
       ]
@@ -91,49 +91,49 @@
     {
       "id": "l3",
       "text": "a name enough to chill the bone",
-      "start": 5.655,
-      "end": 8.618,
+      "start": 7.518,
+      "end": 10.341,
       "words": [
         {
           "text": "a",
-          "start": 5.655,
-          "end": 5.675,
+          "start": 7.518,
+          "end": 7.598,
           "matched": true
         },
         {
           "text": "name",
-          "start": 5.796,
-          "end": 6.376,
+          "start": 7.738,
+          "end": 8.139,
           "matched": true
         },
         {
           "text": "enough",
-          "start": 6.436,
-          "end": 6.916,
+          "start": 8.219,
+          "end": 8.499,
           "matched": true
         },
         {
           "text": "to",
-          "start": 6.956,
-          "end": 7.057,
+          "start": 8.539,
+          "end": 8.639,
           "matched": true
         },
         {
           "text": "chill",
-          "start": 7.197,
-          "end": 7.817,
+          "start": 8.739,
+          "end": 9.26,
           "matched": true
         },
         {
           "text": "the",
-          "start": 7.857,
-          "end": 7.997,
+          "start": 9.32,
+          "end": 9.44,
           "matched": true
         },
         {
           "text": "bone",
-          "start": 8.097,
-          "end": 8.618,
+          "start": 9.56,
+          "end": 10.341,
           "matched": true
         }
       ]
@@ -141,37 +141,37 @@
     {
       "id": "l4",
       "text": "once you've heard my story",
-      "start": 10.179,
-      "end": 12.241,
+      "start": 12.222,
+      "end": 13.564,
       "words": [
         {
           "text": "once",
-          "start": 10.179,
-          "end": 10.439,
+          "start": 12.222,
+          "end": 12.362,
           "matched": true
         },
         {
           "text": "you've",
-          "start": 10.499,
-          "end": 10.739,
+          "start": 12.402,
+          "end": 12.503,
           "matched": true
         },
         {
           "text": "heard",
-          "start": 10.78,
-          "end": 11.04,
+          "start": 12.543,
+          "end": 12.723,
           "matched": true
         },
         {
           "text": "my",
-          "start": 11.1,
-          "end": 11.46,
+          "start": 12.763,
+          "end": 12.883,
           "matched": true
         },
         {
           "text": "story",
-          "start": 11.56,
-          "end": 12.241,
+          "start": 12.943,
+          "end": 13.564,
           "matched": true
         }
       ]
@@ -179,2555 +179,2955 @@
     {
       "id": "l5",
       "text": "i'll let you judge if you're safe at home",
-      "start": 12.401,
-      "end": 15.824,
+      "start": 14.444,
+      "end": 16.746,
       "words": [
         {
           "text": "i'll",
-          "start": 12.401,
-          "end": 12.521,
+          "start": 14.444,
+          "end": 14.604,
           "matched": true
         },
         {
           "text": "let",
-          "start": 12.561,
-          "end": 12.761,
+          "start": 14.625,
+          "end": 14.805,
           "matched": true
         },
         {
           "text": "you",
-          "start": 12.821,
-          "end": 13.001,
+          "start": 14.845,
+          "end": 14.945,
           "matched": true
         },
         {
           "text": "judge",
-          "start": 13.101,
-          "end": 13.722,
+          "start": 14.985,
+          "end": 15.405,
           "matched": true
         },
         {
           "text": "if",
-          "start": 13.842,
-          "end": 13.962,
+          "start": 15.485,
+          "end": 15.565,
           "matched": true
         },
         {
           "text": "you're",
-          "start": 14.002,
-          "end": 14.182,
+          "start": 15.605,
+          "end": 15.826,
           "matched": true
         },
         {
           "text": "safe",
-          "start": 14.282,
-          "end": 14.883,
+          "start": 15.906,
+          "end": 16.226,
           "matched": true
         },
         {
           "text": "at",
-          "start": 15.023,
-          "end": 15.143,
+          "start": 16.266,
+          "end": 16.326,
           "matched": true
         },
         {
           "text": "home",
-          "start": 15.183,
-          "end": 15.824,
+          "start": 16.366,
+          "end": 16.746,
           "matched": true
         }
       ]
     },
     {
       "id": "l6",
-      "text": "so, what's a man to do with three whole fridges",
-      "start": 19.426,
-      "end": 22.949,
+      "text": "so,",
+      "start": 16.746,
+      "end": 19.555,
       "words": [
         {
           "text": "so,",
-          "start": 19.426,
-          "end": 19.566,
-          "matched": true
-        },
-        {
-          "text": "what's",
-          "start": 19.607,
-          "end": 19.827,
-          "matched": true
-        },
-        {
-          "text": "a",
-          "start": 19.867,
-          "end": 19.887,
-          "matched": true
-        },
-        {
-          "text": "man",
-          "start": 19.967,
-          "end": 20.487,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 20.527,
-          "end": 20.647,
-          "matched": true
-        },
-        {
-          "text": "do",
-          "start": 20.767,
-          "end": 21.028,
-          "matched": true
-        },
-        {
-          "text": "with",
-          "start": 21.088,
-          "end": 21.248,
-          "matched": true
-        },
-        {
-          "text": "three",
-          "start": 21.348,
-          "end": 21.628,
-          "matched": true
-        },
-        {
-          "text": "whole",
-          "start": 21.688,
-          "end": 22.109,
-          "matched": true
-        },
-        {
-          "text": "fridges",
-          "start": 22.229,
-          "end": 22.949,
-          "matched": true
+          "start": 16.746,
+          "end": 19.555,
+          "matched": false
         }
       ]
     },
     {
       "id": "l7",
-      "text": "one for food, one for beer",
-      "start": 24.13,
-      "end": 27.373,
+      "text": "what's a man to do with three whole fridges",
+      "start": 19.555,
+      "end": 21.616,
       "words": [
         {
-          "text": "one",
-          "start": 24.13,
-          "end": 24.29,
+          "text": "what's",
+          "start": 19.555,
+          "end": 19.735,
           "matched": true
         },
         {
-          "text": "for",
-          "start": 24.33,
-          "end": 24.45,
+          "text": "a",
+          "start": 19.775,
+          "end": 19.815,
           "matched": true
         },
         {
-          "text": "food,",
-          "start": 24.59,
-          "end": 26.352,
+          "text": "man",
+          "start": 19.855,
+          "end": 20.095,
           "matched": true
         },
         {
-          "text": "one",
-          "start": 26.492,
-          "end": 26.652,
+          "text": "to",
+          "start": 20.135,
+          "end": 20.215,
           "matched": true
         },
         {
-          "text": "for",
-          "start": 26.692,
-          "end": 26.832,
+          "text": "do",
+          "start": 20.255,
+          "end": 20.436,
           "matched": true
         },
         {
-          "text": "beer",
-          "start": 26.932,
-          "end": 27.373,
+          "text": "with",
+          "start": 20.496,
+          "end": 20.616,
+          "matched": true
+        },
+        {
+          "text": "three",
+          "start": 20.656,
+          "end": 20.876,
+          "matched": true
+        },
+        {
+          "text": "whole",
+          "start": 20.916,
+          "end": 21.116,
+          "matched": true
+        },
+        {
+          "text": "fridges",
+          "start": 21.156,
+          "end": 21.616,
           "matched": true
         }
       ]
     },
     {
       "id": "l8",
-      "text": "third one you'll never get near",
-      "start": 29.265,
-      "end": 32.046,
+      "text": "one for food, one for beer",
+      "start": 22.036,
+      "end": 23.737,
       "words": [
         {
-          "text": "third",
-          "start": 29.265,
-          "end": 29.825,
+          "text": "one",
+          "start": 22.036,
+          "end": 22.177,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 22.197,
+          "end": 22.297,
+          "matched": true
+        },
+        {
+          "text": "food,",
+          "start": 22.357,
+          "end": 22.617,
           "matched": true
         },
         {
           "text": "one",
-          "start": 30.005,
-          "end": 30.125,
+          "start": 23.077,
+          "end": 23.237,
           "matched": true
         },
         {
-          "text": "you'll",
-          "start": 30.165,
-          "end": 30.725,
+          "text": "for",
+          "start": 23.257,
+          "end": 23.377,
           "matched": true
         },
         {
-          "text": "never",
-          "start": 30.805,
-          "end": 31.086,
-          "matched": true
-        },
-        {
-          "text": "get",
-          "start": 31.146,
-          "end": 31.526,
-          "matched": true
-        },
-        {
-          "text": "near",
-          "start": 31.666,
-          "end": 32.046,
+          "text": "beer",
+          "start": 23.417,
+          "end": 23.737,
           "matched": true
         }
       ]
     },
     {
       "id": "l9",
-      "text": "he'll have you over, n' cook you dinner",
-      "start": 33.406,
-      "end": 36.827,
+      "text": "third one you'll never get near",
+      "start": 23.798,
+      "end": 25.639,
       "words": [
         {
-          "text": "he'll",
-          "start": 33.406,
-          "end": 33.726,
+          "text": "third",
+          "start": 23.798,
+          "end": 24.038,
           "matched": true
         },
         {
-          "text": "have",
-          "start": 33.786,
-          "end": 33.986,
+          "text": "one",
+          "start": 24.178,
+          "end": 24.298,
           "matched": true
         },
         {
-          "text": "you",
-          "start": 34.046,
-          "end": 34.267,
+          "text": "you'll",
+          "start": 24.318,
+          "end": 24.538,
           "matched": true
         },
         {
-          "text": "over,",
-          "start": 34.487,
-          "end": 34.827,
+          "text": "never",
+          "start": 24.598,
+          "end": 24.998,
           "matched": true
         },
         {
-          "text": "n'",
-          "start": 34.827,
-          "end": 35.747,
-          "matched": false
-        },
-        {
-          "text": "cook",
-          "start": 35.747,
-          "end": 36.047,
+          "text": "get",
+          "start": 25.138,
+          "end": 25.338,
           "matched": true
         },
         {
-          "text": "you",
-          "start": 36.087,
-          "end": 36.287,
-          "matched": true
-        },
-        {
-          "text": "dinner",
-          "start": 36.367,
-          "end": 36.827,
+          "text": "near",
+          "start": 25.398,
+          "end": 25.639,
           "matched": true
         }
       ]
     },
     {
       "id": "l10",
-      "text": "delicious to eat, calories for a sinner",
-      "start": 38.688,
-      "end": 42.749,
+      "text": "he'll have you over, n' cook you dinner",
+      "start": 25.919,
+      "end": 28.7,
       "words": [
         {
-          "text": "delicious",
-          "start": 38.688,
-          "end": 39.508,
+          "text": "he'll",
+          "start": 25.919,
+          "end": 26.199,
           "matched": true
         },
         {
-          "text": "to",
-          "start": 39.588,
-          "end": 39.748,
+          "text": "have",
+          "start": 26.239,
+          "end": 26.419,
           "matched": true
         },
         {
-          "text": "eat,",
-          "start": 40.028,
-          "end": 40.228,
+          "text": "you",
+          "start": 26.459,
+          "end": 26.599,
           "matched": true
         },
         {
-          "text": "calories",
-          "start": 40.728,
-          "end": 41.609,
+          "text": "over,",
+          "start": 26.839,
+          "end": 27.079,
           "matched": true
         },
         {
-          "text": "for",
-          "start": 41.689,
-          "end": 42.009,
+          "text": "n'",
+          "start": 27.079,
+          "end": 27.74,
+          "matched": false
+        },
+        {
+          "text": "cook",
+          "start": 27.74,
+          "end": 28.0,
           "matched": true
         },
         {
-          "text": "a",
-          "start": 42.049,
-          "end": 42.089,
+          "text": "you",
+          "start": 28.02,
+          "end": 28.22,
           "matched": true
         },
         {
-          "text": "sinner",
-          "start": 42.209,
-          "end": 42.749,
+          "text": "dinner",
+          "start": 28.28,
+          "end": 28.7,
           "matched": true
         }
       ]
     },
     {
       "id": "l11",
-      "text": "hear it hum, hear it shiver",
-      "start": 43.689,
-      "end": 46.23,
+      "text": "delicious to eat, calories for a sinner",
+      "start": 29.061,
+      "end": 32.102,
       "words": [
         {
-          "text": "hear",
-          "start": 43.689,
-          "end": 44.049,
+          "text": "delicious",
+          "start": 29.061,
+          "end": 29.561,
           "matched": true
         },
         {
-          "text": "it",
-          "start": 44.149,
-          "end": 44.229,
+          "text": "to",
+          "start": 29.581,
+          "end": 29.681,
           "matched": true
         },
         {
-          "text": "hum,",
-          "start": 44.289,
-          "end": 44.67,
+          "text": "eat,",
+          "start": 29.781,
+          "end": 29.921,
           "matched": true
         },
         {
-          "text": "hear",
-          "start": 45.17,
-          "end": 45.49,
+          "text": "calories",
+          "start": 30.361,
+          "end": 31.062,
           "matched": true
         },
         {
-          "text": "it",
-          "start": 45.55,
-          "end": 45.63,
+          "text": "for",
+          "start": 31.182,
+          "end": 31.502,
           "matched": true
         },
         {
-          "text": "shiver",
-          "start": 45.73,
-          "end": 46.23,
+          "text": "a",
+          "start": 31.522,
+          "end": 31.542,
+          "matched": true
+        },
+        {
+          "text": "sinner",
+          "start": 31.662,
+          "end": 32.102,
           "matched": true
         }
       ]
     },
     {
       "id": "l12",
-      "text": "go near fridge three and you'll hear him snigger",
-      "start": 48.691,
-      "end": 52.132,
+      "text": "hear it hum, hear it shiver",
+      "start": 32.483,
+      "end": 34.364,
       "words": [
         {
-          "text": "go",
-          "start": 48.691,
-          "end": 48.951,
+          "text": "hear",
+          "start": 32.483,
+          "end": 32.703,
           "matched": true
         },
         {
-          "text": "near",
-          "start": 49.011,
-          "end": 49.231,
+          "text": "it",
+          "start": 32.763,
+          "end": 32.863,
           "matched": true
         },
         {
-          "text": "fridge",
-          "start": 49.291,
-          "end": 49.571,
-          "matched": true
-        },
-        {
-          "text": "three",
-          "start": 49.631,
-          "end": 50.171,
-          "matched": true
-        },
-        {
-          "text": "and",
-          "start": 50.311,
-          "end": 50.431,
-          "matched": true
-        },
-        {
-          "text": "you'll",
-          "start": 50.471,
-          "end": 50.751,
+          "text": "hum,",
+          "start": 32.903,
+          "end": 33.283,
           "matched": true
         },
         {
           "text": "hear",
-          "start": 50.791,
-          "end": 51.052,
+          "start": 33.543,
+          "end": 33.703,
           "matched": true
         },
         {
-          "text": "him",
-          "start": 51.112,
-          "end": 51.452,
+          "text": "it",
+          "start": 33.763,
+          "end": 33.864,
           "matched": true
         },
         {
-          "text": "snigger",
-          "start": 51.572,
-          "end": 52.132,
+          "text": "shiver",
+          "start": 33.904,
+          "end": 34.364,
           "matched": true
         }
       ]
     },
     {
       "id": "l13",
-      "text": "so what he heck is going down",
-      "start": 52.812,
-      "end": 55.673,
+      "text": "go near fridge three and you'll hear him snigger",
+      "start": 34.864,
+      "end": 38.446,
       "words": [
         {
-          "text": "so",
-          "start": 52.812,
-          "end": 53.052,
+          "text": "go",
+          "start": 34.864,
+          "end": 35.104,
           "matched": true
         },
         {
-          "text": "what",
-          "start": 53.112,
-          "end": 53.312,
+          "text": "near",
+          "start": 35.144,
+          "end": 35.505,
           "matched": true
         },
         {
-          "text": "he",
-          "start": 53.332,
-          "end": 53.672,
+          "text": "fridge",
+          "start": 35.625,
+          "end": 36.085,
           "matched": true
         },
         {
-          "text": "heck",
-          "start": 53.732,
-          "end": 54.012,
+          "text": "three",
+          "start": 36.145,
+          "end": 36.445,
           "matched": true
         },
         {
-          "text": "is",
-          "start": 54.112,
-          "end": 54.232,
+          "text": "and",
+          "start": 36.485,
+          "end": 36.565,
           "matched": true
         },
         {
-          "text": "going",
-          "start": 54.292,
-          "end": 55.133,
+          "text": "you'll",
+          "start": 36.605,
+          "end": 36.925,
           "matched": true
         },
         {
-          "text": "down",
-          "start": 55.213,
-          "end": 55.673,
+          "text": "hear",
+          "start": 36.965,
+          "end": 37.386,
+          "matched": true
+        },
+        {
+          "text": "him",
+          "start": 37.466,
+          "end": 37.826,
+          "matched": true
+        },
+        {
+          "text": "snigger",
+          "start": 37.926,
+          "end": 38.446,
           "matched": true
         }
       ]
     },
     {
       "id": "l14",
-      "text": "in that sweet ol' minnesota town?",
-      "start": 55.673,
-      "end": 59.732,
+      "text": "so what he heck is going down",
+      "start": 38.526,
+      "end": 40.767,
       "words": [
         {
-          "text": "in",
-          "start": 55.673,
-          "end": 57.228,
+          "text": "so",
+          "start": 38.526,
+          "end": 38.766,
+          "matched": true
+        },
+        {
+          "text": "what",
+          "start": 38.806,
+          "end": 39.047,
+          "matched": true
+        },
+        {
+          "text": "he",
+          "start": 39.047,
+          "end": 39.314,
           "matched": false
         },
         {
-          "text": "that",
-          "start": 57.228,
-          "end": 57.428,
+          "text": "heck",
+          "start": 39.314,
+          "end": 39.58,
+          "matched": false
+        },
+        {
+          "text": "is",
+          "start": 39.58,
+          "end": 39.847,
+          "matched": false
+        },
+        {
+          "text": "going",
+          "start": 39.847,
+          "end": 40.307,
           "matched": true
         },
         {
-          "text": "sweet",
-          "start": 57.489,
-          "end": 58.129,
-          "matched": true
-        },
-        {
-          "text": "ol'",
-          "start": 58.23,
-          "end": 58.39,
-          "matched": true
-        },
-        {
-          "text": "minnesota",
-          "start": 58.43,
-          "end": 59.611,
-          "matched": true
-        },
-        {
-          "text": "town?",
-          "start": 59.632,
-          "end": 59.732,
+          "text": "down",
+          "start": 40.387,
+          "end": 40.767,
           "matched": true
         }
       ]
     },
     {
       "id": "l15",
-      "text": "well keep on 'a listenin'",
-      "start": 59.732,
-      "end": 64.17,
+      "text": "in that sweet ol' minnesota town?",
+      "start": 40.948,
+      "end": 43.008,
       "words": [
         {
-          "text": "well",
-          "start": 59.732,
-          "end": 62.509,
-          "matched": false
-        },
-        {
-          "text": "keep",
-          "start": 62.509,
-          "end": 62.829,
+          "text": "in",
+          "start": 40.948,
+          "end": 41.028,
           "matched": true
         },
         {
-          "text": "on",
-          "start": 63.089,
-          "end": 63.37,
+          "text": "that",
+          "start": 41.068,
+          "end": 41.208,
           "matched": true
         },
         {
-          "text": "'a",
-          "start": 63.37,
-          "end": 63.45,
-          "matched": false
+          "text": "sweet",
+          "start": 41.268,
+          "end": 41.568,
+          "matched": true
         },
         {
-          "text": "listenin'",
-          "start": 63.45,
-          "end": 64.17,
+          "text": "ol'",
+          "start": 41.608,
+          "end": 41.708,
+          "matched": true
+        },
+        {
+          "text": "minnesota",
+          "start": 41.728,
+          "end": 42.368,
+          "matched": true
+        },
+        {
+          "text": "town?",
+          "start": 42.488,
+          "end": 43.008,
           "matched": true
         }
       ]
     },
     {
       "id": "l16",
-      "text": "cuz I know the story, i wrote it down",
-      "start": 64.17,
-      "end": 68.292,
+      "text": "well keep on 'a listenin'",
+      "start": 43.249,
+      "end": 44.769,
       "words": [
         {
-          "text": "cuz",
-          "start": 64.17,
-          "end": 64.69,
+          "text": "well",
+          "start": 43.249,
+          "end": 43.449,
+          "matched": true
+        },
+        {
+          "text": "keep",
+          "start": 43.529,
+          "end": 43.789,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 43.969,
+          "end": 44.249,
+          "matched": true
+        },
+        {
+          "text": "'a",
+          "start": 44.249,
+          "end": 44.329,
           "matched": false
         },
         {
-          "text": "I",
-          "start": 64.69,
-          "end": 64.79,
-          "matched": true
-        },
-        {
-          "text": "know",
-          "start": 65.151,
-          "end": 65.451,
-          "matched": true
-        },
-        {
-          "text": "the",
-          "start": 65.491,
-          "end": 65.591,
-          "matched": true
-        },
-        {
-          "text": "story,",
-          "start": 65.671,
-          "end": 66.331,
-          "matched": true
-        },
-        {
-          "text": "i",
-          "start": 66.511,
-          "end": 66.611,
-          "matched": true
-        },
-        {
-          "text": "wrote",
-          "start": 66.651,
-          "end": 66.992,
-          "matched": true
-        },
-        {
-          "text": "it",
-          "start": 67.032,
-          "end": 67.092,
-          "matched": true
-        },
-        {
-          "text": "down",
-          "start": 67.232,
-          "end": 68.292,
+          "text": "listenin'",
+          "start": 44.329,
+          "end": 44.769,
           "matched": true
         }
       ]
     },
     {
       "id": "l17",
-      "text": "ol' Johnny Three Fridges, sinister by name",
-      "start": 68.292,
-      "end": 73.515,
+      "text": "cuz I know the story,",
+      "start": 44.769,
+      "end": 46.09,
       "words": [
         {
-          "text": "ol'",
-          "start": 68.292,
-          "end": 69.593,
+          "text": "cuz",
+          "start": 44.769,
+          "end": 45.069,
           "matched": false
         },
         {
-          "text": "Johnny",
-          "start": 69.593,
-          "end": 70.053,
+          "text": "I",
+          "start": 45.069,
+          "end": 45.169,
           "matched": true
         },
         {
-          "text": "Three",
-          "start": 70.153,
-          "end": 70.614,
+          "text": "know",
+          "start": 45.229,
+          "end": 45.429,
           "matched": true
         },
         {
-          "text": "Fridges,",
-          "start": 70.754,
-          "end": 71.294,
+          "text": "the",
+          "start": 45.47,
+          "end": 45.55,
           "matched": true
         },
         {
-          "text": "sinister",
-          "start": 71.634,
-          "end": 72.455,
-          "matched": true
-        },
-        {
-          "text": "by",
-          "start": 72.535,
-          "end": 73.075,
-          "matched": true
-        },
-        {
-          "text": "name",
-          "start": 73.155,
-          "end": 73.515,
+          "text": "story,",
+          "start": 45.59,
+          "end": 46.09,
           "matched": true
         }
       ]
     },
     {
       "id": "l18",
-      "text": "livin' the dream, playin' his all American game",
-      "start": 74.296,
-      "end": 77.918,
+      "text": "i wrote it down",
+      "start": 46.53,
+      "end": 47.73,
       "words": [
         {
-          "text": "livin'",
-          "start": 74.296,
-          "end": 74.716,
+          "text": "i",
+          "start": 46.53,
+          "end": 46.65,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 74.756,
-          "end": 74.836,
+          "text": "wrote",
+          "start": 46.71,
+          "end": 47.01,
           "matched": true
         },
         {
-          "text": "dream,",
-          "start": 74.896,
-          "end": 75.376,
+          "text": "it",
+          "start": 47.05,
+          "end": 47.13,
           "matched": true
         },
         {
-          "text": "playin'",
-          "start": 75.456,
-          "end": 75.817,
-          "matched": true
-        },
-        {
-          "text": "his",
-          "start": 75.857,
-          "end": 76.057,
-          "matched": true
-        },
-        {
-          "text": "all",
-          "start": 76.257,
-          "end": 77.438,
-          "matched": true
-        },
-        {
-          "text": "American",
-          "start": 77.438,
-          "end": 77.558,
-          "matched": false
-        },
-        {
-          "text": "game",
-          "start": 77.558,
-          "end": 77.918,
+          "text": "down",
+          "start": 47.23,
+          "end": 47.73,
           "matched": true
         }
       ]
     },
     {
       "id": "l19",
-      "text": "what's he got in 'em?",
-      "start": 78.978,
-      "end": 80.759,
+      "text": "ol' Johnny Three Fridges, sinister by name",
+      "start": 47.73,
+      "end": 52.052,
       "words": [
         {
-          "text": "what's",
-          "start": 78.978,
-          "end": 79.279,
-          "matched": true
-        },
-        {
-          "text": "he",
-          "start": 79.319,
-          "end": 79.539,
-          "matched": true
-        },
-        {
-          "text": "got",
-          "start": 79.619,
-          "end": 79.939,
-          "matched": true
-        },
-        {
-          "text": "in",
-          "start": 80.079,
-          "end": 80.199,
-          "matched": true
-        },
-        {
-          "text": "'em?",
-          "start": 80.199,
-          "end": 80.759,
+          "text": "ol'",
+          "start": 47.73,
+          "end": 48.791,
           "matched": false
+        },
+        {
+          "text": "Johnny",
+          "start": 48.791,
+          "end": 49.111,
+          "matched": true
+        },
+        {
+          "text": "Three",
+          "start": 49.111,
+          "end": 49.571,
+          "matched": false
+        },
+        {
+          "text": "Fridges,",
+          "start": 49.571,
+          "end": 50.072,
+          "matched": true
+        },
+        {
+          "text": "sinister",
+          "start": 50.352,
+          "end": 51.232,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 51.292,
+          "end": 51.472,
+          "matched": true
+        },
+        {
+          "text": "name",
+          "start": 51.692,
+          "end": 52.052,
+          "matched": true
         }
       ]
     },
     {
       "id": "l20",
-      "text": "day to day, never the same",
-      "start": 80.759,
-      "end": 83.061,
+      "text": "livin' the dream, playin' his all American game",
+      "start": 52.993,
+      "end": 56.294,
       "words": [
         {
-          "text": "day",
-          "start": 80.759,
-          "end": 81.02,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 81.04,
-          "end": 81.24,
-          "matched": true
-        },
-        {
-          "text": "day,",
-          "start": 81.36,
-          "end": 81.68,
-          "matched": true
-        },
-        {
-          "text": "never",
-          "start": 81.7,
-          "end": 82.2,
+          "text": "livin'",
+          "start": 52.993,
+          "end": 53.533,
           "matched": true
         },
         {
           "text": "the",
-          "start": 82.28,
-          "end": 82.42,
+          "start": 53.553,
+          "end": 53.673,
           "matched": true
         },
         {
-          "text": "same",
-          "start": 82.52,
-          "end": 83.061,
+          "text": "dream,",
+          "start": 53.773,
+          "end": 54.213,
+          "matched": true
+        },
+        {
+          "text": "playin'",
+          "start": 54.293,
+          "end": 54.613,
+          "matched": true
+        },
+        {
+          "text": "his",
+          "start": 54.653,
+          "end": 54.854,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 54.934,
+          "end": 55.874,
+          "matched": true
+        },
+        {
+          "text": "American",
+          "start": 55.874,
+          "end": 55.894,
+          "matched": false
+        },
+        {
+          "text": "game",
+          "start": 55.894,
+          "end": 56.294,
           "matched": true
         }
       ]
     },
     {
       "id": "l21",
-      "text": "don't get nosey, don't go pryin'",
-      "start": 83.121,
-      "end": 85.522,
+      "text": "what's he got in 'em?",
+      "start": 56.674,
+      "end": 57.995,
       "words": [
         {
-          "text": "don't",
-          "start": 83.121,
-          "end": 83.401,
+          "text": "what's",
+          "start": 56.674,
+          "end": 56.934,
           "matched": true
         },
         {
-          "text": "get",
-          "start": 83.441,
-          "end": 83.621,
+          "text": "he",
+          "start": 56.974,
+          "end": 57.155,
           "matched": true
         },
         {
-          "text": "nosey,",
-          "start": 83.641,
-          "end": 84.241,
+          "text": "got",
+          "start": 57.215,
+          "end": 57.515,
           "matched": true
         },
         {
-          "text": "don't",
-          "start": 84.301,
-          "end": 84.542,
+          "text": "in",
+          "start": 57.635,
+          "end": 57.775,
           "matched": true
         },
         {
-          "text": "go",
-          "start": 84.582,
-          "end": 84.802,
-          "matched": true
-        },
-        {
-          "text": "pryin'",
-          "start": 84.862,
-          "end": 85.522,
-          "matched": true
+          "text": "'em?",
+          "start": 57.775,
+          "end": 57.995,
+          "matched": false
         }
       ]
     },
     {
       "id": "l22",
-      "text": "else you'll be the one runnin' away cryin'",
-      "start": 85.602,
-      "end": 88.444,
+      "text": "day to day, never the same",
+      "start": 57.995,
+      "end": 59.896,
       "words": [
         {
-          "text": "else",
-          "start": 85.602,
-          "end": 85.742,
+          "text": "day",
+          "start": 57.995,
+          "end": 58.255,
           "matched": true
         },
         {
-          "text": "you'll",
-          "start": 85.782,
-          "end": 86.062,
+          "text": "to",
+          "start": 58.295,
+          "end": 58.375,
           "matched": true
         },
         {
-          "text": "be",
-          "start": 86.102,
-          "end": 86.323,
+          "text": "day,",
+          "start": 58.415,
+          "end": 58.755,
+          "matched": true
+        },
+        {
+          "text": "never",
+          "start": 58.815,
+          "end": 59.275,
           "matched": true
         },
         {
           "text": "the",
-          "start": 86.383,
-          "end": 86.483,
+          "start": 59.336,
+          "end": 59.456,
           "matched": true
         },
         {
-          "text": "one",
-          "start": 86.683,
-          "end": 86.883,
-          "matched": true
-        },
-        {
-          "text": "runnin'",
-          "start": 86.963,
-          "end": 87.243,
-          "matched": true
-        },
-        {
-          "text": "away",
-          "start": 87.403,
-          "end": 87.723,
-          "matched": true
-        },
-        {
-          "text": "cryin'",
-          "start": 87.803,
-          "end": 88.444,
+          "text": "same",
+          "start": 59.536,
+          "end": 59.896,
           "matched": true
         }
       ]
     },
     {
       "id": "l23",
-      "text": "so, listen up and listen real close",
-      "start": 92.788,
-      "end": 95.65,
+      "text": "don't get nosey, don't go pryin'",
+      "start": 60.356,
+      "end": 62.397,
       "words": [
         {
-          "text": "so,",
-          "start": 92.788,
-          "end": 93.008,
+          "text": "don't",
+          "start": 60.356,
+          "end": 60.596,
           "matched": true
         },
         {
-          "text": "listen",
-          "start": 93.108,
-          "end": 93.468,
+          "text": "get",
+          "start": 60.636,
+          "end": 60.836,
           "matched": true
         },
         {
-          "text": "up",
-          "start": 93.648,
-          "end": 93.749,
+          "text": "nosey,",
+          "start": 60.896,
+          "end": 61.376,
           "matched": true
         },
         {
-          "text": "and",
-          "start": 94.089,
-          "end": 94.209,
+          "text": "don't",
+          "start": 61.416,
+          "end": 61.637,
           "matched": true
         },
         {
-          "text": "listen",
-          "start": 94.269,
-          "end": 94.589,
+          "text": "go",
+          "start": 61.677,
+          "end": 61.857,
           "matched": true
         },
         {
-          "text": "real",
-          "start": 94.649,
-          "end": 95.069,
-          "matched": true
-        },
-        {
-          "text": "close",
-          "start": 95.149,
-          "end": 95.65,
+          "text": "pryin'",
+          "start": 61.917,
+          "end": 62.397,
           "matched": true
         }
       ]
     },
     {
       "id": "l24",
-      "text": "won't be long before i'm gone ghost",
-      "start": 98.071,
-      "end": 101.553,
+      "text": "else you'll be the one runnin' away cryin'",
+      "start": 62.557,
+      "end": 64.598,
       "words": [
         {
-          "text": "won't",
-          "start": 98.071,
-          "end": 98.391,
+          "text": "else",
+          "start": 62.557,
+          "end": 62.697,
+          "matched": true
+        },
+        {
+          "text": "you'll",
+          "start": 62.737,
+          "end": 62.977,
           "matched": true
         },
         {
           "text": "be",
-          "start": 98.431,
-          "end": 98.591,
+          "start": 63.017,
+          "end": 63.157,
           "matched": true
         },
         {
-          "text": "long",
-          "start": 98.671,
-          "end": 99.231,
+          "text": "the",
+          "start": 63.177,
+          "end": 63.237,
           "matched": true
         },
         {
-          "text": "before",
-          "start": 99.311,
-          "end": 99.892,
+          "text": "one",
+          "start": 63.357,
+          "end": 63.477,
           "matched": true
         },
         {
-          "text": "i'm",
-          "start": 100.212,
-          "end": 100.372,
+          "text": "runnin'",
+          "start": 63.537,
+          "end": 63.817,
           "matched": true
         },
         {
-          "text": "gone",
-          "start": 100.472,
-          "end": 100.972,
+          "text": "away",
+          "start": 63.857,
+          "end": 64.098,
           "matched": true
         },
         {
-          "text": "ghost",
-          "start": 101.072,
-          "end": 101.553,
+          "text": "cryin'",
+          "start": 64.158,
+          "end": 64.598,
           "matched": true
         }
       ]
     },
     {
       "id": "l25",
-      "text": "i'm spillin' the beans",
-      "start": 101.713,
-      "end": 103.354,
+      "text": "so, listen up and listen real close",
+      "start": 64.798,
+      "end": 67.039,
       "words": [
         {
-          "text": "i'm",
-          "start": 101.713,
-          "end": 101.853,
+          "text": "so,",
+          "start": 64.798,
+          "end": 65.038,
           "matched": true
         },
         {
-          "text": "spillin'",
-          "start": 101.873,
-          "end": 102.233,
+          "text": "listen",
+          "start": 65.098,
+          "end": 65.378,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 102.273,
-          "end": 102.373,
+          "text": "up",
+          "start": 65.478,
+          "end": 65.578,
           "matched": true
         },
         {
-          "text": "beans",
-          "start": 102.533,
-          "end": 103.354,
+          "text": "and",
+          "start": 65.698,
+          "end": 65.778,
+          "matched": true
+        },
+        {
+          "text": "listen",
+          "start": 65.818,
+          "end": 66.138,
+          "matched": true
+        },
+        {
+          "text": "real",
+          "start": 66.198,
+          "end": 66.559,
+          "matched": true
+        },
+        {
+          "text": "close",
+          "start": 66.639,
+          "end": 67.039,
           "matched": true
         }
       ]
     },
     {
       "id": "l26",
-      "text": "on ol Johnny Three Fridges dreams",
-      "start": 105.315,
-      "end": 107.576,
+      "text": "won't be long before i'm gone ghost",
+      "start": 69.022,
+      "end": 71.842,
       "words": [
         {
-          "text": "on",
-          "start": 105.315,
-          "end": 105.495,
+          "text": "won't",
+          "start": 69.022,
+          "end": 69.262,
           "matched": true
         },
         {
-          "text": "ol",
-          "start": 105.595,
-          "end": 105.735,
+          "text": "be",
+          "start": 69.302,
+          "end": 69.482,
           "matched": true
         },
         {
-          "text": "Johnny",
-          "start": 105.775,
-          "end": 106.035,
+          "text": "long",
+          "start": 69.542,
+          "end": 70.002,
           "matched": true
         },
         {
-          "text": "Three",
-          "start": 106.075,
-          "end": 106.515,
+          "text": "before",
+          "start": 70.082,
+          "end": 70.462,
           "matched": true
         },
         {
-          "text": "Fridges",
-          "start": 106.515,
-          "end": 106.976,
-          "matched": false
+          "text": "i'm",
+          "start": 70.602,
+          "end": 70.782,
+          "matched": true
         },
         {
-          "text": "dreams",
-          "start": 106.976,
-          "end": 107.576,
+          "text": "gone",
+          "start": 70.862,
+          "end": 71.302,
+          "matched": true
+        },
+        {
+          "text": "ghost",
+          "start": 71.402,
+          "end": 71.842,
           "matched": true
         }
       ]
     },
     {
       "id": "l27",
-      "text": "see, ain't nothin' sinister",
-      "start": 111.638,
-      "end": 113.359,
+      "text": "i'm spillin' the beans",
+      "start": 72.583,
+      "end": 74.503,
       "words": [
         {
-          "text": "see,",
-          "start": 111.638,
-          "end": 111.958,
+          "text": "i'm",
+          "start": 72.583,
+          "end": 72.803,
           "matched": true
         },
         {
-          "text": "ain't",
-          "start": 112.038,
-          "end": 112.238,
+          "text": "spillin'",
+          "start": 72.843,
+          "end": 73.223,
           "matched": true
         },
         {
-          "text": "nothin'",
-          "start": 112.278,
-          "end": 112.679,
+          "text": "the",
+          "start": 73.243,
+          "end": 73.323,
           "matched": true
         },
         {
-          "text": "sinister",
-          "start": 112.779,
-          "end": 113.359,
+          "text": "beans",
+          "start": 73.363,
+          "end": 74.503,
           "matched": true
         }
       ]
     },
     {
       "id": "l28",
-      "text": "ain't nothin' chillin'",
-      "start": 114.399,
-      "end": 115.76,
+      "text": "on ol Johnny Three Fridges dreams",
+      "start": 74.743,
+      "end": 78.924,
       "words": [
         {
-          "text": "ain't",
-          "start": 114.399,
-          "end": 114.58,
+          "text": "on",
+          "start": 74.743,
+          "end": 74.823,
           "matched": true
         },
         {
-          "text": "nothin'",
-          "start": 114.62,
-          "end": 115.04,
+          "text": "ol",
+          "start": 74.883,
+          "end": 75.023,
           "matched": true
         },
         {
-          "text": "chillin'",
-          "start": 115.16,
-          "end": 115.76,
+          "text": "Johnny",
+          "start": 75.063,
+          "end": 75.463,
+          "matched": true
+        },
+        {
+          "text": "Three",
+          "start": 75.543,
+          "end": 75.983,
+          "matched": true
+        },
+        {
+          "text": "Fridges",
+          "start": 76.063,
+          "end": 76.583,
+          "matched": true
+        },
+        {
+          "text": "dreams",
+          "start": 76.643,
+          "end": 78.924,
           "matched": true
         }
       ]
     },
     {
       "id": "l29",
-      "text": "except a white tailed deer",
-      "start": 115.86,
-      "end": 118.382,
+      "text": "see, ain't nothin' sinister",
+      "start": 79.504,
+      "end": 81.784,
       "words": [
         {
-          "text": "except",
-          "start": 115.86,
-          "end": 116.34,
+          "text": "see,",
+          "start": 79.504,
+          "end": 79.704,
           "matched": true
         },
         {
-          "text": "a",
-          "start": 116.441,
-          "end": 116.581,
+          "text": "ain't",
+          "start": 80.364,
+          "end": 80.544,
           "matched": true
         },
         {
-          "text": "white",
-          "start": 116.661,
-          "end": 117.461,
+          "text": "nothin'",
+          "start": 80.604,
+          "end": 80.984,
           "matched": true
         },
         {
-          "text": "tailed",
-          "start": 117.461,
-          "end": 117.541,
-          "matched": false
-        },
-        {
-          "text": "deer",
-          "start": 117.541,
-          "end": 118.382,
+          "text": "sinister",
+          "start": 81.084,
+          "end": 81.784,
           "matched": true
         }
       ]
     },
     {
       "id": "l30",
-      "text": "and some ruffed grouse dead from killin'",
-      "start": 118.522,
-      "end": 120.683,
+      "text": "ain't nothin' chillin'",
+      "start": 82.224,
+      "end": 83.344,
       "words": [
         {
-          "text": "and",
-          "start": 118.522,
-          "end": 118.642,
+          "text": "ain't",
+          "start": 82.224,
+          "end": 82.404,
           "matched": true
         },
         {
-          "text": "some",
-          "start": 118.682,
-          "end": 118.882,
+          "text": "nothin'",
+          "start": 82.444,
+          "end": 82.824,
           "matched": true
         },
         {
-          "text": "ruffed",
-          "start": 118.882,
-          "end": 119.302,
-          "matched": false
-        },
-        {
-          "text": "grouse",
-          "start": 119.302,
-          "end": 119.582,
-          "matched": true
-        },
-        {
-          "text": "dead",
-          "start": 119.622,
-          "end": 119.842,
-          "matched": true
-        },
-        {
-          "text": "from",
-          "start": 119.882,
-          "end": 120.062,
-          "matched": true
-        },
-        {
-          "text": "killin'",
-          "start": 120.162,
-          "end": 120.683,
+          "text": "chillin'",
+          "start": 82.884,
+          "end": 83.344,
           "matched": true
         }
       ]
     },
     {
       "id": "l31",
-      "text": "that's it that's all",
-      "start": 121.622,
-      "end": 122.503,
+      "text": "except a white tailed deer",
+      "start": 83.624,
+      "end": 84.785,
       "words": [
         {
-          "text": "that's",
-          "start": 121.622,
-          "end": 121.882,
+          "text": "except",
+          "start": 83.624,
+          "end": 83.845,
           "matched": true
         },
         {
-          "text": "it",
-          "start": 121.922,
-          "end": 121.982,
+          "text": "a",
+          "start": 83.905,
+          "end": 83.965,
           "matched": true
         },
         {
-          "text": "that's",
-          "start": 122.022,
-          "end": 122.262,
+          "text": "white",
+          "start": 83.985,
+          "end": 84.485,
           "matched": true
         },
         {
-          "text": "all",
-          "start": 122.363,
-          "end": 122.503,
+          "text": "tailed",
+          "start": 84.485,
+          "end": 84.525,
+          "matched": false
+        },
+        {
+          "text": "deer",
+          "start": 84.525,
+          "end": 84.785,
           "matched": true
         }
       ]
     },
     {
       "id": "l32",
-      "text": "least that's all he'll tell ya' he got chilling'",
-      "start": 123.103,
-      "end": 126.586,
+      "text": "and some ruffed grouse dead from killin'",
+      "start": 84.805,
+      "end": 86.705,
       "words": [
         {
-          "text": "least",
-          "start": 123.103,
-          "end": 123.363,
+          "text": "and",
+          "start": 84.805,
+          "end": 84.885,
           "matched": true
         },
         {
-          "text": "that's",
-          "start": 123.423,
-          "end": 123.703,
+          "text": "some",
+          "start": 84.905,
+          "end": 85.025,
           "matched": true
         },
         {
-          "text": "all",
-          "start": 123.864,
-          "end": 124.004,
-          "matched": true
-        },
-        {
-          "text": "he'll",
-          "start": 124.024,
-          "end": 124.244,
-          "matched": true
-        },
-        {
-          "text": "tell",
-          "start": 124.284,
-          "end": 124.584,
-          "matched": true
-        },
-        {
-          "text": "ya'",
-          "start": 124.584,
-          "end": 124.904,
+          "text": "ruffed",
+          "start": 85.025,
+          "end": 85.305,
           "matched": false
         },
         {
-          "text": "he",
-          "start": 124.904,
-          "end": 125.365,
+          "text": "grouse",
+          "start": 85.305,
+          "end": 85.585,
+          "matched": false
+        },
+        {
+          "text": "dead",
+          "start": 85.585,
+          "end": 86.045,
           "matched": true
         },
         {
-          "text": "got",
-          "start": 125.485,
-          "end": 125.925,
+          "text": "from",
+          "start": 86.085,
+          "end": 86.265,
           "matched": true
         },
         {
-          "text": "chilling'",
-          "start": 126.025,
-          "end": 126.586,
+          "text": "killin'",
+          "start": 86.325,
+          "end": 86.705,
           "matched": true
         }
       ]
     },
     {
       "id": "l33",
-      "text": "so, listen again, listen well",
-      "start": 128.087,
-      "end": 130.208,
+      "text": "that's it that's all",
+      "start": 87.125,
+      "end": 88.145,
       "words": [
         {
-          "text": "so,",
-          "start": 128.087,
-          "end": 128.287,
+          "text": "that's",
+          "start": 87.125,
+          "end": 87.345,
           "matched": true
         },
         {
-          "text": "listen",
-          "start": 128.387,
-          "end": 128.727,
+          "text": "it",
+          "start": 87.405,
+          "end": 87.485,
           "matched": true
         },
         {
-          "text": "again,",
-          "start": 128.767,
-          "end": 129.147,
+          "text": "that's",
+          "start": 87.665,
+          "end": 87.865,
           "matched": true
         },
         {
-          "text": "listen",
-          "start": 129.548,
-          "end": 129.848,
-          "matched": true
-        },
-        {
-          "text": "well",
-          "start": 129.888,
-          "end": 130.208,
+          "text": "all",
+          "start": 87.985,
+          "end": 88.145,
           "matched": true
         }
       ]
     },
     {
       "id": "l34",
-      "text": "my song my story should ring a bell",
-      "start": 130.468,
-      "end": 132.75,
+      "text": "least that's all he'll tell ya' he got chilling'",
+      "start": 88.425,
+      "end": 90.106,
       "words": [
         {
-          "text": "my",
-          "start": 130.468,
-          "end": 130.628,
+          "text": "least",
+          "start": 88.425,
+          "end": 88.565,
           "matched": true
         },
         {
-          "text": "song",
-          "start": 130.708,
-          "end": 131.049,
+          "text": "that's",
+          "start": 88.585,
+          "end": 88.725,
           "matched": true
         },
         {
-          "text": "my",
-          "start": 131.069,
-          "end": 131.229,
+          "text": "all",
+          "start": 88.765,
+          "end": 88.845,
           "matched": true
         },
         {
-          "text": "story",
-          "start": 131.289,
-          "end": 131.729,
+          "text": "he'll",
+          "start": 88.865,
+          "end": 89.125,
           "matched": true
         },
         {
-          "text": "should",
-          "start": 131.769,
-          "end": 131.929,
+          "text": "tell",
+          "start": 89.145,
+          "end": 89.225,
           "matched": true
         },
         {
-          "text": "ring",
-          "start": 131.969,
-          "end": 132.129,
+          "text": "ya'",
+          "start": 89.225,
+          "end": 89.345,
+          "matched": false
+        },
+        {
+          "text": "he",
+          "start": 89.345,
+          "end": 89.385,
           "matched": true
         },
         {
-          "text": "a",
-          "start": 132.169,
-          "end": 132.21,
+          "text": "got",
+          "start": 89.405,
+          "end": 89.565,
           "matched": true
         },
         {
-          "text": "bell",
-          "start": 132.25,
-          "end": 132.75,
+          "text": "chilling'",
+          "start": 89.605,
+          "end": 90.106,
           "matched": true
         }
       ]
     },
     {
       "id": "l35",
-      "text": "what's in fridge number three ain' nobody around to tell",
-      "start": 132.83,
-      "end": 137.733,
+      "text": "so, listen again, listen well",
+      "start": 90.386,
+      "end": 92.066,
       "words": [
         {
-          "text": "what's",
-          "start": 132.83,
-          "end": 133.07,
+          "text": "so,",
+          "start": 90.386,
+          "end": 90.486,
           "matched": true
         },
         {
-          "text": "in",
-          "start": 133.21,
-          "end": 133.33,
+          "text": "listen",
+          "start": 90.526,
+          "end": 90.806,
           "matched": true
         },
         {
-          "text": "fridge",
-          "start": 133.39,
-          "end": 133.691,
+          "text": "again,",
+          "start": 90.866,
+          "end": 91.306,
           "matched": true
         },
         {
-          "text": "number",
-          "start": 133.731,
-          "end": 134.111,
+          "text": "listen",
+          "start": 91.346,
+          "end": 91.666,
           "matched": true
         },
         {
-          "text": "three",
-          "start": 134.151,
-          "end": 134.591,
-          "matched": true
-        },
-        {
-          "text": "ain'",
-          "start": 134.691,
-          "end": 134.891,
-          "matched": true
-        },
-        {
-          "text": "nobody",
-          "start": 134.931,
-          "end": 135.952,
-          "matched": true
-        },
-        {
-          "text": "around",
-          "start": 135.992,
-          "end": 136.372,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 136.412,
-          "end": 136.513,
-          "matched": true
-        },
-        {
-          "text": "tell",
-          "start": 136.613,
-          "end": 137.733,
+          "text": "well",
+          "start": 91.706,
+          "end": 92.066,
           "matched": true
         }
       ]
     },
     {
       "id": "l36",
-      "text": "ol' Johnny Three Fridges, sinister by name",
-      "start": 137.733,
-      "end": 141.736,
+      "text": "my song my story should ring a bell",
+      "start": 92.126,
+      "end": 94.106,
       "words": [
         {
-          "text": "ol'",
-          "start": 137.733,
-          "end": 137.813,
-          "matched": false
-        },
-        {
-          "text": "Johnny",
-          "start": 137.813,
-          "end": 138.294,
+          "text": "my",
+          "start": 92.126,
+          "end": 92.306,
           "matched": true
         },
         {
-          "text": "Three",
-          "start": 138.394,
-          "end": 138.874,
+          "text": "song",
+          "start": 92.346,
+          "end": 92.646,
           "matched": true
         },
         {
-          "text": "Fridges,",
-          "start": 138.994,
-          "end": 139.415,
+          "text": "my",
+          "start": 92.666,
+          "end": 92.806,
           "matched": true
         },
         {
-          "text": "sinister",
-          "start": 139.875,
-          "end": 140.695,
+          "text": "story",
+          "start": 92.846,
+          "end": 93.126,
           "matched": true
         },
         {
-          "text": "by",
-          "start": 140.796,
-          "end": 141.296,
+          "text": "should",
+          "start": 93.146,
+          "end": 93.406,
           "matched": true
         },
         {
-          "text": "name",
-          "start": 141.376,
-          "end": 141.736,
+          "text": "ring",
+          "start": 93.466,
+          "end": 93.706,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 93.746,
+          "end": 93.786,
+          "matched": true
+        },
+        {
+          "text": "bell",
+          "start": 93.826,
+          "end": 94.106,
           "matched": true
         }
       ]
     },
     {
       "id": "l37",
-      "text": "livin' the dream, playin' his all American game",
-      "start": 142.537,
-      "end": 146.099,
+      "text": "what's in fridge number three ain' nobody around to tell",
+      "start": 94.466,
+      "end": 98.047,
       "words": [
         {
-          "text": "livin'",
-          "start": 142.537,
-          "end": 142.977,
+          "text": "what's",
+          "start": 94.466,
+          "end": 94.646,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 143.017,
-          "end": 143.097,
+          "text": "in",
+          "start": 94.726,
+          "end": 94.806,
           "matched": true
         },
         {
-          "text": "dream,",
-          "start": 143.137,
-          "end": 143.618,
+          "text": "fridge",
+          "start": 94.866,
+          "end": 95.486,
           "matched": true
         },
         {
-          "text": "playin'",
-          "start": 143.698,
-          "end": 144.058,
+          "text": "number",
+          "start": 95.546,
+          "end": 95.767,
           "matched": true
         },
         {
-          "text": "his",
-          "start": 144.098,
-          "end": 144.298,
+          "text": "three",
+          "start": 95.787,
+          "end": 96.087,
           "matched": true
         },
         {
-          "text": "all",
-          "start": 144.498,
-          "end": 145.759,
+          "text": "ain'",
+          "start": 96.147,
+          "end": 96.327,
           "matched": true
         },
         {
-          "text": "American",
-          "start": 145.759,
-          "end": 145.799,
-          "matched": false
+          "text": "nobody",
+          "start": 96.367,
+          "end": 96.827,
+          "matched": true
         },
         {
-          "text": "game",
-          "start": 145.799,
-          "end": 146.099,
+          "text": "around",
+          "start": 97.027,
+          "end": 97.387,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 97.407,
+          "end": 97.567,
+          "matched": true
+        },
+        {
+          "text": "tell",
+          "start": 97.607,
+          "end": 98.047,
           "matched": true
         }
       ]
     },
     {
       "id": "l38",
-      "text": "what's he got in 'em?",
-      "start": 147.22,
-      "end": 149.0,
+      "text": "ol' Johnny Three Fridges, sinister by name",
+      "start": 98.047,
+      "end": 102.45,
       "words": [
         {
-          "text": "what's",
-          "start": 147.22,
-          "end": 147.5,
-          "matched": true
-        },
-        {
-          "text": "he",
-          "start": 147.56,
-          "end": 147.76,
-          "matched": true
-        },
-        {
-          "text": "got",
-          "start": 147.84,
-          "end": 148.16,
-          "matched": true
-        },
-        {
-          "text": "in",
-          "start": 148.26,
-          "end": 148.42,
-          "matched": true
-        },
-        {
-          "text": "'em?",
-          "start": 148.42,
-          "end": 149.0,
+          "text": "ol'",
+          "start": 98.047,
+          "end": 99.208,
           "matched": false
+        },
+        {
+          "text": "Johnny",
+          "start": 99.208,
+          "end": 99.628,
+          "matched": true
+        },
+        {
+          "text": "Three",
+          "start": 99.688,
+          "end": 99.908,
+          "matched": true
+        },
+        {
+          "text": "Fridges,",
+          "start": 99.968,
+          "end": 100.288,
+          "matched": true
+        },
+        {
+          "text": "sinister",
+          "start": 100.769,
+          "end": 101.61,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 101.69,
+          "end": 101.95,
+          "matched": true
+        },
+        {
+          "text": "name",
+          "start": 101.97,
+          "end": 102.45,
+          "matched": true
         }
       ]
     },
     {
       "id": "l39",
-      "text": "day to day, never the same",
-      "start": 149.0,
-      "end": 151.261,
+      "text": "livin' the dream, playin' his all American game",
+      "start": 103.391,
+      "end": 106.614,
       "words": [
         {
-          "text": "day",
-          "start": 149.0,
-          "end": 149.26,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 149.28,
-          "end": 149.481,
-          "matched": true
-        },
-        {
-          "text": "day,",
-          "start": 149.581,
-          "end": 149.881,
-          "matched": true
-        },
-        {
-          "text": "never",
-          "start": 149.921,
-          "end": 150.361,
+          "text": "livin'",
+          "start": 103.391,
+          "end": 103.911,
           "matched": true
         },
         {
           "text": "the",
-          "start": 150.381,
-          "end": 150.621,
+          "start": 103.952,
+          "end": 104.052,
           "matched": true
         },
         {
-          "text": "same",
-          "start": 150.741,
-          "end": 151.261,
+          "text": "dream,",
+          "start": 104.152,
+          "end": 104.652,
+          "matched": true
+        },
+        {
+          "text": "playin'",
+          "start": 104.712,
+          "end": 105.032,
+          "matched": true
+        },
+        {
+          "text": "his",
+          "start": 105.052,
+          "end": 105.253,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 105.333,
+          "end": 106.253,
+          "matched": true
+        },
+        {
+          "text": "American",
+          "start": 106.253,
+          "end": 106.293,
+          "matched": false
+        },
+        {
+          "text": "game",
+          "start": 106.293,
+          "end": 106.614,
           "matched": true
         }
       ]
     },
     {
       "id": "l40",
-      "text": "don't get nosey, don't go pryin'",
-      "start": 151.341,
-      "end": 153.741,
+      "text": "what's he got in 'em?",
+      "start": 107.094,
+      "end": 108.415,
       "words": [
         {
-          "text": "don't",
-          "start": 151.341,
-          "end": 151.621,
+          "text": "what's",
+          "start": 107.094,
+          "end": 107.334,
           "matched": true
         },
         {
-          "text": "get",
-          "start": 151.641,
-          "end": 151.841,
+          "text": "he",
+          "start": 107.374,
+          "end": 107.555,
           "matched": true
         },
         {
-          "text": "nosey,",
-          "start": 151.921,
-          "end": 152.441,
+          "text": "got",
+          "start": 107.615,
+          "end": 107.935,
           "matched": true
         },
         {
-          "text": "don't",
-          "start": 152.521,
-          "end": 152.781,
+          "text": "in",
+          "start": 108.035,
+          "end": 108.155,
           "matched": true
         },
         {
-          "text": "go",
-          "start": 152.821,
-          "end": 153.021,
-          "matched": true
-        },
-        {
-          "text": "pryin'",
-          "start": 153.081,
-          "end": 153.741,
-          "matched": true
+          "text": "'em?",
+          "start": 108.155,
+          "end": 108.415,
+          "matched": false
         }
       ]
     },
     {
       "id": "l41",
-      "text": "else you'll be the one runnin' away cryin'",
-      "start": 153.821,
-      "end": 156.562,
+      "text": "day to day, never the same",
+      "start": 108.415,
+      "end": 110.257,
       "words": [
         {
-          "text": "else",
-          "start": 153.821,
-          "end": 153.981,
+          "text": "day",
+          "start": 108.415,
+          "end": 108.655,
           "matched": true
         },
         {
-          "text": "you'll",
-          "start": 154.001,
-          "end": 154.282,
+          "text": "to",
+          "start": 108.695,
+          "end": 108.756,
           "matched": true
         },
         {
-          "text": "be",
-          "start": 154.322,
-          "end": 154.542,
+          "text": "day,",
+          "start": 108.816,
+          "end": 109.116,
+          "matched": true
+        },
+        {
+          "text": "never",
+          "start": 109.136,
+          "end": 109.656,
           "matched": true
         },
         {
           "text": "the",
-          "start": 154.602,
-          "end": 154.722,
+          "start": 109.736,
+          "end": 109.876,
           "matched": true
         },
         {
-          "text": "one",
-          "start": 154.942,
-          "end": 155.102,
-          "matched": true
-        },
-        {
-          "text": "runnin'",
-          "start": 155.182,
-          "end": 155.482,
-          "matched": true
-        },
-        {
-          "text": "away",
-          "start": 155.662,
-          "end": 155.942,
-          "matched": true
-        },
-        {
-          "text": "cryin'",
-          "start": 156.022,
-          "end": 156.562,
+          "text": "same",
+          "start": 109.937,
+          "end": 110.257,
           "matched": true
         }
       ]
     },
     {
       "id": "l42",
-      "text": "family man, family man",
-      "start": 156.922,
-      "end": 159.303,
+      "text": "don't get nosey, don't go pryin'",
+      "start": 110.737,
+      "end": 112.799,
       "words": [
         {
-          "text": "family",
-          "start": 156.922,
-          "end": 157.402,
+          "text": "don't",
+          "start": 110.737,
+          "end": 110.977,
           "matched": true
         },
         {
-          "text": "man,",
-          "start": 157.522,
-          "end": 158.002,
+          "text": "get",
+          "start": 111.037,
+          "end": 111.238,
           "matched": true
         },
         {
-          "text": "family",
-          "start": 158.102,
-          "end": 158.582,
+          "text": "nosey,",
+          "start": 111.318,
+          "end": 111.778,
           "matched": true
         },
         {
-          "text": "man",
-          "start": 158.703,
-          "end": 159.303,
+          "text": "don't",
+          "start": 111.818,
+          "end": 112.038,
+          "matched": true
+        },
+        {
+          "text": "go",
+          "start": 112.078,
+          "end": 112.258,
+          "matched": true
+        },
+        {
+          "text": "pryin'",
+          "start": 112.319,
+          "end": 112.799,
           "matched": true
         }
       ]
     },
     {
       "id": "l43",
-      "text": "ol' Johnny Three Fridges got a big family, man",
-      "start": 159.403,
-      "end": 162.623,
+      "text": "else you'll be the one runnin' away cryin'",
+      "start": 112.939,
+      "end": 115.001,
       "words": [
         {
-          "text": "ol'",
-          "start": 159.403,
-          "end": 159.543,
+          "text": "else",
+          "start": 112.939,
+          "end": 113.099,
           "matched": true
         },
         {
-          "text": "Johnny",
-          "start": 159.583,
-          "end": 159.843,
+          "text": "you'll",
+          "start": 113.119,
+          "end": 113.399,
           "matched": true
         },
         {
-          "text": "Three",
-          "start": 159.863,
-          "end": 160.083,
+          "text": "be",
+          "start": 113.439,
+          "end": 113.54,
           "matched": true
         },
         {
-          "text": "Fridges",
-          "start": 160.163,
-          "end": 160.683,
+          "text": "the",
+          "start": 113.56,
+          "end": 113.62,
           "matched": true
         },
         {
-          "text": "got",
-          "start": 160.743,
-          "end": 160.943,
+          "text": "one",
+          "start": 113.74,
+          "end": 113.86,
           "matched": true
         },
         {
-          "text": "a",
-          "start": 160.983,
-          "end": 161.023,
+          "text": "runnin'",
+          "start": 113.92,
+          "end": 114.22,
           "matched": true
         },
         {
-          "text": "big",
-          "start": 161.083,
-          "end": 161.483,
+          "text": "away",
+          "start": 114.26,
+          "end": 114.48,
           "matched": true
         },
         {
-          "text": "family,",
-          "start": 161.623,
-          "end": 162.123,
-          "matched": true
-        },
-        {
-          "text": "man",
-          "start": 162.223,
-          "end": 162.623,
+          "text": "cryin'",
+          "start": 114.54,
+          "end": 115.001,
           "matched": true
         }
       ]
     },
     {
       "id": "l44",
-      "text": "mouths to feed from dawn till eve",
-      "start": 163.424,
-      "end": 166.304,
+      "text": "family man, family man",
+      "start": 115.461,
+      "end": 117.603,
       "words": [
         {
-          "text": "mouths",
-          "start": 163.424,
-          "end": 163.944,
+          "text": "family",
+          "start": 115.461,
+          "end": 116.042,
           "matched": true
         },
         {
-          "text": "to",
-          "start": 164.004,
-          "end": 164.104,
+          "text": "man,",
+          "start": 116.042,
+          "end": 116.522,
+          "matched": false
+        },
+        {
+          "text": "family",
+          "start": 116.522,
+          "end": 117.103,
           "matched": true
         },
         {
-          "text": "feed",
-          "start": 164.164,
-          "end": 164.504,
-          "matched": true
-        },
-        {
-          "text": "from",
-          "start": 164.584,
-          "end": 164.784,
-          "matched": true
-        },
-        {
-          "text": "dawn",
-          "start": 164.884,
-          "end": 165.404,
-          "matched": true
-        },
-        {
-          "text": "till",
-          "start": 165.484,
-          "end": 165.764,
-          "matched": true
-        },
-        {
-          "text": "eve",
-          "start": 166.124,
-          "end": 166.304,
-          "matched": true
+          "text": "man",
+          "start": 117.103,
+          "end": 117.603,
+          "matched": false
         }
       ]
     },
     {
       "id": "l45",
-      "text": "maybe three fridges ain't so hard to believe",
-      "start": 166.364,
-      "end": 169.845,
+      "text": "ol' Johnny Three Fridges got a big family,",
+      "start": 117.603,
+      "end": 120.705,
       "words": [
         {
-          "text": "maybe",
-          "start": 166.364,
-          "end": 166.784,
+          "text": "ol'",
+          "start": 117.603,
+          "end": 118.103,
+          "matched": false
+        },
+        {
+          "text": "Johnny",
+          "start": 118.103,
+          "end": 118.524,
           "matched": true
         },
         {
-          "text": "three",
-          "start": 166.904,
-          "end": 167.664,
+          "text": "Three",
+          "start": 118.604,
+          "end": 118.824,
           "matched": true
         },
         {
-          "text": "fridges",
-          "start": 167.784,
-          "end": 168.405,
+          "text": "Fridges",
+          "start": 118.884,
+          "end": 119.364,
           "matched": true
         },
         {
-          "text": "ain't",
-          "start": 168.485,
-          "end": 168.645,
+          "text": "got",
+          "start": 119.424,
+          "end": 119.644,
           "matched": true
         },
         {
-          "text": "so",
-          "start": 168.705,
-          "end": 168.925,
+          "text": "a",
+          "start": 119.664,
+          "end": 119.684,
           "matched": true
         },
         {
-          "text": "hard",
-          "start": 169.005,
-          "end": 169.285,
+          "text": "big",
+          "start": 119.704,
+          "end": 119.844,
           "matched": true
         },
         {
-          "text": "to",
-          "start": 169.325,
-          "end": 169.405,
-          "matched": true
-        },
-        {
-          "text": "believe",
-          "start": 169.445,
-          "end": 169.845,
+          "text": "family,",
+          "start": 119.924,
+          "end": 120.705,
           "matched": true
         }
       ]
     },
     {
       "id": "l46",
-      "text": "bet with that revelation",
-      "start": 169.845,
-      "end": 177.093,
+      "text": "man",
+      "start": 120.725,
+      "end": 121.185,
       "words": [
         {
-          "text": "bet",
-          "start": 169.845,
-          "end": 175.472,
-          "matched": false
-        },
-        {
-          "text": "with",
-          "start": 175.472,
-          "end": 175.712,
-          "matched": true
-        },
-        {
-          "text": "that",
-          "start": 175.772,
-          "end": 175.972,
-          "matched": true
-        },
-        {
-          "text": "revelation",
-          "start": 176.092,
-          "end": 177.093,
+          "text": "man",
+          "start": 120.725,
+          "end": 121.185,
           "matched": true
         }
       ]
     },
     {
       "id": "l47",
-      "text": "you're startin' to relax now but hear my hesitation",
-      "start": 177.493,
-      "end": 181.894,
+      "text": "mouths to feed from dawn till eve",
+      "start": 121.245,
+      "end": 123.327,
       "words": [
         {
-          "text": "you're",
-          "start": 177.493,
-          "end": 177.693,
-          "matched": true
-        },
-        {
-          "text": "startin'",
-          "start": 177.733,
-          "end": 178.313,
+          "text": "mouths",
+          "start": 121.245,
+          "end": 121.506,
           "matched": true
         },
         {
           "text": "to",
-          "start": 178.413,
-          "end": 178.653,
+          "start": 121.526,
+          "end": 121.626,
           "matched": true
         },
         {
-          "text": "relax",
-          "start": 178.713,
-          "end": 179.253,
+          "text": "feed",
+          "start": 121.666,
+          "end": 121.986,
           "matched": true
         },
         {
-          "text": "now",
-          "start": 179.313,
-          "end": 179.773,
+          "text": "from",
+          "start": 122.046,
+          "end": 122.206,
           "matched": true
         },
         {
-          "text": "but",
-          "start": 179.893,
-          "end": 180.133,
+          "text": "dawn",
+          "start": 122.306,
+          "end": 122.566,
           "matched": true
         },
         {
-          "text": "hear",
-          "start": 180.193,
-          "end": 180.433,
+          "text": "till",
+          "start": 122.586,
+          "end": 122.826,
           "matched": true
         },
         {
-          "text": "my",
-          "start": 180.474,
-          "end": 180.714,
-          "matched": true
-        },
-        {
-          "text": "hesitation",
-          "start": 180.794,
-          "end": 181.894,
+          "text": "eve",
+          "start": 123.107,
+          "end": 123.327,
           "matched": true
         }
       ]
     },
     {
       "id": "l48",
-      "text": "one's in the kitchen, ordinary as can be",
-      "start": 182.654,
-      "end": 185.455,
+      "text": "maybe three fridges ain't so hard to believe",
+      "start": 123.347,
+      "end": 125.308,
       "words": [
         {
-          "text": "one's",
-          "start": 182.654,
-          "end": 182.854,
+          "text": "maybe",
+          "start": 123.347,
+          "end": 123.587,
           "matched": true
         },
         {
-          "text": "in",
-          "start": 182.914,
-          "end": 182.954,
+          "text": "three",
+          "start": 123.607,
+          "end": 123.827,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 182.994,
-          "end": 183.074,
+          "text": "fridges",
+          "start": 123.847,
+          "end": 124.147,
           "matched": true
         },
         {
-          "text": "kitchen,",
-          "start": 183.134,
-          "end": 183.734,
+          "text": "ain't",
+          "start": 124.187,
+          "end": 124.287,
           "matched": true
         },
         {
-          "text": "ordinary",
-          "start": 183.894,
-          "end": 184.595,
+          "text": "so",
+          "start": 124.307,
+          "end": 124.407,
           "matched": true
         },
         {
-          "text": "as",
-          "start": 184.715,
-          "end": 184.815,
+          "text": "hard",
+          "start": 124.427,
+          "end": 124.668,
           "matched": true
         },
         {
-          "text": "can",
-          "start": 184.875,
-          "end": 185.115,
+          "text": "to",
+          "start": 124.688,
+          "end": 124.788,
           "matched": true
         },
         {
-          "text": "be",
-          "start": 185.175,
-          "end": 185.455,
+          "text": "believe",
+          "start": 124.808,
+          "end": 125.308,
           "matched": true
         }
       ]
     },
     {
       "id": "l49",
-      "text": "second in the garage, nothin' hauntin' there still",
-      "start": 187.195,
-      "end": 190.956,
+      "text": "bet with that revelation",
+      "start": 125.468,
+      "end": 127.49,
       "words": [
         {
-          "text": "second",
-          "start": 187.195,
-          "end": 187.555,
+          "text": "bet",
+          "start": 125.468,
+          "end": 125.688,
           "matched": true
         },
         {
-          "text": "in",
-          "start": 187.676,
-          "end": 187.816,
+          "text": "with",
+          "start": 125.728,
+          "end": 125.888,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 187.836,
-          "end": 187.936,
+          "text": "that",
+          "start": 125.989,
+          "end": 126.469,
           "matched": true
         },
         {
-          "text": "garage,",
-          "start": 187.976,
-          "end": 188.856,
-          "matched": true
-        },
-        {
-          "text": "nothin'",
-          "start": 189.016,
-          "end": 189.496,
-          "matched": true
-        },
-        {
-          "text": "hauntin'",
-          "start": 189.596,
-          "end": 189.996,
-          "matched": true
-        },
-        {
-          "text": "there",
-          "start": 190.036,
-          "end": 190.296,
-          "matched": true
-        },
-        {
-          "text": "still",
-          "start": 190.396,
-          "end": 190.956,
+          "text": "revelation",
+          "start": 126.549,
+          "end": 127.49,
           "matched": true
         }
       ]
     },
     {
       "id": "l50",
-      "text": "but when you find that third fridge",
-      "start": 191.076,
-      "end": 193.597,
+      "text": "you're startin' to relax now but hear my hesitation",
+      "start": 127.79,
+      "end": 131.092,
       "words": [
         {
+          "text": "you're",
+          "start": 127.79,
+          "end": 127.93,
+          "matched": true
+        },
+        {
+          "text": "startin'",
+          "start": 127.95,
+          "end": 128.33,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 128.35,
+          "end": 128.47,
+          "matched": true
+        },
+        {
+          "text": "relax",
+          "start": 128.51,
+          "end": 128.87,
+          "matched": true
+        },
+        {
+          "text": "now",
+          "start": 128.91,
+          "end": 129.391,
+          "matched": true
+        },
+        {
           "text": "but",
-          "start": 191.076,
-          "end": 191.277,
+          "start": 129.411,
+          "end": 129.571,
           "matched": true
         },
         {
-          "text": "when",
-          "start": 191.357,
-          "end": 191.577,
+          "text": "hear",
+          "start": 129.651,
+          "end": 129.891,
           "matched": true
         },
         {
-          "text": "you",
-          "start": 191.637,
-          "end": 191.837,
+          "text": "my",
+          "start": 129.931,
+          "end": 130.151,
           "matched": true
         },
         {
-          "text": "find",
-          "start": 191.937,
-          "end": 192.217,
-          "matched": true
-        },
-        {
-          "text": "that",
-          "start": 192.257,
-          "end": 192.417,
-          "matched": true
-        },
-        {
-          "text": "third",
-          "start": 192.517,
-          "end": 192.977,
-          "matched": true
-        },
-        {
-          "text": "fridge",
-          "start": 193.097,
-          "end": 193.597,
+          "text": "hesitation",
+          "start": 130.231,
+          "end": 131.092,
           "matched": true
         }
       ]
     },
     {
       "id": "l51",
-      "text": "tucked behind the basement door",
-      "start": 193.697,
-      "end": 195.758,
+      "text": "one's in the kitchen, ordinary as can be",
+      "start": 132.033,
+      "end": 135.095,
       "words": [
         {
-          "text": "tucked",
-          "start": 193.697,
-          "end": 193.977,
+          "text": "one's",
+          "start": 132.033,
+          "end": 132.313,
           "matched": true
         },
         {
-          "text": "behind",
-          "start": 194.017,
-          "end": 194.577,
+          "text": "in",
+          "start": 132.413,
+          "end": 132.533,
           "matched": true
         },
         {
           "text": "the",
-          "start": 194.617,
-          "end": 194.717,
+          "start": 132.553,
+          "end": 132.653,
           "matched": true
         },
         {
-          "text": "basement",
-          "start": 194.757,
-          "end": 195.378,
+          "text": "kitchen,",
+          "start": 132.693,
+          "end": 133.233,
           "matched": true
         },
         {
-          "text": "door",
-          "start": 195.478,
-          "end": 195.758,
+          "text": "ordinary",
+          "start": 133.393,
+          "end": 134.094,
+          "matched": true
+        },
+        {
+          "text": "as",
+          "start": 134.234,
+          "end": 134.334,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 134.354,
+          "end": 134.634,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 134.674,
+          "end": 135.095,
           "matched": true
         }
       ]
     },
     {
       "id": "l52",
-      "text": "you'll see why Johnny told me",
-      "start": 195.798,
-      "end": 197.998,
+      "text": "second in the garage, nothin' hauntin' there still",
+      "start": 135.415,
+      "end": 137.916,
       "words": [
         {
-          "text": "you'll",
-          "start": 195.798,
-          "end": 196.018,
+          "text": "second",
+          "start": 135.415,
+          "end": 135.715,
           "matched": true
         },
         {
-          "text": "see",
-          "start": 196.078,
-          "end": 196.278,
+          "text": "in",
+          "start": 135.795,
+          "end": 135.935,
           "matched": true
         },
         {
-          "text": "why",
-          "start": 196.338,
-          "end": 196.538,
+          "text": "the",
+          "start": 135.975,
+          "end": 136.195,
           "matched": true
         },
         {
-          "text": "Johnny",
-          "start": 196.638,
-          "end": 196.958,
+          "text": "garage,",
+          "start": 136.215,
+          "end": 136.716,
           "matched": true
         },
         {
-          "text": "told",
-          "start": 197.038,
-          "end": 197.458,
+          "text": "nothin'",
+          "start": 136.776,
+          "end": 136.996,
           "matched": true
         },
         {
-          "text": "me",
-          "start": 197.538,
-          "end": 197.998,
+          "text": "hauntin'",
+          "start": 137.036,
+          "end": 137.276,
+          "matched": true
+        },
+        {
+          "text": "there",
+          "start": 137.316,
+          "end": 137.496,
+          "matched": true
+        },
+        {
+          "text": "still",
+          "start": 137.516,
+          "end": 137.916,
           "matched": true
         }
       ]
     },
     {
       "id": "l53",
-      "text": "I ain't welcome anymore",
-      "start": 199.259,
-      "end": 200.919,
+      "text": "but when you find that third fridge",
+      "start": 137.936,
+      "end": 139.518,
       "words": [
         {
-          "text": "I",
-          "start": 199.259,
-          "end": 199.319,
+          "text": "but",
+          "start": 137.936,
+          "end": 138.037,
           "matched": true
         },
         {
-          "text": "ain't",
-          "start": 199.399,
-          "end": 199.559,
+          "text": "when",
+          "start": 138.057,
+          "end": 138.177,
           "matched": true
         },
         {
-          "text": "welcome",
-          "start": 199.619,
-          "end": 200.119,
+          "text": "you",
+          "start": 138.197,
+          "end": 138.317,
           "matched": true
         },
         {
-          "text": "anymore",
-          "start": 200.259,
-          "end": 200.919,
+          "text": "find",
+          "start": 138.357,
+          "end": 138.557,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 138.617,
+          "end": 138.757,
+          "matched": true
+        },
+        {
+          "text": "third",
+          "start": 138.817,
+          "end": 139.057,
+          "matched": true
+        },
+        {
+          "text": "fridge",
+          "start": 139.097,
+          "end": 139.518,
           "matched": true
         }
       ]
     },
     {
       "id": "l54",
-      "text": "so dear friend",
-      "start": 202.32,
-      "end": 203.16,
+      "text": "tucked behind the basement door",
+      "start": 139.878,
+      "end": 141.479,
       "words": [
         {
-          "text": "so",
-          "start": 202.32,
-          "end": 202.48,
+          "text": "tucked",
+          "start": 139.878,
+          "end": 140.118,
           "matched": true
         },
         {
-          "text": "dear",
-          "start": 202.52,
-          "end": 202.76,
+          "text": "behind",
+          "start": 140.178,
+          "end": 140.538,
           "matched": true
         },
         {
-          "text": "friend",
-          "start": 202.84,
-          "end": 203.16,
+          "text": "the",
+          "start": 140.578,
+          "end": 140.658,
+          "matched": true
+        },
+        {
+          "text": "basement",
+          "start": 140.678,
+          "end": 141.119,
+          "matched": true
+        },
+        {
+          "text": "door",
+          "start": 141.199,
+          "end": 141.479,
           "matched": true
         }
       ]
     },
     {
       "id": "l55",
-      "text": "time's now for this here song to end",
-      "start": 204.585,
-      "end": 207.426,
+      "text": "you'll see why Johnny told me",
+      "start": 141.499,
+      "end": 143.3,
       "words": [
         {
-          "text": "time's",
-          "start": 204.585,
-          "end": 205.065,
+          "text": "you'll",
+          "start": 141.499,
+          "end": 141.699,
           "matched": true
         },
         {
-          "text": "now",
-          "start": 205.105,
-          "end": 205.305,
+          "text": "see",
+          "start": 141.719,
+          "end": 141.939,
           "matched": true
         },
         {
-          "text": "for",
-          "start": 205.345,
-          "end": 205.465,
+          "text": "why",
+          "start": 141.979,
+          "end": 142.199,
           "matched": true
         },
         {
-          "text": "this",
-          "start": 205.505,
-          "end": 205.725,
+          "text": "Johnny",
+          "start": 142.259,
+          "end": 142.7,
           "matched": true
         },
         {
-          "text": "here",
-          "start": 205.765,
-          "end": 205.965,
+          "text": "told",
+          "start": 142.8,
+          "end": 143.06,
           "matched": true
         },
         {
-          "text": "song",
-          "start": 206.025,
-          "end": 206.565,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 206.645,
-          "end": 207.326,
-          "matched": true
-        },
-        {
-          "text": "end",
-          "start": 207.346,
-          "end": 207.426,
+          "text": "me",
+          "start": 143.1,
+          "end": 143.3,
           "matched": true
         }
       ]
     },
     {
       "id": "l56",
-      "text": "hear my message, understand my warnin'",
-      "start": 208.386,
-      "end": 211.286,
+      "text": "I ain't welcome anymore",
+      "start": 143.32,
+      "end": 146.182,
       "words": [
         {
-          "text": "hear",
-          "start": 208.386,
-          "end": 208.646,
+          "text": "I",
+          "start": 143.32,
+          "end": 143.34,
           "matched": true
         },
         {
-          "text": "my",
-          "start": 208.706,
-          "end": 208.926,
+          "text": "ain't",
+          "start": 143.48,
+          "end": 143.78,
           "matched": true
         },
         {
-          "text": "message,",
-          "start": 208.986,
-          "end": 209.546,
+          "text": "welcome",
+          "start": 143.86,
+          "end": 144.381,
           "matched": true
         },
         {
-          "text": "understand",
-          "start": 209.726,
-          "end": 210.406,
-          "matched": true
-        },
-        {
-          "text": "my",
-          "start": 210.466,
-          "end": 210.706,
-          "matched": true
-        },
-        {
-          "text": "warnin'",
-          "start": 210.746,
-          "end": 211.286,
+          "text": "anymore",
+          "start": 144.541,
+          "end": 146.182,
           "matched": true
         }
       ]
     },
     {
       "id": "l57",
-      "text": "maybe you'll wake to a delicious breakfast in the mornin'",
-      "start": 211.346,
-      "end": 214.487,
+      "text": "ol' Johnny Three Fridges, sinister by name",
+      "start": 146.182,
+      "end": 152.873,
       "words": [
         {
-          "text": "maybe",
-          "start": 211.346,
-          "end": 211.606,
+          "text": "ol'",
+          "start": 146.182,
+          "end": 149.611,
+          "matched": false
+        },
+        {
+          "text": "Johnny",
+          "start": 149.611,
+          "end": 150.031,
           "matched": true
         },
         {
-          "text": "you'll",
-          "start": 211.646,
-          "end": 211.886,
+          "text": "Three",
+          "start": 150.071,
+          "end": 150.312,
           "matched": true
         },
         {
-          "text": "wake",
-          "start": 211.926,
-          "end": 212.186,
+          "text": "Fridges,",
+          "start": 150.372,
+          "end": 150.872,
           "matched": true
         },
         {
-          "text": "to",
-          "start": 212.226,
-          "end": 212.586,
+          "text": "sinister",
+          "start": 151.152,
+          "end": 151.932,
           "matched": true
         },
         {
-          "text": "a",
-          "start": 212.626,
-          "end": 212.666,
+          "text": "by",
+          "start": 151.952,
+          "end": 151.992,
           "matched": true
         },
         {
-          "text": "delicious",
-          "start": 212.706,
-          "end": 213.107,
-          "matched": true
-        },
-        {
-          "text": "breakfast",
-          "start": 213.127,
-          "end": 213.707,
-          "matched": true
-        },
-        {
-          "text": "in",
-          "start": 213.767,
-          "end": 213.827,
-          "matched": true
-        },
-        {
-          "text": "the",
-          "start": 213.867,
-          "end": 213.947,
-          "matched": true
-        },
-        {
-          "text": "mornin'",
-          "start": 214.007,
-          "end": 214.487,
+          "text": "name",
+          "start": 152.373,
+          "end": 152.873,
           "matched": true
         }
       ]
     },
     {
       "id": "l58",
+      "text": "livin' the dream, playin' his all American game",
+      "start": 153.793,
+      "end": 157.055,
+      "words": [
+        {
+          "text": "livin'",
+          "start": 153.793,
+          "end": 154.414,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 154.434,
+          "end": 154.494,
+          "matched": true
+        },
+        {
+          "text": "dream,",
+          "start": 154.554,
+          "end": 155.014,
+          "matched": true
+        },
+        {
+          "text": "playin'",
+          "start": 155.094,
+          "end": 155.414,
+          "matched": true
+        },
+        {
+          "text": "his",
+          "start": 155.454,
+          "end": 155.654,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 155.734,
+          "end": 156.635,
+          "matched": true
+        },
+        {
+          "text": "American",
+          "start": 156.635,
+          "end": 156.675,
+          "matched": false
+        },
+        {
+          "text": "game",
+          "start": 156.675,
+          "end": 157.055,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l59",
+      "text": "what's he got in 'em?",
+      "start": 157.455,
+      "end": 158.796,
+      "words": [
+        {
+          "text": "what's",
+          "start": 157.455,
+          "end": 157.715,
+          "matched": true
+        },
+        {
+          "text": "he",
+          "start": 157.755,
+          "end": 157.955,
+          "matched": true
+        },
+        {
+          "text": "got",
+          "start": 158.015,
+          "end": 158.315,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 158.415,
+          "end": 158.536,
+          "matched": true
+        },
+        {
+          "text": "'em?",
+          "start": 158.536,
+          "end": 158.796,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l60",
+      "text": "day to day, never the same",
+      "start": 158.796,
+      "end": 160.697,
+      "words": [
+        {
+          "text": "day",
+          "start": 158.796,
+          "end": 159.076,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 159.096,
+          "end": 159.176,
+          "matched": true
+        },
+        {
+          "text": "day,",
+          "start": 159.216,
+          "end": 159.596,
+          "matched": true
+        },
+        {
+          "text": "never",
+          "start": 159.616,
+          "end": 160.096,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 160.136,
+          "end": 160.296,
+          "matched": true
+        },
+        {
+          "text": "same",
+          "start": 160.336,
+          "end": 160.697,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l61",
+      "text": "don't get nosey, don't go pryin'",
+      "start": 161.137,
+      "end": 163.198,
+      "words": [
+        {
+          "text": "don't",
+          "start": 161.137,
+          "end": 161.417,
+          "matched": true
+        },
+        {
+          "text": "get",
+          "start": 161.437,
+          "end": 161.657,
+          "matched": true
+        },
+        {
+          "text": "nosey,",
+          "start": 161.697,
+          "end": 162.197,
+          "matched": true
+        },
+        {
+          "text": "don't",
+          "start": 162.237,
+          "end": 162.457,
+          "matched": true
+        },
+        {
+          "text": "go",
+          "start": 162.497,
+          "end": 162.677,
+          "matched": true
+        },
+        {
+          "text": "pryin'",
+          "start": 162.718,
+          "end": 163.198,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l62",
+      "text": "else you'll be the one runnin' away cryin'",
+      "start": 163.338,
+      "end": 165.399,
+      "words": [
+        {
+          "text": "else",
+          "start": 163.338,
+          "end": 163.478,
+          "matched": true
+        },
+        {
+          "text": "you'll",
+          "start": 163.518,
+          "end": 163.778,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 163.818,
+          "end": 163.938,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 163.958,
+          "end": 164.018,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 164.138,
+          "end": 164.278,
+          "matched": true
+        },
+        {
+          "text": "runnin'",
+          "start": 164.318,
+          "end": 164.598,
+          "matched": true
+        },
+        {
+          "text": "away",
+          "start": 164.638,
+          "end": 164.879,
+          "matched": true
+        },
+        {
+          "text": "cryin'",
+          "start": 164.919,
+          "end": 165.399,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l63",
+      "text": "ol' Johnny Three Fridges, sinister by name",
+      "start": 165.399,
+      "end": 170.141,
+      "words": [
+        {
+          "text": "ol'",
+          "start": 165.399,
+          "end": 166.399,
+          "matched": false
+        },
+        {
+          "text": "Johnny",
+          "start": 166.399,
+          "end": 166.839,
+          "matched": true
+        },
+        {
+          "text": "Three",
+          "start": 166.9,
+          "end": 167.12,
+          "matched": true
+        },
+        {
+          "text": "Fridges,",
+          "start": 167.16,
+          "end": 167.68,
+          "matched": true
+        },
+        {
+          "text": "sinister",
+          "start": 168.46,
+          "end": 169.321,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 169.341,
+          "end": 169.541,
+          "matched": true
+        },
+        {
+          "text": "name",
+          "start": 169.581,
+          "end": 170.141,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l64",
+      "text": "what's he got in 'em?",
+      "start": 170.141,
+      "end": 173.967,
+      "words": [
+        {
+          "text": "what's",
+          "start": 170.141,
+          "end": 170.906,
+          "matched": false
+        },
+        {
+          "text": "he",
+          "start": 170.906,
+          "end": 171.671,
+          "matched": false
+        },
+        {
+          "text": "got",
+          "start": 171.671,
+          "end": 172.437,
+          "matched": false
+        },
+        {
+          "text": "in",
+          "start": 172.437,
+          "end": 173.202,
+          "matched": false
+        },
+        {
+          "text": "'em?",
+          "start": 173.202,
+          "end": 173.967,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l65",
+      "text": "so dear friend",
+      "start": 173.967,
+      "end": 175.288,
+      "words": [
+        {
+          "text": "so",
+          "start": 173.967,
+          "end": 174.227,
+          "matched": true
+        },
+        {
+          "text": "dear",
+          "start": 174.287,
+          "end": 174.648,
+          "matched": true
+        },
+        {
+          "text": "friend",
+          "start": 174.788,
+          "end": 175.288,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l66",
+      "text": "time's now for this here song to end",
+      "start": 175.608,
+      "end": 177.87,
+      "words": [
+        {
+          "text": "time's",
+          "start": 175.608,
+          "end": 176.009,
+          "matched": true
+        },
+        {
+          "text": "now",
+          "start": 176.049,
+          "end": 176.209,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 176.229,
+          "end": 176.349,
+          "matched": true
+        },
+        {
+          "text": "this",
+          "start": 176.389,
+          "end": 176.589,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 176.629,
+          "end": 176.829,
+          "matched": true
+        },
+        {
+          "text": "song",
+          "start": 176.869,
+          "end": 177.15,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 177.17,
+          "end": 177.35,
+          "matched": true
+        },
+        {
+          "text": "end",
+          "start": 177.67,
+          "end": 177.87,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l67",
+      "text": "hear my message, understand my warnin'",
+      "start": 178.21,
+      "end": 181.073,
+      "words": [
+        {
+          "text": "hear",
+          "start": 178.21,
+          "end": 178.451,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 178.491,
+          "end": 178.691,
+          "matched": true
+        },
+        {
+          "text": "message,",
+          "start": 178.751,
+          "end": 179.291,
+          "matched": true
+        },
+        {
+          "text": "understand",
+          "start": 179.431,
+          "end": 180.052,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 180.092,
+          "end": 180.272,
+          "matched": true
+        },
+        {
+          "text": "warnin'",
+          "start": 180.332,
+          "end": 181.073,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l68",
+      "text": "maybe you'll wake to a delicious breakfast in the mornin'",
+      "start": 181.633,
+      "end": 185.276,
+      "words": [
+        {
+          "text": "maybe",
+          "start": 181.633,
+          "end": 181.873,
+          "matched": true
+        },
+        {
+          "text": "you'll",
+          "start": 181.893,
+          "end": 182.134,
+          "matched": true
+        },
+        {
+          "text": "wake",
+          "start": 182.174,
+          "end": 182.414,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 182.454,
+          "end": 182.654,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 182.914,
+          "end": 182.934,
+          "matched": true
+        },
+        {
+          "text": "delicious",
+          "start": 182.974,
+          "end": 183.655,
+          "matched": true
+        },
+        {
+          "text": "breakfast",
+          "start": 183.755,
+          "end": 184.275,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 184.375,
+          "end": 184.496,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 184.536,
+          "end": 184.616,
+          "matched": true
+        },
+        {
+          "text": "mornin'",
+          "start": 184.696,
+          "end": 185.276,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l69",
       "text": "superchaosialidocious",
-      "start": 215.427,
-      "end": 215.927,
+      "start": 186.317,
+      "end": 186.797,
       "words": [
         {
           "text": "superchaosialidocious",
-          "start": 215.427,
-          "end": 215.927,
+          "start": 186.317,
+          "end": 186.797,
           "matched": true
         }
       ]
