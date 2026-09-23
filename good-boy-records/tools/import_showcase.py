@@ -274,7 +274,12 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         print(f"warn {source_yaml.relative_to(DROP)}: no version field; inferred {variant_raw!r} from directory")
 
     variant_slug = slugify(variant_raw)
+    # Legacy showcase cuts used a trailing "-b" rather than an explicit
+    # side field. Preserve those as cassette Side B.
+    inferred_side = "B" if variant_slug.endswith("-b") else "A"
 
+    explicit_side = str(raw.get("side") or "").strip().upper()
+    side = explicit_side if explicit_side in {"A", "B"} else inferred_side
     # Side may be explicit in YAML, but the curated archive historically also
     # used ``-a`` / ``-b`` release-directory suffixes. Honour explicit YAML
     # first; otherwise infer a cassette side from the version/directory name.
