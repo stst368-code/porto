@@ -21,7 +21,7 @@ slots = ["metal", "pop", "country", "disco", "orchestral", "special"]
 # Catalogue and curated-source contract
 check("catalogue format retained", cat.get("format") == "gbr-showcase-v10.5")
 check("fixed six genre slots", cat.get("variantSlots") == slots)
-check("maximum fourteen songs explicit", "MAX_SONGS = 14" in builder)
+check("maximum twenty four songs explicit", "MAX_SONGS = 24" in builder)
 check("nested showcase directories scanned", 'DROP.rglob("*.yaml")' in importer)
 check("MP3 and FLAC first-class", '".mp3"' in importer and '".flac"' in importer)
 check("Side B support retained", "sideIds" in builder and 'for side in ("A", "B")' in builder)
