@@ -173,7 +173,12 @@ check("artwork is never genre-filtered", ".gbr11-release-art {" in css and "filt
 
 
 # Hidden reject/easter bank
-check("easter directory is reserved from normal importer", 'p.name.lower() != "easter"' in importer and 'is_easter_path' in importer)
+check(
+    "easter directory is reserved from normal importer",
+    "def reserved_bank" in importer
+    and '{"easter", "one-off", "oneoff"}' in importer
+    and "reserved_bank(path) is None" in importer
+)
 check("easter bank scans metadata-free audio directly", 'EASTER_DIR = ROOT / "showcase" / "easter"' in builder and 'def load_easter_tracks' in builder and 'EASTER_AUDIO_EXTS' in builder)
 check("easter bank is capped at ten masters", 'groups = groups[:MAX_EASTER_TRACKS]' in builder)
 check("easter formats with same stem are paired", 'grouped.setdefault' in builder and '"files": {}' in builder)
