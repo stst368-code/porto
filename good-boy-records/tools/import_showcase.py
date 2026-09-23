@@ -59,7 +59,7 @@ LIVE_LYRICS_FORMAT = "gbr-word-lyrics-v1"
 AUDIO_EXTS = {".flac", ".mp3"}
 ATR_AUDIO_EXTS = {".flac", ".mp3", ".wav", ".m4a", ".ogg", ".opus", ".webm"}
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp"}
-VARIANT_SLOTS = ("metal", "pop", "country", "disco", "orchestral", "special")
+VARIANT_SLOTS = ("metal", "pop", "country", "disco", "orchestral", "special", "one-off")
 ONE_OFF_SLOT = "one-off"
 ONE_OFF_DIR = DROP / "one-off"
 
