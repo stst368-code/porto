@@ -394,7 +394,33 @@ html[data-browse-genre="orchestral"] .gbr11-hw-button { border-color:#806744; }
 html[data-browse-genre="special"] { --gbr-panel:#07100e;--gbr-panel-hi:#0f1c19;--gbr-panel-lo:#030706;--gbr-line:#31514b;--gbr-line-hi:#4f8177;--gbr-legend:#73968f;--gbr-accent:#39bfa9;--gbr-hot:#aef7e6;--gbr-glow:rgba(57,191,169,.2); }
 html[data-browse-genre="special"] .gbr11-panel,html[data-browse-genre="special"] .gbr11-topbar { background-image:repeating-linear-gradient(0deg,rgba(127,255,226,.018) 0 1px,transparent 1px 5px),repeating-linear-gradient(90deg,rgba(127,255,226,.012) 0 1px,transparent 1px 7px),linear-gradient(180deg,#0f1c19,#030706); }
 html[data-browse-genre="special"] .gbr11-hw-button,html[data-browse-genre="special"] .gbr11-genre-button { border-style:dashed; }
+html[data-browse-genre="one-off"] {
+  --gbr-panel:#10100d;
+  --gbr-panel-hi:#201f19;
+  --gbr-panel-lo:#070705;
+  --gbr-line:#5f5940;
+  --gbr-line-hi:#91875c;
+  --gbr-legend:#aaa17a;
+  --gbr-accent:#c6ad52;
+  --gbr-hot:#f5dda0;
+  --gbr-glow:rgba(198,173,82,.22);
+}
 
+html[data-browse-genre="one-off"] .gbr11-panel,
+html[data-browse-genre="one-off"] .gbr11-topbar {
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,.018) 0 1px,
+      transparent 1px 7px
+    ),
+    linear-gradient(180deg,#201f19,#070705);
+}
+
+html[data-browse-genre="one-off"] .gbr11-hw-button,
+html[data-browse-genre="one-off"] .gbr11-genre-button {
+  border-style:double;
+}
 /* Physical power kills illumination and pauses playback in JS. The cabinet remains
    faintly visible so the power switch can still be found in a dark room. */
 .gbr11-app[data-power="off"] .gbr11-spectrum-panel,.gbr11-app[data-power="off"] .gbr11-vu-panel { filter:brightness(.30) saturate(.24); }
