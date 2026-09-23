@@ -1,0 +1,4884 @@
+{
+  "format": "gbr-word-lyrics-v1",
+  "version": 2,
+  "title": "california-rear-view",
+  "song_version": "piano-ballad",
+  "source_yaml": "california-rear-view/california-rear-view-pop-b/california-rear-view-pop-b.yaml",
+  "source_audio": "california-rear-view-pop-b.flac",
+  "language": "en",
+  "engine": "demucs:htdemucs+whisperx:large-v3",
+  "runtime": {
+    "requested_device": "auto",
+    "demucs_device": "cuda",
+    "whisperx_device": "cuda",
+    "whisperx_compute_type": "float16",
+    "batch_size": 4,
+    "cpu_fallback_used": false
+  },
+  "generated_at": "2026-09-23T19:49:50+00:00",
+  "stats": {
+    "lyric_words": 663,
+    "recognised_words": 655,
+    "matched_words": 637,
+    "coverage": 0.9608
+  },
+  "quality": {
+    "rating": "excellent",
+    "review_threshold": 0.8,
+    "review_required": false,
+    "approved": false,
+    "usable_for_live_lyrics": true
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "mmm mmm mmm mmm",
+      "start": 10.383,
+      "end": 11.743,
+      "words": [
+        {
+          "text": "mmm",
+          "start": 10.383,
+          "end": 10.723,
+          "matched": false
+        },
+        {
+          "text": "mmm",
+          "start": 10.723,
+          "end": 11.063,
+          "matched": false
+        },
+        {
+          "text": "mmm",
+          "start": 11.063,
+          "end": 11.403,
+          "matched": false
+        },
+        {
+          "text": "mmm",
+          "start": 11.403,
+          "end": 11.743,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "text": "I saw your name light up again",
+      "start": 11.743,
+      "end": 13.905,
+      "words": [
+        {
+          "text": "I",
+          "start": 11.743,
+          "end": 11.863,
+          "matched": true
+        },
+        {
+          "text": "saw",
+          "start": 11.963,
+          "end": 12.223,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 12.243,
+          "end": 12.444,
+          "matched": true
+        },
+        {
+          "text": "name",
+          "start": 12.504,
+          "end": 12.824,
+          "matched": true
+        },
+        {
+          "text": "light",
+          "start": 12.844,
+          "end": 13.024,
+          "matched": true
+        },
+        {
+          "text": "up",
+          "start": 13.144,
+          "end": 13.284,
+          "matched": true
+        },
+        {
+          "text": "again",
+          "start": 13.404,
+          "end": 13.905,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "text": "Like some bad sign I should've read",
+      "start": 14.385,
+      "end": 16.686,
+      "words": [
+        {
+          "text": "Like",
+          "start": 14.385,
+          "end": 14.585,
+          "matched": true
+        },
+        {
+          "text": "some",
+          "start": 14.605,
+          "end": 14.805,
+          "matched": true
+        },
+        {
+          "text": "bad",
+          "start": 14.885,
+          "end": 15.165,
+          "matched": true
+        },
+        {
+          "text": "sign",
+          "start": 15.225,
+          "end": 15.546,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 15.586,
+          "end": 15.686,
+          "matched": true
+        },
+        {
+          "text": "should've",
+          "start": 15.746,
+          "end": 16.006,
+          "matched": true
+        },
+        {
+          "text": "read",
+          "start": 16.226,
+          "end": 16.686,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "text": "You say we're nothing, say we're friends",
+      "start": 17.107,
+      "end": 19.428,
+      "words": [
+        {
+          "text": "You",
+          "start": 17.107,
+          "end": 17.287,
+          "matched": true
+        },
+        {
+          "text": "say",
+          "start": 17.327,
+          "end": 17.587,
+          "matched": true
+        },
+        {
+          "text": "we're",
+          "start": 17.607,
+          "end": 17.787,
+          "matched": true
+        },
+        {
+          "text": "nothing,",
+          "start": 17.847,
+          "end": 18.488,
+          "matched": true
+        },
+        {
+          "text": "say",
+          "start": 18.528,
+          "end": 18.768,
+          "matched": true
+        },
+        {
+          "text": "we're",
+          "start": 18.808,
+          "end": 18.968,
+          "matched": true
+        },
+        {
+          "text": "friends",
+          "start": 19.028,
+          "end": 19.428,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "text": "Funny how that story never ends",
+      "start": 19.869,
+      "end": 21.89,
+      "words": [
+        {
+          "text": "Funny",
+          "start": 19.869,
+          "end": 20.229,
+          "matched": true
+        },
+        {
+          "text": "how",
+          "start": 20.269,
+          "end": 20.409,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 20.429,
+          "end": 20.529,
+          "matched": true
+        },
+        {
+          "text": "story",
+          "start": 20.569,
+          "end": 20.909,
+          "matched": true
+        },
+        {
+          "text": "never",
+          "start": 20.969,
+          "end": 21.27,
+          "matched": true
+        },
+        {
+          "text": "ends",
+          "start": 21.47,
+          "end": 21.89,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "text": "I don't need another explanation",
+      "start": 22.41,
+      "end": 24.452,
+      "words": [
+        {
+          "text": "I",
+          "start": 22.41,
+          "end": 22.47,
+          "matched": true
+        },
+        {
+          "text": "don't",
+          "start": 22.51,
+          "end": 22.671,
+          "matched": true
+        },
+        {
+          "text": "need",
+          "start": 22.691,
+          "end": 22.891,
+          "matched": true
+        },
+        {
+          "text": "another",
+          "start": 22.951,
+          "end": 23.331,
+          "matched": true
+        },
+        {
+          "text": "explanation",
+          "start": 23.511,
+          "end": 24.452,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "text": "Don't need another late-night conversation",
+      "start": 24.552,
+      "end": 27.113,
+      "words": [
+        {
+          "text": "Don't",
+          "start": 24.552,
+          "end": 24.732,
+          "matched": true
+        },
+        {
+          "text": "need",
+          "start": 24.752,
+          "end": 24.952,
+          "matched": true
+        },
+        {
+          "text": "another",
+          "start": 25.012,
+          "end": 25.412,
+          "matched": true
+        },
+        {
+          "text": "late-night",
+          "start": 25.472,
+          "end": 25.753,
+          "matched": true
+        },
+        {
+          "text": "conversation",
+          "start": 26.133,
+          "end": 27.113,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l8",
+      "text": "You had me building something in my head",
+      "start": 27.354,
+      "end": 29.075,
+      "words": [
+        {
+          "text": "You",
+          "start": 27.354,
+          "end": 27.534,
+          "matched": true
+        },
+        {
+          "text": "had",
+          "start": 27.554,
+          "end": 27.694,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 27.714,
+          "end": 27.834,
+          "matched": true
+        },
+        {
+          "text": "building",
+          "start": 27.874,
+          "end": 28.174,
+          "matched": true
+        },
+        {
+          "text": "something",
+          "start": 28.194,
+          "end": 28.594,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 28.635,
+          "end": 28.715,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 28.755,
+          "end": 28.915,
+          "matched": true
+        },
+        {
+          "text": "head",
+          "start": 28.935,
+          "end": 29.075,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l9",
+      "text": "While you were somewhere else instead",
+      "start": 29.115,
+      "end": 31.256,
+      "words": [
+        {
+          "text": "While",
+          "start": 29.115,
+          "end": 29.255,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 29.275,
+          "end": 29.375,
+          "matched": true
+        },
+        {
+          "text": "were",
+          "start": 29.415,
+          "end": 29.535,
+          "matched": true
+        },
+        {
+          "text": "somewhere",
+          "start": 29.575,
+          "end": 30.136,
+          "matched": true
+        },
+        {
+          "text": "else",
+          "start": 30.236,
+          "end": 30.476,
+          "matched": true
+        },
+        {
+          "text": "instead",
+          "start": 30.576,
+          "end": 31.256,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l10",
+      "text": "Now I'm riding round with nowhere to be",
+      "start": 31.657,
+      "end": 33.578,
+      "words": [
+        {
+          "text": "Now",
+          "start": 31.657,
+          "end": 31.797,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 31.877,
+          "end": 31.977,
+          "matched": true
+        },
+        {
+          "text": "riding",
+          "start": 32.017,
+          "end": 32.277,
+          "matched": true
+        },
+        {
+          "text": "round",
+          "start": 32.297,
+          "end": 32.697,
+          "matched": true
+        },
+        {
+          "text": "with",
+          "start": 32.717,
+          "end": 32.877,
+          "matched": true
+        },
+        {
+          "text": "nowhere",
+          "start": 32.937,
+          "end": 33.238,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 33.258,
+          "end": 33.398,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 33.418,
+          "end": 33.578,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l11",
+      "text": "Cheap coffee, back seat, quarter past three",
+      "start": 33.678,
+      "end": 36.08,
+      "words": [
+        {
+          "text": "Cheap",
+          "start": 33.678,
+          "end": 34.018,
+          "matched": true
+        },
+        {
+          "text": "coffee,",
+          "start": 34.058,
+          "end": 34.398,
+          "matched": true
+        },
+        {
+          "text": "back",
+          "start": 34.438,
+          "end": 35.039,
+          "matched": true
+        },
+        {
+          "text": "seat,",
+          "start": 35.039,
+          "end": 35.099,
+          "matched": false
+        },
+        {
+          "text": "quarter",
+          "start": 35.099,
+          "end": 35.419,
+          "matched": true
+        },
+        {
+          "text": "past",
+          "start": 35.439,
+          "end": 35.739,
+          "matched": true
+        },
+        {
+          "text": "three",
+          "start": 35.759,
+          "end": 36.08,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l12",
+      "text": "Everybody told me what I couldn't see",
+      "start": 36.6,
+      "end": 38.901,
+      "words": [
+        {
+          "text": "Everybody",
+          "start": 36.6,
+          "end": 37.1,
+          "matched": true
+        },
+        {
+          "text": "told",
+          "start": 37.16,
+          "end": 37.34,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 37.38,
+          "end": 37.48,
+          "matched": true
+        },
+        {
+          "text": "what",
+          "start": 37.561,
+          "end": 37.721,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 37.761,
+          "end": 37.821,
+          "matched": true
+        },
+        {
+          "text": "couldn't",
+          "start": 37.881,
+          "end": 38.441,
+          "matched": true
+        },
+        {
+          "text": "see",
+          "start": 38.521,
+          "end": 38.901,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l13",
+      "text": "Guess the joke was always me",
+      "start": 38.921,
+      "end": 40.783,
+      "words": [
+        {
+          "text": "Guess",
+          "start": 38.921,
+          "end": 39.062,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 39.082,
+          "end": 39.202,
+          "matched": true
+        },
+        {
+          "text": "joke",
+          "start": 39.242,
+          "end": 39.602,
+          "matched": true
+        },
+        {
+          "text": "was",
+          "start": 39.642,
+          "end": 39.802,
+          "matched": true
+        },
+        {
+          "text": "always",
+          "start": 39.982,
+          "end": 40.583,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 40.663,
+          "end": 40.783,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l14",
+      "text": "You pull me close, then tell me go",
+      "start": 46.169,
+      "end": 48.232,
+      "words": [
+        {
+          "text": "You",
+          "start": 46.169,
+          "end": 46.329,
+          "matched": true
+        },
+        {
+          "text": "pull",
+          "start": 46.349,
+          "end": 46.63,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 46.65,
+          "end": 46.75,
+          "matched": true
+        },
+        {
+          "text": "close,",
+          "start": 46.81,
+          "end": 47.17,
+          "matched": true
+        },
+        {
+          "text": "then",
+          "start": 47.17,
+          "end": 47.371,
+          "matched": false
+        },
+        {
+          "text": "tell",
+          "start": 47.371,
+          "end": 47.691,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 47.731,
+          "end": 47.831,
+          "matched": true
+        },
+        {
+          "text": "go",
+          "start": 47.891,
+          "end": 48.232,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l15",
+      "text": "Make up your mind, I need to know",
+      "start": 48.272,
+      "end": 50.214,
+      "words": [
+        {
+          "text": "Make",
+          "start": 48.272,
+          "end": 48.512,
+          "matched": true
+        },
+        {
+          "text": "up",
+          "start": 48.612,
+          "end": 48.692,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 48.732,
+          "end": 48.913,
+          "matched": true
+        },
+        {
+          "text": "mind,",
+          "start": 48.953,
+          "end": 49.273,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 49.353,
+          "end": 49.433,
+          "matched": true
+        },
+        {
+          "text": "need",
+          "start": 49.473,
+          "end": 49.774,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 49.794,
+          "end": 49.974,
+          "matched": true
+        },
+        {
+          "text": "know",
+          "start": 49.994,
+          "end": 50.214,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l16",
+      "text": "One minute yes, the next minute no",
+      "start": 50.254,
+      "end": 52.777,
+      "words": [
+        {
+          "text": "One",
+          "start": 50.254,
+          "end": 50.455,
+          "matched": true
+        },
+        {
+          "text": "minute",
+          "start": 50.515,
+          "end": 50.875,
+          "matched": true
+        },
+        {
+          "text": "yes,",
+          "start": 50.935,
+          "end": 51.336,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 51.356,
+          "end": 51.496,
+          "matched": true
+        },
+        {
+          "text": "next",
+          "start": 51.556,
+          "end": 51.836,
+          "matched": true
+        },
+        {
+          "text": "minute",
+          "start": 51.896,
+          "end": 52.257,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 52.337,
+          "end": 52.777,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l17",
+      "text": "I'm already halfway down the road",
+      "start": 52.958,
+      "end": 55.521,
+      "words": [
+        {
+          "text": "I'm",
+          "start": 52.958,
+          "end": 53.098,
+          "matched": true
+        },
+        {
+          "text": "already",
+          "start": 53.198,
+          "end": 53.679,
+          "matched": true
+        },
+        {
+          "text": "halfway",
+          "start": 53.759,
+          "end": 54.239,
+          "matched": true
+        },
+        {
+          "text": "down",
+          "start": 54.299,
+          "end": 54.58,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 54.64,
+          "end": 54.74,
+          "matched": true
+        },
+        {
+          "text": "road",
+          "start": 54.8,
+          "end": 55.521,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l18",
+      "text": "Baby, take me out to California (oh)",
+      "start": 55.861,
+      "end": 58.289,
+      "words": [
+        {
+          "text": "Baby,",
+          "start": 55.861,
+          "end": 56.182,
+          "matched": true
+        },
+        {
+          "text": "take",
+          "start": 56.202,
+          "end": 56.382,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 56.402,
+          "end": 56.522,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 56.602,
+          "end": 56.722,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 56.762,
+          "end": 56.863,
+          "matched": true
+        },
+        {
+          "text": "California",
+          "start": 56.903,
+          "end": 57.684,
+          "matched": true
+        },
+        {
+          "text": "(oh)",
+          "start": 57.684,
+          "end": 58.289,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l19",
+      "text": "Drive until the morning comes (oh ho)",
+      "start": 58.289,
+      "end": 61.702,
+      "words": [
+        {
+          "text": "Drive",
+          "start": 58.289,
+          "end": 58.895,
+          "matched": false
+        },
+        {
+          "text": "until",
+          "start": 58.895,
+          "end": 59.5,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 59.5,
+          "end": 59.58,
+          "matched": true
+        },
+        {
+          "text": "morning",
+          "start": 59.621,
+          "end": 59.941,
+          "matched": true
+        },
+        {
+          "text": "comes",
+          "start": 59.981,
+          "end": 60.361,
+          "matched": true
+        },
+        {
+          "text": "(oh",
+          "start": 60.361,
+          "end": 61.031,
+          "matched": false
+        },
+        {
+          "text": "ho)",
+          "start": 61.031,
+          "end": 61.702,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l20",
+      "text": "You can tell me that you want me",
+      "start": 61.702,
+      "end": 63.343,
+      "words": [
+        {
+          "text": "You",
+          "start": 61.702,
+          "end": 61.862,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 61.902,
+          "end": 62.022,
+          "matched": true
+        },
+        {
+          "text": "tell",
+          "start": 62.062,
+          "end": 62.242,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 62.262,
+          "end": 62.382,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 62.422,
+          "end": 62.542,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 62.582,
+          "end": 62.763,
+          "matched": true
+        },
+        {
+          "text": "want",
+          "start": 62.803,
+          "end": 63.083,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 63.123,
+          "end": 63.343,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l21",
+      "text": "Then pretend that we're just having fun",
+      "start": 63.443,
+      "end": 67.085,
+      "words": [
+        {
+          "text": "Then",
+          "start": 63.443,
+          "end": 63.743,
+          "matched": true
+        },
+        {
+          "text": "pretend",
+          "start": 63.783,
+          "end": 64.444,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 64.484,
+          "end": 64.624,
+          "matched": true
+        },
+        {
+          "text": "we're",
+          "start": 64.664,
+          "end": 64.964,
+          "matched": true
+        },
+        {
+          "text": "just",
+          "start": 65.004,
+          "end": 65.144,
+          "matched": true
+        },
+        {
+          "text": "having",
+          "start": 65.184,
+          "end": 65.464,
+          "matched": true
+        },
+        {
+          "text": "fun",
+          "start": 65.504,
+          "end": 67.085,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l22",
+      "text": "If you're leaving, keep on leaving",
+      "start": 67.145,
+      "end": 68.846,
+      "words": [
+        {
+          "text": "If",
+          "start": 67.145,
+          "end": 67.205,
+          "matched": true
+        },
+        {
+          "text": "you're",
+          "start": 67.245,
+          "end": 67.446,
+          "matched": true
+        },
+        {
+          "text": "leaving,",
+          "start": 67.466,
+          "end": 67.926,
+          "matched": true
+        },
+        {
+          "text": "keep",
+          "start": 67.946,
+          "end": 68.126,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 68.206,
+          "end": 68.326,
+          "matched": true
+        },
+        {
+          "text": "leaving",
+          "start": 68.366,
+          "end": 68.846,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l23",
+      "text": "If you're staying, do your thing",
+      "start": 70.047,
+      "end": 71.348,
+      "words": [
+        {
+          "text": "If",
+          "start": 70.047,
+          "end": 70.127,
+          "matched": true
+        },
+        {
+          "text": "you're",
+          "start": 70.147,
+          "end": 70.287,
+          "matched": true
+        },
+        {
+          "text": "staying,",
+          "start": 70.307,
+          "end": 70.708,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 70.728,
+          "end": 70.828,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 70.868,
+          "end": 71.008,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 71.048,
+          "end": 71.348,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l24",
+      "text": "I've been waiting, I've been dreaming",
+      "start": 72.809,
+      "end": 74.43,
+      "words": [
+        {
+          "text": "I've",
+          "start": 72.809,
+          "end": 72.929,
+          "matched": true
+        },
+        {
+          "text": "been",
+          "start": 72.949,
+          "end": 73.069,
+          "matched": true
+        },
+        {
+          "text": "waiting,",
+          "start": 73.109,
+          "end": 73.489,
+          "matched": true
+        },
+        {
+          "text": "I've",
+          "start": 73.53,
+          "end": 73.63,
+          "matched": true
+        },
+        {
+          "text": "been",
+          "start": 73.65,
+          "end": 73.79,
+          "matched": true
+        },
+        {
+          "text": "dreaming",
+          "start": 73.83,
+          "end": 74.43,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l25",
+      "text": "I've been cutting every string",
+      "start": 74.63,
+      "end": 76.892,
+      "words": [
+        {
+          "text": "I've",
+          "start": 74.63,
+          "end": 74.85,
+          "matched": true
+        },
+        {
+          "text": "been",
+          "start": 74.87,
+          "end": 75.071,
+          "matched": true
+        },
+        {
+          "text": "cutting",
+          "start": 75.171,
+          "end": 75.831,
+          "matched": true
+        },
+        {
+          "text": "every",
+          "start": 76.091,
+          "end": 76.451,
+          "matched": true
+        },
+        {
+          "text": "string",
+          "start": 76.491,
+          "end": 76.892,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l26",
+      "text": "Your name rolls round like a mantra",
+      "start": 79.353,
+      "end": 81.655,
+      "words": [
+        {
+          "text": "Your",
+          "start": 79.353,
+          "end": 79.613,
+          "matched": true
+        },
+        {
+          "text": "name",
+          "start": 79.633,
+          "end": 79.974,
+          "matched": true
+        },
+        {
+          "text": "rolls",
+          "start": 80.054,
+          "end": 80.354,
+          "matched": true
+        },
+        {
+          "text": "round",
+          "start": 80.374,
+          "end": 80.674,
+          "matched": true
+        },
+        {
+          "text": "like",
+          "start": 80.734,
+          "end": 80.914,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 80.974,
+          "end": 81.014,
+          "matched": true
+        },
+        {
+          "text": "mantra",
+          "start": 81.074,
+          "end": 81.655,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l27",
+      "text": "Back of a Hyundai, maybe an Lancia",
+      "start": 81.755,
+      "end": 84.097,
+      "words": [
+        {
+          "text": "Back",
+          "start": 81.755,
+          "end": 81.975,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 82.055,
+          "end": 82.155,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 82.195,
+          "end": 82.275,
+          "matched": true
+        },
+        {
+          "text": "Hyundai,",
+          "start": 82.335,
+          "end": 82.896,
+          "matched": true
+        },
+        {
+          "text": "maybe",
+          "start": 82.976,
+          "end": 83.276,
+          "matched": true
+        },
+        {
+          "text": "an",
+          "start": 83.276,
+          "end": 83.496,
+          "matched": false
+        },
+        {
+          "text": "Lancia",
+          "start": 83.496,
+          "end": 84.097,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l28",
+      "text": "Bad behaviour, baby, I'm your karma",
+      "start": 84.177,
+      "end": 86.859,
+      "words": [
+        {
+          "text": "Bad",
+          "start": 84.177,
+          "end": 84.377,
+          "matched": true
+        },
+        {
+          "text": "behaviour,",
+          "start": 84.417,
+          "end": 85.037,
+          "matched": true
+        },
+        {
+          "text": "baby,",
+          "start": 85.077,
+          "end": 85.558,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 85.718,
+          "end": 85.878,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 85.918,
+          "end": 86.118,
+          "matched": true
+        },
+        {
+          "text": "karma",
+          "start": 86.218,
+          "end": 86.859,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l29",
+      "text": "Keep playing games and my girls might haunt ya",
+      "start": 86.919,
+      "end": 89.641,
+      "words": [
+        {
+          "text": "Keep",
+          "start": 86.919,
+          "end": 87.119,
+          "matched": true
+        },
+        {
+          "text": "playing",
+          "start": 87.159,
+          "end": 87.599,
+          "matched": true
+        },
+        {
+          "text": "games",
+          "start": 87.659,
+          "end": 87.98,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 88.06,
+          "end": 88.14,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 88.16,
+          "end": 88.32,
+          "matched": true
+        },
+        {
+          "text": "girls",
+          "start": 88.34,
+          "end": 88.62,
+          "matched": true
+        },
+        {
+          "text": "might",
+          "start": 88.68,
+          "end": 88.96,
+          "matched": true
+        },
+        {
+          "text": "haunt",
+          "start": 89.0,
+          "end": 89.581,
+          "matched": true
+        },
+        {
+          "text": "ya",
+          "start": 89.601,
+          "end": 89.641,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l30",
+      "text": "Blueberry pancakes at a quarter to eight",
+      "start": 89.701,
+      "end": 91.823,
+      "words": [
+        {
+          "text": "Blueberry",
+          "start": 89.701,
+          "end": 90.201,
+          "matched": true
+        },
+        {
+          "text": "pancakes",
+          "start": 90.261,
+          "end": 90.762,
+          "matched": true
+        },
+        {
+          "text": "at",
+          "start": 90.842,
+          "end": 90.942,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 91.002,
+          "end": 91.042,
+          "matched": true
+        },
+        {
+          "text": "quarter",
+          "start": 91.082,
+          "end": 91.422,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 91.442,
+          "end": 91.582,
+          "matched": true
+        },
+        {
+          "text": "eight",
+          "start": 91.683,
+          "end": 91.823,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l31",
+      "text": "You say come over, then you make me wait",
+      "start": 92.323,
+      "end": 94.645,
+      "words": [
+        {
+          "text": "You",
+          "start": 92.323,
+          "end": 92.443,
+          "matched": true
+        },
+        {
+          "text": "say",
+          "start": 92.483,
+          "end": 92.643,
+          "matched": true
+        },
+        {
+          "text": "come",
+          "start": 92.683,
+          "end": 92.963,
+          "matched": true
+        },
+        {
+          "text": "over,",
+          "start": 93.224,
+          "end": 93.484,
+          "matched": true
+        },
+        {
+          "text": "then",
+          "start": 93.504,
+          "end": 93.664,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 93.684,
+          "end": 93.824,
+          "matched": true
+        },
+        {
+          "text": "make",
+          "start": 93.864,
+          "end": 94.124,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 94.184,
+          "end": 94.305,
+          "matched": true
+        },
+        {
+          "text": "wait",
+          "start": 94.365,
+          "end": 94.645,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l32",
+      "text": "Engine running while you change your mind",
+      "start": 95.265,
+      "end": 97.607,
+      "words": [
+        {
+          "text": "Engine",
+          "start": 95.265,
+          "end": 95.706,
+          "matched": true
+        },
+        {
+          "text": "running",
+          "start": 95.766,
+          "end": 96.266,
+          "matched": true
+        },
+        {
+          "text": "while",
+          "start": 96.306,
+          "end": 96.466,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 96.486,
+          "end": 96.566,
+          "matched": true
+        },
+        {
+          "text": "change",
+          "start": 96.606,
+          "end": 96.967,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 96.987,
+          "end": 97.147,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 97.187,
+          "end": 97.607,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l33",
+      "text": "Put it in gear, baby, don't waste my time",
+      "start": 97.667,
+      "end": 100.449,
+      "words": [
+        {
+          "text": "Put",
+          "start": 97.667,
+          "end": 97.867,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 97.947,
+          "end": 98.027,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 98.147,
+          "end": 98.308,
+          "matched": true
+        },
+        {
+          "text": "gear,",
+          "start": 98.348,
+          "end": 98.688,
+          "matched": true
+        },
+        {
+          "text": "baby,",
+          "start": 98.728,
+          "end": 99.028,
+          "matched": true
+        },
+        {
+          "text": "don't",
+          "start": 99.048,
+          "end": 99.388,
+          "matched": true
+        },
+        {
+          "text": "waste",
+          "start": 99.408,
+          "end": 99.649,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 99.749,
+          "end": 100.049,
+          "matched": true
+        },
+        {
+          "text": "time",
+          "start": 100.069,
+          "end": 100.449,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l34",
+      "text": "Do what you do",
+      "start": 102.148,
+      "end": 103.068,
+      "words": [
+        {
+          "text": "Do",
+          "start": 102.148,
+          "end": 102.388,
+          "matched": true
+        },
+        {
+          "text": "what",
+          "start": 102.428,
+          "end": 102.588,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 102.628,
+          "end": 102.828,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 102.868,
+          "end": 103.068,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l35",
+      "text": "Don't stop now",
+      "start": 103.509,
+      "end": 104.409,
+      "words": [
+        {
+          "text": "Don't",
+          "start": 103.509,
+          "end": 103.709,
+          "matched": true
+        },
+        {
+          "text": "stop",
+          "start": 103.789,
+          "end": 104.109,
+          "matched": true
+        },
+        {
+          "text": "now",
+          "start": 104.209,
+          "end": 104.409,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l36",
+      "text": "Do what you do",
+      "start": 104.909,
+      "end": 105.87,
+      "words": [
+        {
+          "text": "Do",
+          "start": 104.909,
+          "end": 105.169,
+          "matched": true
+        },
+        {
+          "text": "what",
+          "start": 105.189,
+          "end": 105.369,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 105.409,
+          "end": 105.609,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 105.649,
+          "end": 105.87,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l37",
+      "text": "You know how",
+      "start": 106.09,
+      "end": 107.21,
+      "words": [
+        {
+          "text": "You",
+          "start": 106.09,
+          "end": 106.21,
+          "matched": true
+        },
+        {
+          "text": "know",
+          "start": 106.29,
+          "end": 106.83,
+          "matched": true
+        },
+        {
+          "text": "how",
+          "start": 106.99,
+          "end": 107.21,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l38",
+      "text": "Do what you do",
+      "start": 107.67,
+      "end": 108.631,
+      "words": [
+        {
+          "text": "Do",
+          "start": 107.67,
+          "end": 107.91,
+          "matched": true
+        },
+        {
+          "text": "what",
+          "start": 107.95,
+          "end": 108.13,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 108.17,
+          "end": 108.371,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 108.411,
+          "end": 108.631,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l39",
+      "text": "If you're gonna come through",
+      "start": 108.791,
+      "end": 111.272,
+      "words": [
+        {
+          "text": "If",
+          "start": 108.791,
+          "end": 108.871,
+          "matched": true
+        },
+        {
+          "text": "you're",
+          "start": 108.891,
+          "end": 109.051,
+          "matched": true
+        },
+        {
+          "text": "gonna",
+          "start": 109.071,
+          "end": 109.351,
+          "matched": true
+        },
+        {
+          "text": "come",
+          "start": 109.411,
+          "end": 109.651,
+          "matched": true
+        },
+        {
+          "text": "through",
+          "start": 109.711,
+          "end": 111.272,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l40",
+      "text": "Don't keep me hanging",
+      "start": 111.312,
+      "end": 112.172,
+      "words": [
+        {
+          "text": "Don't",
+          "start": 111.312,
+          "end": 111.472,
+          "matched": true
+        },
+        {
+          "text": "keep",
+          "start": 111.492,
+          "end": 111.652,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 111.672,
+          "end": 111.792,
+          "matched": true
+        },
+        {
+          "text": "hanging",
+          "start": 111.852,
+          "end": 112.172,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l41",
+      "text": "I've got things to do",
+      "start": 112.172,
+      "end": 113.473,
+      "words": [
+        {
+          "text": "I've",
+          "start": 112.172,
+          "end": 112.352,
+          "matched": false
+        },
+        {
+          "text": "got",
+          "start": 112.352,
+          "end": 112.492,
+          "matched": true
+        },
+        {
+          "text": "things",
+          "start": 112.552,
+          "end": 112.812,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 112.872,
+          "end": 113.112,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 113.213,
+          "end": 113.473,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l42",
+      "text": "Then I see you standing out with her",
+      "start": 113.893,
+      "end": 116.274,
+      "words": [
+        {
+          "text": "Then",
+          "start": 113.893,
+          "end": 114.073,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 114.133,
+          "end": 114.213,
+          "matched": true
+        },
+        {
+          "text": "see",
+          "start": 114.253,
+          "end": 114.393,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 114.413,
+          "end": 114.513,
+          "matched": true
+        },
+        {
+          "text": "standing",
+          "start": 114.553,
+          "end": 115.233,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 115.473,
+          "end": 115.613,
+          "matched": true
+        },
+        {
+          "text": "with",
+          "start": 115.674,
+          "end": 115.874,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 115.974,
+          "end": 116.274,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l43",
+      "text": "Heard you call her name, fuck you Jennifer",
+      "start": 116.674,
+      "end": 119.055,
+      "words": [
+        {
+          "text": "Heard",
+          "start": 116.674,
+          "end": 116.834,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 116.874,
+          "end": 116.994,
+          "matched": true
+        },
+        {
+          "text": "call",
+          "start": 117.014,
+          "end": 117.194,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 117.234,
+          "end": 117.334,
+          "matched": true
+        },
+        {
+          "text": "name,",
+          "start": 117.374,
+          "end": 117.634,
+          "matched": true
+        },
+        {
+          "text": "fuck",
+          "start": 117.694,
+          "end": 117.874,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 117.894,
+          "end": 118.014,
+          "matched": true
+        },
+        {
+          "text": "Jennifer",
+          "start": 118.034,
+          "end": 119.055,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l44",
+      "text": "Suddenly every little rumour has words",
+      "start": 119.415,
+      "end": 122.016,
+      "words": [
+        {
+          "text": "Suddenly",
+          "start": 119.415,
+          "end": 119.935,
+          "matched": true
+        },
+        {
+          "text": "every",
+          "start": 120.015,
+          "end": 120.295,
+          "matched": true
+        },
+        {
+          "text": "little",
+          "start": 120.335,
+          "end": 120.616,
+          "matched": true
+        },
+        {
+          "text": "rumour",
+          "start": 120.656,
+          "end": 121.176,
+          "matched": true
+        },
+        {
+          "text": "has",
+          "start": 121.216,
+          "end": 121.436,
+          "matched": true
+        },
+        {
+          "text": "words",
+          "start": 121.496,
+          "end": 122.016,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l45",
+      "text": "All those nights you said I was absurd",
+      "start": 122.216,
+      "end": 123.857,
+      "words": [
+        {
+          "text": "All",
+          "start": 122.216,
+          "end": 122.356,
+          "matched": true
+        },
+        {
+          "text": "those",
+          "start": 122.376,
+          "end": 122.516,
+          "matched": true
+        },
+        {
+          "text": "nights",
+          "start": 122.556,
+          "end": 122.716,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 122.736,
+          "end": 122.856,
+          "matched": true
+        },
+        {
+          "text": "said",
+          "start": 122.876,
+          "end": 123.077,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 123.157,
+          "end": 123.237,
+          "matched": true
+        },
+        {
+          "text": "was",
+          "start": 123.277,
+          "end": 123.397,
+          "matched": true
+        },
+        {
+          "text": "absurd",
+          "start": 123.457,
+          "end": 123.857,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l46",
+      "text": "Now the truth looks worse than what I'd heard",
+      "start": 123.917,
+      "end": 125.998,
+      "words": [
+        {
+          "text": "Now",
+          "start": 123.917,
+          "end": 124.097,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 124.117,
+          "end": 124.217,
+          "matched": true
+        },
+        {
+          "text": "truth",
+          "start": 124.277,
+          "end": 124.597,
+          "matched": true
+        },
+        {
+          "text": "looks",
+          "start": 124.637,
+          "end": 124.857,
+          "matched": true
+        },
+        {
+          "text": "worse",
+          "start": 124.937,
+          "end": 125.157,
+          "matched": true
+        },
+        {
+          "text": "than",
+          "start": 125.197,
+          "end": 125.317,
+          "matched": true
+        },
+        {
+          "text": "what",
+          "start": 125.337,
+          "end": 125.498,
+          "matched": true
+        },
+        {
+          "text": "I'd",
+          "start": 125.538,
+          "end": 125.678,
+          "matched": true
+        },
+        {
+          "text": "heard",
+          "start": 125.718,
+          "end": 125.998,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l47",
+      "text": "So go on, tell everybody we're cool",
+      "start": 126.038,
+      "end": 128.881,
+      "words": [
+        {
+          "text": "So",
+          "start": 126.038,
+          "end": 126.218,
+          "matched": true
+        },
+        {
+          "text": "go",
+          "start": 126.698,
+          "end": 126.898,
+          "matched": true
+        },
+        {
+          "text": "on,",
+          "start": 126.938,
+          "end": 127.159,
+          "matched": true
+        },
+        {
+          "text": "tell",
+          "start": 127.199,
+          "end": 127.399,
+          "matched": true
+        },
+        {
+          "text": "everybody",
+          "start": 127.499,
+          "end": 128.0,
+          "matched": true
+        },
+        {
+          "text": "we're",
+          "start": 128.02,
+          "end": 128.28,
+          "matched": true
+        },
+        {
+          "text": "cool",
+          "start": 128.36,
+          "end": 128.881,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l48",
+      "text": "Tell them I'm dramatic, tell them I'm cruel",
+      "start": 128.941,
+      "end": 131.604,
+      "words": [
+        {
+          "text": "Tell",
+          "start": 128.941,
+          "end": 129.281,
+          "matched": true
+        },
+        {
+          "text": "them",
+          "start": 129.321,
+          "end": 129.461,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 129.521,
+          "end": 129.601,
+          "matched": true
+        },
+        {
+          "text": "dramatic,",
+          "start": 129.641,
+          "end": 130.242,
+          "matched": true
+        },
+        {
+          "text": "tell",
+          "start": 130.302,
+          "end": 130.643,
+          "matched": true
+        },
+        {
+          "text": "them",
+          "start": 130.683,
+          "end": 130.823,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 130.963,
+          "end": 131.103,
+          "matched": true
+        },
+        {
+          "text": "cruel",
+          "start": 131.163,
+          "end": 131.604,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l49",
+      "text": "I'll be the one that slipped through your hands",
+      "start": 131.844,
+      "end": 134.447,
+      "words": [
+        {
+          "text": "I'll",
+          "start": 131.844,
+          "end": 132.064,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 132.104,
+          "end": 132.345,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 132.405,
+          "end": 132.505,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 132.725,
+          "end": 132.885,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 132.945,
+          "end": 133.146,
+          "matched": true
+        },
+        {
+          "text": "slipped",
+          "start": 133.206,
+          "end": 133.466,
+          "matched": true
+        },
+        {
+          "text": "through",
+          "start": 133.486,
+          "end": 133.746,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 133.766,
+          "end": 133.947,
+          "matched": true
+        },
+        {
+          "text": "hands",
+          "start": 133.987,
+          "end": 134.447,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l50",
+      "text": "You can keep my made up future plans",
+      "start": 134.507,
+      "end": 137.21,
+      "words": [
+        {
+          "text": "You",
+          "start": 134.507,
+          "end": 134.747,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 134.808,
+          "end": 134.948,
+          "matched": true
+        },
+        {
+          "text": "keep",
+          "start": 134.988,
+          "end": 135.168,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 135.188,
+          "end": 135.328,
+          "matched": true
+        },
+        {
+          "text": "made",
+          "start": 135.368,
+          "end": 135.909,
+          "matched": true
+        },
+        {
+          "text": "up",
+          "start": 135.909,
+          "end": 135.989,
+          "matched": false
+        },
+        {
+          "text": "future",
+          "start": 135.989,
+          "end": 136.469,
+          "matched": true
+        },
+        {
+          "text": "plans",
+          "start": 136.53,
+          "end": 137.21,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l51",
+      "text": "I stayed awake with one eye open",
+      "start": 137.451,
+      "end": 139.433,
+      "words": [
+        {
+          "text": "I",
+          "start": 137.451,
+          "end": 137.631,
+          "matched": true
+        },
+        {
+          "text": "stayed",
+          "start": 137.691,
+          "end": 137.971,
+          "matched": true
+        },
+        {
+          "text": "awake",
+          "start": 138.031,
+          "end": 138.392,
+          "matched": true
+        },
+        {
+          "text": "with",
+          "start": 138.432,
+          "end": 138.572,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 138.812,
+          "end": 138.952,
+          "matched": true
+        },
+        {
+          "text": "eye",
+          "start": 139.133,
+          "end": 139.273,
+          "matched": true
+        },
+        {
+          "text": "open",
+          "start": 139.293,
+          "end": 139.433,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l52",
+      "text": "While every promise came back broken",
+      "start": 139.473,
+      "end": 141.916,
+      "words": [
+        {
+          "text": "While",
+          "start": 139.473,
+          "end": 139.673,
+          "matched": true
+        },
+        {
+          "text": "every",
+          "start": 139.773,
+          "end": 140.054,
+          "matched": true
+        },
+        {
+          "text": "promise",
+          "start": 140.134,
+          "end": 140.754,
+          "matched": true
+        },
+        {
+          "text": "came",
+          "start": 140.855,
+          "end": 141.055,
+          "matched": true
+        },
+        {
+          "text": "back",
+          "start": 141.095,
+          "end": 141.295,
+          "matched": true
+        },
+        {
+          "text": "broken",
+          "start": 141.395,
+          "end": 141.916,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l53",
+      "text": "Now you're asking why I'm going",
+      "start": 142.256,
+      "end": 144.199,
+      "words": [
+        {
+          "text": "Now",
+          "start": 142.256,
+          "end": 142.416,
+          "matched": true
+        },
+        {
+          "text": "you're",
+          "start": 142.456,
+          "end": 142.777,
+          "matched": true
+        },
+        {
+          "text": "asking",
+          "start": 142.897,
+          "end": 143.297,
+          "matched": true
+        },
+        {
+          "text": "why",
+          "start": 143.338,
+          "end": 143.478,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 143.498,
+          "end": 143.618,
+          "matched": true
+        },
+        {
+          "text": "going",
+          "start": 143.678,
+          "end": 144.199,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l54",
+      "text": "Funny how you never noticed",
+      "start": 144.999,
+      "end": 146.981,
+      "words": [
+        {
+          "text": "Funny",
+          "start": 144.999,
+          "end": 145.3,
+          "matched": true
+        },
+        {
+          "text": "how",
+          "start": 145.34,
+          "end": 145.5,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 145.54,
+          "end": 145.66,
+          "matched": true
+        },
+        {
+          "text": "never",
+          "start": 145.72,
+          "end": 146.02,
+          "matched": true
+        },
+        {
+          "text": "noticed",
+          "start": 146.12,
+          "end": 146.981,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l55",
+      "text": "Baby, take me out to California (oh)",
+      "start": 147.081,
+      "end": 150.163,
+      "words": [
+        {
+          "text": "Baby,",
+          "start": 147.081,
+          "end": 147.401,
+          "matched": true
+        },
+        {
+          "text": "take",
+          "start": 147.421,
+          "end": 147.601,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 147.641,
+          "end": 147.741,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 147.821,
+          "end": 147.942,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 147.962,
+          "end": 148.082,
+          "matched": true
+        },
+        {
+          "text": "California",
+          "start": 148.122,
+          "end": 148.962,
+          "matched": true
+        },
+        {
+          "text": "(oh)",
+          "start": 148.962,
+          "end": 150.163,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l56",
+      "text": "Drive until the morning comes (oh ho)",
+      "start": 150.163,
+      "end": 152.965,
+      "words": [
+        {
+          "text": "Drive",
+          "start": 150.163,
+          "end": 150.423,
+          "matched": true
+        },
+        {
+          "text": "until",
+          "start": 150.463,
+          "end": 150.724,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 150.764,
+          "end": 150.864,
+          "matched": true
+        },
+        {
+          "text": "morning",
+          "start": 150.904,
+          "end": 151.184,
+          "matched": true
+        },
+        {
+          "text": "comes",
+          "start": 151.244,
+          "end": 151.864,
+          "matched": true
+        },
+        {
+          "text": "(oh",
+          "start": 151.864,
+          "end": 152.415,
+          "matched": false
+        },
+        {
+          "text": "ho)",
+          "start": 152.415,
+          "end": 152.965,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l57",
+      "text": "You can tell me that you want me",
+      "start": 152.965,
+      "end": 154.607,
+      "words": [
+        {
+          "text": "You",
+          "start": 152.965,
+          "end": 153.125,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 153.145,
+          "end": 153.266,
+          "matched": true
+        },
+        {
+          "text": "tell",
+          "start": 153.306,
+          "end": 153.486,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 153.506,
+          "end": 153.626,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 153.666,
+          "end": 153.806,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 153.826,
+          "end": 154.006,
+          "matched": true
+        },
+        {
+          "text": "want",
+          "start": 154.046,
+          "end": 154.286,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 154.386,
+          "end": 154.607,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l58",
+      "text": "Then pretend that we're just having fun",
+      "start": 154.627,
+      "end": 158.349,
+      "words": [
+        {
+          "text": "Then",
+          "start": 154.627,
+          "end": 154.987,
+          "matched": true
+        },
+        {
+          "text": "pretend",
+          "start": 155.027,
+          "end": 155.707,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 155.747,
+          "end": 155.907,
+          "matched": true
+        },
+        {
+          "text": "we're",
+          "start": 155.928,
+          "end": 156.208,
+          "matched": true
+        },
+        {
+          "text": "just",
+          "start": 156.248,
+          "end": 156.388,
+          "matched": true
+        },
+        {
+          "text": "having",
+          "start": 156.428,
+          "end": 156.708,
+          "matched": true
+        },
+        {
+          "text": "fun",
+          "start": 156.768,
+          "end": 158.349,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l59",
+      "text": "If you're leaving, keep on leaving",
+      "start": 158.409,
+      "end": 160.091,
+      "words": [
+        {
+          "text": "If",
+          "start": 158.409,
+          "end": 158.489,
+          "matched": true
+        },
+        {
+          "text": "you're",
+          "start": 158.509,
+          "end": 158.67,
+          "matched": true
+        },
+        {
+          "text": "leaving,",
+          "start": 158.69,
+          "end": 159.17,
+          "matched": true
+        },
+        {
+          "text": "keep",
+          "start": 159.19,
+          "end": 159.37,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 159.49,
+          "end": 159.59,
+          "matched": true
+        },
+        {
+          "text": "leaving",
+          "start": 159.61,
+          "end": 160.091,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l60",
+      "text": "If you're staying, do your thing",
+      "start": 161.312,
+      "end": 162.733,
+      "words": [
+        {
+          "text": "If",
+          "start": 161.312,
+          "end": 161.372,
+          "matched": true
+        },
+        {
+          "text": "you're",
+          "start": 161.392,
+          "end": 161.552,
+          "matched": true
+        },
+        {
+          "text": "staying,",
+          "start": 161.572,
+          "end": 161.952,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 161.972,
+          "end": 162.072,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 162.112,
+          "end": 162.232,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 162.292,
+          "end": 162.733,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l61",
+      "text": "I've been waiting, I've been dreaming",
+      "start": 164.094,
+      "end": 165.655,
+      "words": [
+        {
+          "text": "I've",
+          "start": 164.094,
+          "end": 164.214,
+          "matched": true
+        },
+        {
+          "text": "been",
+          "start": 164.234,
+          "end": 164.374,
+          "matched": true
+        },
+        {
+          "text": "waiting,",
+          "start": 164.414,
+          "end": 164.714,
+          "matched": true
+        },
+        {
+          "text": "I've",
+          "start": 164.794,
+          "end": 164.874,
+          "matched": true
+        },
+        {
+          "text": "been",
+          "start": 164.894,
+          "end": 165.034,
+          "matched": true
+        },
+        {
+          "text": "dreaming",
+          "start": 165.054,
+          "end": 165.655,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l62",
+      "text": "I've been cutting every string",
+      "start": 165.915,
+      "end": 168.137,
+      "words": [
+        {
+          "text": "I've",
+          "start": 165.915,
+          "end": 166.095,
+          "matched": true
+        },
+        {
+          "text": "been",
+          "start": 166.115,
+          "end": 166.315,
+          "matched": true
+        },
+        {
+          "text": "cutting",
+          "start": 166.435,
+          "end": 167.016,
+          "matched": true
+        },
+        {
+          "text": "every",
+          "start": 167.296,
+          "end": 167.716,
+          "matched": true
+        },
+        {
+          "text": "string",
+          "start": 167.756,
+          "end": 168.137,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l63",
+      "text": "I don't want another little fight",
+      "start": 170.944,
+      "end": 173.188,
+      "words": [
+        {
+          "text": "I",
+          "start": 170.944,
+          "end": 170.964,
+          "matched": true
+        },
+        {
+          "text": "don't",
+          "start": 170.964,
+          "end": 170.984,
+          "matched": false
+        },
+        {
+          "text": "want",
+          "start": 170.984,
+          "end": 171.084,
+          "matched": true
+        },
+        {
+          "text": "another",
+          "start": 171.204,
+          "end": 171.625,
+          "matched": true
+        },
+        {
+          "text": "little",
+          "start": 171.665,
+          "end": 171.926,
+          "matched": true
+        },
+        {
+          "text": "fight",
+          "start": 171.986,
+          "end": 173.188,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l64",
+      "text": "I just want the truth for once tonight",
+      "start": 173.388,
+      "end": 175.792,
+      "words": [
+        {
+          "text": "I",
+          "start": 173.388,
+          "end": 173.528,
+          "matched": true
+        },
+        {
+          "text": "just",
+          "start": 173.548,
+          "end": 173.688,
+          "matched": true
+        },
+        {
+          "text": "want",
+          "start": 173.708,
+          "end": 173.849,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 173.869,
+          "end": 173.989,
+          "matched": true
+        },
+        {
+          "text": "truth",
+          "start": 174.009,
+          "end": 174.189,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 174.229,
+          "end": 174.289,
+          "matched": true
+        },
+        {
+          "text": "once",
+          "start": 174.349,
+          "end": 174.55,
+          "matched": true
+        },
+        {
+          "text": "tonight",
+          "start": 174.57,
+          "end": 175.792,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l65",
+      "text": "You say stay, then disappear from sight",
+      "start": 176.112,
+      "end": 178.516,
+      "words": [
+        {
+          "text": "You",
+          "start": 176.112,
+          "end": 176.312,
+          "matched": true
+        },
+        {
+          "text": "say",
+          "start": 176.352,
+          "end": 176.553,
+          "matched": true
+        },
+        {
+          "text": "stay,",
+          "start": 176.573,
+          "end": 176.973,
+          "matched": true
+        },
+        {
+          "text": "then",
+          "start": 177.013,
+          "end": 177.154,
+          "matched": true
+        },
+        {
+          "text": "disappear",
+          "start": 177.174,
+          "end": 177.775,
+          "matched": true
+        },
+        {
+          "text": "from",
+          "start": 177.835,
+          "end": 178.075,
+          "matched": true
+        },
+        {
+          "text": "sight",
+          "start": 178.155,
+          "end": 178.516,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l66",
+      "text": "Baby, pick a lane and drive it right",
+      "start": 178.556,
+      "end": 181.26,
+      "words": [
+        {
+          "text": "Baby,",
+          "start": 178.556,
+          "end": 178.836,
+          "matched": true
+        },
+        {
+          "text": "pick",
+          "start": 178.876,
+          "end": 179.097,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 179.177,
+          "end": 179.277,
+          "matched": true
+        },
+        {
+          "text": "lane",
+          "start": 179.297,
+          "end": 179.958,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 180.058,
+          "end": 180.178,
+          "matched": true
+        },
+        {
+          "text": "drive",
+          "start": 180.238,
+          "end": 180.599,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 180.619,
+          "end": 180.799,
+          "matched": true
+        },
+        {
+          "text": "right",
+          "start": 180.859,
+          "end": 181.26,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l67",
+      "text": "Maybe we could make it till tomorrow",
+      "start": 181.681,
+      "end": 184.165,
+      "words": [
+        {
+          "text": "Maybe",
+          "start": 181.681,
+          "end": 181.961,
+          "matched": true
+        },
+        {
+          "text": "we",
+          "start": 182.021,
+          "end": 182.141,
+          "matched": true
+        },
+        {
+          "text": "could",
+          "start": 182.141,
+          "end": 182.362,
+          "matched": false
+        },
+        {
+          "text": "make",
+          "start": 182.362,
+          "end": 182.542,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 182.582,
+          "end": 182.662,
+          "matched": true
+        },
+        {
+          "text": "till",
+          "start": 182.682,
+          "end": 182.863,
+          "matched": true
+        },
+        {
+          "text": "tomorrow",
+          "start": 182.883,
+          "end": 184.165,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l68",
+      "text": "Maybe all we've got is borrowed",
+      "start": 184.265,
+      "end": 187.188,
+      "words": [
+        {
+          "text": "Maybe",
+          "start": 184.265,
+          "end": 184.766,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 184.826,
+          "end": 184.946,
+          "matched": true
+        },
+        {
+          "text": "we've",
+          "start": 184.966,
+          "end": 185.106,
+          "matched": true
+        },
+        {
+          "text": "got",
+          "start": 185.126,
+          "end": 185.487,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 185.587,
+          "end": 185.707,
+          "matched": true
+        },
+        {
+          "text": "borrowed",
+          "start": 185.707,
+          "end": 187.188,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l69",
+      "text": "Maybe I should pack and let it go",
+      "start": 187.188,
+      "end": 189.849,
+      "words": [
+        {
+          "text": "Maybe",
+          "start": 187.188,
+          "end": 187.508,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 187.568,
+          "end": 187.628,
+          "matched": true
+        },
+        {
+          "text": "should",
+          "start": 187.648,
+          "end": 187.828,
+          "matched": true
+        },
+        {
+          "text": "pack",
+          "start": 187.868,
+          "end": 188.188,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 188.328,
+          "end": 188.488,
+          "matched": true
+        },
+        {
+          "text": "let",
+          "start": 188.548,
+          "end": 188.948,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 189.008,
+          "end": 189.109,
+          "matched": true
+        },
+        {
+          "text": "go",
+          "start": 189.249,
+          "end": 189.849,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l70",
+      "text": "You already know",
+      "start": 189.949,
+      "end": 191.269,
+      "words": [
+        {
+          "text": "You",
+          "start": 189.949,
+          "end": 190.149,
+          "matched": true
+        },
+        {
+          "text": "already",
+          "start": 190.209,
+          "end": 190.589,
+          "matched": true
+        },
+        {
+          "text": "know",
+          "start": 190.629,
+          "end": 191.269,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l71",
+      "text": "You already know",
+      "start": 191.309,
+      "end": 192.949,
+      "words": [
+        {
+          "text": "You",
+          "start": 191.309,
+          "end": 191.489,
+          "matched": true
+        },
+        {
+          "text": "already",
+          "start": 191.569,
+          "end": 191.969,
+          "matched": true
+        },
+        {
+          "text": "know",
+          "start": 191.989,
+          "end": 192.949,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l72",
+      "text": "Don't stop, don't stop",
+      "start": 193.049,
+      "end": 194.329,
+      "words": [
+        {
+          "text": "Don't",
+          "start": 193.049,
+          "end": 193.269,
+          "matched": true
+        },
+        {
+          "text": "stop,",
+          "start": 193.329,
+          "end": 193.629,
+          "matched": true
+        },
+        {
+          "text": "don't",
+          "start": 193.709,
+          "end": 193.949,
+          "matched": true
+        },
+        {
+          "text": "stop",
+          "start": 194.009,
+          "end": 194.329,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l73",
+      "text": "If you're gonna do it, do it",
+      "start": 194.489,
+      "end": 198.13,
+      "words": [
+        {
+          "text": "If",
+          "start": 194.489,
+          "end": 194.55,
+          "matched": true
+        },
+        {
+          "text": "you're",
+          "start": 194.59,
+          "end": 194.75,
+          "matched": true
+        },
+        {
+          "text": "gonna",
+          "start": 194.77,
+          "end": 195.07,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 195.11,
+          "end": 195.31,
+          "matched": true
+        },
+        {
+          "text": "it,",
+          "start": 195.37,
+          "end": 195.43,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 195.79,
+          "end": 196.15,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 197.87,
+          "end": 198.13,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l74",
+      "text": "Don't talk, don't talk",
+      "start": 198.57,
+      "end": 199.89,
+      "words": [
+        {
+          "text": "Don't",
+          "start": 198.57,
+          "end": 198.85,
+          "matched": true
+        },
+        {
+          "text": "talk,",
+          "start": 198.89,
+          "end": 199.19,
+          "matched": true
+        },
+        {
+          "text": "don't",
+          "start": 199.25,
+          "end": 199.51,
+          "matched": true
+        },
+        {
+          "text": "talk",
+          "start": 199.59,
+          "end": 199.89,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l75",
+      "text": "Like there's nothing running through it",
+      "start": 199.951,
+      "end": 203.771,
+      "words": [
+        {
+          "text": "Like",
+          "start": 199.951,
+          "end": 200.091,
+          "matched": true
+        },
+        {
+          "text": "there's",
+          "start": 200.111,
+          "end": 200.271,
+          "matched": true
+        },
+        {
+          "text": "nothing",
+          "start": 200.311,
+          "end": 200.611,
+          "matched": true
+        },
+        {
+          "text": "running",
+          "start": 200.651,
+          "end": 200.951,
+          "matched": true
+        },
+        {
+          "text": "through",
+          "start": 201.291,
+          "end": 203.711,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 203.731,
+          "end": 203.771,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l76",
+      "text": "I need somebody I can count on",
+      "start": 204.031,
+      "end": 206.112,
+      "words": [
+        {
+          "text": "I",
+          "start": 204.031,
+          "end": 204.071,
+          "matched": true
+        },
+        {
+          "text": "need",
+          "start": 204.091,
+          "end": 204.251,
+          "matched": true
+        },
+        {
+          "text": "somebody",
+          "start": 204.271,
+          "end": 204.791,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 204.871,
+          "end": 204.931,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 204.951,
+          "end": 205.091,
+          "matched": true
+        },
+        {
+          "text": "count",
+          "start": 205.151,
+          "end": 205.512,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 205.652,
+          "end": 206.112,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l77",
+      "text": "Somebody there when the lights go out",
+      "start": 206.172,
+      "end": 208.612,
+      "words": [
+        {
+          "text": "Somebody",
+          "start": 206.172,
+          "end": 206.852,
+          "matched": true
+        },
+        {
+          "text": "there",
+          "start": 206.892,
+          "end": 207.212,
+          "matched": true
+        },
+        {
+          "text": "when",
+          "start": 207.232,
+          "end": 207.392,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 207.412,
+          "end": 207.532,
+          "matched": true
+        },
+        {
+          "text": "lights",
+          "start": 207.572,
+          "end": 207.832,
+          "matched": true
+        },
+        {
+          "text": "go",
+          "start": 207.912,
+          "end": 208.312,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 208.472,
+          "end": 208.612,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l78",
+      "text": "Not another name that I obsess on",
+      "start": 208.632,
+      "end": 211.233,
+      "words": [
+        {
+          "text": "Not",
+          "start": 208.632,
+          "end": 208.812,
+          "matched": true
+        },
+        {
+          "text": "another",
+          "start": 208.872,
+          "end": 209.232,
+          "matched": true
+        },
+        {
+          "text": "name",
+          "start": 209.312,
+          "end": 209.612,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 209.672,
+          "end": 209.852,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 210.092,
+          "end": 210.172,
+          "matched": true
+        },
+        {
+          "text": "obsess",
+          "start": 210.272,
+          "end": 210.732,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 211.173,
+          "end": 211.233,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l79",
+      "text": "Not another reason for doubt",
+      "start": 211.353,
+      "end": 213.373,
+      "words": [
+        {
+          "text": "Not",
+          "start": 211.353,
+          "end": 211.573,
+          "matched": true
+        },
+        {
+          "text": "another",
+          "start": 211.633,
+          "end": 212.033,
+          "matched": true
+        },
+        {
+          "text": "reason",
+          "start": 212.093,
+          "end": 212.613,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 212.733,
+          "end": 213.053,
+          "matched": true
+        },
+        {
+          "text": "doubt",
+          "start": 213.093,
+          "end": 213.373,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l80",
+      "text": "So do your thing",
+      "start": 213.753,
+      "end": 215.313,
+      "words": [
+        {
+          "text": "So",
+          "start": 213.753,
+          "end": 214.073,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 214.073,
+          "end": 214.453,
+          "matched": false
+        },
+        {
+          "text": "your",
+          "start": 214.453,
+          "end": 214.693,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 214.793,
+          "end": 215.313,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l81",
+      "text": "I'll do mine",
+      "start": 215.654,
+      "end": 216.534,
+      "words": [
+        {
+          "text": "I'll",
+          "start": 215.654,
+          "end": 215.814,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 215.854,
+          "end": 216.114,
+          "matched": true
+        },
+        {
+          "text": "mine",
+          "start": 216.194,
+          "end": 216.534,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l82",
+      "text": "You had your shot",
+      "start": 216.574,
+      "end": 217.934,
+      "words": [
+        {
+          "text": "You",
+          "start": 216.574,
+          "end": 216.794,
+          "matched": true
+        },
+        {
+          "text": "had",
+          "start": 216.874,
+          "end": 217.194,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 217.254,
+          "end": 217.514,
+          "matched": true
+        },
+        {
+          "text": "shot",
+          "start": 217.594,
+          "end": 217.934,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l83",
+      "text": "You had your time",
+      "start": 217.974,
+      "end": 220.335,
+      "words": [
+        {
+          "text": "You",
+          "start": 217.974,
+          "end": 218.194,
+          "matched": true
+        },
+        {
+          "text": "had",
+          "start": 218.274,
+          "end": 218.594,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 218.634,
+          "end": 218.954,
+          "matched": true
+        },
+        {
+          "text": "time",
+          "start": 220.115,
+          "end": 220.335,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l84",
+      "text": "Don't reload",
+      "start": 220.375,
+      "end": 221.415,
+      "words": [
+        {
+          "text": "Don't",
+          "start": 220.375,
+          "end": 220.655,
+          "matched": true
+        },
+        {
+          "text": "reload",
+          "start": 220.735,
+          "end": 221.415,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l85",
+      "text": "A death sentence, I already got mine",
+      "start": 221.515,
+      "end": 224.556,
+      "words": [
+        {
+          "text": "A",
+          "start": 221.515,
+          "end": 221.615,
+          "matched": true
+        },
+        {
+          "text": "death",
+          "start": 221.715,
+          "end": 222.015,
+          "matched": true
+        },
+        {
+          "text": "sentence,",
+          "start": 222.075,
+          "end": 222.735,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 222.955,
+          "end": 223.215,
+          "matched": true
+        },
+        {
+          "text": "already",
+          "start": 223.335,
+          "end": 223.775,
+          "matched": true
+        },
+        {
+          "text": "got",
+          "start": 223.835,
+          "end": 224.136,
+          "matched": true
+        },
+        {
+          "text": "mine",
+          "start": 224.176,
+          "end": 224.556,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l86",
+      "text": "California in the rear-view",
+      "start": 225.856,
+      "end": 227.396,
+      "words": [
+        {
+          "text": "California",
+          "start": 225.856,
+          "end": 226.636,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 226.776,
+          "end": 226.916,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 226.956,
+          "end": 227.096,
+          "matched": true
+        },
+        {
+          "text": "rear-view",
+          "start": 227.136,
+          "end": 227.396,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l87",
+      "text": "Your perfume on my clothes",
+      "start": 228.296,
+      "end": 230.317,
+      "words": [
+        {
+          "text": "Your",
+          "start": 228.296,
+          "end": 228.417,
+          "matched": true
+        },
+        {
+          "text": "perfume",
+          "start": 228.477,
+          "end": 229.297,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 229.417,
+          "end": 229.517,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 229.557,
+          "end": 229.717,
+          "matched": true
+        },
+        {
+          "text": "clothes",
+          "start": 229.797,
+          "end": 230.317,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l88",
+      "text": "I could spend another year here",
+      "start": 230.797,
+      "end": 233.038,
+      "words": [
+        {
+          "text": "I",
+          "start": 230.797,
+          "end": 230.877,
+          "matched": true
+        },
+        {
+          "text": "could",
+          "start": 230.937,
+          "end": 231.277,
+          "matched": true
+        },
+        {
+          "text": "spend",
+          "start": 231.337,
+          "end": 231.757,
+          "matched": true
+        },
+        {
+          "text": "another",
+          "start": 231.857,
+          "end": 232.257,
+          "matched": true
+        },
+        {
+          "text": "year",
+          "start": 232.297,
+          "end": 232.557,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 232.658,
+          "end": 233.038,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l89",
+      "text": "Waiting for a door you've closed",
+      "start": 233.198,
+      "end": 235.798,
+      "words": [
+        {
+          "text": "Waiting",
+          "start": 233.198,
+          "end": 233.478,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 233.538,
+          "end": 233.798,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 233.858,
+          "end": 233.938,
+          "matched": true
+        },
+        {
+          "text": "door",
+          "start": 234.018,
+          "end": 234.478,
+          "matched": true
+        },
+        {
+          "text": "you've",
+          "start": 234.518,
+          "end": 234.758,
+          "matched": true
+        },
+        {
+          "text": "closed",
+          "start": 234.838,
+          "end": 235.798,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l90",
+      "text": "But I'd rather be the story",
+      "start": 235.898,
+      "end": 238.639,
+      "words": [
+        {
+          "text": "But",
+          "start": 235.898,
+          "end": 236.098,
+          "matched": true
+        },
+        {
+          "text": "I'd",
+          "start": 236.138,
+          "end": 236.258,
+          "matched": true
+        },
+        {
+          "text": "rather",
+          "start": 236.298,
+          "end": 236.558,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 236.598,
+          "end": 236.738,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 236.778,
+          "end": 236.859,
+          "matched": true
+        },
+        {
+          "text": "story",
+          "start": 236.919,
+          "end": 238.639,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l91",
+      "text": "That you tell somebody new",
+      "start": 238.699,
+      "end": 241.26,
+      "words": [
+        {
+          "text": "That",
+          "start": 238.699,
+          "end": 238.839,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 238.859,
+          "end": 239.019,
+          "matched": true
+        },
+        {
+          "text": "tell",
+          "start": 239.039,
+          "end": 239.199,
+          "matched": true
+        },
+        {
+          "text": "somebody",
+          "start": 239.239,
+          "end": 239.679,
+          "matched": true
+        },
+        {
+          "text": "new",
+          "start": 239.739,
+          "end": 241.26,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l92",
+      "text": "About the girl who finally left you",
+      "start": 241.4,
+      "end": 243.04,
+      "words": [
+        {
+          "text": "About",
+          "start": 241.4,
+          "end": 241.62,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 241.66,
+          "end": 241.74,
+          "matched": true
+        },
+        {
+          "text": "girl",
+          "start": 241.8,
+          "end": 242.02,
+          "matched": true
+        },
+        {
+          "text": "who",
+          "start": 242.04,
+          "end": 242.1,
+          "matched": true
+        },
+        {
+          "text": "finally",
+          "start": 242.14,
+          "end": 242.46,
+          "matched": true
+        },
+        {
+          "text": "left",
+          "start": 242.5,
+          "end": 242.78,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 242.84,
+          "end": 243.04,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l93",
+      "text": "When she figured out the truth",
+      "start": 243.04,
+      "end": 245.693,
+      "words": [
+        {
+          "text": "When",
+          "start": 243.04,
+          "end": 244.372,
+          "matched": false
+        },
+        {
+          "text": "she",
+          "start": 244.372,
+          "end": 244.512,
+          "matched": true
+        },
+        {
+          "text": "figured",
+          "start": 244.572,
+          "end": 244.912,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 244.972,
+          "end": 245.073,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 245.113,
+          "end": 245.193,
+          "matched": true
+        },
+        {
+          "text": "truth",
+          "start": 245.253,
+          "end": 245.693,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l94",
+      "text": "Baby, take yourself to California (oh)",
+      "start": 246.613,
+      "end": 249.835,
+      "words": [
+        {
+          "text": "Baby,",
+          "start": 246.613,
+          "end": 246.954,
+          "matched": true
+        },
+        {
+          "text": "take",
+          "start": 246.974,
+          "end": 247.134,
+          "matched": true
+        },
+        {
+          "text": "yourself",
+          "start": 247.154,
+          "end": 247.494,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 247.514,
+          "end": 247.614,
+          "matched": true
+        },
+        {
+          "text": "California",
+          "start": 247.654,
+          "end": 248.615,
+          "matched": true
+        },
+        {
+          "text": "(oh)",
+          "start": 248.615,
+          "end": 249.835,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l95",
+      "text": "I don't care where you go (oh ho)",
+      "start": 249.835,
+      "end": 252.517,
+      "words": [
+        {
+          "text": "I",
+          "start": 249.835,
+          "end": 249.896,
+          "matched": true
+        },
+        {
+          "text": "don't",
+          "start": 249.916,
+          "end": 250.076,
+          "matched": true
+        },
+        {
+          "text": "care",
+          "start": 250.116,
+          "end": 250.356,
+          "matched": true
+        },
+        {
+          "text": "where",
+          "start": 250.476,
+          "end": 250.596,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 250.616,
+          "end": 250.756,
+          "matched": true
+        },
+        {
+          "text": "go",
+          "start": 250.796,
+          "end": 251.396,
+          "matched": true
+        },
+        {
+          "text": "(oh",
+          "start": 251.396,
+          "end": 251.957,
+          "matched": false
+        },
+        {
+          "text": "ho)",
+          "start": 251.957,
+          "end": 252.517,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l96",
+      "text": "You can tell her that you love her",
+      "start": 252.517,
+      "end": 254.218,
+      "words": [
+        {
+          "text": "You",
+          "start": 252.517,
+          "end": 252.637,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 252.677,
+          "end": 252.817,
+          "matched": true
+        },
+        {
+          "text": "tell",
+          "start": 252.857,
+          "end": 253.037,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 253.078,
+          "end": 253.178,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 253.218,
+          "end": 253.338,
+          "matched": true
+        },
+        {
+          "text": "you",
+          "start": 253.358,
+          "end": 253.518,
+          "matched": true
+        },
+        {
+          "text": "love",
+          "start": 253.558,
+          "end": 254.138,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 254.158,
+          "end": 254.218,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l97",
+      "text": "You can put on your little show",
+      "start": 254.278,
+      "end": 257.0,
+      "words": [
+        {
+          "text": "You",
+          "start": 254.278,
+          "end": 254.518,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 254.598,
+          "end": 254.819,
+          "matched": true
+        },
+        {
+          "text": "put",
+          "start": 254.919,
+          "end": 255.299,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 255.379,
+          "end": 255.439,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 255.459,
+          "end": 255.619,
+          "matched": true
+        },
+        {
+          "text": "little",
+          "start": 255.659,
+          "end": 256.159,
+          "matched": true
+        },
+        {
+          "text": "show",
+          "start": 256.259,
+          "end": 257.0,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l98",
+      "text": "I'm not waiting, I'm not dreaming",
+      "start": 257.901,
+      "end": 259.722,
+      "words": [
+        {
+          "text": "I'm",
+          "start": 257.901,
+          "end": 258.041,
+          "matched": true
+        },
+        {
+          "text": "not",
+          "start": 258.081,
+          "end": 258.241,
+          "matched": true
+        },
+        {
+          "text": "waiting,",
+          "start": 258.281,
+          "end": 258.761,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 258.821,
+          "end": 258.901,
+          "matched": true
+        },
+        {
+          "text": "not",
+          "start": 258.941,
+          "end": 259.041,
+          "matched": true
+        },
+        {
+          "text": "dreaming",
+          "start": 259.081,
+          "end": 259.722,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l99",
+      "text": "I'm not hanging by a string",
+      "start": 260.882,
+      "end": 263.544,
+      "words": [
+        {
+          "text": "I'm",
+          "start": 260.882,
+          "end": 260.962,
+          "matched": true
+        },
+        {
+          "text": "not",
+          "start": 261.002,
+          "end": 261.143,
+          "matched": true
+        },
+        {
+          "text": "hanging",
+          "start": 261.183,
+          "end": 261.503,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 261.523,
+          "end": 261.703,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 261.723,
+          "end": 261.743,
+          "matched": true
+        },
+        {
+          "text": "string",
+          "start": 261.803,
+          "end": 263.544,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l100",
+      "text": "You can keep your explanations",
+      "start": 263.604,
+      "end": 265.265,
+      "words": [
+        {
+          "text": "You",
+          "start": 263.604,
+          "end": 263.724,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 263.744,
+          "end": 263.864,
+          "matched": true
+        },
+        {
+          "text": "keep",
+          "start": 263.904,
+          "end": 264.084,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 264.124,
+          "end": 264.284,
+          "matched": true
+        },
+        {
+          "text": "explanations",
+          "start": 264.325,
+          "end": 265.265,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l101",
+      "text": "You can go and do your thing",
+      "start": 265.325,
+      "end": 267.747,
+      "words": [
+        {
+          "text": "You",
+          "start": 265.325,
+          "end": 265.585,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 265.645,
+          "end": 265.925,
+          "matched": true
+        },
+        {
+          "text": "go",
+          "start": 266.006,
+          "end": 266.346,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 266.466,
+          "end": 266.586,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 266.686,
+          "end": 267.006,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 267.066,
+          "end": 267.286,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 267.346,
+          "end": 267.747,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l102",
+      "text": "Do your thing",
+      "start": 269.528,
+      "end": 270.548,
+      "words": [
+        {
+          "text": "Do",
+          "start": 269.528,
+          "end": 269.768,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 269.788,
+          "end": 270.048,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 270.108,
+          "end": 270.548,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l103",
+      "text": "Do your thing",
+      "start": 272.249,
+      "end": 273.13,
+      "words": [
+        {
+          "text": "Do",
+          "start": 272.249,
+          "end": 272.57,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 272.59,
+          "end": 272.83,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 272.89,
+          "end": 273.13,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l104",
+      "text": "Go ahead and do your thing",
+      "start": 274.658,
+      "end": 279.962,
+      "words": [
+        {
+          "text": "Go",
+          "start": 274.658,
+          "end": 274.818,
+          "matched": true
+        },
+        {
+          "text": "ahead",
+          "start": 274.898,
+          "end": 275.158,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 275.198,
+          "end": 275.298,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 275.339,
+          "end": 275.419,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 275.439,
+          "end": 275.579,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 275.639,
+          "end": 279.962,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l105",
+      "text": "California's getting smaller",
+      "start": 280.142,
+      "end": 281.763,
+      "words": [
+        {
+          "text": "California's",
+          "start": 280.142,
+          "end": 280.842,
+          "matched": true
+        },
+        {
+          "text": "getting",
+          "start": 280.862,
+          "end": 281.163,
+          "matched": true
+        },
+        {
+          "text": "smaller",
+          "start": 281.183,
+          "end": 281.763,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l106",
+      "text": "In the mirror as I leave",
+      "start": 282.984,
+      "end": 284.565,
+      "words": [
+        {
+          "text": "In",
+          "start": 282.984,
+          "end": 283.084,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 283.124,
+          "end": 283.204,
+          "matched": true
+        },
+        {
+          "text": "mirror",
+          "start": 283.284,
+          "end": 283.785,
+          "matched": true
+        },
+        {
+          "text": "as",
+          "start": 283.785,
+          "end": 283.865,
+          "matched": false
+        },
+        {
+          "text": "I",
+          "start": 283.865,
+          "end": 283.885,
+          "matched": true
+        },
+        {
+          "text": "leave",
+          "start": 283.985,
+          "end": 284.565,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l107",
+      "text": "Do your thing",
+      "start": 291.57,
+      "end": 292.671,
+      "words": [
+        {
+          "text": "Do",
+          "start": 291.57,
+          "end": 291.91,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 291.95,
+          "end": 292.131,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 292.231,
+          "end": 292.671,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l108",
+      "text": "Do your thing",
+      "start": 294.312,
+      "end": 295.413,
+      "words": [
+        {
+          "text": "Do",
+          "start": 294.312,
+          "end": 294.672,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 294.712,
+          "end": 294.913,
+          "matched": true
+        },
+        {
+          "text": "thing",
+          "start": 294.993,
+          "end": 295.413,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l109",
+      "text": "Just don't come looking back for me",
+      "start": 295.433,
+      "end": 300.517,
+      "words": [
+        {
+          "text": "Just",
+          "start": 295.433,
+          "end": 295.513,
+          "matched": true
+        },
+        {
+          "text": "don't",
+          "start": 297.294,
+          "end": 297.555,
+          "matched": true
+        },
+        {
+          "text": "come",
+          "start": 297.575,
+          "end": 297.795,
+          "matched": true
+        },
+        {
+          "text": "looking",
+          "start": 297.855,
+          "end": 298.335,
+          "matched": true
+        },
+        {
+          "text": "back",
+          "start": 298.435,
+          "end": 299.016,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 299.096,
+          "end": 299.956,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 300.236,
+          "end": 300.517,
+          "matched": true
+        }
+      ]
+    }
+  ]
+}

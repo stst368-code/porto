@@ -1,0 +1,2320 @@
+{
+  "format": "gbr-word-lyrics-v1",
+  "version": 2,
+  "title": "lie-by-the-fire",
+  "song_version": "disco",
+  "source_yaml": "lie-by-the-fire/lie-by-the-fire-disco/lie-by-the-fire-disco.yaml",
+  "source_audio": "lie-by-the-fire-disco.flac",
+  "language": "en",
+  "engine": "demucs:htdemucs+whisperx:large-v3",
+  "runtime": {
+    "requested_device": "auto",
+    "demucs_device": "cuda",
+    "whisperx_device": "cuda",
+    "whisperx_compute_type": "float16",
+    "batch_size": 4,
+    "cpu_fallback_used": false
+  },
+  "generated_at": "2026-09-23T19:50:09+00:00",
+  "stats": {
+    "lyric_words": 281,
+    "recognised_words": 287,
+    "matched_words": 279,
+    "coverage": 0.9929
+  },
+  "quality": {
+    "rating": "excellent",
+    "review_threshold": 0.8,
+    "review_required": false,
+    "approved": false,
+    "usable_for_live_lyrics": true
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Lay down beside me",
+      "start": 2.378,
+      "end": 3.78,
+      "words": [
+        {
+          "text": "Lay",
+          "start": 2.378,
+          "end": 2.598,
+          "matched": true
+        },
+        {
+          "text": "down",
+          "start": 2.619,
+          "end": 2.999,
+          "matched": true
+        },
+        {
+          "text": "beside",
+          "start": 3.119,
+          "end": 3.6,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 3.62,
+          "end": 3.78,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "text": "The daylight is done",
+      "start": 4.301,
+      "end": 5.823,
+      "words": [
+        {
+          "text": "The",
+          "start": 4.301,
+          "end": 4.441,
+          "matched": true
+        },
+        {
+          "text": "daylight",
+          "start": 4.521,
+          "end": 5.262,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 5.362,
+          "end": 5.442,
+          "matched": true
+        },
+        {
+          "text": "done",
+          "start": 5.503,
+          "end": 5.823,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "text": "Rest now your paws",
+      "start": 5.843,
+      "end": 7.666,
+      "words": [
+        {
+          "text": "Rest",
+          "start": 5.843,
+          "end": 6.424,
+          "matched": true
+        },
+        {
+          "text": "now",
+          "start": 6.464,
+          "end": 6.824,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 6.884,
+          "end": 7.065,
+          "matched": true
+        },
+        {
+          "text": "paws",
+          "start": 7.125,
+          "end": 7.666,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "text": "By the fire, everyone",
+      "start": 7.866,
+      "end": 9.588,
+      "words": [
+        {
+          "text": "By",
+          "start": 7.866,
+          "end": 8.066,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 8.086,
+          "end": 8.166,
+          "matched": true
+        },
+        {
+          "text": "fire,",
+          "start": 8.326,
+          "end": 8.847,
+          "matched": true
+        },
+        {
+          "text": "everyone",
+          "start": 8.987,
+          "end": 9.588,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "text": "No need for kingdoms",
+      "start": 10.009,
+      "end": 11.531,
+      "words": [
+        {
+          "text": "No",
+          "start": 10.009,
+          "end": 10.189,
+          "matched": true
+        },
+        {
+          "text": "need",
+          "start": 10.269,
+          "end": 10.57,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 10.71,
+          "end": 10.87,
+          "matched": true
+        },
+        {
+          "text": "kingdoms",
+          "start": 10.93,
+          "end": 11.531,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "text": "No battles tonight",
+      "start": 11.911,
+      "end": 13.474,
+      "words": [
+        {
+          "text": "No",
+          "start": 11.911,
+          "end": 12.092,
+          "matched": true
+        },
+        {
+          "text": "battles",
+          "start": 12.172,
+          "end": 12.773,
+          "matched": true
+        },
+        {
+          "text": "tonight",
+          "start": 12.853,
+          "end": 13.474,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "text": "Only two goldens",
+      "start": 13.954,
+      "end": 15.376,
+      "words": [
+        {
+          "text": "Only",
+          "start": 13.954,
+          "end": 14.255,
+          "matched": true
+        },
+        {
+          "text": "two",
+          "start": 14.275,
+          "end": 14.335,
+          "matched": true
+        },
+        {
+          "text": "goldens",
+          "start": 14.795,
+          "end": 15.376,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l8",
+      "text": "Asleep by the light",
+      "start": 15.817,
+      "end": 17.559,
+      "words": [
+        {
+          "text": "Asleep",
+          "start": 15.817,
+          "end": 16.238,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 16.458,
+          "end": 16.678,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 16.718,
+          "end": 16.838,
+          "matched": true
+        },
+        {
+          "text": "light",
+          "start": 16.938,
+          "end": 17.559,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l9",
+      "text": "Doja, my lady",
+      "start": 21.415,
+      "end": 22.857,
+      "words": [
+        {
+          "text": "Doja,",
+          "start": 21.415,
+          "end": 21.956,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 22.176,
+          "end": 22.376,
+          "matched": true
+        },
+        {
+          "text": "lady",
+          "start": 22.436,
+          "end": 22.857,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l10",
+      "text": "So watchful and wise",
+      "start": 23.317,
+      "end": 24.959,
+      "words": [
+        {
+          "text": "So",
+          "start": 23.317,
+          "end": 23.538,
+          "matched": true
+        },
+        {
+          "text": "watchful",
+          "start": 23.598,
+          "end": 24.318,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 24.399,
+          "end": 24.479,
+          "matched": true
+        },
+        {
+          "text": "wise",
+          "start": 24.539,
+          "end": 24.959,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l11",
+      "text": "Firelight dancing",
+      "start": 25.26,
+      "end": 27.102,
+      "words": [
+        {
+          "text": "Firelight",
+          "start": 25.26,
+          "end": 26.281,
+          "matched": true
+        },
+        {
+          "text": "dancing",
+          "start": 26.461,
+          "end": 27.102,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l12",
+      "text": "Like stars in your eyes",
+      "start": 27.162,
+      "end": 28.804,
+      "words": [
+        {
+          "text": "Like",
+          "start": 27.162,
+          "end": 27.322,
+          "matched": true
+        },
+        {
+          "text": "stars",
+          "start": 27.362,
+          "end": 27.883,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 28.003,
+          "end": 28.123,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 28.163,
+          "end": 28.383,
+          "matched": true
+        },
+        {
+          "text": "eyes",
+          "start": 28.583,
+          "end": 28.804,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l13",
+      "text": "Bam Bam, brave hunter",
+      "start": 29.084,
+      "end": 30.526,
+      "words": [
+        {
+          "text": "Bam",
+          "start": 29.084,
+          "end": 29.324,
+          "matched": true
+        },
+        {
+          "text": "Bam,",
+          "start": 29.344,
+          "end": 29.765,
+          "matched": true
+        },
+        {
+          "text": "brave",
+          "start": 29.785,
+          "end": 29.985,
+          "matched": true
+        },
+        {
+          "text": "hunter",
+          "start": 30.025,
+          "end": 30.526,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l14",
+      "text": "Your quest is complete",
+      "start": 30.986,
+      "end": 32.508,
+      "words": [
+        {
+          "text": "Your",
+          "start": 30.986,
+          "end": 31.147,
+          "matched": true
+        },
+        {
+          "text": "quest",
+          "start": 31.207,
+          "end": 31.687,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 31.787,
+          "end": 31.867,
+          "matched": true
+        },
+        {
+          "text": "complete",
+          "start": 31.927,
+          "end": 32.508,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l15",
+      "text": "The ball has been captured",
+      "start": 32.909,
+      "end": 34.751,
+      "words": [
+        {
+          "text": "The",
+          "start": 32.909,
+          "end": 33.049,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 33.129,
+          "end": 33.569,
+          "matched": true
+        },
+        {
+          "text": "has",
+          "start": 33.629,
+          "end": 33.79,
+          "matched": true
+        },
+        {
+          "text": "been",
+          "start": 33.83,
+          "end": 34.01,
+          "matched": true
+        },
+        {
+          "text": "captured",
+          "start": 34.07,
+          "end": 34.751,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l16",
+      "text": "Now rest at my feet",
+      "start": 34.811,
+      "end": 36.253,
+      "words": [
+        {
+          "text": "Now",
+          "start": 34.811,
+          "end": 35.011,
+          "matched": true
+        },
+        {
+          "text": "rest",
+          "start": 35.091,
+          "end": 35.512,
+          "matched": true
+        },
+        {
+          "text": "at",
+          "start": 35.612,
+          "end": 35.692,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 35.772,
+          "end": 35.932,
+          "matched": true
+        },
+        {
+          "text": "feet",
+          "start": 35.992,
+          "end": 36.253,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l17",
+      "text": "Stay by the fire",
+      "start": 38.029,
+      "end": 39.47,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 38.029,
+          "end": 38.349,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 38.389,
+          "end": 38.609,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 38.629,
+          "end": 38.73,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 38.85,
+          "end": 39.47,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l18",
+      "text": "Stay here awhile",
+      "start": 39.95,
+      "end": 41.131,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 39.95,
+          "end": 40.251,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 40.311,
+          "end": 40.571,
+          "matched": true
+        },
+        {
+          "text": "awhile",
+          "start": 40.751,
+          "end": 41.131,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l19",
+      "text": "Dream of the meadows",
+      "start": 41.892,
+      "end": 43.393,
+      "words": [
+        {
+          "text": "Dream",
+          "start": 41.892,
+          "end": 42.212,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 42.312,
+          "end": 42.392,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 42.452,
+          "end": 42.592,
+          "matched": true
+        },
+        {
+          "text": "meadows",
+          "start": 42.672,
+          "end": 43.393,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l20",
+      "text": "And morning's first mile",
+      "start": 43.473,
+      "end": 44.994,
+      "words": [
+        {
+          "text": "And",
+          "start": 43.473,
+          "end": 43.573,
+          "matched": true
+        },
+        {
+          "text": "morning's",
+          "start": 43.633,
+          "end": 44.273,
+          "matched": true
+        },
+        {
+          "text": "first",
+          "start": 44.273,
+          "end": 44.494,
+          "matched": false
+        },
+        {
+          "text": "mile",
+          "start": 44.494,
+          "end": 44.994,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l21",
+      "text": "Wherever we wander",
+      "start": 45.534,
+      "end": 47.135,
+      "words": [
+        {
+          "text": "Wherever",
+          "start": 45.534,
+          "end": 46.175,
+          "matched": true
+        },
+        {
+          "text": "we",
+          "start": 46.255,
+          "end": 46.415,
+          "matched": true
+        },
+        {
+          "text": "wander",
+          "start": 46.455,
+          "end": 47.135,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l22",
+      "text": "Whatever we see",
+      "start": 47.436,
+      "end": 48.757,
+      "words": [
+        {
+          "text": "Whatever",
+          "start": 47.436,
+          "end": 48.076,
+          "matched": true
+        },
+        {
+          "text": "we",
+          "start": 48.136,
+          "end": 48.276,
+          "matched": true
+        },
+        {
+          "text": "see",
+          "start": 48.356,
+          "end": 48.757,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l23",
+      "text": "Home is wherever",
+      "start": 49.557,
+      "end": 50.938,
+      "words": [
+        {
+          "text": "Home",
+          "start": 49.557,
+          "end": 49.857,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 49.917,
+          "end": 50.017,
+          "matched": true
+        },
+        {
+          "text": "wherever",
+          "start": 50.077,
+          "end": 50.938,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l24",
+      "text": "You both are with me",
+      "start": 50.998,
+      "end": 53.86,
+      "words": [
+        {
+          "text": "You",
+          "start": 50.998,
+          "end": 51.178,
+          "matched": true
+        },
+        {
+          "text": "both",
+          "start": 51.258,
+          "end": 51.639,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 51.839,
+          "end": 51.959,
+          "matched": true
+        },
+        {
+          "text": "with",
+          "start": 51.979,
+          "end": 52.119,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 52.219,
+          "end": 53.86,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l25",
+      "text": "Stay by the fire",
+      "start": 55.201,
+      "end": 56.662,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 55.201,
+          "end": 55.521,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 55.561,
+          "end": 55.781,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 55.801,
+          "end": 55.882,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 56.002,
+          "end": 56.662,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l26",
+      "text": "Dream of the meadows",
+      "start": 59.084,
+      "end": 60.625,
+      "words": [
+        {
+          "text": "Dream",
+          "start": 59.084,
+          "end": 59.404,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 59.464,
+          "end": 59.584,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 59.604,
+          "end": 59.684,
+          "matched": true
+        },
+        {
+          "text": "meadows",
+          "start": 59.824,
+          "end": 60.625,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l27",
+      "text": "Tomorrow the pathway",
+      "start": 68.148,
+      "end": 69.729,
+      "words": [
+        {
+          "text": "Tomorrow",
+          "start": 68.148,
+          "end": 68.868,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 68.948,
+          "end": 69.049,
+          "matched": true
+        },
+        {
+          "text": "pathway",
+          "start": 69.109,
+          "end": 69.729,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l28",
+      "text": "Will call us once more",
+      "start": 69.749,
+      "end": 71.53,
+      "words": [
+        {
+          "text": "Will",
+          "start": 69.749,
+          "end": 69.829,
+          "matched": true
+        },
+        {
+          "text": "call",
+          "start": 70.309,
+          "end": 70.77,
+          "matched": true
+        },
+        {
+          "text": "us",
+          "start": 70.87,
+          "end": 70.95,
+          "matched": true
+        },
+        {
+          "text": "once",
+          "start": 71.07,
+          "end": 71.23,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 71.29,
+          "end": 71.53,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l29",
+      "text": "Bam will stand waiting",
+      "start": 71.97,
+      "end": 73.831,
+      "words": [
+        {
+          "text": "Bam",
+          "start": 71.97,
+          "end": 72.27,
+          "matched": true
+        },
+        {
+          "text": "will",
+          "start": 72.31,
+          "end": 72.551,
+          "matched": true
+        },
+        {
+          "text": "stand",
+          "start": 72.631,
+          "end": 73.071,
+          "matched": true
+        },
+        {
+          "text": "waiting",
+          "start": 73.171,
+          "end": 73.831,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l30",
+      "text": "Beside the old door",
+      "start": 73.891,
+      "end": 75.432,
+      "words": [
+        {
+          "text": "Beside",
+          "start": 73.891,
+          "end": 74.552,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 74.632,
+          "end": 74.792,
+          "matched": true
+        },
+        {
+          "text": "old",
+          "start": 74.932,
+          "end": 75.052,
+          "matched": true
+        },
+        {
+          "text": "door",
+          "start": 75.092,
+          "end": 75.432,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l31",
+      "text": "Doja will linger",
+      "start": 75.792,
+      "end": 77.173,
+      "words": [
+        {
+          "text": "Doja",
+          "start": 75.792,
+          "end": 76.253,
+          "matched": true
+        },
+        {
+          "text": "will",
+          "start": 76.273,
+          "end": 76.353,
+          "matched": true
+        },
+        {
+          "text": "linger",
+          "start": 76.773,
+          "end": 77.173,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l32",
+      "text": "And judge us all first",
+      "start": 77.734,
+      "end": 79.254,
+      "words": [
+        {
+          "text": "And",
+          "start": 77.734,
+          "end": 77.854,
+          "matched": true
+        },
+        {
+          "text": "judge",
+          "start": 77.934,
+          "end": 78.214,
+          "matched": true
+        },
+        {
+          "text": "us",
+          "start": 78.274,
+          "end": 78.374,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 78.574,
+          "end": 78.754,
+          "matched": true
+        },
+        {
+          "text": "first",
+          "start": 78.874,
+          "end": 79.254,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l33",
+      "text": "Then follow behind us",
+      "start": 79.595,
+      "end": 81.436,
+      "words": [
+        {
+          "text": "Then",
+          "start": 79.595,
+          "end": 79.775,
+          "matched": true
+        },
+        {
+          "text": "follow",
+          "start": 79.855,
+          "end": 80.315,
+          "matched": true
+        },
+        {
+          "text": "behind",
+          "start": 80.595,
+          "end": 81.236,
+          "matched": true
+        },
+        {
+          "text": "us",
+          "start": 81.356,
+          "end": 81.436,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l34",
+      "text": "When curiosity wins",
+      "start": 81.496,
+      "end": 83.337,
+      "words": [
+        {
+          "text": "When",
+          "start": 81.496,
+          "end": 81.676,
+          "matched": true
+        },
+        {
+          "text": "curiosity",
+          "start": 81.736,
+          "end": 82.816,
+          "matched": true
+        },
+        {
+          "text": "wins",
+          "start": 82.897,
+          "end": 83.337,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l35",
+      "text": "Stay by the fire",
+      "start": 94.297,
+      "end": 95.738,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 94.297,
+          "end": 94.617,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 94.657,
+          "end": 94.878,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 94.898,
+          "end": 94.998,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 95.078,
+          "end": 95.738,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l36",
+      "text": "Stay here awhile",
+      "start": 96.198,
+      "end": 97.439,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 96.198,
+          "end": 96.499,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 96.539,
+          "end": 96.819,
+          "matched": true
+        },
+        {
+          "text": "awhile",
+          "start": 96.979,
+          "end": 97.439,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l37",
+      "text": "Dream of the meadows",
+      "start": 98.16,
+      "end": 99.641,
+      "words": [
+        {
+          "text": "Dream",
+          "start": 98.16,
+          "end": 98.48,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 98.58,
+          "end": 98.66,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 98.72,
+          "end": 98.86,
+          "matched": true
+        },
+        {
+          "text": "meadows",
+          "start": 98.921,
+          "end": 99.641,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l38",
+      "text": "And morning's first mile",
+      "start": 99.721,
+      "end": 101.202,
+      "words": [
+        {
+          "text": "And",
+          "start": 99.721,
+          "end": 99.821,
+          "matched": true
+        },
+        {
+          "text": "morning's",
+          "start": 99.881,
+          "end": 100.542,
+          "matched": true
+        },
+        {
+          "text": "first",
+          "start": 100.542,
+          "end": 100.762,
+          "matched": false
+        },
+        {
+          "text": "mile",
+          "start": 100.762,
+          "end": 101.202,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l39",
+      "text": "Wherever we wander",
+      "start": 101.783,
+      "end": 103.424,
+      "words": [
+        {
+          "text": "Wherever",
+          "start": 101.783,
+          "end": 102.463,
+          "matched": true
+        },
+        {
+          "text": "we",
+          "start": 102.523,
+          "end": 102.683,
+          "matched": true
+        },
+        {
+          "text": "wander",
+          "start": 102.723,
+          "end": 103.424,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l40",
+      "text": "Whatever we see",
+      "start": 103.704,
+      "end": 104.925,
+      "words": [
+        {
+          "text": "Whatever",
+          "start": 103.704,
+          "end": 104.365,
+          "matched": true
+        },
+        {
+          "text": "we",
+          "start": 104.405,
+          "end": 104.545,
+          "matched": true
+        },
+        {
+          "text": "see",
+          "start": 104.625,
+          "end": 104.925,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l41",
+      "text": "Home is wherever",
+      "start": 105.826,
+      "end": 107.207,
+      "words": [
+        {
+          "text": "Home",
+          "start": 105.826,
+          "end": 106.106,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 106.166,
+          "end": 106.266,
+          "matched": true
+        },
+        {
+          "text": "wherever",
+          "start": 106.326,
+          "end": 107.207,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l42",
+      "text": "You both are with me",
+      "start": 107.287,
+      "end": 109.989,
+      "words": [
+        {
+          "text": "You",
+          "start": 107.287,
+          "end": 107.467,
+          "matched": true
+        },
+        {
+          "text": "both",
+          "start": 107.507,
+          "end": 107.887,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 108.087,
+          "end": 108.207,
+          "matched": true
+        },
+        {
+          "text": "with",
+          "start": 108.227,
+          "end": 108.387,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 108.468,
+          "end": 109.989,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l43",
+      "text": "Stay by the fire",
+      "start": 111.47,
+      "end": 112.771,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 111.47,
+          "end": 111.81,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 111.85,
+          "end": 112.03,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 112.07,
+          "end": 112.17,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 112.27,
+          "end": 112.771,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l44",
+      "text": "Dream of the meadows",
+      "start": 115.353,
+      "end": 116.774,
+      "words": [
+        {
+          "text": "Dream",
+          "start": 115.353,
+          "end": 115.673,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 115.733,
+          "end": 115.833,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 115.873,
+          "end": 116.013,
+          "matched": true
+        },
+        {
+          "text": "meadows",
+          "start": 116.093,
+          "end": 116.774,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l45",
+      "text": "No gold from the mountain",
+      "start": 119.9,
+      "end": 121.561,
+      "words": [
+        {
+          "text": "No",
+          "start": 119.9,
+          "end": 120.1,
+          "matched": true
+        },
+        {
+          "text": "gold",
+          "start": 120.16,
+          "end": 120.521,
+          "matched": true
+        },
+        {
+          "text": "from",
+          "start": 120.601,
+          "end": 120.841,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 120.881,
+          "end": 120.961,
+          "matched": true
+        },
+        {
+          "text": "mountain",
+          "start": 121.001,
+          "end": 121.561,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l46",
+      "text": "No jewel from the sea",
+      "start": 121.802,
+      "end": 123.303,
+      "words": [
+        {
+          "text": "No",
+          "start": 121.802,
+          "end": 122.002,
+          "matched": true
+        },
+        {
+          "text": "jewel",
+          "start": 122.062,
+          "end": 122.442,
+          "matched": true
+        },
+        {
+          "text": "from",
+          "start": 122.502,
+          "end": 122.742,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 122.782,
+          "end": 122.842,
+          "matched": true
+        },
+        {
+          "text": "sea",
+          "start": 122.983,
+          "end": 123.303,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l47",
+      "text": "Could purchase the hours",
+      "start": 123.703,
+      "end": 125.344,
+      "words": [
+        {
+          "text": "Could",
+          "start": 123.703,
+          "end": 123.903,
+          "matched": true
+        },
+        {
+          "text": "purchase",
+          "start": 123.963,
+          "end": 124.524,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 124.664,
+          "end": 124.904,
+          "matched": true
+        },
+        {
+          "text": "hours",
+          "start": 124.964,
+          "end": 125.344,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l48",
+      "text": "You've given to me",
+      "start": 125.404,
+      "end": 126.966,
+      "words": [
+        {
+          "text": "You've",
+          "start": 125.404,
+          "end": 125.605,
+          "matched": true
+        },
+        {
+          "text": "given",
+          "start": 125.645,
+          "end": 126.285,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 126.325,
+          "end": 126.505,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 126.585,
+          "end": 126.966,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l49",
+      "text": "So sleep without worry",
+      "start": 127.486,
+      "end": 129.308,
+      "words": [
+        {
+          "text": "So",
+          "start": 127.486,
+          "end": 127.666,
+          "matched": true
+        },
+        {
+          "text": "sleep",
+          "start": 127.726,
+          "end": 128.027,
+          "matched": true
+        },
+        {
+          "text": "without",
+          "start": 128.067,
+          "end": 128.447,
+          "matched": true
+        },
+        {
+          "text": "worry",
+          "start": 128.507,
+          "end": 129.308,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l50",
+      "text": "The watch I shall keep",
+      "start": 129.428,
+      "end": 130.629,
+      "words": [
+        {
+          "text": "The",
+          "start": 129.428,
+          "end": 129.628,
+          "matched": true
+        },
+        {
+          "text": "watch",
+          "start": 129.668,
+          "end": 129.948,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 130.008,
+          "end": 130.088,
+          "matched": true
+        },
+        {
+          "text": "shall",
+          "start": 130.108,
+          "end": 130.348,
+          "matched": true
+        },
+        {
+          "text": "keep",
+          "start": 130.388,
+          "end": 130.629,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l51",
+      "text": "While two golden guardians",
+      "start": 130.889,
+      "end": 132.991,
+      "words": [
+        {
+          "text": "While",
+          "start": 130.889,
+          "end": 131.209,
+          "matched": true
+        },
+        {
+          "text": "two",
+          "start": 131.329,
+          "end": 131.629,
+          "matched": true
+        },
+        {
+          "text": "golden",
+          "start": 131.83,
+          "end": 132.25,
+          "matched": true
+        },
+        {
+          "text": "guardians",
+          "start": 132.31,
+          "end": 132.991,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l52",
+      "text": "Lie dreaming in sleep",
+      "start": 133.031,
+      "end": 134.532,
+      "words": [
+        {
+          "text": "Lie",
+          "start": 133.031,
+          "end": 133.231,
+          "matched": true
+        },
+        {
+          "text": "dreaming",
+          "start": 133.271,
+          "end": 134.011,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 134.031,
+          "end": 134.091,
+          "matched": true
+        },
+        {
+          "text": "sleep",
+          "start": 134.171,
+          "end": 134.532,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l53",
+      "text": "Stay by the fire",
+      "start": 152.478,
+      "end": 153.899,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 152.478,
+          "end": 152.778,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 152.818,
+          "end": 153.038,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 153.078,
+          "end": 153.178,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 153.278,
+          "end": 153.899,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l54",
+      "text": "Stay here awhile",
+      "start": 154.379,
+      "end": 155.56,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 154.379,
+          "end": 154.699,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 154.759,
+          "end": 155.019,
+          "matched": true
+        },
+        {
+          "text": "awhile",
+          "start": 155.159,
+          "end": 155.56,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l55",
+      "text": "Tomorrow we'll wander",
+      "start": 155.58,
+      "end": 157.821,
+      "words": [
+        {
+          "text": "Tomorrow",
+          "start": 155.58,
+          "end": 156.84,
+          "matched": true
+        },
+        {
+          "text": "we'll",
+          "start": 156.88,
+          "end": 157.08,
+          "matched": true
+        },
+        {
+          "text": "wander",
+          "start": 157.121,
+          "end": 157.821,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l56",
+      "text": "Another good mile",
+      "start": 157.881,
+      "end": 159.342,
+      "words": [
+        {
+          "text": "Another",
+          "start": 157.881,
+          "end": 158.701,
+          "matched": true
+        },
+        {
+          "text": "good",
+          "start": 158.741,
+          "end": 158.921,
+          "matched": true
+        },
+        {
+          "text": "mile",
+          "start": 159.001,
+          "end": 159.342,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l57",
+      "text": "Through forest and meadows",
+      "start": 159.662,
+      "end": 161.503,
+      "words": [
+        {
+          "text": "Through",
+          "start": 159.662,
+          "end": 159.882,
+          "matched": true
+        },
+        {
+          "text": "forest",
+          "start": 159.942,
+          "end": 160.682,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 160.762,
+          "end": 160.882,
+          "matched": true
+        },
+        {
+          "text": "meadows",
+          "start": 160.943,
+          "end": 161.503,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l58",
+      "text": "Wherever we roam",
+      "start": 161.883,
+      "end": 163.184,
+      "words": [
+        {
+          "text": "Wherever",
+          "start": 161.883,
+          "end": 162.503,
+          "matched": true
+        },
+        {
+          "text": "we",
+          "start": 162.603,
+          "end": 162.763,
+          "matched": true
+        },
+        {
+          "text": "roam",
+          "start": 162.824,
+          "end": 163.184,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l59",
+      "text": "Two golden companions",
+      "start": 163.504,
+      "end": 165.405,
+      "words": [
+        {
+          "text": "Two",
+          "start": 163.504,
+          "end": 163.724,
+          "matched": true
+        },
+        {
+          "text": "golden",
+          "start": 163.784,
+          "end": 164.424,
+          "matched": true
+        },
+        {
+          "text": "companions",
+          "start": 164.504,
+          "end": 165.405,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l60",
+      "text": "Will always come home",
+      "start": 165.465,
+      "end": 167.486,
+      "words": [
+        {
+          "text": "Will",
+          "start": 165.465,
+          "end": 165.725,
+          "matched": true
+        },
+        {
+          "text": "always",
+          "start": 165.925,
+          "end": 166.305,
+          "matched": true
+        },
+        {
+          "text": "come",
+          "start": 166.385,
+          "end": 166.585,
+          "matched": true
+        },
+        {
+          "text": "home",
+          "start": 166.646,
+          "end": 167.486,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l61",
+      "text": "Stay by the fire",
+      "start": 169.667,
+      "end": 171.088,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 169.667,
+          "end": 169.967,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 170.007,
+          "end": 170.227,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 170.267,
+          "end": 170.347,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 170.448,
+          "end": 171.088,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l62",
+      "text": "Stay here awhile",
+      "start": 171.548,
+      "end": 172.809,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 171.548,
+          "end": 171.868,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 171.928,
+          "end": 172.168,
+          "matched": true
+        },
+        {
+          "text": "awhile",
+          "start": 172.349,
+          "end": 172.809,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l63",
+      "text": "Dream of the meadows",
+      "start": 173.509,
+      "end": 174.99,
+      "words": [
+        {
+          "text": "Dream",
+          "start": 173.509,
+          "end": 173.829,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 173.929,
+          "end": 174.029,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 174.069,
+          "end": 174.21,
+          "matched": true
+        },
+        {
+          "text": "meadows",
+          "start": 174.27,
+          "end": 174.99,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l64",
+      "text": "And morning's first mile",
+      "start": 175.07,
+      "end": 176.571,
+      "words": [
+        {
+          "text": "And",
+          "start": 175.07,
+          "end": 175.19,
+          "matched": true
+        },
+        {
+          "text": "morning's",
+          "start": 175.27,
+          "end": 175.87,
+          "matched": true
+        },
+        {
+          "text": "first",
+          "start": 175.91,
+          "end": 176.091,
+          "matched": true
+        },
+        {
+          "text": "mile",
+          "start": 176.111,
+          "end": 176.571,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l65",
+      "text": "Wherever we wander",
+      "start": 177.131,
+      "end": 178.712,
+      "words": [
+        {
+          "text": "Wherever",
+          "start": 177.131,
+          "end": 177.751,
+          "matched": true
+        },
+        {
+          "text": "we",
+          "start": 177.851,
+          "end": 178.032,
+          "matched": true
+        },
+        {
+          "text": "wander",
+          "start": 178.072,
+          "end": 178.712,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l66",
+      "text": "Whatever we see",
+      "start": 179.052,
+      "end": 180.093,
+      "words": [
+        {
+          "text": "Whatever",
+          "start": 179.052,
+          "end": 179.692,
+          "matched": true
+        },
+        {
+          "text": "we",
+          "start": 179.752,
+          "end": 179.893,
+          "matched": true
+        },
+        {
+          "text": "see",
+          "start": 179.973,
+          "end": 180.093,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l67",
+      "text": "Home is wherever",
+      "start": 181.157,
+      "end": 182.538,
+      "words": [
+        {
+          "text": "Home",
+          "start": 181.157,
+          "end": 181.457,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 181.517,
+          "end": 181.617,
+          "matched": true
+        },
+        {
+          "text": "wherever",
+          "start": 181.657,
+          "end": 182.538,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l68",
+      "text": "You both are with me",
+      "start": 182.618,
+      "end": 186.801,
+      "words": [
+        {
+          "text": "You",
+          "start": 182.618,
+          "end": 182.798,
+          "matched": true
+        },
+        {
+          "text": "both",
+          "start": 182.838,
+          "end": 183.258,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 183.459,
+          "end": 183.559,
+          "matched": true
+        },
+        {
+          "text": "with",
+          "start": 183.599,
+          "end": 183.739,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 183.819,
+          "end": 186.801,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l69",
+      "text": "Stay by the fire",
+      "start": 186.821,
+      "end": 188.122,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 186.821,
+          "end": 187.141,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 187.181,
+          "end": 187.361,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 187.421,
+          "end": 187.501,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 187.601,
+          "end": 188.122,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l70",
+      "text": "Dream of the meadows",
+      "start": 190.663,
+      "end": 192.264,
+      "words": [
+        {
+          "text": "Dream",
+          "start": 190.663,
+          "end": 191.003,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 191.083,
+          "end": 191.163,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 191.224,
+          "end": 191.344,
+          "matched": true
+        },
+        {
+          "text": "meadows",
+          "start": 191.444,
+          "end": 192.264,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l71",
+      "text": "Rest now, Doja",
+      "start": 195.466,
+      "end": 198.168,
+      "words": [
+        {
+          "text": "Rest",
+          "start": 195.466,
+          "end": 195.827,
+          "matched": true
+        },
+        {
+          "text": "now,",
+          "start": 195.947,
+          "end": 196.847,
+          "matched": true
+        },
+        {
+          "text": "Doja",
+          "start": 197.408,
+          "end": 198.168,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l72",
+      "text": "Rest, Bam Bam",
+      "start": 199.109,
+      "end": 201.65,
+      "words": [
+        {
+          "text": "Rest,",
+          "start": 199.109,
+          "end": 199.529,
+          "matched": true
+        },
+        {
+          "text": "Bam",
+          "start": 200.51,
+          "end": 200.93,
+          "matched": true
+        },
+        {
+          "text": "Bam",
+          "start": 200.99,
+          "end": 201.65,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l73",
+      "text": "The fire burns low",
+      "start": 202.911,
+      "end": 205.433,
+      "words": [
+        {
+          "text": "The",
+          "start": 202.911,
+          "end": 203.031,
+          "matched": true
+        },
+        {
+          "text": "fire",
+          "start": 203.151,
+          "end": 203.792,
+          "matched": true
+        },
+        {
+          "text": "burns",
+          "start": 203.872,
+          "end": 204.752,
+          "matched": true
+        },
+        {
+          "text": "low",
+          "start": 204.872,
+          "end": 205.433,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l74",
+      "text": "And morning will come",
+      "start": 206.754,
+      "end": 208.495,
+      "words": [
+        {
+          "text": "And",
+          "start": 206.754,
+          "end": 206.874,
+          "matched": true
+        },
+        {
+          "text": "morning",
+          "start": 206.974,
+          "end": 207.634,
+          "matched": true
+        },
+        {
+          "text": "will",
+          "start": 207.694,
+          "end": 207.994,
+          "matched": true
+        },
+        {
+          "text": "come",
+          "start": 208.094,
+          "end": 208.495,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l75",
+      "text": "Woof",
+      "start": 210.056,
+      "end": 210.396,
+      "words": [
+        {
+          "text": "Woof",
+          "start": 210.056,
+          "end": 210.396,
+          "matched": true
+        }
+      ]
+    }
+  ]
+}
