@@ -35,9 +35,8 @@ AUDIO_DIR = ROOT / "assets" / "audio" / "tracks"  # legacy only
 ATR_AUDIO_DIR = ROOT / "assets" / "audio" / "atr"
 LEGACY_MUSIC_DIR = ROOT / "music"
 VARIANT_SLOTS = ("metal", "pop", "country", "disco", "orchestral", "special")
-ONE_OFF_SLOT = "one-off"
-VALID_SIDES = ("A", "B", "C")
-MAX_SONGS = 10
+MAX_SONGS = 14
+MAX_EASTER_TRACKS = 10
 EASTER_DIR = ROOT / "showcase" / "easter"
 EASTER_AUDIO_EXTS = (".mp3", ".flac", ".wav", ".m4a", ".ogg", ".opus", ".webm")
 
@@ -103,9 +102,9 @@ def load_easter_tracks(report: Report) -> list[dict[str, Any]]:
         group["files"][fmt] = path
 
     groups = sorted(grouped.values(), key=lambda item: str(item["stem"]).casefold())
-    if len(groups) > MAX_SONGS:
-        report.warn("easter", f"contains {len(groups)} reject masters; only the first {MAX_SONGS} are exposed")
-        groups = groups[:MAX_SONGS]
+    if len(groups) > MAX_EASTER_TRACKS:
+        report.warn("easter", f"contains {len(groups)} reject masters; only the first {MAX_EASTER_TRACKS} are exposed")
+        groups = groups[:MAX_EASTER_TRACKS]
 
     tracks: list[dict[str, Any]] = []
     for index, group in enumerate(groups, start=1):
@@ -151,13 +150,12 @@ def validate_track(track: dict[str, Any], where: str, report: Report) -> None:
             report.error(where, f"missing {key}")
 
     slot = track.get("variantSlot")
-    allowed_slots = (*VARIANT_SLOTS, ONE_OFF_SLOT)
-    if slot not in allowed_slots:
-        report.error(where, f"variantSlot {slot!r} is not one of {', '.join(allowed_slots)}")
+    if slot not in VARIANT_SLOTS:
+        report.error(where, f"variantSlot {slot!r} is not one of {', '.join(VARIANT_SLOTS)}")
 
     side = str(track.get("side") or "A").upper()
-    if side not in VALID_SIDES:
-        report.error(where, f"side {side!r} must be one of {', '.join(VALID_SIDES)}")
+    if side not in {"A", "B"}:
+        report.error(where, f"side {side!r} must be A or B")
 
     art = track.get("artwork") or {}
     base = art.get("base") or "gbr-placeholder"
@@ -266,8 +264,8 @@ def load_tracks(report: Report) -> list[dict[str, Any]]:
         validate_track(track, path.name, report)
         tracks.append(track)
 
-    slot_rank = {name: index for index, name in enumerate((*VARIANT_SLOTS, ONE_OFF_SLOT))}
-    side_rank = {side: index for index, side in enumerate(VALID_SIDES)}
+    slot_rank = {name: index for index, name in enumerate(VARIANT_SLOTS)}
+    side_rank = {"A": 0, "B": 1}
     tracks.sort(key=lambda t: (
         str(t.get("displayTitle") or t.get("title") or t.get("composition") or "").casefold(),
         slot_rank.get(str(t.get("variantSlot")), 99),
@@ -303,13 +301,13 @@ def group_songs(tracks: list[dict[str, Any]], song_meta: dict[str, dict[str, Any
             sides_by_slot.setdefault(slot, {})[side] = track
 
         # ``variants`` remains the primary physical cassette for wheel
-        # rendering: Side A where present, otherwise the first available side.
-        # ``sides`` carries A/B/C without creating another magazine position.
+        # rendering: Side A where present, otherwise Side B. ``sides`` carries
+        # both playable cuts without creating another magazine position.
         variants_by_slot = {
-            slot: next((side_map.get(side) for side in VALID_SIDES if side_map.get(side)), None)
+            slot: side_map.get("A") or side_map.get("B")
             for slot, side_map in sides_by_slot.items()
+            if side_map.get("A") or side_map.get("B")
         }
-        variants_by_slot = {slot: track for slot, track in variants_by_slot.items() if track}
         lead = variants_by_slot.get("disco") or next(
             (variants_by_slot.get(slot) for slot in VARIANT_SLOTS if variants_by_slot.get(slot)),
             releases[0],
@@ -330,11 +328,11 @@ def group_songs(tracks: list[dict[str, Any]], song_meta: dict[str, dict[str, Any
     return songs
 
 def render_wheel_library(songs: list[dict[str, Any]]) -> str:
-    """Render ten physical song positions.
+    """Render the configured number of physical song positions.
 
     The genre is selected independently by the six bank buttons. Runtime JS
     swaps the track id, artwork, ready state and label for the chosen genre,
-    so the wheel remains ten songs rather than sixty duplicated positions.
+    so the wheel remains one position per song rather than duplicating positions by genre.
     Optional Side B remains attached to the same song/genre position.
     """
     cells: list[str] = []
@@ -381,15 +379,14 @@ def render_mobile_library(songs: list[dict[str, Any]]) -> str:
             ready = track is not None
             track_id = str(track["id"]) if ready else ""
             song_id = str(song["id"]) if song else ""
-            available_sides = [side for side in VALID_SIDES if side_map.get(side)]
-            has_extra_sides = len(available_sides) > 1
+            has_b = bool(side_map.get("B"))
             disabled = "" if ready else " disabled"
             state = (track.get("variantLabel") if track else None) or ("READY" if ready else "NOT CUT")
-            if ready and has_extra_sides:
-                state = f"{state} · {'/'.join(available_sides)}"
+            if ready and has_b:
+                state = f"{state} · A/B"
             cards.append(
                 f'<button class="showcase-mobile-cassette" type="button" data-track="{esc(track_id)}" '
-                f'data-song="{esc(song_id)}" data-slot="{genre}" data-has-side-b="{"true" if has_extra_sides else "false"}" '
+                f'data-song="{esc(song_id)}" data-slot="{genre}" data-has-side-b="{"true" if has_b else "false"}" '
                 f'data-ready="{"true" if ready else "false"}"{disabled}>'
                 f'<span>{index + 1:02d}</span><strong>{esc(title)}</strong>'
                 f'<small>{esc(state)}</small>'
@@ -415,26 +412,18 @@ def build(strict: bool) -> int:
     if report.errors:
         return report.summarise(strict)
 
-    # Keep the six-cut matrix and the public one-off bank independent. A
-    # standalone song therefore never consumes one of the ten normal song
-    # positions and never needs empty metal/pop/etc. placeholder variants.
-    normal_tracks = [track for track in tracks if str(track.get("variantSlot")) != ONE_OFF_SLOT and not track.get("oneOff")]
-    one_off_tracks = [track for track in tracks if str(track.get("variantSlot")) == ONE_OFF_SLOT or track.get("oneOff")]
-    songs = group_songs(normal_tracks, song_meta)
-    one_off_songs = group_songs(one_off_tracks, {})
+    songs = group_songs(tracks, song_meta)
     easter_tracks = load_easter_tracks(report)
     if len(songs) > MAX_SONGS:
-        report.error("showcase", f"contains {len(songs)} matrix songs; rotary magazine supports a maximum of {MAX_SONGS}")
-    # ONE-OFF is not limited to one physical magazine. Runtime pages the
-    # independent bank in groups of ten while playback/navigation sees all.
-    if report.errors:
+        report.error("showcase", f"contains {len(songs)} songs; rotary magazine supports a maximum of {MAX_SONGS}")
         return report.summarise(strict)
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     catalogue = {
         "format": "gbr-showcase-v10.5",
         "variantSlots": list(VARIANT_SLOTS),
+        "maxSongs": MAX_SONGS,
+        "maxEasterTracks": MAX_EASTER_TRACKS,
         "songCount": len(songs),
-        "oneOffCount": len(one_off_songs),
         "variantCount": len(tracks),
         "songs": [
             {
@@ -446,37 +435,12 @@ def build(strict: bool) -> int:
                 "atr": song.get("atr") or [],
                 "variantIds": {slot: song["variants"][slot]["id"] for slot in VARIANT_SLOTS if slot in song["variants"]},
                 "sideIds": {
-                    slot: {side: side_map[side]["id"] for side in VALID_SIDES if side in side_map}
+                    slot: {side: side_map[side]["id"] for side in ("A", "B") if side in side_map}
                     for slot, side_map in song.get("sides", {}).items()
                 },
             }
             for song in songs
         ],
-        "oneOff": {
-            "enabled": bool(one_off_songs),
-            "slot": ONE_OFF_SLOT,
-            "count": len(one_off_songs),
-            "songs": [
-                {
-                    "id": song["id"],
-                    "title": song["title"],
-                    "story": song.get("story") or song["lead"].get("story") or "",
-                    "style": song.get("style") or song["lead"].get("style") or {},
-                    "yamlUrl": song.get("yamlUrl") or song["lead"].get("yamlUrl"),
-                    "atr": [],
-                    "variantIds": {ONE_OFF_SLOT: song["variants"][ONE_OFF_SLOT]["id"]} if ONE_OFF_SLOT in song["variants"] else {},
-                    "sideIds": {
-                        ONE_OFF_SLOT: {
-                            side: side_map[side]["id"]
-                            for side in VALID_SIDES if side in side_map
-                        }
-                        for slot, side_map in song.get("sides", {}).items()
-                        if slot == ONE_OFF_SLOT
-                    },
-                }
-                for song in one_off_songs
-            ],
-        },
         "tracks": tracks,
         "easter": {
             "enabled": bool(easter_tracks),
@@ -499,10 +463,9 @@ def build(strict: bool) -> int:
     })
     (ROOT / "index.html").write_text(output, encoding="utf-8")
 
-    print(f"Built {len(songs)} matrix song(s), {len(one_off_songs)} one-off(s), {len(tracks)} recording(s)")
-    print(f"  one-off bank    {len(one_off_songs)} standalone song(s), paged 10 per magazine")
+    print(f"Built {len(songs)} song(s), {len(tracks)} recording(s)")
     print(f"  easter bank     {len(easter_tracks)} hidden reject master(s)")
-    print(f"  target matrix   {MAX_SONGS} song positions × {len(VARIANT_SLOTS)} selectable genre cuts (+ optional A/B/C sides)")
+    print(f"  target matrix   {MAX_SONGS} song positions × {len(VARIANT_SLOTS)} selectable genre cuts (+ optional Side B recordings)")
     print(f"  catalogue.json  {(DATA_DIR / 'catalogue.json').stat().st_size / 1024:.1f} KB")
     print(f"  index.html      {(ROOT / 'index.html').stat().st_size / 1024:.1f} KB")
     return report.summarise(strict)

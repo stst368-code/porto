@@ -21,11 +21,11 @@ slots = ["metal", "pop", "country", "disco", "orchestral", "special"]
 # Catalogue and curated-source contract
 check("catalogue format retained", cat.get("format") == "gbr-showcase-v10.5")
 check("fixed six genre slots", cat.get("variantSlots") == slots)
-check("maximum ten songs explicit", "MAX_SONGS = 10" in builder)
+check("maximum fourteen songs explicit", "MAX_SONGS = 14" in builder)
 check("nested showcase directories scanned", 'DROP.rglob("*.yaml")' in importer)
 check("MP3 and FLAC first-class", '".mp3"' in importer and '".flac"' in importer)
-check("Side A/B/C support retained", "sideIds" in builder and 'VALID_SIDES = ("A", "B", "C")' in builder)
-check("legacy side suffixes infer A/B/C", '("-c", "C")' in importer and '("-b", "B")' in importer and '("-a", "A")' in importer)
+check("Side B support retained", "sideIds" in builder and 'for side in ("A", "B")' in builder)
+check("legacy -b curated cuts infer Side B", 'variant_slug.endswith("-b")' in importer and 'inferred_side = "B"' in importer)
 check("word timing support retained", "gbr-word-lyrics-v1" in importer and "lyrics.json" in importer)
 check("composition metadata retained", all(k in (cat.get("songs") or [{}])[0] for k in ["story", "style", "yamlUrl", "atr"]))
 
@@ -72,7 +72,7 @@ check("redundant browse playing genre strip removed", 'id="gbr11-browse-genre"' 
 check("explicit wheel activation loads browsed cut", "function activateWheelSlot" in js and "primaryTrack(song, state.browseGenre)" in js and "selectTrack(track" in js)
 
 # Magazine
-check("exact ten wheel positions built", "for (let index = 0; index < 10; index++)" in js)
+check("capacity-driven wheel positions built", "index < MAIN_CAPACITY" in js)
 check("wheel artwork uses real img elements", 'button.innerHTML = `<img alt="" loading="eager" decoding="async">' in js and "img.src = src" in js)
 check("wheel art falls back to placeholder", 'return `assets/img/sleeves/${base}-${size}.${ext}`' in js and '"gbr-placeholder"' in js)
 check("wheel cards contain artwork only", "gbr11-slot-copy" not in html and "gbr11-slot-title" not in html and "gbr11-slot-state" not in html and "gbr11-slot-copy" not in js)
@@ -86,10 +86,10 @@ check("cassette clicks are not swallowed by wheel drag capture", 'event.target.c
 check("loaded track rotates to active right-hand wheel position", "function syncWheelToTrack" in js and "setWheelIndex(index);" in js[js.index("function syncWheelToTrack"):js.index("function activateWheelSlot")] and "syncWheelToTrack(track);" in js[js.index("function selectTrack"):js.index("async function playAudio")])
 check("wheel supports mouse wheel", 'addEventListener("wheel"' in js)
 check("mobile artwork rail exists", 'id="gbr11-mobile-rail"' in html and ".gbr11-mobile-rail" in css)
-check("six-cut matrix plus one-off browse target generated", "BROWSE_GENRES.forEach" in js and "ONE_OFF_GENRE" in js and "gbr11-genre-button" in js)
+check("six genre bank controls generated", "GENRES.forEach" in js and "gbr11-genre-button" in js)
 
-check("magazine title chrome removed", "ROTARY CASSETTE MAGAZINE" not in html and "10 SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK" in html)
-check("expanded genre button labels", all(label in js for label in ["METAL/ROCK","POP/HIP-HOP","COUNTRY/FOLK","DISCO/ELECTRONIC","ORCHESTRAL/CLASSICAL","SPECIAL","ONE-OFF"]))
+check("magazine title chrome removed", "ROTARY CASSETTE MAGAZINE" not in html and "14 SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK" in html)
+check("expanded genre button labels", all(label in js for label in ["METAL/ROCK","POP/HIP-HOP","COUNTRY/FOLK","DISCO/ELECTRONIC","ORCHESTRAL/CLASSICAL","SPECIAL"]))
 check("display lamp moved to top power bank", 'class="gbr11-top-lamp"' in html and html.index('id="gbr11-lamp-knob"') < html.index('<main class="gbr11-machine"'))
 check("display lamp is global illumination rheostat", '--light-meter-brightness' in js and '--light-control-brightness' in js and '--light-led-opacity' in js and '.gbr11-spectrum-well canvas' in css)
 check("lamp is visible and interactive", 'id="gbr11-lamp-knob"' in html and "applyLamp" in js and "knobInteraction(el.lampKnob" in js)
@@ -134,8 +134,6 @@ check("volume knob exists", 'id="gbr11-volume-knob"' in html and ".gbr11-knob--v
 check("segmented volume level exists", 'id="gbr11-volume-meter"' in html and "gbr11-volume-segment" in js)
 check("volume dB readout exists", 'id="gbr11-volume-db"' in html and "Math.log10" in js)
 check("volume persists", 'recall("gbr11:volume")' in js and 'remember("gbr11:volume"' in js)
-check("first visit volume defaults to fifty percent", 'volume: numberOr(recall("gbr11:volume"), .5)' in js)
-check("first visit lamp defaults to fifty percent", 'lamp: numberOr(recall("gbr11:lamp"), .5)' in js)
 check("native volume remains accessible state", 'id="gbr11-volume"' in html)
 
 # Transport / lyrics
@@ -145,10 +143,8 @@ check("analyser establishes audible route first", 'source.connect(analyser);' in
 check("analyser failure leaves native playback path", 'native playback remains active' in js)
 check("audio load errors are surfaced", 'addEventListener("error"' in js and 'AUDIO ERROR' in js)
 check("shuffle retained", 'id="gbr11-shuffle"' in html and 'remember("gbr11:shuffle"' in js)
-check("shuffle spans matrix and one-off bank", "function allPlayableTracks" in js and "BROWSE_GENRES.forEach((genre)" in js and "const list = allPlayableTracks();" in js)
+check("shuffle spans all genres", "function allPlayableTracks" in js and "GENRES.forEach((genre)" in js and "const list = allPlayableTracks();" in js)
 check("shuffle follows the shuffled genre visually", "setBrowseGenre(next.variantSlot);" in js)
-check("non-shuffle end advances within current genre", "function stepPlayback(delta, autoplay = null)" in js and "const list = tracksForGenre(state.currentTrack.variantSlot);" in js)
-check("non-shuffle end autoplays next genre track", 'el.audio.addEventListener("ended",()=>nextPlayback(true));' in js and "stepPlayback(1, autoplay);" in js)
 check("release artwork fills exact square sleeve without letterboxing", "aspect-ratio:1254 / 1254" in css and ".gbr11-release-art" in css and "object-fit:cover" in css)
 check("wheel artwork fills square carrier without letterboxing", "object-fit:cover" in css[css.rindex(".gbr11-slot-card img {"):])
 check("now playing moved under player controls", html.index('id="gbr11-now-title"') > html.index('id="gbr11-progress"') and 'class="gbr11-playback-info"' in html)
@@ -159,7 +155,7 @@ check("previous play next retained", all(f'id="gbr11-{name}"' in html for name i
 check("transport icons are oversized and physical", '#gbr11-prev,#gbr11-play,#gbr11-next' in css and 'min-width:62px' in css)
 check("hardware controls make a synthesized clunk", 'function playClunk' in js and 'createBuffer' in js and 'createOscillator' in js and 'playClunk(weight)' in js)
 check("clunk has heavier latch and limiter", "createDynamicsCompressor" in js[js.index("function playClunk"):js.index("genre bank")] and "latch" in js[js.index("function playClunk"):js.index("genre bank")])
-check("Side A/B/C retained", 'id="gbr11-side-switch"' in html and 'data-side="C"' in html and "selectSide" in js)
+check("Side A/B retained", 'id="gbr11-side-switch"' in html and "selectSide" in js)
 check("MP3 FLAC retained", 'data-quality="stream"' in html and 'data-quality="lossless"' in html)
 check("styled seek track retained", 'id="gbr11-progress"' in html and "--seek-pct" in css and "--seek-pct" in js)
 check("lyrics always visible", 'class="gbr11-panel gbr11-lyrics"' in html and "lyrics toggle" not in html.lower())
@@ -176,31 +172,10 @@ for genre in slots:
 check("artwork is never genre-filtered", ".gbr11-release-art {" in css and "filter:" not in css[css.index(".gbr11-release-art {"):css.index(".gbr11-art-glass")])
 
 
-# Public standalone / one-off bank
-check("one-off directory is reserved from six-cut importer", 'reserved_bank' in importer and '"one-off"' in importer and 'one_off_yamls' in importer)
-check("one-off importer creates standalone slot", 'def stage_one_off' in importer and '"oneOff": True' in importer and '"variantSlot": ONE_OFF_SLOT' in importer)
-check("one-off importer groups A/B/C as one song", 'composition_id = slugify(f"{title}-one-off")' in importer and 'release_id = composition_id if side == "A" else' in importer)
-check("one-off C side can be inferred", '("-c", "C")' in importer and 'inferred Side {side} from one-off filename/directory' in importer)
-check("runtime iterates A/B/C sides", 'const SIDE_ORDER = ["A", "B", "C"]' in js and "sideKeys(sides)" in js)
-check("one-off songs do not consume matrix positions", 'normal_tracks = [track for track in tracks' in builder and 'one_off_tracks = [track for track in tracks' in builder)
-check("one-off bank is unlimited", 'if len(one_off_songs) > MAX_SONGS' not in builder and "ONE_OFF_PAGE_SIZE" not in js and "oneOffPageCount" not in js)
-check("catalogue carries one-off bank", "oneOff" in cat and isinstance((cat.get("oneOff") or {}).get("songs"), list))
-check("runtime exposes seventh one-off browse target", 'const ONE_OFF_GENRE = "one-off"' in js and 'const BROWSE_GENRES = [...GENRES, ONE_OFF_GENRE]' in js)
-check("one-off uses independent song bank", 'function songsForGenre(genre)' in js and 'genre === ONE_OFF_GENRE ? oneOffSongs : songs' in js)
-check("one-off uses dedicated cassette wall", 'id="gbr11-oneoff-wall"' in template and "function renderOneOffWall" in js and ".gbr11-oneoff-wall" in css)
-check("one-off wall renders every side as its own cassette", "oneOffWallItems" in js and "keys.forEach((side) => items.push" in js and 'card.dataset.side = side' in js)
-check("one-off wall has no ten-item pager", "setOneOffPage" not in js and "gbr11-oneoff-pager" not in js and "MAGAZINE ${" not in js)
-check("one-off wall replaces rotary surfaces only in one-off mode", 'html[data-browse-genre="one-off"]:not([data-easter="true"]) .gbr11-wheel-stage' in css and '.gbr11-mobile-rail { display:none !important; }' in css)
-check("one-off wall keeps deterministic loose cassette offsets", "--wall-rot" in js and "--wall-x" in js and "--wall-y" in js and "transform:translate(var(--wall-x),var(--wall-y)) rotate(var(--wall-rot))" in css)
-check("one-off wall mobile double tap still plays", 'function handleWallCassette(track, key)' in js and 'matchMedia("(max-width: 900px)")' in js and 'playAudio();' in js[js.index('function handleWallCassette'):js.index('function renderOneOffWall')])
-check("one-off playback sequence includes separate sides", 'function tracksForGenre(genre)' in js and 'sideKeys(sides).forEach((side) => out.push(sides[side]))' in js)
-check("one-off control spans existing grid instead of squeezing it", '.gbr11-genre-button[data-genre="one-off"]' in css and 'grid-column:1 / -1' in css)
-check("one-off hardware theme exists", 'html[data-browse-genre="one-off"]' in css)
-
 # Hidden reject/easter bank
-check("easter directory is reserved from normal importer", 'reserved_bank' in importer and '"easter"' in importer)
+check("easter directory is reserved from normal importer", 'p.name.lower() != "easter"' in importer and 'is_easter_path' in importer)
 check("easter bank scans metadata-free audio directly", 'EASTER_DIR = ROOT / "showcase" / "easter"' in builder and 'def load_easter_tracks' in builder and 'EASTER_AUDIO_EXTS' in builder)
-check("easter bank is capped at ten masters", 'groups = groups[:MAX_SONGS]' in builder)
+check("easter bank is capped at ten masters", 'groups = groups[:MAX_EASTER_TRACKS]' in builder)
 check("easter formats with same stem are paired", 'grouped.setdefault' in builder and '"files": {}' in builder)
 check("catalogue carries hidden easter bank", "easter" in cat and isinstance((cat.get("easter") or {}).get("tracks"), list))
 check("deployment stages easter audio only when referenced", 'data.get("easter")' in stager)
@@ -242,8 +217,6 @@ check("mobile selected artwork is visibly identified", 'card.dataset.active = in
 check("mobile folder drawer anchors below complete top bar", 'const topbar = document.querySelector(".gbr11-topbar")' in js and 'anchor.getBoundingClientRect().bottom' in js)
 check("closed folder drawer cannot peek over mobile header", 'visibility:hidden' in css[css.rindex("/* Closed folder drawers"):])
 check("mobile VU label is moved clear of needle arc", 'pad+Math.max(14,fh*.17)' in js and 'fh*.72' in js)
-check("mobile double tap starts selected album", 'mobileLastTap' in js and '<= 360' in js and 'if (doubleTap)' in js and 'playAudio();' in js[js.index('if (doubleTap)'):js.index('el.mobileRail.appendChild(card)')])
-check("mobile double tap avoids browser zoom gesture", 'touch-action:manipulation' in css[css.rindex(".gbr11-mobile-card {"):])
 
 for name, ok in checks:
     print(("  PASS  " if ok else "  FAIL  ") + name)

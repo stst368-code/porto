@@ -12,9 +12,6 @@
   const GENRES = Array.isArray(catalogue.variantSlots) && catalogue.variantSlots.length
     ? catalogue.variantSlots
     : ["metal", "pop", "country", "disco", "orchestral", "special"];
-  const ONE_OFF_GENRE = "one-off";
-  const SIDE_ORDER = ["A", "B", "C"];
-  const BROWSE_GENRES = [...GENRES, ONE_OFF_GENRE];
   const GENRE_LABEL = {
     metal: "METAL/ROCK",
     pop: "POP/HIP-HOP",
@@ -22,20 +19,21 @@
     disco: "DISCO/ELECTRONIC",
     orchestral: "ORCHESTRAL/CLASSICAL",
     special: "SPECIAL",
-    "one-off": "ONE-OFF",
   };
-  const songs = Array.isArray(catalogue.songs) ? catalogue.songs.slice(0, 10) : [];
-  const oneOffSongs = Array.isArray(catalogue.oneOff && catalogue.oneOff.songs) ? catalogue.oneOff.songs : [];
+  const MAIN_CAPACITY = Math.max(1, Number(catalogue.maxSongs) || 14);
+  const EASTER_CAPACITY = Math.max(1, Number(catalogue.maxEasterTracks) || 10);
+  const WHEEL_STEP = 360 / MAIN_CAPACITY;
+  const songs = Array.isArray(catalogue.songs) ? catalogue.songs.slice(0, MAIN_CAPACITY) : [];
   const tracks = Array.isArray(catalogue.tracks) ? catalogue.tracks : [];
-  const easterTracks = Array.isArray(catalogue.easter && catalogue.easter.tracks) ? catalogue.easter.tracks.slice(0, 10) : [];
+  const easterTracks = Array.isArray(catalogue.easter && catalogue.easter.tracks) ? catalogue.easter.tracks.slice(0, EASTER_CAPACITY) : [];
   const trackById = Object.fromEntries(tracks.map((track) => [String(track.id), track]));
-  const songById = Object.fromEntries([...songs, ...oneOffSongs].map((song) => [String(song.id), song]));
+  const songById = Object.fromEntries(songs.map((song) => [String(song.id), song]));
 
   const el = {
     app: $("gbr11-app"), status: $("gbr11-status"), audio: $("gbr11-audio"),
     genreBank: $("gbr11-genre-bank"), magazineModeLabel: $("gbr11-magazine-mode-label"),
     wheelStage: $("gbr11-wheel-stage"), wheelDisc: $("gbr11-wheel-disc"), wheelSlots: $("gbr11-wheel-slots"),
-    mobileRail: $("gbr11-mobile-rail"), oneOffWall: $("gbr11-oneoff-wall"),
+    mobileRail: $("gbr11-mobile-rail"),
     lampKnob: $("gbr11-lamp-knob"),
     releaseLabel: $("gbr11-release-label"), artwork: $("gbr11-artwork"), releaseArtWrap: $("gbr11-release-art-wrap"),
     easterTerminal: $("gbr11-easter-terminal"), easterReject: $("gbr11-easter-reject"), easterFilename: $("gbr11-easter-filename"), description: $("gbr11-description"),
@@ -54,15 +52,14 @@
 
   const state = {
     browseGenre: recall("gbr11:browse-genre") || "disco",
-    mobileLastTap: { key: "", time: 0 },
     wheelIndex: 0,
     wheelSpin: 0,
     currentTrack: null,
     currentSong: null,
     quality: recall("gbr11:quality") || "stream",
     shuffle: recall("gbr11:shuffle") === "true",
-    lamp: numberOr(recall("gbr11:lamp"), .5),
-    volume: numberOr(recall("gbr11:volume"), .5),
+    lamp: numberOr(recall("gbr11:lamp"), .62),
+    volume: numberOr(recall("gbr11:volume"), .9),
     power: recall("gbr11:power") !== "false",
     easter: false,
     savedNormalTrack: null,
@@ -75,7 +72,7 @@
     lyricLastWord: -2,
     draggingWheel: null,
   };
-  if (!BROWSE_GENRES.includes(state.browseGenre)) state.browseGenre = GENRES.includes("disco") ? "disco" : GENRES[0];
+  if (!GENRES.includes(state.browseGenre)) state.browseGenre = GENRES.includes("disco") ? "disco" : GENRES[0];
 
   const graph = { ctx: null, source: null, analyser: null, analyserL: null, analyserR: null, freq: null, timeMain: null, timeL: null, timeR: null, ready: false };
   const lyricCache = new Map();
@@ -92,19 +89,10 @@
   function humanise(value) { return String(value || "").replace(/[-_]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()); }
   function clock(value) { const s = Number(value); if (!Number.isFinite(s) || s < 0) return "--:--"; const whole = Math.floor(s); return `${Math.floor(whole/60)}:${String(whole%60).padStart(2,"0")}`; }
   function songForTrack(track) { return track ? songById[String(track.composition)] || null : null; }
-  function songsForGenre(genre) { return genre === ONE_OFF_GENRE ? oneOffSongs : songs; }
-  function visibleSongsForGenre(genre) { return songsForGenre(genre); }
   function sideIds(song, genre) { return song && song.sideIds && song.sideIds[genre] && typeof song.sideIds[genre] === "object" ? song.sideIds[genre] : {}; }
-  function sidesFor(song, genre) {
-    const ids = sideIds(song, genre);
-    const out = {};
-    SIDE_ORDER.forEach((side) => { if (ids[side] && trackById[ids[side]]) out[side] = trackById[ids[side]]; });
-    if (!Object.keys(out).length && song && song.variantIds && song.variantIds[genre] && trackById[song.variantIds[genre]]) out.A = trackById[song.variantIds[genre]];
-    return out;
-  }
-  function sideKeys(sides) { return SIDE_ORDER.filter((side) => sides && sides[side]); }
-  function primaryTrack(song, genre) { const sides = sidesFor(song, genre); return sideKeys(sides).map((side) => sides[side])[0] || null; }
-  function sideOf(track) { const side = String(track && track.side || "A").toUpperCase(); return SIDE_ORDER.includes(side) ? side : "A"; }
+  function sidesFor(song, genre) { const ids = sideIds(song, genre); const out = {}; ["A","B"].forEach((side) => { if (ids[side] && trackById[ids[side]]) out[side] = trackById[ids[side]]; }); if (!out.A && song && song.variantIds && song.variantIds[genre] && trackById[song.variantIds[genre]]) out.A = trackById[song.variantIds[genre]]; return out; }
+  function primaryTrack(song, genre) { const sides = sidesFor(song, genre); return sides.A || sides.B || null; }
+  function sideOf(track) { return String(track && track.side || "A").toUpperCase() === "B" ? "B" : "A"; }
   function artworkUrl(track, size = 640, ext = "webp") { const base = track && track.artwork && track.artwork.base ? track.artwork.base : "gbr-placeholder"; return `assets/img/sleeves/${base}-${size}.${ext}`; }
   function preloadArtwork(track, size = 640) {
     if (!track) return;
@@ -116,17 +104,14 @@
     artworkPreload.set(src, image);
   }
   function preloadGenreArtwork(genre) {
-    const bank = songsForGenre(genre);
-    /* The ONE-OFF wall can be arbitrarily large. Preload only its first shelf;
-       the wall images themselves are lazy-loaded as the user scrolls. */
-    const preloadBank = genre === ONE_OFF_GENRE ? bank.slice(0, 12) : bank;
-    preloadBank.forEach((song) => {
+    songs.forEach((song) => {
       const sides = sidesFor(song, genre);
-      sideKeys(sides).forEach((side) => preloadArtwork(sides[side]));
+      if (sides.A) preloadArtwork(sides.A);
+      if (sides.B) preloadArtwork(sides.B);
     });
   }
   function preloadAllWheelArtwork() {
-    BROWSE_GENRES.forEach(preloadGenreArtwork);
+    GENRES.forEach(preloadGenreArtwork);
   }
   function sourceFor(track) {
     const sources = track && track.audio && track.audio.sources || {};
@@ -206,82 +191,6 @@
   }
 
   /* ----------------------------------------------------------- genre bank */
-  function oneOffWallItems() {
-    const items = [];
-    oneOffSongs.forEach((song) => {
-      const sides = sidesFor(song, ONE_OFF_GENRE);
-      const keys = sideKeys(sides);
-      keys.forEach((side) => items.push({ song, side, track: sides[side], multiSide: keys.length > 1 }));
-    });
-    return items;
-  }
-
-  function paintOneOffWallState() {
-    if (!el.oneOffWall) return;
-    [...el.oneOffWall.querySelectorAll(".gbr11-wall-cassette")].forEach((card) => {
-      const loaded = !!(state.currentTrack && card.dataset.trackId === String(state.currentTrack.id));
-      card.dataset.loaded = loaded ? "true" : "false";
-      card.dataset.playing = loaded && !el.audio.paused && !el.audio.ended ? "true" : "false";
-    });
-  }
-
-  function handleWallCassette(track, key) {
-    const continuePlaying = !!(el.audio && !el.audio.paused && !el.audio.ended);
-    selectTrack(track, continuePlaying);
-    if (!matchMedia("(max-width: 900px)").matches) return;
-    const now = Date.now();
-    const doubleTap = state.mobileLastTap.key === key && (now - state.mobileLastTap.time) <= 360;
-    state.mobileLastTap = { key, time: now };
-    if (doubleTap) {
-      state.mobileLastTap = { key: "", time: 0 };
-      playAudio();
-    }
-  }
-
-  function renderOneOffWall() {
-    if (!el.oneOffWall) return;
-    el.oneOffWall.replaceChildren();
-    const items = oneOffWallItems();
-    if (!items.length) {
-      const empty = document.createElement("div");
-      empty.className = "gbr11-wall-empty";
-      empty.innerHTML = "<strong>ONE-OFF WALL EMPTY</strong><span>DROP RELEASES INTO showcase/one-off/</span>";
-      el.oneOffWall.appendChild(empty);
-      return;
-    }
-
-    const rotations = [-1.8, .9, -.7, 1.5, -.35, 1.15, -1.25, .45, 1.85, -.9, .65, -1.55];
-    const shiftsX = [-2, 1, 3, -1, 0, 2, -3, 1, -1, 2, 0, -2];
-    const shiftsY = [1, -2, 2, 0, -1, 2, 0, -2, 1, -1, 2, 0];
-    items.forEach((item, index) => {
-      const { song, track, side, multiSide } = item;
-      if (!track) return;
-      const title = song.title || track.displayTitle || humanise(song.id);
-      const card = document.createElement("button");
-      card.type = "button";
-      card.className = "gbr11-wall-cassette";
-      card.dataset.trackId = String(track.id);
-      card.dataset.side = side;
-      card.style.setProperty("--wall-rot", `${rotations[index % rotations.length]}deg`);
-      card.style.setProperty("--wall-x", `${shiftsX[index % shiftsX.length]}px`);
-      card.style.setProperty("--wall-y", `${shiftsY[index % shiftsY.length]}px`);
-      const sideBadge = multiSide || side !== "A" ? `<span class="gbr11-wall-side">SIDE ${esc(side)}</span>` : "";
-      card.innerHTML = `<span class="gbr11-wall-case"><img src="${artworkUrl(track,640,"webp")}" alt="${esc(`Album artwork for ${title}${multiSide ? `, Side ${side}` : ""}`)}" loading="lazy" decoding="async">${sideBadge}</span><span class="gbr11-wall-label"><strong>${esc(title)}</strong><small>${esc(track.variantLabel || "ONE-OFF")}</small></span>`;
-      card.setAttribute("aria-label", `${title}${multiSide || side !== "A" ? `, Side ${side}` : ""} — ${track.variantLabel || "One-off"}`);
-      card.title = card.getAttribute("aria-label");
-      card.addEventListener("click", () => handleWallCassette(track, String(track.id)));
-      el.oneOffWall.appendChild(card);
-    });
-    paintOneOffWallState();
-  }
-
-  function updateMagazineModeLabel() {
-    if (!el.magazineModeLabel) return;
-    if (state.easter) el.magazineModeLabel.textContent = "SERVICE BANK // REJECT MASTERS";
-    else if (state.browseGenre === ONE_OFF_GENRE) el.magazineModeLabel.textContent = "ONE-OFF CASSETTE WALL · ALL RELEASES AND SIDES";
-    else el.magazineModeLabel.textContent = "10 SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK";
-  }
-
   function renderGenreBank() {
     el.genreBank.replaceChildren();
     if (state.easter) {
@@ -291,7 +200,7 @@
       el.genreBank.appendChild(plate);
       return;
     }
-    BROWSE_GENRES.forEach((genre) => {
+    GENRES.forEach((genre) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "gbr11-genre-button";
@@ -301,28 +210,23 @@
       button.addEventListener("click", () => setBrowseGenre(genre));
       el.genreBank.appendChild(button);
     });
-    updateMagazineModeLabel();
   }
 
   function setBrowseGenre(genre) {
-    if (state.easter || !BROWSE_GENRES.includes(genre)) return;
+    if (state.easter || !GENRES.includes(genre)) return;
     state.browseGenre = genre;
     remember("gbr11:browse-genre", genre);
     document.documentElement.dataset.browseGenre = genre;
-    [...el.genreBank.querySelectorAll(".gbr11-genre-button")].forEach((button) => button.setAttribute("aria-pressed", button.dataset.genre === genre ? "true" : "false"));
+    [...el.genreBank.children].forEach((button) => button.setAttribute("aria-pressed", button.dataset.genre === genre ? "true" : "false"));
     preloadGenreArtwork(genre);
-    const bankSongs = visibleSongsForGenre(genre);
-    if (bankSongs.length && !bankSongs[state.wheelIndex]) setWheelIndex(0, true);
     renderWheelContents();
     renderMobileRail();
-    renderOneOffWall();
-    updateMagazineModeLabel();
     updateThemeMeta();
     /* Deliberate boundary: browsing a genre does not touch el.audio, currentTrack, currentTime or play state. */
   }
 
   function updateThemeMeta() {
-    const colours = { metal: "#c64b3b", pop: "#df6f9f", country: "#d18b3c", disco: "#9e65ef", orchestral: "#b68d55", special: "#39bfa9", "one-off": "#d8a55f" };
+    const colours = { metal: "#c64b3b", pop: "#df6f9f", country: "#d18b3c", disco: "#9e65ef", orchestral: "#b68d55", special: "#39bfa9" };
     let meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.content = state.easter ? "#d64a35" : (colours[state.browseGenre] || "#c47b21");
   }
@@ -330,7 +234,7 @@
   /* --------------------------------------------------------------- wheel */
   function buildWheel() {
     el.wheelSlots.replaceChildren();
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < MAIN_CAPACITY; index++) {
       const wrap = document.createElement("div");
       wrap.className = "gbr11-slot";
       wrap.dataset.index = String(index);
@@ -373,8 +277,7 @@
 
       rejectLabel.hidden = true;
       img.hidden = false;
-      const bankSongs = visibleSongsForGenre(state.browseGenre);
-      const song = bankSongs[index] || null;
+      const song = songs[index] || null;
       const track = song ? primaryTrack(song, state.browseGenre) : null;
       const sideMap = song ? sidesFor(song, state.browseGenre) : {};
       const ready = !!track;
@@ -391,8 +294,7 @@
       button.dataset.atGate = index === state.wheelIndex ? "true" : "false";
       const playing = !!(state.currentTrack && song && state.currentTrack.composition === song.id && state.currentTrack.variantSlot === state.browseGenre);
       button.dataset.playing = playing ? "true" : "false";
-      const availableSides = sideKeys(sideMap);
-      const sideNote = availableSides.length > 1 ? ` — Sides ${availableSides.join("/")}` : "";
+      const sideNote = sideMap.B ? " — Side A/B" : "";
       button.setAttribute("aria-label", ready ? `${title} — ${track.variantLabel || humanise(state.browseGenre)}${sideNote}` : `${title} — ${humanise(state.browseGenre)} not built`);
       button.title = button.getAttribute("aria-label");
     });
@@ -400,22 +302,23 @@
   }
 
   function normaliseWheelIndex(index) {
-    return ((Number(index) || 0) % 10 + 10) % 10;
+    return ((Number(index) || 0) % MAIN_CAPACITY + MAIN_CAPACITY) % MAIN_CAPACITY;
   }
 
   function setWheelIndex(index, immediate = false) {
     const next = normaliseWheelIndex(index);
     if (immediate) {
       state.wheelIndex = next;
-      state.wheelSpin = -next * 36;
+      state.wheelSpin = -next * WHEEL_STEP;
       positionWheel();
       return;
     }
     let delta = next - state.wheelIndex;
-    if (delta > 5) delta -= 10;
-    if (delta < -5) delta += 10;
+    const half = MAIN_CAPACITY / 2;
+    if (delta > half) delta -= MAIN_CAPACITY;
+    if (delta < -half) delta += MAIN_CAPACITY;
     state.wheelIndex = next;
-    state.wheelSpin -= delta * 36;
+    state.wheelSpin -= delta * WHEEL_STEP;
     positionWheel();
   }
 
@@ -434,7 +337,7 @@
     el.wheelSlots.style.setProperty("--slot-radius", `${radius}px`);
 
     [...el.wheelSlots.children].forEach((wrap, index) => {
-      const baseAngle = index * 36;
+      const baseAngle = index * WHEEL_STEP;
       const displayAngle = baseAngle + state.wheelSpin;
       const radians = displayAngle * Math.PI / 180;
       const depth = (Math.cos(radians) + 1) / 2;
@@ -462,14 +365,9 @@
     }
     const song = songForTrack(track);
     if (!song) return;
-    const allSongs = songsForGenre(track.variantSlot);
-    const absoluteIndex = allSongs.findIndex((item) => item.id === song.id);
-    if (absoluteIndex < 0) return;
-    if (track.variantSlot === ONE_OFF_GENRE) {
-      paintOneOffWallState();
-      return;
-    }
-    if (absoluteIndex !== state.wheelIndex) setWheelIndex(absoluteIndex);
+    const index = songs.findIndex((item) => item.id === song.id);
+    if (index < 0 || index === state.wheelIndex) return;
+    setWheelIndex(index);
   }
 
   function activateWheelSlot(index) {
@@ -480,7 +378,7 @@
       if (track) selectEasterTrack(track, continuePlaying);
       return;
     }
-    const song = visibleSongsForGenre(state.browseGenre)[index];
+    const song = songs[index];
     const track = song ? primaryTrack(song, state.browseGenre) : null;
     if (!track) return;
     selectTrack(track, continuePlaying);
@@ -488,8 +386,7 @@
 
   function renderMobileRail() {
     el.mobileRail.replaceChildren();
-    if (!state.easter && state.browseGenre === ONE_OFF_GENRE) return;
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < MAIN_CAPACITY; index++) {
       const card = document.createElement("button");
       card.type = "button";
       card.className = "gbr11-mobile-card";
@@ -502,7 +399,7 @@
         card.innerHTML = `<strong>REJECT ${String(index+1).padStart(2,"0")}</strong><small>${track ? esc(track.displayTitle || track.filename) : "EMPTY"}</small>`;
         card.setAttribute("aria-label", track ? `Reject ${index+1}: ${track.displayTitle || track.filename}` : `Reject slot ${index+1} empty`);
       } else {
-        const song = visibleSongsForGenre(state.browseGenre)[index] || null;
+        const song = songs[index] || null;
         const track = song ? primaryTrack(song, state.browseGenre) : null;
         card.dataset.ready = track ? "true" : "false";
         card.disabled = !track;
@@ -511,17 +408,7 @@
         card.setAttribute("aria-label", track ? `${title} — ${track.variantLabel || humanise(state.browseGenre)}` : `${title} — not built`);
       }
       card.title = card.getAttribute("aria-label");
-      card.addEventListener("click", () => {
-        const now = Date.now();
-        const key = `rail:${index}`;
-        const doubleTap = state.mobileLastTap.key === key && (now - state.mobileLastTap.time) <= 360;
-        state.mobileLastTap = { key, time: now };
-        activateWheelSlot(index);
-        if (doubleTap) {
-          state.mobileLastTap = { key: "", time: 0 };
-          playAudio();
-        }
-      });
+      card.addEventListener("click", () => activateWheelSlot(index));
       el.mobileRail.appendChild(card);
     }
   }
@@ -551,7 +438,7 @@
       if (steps !== drag.steps) {
         drag.steps = steps;
         state.wheelIndex = normaliseWheelIndex(drag.index + steps);
-        state.wheelSpin = drag.spin - steps * 36;
+        state.wheelSpin = drag.spin - steps * WHEEL_STEP;
         positionWheel();
       }
     });
@@ -776,7 +663,6 @@
     renderPlaybackIdentity();
     renderWheelContents();
     renderMobileRail();
-    paintOneOffWallState();
     loadLyrics(track);
     paintQuality();
     updateSideSwitch();
@@ -794,8 +680,7 @@
   async function playAudio() {
     if (!state.power) { setStatus("POWER OFF", ""); return; }
     if (!state.currentTrack) {
-      const bankSongs = visibleSongsForGenre(state.browseGenre);
-      const song = bankSongs[state.wheelIndex] || bankSongs[0];
+      const song = songs[state.wheelIndex] || songs[0];
       const track = song ? primaryTrack(song, state.browseGenre) : null;
       if (track) selectTrack(track, false);
     }
@@ -832,9 +717,8 @@
     const variant = track.variantLabel || humanise(track.variantSlot || track.variant);
     const song = songForTrack(track);
     const sides = song ? sidesFor(song, track.variantSlot) : {};
-    const availableSides = sideKeys(sides);
     el.nowTitle.textContent = title;
-    el.nowVersion.textContent = `${variant}${availableSides.length > 1 ? ` · SIDE ${sideOf(track)}` : ""}`;
+    el.nowVersion.textContent = `${variant}${sides.B ? ` · SIDE ${sideOf(track)}` : ""}`;
     if ("mediaSession" in navigator) {
       try { navigator.mediaSession.metadata = new MediaMetadata({ title, artist: "Good Boy Records", album: variant, artwork: [{ src: artworkUrl(track,640,"webp"), sizes: "640x640", type: "image/webp" }] }); } catch (_) {}
     }
@@ -847,16 +731,9 @@
     }
     const track = state.currentTrack, song = state.currentSong;
     const sides = track && song ? sidesFor(song, track.variantSlot) : {};
-    const available = sideKeys(sides);
-    el.sideSwitch.hidden = available.length <= 1;
-    el.sideSwitch.style.setProperty("--gbr-side-count", String(Math.max(1, available.length)));
-    sideButtons.forEach((button) => {
-      const side = button.dataset.side;
-      const exists = !!sides[side];
-      button.hidden = !exists;
-      button.disabled = !exists;
-      button.setAttribute("aria-pressed", exists && side === sideOf(track) ? "true" : "false");
-    });
+    const multi = !!(sides.A && sides.B);
+    el.sideSwitch.hidden = !multi;
+    sideButtons.forEach((button) => { const side = button.dataset.side; button.disabled = !sides[side]; button.setAttribute("aria-pressed", side === sideOf(track) ? "true" : "false"); });
   }
 
   function selectSide(side) {
@@ -870,16 +747,17 @@
 
   function tracksForGenre(genre) {
     const out = [];
-    songsForGenre(genre).forEach((song) => {
+    songs.forEach((song) => {
       const sides = sidesFor(song, genre);
-      sideKeys(sides).forEach((side) => out.push(sides[side]));
+      if (sides.A) out.push(sides.A);
+      if (sides.B) out.push(sides.B);
     });
     return out;
   }
   function allPlayableTracks() {
     const seen = new Set();
     const out = [];
-    BROWSE_GENRES.forEach((genre) => {
+    GENRES.forEach((genre) => {
       tracksForGenre(genre).forEach((track) => {
         const id = String(track && track.id || "");
         if (!id || seen.has(id) || !sourceFor(track)) return;
@@ -889,26 +767,24 @@
     });
     return out;
   }
-  function stepPlayback(delta, autoplay = null) {
+  function stepPlayback(delta) {
     if (!state.currentTrack) return;
     if (state.easter) {
       const list = easterTracks.filter((track) => sourceFor(track));
       if (!list.length) return;
       let index = list.findIndex((track) => track.id === state.currentTrack.id);
       index = index < 0 ? 0 : (index + delta + list.length) % list.length;
-      const continuePlaying = autoplay == null ? (!el.audio.paused && !el.audio.ended) : !!autoplay;
-      selectEasterTrack(list[index], continuePlaying);
+      selectEasterTrack(list[index], !el.audio.paused && !el.audio.ended);
       return;
     }
     const list = tracksForGenre(state.currentTrack.variantSlot);
     if (!list.length) return;
     let index = list.findIndex((track) => track.id === state.currentTrack.id);
     index = index < 0 ? 0 : (index + delta + list.length) % list.length;
-    const continuePlaying = autoplay == null ? (!el.audio.paused && !el.audio.ended) : !!autoplay;
-    selectTrack(list[index], continuePlaying);
+    selectTrack(list[index], !el.audio.paused && !el.audio.ended);
   }
 
-  function nextPlayback(autoplay = null) {
+  function nextPlayback() {
     if (!state.currentTrack) return;
     if (state.easter) {
       const list = easterTracks.filter((track) => sourceFor(track));
@@ -918,7 +794,7 @@
         if (!pool.length) return;
         selectEasterTrack(pool[Math.floor(Math.random() * pool.length)], true);
       } else {
-        stepPlayback(1, autoplay);
+        stepPlayback(1);
       }
       return;
     }
@@ -930,13 +806,13 @@
       /* Shuffle is playback navigation, not passive browsing. Move the bank
          to the shuffled cut so the wheel immediately shows the master that
          is actually playing, even when the genre changes. */
-      if (next.variantSlot && BROWSE_GENRES.includes(next.variantSlot) && next.variantSlot !== state.browseGenre) {
+      if (next.variantSlot && GENRES.includes(next.variantSlot) && next.variantSlot !== state.browseGenre) {
         setBrowseGenre(next.variantSlot);
       }
       selectTrack(next, true);
       return;
     }
-    stepPlayback(1, autoplay);
+    stepPlayback(1);
   }
 
   function setQuality(quality, userChange = true) {
@@ -1240,12 +1116,11 @@
     state.easter = next;
     el.app.dataset.easter = state.easter ? "true" : "false";
     document.documentElement.dataset.easter = state.easter ? "true" : "false";
-    updateMagazineModeLabel();
+    if (el.magazineModeLabel) el.magazineModeLabel.textContent = state.easter ? "SERVICE BANK // REJECT MASTERS" : `${MAIN_CAPACITY} SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK`;
     renderGenreBank();
     state.wheelIndex = 0;
     renderWheelContents();
     renderMobileRail();
-    renderOneOffWall();
 
     if (state.easter) {
       if (easterTracks.length) selectEasterTrack(easterTracks[0], false);
@@ -1253,7 +1128,7 @@
       setStatus("SERVICE BANK", "fault");
     } else {
       const restore = state.savedNormalTrack || initialTrack();
-      if (state.savedBrowseGenre && BROWSE_GENRES.includes(state.savedBrowseGenre)) {
+      if (state.savedBrowseGenre && GENRES.includes(state.savedBrowseGenre)) {
         state.browseGenre = state.savedBrowseGenre;
         remember("gbr11:browse-genre", state.browseGenre);
         document.documentElement.dataset.browseGenre = state.browseGenre;
@@ -1273,8 +1148,6 @@
       renderGenreBank();
       renderWheelContents();
       renderMobileRail();
-      renderOneOffWall();
-      updateMagazineModeLabel();
       setStatus(restore ? "PAUSED" : "READY", "");
     }
     updateThemeMeta();
@@ -1330,10 +1203,10 @@
     qualityButtons.forEach((button)=>button.addEventListener("click",()=>setQuality(button.dataset.quality,true)));
     el.progress.addEventListener("input",()=>{if(Number.isFinite(el.audio.duration))el.audio.currentTime=Number(el.progress.value)||0;updateTransport();});
 
-    el.audio.addEventListener("play",()=>{syncWheelToTrack(state.currentTrack);paintOneOffWallState();el.play.textContent="❚❚";setStatus("PLAYING","live");});
-    el.audio.addEventListener("pause",()=>{paintOneOffWallState();el.play.textContent="▶";if(!el.audio.ended)setStatus(state.power ? "PAUSED" : "POWER OFF","");});
+    el.audio.addEventListener("play",()=>{syncWheelToTrack(state.currentTrack);el.play.textContent="❚❚";setStatus("PLAYING","live");});
+    el.audio.addEventListener("pause",()=>{el.play.textContent="▶";if(!el.audio.ended)setStatus(state.power ? "PAUSED" : "POWER OFF","");});
     el.audio.addEventListener("timeupdate",updateTransport); el.audio.addEventListener("loadedmetadata",()=>{updateTransport(); if(!state.lyricLines.length&&state.currentTrack)state.lyricLines=fallbackLyricLines(state.currentTrack);});
-    el.audio.addEventListener("ended",()=>nextPlayback(true));
+    el.audio.addEventListener("ended",nextPlayback);
     el.audio.addEventListener("canplay",()=>{ if (el.audio.paused) setStatus("LOADED",""); });
     el.audio.addEventListener("error",()=>{
       const err = el.audio.error;
@@ -1359,25 +1232,23 @@
   function initialTrack() {
     const requested = new URLSearchParams(location.search).get("track");
     if (requested && trackById[requested]) return trackById[requested];
-    const bankSongs = songsForGenre(state.browseGenre);
-    const firstSong = bankSongs[0] || songs[0] || oneOffSongs[0];
+    const firstSong = songs[0];
     if (!firstSong) return tracks[0] || null;
-    return primaryTrack(firstSong, state.browseGenre) || BROWSE_GENRES.map((genre)=>primaryTrack(firstSong,genre)).find(Boolean) || tracks[0] || null;
+    return primaryTrack(firstSong, state.browseGenre) || GENRES.map((genre)=>primaryTrack(firstSong,genre)).find(Boolean) || tracks[0] || null;
   }
 
   function init() {
     el.app.dataset.easter = "false";
     document.documentElement.dataset.easter = "false";
     document.documentElement.dataset.browseGenre = state.browseGenre;
-    renderGenreBank(); preloadAllWheelArtwork(); buildWheel(); renderMobileRail(); renderOneOffWall(); setupWheelInput(); buildVolumeMeter(); setupFolders(); wireControls();
+    renderGenreBank(); preloadAllWheelArtwork(); buildWheel(); renderMobileRail(); setupWheelInput(); buildVolumeMeter(); setupFolders(); wireControls();
     el.shuffle.setAttribute("aria-pressed", state.shuffle ? "true" : "false");
     applyVolume(false); paintQuality();
     const track = initialTrack();
     if (track) {
-      const targetGenre = track.variantSlot && BROWSE_GENRES.includes(track.variantSlot) ? track.variantSlot : state.browseGenre;
-      if (targetGenre !== state.browseGenre) setBrowseGenre(targetGenre);
-      const song = songForTrack(track); const idx = songsForGenre(targetGenre).findIndex((item)=>item.id===(song&&song.id)); if(idx>=0 && targetGenre !== ONE_OFF_GENRE)setWheelIndex(idx,true);
+      const song = songForTrack(track); const idx = songs.findIndex((item)=>item.id===(song&&song.id)); if(idx>=0)setWheelIndex(idx,true);
       selectTrack(track,false);
+      setBrowseGenre(track.variantSlot && GENRES.includes(track.variantSlot) ? track.variantSlot : state.browseGenre);
       positionWheel();
     } else { setStatus("EMPTY","fault"); }
     setPower(state.power, false);
