@@ -22,7 +22,7 @@
   };
   const MAIN_CAPACITY = Math.max(1, Number(catalogue.maxSongs) || 14);
   const EASTER_CAPACITY = Math.max(1, Number(catalogue.maxEasterTracks) || 10);
-  const WHEEL_STEP = 360 / MAIN_CAPACITY;
+  const WHEEL_STEP = 360 / MAIN_CAPACITY; // legacy capacity step; live wheel uses populated count
   const songs = Array.isArray(catalogue.songs) ? catalogue.songs.slice(0, MAIN_CAPACITY) : [];
   const tracks = Array.isArray(catalogue.tracks) ? catalogue.tracks : [];
   const easterTracks = Array.isArray(catalogue.easter && catalogue.easter.tracks) ? catalogue.easter.tracks.slice(0, EASTER_CAPACITY) : [];
@@ -58,8 +58,8 @@
     currentSong: null,
     quality: recall("gbr11:quality") || "stream",
     shuffle: recall("gbr11:shuffle") === "true",
-    lamp: numberOr(recall("gbr11:lamp"), .62),
-    volume: numberOr(recall("gbr11:volume"), .9),
+    lamp: numberOr(recall("gbr11:lamp"), .5),
+    volume: numberOr(recall("gbr11:volume"), .5),
     power: recall("gbr11:power") !== "false",
     easter: false,
     savedNormalTrack: null,
@@ -301,24 +301,36 @@
     positionWheel();
   }
 
+  function wheelItemCount() {
+    const count = state.easter ? easterTracks.length : songs.length;
+    return Math.max(1, Math.min(MAIN_CAPACITY, count));
+  }
+
+  function wheelStep() {
+    return 360 / wheelItemCount();
+  }
+
   function normaliseWheelIndex(index) {
-    return ((Number(index) || 0) % MAIN_CAPACITY + MAIN_CAPACITY) % MAIN_CAPACITY;
+    const count = wheelItemCount();
+    return ((Number(index) || 0) % count + count) % count;
   }
 
   function setWheelIndex(index, immediate = false) {
+    const count = wheelItemCount();
+    const stepSize = 360 / count;
     const next = normaliseWheelIndex(index);
     if (immediate) {
       state.wheelIndex = next;
-      state.wheelSpin = -next * WHEEL_STEP;
+      state.wheelSpin = -next * stepSize;
       positionWheel();
       return;
     }
     let delta = next - state.wheelIndex;
-    const half = MAIN_CAPACITY / 2;
-    if (delta > half) delta -= MAIN_CAPACITY;
-    if (delta < -half) delta += MAIN_CAPACITY;
+    const half = count / 2;
+    if (delta > half) delta -= count;
+    if (delta < -half) delta += count;
     state.wheelIndex = next;
-    state.wheelSpin -= delta * WHEEL_STEP;
+    state.wheelSpin -= delta * stepSize;
     positionWheel();
   }
 
@@ -331,17 +343,25 @@
     const cardWidth = firstCard ? firstCard.offsetWidth : 96;
     const cardHeight = firstCard ? firstCard.offsetHeight : 122;
     const radius = Math.max(112, Math.min(rotorWidth / 2 - cardWidth / 2 - 18, rotorHeight / 2 - cardHeight / 2 - 18));
+    const count = wheelItemCount();
+    const stepSize = 360 / count;
 
     el.wheelSlots.style.setProperty("--wheel-spin", `${state.wheelSpin}deg`);
     el.wheelDisc.style.setProperty("--wheel-spin", `${state.wheelSpin}deg`);
     el.wheelSlots.style.setProperty("--slot-radius", `${radius}px`);
 
     [...el.wheelSlots.children].forEach((wrap, index) => {
-      const baseAngle = index * WHEEL_STEP;
+      const occupied = index < count;
+      wrap.hidden = !occupied;
+      if (!occupied) return;
+
+      const baseAngle = index * stepSize;
       const displayAngle = baseAngle + state.wheelSpin;
       const radians = displayAngle * Math.PI / 180;
       const depth = (Math.cos(radians) + 1) / 2;
+      const radialNudge = count >= 12 ? (index % 2 ? -8 : 4) : 0;
       wrap.style.setProperty("--slot-angle", `${baseAngle}deg`);
+      wrap.style.setProperty("--slot-radius", `${Math.max(96, radius + radialNudge)}px`);
       wrap.style.zIndex = String(4 + Math.round(depth * 6));
       wrap.style.opacity = String(.70 + depth * .30);
       const button = wrap.querySelector(".gbr11-slot-card");
@@ -438,7 +458,7 @@
       if (steps !== drag.steps) {
         drag.steps = steps;
         state.wheelIndex = normaliseWheelIndex(drag.index + steps);
-        state.wheelSpin = drag.spin - steps * WHEEL_STEP;
+        state.wheelSpin = drag.spin - steps * wheelStep();
         positionWheel();
       }
     });
