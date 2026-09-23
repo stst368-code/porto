@@ -16,7 +16,7 @@ cat = json.loads((ROOT / "data/catalogue.json").read_text(encoding="utf-8"))
 
 checks = []
 def check(name, ok): checks.append((name, bool(ok)))
-slots = ["metal", "pop", "country", "disco", "orchestral", "special"]
+slots = ["metal", "pop", "country", "disco", "orchestral", "special", "one-off"]
 
 # Catalogue and curated-source contract
 check("catalogue format retained", cat.get("format") == "gbr-showcase-v10.5")
