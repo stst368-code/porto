@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simon Taylor — CV</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sheet-shell">
+    <div class="sheet-columns" aria-hidden="true"></div>
+    <div class="sheet-rows" aria-hidden="true"></div>
+
+    <header class="top-strip">
+      <div class="coord">A1</div>
+      <strong>SIMON TAYLOR // CV WORKSPACE</strong>
+      <div class="top-actions">
+        <a href="CV_SimonTaylor.pdf" download>DOWNLOAD CV</a>
+        <button id="theme-toggle" type="button" aria-label="Switch colour theme">DARK</button>
+        <button id="reset-view" type="button">RESET VIEW</button>
+        <button id="reset-layout" type="button">RESET LAYOUT</button>
+      </div>
+    </header>
+
+    <div class="desk-viewport" id="desk-viewport">
+      <div class="world" id="world">
+        <div class="world-grid" aria-hidden="true"></div>
+        <main class="desk" id="desk">
+      <section class="document-board" id="document-board" aria-label="Curriculum vitae">
+        <div class="board-shadow"></div>
+        <div class="page-grid" id="page-grid"></div>
+        <div class="hotspot-layer" id="hotspot-layer" aria-hidden="true"></div>
+      </section>
+
+      <aside class="note-card note-card--mrp draggable-object" data-card="mrp" data-draggable="true">
+        <div class="cell-tag">F08</div>
+        <small>PROFESSIONAL SYSTEM</small>
+        <h2>MRP / PLANNING</h2>
+        <p>SQL → Python → planning logic → operational decision support.</p>
+        <a href="#mrp">OPEN CASE STUDY</a>
+      </aside>
+
+      <aside class="note-card note-card--analysis draggable-object" data-card="analysis" data-draggable="true">
+        <div class="cell-tag">L18</div>
+        <small>ANALYSIS</small>
+        <h2>TRANSACTION MAP</h2>
+        <p>Large-volume relationships, timing, flow and operational tracing.</p>
+        <a href="#analysis">OPEN ANALYSIS</a>
+      </aside>
+
+
+      <a class="certificate-frame certificate-frame--cscp draggable-object"
+         data-cert="cscp" data-draggable="true"
+         href="cv/certs/CSCP.pdf" target="_blank" rel="noopener"
+         aria-label="Open CSCP certificate">
+        <div class="certificate-frame__inner" data-cert-preview="cscp"></div>
+      </a>
+
+      <a class="certificate-frame certificate-frame--cmilt draggable-object"
+         data-cert="cmilt" data-draggable="true"
+         href="cv/certs/CMILT.pdf" target="_blank" rel="noopener"
+         aria-label="Open CMILT certificate">
+        <div class="certificate-frame__inner" data-cert-preview="cmilt"></div>
+      </a>
+
+      <a class="certificate-frame certificate-frame--ibm draggable-object"
+         data-cert="ibmda" data-draggable="true"
+         href="cv/certs/IBMDA.pdf" target="_blank" rel="noopener"
+         aria-label="Open IBM certificate">
+        <div class="certificate-frame__inner" data-cert-preview="ibmda"></div>
+      </a>
+
+      <a class="certificate-frame certificate-frame--google draggable-object"
+         data-cert="googleda" data-draggable="true"
+         href="cv/certs/GoogleDA.pdf" target="_blank" rel="noopener"
+         aria-label="Open Google Data Analytics certificate">
+        <div class="certificate-frame__inner" data-cert-preview="googleda"></div>
+      </a>
+
+      <a class="polaroid draggable-object" href="../good-boy-records/" data-card="gbr" data-draggable="true" aria-label="Open Good Boy Records">
+        <div class="polaroid-pin"></div>
+        <div class="polaroid-image">
+          <div class="record-ring"></div>
+          <div class="record-label">GBR</div>
+          <div class="tiny-dog">GOOD BOY</div>
+        </div>
+        <div class="polaroid-caption">
+          <strong>GOOD BOY RECORDS</strong>
+          <span>Independent technical experiment</span>
+          <small>AI generation · workflow automation · model testing</small>
+        </div>
+      </a>
+
+      <a class="polaroid-tech-link draggable-object" data-draggable="true" href="../good-boy-records/#how-it-works">
+        VIEW THE SYSTEM →
+      </a>
+
+      <svg class="connectors" id="connectors" aria-hidden="true"></svg>
+        </main>
+      </div>
+    </div>
+
+    <nav class="sheet-tabs" aria-label="Portfolio sections">
+      <a class="sheet-tab active" href="./">CV</a>
+      <a class="sheet-tab" href="#mrp">MRP</a>
+      <a class="sheet-tab" href="#analysis">TRANSACTION ANALYSIS</a>
+      <a class="sheet-tab experiment" href="../good-boy-records/#how-it-works">AI LAB</a>
+      <a class="sheet-tab experiment" href="../good-boy-records/">GBR</a>
+    </nav>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

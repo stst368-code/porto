@@ -1,38 +1,54 @@
-# CV portfolio — isometric v6
+# Porto multi-site GitHub Pages
 
-Certificate display changed to match the intended design.
-
-## Certificate files
+This package changes deployment from GBR occupying `/porto/` to sibling routes:
 
 ```text
-cv/certs/CSCP.pdf
-cv/certs/GoogleDA.pdf
-cv/certs/IBMDA.pdf
-cv/certs/CMILT.pdf
+/porto/cv/
+/porto/good-boy-records/
+/porto/blabla/
 ```
 
-All four are treated as landscape documents.
+Merge these into the existing repository:
 
-The package includes the three supplied examples. `CMILT.pdf` remains optional until added.
+```text
+porto/
+├── .github/
+│   ├── scripts/
+│   │   └── stage_portfolio.py
+│   └── workflows/
+│       └── portfolio-pages.yml
+├── cv/
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js
+│   ├── CV_SimonTaylor.pdf
+│   └── certs/
+├── gbr/
+└── good-boy-records/
+```
 
-## Certificate behaviour
+The existing GBR build still creates:
 
-- No certificate panel or grouped wall.
-- Each PDF is an independent physical frame on the spreadsheet world.
-- The first page of the PDF fills its own frame.
-- Frame proportions are derived from the actual PDF page dimensions.
-- No portrait forcing or fixed thumbnail ratio.
-- Each frame has separate 3D/isometric depth and rotation.
-- Each frame can be dragged independently.
-- Clicking a frame without dragging opens the original certificate PDF.
-- RESET LAYOUT returns all frames and other movable objects to their starting positions.
+```text
+good-boy-records/_site/
+```
 
-## Existing controls
+The new staging script creates the actual GitHub Pages artifact:
 
-- Drag empty spreadsheet: pan camera.
-- Mouse wheel: zoom around cursor.
-- Spreadsheet surface pans/zooms with the world.
-- LIGHT/DARK follows browser preference initially.
-- RESET VIEW resets camera.
-- RESET LAYOUT resets movable objects.
-- GBR links to `good-boy-records/`.
+```text
+_pages/
+├── cv/
+└── good-boy-records/
+```
+
+Any other root-level folder containing `index.html` is also copied automatically,
+so `blabla/index.html` becomes `/porto/blabla/`.
+
+The CV package has already been rewritten for its new location:
+- `CV_SimonTaylor.pdf`
+- `certs/...`
+- `../good-boy-records/`
+- `../good-boy-records/#how-it-works`
+
+Important: disable/remove the old Pages deployment workflow after installing
+`portfolio-pages.yml`, otherwise both workflows may attempt to deploy Pages.

@@ -1,0 +1,72 @@
+name: Build and deploy portfolio
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      PROJECT_DIR: ${{ github.workspace }}/good-boy-records
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install GBR build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install PyYAML Pillow
+
+      - name: Build Good Boy Records
+        run: |
+          cd "$PROJECT_DIR"
+          rm -rf _site
+          python tools/import_showcase.py
+          python tools/prepare_artwork.py masters assets/img/sleeves
+          python tools/build_catalogue.py
+          python tools/check_links.py
+          python tools/stage_pages.py
+
+      - name: Assemble portfolio routes
+        run: |
+          python .github/scripts/stage_portfolio.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _pages
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

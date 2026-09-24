@@ -1,0 +1,4144 @@
+{
+  "format": "gbr-word-lyrics-v1",
+  "version": 2,
+  "title": "gimmie-gimmie-ball",
+  "song_version": "special",
+  "source_yaml": "gimmie-gimmie-ball/gimmie-gimmie-special/gimmie-gimmie-special.yaml",
+  "source_audio": "gimmie-gimmie-special.flac",
+  "language": "en",
+  "engine": "demucs:htdemucs+whisperx:large-v3",
+  "runtime": {
+    "requested_device": "auto",
+    "demucs_device": "cuda",
+    "whisperx_device": "cuda",
+    "whisperx_compute_type": "float16",
+    "batch_size": 4,
+    "cpu_fallback_used": false
+  },
+  "generated_at": "2026-09-24T22:23:50+00:00",
+  "stats": {
+    "lyric_words": 537,
+    "recognised_words": 410,
+    "matched_words": 405,
+    "coverage": 0.7542
+  },
+  "quality": {
+    "rating": "review",
+    "review_threshold": 0.8,
+    "review_required": true,
+    "approved": false,
+    "usable_for_live_lyrics": false
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "the time was half past chunk upon the clock",
+      "start": 0.928,
+      "end": 4.409,
+      "words": [
+        {
+          "text": "the",
+          "start": 0.928,
+          "end": 1.048,
+          "matched": true
+        },
+        {
+          "text": "time",
+          "start": 1.128,
+          "end": 1.548,
+          "matched": true
+        },
+        {
+          "text": "was",
+          "start": 1.628,
+          "end": 1.788,
+          "matched": true
+        },
+        {
+          "text": "half",
+          "start": 1.848,
+          "end": 2.128,
+          "matched": true
+        },
+        {
+          "text": "past",
+          "start": 2.269,
+          "end": 2.609,
+          "matched": true
+        },
+        {
+          "text": "chunk",
+          "start": 2.689,
+          "end": 3.189,
+          "matched": true
+        },
+        {
+          "text": "upon",
+          "start": 3.329,
+          "end": 3.849,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 3.909,
+          "end": 3.989,
+          "matched": true
+        },
+        {
+          "text": "clock",
+          "start": 4.049,
+          "end": 4.409,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "text": "the atmosphere was humid, heavy, locked",
+      "start": 4.889,
+      "end": 8.151,
+      "words": [
+        {
+          "text": "the",
+          "start": 4.889,
+          "end": 5.05,
+          "matched": true
+        },
+        {
+          "text": "atmosphere",
+          "start": 5.23,
+          "end": 6.17,
+          "matched": true
+        },
+        {
+          "text": "was",
+          "start": 6.25,
+          "end": 6.39,
+          "matched": true
+        },
+        {
+          "text": "humid,",
+          "start": 6.45,
+          "end": 7.07,
+          "matched": true
+        },
+        {
+          "text": "heavy,",
+          "start": 7.31,
+          "end": 7.691,
+          "matched": true
+        },
+        {
+          "text": "locked",
+          "start": 7.771,
+          "end": 8.151,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "text": "my breath has grown so weighted in the air",
+      "start": 8.691,
+      "end": 11.672,
+      "words": [
+        {
+          "text": "my",
+          "start": 8.691,
+          "end": 8.851,
+          "matched": true
+        },
+        {
+          "text": "breath",
+          "start": 8.891,
+          "end": 9.191,
+          "matched": true
+        },
+        {
+          "text": "has",
+          "start": 9.251,
+          "end": 9.431,
+          "matched": true
+        },
+        {
+          "text": "grown",
+          "start": 9.491,
+          "end": 9.851,
+          "matched": true
+        },
+        {
+          "text": "so",
+          "start": 9.951,
+          "end": 10.191,
+          "matched": true
+        },
+        {
+          "text": "weighted",
+          "start": 10.251,
+          "end": 10.912,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 10.992,
+          "end": 11.092,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 11.132,
+          "end": 11.272,
+          "matched": true
+        },
+        {
+          "text": "air",
+          "start": 11.492,
+          "end": 11.672,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "text": "this summer heat is more than i can bear",
+      "start": 12.112,
+      "end": 15.693,
+      "words": [
+        {
+          "text": "this",
+          "start": 12.112,
+          "end": 12.252,
+          "matched": true
+        },
+        {
+          "text": "summer",
+          "start": 12.372,
+          "end": 12.772,
+          "matched": true
+        },
+        {
+          "text": "heat",
+          "start": 12.832,
+          "end": 13.233,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 13.733,
+          "end": 13.833,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 13.933,
+          "end": 14.313,
+          "matched": true
+        },
+        {
+          "text": "than",
+          "start": 14.393,
+          "end": 14.573,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 14.813,
+          "end": 14.913,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 15.013,
+          "end": 15.213,
+          "matched": true
+        },
+        {
+          "text": "bear",
+          "start": 15.273,
+          "end": 15.693,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "text": "it is hard to picture any greater loss",
+      "start": 17.174,
+      "end": 20.175,
+      "words": [
+        {
+          "text": "it",
+          "start": 17.174,
+          "end": 17.234,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 17.334,
+          "end": 17.414,
+          "matched": true
+        },
+        {
+          "text": "hard",
+          "start": 17.514,
+          "end": 17.894,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 17.934,
+          "end": 18.034,
+          "matched": true
+        },
+        {
+          "text": "picture",
+          "start": 18.134,
+          "end": 18.775,
+          "matched": true
+        },
+        {
+          "text": "any",
+          "start": 18.915,
+          "end": 19.095,
+          "matched": true
+        },
+        {
+          "text": "greater",
+          "start": 19.215,
+          "end": 19.675,
+          "matched": true
+        },
+        {
+          "text": "loss",
+          "start": 19.735,
+          "end": 20.175,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "text": "mother has vanished, sleeping once again",
+      "start": 20.595,
+      "end": 23.156,
+      "words": [
+        {
+          "text": "mother",
+          "start": 20.595,
+          "end": 20.895,
+          "matched": true
+        },
+        {
+          "text": "has",
+          "start": 20.935,
+          "end": 21.095,
+          "matched": true
+        },
+        {
+          "text": "vanished,",
+          "start": 21.196,
+          "end": 21.776,
+          "matched": true
+        },
+        {
+          "text": "sleeping",
+          "start": 21.916,
+          "end": 22.396,
+          "matched": true
+        },
+        {
+          "text": "once",
+          "start": 22.536,
+          "end": 22.716,
+          "matched": true
+        },
+        {
+          "text": "again",
+          "start": 22.816,
+          "end": 23.156,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "text": "high above, the moon burns cold and bright",
+      "start": 24.177,
+      "end": 27.558,
+      "words": [
+        {
+          "text": "high",
+          "start": 24.177,
+          "end": 24.417,
+          "matched": true
+        },
+        {
+          "text": "above,",
+          "start": 24.537,
+          "end": 25.137,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 25.317,
+          "end": 25.417,
+          "matched": true
+        },
+        {
+          "text": "moon",
+          "start": 25.517,
+          "end": 25.877,
+          "matched": true
+        },
+        {
+          "text": "burns",
+          "start": 25.937,
+          "end": 26.317,
+          "matched": true
+        },
+        {
+          "text": "cold",
+          "start": 26.377,
+          "end": 26.858,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 26.938,
+          "end": 27.038,
+          "matched": true
+        },
+        {
+          "text": "bright",
+          "start": 27.118,
+          "end": 27.558,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l8",
+      "text": "cutting through the darkness of the night",
+      "start": 27.738,
+      "end": 30.539,
+      "words": [
+        {
+          "text": "cutting",
+          "start": 27.738,
+          "end": 28.098,
+          "matched": true
+        },
+        {
+          "text": "through",
+          "start": 28.178,
+          "end": 28.478,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 28.918,
+          "end": 29.018,
+          "matched": true
+        },
+        {
+          "text": "darkness",
+          "start": 29.118,
+          "end": 29.839,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 29.899,
+          "end": 29.999,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 30.059,
+          "end": 30.179,
+          "matched": true
+        },
+        {
+          "text": "night",
+          "start": 30.259,
+          "end": 30.539,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l9",
+      "text": "within the distance, nothing seems to move",
+      "start": 31.138,
+      "end": 34.02,
+      "words": [
+        {
+          "text": "within",
+          "start": 31.138,
+          "end": 31.518,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 31.578,
+          "end": 31.698,
+          "matched": true
+        },
+        {
+          "text": "distance,",
+          "start": 31.778,
+          "end": 32.519,
+          "matched": true
+        },
+        {
+          "text": "nothing",
+          "start": 32.679,
+          "end": 33.039,
+          "matched": true
+        },
+        {
+          "text": "seems",
+          "start": 33.099,
+          "end": 33.38,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 33.44,
+          "end": 33.54,
+          "matched": true
+        },
+        {
+          "text": "move",
+          "start": 33.64,
+          "end": 34.02,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l10",
+      "text": "no creature stirs, no rolling ball appears",
+      "start": 34.721,
+      "end": 37.643,
+      "words": [
+        {
+          "text": "no",
+          "start": 34.721,
+          "end": 34.861,
+          "matched": true
+        },
+        {
+          "text": "creature",
+          "start": 34.921,
+          "end": 35.281,
+          "matched": true
+        },
+        {
+          "text": "stirs,",
+          "start": 35.341,
+          "end": 35.841,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 35.901,
+          "end": 36.122,
+          "matched": true
+        },
+        {
+          "text": "rolling",
+          "start": 36.262,
+          "end": 36.682,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 36.742,
+          "end": 37.022,
+          "matched": true
+        },
+        {
+          "text": "appears",
+          "start": 37.082,
+          "end": 37.643,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l11",
+      "text": "i search the silent garden and the ground",
+      "start": 37.943,
+      "end": 41.005,
+      "words": [
+        {
+          "text": "i",
+          "start": 37.943,
+          "end": 38.003,
+          "matched": true
+        },
+        {
+          "text": "search",
+          "start": 38.083,
+          "end": 38.363,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 38.403,
+          "end": 38.503,
+          "matched": true
+        },
+        {
+          "text": "silent",
+          "start": 38.583,
+          "end": 39.044,
+          "matched": true
+        },
+        {
+          "text": "garden",
+          "start": 39.124,
+          "end": 40.044,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 40.184,
+          "end": 40.305,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 40.345,
+          "end": 40.445,
+          "matched": true
+        },
+        {
+          "text": "ground",
+          "start": 40.505,
+          "end": 41.005,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l12",
+      "text": "yet still my purpose cannot quite be found",
+      "start": 41.405,
+      "end": 44.848,
+      "words": [
+        {
+          "text": "yet",
+          "start": 41.405,
+          "end": 41.565,
+          "matched": true
+        },
+        {
+          "text": "still",
+          "start": 41.645,
+          "end": 41.946,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 42.006,
+          "end": 42.226,
+          "matched": true
+        },
+        {
+          "text": "purpose",
+          "start": 42.326,
+          "end": 42.906,
+          "matched": true
+        },
+        {
+          "text": "cannot",
+          "start": 43.247,
+          "end": 43.707,
+          "matched": true
+        },
+        {
+          "text": "quite",
+          "start": 43.847,
+          "end": 44.127,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 44.207,
+          "end": 44.327,
+          "matched": true
+        },
+        {
+          "text": "found",
+          "start": 44.467,
+          "end": 44.848,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l13",
+      "text": "i am all alone here in the chasm of my mind",
+      "start": 49.022,
+      "end": 52.764,
+      "words": [
+        {
+          "text": "i",
+          "start": 49.022,
+          "end": 49.163,
+          "matched": true
+        },
+        {
+          "text": "am",
+          "start": 49.343,
+          "end": 49.463,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 49.883,
+          "end": 50.103,
+          "matched": true
+        },
+        {
+          "text": "alone",
+          "start": 50.283,
+          "end": 50.783,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 50.843,
+          "end": 51.063,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 51.123,
+          "end": 51.223,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 51.243,
+          "end": 51.343,
+          "matched": true
+        },
+        {
+          "text": "chasm",
+          "start": 51.403,
+          "end": 51.924,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 52.024,
+          "end": 52.104,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 52.164,
+          "end": 52.324,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 52.384,
+          "end": 52.764,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l14",
+      "text": "there are no balls that wander",
+      "start": 53.064,
+      "end": 54.645,
+      "words": [
+        {
+          "text": "there",
+          "start": 53.064,
+          "end": 53.264,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 53.344,
+          "end": 53.444,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 53.504,
+          "end": 53.644,
+          "matched": true
+        },
+        {
+          "text": "balls",
+          "start": 53.684,
+          "end": 53.944,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 53.984,
+          "end": 54.125,
+          "matched": true
+        },
+        {
+          "text": "wander",
+          "start": 54.165,
+          "end": 54.645,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l15",
+      "text": "all the humans sleep so sound",
+      "start": 54.705,
+      "end": 56.746,
+      "words": [
+        {
+          "text": "all",
+          "start": 54.705,
+          "end": 54.845,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 54.865,
+          "end": 54.945,
+          "matched": true
+        },
+        {
+          "text": "humans",
+          "start": 55.005,
+          "end": 55.465,
+          "matched": true
+        },
+        {
+          "text": "sleep",
+          "start": 55.545,
+          "end": 55.845,
+          "matched": true
+        },
+        {
+          "text": "so",
+          "start": 55.905,
+          "end": 56.125,
+          "matched": true
+        },
+        {
+          "text": "sound",
+          "start": 56.205,
+          "end": 56.746,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l16",
+      "text": "this oppressive atmosphere",
+      "start": 57.246,
+      "end": 59.027,
+      "words": [
+        {
+          "text": "this",
+          "start": 57.246,
+          "end": 57.406,
+          "matched": true
+        },
+        {
+          "text": "oppressive",
+          "start": 57.506,
+          "end": 58.146,
+          "matched": true
+        },
+        {
+          "text": "atmosphere",
+          "start": 58.266,
+          "end": 59.027,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l17",
+      "text": "keeps my golden body down",
+      "start": 59.847,
+      "end": 62.568,
+      "words": [
+        {
+          "text": "keeps",
+          "start": 59.847,
+          "end": 60.107,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 60.187,
+          "end": 60.487,
+          "matched": true
+        },
+        {
+          "text": "golden",
+          "start": 60.607,
+          "end": 61.347,
+          "matched": true
+        },
+        {
+          "text": "body",
+          "start": 61.508,
+          "end": 62.108,
+          "matched": true
+        },
+        {
+          "text": "down",
+          "start": 62.188,
+          "end": 62.568,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l18",
+      "text": "all i ask",
+      "start": 65.288,
+      "end": 66.209,
+      "words": [
+        {
+          "text": "all",
+          "start": 65.288,
+          "end": 65.628,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 65.648,
+          "end": 65.668,
+          "matched": true
+        },
+        {
+          "text": "ask",
+          "start": 65.889,
+          "end": 66.209,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l19",
+      "text": "all i ask of thee",
+      "start": 67.109,
+      "end": 68.49,
+      "words": [
+        {
+          "text": "all",
+          "start": 67.109,
+          "end": 67.269,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 67.37,
+          "end": 67.43,
+          "matched": true
+        },
+        {
+          "text": "ask",
+          "start": 67.59,
+          "end": 67.87,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 67.91,
+          "end": 67.99,
+          "matched": true
+        },
+        {
+          "text": "thee",
+          "start": 68.11,
+          "end": 68.49,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l20",
+      "text": "give me the ball",
+      "start": 68.57,
+      "end": 69.551,
+      "words": [
+        {
+          "text": "give",
+          "start": 68.57,
+          "end": 68.79,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 68.83,
+          "end": 68.99,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 69.051,
+          "end": 69.171,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 69.231,
+          "end": 69.551,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l21",
+      "text": "even after midnight",
+      "start": 70.672,
+      "end": 72.032,
+      "words": [
+        {
+          "text": "even",
+          "start": 70.672,
+          "end": 70.972,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 71.112,
+          "end": 71.352,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 71.452,
+          "end": 72.032,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l22",
+      "text": "give me the ball",
+      "start": 72.112,
+      "end": 73.393,
+      "words": [
+        {
+          "text": "give",
+          "start": 72.112,
+          "end": 72.312,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 72.353,
+          "end": 72.493,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 72.553,
+          "end": 72.713,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 72.773,
+          "end": 73.393,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l23",
+      "text": "give it to me",
+      "start": 73.453,
+      "end": 74.314,
+      "words": [
+        {
+          "text": "give",
+          "start": 73.453,
+          "end": 73.693,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 73.753,
+          "end": 73.813,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 73.833,
+          "end": 73.994,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 74.094,
+          "end": 74.314,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l24",
+      "text": "i do not care how it is delivered unto me",
+      "start": 74.894,
+      "end": 77.916,
+      "words": [
+        {
+          "text": "i",
+          "start": 74.894,
+          "end": 74.934,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 74.994,
+          "end": 75.154,
+          "matched": true
+        },
+        {
+          "text": "not",
+          "start": 75.214,
+          "end": 75.374,
+          "matched": true
+        },
+        {
+          "text": "care",
+          "start": 75.454,
+          "end": 75.815,
+          "matched": true
+        },
+        {
+          "text": "how",
+          "start": 75.895,
+          "end": 76.135,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 76.275,
+          "end": 76.335,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 76.455,
+          "end": 76.555,
+          "matched": true
+        },
+        {
+          "text": "delivered",
+          "start": 76.595,
+          "end": 77.215,
+          "matched": true
+        },
+        {
+          "text": "unto",
+          "start": 77.316,
+          "end": 77.596,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 77.696,
+          "end": 77.916,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l25",
+      "text": "just give me the ball",
+      "start": 78.556,
+      "end": 80.978,
+      "words": [
+        {
+          "text": "just",
+          "start": 78.556,
+          "end": 78.876,
+          "matched": true
+        },
+        {
+          "text": "give",
+          "start": 78.977,
+          "end": 79.197,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 79.237,
+          "end": 79.377,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 79.437,
+          "end": 79.617,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 79.677,
+          "end": 80.978,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l26",
+      "text": "and set my troubled mind free",
+      "start": 81.058,
+      "end": 82.999,
+      "words": [
+        {
+          "text": "and",
+          "start": 81.058,
+          "end": 81.138,
+          "matched": true
+        },
+        {
+          "text": "set",
+          "start": 81.198,
+          "end": 81.398,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 81.438,
+          "end": 81.578,
+          "matched": true
+        },
+        {
+          "text": "troubled",
+          "start": 81.638,
+          "end": 82.058,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 82.118,
+          "end": 82.559,
+          "matched": true
+        },
+        {
+          "text": "free",
+          "start": 82.699,
+          "end": 82.999,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l27",
+      "text": "once i hold that most sacred ball",
+      "start": 83.499,
+      "end": 85.821,
+      "words": [
+        {
+          "text": "once",
+          "start": 83.499,
+          "end": 83.679,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 83.779,
+          "end": 83.839,
+          "matched": true
+        },
+        {
+          "text": "hold",
+          "start": 83.899,
+          "end": 84.08,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 84.14,
+          "end": 84.28,
+          "matched": true
+        },
+        {
+          "text": "most",
+          "start": 84.34,
+          "end": 84.58,
+          "matched": true
+        },
+        {
+          "text": "sacred",
+          "start": 84.66,
+          "end": 85.16,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 85.22,
+          "end": 85.821,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l28",
+      "text": "my life i dedicate to thee",
+      "start": 85.881,
+      "end": 87.602,
+      "words": [
+        {
+          "text": "my",
+          "start": 85.881,
+          "end": 86.041,
+          "matched": true
+        },
+        {
+          "text": "life",
+          "start": 86.101,
+          "end": 86.321,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 86.421,
+          "end": 86.521,
+          "matched": true
+        },
+        {
+          "text": "dedicate",
+          "start": 86.541,
+          "end": 87.261,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 87.302,
+          "end": 87.422,
+          "matched": true
+        },
+        {
+          "text": "thee",
+          "start": 87.502,
+          "end": 87.602,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l29",
+      "text": "end these long and sleepless nights",
+      "start": 87.602,
+      "end": 90.304,
+      "words": [
+        {
+          "text": "end",
+          "start": 87.602,
+          "end": 88.522,
+          "matched": false
+        },
+        {
+          "text": "these",
+          "start": 88.522,
+          "end": 88.723,
+          "matched": true
+        },
+        {
+          "text": "long",
+          "start": 88.783,
+          "end": 89.143,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 89.223,
+          "end": 89.323,
+          "matched": true
+        },
+        {
+          "text": "sleepless",
+          "start": 89.383,
+          "end": 89.864,
+          "matched": true
+        },
+        {
+          "text": "nights",
+          "start": 89.944,
+          "end": 90.304,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l30",
+      "text": "end my waiting",
+      "start": 90.304,
+      "end": 91.185,
+      "words": [
+        {
+          "text": "end",
+          "start": 90.304,
+          "end": 90.565,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 90.565,
+          "end": 90.725,
+          "matched": true
+        },
+        {
+          "text": "waiting",
+          "start": 90.785,
+          "end": 91.185,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l31",
+      "text": "end my hunger",
+      "start": 91.185,
+      "end": 92.006,
+      "words": [
+        {
+          "text": "end",
+          "start": 91.185,
+          "end": 91.426,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 91.426,
+          "end": 91.606,
+          "matched": true
+        },
+        {
+          "text": "hunger",
+          "start": 91.666,
+          "end": 92.006,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l32",
+      "text": "there can be no sense of loss",
+      "start": 92.066,
+      "end": 93.688,
+      "words": [
+        {
+          "text": "there",
+          "start": 92.066,
+          "end": 92.266,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 92.286,
+          "end": 92.487,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 92.527,
+          "end": 92.687,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 92.747,
+          "end": 92.887,
+          "matched": true
+        },
+        {
+          "text": "sense",
+          "start": 92.967,
+          "end": 93.227,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 93.288,
+          "end": 93.368,
+          "matched": true
+        },
+        {
+          "text": "loss",
+          "start": 93.428,
+          "end": 93.688,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l33",
+      "text": "if that ball and i reunite",
+      "start": 93.748,
+      "end": 95.91,
+      "words": [
+        {
+          "text": "if",
+          "start": 93.748,
+          "end": 93.848,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 93.888,
+          "end": 94.048,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 94.108,
+          "end": 94.569,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 94.669,
+          "end": 94.789,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 95.069,
+          "end": 95.19,
+          "matched": true
+        },
+        {
+          "text": "reunite",
+          "start": 95.25,
+          "end": 95.91,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l34",
+      "text": "give me",
+      "start": 96.771,
+      "end": 97.272,
+      "words": [
+        {
+          "text": "give",
+          "start": 96.771,
+          "end": 97.031,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 97.092,
+          "end": 97.272,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l35",
+      "text": "give me",
+      "start": 97.432,
+      "end": 97.912,
+      "words": [
+        {
+          "text": "give",
+          "start": 97.432,
+          "end": 97.652,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 97.732,
+          "end": 97.912,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l36",
+      "text": "give me",
+      "start": 98.793,
+      "end": 99.214,
+      "words": [
+        {
+          "text": "give",
+          "start": 98.793,
+          "end": 99.014,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 99.074,
+          "end": 99.214,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l37",
+      "text": "the ball",
+      "start": 100.175,
+      "end": 100.735,
+      "words": [
+        {
+          "text": "the",
+          "start": 100.175,
+          "end": 100.315,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 100.355,
+          "end": 100.735,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l38",
+      "text": "after midnight",
+      "start": 107.062,
+      "end": 108.464,
+      "words": [
+        {
+          "text": "after",
+          "start": 107.062,
+          "end": 107.443,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 107.563,
+          "end": 108.464,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l39",
+      "text": "my dear doja companion does not share my fright",
+      "start": 115.114,
+      "end": 118.336,
+      "words": [
+        {
+          "text": "my",
+          "start": 115.114,
+          "end": 115.274,
+          "matched": true
+        },
+        {
+          "text": "dear",
+          "start": 115.334,
+          "end": 115.514,
+          "matched": true
+        },
+        {
+          "text": "doja",
+          "start": 115.574,
+          "end": 116.115,
+          "matched": true
+        },
+        {
+          "text": "companion",
+          "start": 116.195,
+          "end": 116.895,
+          "matched": true
+        },
+        {
+          "text": "does",
+          "start": 116.935,
+          "end": 117.115,
+          "matched": true
+        },
+        {
+          "text": "not",
+          "start": 117.155,
+          "end": 117.335,
+          "matched": true
+        },
+        {
+          "text": "share",
+          "start": 117.415,
+          "end": 117.675,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 117.715,
+          "end": 117.875,
+          "matched": true
+        },
+        {
+          "text": "fright",
+          "start": 117.976,
+          "end": 118.336,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l40",
+      "text": "she sleeps in peace beside our mother tonight",
+      "start": 118.416,
+      "end": 121.617,
+      "words": [
+        {
+          "text": "she",
+          "start": 118.416,
+          "end": 118.556,
+          "matched": true
+        },
+        {
+          "text": "sleeps",
+          "start": 118.616,
+          "end": 118.916,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 118.996,
+          "end": 119.076,
+          "matched": true
+        },
+        {
+          "text": "peace",
+          "start": 119.136,
+          "end": 119.456,
+          "matched": true
+        },
+        {
+          "text": "beside",
+          "start": 119.556,
+          "end": 120.257,
+          "matched": true
+        },
+        {
+          "text": "our",
+          "start": 120.477,
+          "end": 120.637,
+          "matched": true
+        },
+        {
+          "text": "mother",
+          "start": 120.737,
+          "end": 121.117,
+          "matched": true
+        },
+        {
+          "text": "tonight",
+          "start": 121.157,
+          "end": 121.617,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l41",
+      "text": "no anguish disturbs her",
+      "start": 122.058,
+      "end": 123.699,
+      "words": [
+        {
+          "text": "no",
+          "start": 122.058,
+          "end": 122.238,
+          "matched": true
+        },
+        {
+          "text": "anguish",
+          "start": 122.398,
+          "end": 122.718,
+          "matched": true
+        },
+        {
+          "text": "disturbs",
+          "start": 122.778,
+          "end": 123.398,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 123.458,
+          "end": 123.699,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l42",
+      "text": "no loss or confusion",
+      "start": 123.799,
+      "end": 125.379,
+      "words": [
+        {
+          "text": "no",
+          "start": 123.799,
+          "end": 123.979,
+          "matched": true
+        },
+        {
+          "text": "loss",
+          "start": 124.039,
+          "end": 124.339,
+          "matched": true
+        },
+        {
+          "text": "or",
+          "start": 124.459,
+          "end": 124.579,
+          "matched": true
+        },
+        {
+          "text": "confusion",
+          "start": 124.659,
+          "end": 125.379,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l43",
+      "text": "her peaceful mind is untouched by my delusion",
+      "start": 126.04,
+      "end": 129.401,
+      "words": [
+        {
+          "text": "her",
+          "start": 126.04,
+          "end": 126.18,
+          "matched": true
+        },
+        {
+          "text": "peaceful",
+          "start": 126.24,
+          "end": 126.72,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 126.8,
+          "end": 127.18,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 127.3,
+          "end": 127.38,
+          "matched": true
+        },
+        {
+          "text": "untouched",
+          "start": 127.541,
+          "end": 128.181,
+          "matched": true
+        },
+        {
+          "text": "by",
+          "start": 128.281,
+          "end": 128.441,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 128.501,
+          "end": 128.681,
+          "matched": true
+        },
+        {
+          "text": "delusion",
+          "start": 128.741,
+          "end": 129.401,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l44",
+      "text": "i sit at the window",
+      "start": 129.662,
+      "end": 131.022,
+      "words": [
+        {
+          "text": "i",
+          "start": 129.662,
+          "end": 129.722,
+          "matched": true
+        },
+        {
+          "text": "sit",
+          "start": 129.822,
+          "end": 130.102,
+          "matched": true
+        },
+        {
+          "text": "at",
+          "start": 130.142,
+          "end": 130.222,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 130.282,
+          "end": 130.442,
+          "matched": true
+        },
+        {
+          "text": "window",
+          "start": 130.502,
+          "end": 131.022,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l45",
+      "text": "receiving these visions of darkness",
+      "start": 131.443,
+      "end": 133.684,
+      "words": [
+        {
+          "text": "receiving",
+          "start": 131.443,
+          "end": 132.003,
+          "matched": true
+        },
+        {
+          "text": "these",
+          "start": 132.063,
+          "end": 132.243,
+          "matched": true
+        },
+        {
+          "text": "visions",
+          "start": 132.303,
+          "end": 132.763,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 132.823,
+          "end": 132.903,
+          "matched": true
+        },
+        {
+          "text": "darkness",
+          "start": 132.983,
+          "end": 133.684,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l46",
+      "text": "hark",
+      "start": 134.304,
+      "end": 134.624,
+      "words": [
+        {
+          "text": "hark",
+          "start": 134.304,
+          "end": 134.624,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l47",
+      "text": "hear my sorrow",
+      "start": 135.145,
+      "end": 136.286,
+      "words": [
+        {
+          "text": "hear",
+          "start": 135.145,
+          "end": 135.345,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 135.425,
+          "end": 135.665,
+          "matched": true
+        },
+        {
+          "text": "sorrow",
+          "start": 135.805,
+          "end": 136.286,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l48",
+      "text": "as night receives my voice",
+      "start": 136.366,
+      "end": 138.047,
+      "words": [
+        {
+          "text": "as",
+          "start": 136.366,
+          "end": 136.446,
+          "matched": true
+        },
+        {
+          "text": "night",
+          "start": 136.526,
+          "end": 136.726,
+          "matched": true
+        },
+        {
+          "text": "receives",
+          "start": 136.766,
+          "end": 137.267,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 137.347,
+          "end": 137.587,
+          "matched": true
+        },
+        {
+          "text": "voice",
+          "start": 137.647,
+          "end": 138.047,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l49",
+      "text": "i bark into nothing",
+      "start": 138.167,
+      "end": 139.488,
+      "words": [
+        {
+          "text": "i",
+          "start": 138.167,
+          "end": 138.267,
+          "matched": true
+        },
+        {
+          "text": "bark",
+          "start": 138.307,
+          "end": 138.608,
+          "matched": true
+        },
+        {
+          "text": "into",
+          "start": 138.648,
+          "end": 138.928,
+          "matched": true
+        },
+        {
+          "text": "nothing",
+          "start": 139.028,
+          "end": 139.488,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l50",
+      "text": "yet nobody answers",
+      "start": 139.889,
+      "end": 141.43,
+      "words": [
+        {
+          "text": "yet",
+          "start": 139.889,
+          "end": 140.049,
+          "matched": true
+        },
+        {
+          "text": "nobody",
+          "start": 140.129,
+          "end": 140.77,
+          "matched": true
+        },
+        {
+          "text": "answers",
+          "start": 140.95,
+          "end": 141.43,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l51",
+      "text": "no bouncing",
+      "start": 141.49,
+      "end": 142.531,
+      "words": [
+        {
+          "text": "no",
+          "start": 141.49,
+          "end": 141.77,
+          "matched": true
+        },
+        {
+          "text": "bouncing",
+          "start": 141.87,
+          "end": 142.531,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l52",
+      "text": "no throwing",
+      "start": 142.591,
+      "end": 143.392,
+      "words": [
+        {
+          "text": "no",
+          "start": 142.591,
+          "end": 142.811,
+          "matched": true
+        },
+        {
+          "text": "throwing",
+          "start": 142.911,
+          "end": 143.392,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l53",
+      "text": "no fluff-covered treasure returning to me",
+      "start": 143.432,
+      "end": 146.074,
+      "words": [
+        {
+          "text": "no",
+          "start": 143.432,
+          "end": 143.572,
+          "matched": true
+        },
+        {
+          "text": "fluff-covered",
+          "start": 143.632,
+          "end": 144.353,
+          "matched": true
+        },
+        {
+          "text": "treasure",
+          "start": 144.413,
+          "end": 144.833,
+          "matched": true
+        },
+        {
+          "text": "returning",
+          "start": 144.893,
+          "end": 145.534,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 145.614,
+          "end": 145.734,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 145.834,
+          "end": 146.074,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l54",
+      "text": "i am all alone here in the chasm of my mind",
+      "start": 146.094,
+      "end": 152.499,
+      "words": [
+        {
+          "text": "i",
+          "start": 146.094,
+          "end": 146.114,
+          "matched": true
+        },
+        {
+          "text": "am",
+          "start": 149.057,
+          "end": 149.217,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 149.577,
+          "end": 149.777,
+          "matched": true
+        },
+        {
+          "text": "alone",
+          "start": 150.037,
+          "end": 150.538,
+          "matched": true
+        },
+        {
+          "text": "here",
+          "start": 150.598,
+          "end": 150.818,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 150.878,
+          "end": 150.978,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 151.018,
+          "end": 151.118,
+          "matched": true
+        },
+        {
+          "text": "chasm",
+          "start": 151.158,
+          "end": 151.679,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 151.759,
+          "end": 151.839,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 151.919,
+          "end": 152.079,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 152.139,
+          "end": 152.499,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l55",
+      "text": "there are no balls that wander",
+      "start": 152.88,
+      "end": 154.361,
+      "words": [
+        {
+          "text": "there",
+          "start": 152.88,
+          "end": 153.06,
+          "matched": true
+        },
+        {
+          "text": "are",
+          "start": 153.14,
+          "end": 153.24,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 153.3,
+          "end": 153.42,
+          "matched": true
+        },
+        {
+          "text": "balls",
+          "start": 153.46,
+          "end": 153.7,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 153.761,
+          "end": 153.901,
+          "matched": true
+        },
+        {
+          "text": "wander",
+          "start": 153.941,
+          "end": 154.361,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l56",
+      "text": "all the humans sleep so sound",
+      "start": 154.441,
+      "end": 156.523,
+      "words": [
+        {
+          "text": "all",
+          "start": 154.441,
+          "end": 154.581,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 154.621,
+          "end": 154.701,
+          "matched": true
+        },
+        {
+          "text": "humans",
+          "start": 154.761,
+          "end": 155.202,
+          "matched": true
+        },
+        {
+          "text": "sleep",
+          "start": 155.282,
+          "end": 155.582,
+          "matched": true
+        },
+        {
+          "text": "so",
+          "start": 155.642,
+          "end": 155.862,
+          "matched": true
+        },
+        {
+          "text": "sound",
+          "start": 155.962,
+          "end": 156.523,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l57",
+      "text": "this oppressive atmosphere",
+      "start": 157.023,
+      "end": 158.885,
+      "words": [
+        {
+          "text": "this",
+          "start": 157.023,
+          "end": 157.203,
+          "matched": true
+        },
+        {
+          "text": "oppressive",
+          "start": 157.324,
+          "end": 157.944,
+          "matched": true
+        },
+        {
+          "text": "atmosphere",
+          "start": 158.044,
+          "end": 158.885,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l58",
+      "text": "keeps my golden body down",
+      "start": 159.666,
+      "end": 162.528,
+      "words": [
+        {
+          "text": "keeps",
+          "start": 159.666,
+          "end": 159.926,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 159.986,
+          "end": 160.326,
+          "matched": true
+        },
+        {
+          "text": "golden",
+          "start": 160.386,
+          "end": 161.207,
+          "matched": true
+        },
+        {
+          "text": "body",
+          "start": 161.287,
+          "end": 161.887,
+          "matched": true
+        },
+        {
+          "text": "down",
+          "start": 161.947,
+          "end": 162.528,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l59",
+      "text": "all i ask",
+      "start": 164.85,
+      "end": 165.932,
+      "words": [
+        {
+          "text": "all",
+          "start": 164.85,
+          "end": 165.03,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 165.331,
+          "end": 165.451,
+          "matched": true
+        },
+        {
+          "text": "ask",
+          "start": 165.691,
+          "end": 165.932,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l60",
+      "text": "all i ask of thee",
+      "start": 166.933,
+      "end": 168.276,
+      "words": [
+        {
+          "text": "all",
+          "start": 166.933,
+          "end": 167.094,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 167.214,
+          "end": 167.274,
+          "matched": true
+        },
+        {
+          "text": "ask",
+          "start": 167.414,
+          "end": 167.635,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 167.735,
+          "end": 167.835,
+          "matched": true
+        },
+        {
+          "text": "thee",
+          "start": 167.915,
+          "end": 168.276,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l61",
+      "text": "give me the ball",
+      "start": 168.396,
+      "end": 169.317,
+      "words": [
+        {
+          "text": "give",
+          "start": 168.396,
+          "end": 168.616,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 168.656,
+          "end": 168.797,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 168.877,
+          "end": 168.977,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 169.057,
+          "end": 169.317,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l62",
+      "text": "even after midnight",
+      "start": 170.49,
+      "end": 171.851,
+      "words": [
+        {
+          "text": "even",
+          "start": 170.49,
+          "end": 170.81,
+          "matched": true
+        },
+        {
+          "text": "after",
+          "start": 170.95,
+          "end": 171.191,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 171.291,
+          "end": 171.851,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l63",
+      "text": "give me the ball",
+      "start": 171.951,
+      "end": 173.232,
+      "words": [
+        {
+          "text": "give",
+          "start": 171.951,
+          "end": 172.151,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 172.191,
+          "end": 172.311,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 172.392,
+          "end": 172.552,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 172.612,
+          "end": 173.232,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l64",
+      "text": "give it to me",
+      "start": 173.292,
+      "end": 174.133,
+      "words": [
+        {
+          "text": "give",
+          "start": 173.292,
+          "end": 173.552,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 173.612,
+          "end": 173.672,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 173.692,
+          "end": 173.853,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 173.953,
+          "end": 174.133,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l65",
+      "text": "i do not care how it is delivered unto me",
+      "start": 174.733,
+      "end": 177.795,
+      "words": [
+        {
+          "text": "i",
+          "start": 174.733,
+          "end": 174.793,
+          "matched": true
+        },
+        {
+          "text": "do",
+          "start": 174.853,
+          "end": 175.013,
+          "matched": true
+        },
+        {
+          "text": "not",
+          "start": 175.073,
+          "end": 175.234,
+          "matched": true
+        },
+        {
+          "text": "care",
+          "start": 175.314,
+          "end": 175.674,
+          "matched": true
+        },
+        {
+          "text": "how",
+          "start": 175.754,
+          "end": 175.994,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 176.114,
+          "end": 176.194,
+          "matched": true
+        },
+        {
+          "text": "is",
+          "start": 176.314,
+          "end": 176.394,
+          "matched": true
+        },
+        {
+          "text": "delivered",
+          "start": 176.434,
+          "end": 177.095,
+          "matched": true
+        },
+        {
+          "text": "unto",
+          "start": 177.195,
+          "end": 177.435,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 177.535,
+          "end": 177.795,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l66",
+      "text": "just give me the ball",
+      "start": 178.436,
+      "end": 180.858,
+      "words": [
+        {
+          "text": "just",
+          "start": 178.436,
+          "end": 178.756,
+          "matched": true
+        },
+        {
+          "text": "give",
+          "start": 178.836,
+          "end": 179.056,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 179.096,
+          "end": 179.237,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 179.297,
+          "end": 179.477,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 179.537,
+          "end": 180.858,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l67",
+      "text": "and set my troubled mind free",
+      "start": 180.938,
+      "end": 182.859,
+      "words": [
+        {
+          "text": "and",
+          "start": 180.938,
+          "end": 181.018,
+          "matched": true
+        },
+        {
+          "text": "set",
+          "start": 181.078,
+          "end": 181.278,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 181.318,
+          "end": 181.478,
+          "matched": true
+        },
+        {
+          "text": "troubled",
+          "start": 181.518,
+          "end": 181.959,
+          "matched": true
+        },
+        {
+          "text": "mind",
+          "start": 181.999,
+          "end": 182.459,
+          "matched": true
+        },
+        {
+          "text": "free",
+          "start": 182.599,
+          "end": 182.859,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l68",
+      "text": "once i hold that most sacred ball",
+      "start": 183.4,
+      "end": 185.701,
+      "words": [
+        {
+          "text": "once",
+          "start": 183.4,
+          "end": 183.56,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 183.66,
+          "end": 183.72,
+          "matched": true
+        },
+        {
+          "text": "hold",
+          "start": 183.78,
+          "end": 183.98,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 184.02,
+          "end": 184.16,
+          "matched": true
+        },
+        {
+          "text": "most",
+          "start": 184.22,
+          "end": 184.46,
+          "matched": true
+        },
+        {
+          "text": "sacred",
+          "start": 184.54,
+          "end": 185.041,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 185.101,
+          "end": 185.701,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l69",
+      "text": "my life i dedicate to thee",
+      "start": 185.761,
+      "end": 187.583,
+      "words": [
+        {
+          "text": "my",
+          "start": 185.761,
+          "end": 185.962,
+          "matched": true
+        },
+        {
+          "text": "life",
+          "start": 186.002,
+          "end": 186.222,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 186.322,
+          "end": 186.422,
+          "matched": true
+        },
+        {
+          "text": "dedicate",
+          "start": 186.462,
+          "end": 187.162,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 187.222,
+          "end": 187.323,
+          "matched": true
+        },
+        {
+          "text": "thee",
+          "start": 187.383,
+          "end": 187.583,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l70",
+      "text": "end these long and sleepless nights",
+      "start": 187.583,
+      "end": 190.205,
+      "words": [
+        {
+          "text": "end",
+          "start": 187.583,
+          "end": 188.423,
+          "matched": false
+        },
+        {
+          "text": "these",
+          "start": 188.423,
+          "end": 188.623,
+          "matched": true
+        },
+        {
+          "text": "long",
+          "start": 188.684,
+          "end": 189.124,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 189.164,
+          "end": 189.264,
+          "matched": true
+        },
+        {
+          "text": "sleepless",
+          "start": 189.284,
+          "end": 189.784,
+          "matched": true
+        },
+        {
+          "text": "nights",
+          "start": 189.844,
+          "end": 190.205,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l71",
+      "text": "end my waiting",
+      "start": 190.205,
+      "end": 190.231,
+      "words": [
+        {
+          "text": "end",
+          "start": 190.205,
+          "end": 190.214,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 190.214,
+          "end": 190.223,
+          "matched": false
+        },
+        {
+          "text": "waiting",
+          "start": 190.223,
+          "end": 190.231,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l72",
+      "text": "end my hunger",
+      "start": 190.231,
+      "end": 190.257,
+      "words": [
+        {
+          "text": "end",
+          "start": 190.231,
+          "end": 190.24,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 190.24,
+          "end": 190.249,
+          "matched": false
+        },
+        {
+          "text": "hunger",
+          "start": 190.249,
+          "end": 190.257,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l73",
+      "text": "there can be no sense of loss",
+      "start": 190.257,
+      "end": 190.319,
+      "words": [
+        {
+          "text": "there",
+          "start": 190.257,
+          "end": 190.266,
+          "matched": false
+        },
+        {
+          "text": "can",
+          "start": 190.266,
+          "end": 190.275,
+          "matched": false
+        },
+        {
+          "text": "be",
+          "start": 190.275,
+          "end": 190.284,
+          "matched": false
+        },
+        {
+          "text": "no",
+          "start": 190.284,
+          "end": 190.293,
+          "matched": false
+        },
+        {
+          "text": "sense",
+          "start": 190.293,
+          "end": 190.301,
+          "matched": false
+        },
+        {
+          "text": "of",
+          "start": 190.301,
+          "end": 190.31,
+          "matched": false
+        },
+        {
+          "text": "loss",
+          "start": 190.31,
+          "end": 190.319,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l74",
+      "text": "if that ball and i reunite",
+      "start": 190.319,
+      "end": 190.448,
+      "words": [
+        {
+          "text": "if",
+          "start": 190.319,
+          "end": 190.327,
+          "matched": false
+        },
+        {
+          "text": "that",
+          "start": 190.327,
+          "end": 190.336,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 190.336,
+          "end": 190.345,
+          "matched": false
+        },
+        {
+          "text": "and",
+          "start": 190.345,
+          "end": 190.445,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 190.445,
+          "end": 190.446,
+          "matched": false
+        },
+        {
+          "text": "reunite",
+          "start": 190.446,
+          "end": 190.448,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l75",
+      "text": "give me",
+      "start": 190.448,
+      "end": 190.451,
+      "words": [
+        {
+          "text": "give",
+          "start": 190.448,
+          "end": 190.449,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 190.449,
+          "end": 190.451,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l76",
+      "text": "give me",
+      "start": 190.451,
+      "end": 190.453,
+      "words": [
+        {
+          "text": "give",
+          "start": 190.451,
+          "end": 190.452,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 190.452,
+          "end": 190.453,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l77",
+      "text": "give me",
+      "start": 190.453,
+      "end": 190.456,
+      "words": [
+        {
+          "text": "give",
+          "start": 190.453,
+          "end": 190.455,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 190.455,
+          "end": 190.456,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l78",
+      "text": "the ball",
+      "start": 190.456,
+      "end": 190.459,
+      "words": [
+        {
+          "text": "the",
+          "start": 190.456,
+          "end": 190.457,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 190.457,
+          "end": 190.459,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l79",
+      "text": "after midnight",
+      "start": 190.459,
+      "end": 190.462,
+      "words": [
+        {
+          "text": "after",
+          "start": 190.459,
+          "end": 190.46,
+          "matched": false
+        },
+        {
+          "text": "midnight",
+          "start": 190.46,
+          "end": 190.462,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l80",
+      "text": "i have my window",
+      "start": 190.462,
+      "end": 190.467,
+      "words": [
+        {
+          "text": "i",
+          "start": 190.462,
+          "end": 190.463,
+          "matched": false
+        },
+        {
+          "text": "have",
+          "start": 190.463,
+          "end": 190.464,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 190.464,
+          "end": 190.466,
+          "matched": false
+        },
+        {
+          "text": "window",
+          "start": 190.466,
+          "end": 190.467,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l81",
+      "text": "from which i watch the great dark nothing",
+      "start": 190.467,
+      "end": 190.478,
+      "words": [
+        {
+          "text": "from",
+          "start": 190.467,
+          "end": 190.468,
+          "matched": false
+        },
+        {
+          "text": "which",
+          "start": 190.468,
+          "end": 190.47,
+          "matched": false
+        },
+        {
+          "text": "i",
+          "start": 190.47,
+          "end": 190.471,
+          "matched": false
+        },
+        {
+          "text": "watch",
+          "start": 190.471,
+          "end": 190.473,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 190.473,
+          "end": 190.474,
+          "matched": false
+        },
+        {
+          "text": "great",
+          "start": 190.474,
+          "end": 190.475,
+          "matched": false
+        },
+        {
+          "text": "dark",
+          "start": 190.475,
+          "end": 190.477,
+          "matched": false
+        },
+        {
+          "text": "nothing",
+          "start": 190.477,
+          "end": 190.478,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l82",
+      "text": "four paws across the floor",
+      "start": 190.478,
+      "end": 190.485,
+      "words": [
+        {
+          "text": "four",
+          "start": 190.478,
+          "end": 190.479,
+          "matched": false
+        },
+        {
+          "text": "paws",
+          "start": 190.479,
+          "end": 190.481,
+          "matched": false
+        },
+        {
+          "text": "across",
+          "start": 190.481,
+          "end": 190.482,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 190.482,
+          "end": 190.484,
+          "matched": false
+        },
+        {
+          "text": "floor",
+          "start": 190.484,
+          "end": 190.485,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l83",
+      "text": "my balance golden",
+      "start": 190.485,
+      "end": 190.672,
+      "words": [
+        {
+          "text": "my",
+          "start": 190.485,
+          "end": 190.645,
+          "matched": true
+        },
+        {
+          "text": "balance",
+          "start": 190.645,
+          "end": 190.658,
+          "matched": false
+        },
+        {
+          "text": "golden",
+          "start": 190.658,
+          "end": 190.672,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l84",
+      "text": "i wait for the sound",
+      "start": 190.672,
+      "end": 191.109,
+      "words": [
+        {
+          "text": "i",
+          "start": 190.672,
+          "end": 190.685,
+          "matched": false
+        },
+        {
+          "text": "wait",
+          "start": 190.685,
+          "end": 191.105,
+          "matched": true
+        },
+        {
+          "text": "for",
+          "start": 191.105,
+          "end": 191.106,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 191.106,
+          "end": 191.108,
+          "matched": false
+        },
+        {
+          "text": "sound",
+          "start": 191.108,
+          "end": 191.109,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l85",
+      "text": "the sacred bounce",
+      "start": 191.109,
+      "end": 191.113,
+      "words": [
+        {
+          "text": "the",
+          "start": 191.109,
+          "end": 191.111,
+          "matched": false
+        },
+        {
+          "text": "sacred",
+          "start": 191.111,
+          "end": 191.112,
+          "matched": false
+        },
+        {
+          "text": "bounce",
+          "start": 191.112,
+          "end": 191.113,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l86",
+      "text": "the throw",
+      "start": 191.113,
+      "end": 191.116,
+      "words": [
+        {
+          "text": "the",
+          "start": 191.113,
+          "end": 191.115,
+          "matched": false
+        },
+        {
+          "text": "throw",
+          "start": 191.115,
+          "end": 191.116,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l87",
+      "text": "and my pounce",
+      "start": 191.116,
+      "end": 191.12,
+      "words": [
+        {
+          "text": "and",
+          "start": 191.116,
+          "end": 191.118,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 191.118,
+          "end": 191.119,
+          "matched": false
+        },
+        {
+          "text": "pounce",
+          "start": 191.119,
+          "end": 191.12,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l88",
+      "text": "all i ask",
+      "start": 191.12,
+      "end": 191.125,
+      "words": [
+        {
+          "text": "all",
+          "start": 191.12,
+          "end": 191.122,
+          "matched": false
+        },
+        {
+          "text": "i",
+          "start": 191.122,
+          "end": 191.123,
+          "matched": false
+        },
+        {
+          "text": "ask",
+          "start": 191.123,
+          "end": 191.125,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l89",
+      "text": "all i ask of thee",
+      "start": 191.125,
+      "end": 191.132,
+      "words": [
+        {
+          "text": "all",
+          "start": 191.125,
+          "end": 191.126,
+          "matched": false
+        },
+        {
+          "text": "i",
+          "start": 191.126,
+          "end": 191.128,
+          "matched": false
+        },
+        {
+          "text": "ask",
+          "start": 191.128,
+          "end": 191.129,
+          "matched": false
+        },
+        {
+          "text": "of",
+          "start": 191.129,
+          "end": 191.13,
+          "matched": false
+        },
+        {
+          "text": "thee",
+          "start": 191.13,
+          "end": 191.132,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l90",
+      "text": "give me the ball",
+      "start": 191.132,
+      "end": 191.137,
+      "words": [
+        {
+          "text": "give",
+          "start": 191.132,
+          "end": 191.133,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 191.133,
+          "end": 191.135,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 191.135,
+          "end": 191.136,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 191.136,
+          "end": 191.137,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l91",
+      "text": "even after midnight",
+      "start": 191.137,
+      "end": 191.142,
+      "words": [
+        {
+          "text": "even",
+          "start": 191.137,
+          "end": 191.139,
+          "matched": false
+        },
+        {
+          "text": "after",
+          "start": 191.139,
+          "end": 191.14,
+          "matched": false
+        },
+        {
+          "text": "midnight",
+          "start": 191.14,
+          "end": 191.142,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l92",
+      "text": "give me the ball",
+      "start": 191.142,
+      "end": 191.147,
+      "words": [
+        {
+          "text": "give",
+          "start": 191.142,
+          "end": 191.143,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 191.143,
+          "end": 191.144,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 191.144,
+          "end": 191.146,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 191.146,
+          "end": 191.147,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l93",
+      "text": "give it to me",
+      "start": 191.147,
+      "end": 191.153,
+      "words": [
+        {
+          "text": "give",
+          "start": 191.147,
+          "end": 191.149,
+          "matched": false
+        },
+        {
+          "text": "it",
+          "start": 191.149,
+          "end": 191.15,
+          "matched": false
+        },
+        {
+          "text": "to",
+          "start": 191.15,
+          "end": 191.151,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 191.151,
+          "end": 191.153,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l94",
+      "text": "i do not care how it is delivered unto me",
+      "start": 191.153,
+      "end": 191.167,
+      "words": [
+        {
+          "text": "i",
+          "start": 191.153,
+          "end": 191.154,
+          "matched": false
+        },
+        {
+          "text": "do",
+          "start": 191.154,
+          "end": 191.156,
+          "matched": false
+        },
+        {
+          "text": "not",
+          "start": 191.156,
+          "end": 191.157,
+          "matched": false
+        },
+        {
+          "text": "care",
+          "start": 191.157,
+          "end": 191.159,
+          "matched": false
+        },
+        {
+          "text": "how",
+          "start": 191.159,
+          "end": 191.16,
+          "matched": false
+        },
+        {
+          "text": "it",
+          "start": 191.16,
+          "end": 191.161,
+          "matched": false
+        },
+        {
+          "text": "is",
+          "start": 191.161,
+          "end": 191.163,
+          "matched": false
+        },
+        {
+          "text": "delivered",
+          "start": 191.163,
+          "end": 191.164,
+          "matched": false
+        },
+        {
+          "text": "unto",
+          "start": 191.164,
+          "end": 191.166,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 191.166,
+          "end": 191.167,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l95",
+      "text": "just give me the ball",
+      "start": 191.167,
+      "end": 191.174,
+      "words": [
+        {
+          "text": "just",
+          "start": 191.167,
+          "end": 191.168,
+          "matched": false
+        },
+        {
+          "text": "give",
+          "start": 191.168,
+          "end": 191.17,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 191.17,
+          "end": 191.171,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 191.171,
+          "end": 191.173,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 191.173,
+          "end": 191.174,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l96",
+      "text": "and set my troubled mind free",
+      "start": 191.174,
+      "end": 191.182,
+      "words": [
+        {
+          "text": "and",
+          "start": 191.174,
+          "end": 191.175,
+          "matched": false
+        },
+        {
+          "text": "set",
+          "start": 191.175,
+          "end": 191.177,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 191.177,
+          "end": 191.178,
+          "matched": false
+        },
+        {
+          "text": "troubled",
+          "start": 191.178,
+          "end": 191.18,
+          "matched": false
+        },
+        {
+          "text": "mind",
+          "start": 191.18,
+          "end": 191.181,
+          "matched": false
+        },
+        {
+          "text": "free",
+          "start": 191.181,
+          "end": 191.182,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l97",
+      "text": "once i hold that most sacred ball",
+      "start": 191.182,
+      "end": 191.192,
+      "words": [
+        {
+          "text": "once",
+          "start": 191.182,
+          "end": 191.184,
+          "matched": false
+        },
+        {
+          "text": "i",
+          "start": 191.184,
+          "end": 191.185,
+          "matched": false
+        },
+        {
+          "text": "hold",
+          "start": 191.185,
+          "end": 191.187,
+          "matched": false
+        },
+        {
+          "text": "that",
+          "start": 191.187,
+          "end": 191.188,
+          "matched": false
+        },
+        {
+          "text": "most",
+          "start": 191.188,
+          "end": 191.19,
+          "matched": false
+        },
+        {
+          "text": "sacred",
+          "start": 191.19,
+          "end": 191.191,
+          "matched": false
+        },
+        {
+          "text": "ball",
+          "start": 191.191,
+          "end": 191.192,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l98",
+      "text": "my life i dedicate to thee",
+      "start": 191.192,
+      "end": 191.201,
+      "words": [
+        {
+          "text": "my",
+          "start": 191.192,
+          "end": 191.194,
+          "matched": false
+        },
+        {
+          "text": "life",
+          "start": 191.194,
+          "end": 191.195,
+          "matched": false
+        },
+        {
+          "text": "i",
+          "start": 191.195,
+          "end": 191.197,
+          "matched": false
+        },
+        {
+          "text": "dedicate",
+          "start": 191.197,
+          "end": 191.198,
+          "matched": false
+        },
+        {
+          "text": "to",
+          "start": 191.198,
+          "end": 191.199,
+          "matched": false
+        },
+        {
+          "text": "thee",
+          "start": 191.199,
+          "end": 191.201,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l99",
+      "text": "end these long and sleepless nights",
+      "start": 191.201,
+      "end": 191.325,
+      "words": [
+        {
+          "text": "end",
+          "start": 191.201,
+          "end": 191.202,
+          "matched": false
+        },
+        {
+          "text": "these",
+          "start": 191.202,
+          "end": 191.204,
+          "matched": false
+        },
+        {
+          "text": "long",
+          "start": 191.204,
+          "end": 191.205,
+          "matched": false
+        },
+        {
+          "text": "and",
+          "start": 191.205,
+          "end": 191.305,
+          "matched": true
+        },
+        {
+          "text": "sleepless",
+          "start": 191.305,
+          "end": 191.315,
+          "matched": false
+        },
+        {
+          "text": "nights",
+          "start": 191.315,
+          "end": 191.325,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l100",
+      "text": "end my waiting",
+      "start": 191.325,
+      "end": 191.356,
+      "words": [
+        {
+          "text": "end",
+          "start": 191.325,
+          "end": 191.336,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 191.336,
+          "end": 191.346,
+          "matched": false
+        },
+        {
+          "text": "waiting",
+          "start": 191.346,
+          "end": 191.356,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l101",
+      "text": "end my hunger",
+      "start": 191.356,
+      "end": 191.946,
+      "words": [
+        {
+          "text": "end",
+          "start": 191.356,
+          "end": 191.366,
+          "matched": false
+        },
+        {
+          "text": "my",
+          "start": 191.366,
+          "end": 191.526,
+          "matched": true
+        },
+        {
+          "text": "hunger",
+          "start": 191.586,
+          "end": 191.946,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l102",
+      "text": "there can be no sense of loss",
+      "start": 191.986,
+      "end": 193.607,
+      "words": [
+        {
+          "text": "there",
+          "start": 191.986,
+          "end": 192.186,
+          "matched": true
+        },
+        {
+          "text": "can",
+          "start": 192.226,
+          "end": 192.406,
+          "matched": true
+        },
+        {
+          "text": "be",
+          "start": 192.466,
+          "end": 192.606,
+          "matched": true
+        },
+        {
+          "text": "no",
+          "start": 192.666,
+          "end": 192.807,
+          "matched": true
+        },
+        {
+          "text": "sense",
+          "start": 192.867,
+          "end": 193.147,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 193.207,
+          "end": 193.287,
+          "matched": true
+        },
+        {
+          "text": "loss",
+          "start": 193.347,
+          "end": 193.607,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l103",
+      "text": "if that ball and i reunite",
+      "start": 193.667,
+      "end": 195.869,
+      "words": [
+        {
+          "text": "if",
+          "start": 193.667,
+          "end": 193.767,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 193.807,
+          "end": 193.967,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 194.027,
+          "end": 194.488,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 194.608,
+          "end": 194.708,
+          "matched": true
+        },
+        {
+          "text": "i",
+          "start": 195.028,
+          "end": 195.108,
+          "matched": true
+        },
+        {
+          "text": "reunite",
+          "start": 195.168,
+          "end": 195.869,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l104",
+      "text": "give me",
+      "start": 195.869,
+      "end": 196.669,
+      "words": [
+        {
+          "text": "give",
+          "start": 195.869,
+          "end": 196.269,
+          "matched": false
+        },
+        {
+          "text": "me",
+          "start": 196.269,
+          "end": 196.669,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l105",
+      "text": "give me",
+      "start": 196.669,
+      "end": 197.17,
+      "words": [
+        {
+          "text": "give",
+          "start": 196.669,
+          "end": 196.95,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 197.01,
+          "end": 197.17,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l106",
+      "text": "give me",
+      "start": 197.35,
+      "end": 197.85,
+      "words": [
+        {
+          "text": "give",
+          "start": 197.35,
+          "end": 197.59,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 197.65,
+          "end": 197.85,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l107",
+      "text": "give me",
+      "start": 198.671,
+      "end": 199.111,
+      "words": [
+        {
+          "text": "give",
+          "start": 198.671,
+          "end": 198.931,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 198.991,
+          "end": 199.111,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l108",
+      "text": "give me",
+      "start": 200.232,
+      "end": 200.812,
+      "words": [
+        {
+          "text": "give",
+          "start": 200.232,
+          "end": 200.512,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 200.572,
+          "end": 200.812,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l109",
+      "text": "the ball",
+      "start": 207.136,
+      "end": 212.06,
+      "words": [
+        {
+          "text": "the",
+          "start": 207.136,
+          "end": 207.317,
+          "matched": true
+        },
+        {
+          "text": "ball",
+          "start": 207.357,
+          "end": 212.06,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l110",
+      "text": "after midnight",
+      "start": 213.741,
+      "end": 215.382,
+      "words": [
+        {
+          "text": "after",
+          "start": 213.741,
+          "end": 214.161,
+          "matched": true
+        },
+        {
+          "text": "midnight",
+          "start": 214.261,
+          "end": 215.382,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l111",
+      "text": "wooooooooooooof",
+      "start": 215.382,
+      "end": 215.722,
+      "words": [
+        {
+          "text": "wooooooooooooof",
+          "start": 215.382,
+          "end": 215.722,
+          "matched": false
+        }
+      ]
+    }
+  ]
+}
