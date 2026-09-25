@@ -274,43 +274,23 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         print(f"warn {source_yaml.relative_to(DROP)}: no version field; inferred {variant_raw!r} from directory")
 
     variant_slug = slugify(variant_raw)
-    # Legacy showcase cuts used a trailing "-b" rather than an explicit
-    # side field. Preserve those as cassette Side B.
-    inferred_side = "B" if variant_slug.endswith("-b") else "A"
-
-    explicit_side = str(raw.get("side") or "").strip().upper()
-    side = explicit_side if explicit_side in {"A", "B"} else inferred_side
-    # Side may be explicit in YAML, but the curated archive historically also
-    # used ``-a`` / ``-b`` release-directory suffixes. Honour explicit YAML
-    # first; otherwise infer a cassette side from the version/directory name.
-    # When ``version: metal-b`` is used, treat that as the B side of the metal
-    # cut rather than inventing a separate SPECIAL genre called "metal b".
+    # v12.1: version names are opaque. Never infer cassette side from
+    # suffixes such as -a, -b or -c. A track called `one-off-c` is simply
+    # version `one-off-c` unless the YAML explicitly supplies `side:`.
     side_value = raw.get("side")
-    side_explicit = side_value is not None and str(side_value).strip() != ""
-    side_raw = str(side_value).strip() if side_explicit else ""
-    side = normalise_side(side_raw or "A")
-    supported_side_tokens = {"A", "B", "C", "1", "2", "3", "SIDE A", "SIDE B", "SIDE C", "SIDE-A", "SIDE-B", "SIDE-C"}
+    side_raw = str(side_value or "").strip()
+    side_explicit = bool(side_raw)
+    side = normalise_side(side_raw) if side_explicit else "A"
+
+    supported_side_tokens = {
+        "A", "B", "C",
+        "1", "2", "3",
+        "SIDE A", "SIDE B", "SIDE C",
+        "SIDE-A", "SIDE-B", "SIDE-C",
+    }
     if side_explicit and side_raw.upper() not in supported_side_tokens:
         print(f"warn {source_yaml.relative_to(DROP)}: unsupported side {side_raw!r}; defaulting to Side A")
-
-    if not side_explicit:
-        inferred_side = None
-        for suffix, candidate_side in (("-c", "C"), ("-b", "B"), ("-a", "A")):
-            if variant_slug.endswith(suffix) and variant_slug[:-2] in VARIANT_SLOTS:
-                variant_slug = variant_slug[:-2]
-                variant_raw = humanise(variant_slug)
-                inferred_side = candidate_side
-                break
-        if inferred_side is None:
-            folder_slug = slugify(source_yaml.parent.name)
-            stem_slug = slugify(source_yaml.stem)
-            for suffix, candidate_side in (("-c", "C"), ("-b", "B"), ("-a", "A")):
-                if folder_slug.endswith(suffix) or stem_slug.endswith(suffix):
-                    inferred_side = candidate_side
-                    break
-        if inferred_side:
-            side = inferred_side
-            print(f"info {source_yaml.relative_to(DROP)}: inferred Side {side} from curated filename/directory")
+        side = "A"
 
     # v12: genre is free-form metadata, not a fixed UI slot.
     # Prefer an explicit `genre:` field; retain `version:` as a backwards-

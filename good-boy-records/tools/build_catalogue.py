@@ -153,8 +153,8 @@ def validate_track(track: dict[str, Any], where: str, report: Report) -> None:
 
 
     side = str(track.get("side") or "A").upper()
-    if side not in {"A", "B"}:
-        report.error(where, f"side {side!r} must be A or B")
+    if side not in {"A", "B", "C"}:
+        report.error(where, f"side {side!r} must be A, B or C")
 
     art = track.get("artwork") or {}
     base = art.get("base") or "gbr-placeholder"

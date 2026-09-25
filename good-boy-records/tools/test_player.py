@@ -24,7 +24,7 @@ check("wheel has no fixed song capacity", "MAX_SONGS = 24" not in builder)
 check("nested showcase directories scanned", 'DROP.rglob("*.yaml")' in importer)
 check("MP3 and FLAC first-class", '".mp3"' in importer and '".flac"' in importer)
 check("Side metadata retained", "sideIds" in builder)
-check("legacy -b curated cuts infer Side B", 'variant_slug.endswith("-b")' in importer and 'inferred_side = "B"' in importer)
+check("version suffixes are not side metadata", 'Never infer cassette side' in importer)
 check("word timing support retained", "gbr-word-lyrics-v1" in importer and "lyrics.json" in importer)
 check("composition metadata retained", all(k in (cat.get("songs") or [{}])[0] for k in ["story", "style", "yamlUrl", "atr"]))
 
