@@ -1,24 +1,24 @@
 title: where-golden-flowers-grow
-version: pop?
+version: power-ballad
 model: minimax H3
-dit: fp16
-text_encoder: pruned int8 convrot
+dit: fp32
+text_encoder: bf16
 encoder_cfg: 1.7
-encoder_seed: 102044854598591
-top_k: 50
-sampler: euler
-scheduler: simple
+encoder_seed: 574064756625579
+top_k: 90
+sampler: dpmpp_2m_sde_gpu
+scheduler: ddim_uniform
 sampler_cfg: 1.7
-sampler_seed: 618237416104067
+sampler_seed: 910906025653165
 sampler_steps: 30
 inspiration: Original!
-inspirationyt: 
+inspirationyt:
 story: Celebrate the golden shadows of eternal return.
 caption: |
   Genre tambourine and phasing. Approximately 78 BPM. E major target key, in 6/8 timing. 1967 British psychedelic rock, whimsical psychedelic pop, and surreal pastoral atmosphere, opening into dynamic dreamy arrangement. Favour tape echo, psychedelic studio effects, warm vintage valve recording, and hazy analogue production, with the mix and spatial character appropriate to the stated era.
   Vocals Base the lead and supporting vocal treatment on dreamy male vocals and ethereal layered harmonies. Treat lyric control tags such as Whispered and Very distant as explicit performer or delivery changes; recurring named or gendered voices should remain recognisably stable. Keep lead, backing, choir, spoken, and character roles clearly separated, and use vocal effects only where they serve the stated style.
-  Arrangement Follow the lyric-section timeline Intro → Verse 1 → Instrumental → Verse 2 → Chorus → Instrumental → Verse 3 → Bridge → Instrumental → Chorus → Outro. Intro backwards guitar, Mellotron, distant cymbals; Instrumental: Response; Chorus dreamy layered harmonies; Instrumental: psychedelic guitar and Mellotron; Bridge: tempo loosens, tape effects; Instrumental: Swell; Outro: extended psychedelic improvisation; Outro: Backward guitar fade. Instrument lifecycle jangly electric guitar, backwards guitar, Mellotron strings, Hammond organ, melodic bass guitar, loose acoustic drums, and sitar-like guitar textures should enter, recede, and return as one evolving arrangement rather than remain as a static stack. Shape transitions through changes in density, register, articulation, percussion, and ambience so the energy curve remains clearly audible. Explicit exclusions avoid modern neo-psychedelia, shoegaze, indie rock, synthwave, heavy metal, modern synthesizers, electronic drums, glossy digital production, modern pop vocals.
-lyrics: |
+  Arrangement Follow the lyric-section timeline Intro to Verse 1 to Instrumental to Verse 2 to Chorus to Instrumental to Verse 3 to Bridge to Instrumental to Chorus to Outro. Intro backwards guitar, Mellotron, distant cymbals; Instrumental: Response; Chorus dreamy layered harmonies; Instrumental: psychedelic guitar and Mellotron; Bridge: tempo loosens, tape effects; Instrumental: Swell; Outro: extended psychedelic improvisation; Outro: Backward guitar fade. Instrument lifecycle jangly electric guitar, backwards guitar, Mellotron strings, Hammond organ, melodic bass guitar, loose acoustic drums, and sitar-like guitar textures should enter, recede, and return as one evolving arrangement rather than remain as a static stack. Shape transitions through changes in density, register, articulation, percussion, and ambience so the energy curve remains clearly audible. Explicit exclusions avoid modern neo-psychedelia, shoegaze, indie rock, synthwave, heavy metal, modern synthesizers, electronic drums, glossy digital production, modern pop vocals.
+lyrics: |-
   [intro]
   [verse]
   Come through the garden

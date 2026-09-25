@@ -1,0 +1,91 @@
+title: where-golden-flowers-grow
+version: folk
+model: minimax H3
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.7
+encoder_seed: 623686381335085
+top_k: 30
+sampler: dpmpp_2m_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 829145096506403
+sampler_steps: 30
+inspiration:
+inspirationyt:
+story:
+caption: |
+  Global Metadata
+  Basic Attributes: Upbeat Americana / Modern Folk-Country / Acoustic Singer-Songwriter, roughly 104–114 BPM, warm, organic and road-driven with a steady acoustic pulse. Global Emotional Progression: Rebuild the supplied song completely inside this style while preserving its narrative identity: a gentle surreal pastoral journey following Doja and Bam Bam through flowers, fields, river light and dreamlike afternoon wandering. Let repeated sections evolve through arrangement, register and intensity. Application Scenarios & Imagery: a hazy English summer landscape where two golden retrievers drift through fields that feel slightly more magical than they ought to. Sonics & Production Profile: Steel-string acoustic guitar, restrained live drums, electric or upright bass, pedal steel, mandolin and occasional organ/piano. Keep the production natural, warm and moderately wide with believable room sound. Avoid pop synths, disco kick patterns, metal guitars and arena-country bombast.
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Male), a soft clear tenor-baritone with dreamy phrasing, restrained vibrato and an unforced intimate tone. Vocal Style: Use clear storytelling phrasing with natural conversational timing. Verses stay close and grounded; choruses open into stronger sustained melody without excessive vocal theatrics. Harmony/Backing Vocals: Use simple close harmonies or low/high partner vocals in choruses; keep verses mostly solo. Role Continuity: Keep the male lead gentle and consistent; layered harmonies may bloom around refrains without overwhelming the pastoral character. Vocal FX: Short plate or room reverb, light compression and subtle tape warmth; preserve breath and consonant detail.
+  Arrangement
+  Section Timeline: [verse] to [instrumental] to [verse] to [chorus] to [instrumental] to [verse] to [bridge] to [instrumental] to [chorus] to [outro]. Instrument Lifecycle: Acoustic guitar provides continuous rhythmic identity. Bass and light drums enter early; pedal steel or mandolin answers vocal phrases; later choruses add fuller strumming and harmony without losing the intimate roots character. Section Directives: [intro]: Begin with acoustic picking or strumming and one memorable pedal-steel, fiddle or mandolin response. [verse]: Keep the groove light and narrative, with acoustic guitar, bass and restrained drums. [instrumental]: Let roots instruments trade short phrases over the established groove. [chorus]: Open into fuller strumming, stronger backbeat and simple vocal harmony while keeping the acoustic core dominant. [bridge]: Reduce to acoustic guitar and one secondary instrument, then rebuild naturally. [outro]: Return to a simpler acoustic texture and end with a warm natural cadence. Groove & Foundation Progression: All transitions must remain native to the stated genre. Preserve recognisable motifs across repeated sections while changing density, register, voicing or articulation. Keep the target genre dominant throughout.
+lyrics: |
+  [verse]
+  Come through the garden
+  The morning is blue
+  Sunlight is falling
+  In circles on you
+  Doja lies dreaming
+  Where yellow flowers grow
+  Bam hears a ball bounce
+  And suddenly goes
+  [instrumental]
+  [verse]
+  Golden as daylight
+  Soft as the rain
+  One watches quietly
+  One runs again
+  Where are you going?
+  Nobody knows
+  Over the hillside
+  Where the warm river flows
+  [chorus]
+  Run through the colours
+  Run through the light
+  Follow the fields
+  Till they fall out of sight
+  I'll be beside you
+  Wherever you roam
+  Two golden shadows
+  Will always come home
+  [instrumental]
+  [verse]
+  Doja sees kingdoms
+  Inside every tree
+  Bam sees a tennis ball
+  Floating at sea
+  One asks the questions
+  One simply runs
+  Both disappear
+  In the afternoon sun
+  [bridge]
+  Maybe the garden
+  Goes on without end
+  Maybe the pathway
+  Comes round again
+  Maybe tomorrow
+  We'll wake up and find
+  Golden pawprints
+  All over the sky
+  [instrumental]
+  [chorus]
+  Run through the colours
+  Run through the light
+  Follow the fields
+  Till they fall out of sight
+  I'll be beside you
+  Wherever you roam
+  Two golden shadows
+  Will always come home
+  [outro]
+  Doja in sunlight
+  Bam in the blue
+  Wherever this road goes
+  I'll follow you
+  [whispered]
+  Follow you...
+  Follow you...
+  [very distant]
+  Woof.
