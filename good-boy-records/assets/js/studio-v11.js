@@ -9,25 +9,21 @@
   try { catalogue = JSON.parse(catalogueNode.textContent || "{}"); }
   catch (error) { console.error("GBR catalogue parse failed", error); return; }
 
-  const GENRES = Array.isArray(catalogue.variantSlots) && catalogue.variantSlots.length
-    ? catalogue.variantSlots
-    : ["metal", "pop", "country", "disco", "orchestral", "special"];
-  const GENRE_LABEL = {
-    metal: "METAL/ROCK",
-    pop: "POP/HIP-HOP",
-    country: "COUNTRY/FOLK",
-    disco: "DISCO/ELECTRONIC",
-    orchestral: "ORCHESTRAL/CLASSICAL",
-    special: "SPECIAL",
-  };
-  const MAIN_CAPACITY = Math.max(1, Number(catalogue.maxSongs) || 14);
-  const EASTER_CAPACITY = Math.max(1, Number(catalogue.maxEasterTracks) || 10);
-  const WHEEL_STEP = 360 / MAIN_CAPACITY; // legacy capacity step; live wheel uses populated count
-  const songs = Array.isArray(catalogue.songs) ? catalogue.songs.slice(0, MAIN_CAPACITY) : [];
   const tracks = Array.isArray(catalogue.tracks) ? catalogue.tracks : [];
-  const easterTracks = Array.isArray(catalogue.easter && catalogue.easter.tracks) ? catalogue.easter.tracks.slice(0, EASTER_CAPACITY) : [];
+  const genres = Array.isArray(catalogue.genres) && catalogue.genres.length
+    ? catalogue.genres
+    : [...new Set(tracks.map((track) => track.genre || track.variantLabel || track.variantSlot).filter(Boolean))];
+  const EASTER_CAPACITY = Math.max(1, Number(catalogue.maxEasterTracks) || 10);
+  const easterTracks = Array.isArray(catalogue.easter && catalogue.easter.tracks)
+    ? catalogue.easter.tracks.slice(0, EASTER_CAPACITY)
+    : [];
+  const songs = Array.isArray(catalogue.songs) ? catalogue.songs : [];
   const trackById = Object.fromEntries(tracks.map((track) => [String(track.id), track]));
   const songById = Object.fromEntries(songs.map((song) => [String(song.id), song]));
+  const normalWheelCount = Math.max(1, tracks.length);
+  const activeTracks = () => state.easter ? easterTracks : tracks;
+  const activeCount = () => Math.max(1, activeTracks().length);
+  const wheelStep = () => 360 / activeCount();
 
   const el = {
     app: $("gbr11-app"), status: $("gbr11-status"), audio: $("gbr11-audio"),
@@ -51,15 +47,15 @@
   const sideButtons = [...document.querySelectorAll("[data-side]")];
 
   const state = {
-    browseGenre: recall("gbr11:browse-genre") || "disco",
+    browseGenre: "all",
     wheelIndex: 0,
     wheelSpin: 0,
     currentTrack: null,
     currentSong: null,
     quality: recall("gbr11:quality") || "stream",
     shuffle: recall("gbr11:shuffle") === "true",
-    lamp: numberOr(recall("gbr11:lamp"), .5),
-    volume: numberOr(recall("gbr11:volume"), .5),
+    lamp: numberOr(recall("gbr11:lamp"), .62),
+    volume: numberOr(recall("gbr11:volume"), .9),
     power: recall("gbr11:power") !== "false",
     easter: false,
     savedNormalTrack: null,
@@ -72,7 +68,6 @@
     lyricLastWord: -2,
     draggingWheel: null,
   };
-  if (!GENRES.includes(state.browseGenre)) state.browseGenre = GENRES.includes("disco") ? "disco" : GENRES[0];
 
   const graph = { ctx: null, source: null, analyser: null, analyserL: null, analyserR: null, freq: null, timeMain: null, timeL: null, timeR: null, ready: false };
   const lyricCache = new Map();
@@ -103,16 +98,8 @@
     image.src = src;
     artworkPreload.set(src, image);
   }
-  function preloadGenreArtwork(genre) {
-    songs.forEach((song) => {
-      const sides = sidesFor(song, genre);
-      if (sides.A) preloadArtwork(sides.A);
-      if (sides.B) preloadArtwork(sides.B);
-    });
-  }
-  function preloadAllWheelArtwork() {
-    GENRES.forEach(preloadGenreArtwork);
-  }
+  function preloadGenreArtwork() { tracks.forEach(preloadArtwork); }
+  function preloadAllWheelArtwork() { tracks.forEach(preloadArtwork); }
   function sourceFor(track) {
     const sources = track && track.audio && track.audio.sources || {};
     if (state.quality === "lossless") return sources.flac || sources.mp3 || Object.values(sources).find(Boolean) || null;
@@ -192,49 +179,30 @@
 
   /* ----------------------------------------------------------- genre bank */
   function renderGenreBank() {
+    if (!el.genreBank) return;
     el.genreBank.replaceChildren();
+    const plate = document.createElement("div");
+    plate.className = "gbr11-service-bank gbr11-all-tracks-bank";
     if (state.easter) {
-      const plate = document.createElement("div");
-      plate.className = "gbr11-service-bank";
       plate.innerHTML = `<span>SERVICE BANK</span><strong>REJECT MASTERS</strong><small>${String(easterTracks.length).padStart(2,"0")} FAILED CUTS</small>`;
-      el.genreBank.appendChild(plate);
-      return;
+    } else {
+      plate.innerHTML = `<span>CATALOGUE</span><strong>ALL TRACKS</strong><small>${tracks.length} TRACKS · ${genres.length} GENRES</small>`;
     }
-    GENRES.forEach((genre) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "gbr11-genre-button";
-      button.dataset.genre = genre;
-      button.textContent = GENRE_LABEL[genre] || humanise(genre).toUpperCase();
-      button.setAttribute("aria-pressed", genre === state.browseGenre ? "true" : "false");
-      button.addEventListener("click", () => setBrowseGenre(genre));
-      el.genreBank.appendChild(button);
-    });
+    el.genreBank.appendChild(plate);
   }
 
-  function setBrowseGenre(genre) {
-    if (state.easter || !GENRES.includes(genre)) return;
-    state.browseGenre = genre;
-    remember("gbr11:browse-genre", genre);
-    document.documentElement.dataset.browseGenre = genre;
-    [...el.genreBank.children].forEach((button) => button.setAttribute("aria-pressed", button.dataset.genre === genre ? "true" : "false"));
-    preloadGenreArtwork(genre);
-    renderWheelContents();
-    renderMobileRail();
-    updateThemeMeta();
-    /* Deliberate boundary: browsing a genre does not touch el.audio, currentTrack, currentTime or play state. */
-  }
+  function setBrowseGenre() { /* v12: genres are metadata, never navigation. */ }
 
   function updateThemeMeta() {
-    const colours = { metal: "#c64b3b", pop: "#df6f9f", country: "#d18b3c", disco: "#9e65ef", orchestral: "#b68d55", special: "#39bfa9" };
-    let meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = state.easter ? "#d64a35" : (colours[state.browseGenre] || "#c47b21");
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = state.easter ? "#d64a35" : "#c47b21";
   }
 
   /* --------------------------------------------------------------- wheel */
   function buildWheel() {
     el.wheelSlots.replaceChildren();
-    for (let index = 0; index < MAIN_CAPACITY; index++) {
+    const list = activeTracks();
+    list.forEach((track, index) => {
       const wrap = document.createElement("div");
       wrap.className = "gbr11-slot";
       wrap.dataset.index = String(index);
@@ -242,86 +210,68 @@
       button.type = "button";
       button.className = "gbr11-slot-card";
       button.dataset.index = String(index);
-      button.innerHTML = `<img alt="" loading="eager" decoding="async"><span class="gbr11-reject-label" hidden><b>REJECT ${String(index+1).padStart(2,"0")}</b><small></small></span>`;
+      button.innerHTML = `<img alt="" loading="eager" decoding="async"><span class="gbr11-reject-label" hidden><b></b><small></small></span><span class="gbr11-track-tag"></span>`;
       button.addEventListener("click", () => activateWheelSlot(index));
       wrap.appendChild(button);
       el.wheelSlots.appendChild(wrap);
-    }
+    });
+    state.wheelIndex = Math.min(state.wheelIndex, Math.max(0, list.length - 1));
     renderWheelContents();
     positionWheel();
   }
 
   function renderWheelContents() {
+    const list = activeTracks();
     [...el.wheelSlots.children].forEach((wrap, index) => {
       const button = wrap.querySelector(".gbr11-slot-card");
       const img = button.querySelector("img");
       const rejectLabel = button.querySelector(".gbr11-reject-label");
+      const tag = button.querySelector(".gbr11-track-tag");
+      const track = list[index] || null;
+      const ready = !!track;
 
       if (state.easter) {
-        const track = easterTracks[index] || null;
-        const ready = !!track;
         img.hidden = true;
-        img.removeAttribute("src");
-        img.alt = "";
         rejectLabel.hidden = false;
         rejectLabel.querySelector("b").textContent = `REJECT ${String(index+1).padStart(2,"0")}`;
-        rejectLabel.querySelector("small").textContent = track ? (track.displayTitle || track.filename || `FAILED MASTER ${index+1}`) : "EMPTY";
-        button.dataset.ready = ready ? "true" : "false";
-        button.disabled = !ready;
-        button.dataset.atGate = index === state.wheelIndex ? "true" : "false";
-        button.dataset.playing = !!(state.currentTrack && track && state.currentTrack.id === track.id) ? "true" : "false";
-        button.setAttribute("aria-label", ready ? `Reject ${index+1}: ${track.displayTitle || track.filename}` : `Reject slot ${index+1} empty`);
-        button.title = button.getAttribute("aria-label");
-        return;
+        rejectLabel.querySelector("small").textContent = track ? (track.displayTitle || track.filename || "FAILED MASTER") : "EMPTY";
+        if (tag) tag.hidden = true;
+      } else {
+        rejectLabel.hidden = true;
+        img.hidden = false;
+        const title = track ? (track.displayTitle || humanise(track.title || track.id)) : "";
+        const genre = track ? (track.genre || track.variantLabel || humanise(track.variantSlot || track.variant)) : "";
+        const src = artworkUrl(track,640,"webp");
+        if (img.getAttribute("src") !== src) img.src = src;
+        img.alt = track ? ((track.artwork && track.artwork.alt) || `Album artwork for ${title}`) : "";
+        img.onerror = () => { const fallback=artworkUrl(null,640,"webp"); if(!img.src.endsWith(fallback))img.src=fallback; };
+        if (tag) { tag.hidden = false; tag.innerHTML = `<strong>${esc(title)}</strong><small>${esc(genre)}</small>`; }
       }
 
-      rejectLabel.hidden = true;
-      img.hidden = false;
-      const song = songs[index] || null;
-      const track = song ? primaryTrack(song, state.browseGenre) : null;
-      const sideMap = song ? sidesFor(song, state.browseGenre) : {};
-      const ready = !!track;
-      const title = song ? (song.title || humanise(song.id)) : `EMPTY SLOT ${String(index+1).padStart(2,"0")}`;
-      const src = artworkUrl(track, 640, "webp");
-      if (img.getAttribute("src") !== src) img.src = src;
-      img.alt = ready ? ((track.artwork && track.artwork.alt) || `Album artwork for ${title}`) : "";
-      img.onerror = () => {
-        const fallback = artworkUrl(null, 640, "webp");
-        if (!img.src.endsWith(fallback)) img.src = fallback;
-      };
       button.dataset.ready = ready ? "true" : "false";
       button.disabled = !ready;
       button.dataset.atGate = index === state.wheelIndex ? "true" : "false";
-      const playing = !!(state.currentTrack && song && state.currentTrack.composition === song.id && state.currentTrack.variantSlot === state.browseGenre);
-      button.dataset.playing = playing ? "true" : "false";
-      const sideNote = sideMap.B ? " — Side A/B" : "";
-      button.setAttribute("aria-label", ready ? `${title} — ${track.variantLabel || humanise(state.browseGenre)}${sideNote}` : `${title} — ${humanise(state.browseGenre)} not built`);
+      button.dataset.playing = !!(state.currentTrack && track && state.currentTrack.id === track.id) ? "true" : "false";
+      const title = track ? (track.displayTitle || track.filename || humanise(track.title || track.id)) : "EMPTY";
+      const genre = track && !state.easter ? (track.genre || track.variantLabel || humanise(track.variantSlot || track.variant)) : "";
+      button.setAttribute("aria-label", track ? `${title}${genre ? ` — ${genre}` : ""}` : "Empty");
       button.title = button.getAttribute("aria-label");
     });
     positionWheel();
   }
 
-  function wheelItemCount() {
-    const count = state.easter ? easterTracks.length : songs.length;
-    return Math.max(1, Math.min(MAIN_CAPACITY, count));
-  }
-
-  function wheelStep() {
-    return 360 / wheelItemCount();
-  }
-
   function normaliseWheelIndex(index) {
-    const count = wheelItemCount();
+    const count = activeCount();
     return ((Number(index) || 0) % count + count) % count;
   }
 
   function setWheelIndex(index, immediate = false) {
-    const count = wheelItemCount();
-    const stepSize = 360 / count;
+    const count = activeCount();
+    const step = 360 / count;
     const next = normaliseWheelIndex(index);
     if (immediate) {
       state.wheelIndex = next;
-      state.wheelSpin = -next * stepSize;
+      state.wheelSpin = -next * step;
       positionWheel();
       return;
     }
@@ -330,107 +280,77 @@
     if (delta > half) delta -= count;
     if (delta < -half) delta += count;
     state.wheelIndex = next;
-    state.wheelSpin -= delta * stepSize;
+    state.wheelSpin -= delta * step;
     positionWheel();
   }
 
   function positionWheel() {
     if (!el.wheelStage || getComputedStyle(el.wheelStage).display === "none") return;
+    const count = activeCount();
+    const step = 360 / count;
     const rotorWidth = el.wheelSlots.offsetWidth;
     const rotorHeight = el.wheelSlots.offsetHeight;
     if (rotorWidth < 100 || rotorHeight < 100) return;
     const firstCard = el.wheelSlots.querySelector(".gbr11-slot-card");
-    const cardWidth = firstCard ? firstCard.offsetWidth : 96;
-    const cardHeight = firstCard ? firstCard.offsetHeight : 122;
-    const radius = Math.max(112, Math.min(rotorWidth / 2 - cardWidth / 2 - 18, rotorHeight / 2 - cardHeight / 2 - 18));
-    const count = wheelItemCount();
-    const stepSize = 360 / count;
+    const cardWidth = firstCard ? firstCard.offsetWidth : 92;
+    const cardHeight = firstCard ? firstCard.offsetHeight : 116;
+    const radius = Math.max(150, Math.min(rotorWidth/2-cardWidth/2-18,rotorHeight/2-cardHeight/2-18));
 
-    el.wheelSlots.style.setProperty("--wheel-spin", `${state.wheelSpin}deg`);
-    el.wheelDisc.style.setProperty("--wheel-spin", `${state.wheelSpin}deg`);
-    el.wheelSlots.style.setProperty("--slot-radius", `${radius}px`);
+    el.wheelSlots.style.setProperty("--wheel-spin",`${state.wheelSpin}deg`);
+    el.wheelDisc.style.setProperty("--wheel-spin",`${state.wheelSpin}deg`);
+    el.wheelSlots.style.setProperty("--slot-radius",`${radius}px`);
 
-    [...el.wheelSlots.children].forEach((wrap, index) => {
-      const occupied = index < count;
-      wrap.hidden = !occupied;
-      if (!occupied) return;
-
-      const baseAngle = index * stepSize;
-      const displayAngle = baseAngle + state.wheelSpin;
-      const radians = displayAngle * Math.PI / 180;
-      const depth = (Math.cos(radians) + 1) / 2;
-      const radialNudge = count >= 12 ? (index % 2 ? -8 : 4) : 0;
-      wrap.style.setProperty("--slot-angle", `${baseAngle}deg`);
-      wrap.style.setProperty("--slot-radius", `${Math.max(96, radius + radialNudge)}px`);
-      wrap.style.zIndex = String(4 + Math.round(depth * 6));
-      wrap.style.opacity = String(.70 + depth * .30);
-      const button = wrap.querySelector(".gbr11-slot-card");
-      button.style.setProperty("--card-counter", `${-displayAngle}deg`);
-      button.dataset.atGate = index === state.wheelIndex ? "true" : "false";
+    [...el.wheelSlots.children].forEach((wrap,index)=>{
+      const baseAngle=index*step;
+      const displayAngle=baseAngle+state.wheelSpin;
+      const radians=displayAngle*Math.PI/180;
+      const depth=(Math.cos(radians)+1)/2;
+      wrap.style.setProperty("--slot-angle",`${baseAngle}deg`);
+      wrap.style.zIndex=String(4+Math.round(depth*8));
+      wrap.style.opacity=String(.62+depth*.38);
+      const button=wrap.querySelector(".gbr11-slot-card");
+      button.style.setProperty("--card-counter",`${-displayAngle}deg`);
+      button.dataset.atGate=index===state.wheelIndex?"true":"false";
     });
   }
 
-  function rotateWheel(delta) {
-    const step = delta < 0 ? -1 : 1;
-    setWheelIndex(state.wheelIndex + step);
-  }
+  function rotateWheel(delta) { setWheelIndex(state.wheelIndex + (delta < 0 ? -1 : 1)); }
 
   function syncWheelToTrack(track) {
     if (!track) return;
-    if (state.easter || track.easter) {
-      const index = easterTracks.findIndex((item) => item.id === track.id);
-      if (index < 0 || index === state.wheelIndex) return;
-      setWheelIndex(index);
-      return;
-    }
-    const song = songForTrack(track);
-    if (!song) return;
-    const index = songs.findIndex((item) => item.id === song.id);
-    if (index < 0 || index === state.wheelIndex) return;
-    setWheelIndex(index);
+    const list = activeTracks();
+    const index = list.findIndex((item)=>item.id===track.id);
+    if(index>=0 && index!==state.wheelIndex)setWheelIndex(index);
   }
 
   function activateWheelSlot(index) {
     setWheelIndex(index);
-    const continuePlaying = !!(el.audio && !el.audio.paused && !el.audio.ended);
-    if (state.easter) {
-      const track = easterTracks[index] || null;
-      if (track) selectEasterTrack(track, continuePlaying);
-      return;
-    }
-    const song = songs[index];
-    const track = song ? primaryTrack(song, state.browseGenre) : null;
-    if (!track) return;
-    selectTrack(track, continuePlaying);
+    const continuePlaying=!!(el.audio&&!el.audio.paused&&!el.audio.ended);
+    const track=activeTracks()[index]||null;
+    if(!track)return;
+    if(state.easter)selectEasterTrack(track,continuePlaying);
+    else selectTrack(track,continuePlaying);
   }
 
   function renderMobileRail() {
     el.mobileRail.replaceChildren();
-    for (let index = 0; index < MAIN_CAPACITY; index++) {
-      const card = document.createElement("button");
-      card.type = "button";
-      card.className = "gbr11-mobile-card";
-      card.dataset.active = index === state.wheelIndex ? "true" : "false";
-      if (state.easter) {
-        const track = easterTracks[index] || null;
-        card.dataset.ready = track ? "true" : "false";
-        card.disabled = !track;
+    activeTracks().forEach((track,index)=>{
+      const card=document.createElement("button");
+      card.type="button";
+      card.className="gbr11-mobile-card";
+      card.dataset.active=index===state.wheelIndex?"true":"false";
+      if(state.easter){
         card.classList.add("gbr11-mobile-card--reject");
-        card.innerHTML = `<strong>REJECT ${String(index+1).padStart(2,"0")}</strong><small>${track ? esc(track.displayTitle || track.filename) : "EMPTY"}</small>`;
-        card.setAttribute("aria-label", track ? `Reject ${index+1}: ${track.displayTitle || track.filename}` : `Reject slot ${index+1} empty`);
-      } else {
-        const song = songs[index] || null;
-        const track = song ? primaryTrack(song, state.browseGenre) : null;
-        card.dataset.ready = track ? "true" : "false";
-        card.disabled = !track;
-        const title = song ? (song.title || humanise(song.id)) : "EMPTY";
-        card.innerHTML = `<img src="${artworkUrl(track,640,"webp")}" alt="${track ? esc(`Album artwork for ${title}`) : ""}" loading="eager" decoding="async">`;
-        card.setAttribute("aria-label", track ? `${title} — ${track.variantLabel || humanise(state.browseGenre)}` : `${title} — not built`);
+        card.innerHTML=`<strong>REJECT ${String(index+1).padStart(2,"0")}</strong><small>${esc(track.displayTitle||track.filename||"FAILED MASTER")}</small>`;
+      }else{
+        const title=track.displayTitle||humanise(track.title||track.id);
+        const genre=track.genre||track.variantLabel||humanise(track.variantSlot||track.variant);
+        card.innerHTML=`<img src="${artworkUrl(track,640,"webp")}" alt="${esc(`Album artwork for ${title}`)}" loading="eager" decoding="async"><span><strong>${esc(title)}</strong><small>${esc(genre)}</small></span>`;
       }
-      card.title = card.getAttribute("aria-label");
-      card.addEventListener("click", () => activateWheelSlot(index));
+      card.setAttribute("aria-label",track.displayTitle||track.filename||track.id);
+      card.addEventListener("click",()=>activateWheelSlot(index));
       el.mobileRail.appendChild(card);
-    }
+    });
   }
 
   function setupWheelInput() {
@@ -458,7 +378,7 @@
       if (steps !== drag.steps) {
         drag.steps = steps;
         state.wheelIndex = normaliseWheelIndex(drag.index + steps);
-        state.wheelSpin = drag.spin - steps * wheelStep();
+        state.wheelSpin = drag.spin - steps * WHEEL_STEP;
         positionWheel();
       }
     });
@@ -513,7 +433,7 @@
     el.detailsButton.disabled = false;
     const song = songForTrack(track) || {};
     const title = track.displayTitle || song.title || humanise(track.title);
-    const variant = track.variantLabel || humanise(track.variantSlot || track.variant);
+    const variant = track.genre || track.variantLabel || humanise(track.variantSlot || track.variant);
     el.releaseLabel.textContent = `${variant.toUpperCase()} MASTER`;
     if (el.cardBackTitle) el.cardBackTitle.textContent = title;
     if (el.releaseCard) el.releaseCard.dataset.flipped = "false";
@@ -700,8 +620,7 @@
   async function playAudio() {
     if (!state.power) { setStatus("POWER OFF", ""); return; }
     if (!state.currentTrack) {
-      const song = songs[state.wheelIndex] || songs[0];
-      const track = song ? primaryTrack(song, state.browseGenre) : null;
+      const track = tracks[state.wheelIndex] || tracks[0] || null;
       if (track) selectTrack(track, false);
     }
     if (!state.currentTrack) return;
@@ -734,7 +653,7 @@
       return;
     }
     const title = track.displayTitle || humanise(track.title);
-    const variant = track.variantLabel || humanise(track.variantSlot || track.variant);
+    const variant = track.genre || track.variantLabel || humanise(track.variantSlot || track.variant);
     const song = songForTrack(track);
     const sides = song ? sidesFor(song, track.variantSlot) : {};
     el.nowTitle.textContent = title;
@@ -765,74 +684,28 @@
     selectTrack(target, continuePlaying);
   }
 
-  function tracksForGenre(genre) {
-    const out = [];
-    songs.forEach((song) => {
-      const sides = sidesFor(song, genre);
-      if (sides.A) out.push(sides.A);
-      if (sides.B) out.push(sides.B);
-    });
-    return out;
-  }
   function allPlayableTracks() {
-    const seen = new Set();
-    const out = [];
-    GENRES.forEach((genre) => {
-      tracksForGenre(genre).forEach((track) => {
-        const id = String(track && track.id || "");
-        if (!id || seen.has(id) || !sourceFor(track)) return;
-        seen.add(id);
-        out.push(track);
-      });
-    });
-    return out;
+    return tracks.filter((track)=>sourceFor(track));
   }
   function stepPlayback(delta) {
-    if (!state.currentTrack) return;
-    if (state.easter) {
-      const list = easterTracks.filter((track) => sourceFor(track));
-      if (!list.length) return;
-      let index = list.findIndex((track) => track.id === state.currentTrack.id);
-      index = index < 0 ? 0 : (index + delta + list.length) % list.length;
-      selectEasterTrack(list[index], !el.audio.paused && !el.audio.ended);
-      return;
-    }
-    const list = tracksForGenre(state.currentTrack.variantSlot);
-    if (!list.length) return;
-    let index = list.findIndex((track) => track.id === state.currentTrack.id);
-    index = index < 0 ? 0 : (index + delta + list.length) % list.length;
-    selectTrack(list[index], !el.audio.paused && !el.audio.ended);
+    if(!state.currentTrack)return;
+    const list=state.easter?easterTracks.filter(sourceFor):allPlayableTracks();
+    if(!list.length)return;
+    let index=list.findIndex((track)=>track.id===state.currentTrack.id);
+    index=index<0?0:(index+delta+list.length)%list.length;
+    if(state.easter)selectEasterTrack(list[index],!el.audio.paused&&!el.audio.ended);
+    else selectTrack(list[index],!el.audio.paused&&!el.audio.ended);
   }
-
   function nextPlayback() {
-    if (!state.currentTrack) return;
-    if (state.easter) {
-      const list = easterTracks.filter((track) => sourceFor(track));
-      if (!list.length) return;
-      if (state.shuffle) {
-        const pool = list.filter((track) => track.id !== state.currentTrack.id);
-        if (!pool.length) return;
-        selectEasterTrack(pool[Math.floor(Math.random() * pool.length)], true);
-      } else {
-        stepPlayback(1);
-      }
-      return;
-    }
-    if (state.shuffle) {
-      const list = allPlayableTracks();
-      const pool = list.filter((track) => track.id !== state.currentTrack.id);
-      if (!pool.length) return;
-      const next = pool[Math.floor(Math.random() * pool.length)];
-      /* Shuffle is playback navigation, not passive browsing. Move the bank
-         to the shuffled cut so the wheel immediately shows the master that
-         is actually playing, even when the genre changes. */
-      if (next.variantSlot && GENRES.includes(next.variantSlot) && next.variantSlot !== state.browseGenre) {
-        setBrowseGenre(next.variantSlot);
-      }
-      selectTrack(next, true);
-      return;
-    }
-    stepPlayback(1);
+    if(!state.currentTrack)return;
+    const list=state.easter?easterTracks.filter(sourceFor):allPlayableTracks();
+    if(!list.length)return;
+    if(state.shuffle){
+      const pool=list.filter((track)=>track.id!==state.currentTrack.id);
+      if(!pool.length)return;
+      const next=pool[Math.floor(Math.random()*pool.length)];
+      if(state.easter)selectEasterTrack(next,true); else selectTrack(next,true);
+    }else stepPlayback(1);
   }
 
   function setQuality(quality, userChange = true) {
@@ -1136,10 +1009,11 @@
     state.easter = next;
     el.app.dataset.easter = state.easter ? "true" : "false";
     document.documentElement.dataset.easter = state.easter ? "true" : "false";
-    if (el.magazineModeLabel) el.magazineModeLabel.textContent = state.easter ? "SERVICE BANK // REJECT MASTERS" : `${MAIN_CAPACITY} SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK`;
+    if (el.magazineModeLabel) el.magazineModeLabel.textContent = state.easter ? "SERVICE BANK // REJECT MASTERS" : `${tracks.length} TRACKS · ONE WHEEL · ${genres.length} GENRES`;
     renderGenreBank();
     state.wheelIndex = 0;
-    renderWheelContents();
+    state.wheelSpin = 0;
+    buildWheel();
     renderMobileRail();
 
     if (state.easter) {
@@ -1148,11 +1022,6 @@
       setStatus("SERVICE BANK", "fault");
     } else {
       const restore = state.savedNormalTrack || initialTrack();
-      if (state.savedBrowseGenre && GENRES.includes(state.savedBrowseGenre)) {
-        state.browseGenre = state.savedBrowseGenre;
-        remember("gbr11:browse-genre", state.browseGenre);
-        document.documentElement.dataset.browseGenre = state.browseGenre;
-      }
       if (restore) {
         selectTrack(restore, false);
         const restoreTime = state.savedNormalTime;
@@ -1250,29 +1119,36 @@
   }
 
   function initialTrack() {
-    const requested = new URLSearchParams(location.search).get("track");
-    if (requested && trackById[requested]) return trackById[requested];
-    const firstSong = songs[0];
-    if (!firstSong) return tracks[0] || null;
-    return primaryTrack(firstSong, state.browseGenre) || GENRES.map((genre)=>primaryTrack(firstSong,genre)).find(Boolean) || tracks[0] || null;
+    const requested=new URLSearchParams(location.search).get("track");
+    if(requested&&trackById[requested])return trackById[requested];
+    return tracks[0]||null;
   }
 
   function init() {
-    el.app.dataset.easter = "false";
-    document.documentElement.dataset.easter = "false";
-    document.documentElement.dataset.browseGenre = state.browseGenre;
-    renderGenreBank(); preloadAllWheelArtwork(); buildWheel(); renderMobileRail(); setupWheelInput(); buildVolumeMeter(); setupFolders(); wireControls();
-    el.shuffle.setAttribute("aria-pressed", state.shuffle ? "true" : "false");
-    applyVolume(false); paintQuality();
-    const track = initialTrack();
-    if (track) {
-      const song = songForTrack(track); const idx = songs.findIndex((item)=>item.id===(song&&song.id)); if(idx>=0)setWheelIndex(idx,true);
+    el.app.dataset.easter="false";
+    document.documentElement.dataset.easter="false";
+    renderGenreBank();
+    preloadAllWheelArtwork();
+    buildWheel();
+    renderMobileRail();
+    setupWheelInput();
+    buildVolumeMeter();
+    setupFolders();
+    wireControls();
+    if(el.magazineModeLabel)el.magazineModeLabel.textContent=`${tracks.length} TRACKS · ONE WHEEL · ${genres.length} GENRES`;
+    el.shuffle.setAttribute("aria-pressed",state.shuffle?"true":"false");
+    applyVolume(false);
+    paintQuality();
+    const track=initialTrack();
+    if(track){
+      const idx=tracks.findIndex((item)=>item.id===track.id);
+      if(idx>=0)setWheelIndex(idx,true);
       selectTrack(track,false);
-      setBrowseGenre(track.variantSlot && GENRES.includes(track.variantSlot) ? track.variantSlot : state.browseGenre);
       positionWheel();
-    } else { setStatus("EMPTY","fault"); }
-    setPower(state.power, false);
-    updateTransport(); updateThemeMeta();
+    }else setStatus("EMPTY","fault");
+    setPower(state.power,false);
+    updateTransport();
+    updateThemeMeta();
     animationFrame=requestAnimationFrame(animate);
   }
 

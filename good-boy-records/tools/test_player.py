@@ -16,15 +16,14 @@ cat = json.loads((ROOT / "data/catalogue.json").read_text(encoding="utf-8"))
 
 checks = []
 def check(name, ok): checks.append((name, bool(ok)))
-slots = ["metal", "pop", "country", "disco", "orchestral", "special", "one-off"]
 
 # Catalogue and curated-source contract
 check("catalogue format retained", cat.get("format") == "gbr-showcase-v10.5")
-check("fixed six genre slots", cat.get("variantSlots") == slots)
-check("maximum twenty four songs explicit", "MAX_SONGS = 24" in builder)
+check("genres are dynamic metadata", "variantSlots" not in cat and isinstance(cat.get("genres"), list))
+check("wheel has no fixed song capacity", "MAX_SONGS = 24" not in builder)
 check("nested showcase directories scanned", 'DROP.rglob("*.yaml")' in importer)
 check("MP3 and FLAC first-class", '".mp3"' in importer and '".flac"' in importer)
-check("Side B support retained", "sideIds" in builder and 'for side in ("A", "B")' in builder)
+check("Side metadata retained", "sideIds" in builder)
 check("legacy -b curated cuts infer Side B", 'variant_slug.endswith("-b")' in importer and 'inferred_side = "B"' in importer)
 check("word timing support retained", "gbr-word-lyrics-v1" in importer and "lyrics.json" in importer)
 check("composition metadata retained", all(k in (cat.get("songs") or [{}])[0] for k in ["story", "style", "yamlUrl", "atr"]))
@@ -173,12 +172,7 @@ check("artwork is never genre-filtered", ".gbr11-release-art {" in css and "filt
 
 
 # Hidden reject/easter bank
-check(
-    "easter directory is reserved from normal importer",
-    "def reserved_bank" in importer
-    and '{"easter", "one-off", "oneoff"}' in importer
-    and "reserved_bank(path) is None" in importer
-)
+check("easter directory is reserved from normal importer", 'p.name.lower() != "easter"' in importer and 'is_easter_path' in importer)
 check("easter bank scans metadata-free audio directly", 'EASTER_DIR = ROOT / "showcase" / "easter"' in builder and 'def load_easter_tracks' in builder and 'EASTER_AUDIO_EXTS' in builder)
 check("easter bank is capped at ten masters", 'groups = groups[:MAX_EASTER_TRACKS]' in builder)
 check("easter formats with same stem are paired", 'grouped.setdefault' in builder and '"files": {}' in builder)

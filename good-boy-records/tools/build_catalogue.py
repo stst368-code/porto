@@ -34,8 +34,10 @@ SLEEVE_DIR = ROOT / "assets" / "img" / "sleeves"
 AUDIO_DIR = ROOT / "assets" / "audio" / "tracks"  # legacy only
 ATR_AUDIO_DIR = ROOT / "assets" / "audio" / "atr"
 LEGACY_MUSIC_DIR = ROOT / "music"
-VARIANT_SLOTS = ("metal", "pop", "country", "disco", "orchestral", "special", "one-off")
-MAX_SONGS = 24
+# v12: no fixed genre taxonomy and no wheel song limit.
+# Genres are discovered from the track YAML records.
+VARIANT_SLOTS: tuple[str, ...] = ()
+MAX_SONGS = None
 MAX_EASTER_TRACKS = 10
 EASTER_DIR = ROOT / "showcase" / "easter"
 EASTER_AUDIO_EXTS = (".mp3", ".flac", ".wav", ".m4a", ".ogg", ".opus", ".webm")
@@ -149,9 +151,6 @@ def validate_track(track: dict[str, Any], where: str, report: Report) -> None:
         if not track.get(key):
             report.error(where, f"missing {key}")
 
-    slot = track.get("variantSlot")
-    if slot not in VARIANT_SLOTS:
-        report.error(where, f"variantSlot {slot!r} is not one of {', '.join(VARIANT_SLOTS)}")
 
     side = str(track.get("side") or "A").upper()
     if side not in {"A", "B"}:
@@ -229,7 +228,6 @@ def load_song_meta(report: Report) -> dict[str, dict[str, Any]]:
 def load_tracks(report: Report) -> list[dict[str, Any]]:
     tracks: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
-    seen_slots: set[tuple[str, str, str]] = set()
 
     for path in sorted(TRACK_DIR.glob("*.yaml")):
         try:
@@ -251,26 +249,16 @@ def load_tracks(report: Report) -> list[dict[str, Any]]:
             continue
         seen_ids.add(track_id)
 
-        key = (
-            str(track.get("composition") or ""),
-            str(track.get("variantSlot") or ""),
-            str(track.get("side") or "A"),
-        )
-        if key in seen_slots:
-            report.error(path.name, f"song {key[0]!r} has more than one {key[1]!r} Side {key[2]}")
-            continue
-        seen_slots.add(key)
 
         validate_track(track, path.name, report)
         tracks.append(track)
 
-    slot_rank = {name: index for index, name in enumerate(VARIANT_SLOTS)}
-    side_rank = {"A": 0, "B": 1}
+    side_rank = {"A": 0, "B": 1, "C": 2}
     tracks.sort(key=lambda t: (
         str(t.get("displayTitle") or t.get("title") or t.get("composition") or "").casefold(),
-        slot_rank.get(str(t.get("variantSlot")), 99),
+        str(t.get("genre") or t.get("variantLabel") or t.get("variantSlot") or "").casefold(),
         side_rank.get(str(t.get("side") or "A"), 99),
-        str(t.get("variantLabel") or "").casefold(),
+        str(t.get("id") or "").casefold(),
     ))
     return tracks
 
@@ -308,10 +296,7 @@ def group_songs(tracks: list[dict[str, Any]], song_meta: dict[str, dict[str, Any
             for slot, side_map in sides_by_slot.items()
             if side_map.get("A") or side_map.get("B")
         }
-        lead = variants_by_slot.get("disco") or next(
-            (variants_by_slot.get(slot) for slot in VARIANT_SLOTS if variants_by_slot.get(slot)),
-            releases[0],
-        )
+        lead = releases[0]
         meta = song_meta.get(composition) or {}
         songs.append({
             "id": composition,
@@ -327,76 +312,40 @@ def group_songs(tracks: list[dict[str, Any]], song_meta: dict[str, dict[str, Any
     songs.sort(key=lambda song: str(song["title"]).casefold())
     return songs
 
-def render_wheel_library(songs: list[dict[str, Any]]) -> str:
-    """Render the configured number of physical song positions.
+def render_wheel_library(tracks: list[dict[str, Any]]) -> str:
+    """Render one physical wheel position per track.
 
-    The genre is selected independently by the six bank buttons. Runtime JS
-    swaps the track id, artwork, ready state and label for the chosen genre,
-    so the wheel remains one position per song rather than duplicating positions by genre.
-    Optional Side B remains attached to the same song/genre position.
+    The browser rebuilds the wheel dynamically too, but keeping a complete
+    server-rendered library preserves useful HTML before JS starts.
     """
     cells: list[str] = []
-    song_slots = list(songs[:MAX_SONGS])
-    while len(song_slots) < MAX_SONGS:
-        song_slots.append(None)
-
-    for song_index, song in enumerate(song_slots):
-        angle = song_index * (360 / MAX_SONGS)
-        if song is None:
-            title = f"Empty {song_index + 1:02d}"
-            song_id = ""
-            label = f"SLOT {song_index + 1:02d}"
-        else:
-            title = str(song["title"])
-            song_id = str(song["id"])
-            label = title
-
-        aria = f"{title} — select a genre cut"
+    count = max(1, len(tracks))
+    for index, track in enumerate(tracks):
+        angle = index * (360 / count)
+        title = str(track.get("displayTitle") or track.get("title") or track.get("id"))
+        genre = str(track.get("genre") or track.get("variantLabel") or track.get("variantSlot") or "Uncategorised")
         cells.append(
-            f'<div class="showcase-wheel-slot" data-wheel-index="{song_index}" data-song="{esc(song_id)}" '
-            f'data-song-index="{song_index}" data-has-side-b="false" '
+            f'<div class="showcase-wheel-slot" data-wheel-index="{index}" data-track="{esc(track["id"])}" '
             f'style="--base-angle:{angle:.3f}deg;--display-angle:{angle:.3f}deg">'
-            f'<button class="showcase-wheel-cassette" type="button" data-track="" '
-            f'data-song="{esc(song_id)}" data-slot="" data-ready="false" '
-            f'style="--cassette-art:url(\'assets/img/sleeves/gbr-placeholder-640.webp\')" '
-            f'aria-label="{esc(aria)}" title="{esc(aria)}" disabled>'
-            f'<span class="showcase-wheel-cassette__index">{song_index + 1:02d}</span>'
-            f'<span class="showcase-wheel-cassette__label">{esc(label)}</span>'
-            f'<span class="showcase-wheel-cassette__state">SELECT GENRE</span>'
-            '</button></div>'
+            f'<button class="showcase-wheel-cassette" type="button" data-track="{esc(track["id"])}" '
+            f'aria-label="{esc(title)} — {esc(genre)}">{picture(track, lazy=False)}'
+            f'<span class="showcase-wheel-label"><strong>{esc(title)}</strong><small>{esc(genre)}</small></span>'
+            f'</button></div>'
         )
     return "".join(cells)
 
-def render_mobile_library(songs: list[dict[str, Any]]) -> str:
-    groups: list[str] = []
-    for genre in VARIANT_SLOTS:
-        cards: list[str] = []
-        for index in range(MAX_SONGS):
-            song = songs[index] if index < len(songs) else None
-            track = song["variants"].get(genre) if song else None
-            side_map = song.get("sides", {}).get(genre, {}) if song else {}
-            title = str(song["title"]) if song else f"Empty {index + 1:02d}"
-            ready = track is not None
-            track_id = str(track["id"]) if ready else ""
-            song_id = str(song["id"]) if song else ""
-            has_b = bool(side_map.get("B"))
-            disabled = "" if ready else " disabled"
-            state = (track.get("variantLabel") if track else None) or ("READY" if ready else "NOT CUT")
-            if ready and has_b:
-                state = f"{state} · A/B"
-            cards.append(
-                f'<button class="showcase-mobile-cassette" type="button" data-track="{esc(track_id)}" '
-                f'data-song="{esc(song_id)}" data-slot="{genre}" data-has-side-b="{"true" if has_b else "false"}" '
-                f'data-ready="{"true" if ready else "false"}"{disabled}>'
-                f'<span>{index + 1:02d}</span><strong>{esc(title)}</strong>'
-                f'<small>{esc(state)}</small>'
-                '</button>'
-            )
-        groups.append(
-            f'<section class="showcase-mobile-genre" data-mobile-genre="{genre}">'
-            f'<h2>{esc(genre.title())}</h2><div class="showcase-mobile-genre__rail">{"".join(cards)}</div></section>'
+
+def render_mobile_library(tracks: list[dict[str, Any]]) -> str:
+    cards: list[str] = []
+    for index, track in enumerate(tracks):
+        title = str(track.get("displayTitle") or track.get("title") or track.get("id"))
+        genre = str(track.get("genre") or track.get("variantLabel") or track.get("variantSlot") or "Uncategorised")
+        cards.append(
+            f'<button class="showcase-mobile-card" type="button" data-track="{esc(track["id"])}" '
+            f'data-wheel-index="{index}" aria-label="{esc(title)} — {esc(genre)}">'
+            f'{picture(track)}<span><strong>{esc(title)}</strong><small>{esc(genre)}</small></span></button>'
         )
-    return "".join(groups)
+    return "".join(cards)
 
 def build(strict: bool) -> int:
     if LEGACY_MUSIC_DIR.exists():
@@ -414,14 +363,13 @@ def build(strict: bool) -> int:
 
     songs = group_songs(tracks, song_meta)
     easter_tracks = load_easter_tracks(report)
-    if len(songs) > MAX_SONGS:
-        report.error("showcase", f"contains {len(songs)} songs; rotary magazine supports a maximum of {MAX_SONGS}")
-        return report.summarise(strict)
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     catalogue = {
         "format": "gbr-showcase-v10.5",
-        "variantSlots": list(VARIANT_SLOTS),
-        "maxSongs": MAX_SONGS,
+        "genres": sorted({
+            str(track.get("genre") or track.get("variantLabel") or track.get("variantSlot") or "Uncategorised")
+            for track in tracks
+        }, key=str.casefold),
         "maxEasterTracks": MAX_EASTER_TRACKS,
         "songCount": len(songs),
         "variantCount": len(tracks),
@@ -433,9 +381,9 @@ def build(strict: bool) -> int:
                 "style": song.get("style") or {},
                 "yamlUrl": song.get("yamlUrl"),
                 "atr": song.get("atr") or [],
-                "variantIds": {slot: song["variants"][slot]["id"] for slot in VARIANT_SLOTS if slot in song["variants"]},
+                "variantIds": {slot: track["id"] for slot, track in song["variants"].items()},
                 "sideIds": {
-                    slot: {side: side_map[side]["id"] for side in ("A", "B") if side in side_map}
+                    slot: {side: track["id"] for side, track in side_map.items()}
                     for slot, side_map in song.get("sides", {}).items()
                 },
             }
@@ -454,8 +402,8 @@ def build(strict: bool) -> int:
     output = render(template, {
         "ROOT": "",
         "FOLDERS": build_folders.build(report.warn),
-        "WHEEL_LIBRARY": render_wheel_library(songs),
-        "MOBILE_LIBRARY": render_mobile_library(songs),
+        "WHEEL_LIBRARY": render_wheel_library(tracks),
+        "MOBILE_LIBRARY": render_mobile_library(tracks),
         "CATALOGUE_JSON": json.dumps(catalogue, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/"),
         "SONG_COUNT": str(len(songs)),
         "VARIANT_COUNT": str(len(tracks)),
@@ -465,7 +413,7 @@ def build(strict: bool) -> int:
 
     print(f"Built {len(songs)} song(s), {len(tracks)} recording(s)")
     print(f"  easter bank     {len(easter_tracks)} hidden reject master(s)")
-    print(f"  target matrix   {MAX_SONGS} song positions × {len(VARIANT_SLOTS)} selectable genre cuts (+ optional Side B recordings)")
+    print(f"  wheel           {len(tracks)} independent track position(s); genres are YAML metadata")
     print(f"  catalogue.json  {(DATA_DIR / 'catalogue.json').stat().st_size / 1024:.1f} KB")
     print(f"  index.html      {(ROOT / 'index.html').stat().st_size / 1024:.1f} KB")
     return report.summarise(strict)

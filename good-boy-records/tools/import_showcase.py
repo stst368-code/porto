@@ -312,7 +312,11 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
             side = inferred_side
             print(f"info {source_yaml.relative_to(DROP)}: inferred Side {side} from curated filename/directory")
 
-    slot = variant_slug if variant_slug in VARIANT_SLOTS else "special"
+    # v12: genre is free-form metadata, not a fixed UI slot.
+    # Prefer an explicit `genre:` field; retain `version:` as a backwards-
+    # compatible fallback so the existing showcase can migrate incrementally.
+    genre_raw = str(raw.get("genre") or variant_raw or "Uncategorised").strip()
+    slot = slugify(genre_raw)
     base_release_id = slugify(f"{title}-{variant_slug}")
     release_id = base_release_id if side == "A" else slugify(f"{base_release_id}-{side.lower()}")
     expected_dir = base_release_id
@@ -369,9 +373,9 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
             "usable": usable,
         }
 
-    special_label = None
-    if slot == "special":
-        special_label = str(raw.get("special_label") or raw.get("special") or (variant_raw if variant_slug != "special" else "Special")).strip()
+    # Human-facing genre can contain any wording; the slug is only used
+    # internally for grouping/side lookup.
+    special_label = str(raw.get("genre") or raw.get("special_label") or raw.get("special") or variant_raw or "Uncategorised").strip()
 
     record = {
         "id": release_id,
@@ -382,6 +386,7 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         "variant": variant_slug,
         "variantSlot": slot,
         "variantLabel": special_label or humanise(variant_raw),
+        "genre": special_label or humanise(variant_raw),
         "side": side,
         "model": {
             "name": str(raw.get("model") or "").strip(),

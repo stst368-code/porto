@@ -1550,3 +1550,104 @@ html[data-easter="true"] .gbr11-lyric-line { color:#d45b46;font-family:var(--gbr
   opacity:1;
   pointer-events:auto;
 }
+
+
+/* =====================================================================
+   v12 — SINGLE CATALOGUE / BIG HALF-OFFSCREEN WHEEL
+   Genre is metadata only. The genre bank is now a status plate.
+   ===================================================================== */
+
+.gbr11-genre-bank{
+  display:block!important;
+  padding:.55rem .7rem!important;
+}
+.gbr11-genre-button{display:none!important}
+.gbr11-all-tracks-bank{
+  width:100%;
+  min-height:54px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:.8rem;
+  padding:.55rem .75rem;
+  border:1px solid var(--gbr-line);
+  background:linear-gradient(180deg,#17100b,#0b0705);
+  font-family:var(--gbr-mono);
+}
+.gbr11-all-tracks-bank span,
+.gbr11-all-tracks-bank small{font-size:.55rem;color:var(--gbr-muted);letter-spacing:.08em}
+.gbr11-all-tracks-bank strong{font-size:.8rem;color:var(--gbr-hot);letter-spacing:.09em}
+
+.gbr11-track-tag{
+  position:absolute;
+  left:5px;right:5px;bottom:5px;
+  padding:4px 5px;
+  background:rgba(5,3,2,.78);
+  border-top:1px solid rgba(255,194,100,.38);
+  text-align:left;
+  pointer-events:none;
+}
+.gbr11-track-tag strong,
+.gbr11-track-tag small{
+  display:block;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.gbr11-track-tag strong{font:700 .43rem/1.2 var(--gbr-mono);color:var(--gbr-text)}
+.gbr11-track-tag small{margin-top:2px;font:500 .36rem/1.15 var(--gbr-mono);color:var(--gbr-hot)}
+
+@media (min-width:1181px){
+  .gbr11-machine{
+    grid-template-columns:minmax(620px,1.28fr) calc(var(--gbr11-cover-size) + var(--gbr11-release-gutter)) var(--gbr11-console-width)!important;
+  }
+  .gbr11-magazine{
+    position:relative;
+    overflow:visible!important;
+  }
+  .gbr11-wheel-stage{
+    position:relative;
+    width:calc(100% + 250px)!important;
+    min-height:650px!important;
+    margin:.15rem 0 .3rem -290px!important;
+    overflow:visible!important;
+    container-type:size;
+  }
+  .gbr11-wheel-disc,
+  .gbr11-wheel-slots{
+    width:min(96cqw,96cqh,920px)!important;
+    max-width:none!important;
+  }
+  .gbr11-wheel-stage::before{
+    width:min(calc(96cqw + 18px),938px)!important;
+    max-width:none!important;
+  }
+  .gbr11-slot{
+    width:clamp(58px,4.5vw,82px)!important;
+  }
+  .gbr11-slot-card{
+    box-shadow:0 12px 24px rgba(0,0,0,.62);
+  }
+}
+
+/* Mobile keeps the existing rail but every card is now a track. */
+@media (max-width:1180px){
+  .gbr11-genre-bank{padding:.4rem!important}
+  .gbr11-all-tracks-bank{min-height:42px}
+  .gbr11-mobile-card span{
+    position:absolute;
+    left:4px;right:4px;bottom:4px;
+    padding:4px;
+    background:rgba(5,3,2,.82);
+    text-align:left;
+  }
+  .gbr11-mobile-card span strong,
+  .gbr11-mobile-card span small{
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .gbr11-mobile-card span strong{font:.48rem/1.2 var(--gbr-mono)}
+  .gbr11-mobile-card span small{font:.4rem/1.2 var(--gbr-mono);color:var(--gbr-hot)}
+}
