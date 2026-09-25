@@ -380,19 +380,27 @@
     return phase;
   }
 
-  function bestWallGrid(count, stageWidth, stageHeight) {
-    let best = { cols: Math.max(1, count), rows: 1, tile: 0, empty: 0 };
-    const minCols = Math.max(1, Math.floor(Math.sqrt(count * stageWidth / Math.max(1, stageHeight)) * 0.6));
-    const maxCols = Math.max(minCols, Math.ceil(Math.sqrt(count * stageWidth / Math.max(1, stageHeight)) * 1.8));
-    for (let cols = minCols; cols <= Math.min(count, maxCols + 8); cols += 1) {
-      const rows = Math.ceil(count / cols);
-      const tile = Math.min(stageWidth / cols, stageHeight / rows);
-      const empty = cols * rows - count;
-      if (tile > best.tile + 0.001 || (Math.abs(tile - best.tile) < 0.001 && empty < best.empty)) {
-        best = { cols, rows, tile, empty };
+  function fullBleedWallRows(count, stageWidth, stageHeight) {
+    let best = null;
+    for (let rows = 1; rows <= count; rows += 1) {
+      const tile = stageHeight / rows;
+      const minPerRow = Math.max(1, Math.ceil(stageWidth / tile));
+      const needed = rows * minPerRow;
+      if (needed > count) continue;
+      const leftover = count - needed;
+      const overscan = (count / rows - minPerRow) * tile;
+      const score = rows * 1000 - overscan;
+      if (!best || score > best.score) {
+        best = { rows, tile, minPerRow, leftover, score };
       }
     }
-    return best;
+    if (best) return best;
+
+    // Fallback: if the library is tiny, use the tallest near-square layout we can.
+    const rows = Math.max(1, Math.round(Math.sqrt(count * stageHeight / Math.max(1, stageWidth))));
+    const cols = Math.ceil(count / rows);
+    const tile = Math.max(stageWidth / cols, stageHeight / rows);
+    return { rows, tile, minPerRow: cols, leftover: 0, score: 0 };
   }
 
   function positionConveyor() {
@@ -401,23 +409,39 @@
     if (stageWidth < 100 || stageHeight < 100) return;
 
     const count = activeCount();
-    const grid = bestWallGrid(count, stageWidth, stageHeight);
-    const cols = grid.cols;
-    const rows = grid.rows;
-    const tileSize = grid.tile * 1.03;
+    const wall = fullBleedWallRows(count, stageWidth, stageHeight);
+    const rows = wall.rows;
+    const tileSize = wall.tile;
     const visibleSlots = count;
-    const wallWidth = cols * tileSize;
-    const wallHeight = rows * tileSize;
-    const xOffset = (stageWidth - wallWidth) / 2;
-    const yOffset = (stageHeight - wallHeight) / 2;
 
-    state.wallColumns = cols;
+    const rowCounts = new Array(rows).fill(wall.minPerRow);
+    for (let i = 0; i < wall.leftover; i += 1) rowCounts[i % rows] += 1;
+
+    state.wallColumns = Math.max(...rowCounts);
     state.wallRows = rows;
     state.wallVisibleSlots = visibleSlots;
 
+    const offsets = [];
+    let cursor = 0;
+    for (let row = 0; row < rows; row += 1) {
+      offsets.push(cursor);
+      cursor += rowCounts[row];
+    }
+
     const selectedSlot = conveyorProgressForIndex(state.wheelIndex);
-    const selectedCol = selectedSlot === null ? -99 : selectedSlot % cols;
-    const selectedRow = selectedSlot === null ? -99 : Math.floor(selectedSlot / cols);
+    let selectedRow = -99;
+    let selectedCol = -99;
+    if (selectedSlot !== null) {
+      for (let row = 0; row < rows; row += 1) {
+        const start = offsets[row];
+        const end = start + rowCounts[row];
+        if (selectedSlot >= start && selectedSlot < end) {
+          selectedRow = row;
+          selectedCol = selectedSlot - start;
+          break;
+        }
+      }
+    }
 
     [...el.wheelSlots.children].forEach((wrap, index) => {
       const slotIndex = conveyorProgressForIndex(index);
@@ -426,27 +450,32 @@
         return;
       }
 
-      const row = Math.floor(slotIndex / cols);
-      const colInRow = slotIndex - row * cols;
-      const itemsInRow = Math.min(cols, Math.max(0, count - row * cols));
+      let row = 0;
+      for (; row < rows; row += 1) {
+        const start = offsets[row];
+        if (slotIndex < start + rowCounts[row]) break;
+      }
+      const rowStart = offsets[row];
+      const col = slotIndex - rowStart;
+      const itemsInRow = rowCounts[row];
       const rowWidth = itemsInRow * tileSize;
-      const rowXOffset = xOffset + (wallWidth - rowWidth) / 2;
-      const col = colInRow;
+      const rowXOffset = (stageWidth - rowWidth) / 2;
+
       const dx = col - selectedCol;
       const dy = row - selectedRow;
       const dist = Math.hypot(dx, dy);
 
       let pushX = 0;
       let pushY = 0;
-      if (index !== state.wheelIndex && selectedSlot !== null && dist > 0 && dist < 3.1) {
-        const strength = Math.pow((3.1 - dist) / 2.1, 1.35);
-        const push = tileSize * 0.40 * strength;
+      if (index !== state.wheelIndex && selectedSlot !== null && dist > 0 && dist < 3.0) {
+        const strength = Math.pow((3.0 - dist) / 2.0, 1.32);
+        const push = tileSize * 0.34 * strength;
         pushX = (dx / dist) * push;
         pushY = (dy / dist) * push;
       }
 
-      const x = rowXOffset + colInRow * tileSize + tileSize / 2 + pushX;
-      const y = yOffset + row * tileSize + tileSize / 2 + pushY;
+      const x = rowXOffset + col * tileSize + tileSize / 2 + pushX;
+      const y = row * tileSize + tileSize / 2 + pushY;
       const selected = index === state.wheelIndex;
 
       wrap.hidden = false;
@@ -458,7 +487,7 @@
       wrap.style.opacity = '1';
 
       const button = wrap.querySelector('.gbr-slot-card');
-      button.style.setProperty('--card-scale', selected ? '1.68' : '1');
+      button.style.setProperty('--card-scale', selected ? '1.62' : '1');
       button.style.removeProperty('--card-counter');
       button.dataset.atGate = selected ? 'true' : 'false';
     });
