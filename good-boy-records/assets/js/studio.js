@@ -29,6 +29,7 @@
     app: $("gbr-app"), status: $("gbr-status"), audio: $("gbr-audio"),
     genreBank: $("gbr-genre-bank"), magazineModeLabel: $("gbr-magazine-mode-label"),
     wheelStage: $("gbr-wheel-stage"), wheelDisc: $("gbr-wheel-disc"), wheelSlots: $("gbr-wheel-slots"),
+    wheelCenter: $("gbr-wheel-center"), centerArtwork: $("gbr-wheel-center-artwork"), centerTitle: $("gbr-wheel-center-title"), centerVersion: $("gbr-wheel-center-version"),
     mobileRail: $("gbr-mobile-rail"),
     lampKnob: $("gbr-lamp-knob"),
     releaseLabel: $("gbr-release-label"), artwork: $("gbr-artwork"), releaseArtWrap: $("gbr-release-art-wrap"),
@@ -210,6 +211,51 @@
   function updateThemeMeta() {
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.content = state.easter ? "#d64a35" : "#c47b21";
+  }
+
+  function ensureWheelCenter() {
+    if (!el.wheelStage) return;
+    let center = $("gbr-wheel-center");
+    if (!center) {
+      center = document.createElement("section");
+      center.id = "gbr-wheel-center";
+      center.className = "gbr-wheel-center";
+      center.setAttribute("aria-live", "polite");
+      center.innerHTML = `
+        <img id="gbr-wheel-center-artwork" class="gbr-wheel-center-artwork" alt="">
+        <div class="gbr-wheel-center-copy">
+          <strong id="gbr-wheel-center-title"></strong>
+          <small id="gbr-wheel-center-version"></small>
+        </div>`;
+      el.wheelStage.appendChild(center);
+    }
+    el.wheelCenter = center;
+    el.centerArtwork = $("gbr-wheel-center-artwork");
+    el.centerTitle = $("gbr-wheel-center-title");
+    el.centerVersion = $("gbr-wheel-center-version");
+  }
+
+  function renderWheelCenter(track) {
+    ensureWheelCenter();
+    if (!el.wheelCenter || !track) return;
+
+    const title = track.displayTitle || humanise(track.title || track.filename);
+    const variant = track.easter
+      ? "REJECT MASTER"
+      : (track.genre || track.variantLabel || humanise(track.variantSlot || track.variant));
+
+    el.centerTitle.textContent = title;
+    el.centerVersion.textContent = variant || "";
+
+    if (track.easter) {
+      el.centerArtwork.src = artworkUrl(null, 640, "webp");
+      el.centerArtwork.alt = "Good Boy Records reject master";
+      el.wheelCenter.dataset.reject = "true";
+    } else {
+      el.centerArtwork.src = artworkUrl(track, 1280, "webp");
+      el.centerArtwork.alt = track.artwork && track.artwork.alt || `Album artwork for ${title}`;
+      el.wheelCenter.dataset.reject = "false";
+    }
   }
 
   /* --------------------------------------------------------------- wheel */
@@ -454,6 +500,7 @@
     if (el.detailsButton) { el.detailsButton.textContent = "DETAILS"; el.detailsButton.setAttribute("aria-pressed", "false"); }
     el.artwork.src = artworkUrl(track, 1280, "webp");
     el.artwork.alt = track.artwork && track.artwork.alt || `Album artwork for ${title}`;
+    renderWheelCenter(track);
     el.description.textContent = storyText(track);
 
     const refs = referenceEntries(track);
@@ -485,6 +532,7 @@
     if (!track) return;
     const index = Math.max(0, easterTracks.findIndex((item) => item.id === track.id));
     el.releaseLabel.textContent = "QUALITY CONTROL FAILURE";
+    renderWheelCenter(track);
     if (el.releaseCard) el.releaseCard.dataset.flipped = "false";
     if (el.releaseArtWrap) el.releaseArtWrap.hidden = true;
     if (el.easterTerminal) el.easterTerminal.hidden = false;
@@ -1070,6 +1118,13 @@
     if (el.easterFilename) el.easterFilename.textContent = "DROP AUDIO INTO showcase/easter/";
     el.nowTitle.textContent = "Reject archive empty";
     el.nowVersion.textContent = "SERVICE BANK";
+    ensureWheelCenter();
+    if (el.centerTitle) el.centerTitle.textContent = "Reject archive empty";
+    if (el.centerVersion) el.centerVersion.textContent = "SERVICE BANK";
+    if (el.centerArtwork) {
+      el.centerArtwork.src = artworkUrl(null, 640, "webp");
+      el.centerArtwork.alt = "Good Boy Records";
+    }
     el.description.textContent = "Add up to ten audio files to showcase/easter and rebuild the curated showcase.";
     el.inspiration.hidden = true;
     el.detailsButton.disabled = true;
@@ -1215,6 +1270,7 @@
     document.documentElement.dataset.easter="false";
     renderGenreBank();
     preloadAllWheelArtwork();
+    ensureWheelCenter();
     buildWheel();
     renderMobileRail();
     setupWheelInput();

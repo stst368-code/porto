@@ -50,16 +50,16 @@ check("legacy player JS removed from clean tree", all(not (ROOT / "assets" / "js
 check("layout contract documented", "Layout contract" in css and "Short viewports scroll vertically" in css)
 
 # Old visual hierarchy, new implementation
-check("three-column desktop instrument layout", 'grid-template-columns:minmax(400px,.96fr) minmax(470px,1.14fr) minmax(340px,.80fr)' in css)
+check("desktop central-wheel instrument layout", 'grid-template-areas:\n      "magazine console"\n      "lyrics lyrics"' in css)
 check("brown brass baseline", all(token in css for token in ["--gbr-bg", "--gbr-line", "--gbr-accent", "--gbr-hot", "--gbr-meter-face"]))
 check("magazine is independent panel", 'class="gbr-magazine gbr-panel"' in html)
-check("loaded release starts in top row", 'grid-area:release' in css and 'class="gbr-panel gbr-release"' in html)
+check("desktop release column is folded into wheel center", '.gbr-release {\n    display:none!important;' in css and '.gbr-wheel-center {' in css)
 check("console starts in top row", 'grid-area:console' in css and 'class="gbr-console-stack"' in html)
-check("magazine release console share top row", '"magazine release console"' in css)
+check("magazine and console share desktop top row", '"magazine console"' in css)
 check("standalone transport row removed", 'grid-area:transport' not in css and 'class="gbr-panel gbr-transport"' not in html)
-check("lyrics span full machine width", '"lyrics lyrics lyrics"' in css)
+check("lyrics span full machine width", '"lyrics lyrics"' in css)
 check("lyrics sit below all player controls", html.index('id="gbr-lyric-line"') > html.index('id="gbr-progress"'))
-check("desktop main UI is two rows", '"magazine release console"' in css and '"lyrics lyrics lyrics"' in css)
+check("desktop main UI is two rows", '"magazine console"' in css and '"lyrics lyrics"' in css)
 
 # Browse/playback separation
 check("browse state exists", "browseGenre:" in js)
@@ -88,6 +88,9 @@ check("mobile artwork rail exists", 'id="gbr-mobile-rail"' in html and ".gbr-mob
 check("six genre bank controls generated", "GENRES.forEach" in js and "gbr-genre-button" in js)
 
 check("magazine title chrome removed", "ROTARY CASSETTE MAGAZINE" not in html and "14 SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK" in html)
+check("central wheel artwork is created at runtime", 'id="gbr-wheel-center-artwork"' in js and 'function renderWheelCenter' in js)
+check("central wheel title is created at runtime", 'id="gbr-wheel-center-title"' in js and 'gbr-wheel-center-copy' in css)
+check("loaded track updates central wheel identity", 'renderWheelCenter(track);' in js)
 check("expanded genre button labels", all(label in js for label in ["METAL/ROCK","POP/HIP-HOP","COUNTRY/FOLK","DISCO/ELECTRONIC","ORCHESTRAL/CLASSICAL","SPECIAL"]))
 check("display lamp moved to top power bank", 'class="gbr-top-lamp"' in html and html.index('id="gbr-lamp-knob"') < html.index('<main class="gbr-machine"'))
 check("display lamp is global illumination rheostat", '--light-meter-brightness' in js and '--light-control-brightness' in js and '--light-led-opacity' in js and '.gbr-spectrum-well canvas' in css)
