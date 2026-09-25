@@ -55,3 +55,8 @@ Expected:
 
 ## Existing examples
 The supplied Markdown files are pre-segmented from the current CV and are intended as editable starting points.
+
+## v2
+- Certificate frames now drag from anywhere on the certificate image.
+- Click without dragging still opens the PDF.
+- Markdown pages now use stronger technical-document styling and section-specific accents.

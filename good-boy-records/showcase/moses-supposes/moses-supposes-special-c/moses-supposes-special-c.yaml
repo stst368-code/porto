@@ -1,0 +1,334 @@
+title: moses-supposes
+version: creepy-pop
+model: minimax H3
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 373878581549631
+top_k: 45
+sampler: euler
+scheduler: simple
+sampler_cfg: 1.6
+sampler_seed: 166461064662929
+sampler_steps: 37
+inspiration:
+inspirationyt:
+story:
+caption: |
+  Global Metadata
+  Basic Attributes: dark theatrical alt-pop / creepy nursery-pop, roughly 105–118 BPM. Minor-key, playful, uncanny and highly melodic. The song should feel like a children’s rhyme performed inside a slightly broken dollhouse: catchy and colourful on the surface, but increasingly strange underneath. Preserve the tongue-twister identity and absurd humour of the original while turning repetition into an unsettling musical hook.
+  
+  Global Emotional Progression: Begin delicate and almost innocent, with the opening “Moses supposes...” phrased like a nursery rhyme over a sparse toy-piano or music-box motif. The first verse remains playful and controlled. Each later section introduces more warped textures, vocal layers and rhythmic instability while retaining a strong pop structure. Choruses should feel deceptively bright and memorable, while the verses become more surreal and crowded. The bridge should sound like the entire nursery-rhyme world is beginning to collapse into itself before the outro returns to eerie simplicity.
+  
+  Application Scenarios & Imagery: a pastel children’s playroom after midnight; wind-up toys moving by themselves; painted smiles, oversized alphabet blocks, ribbons, porcelain dolls, sweets and nursery books arranged too perfectly. Cute, theatrical and colourful, but with an underlying sense that something is wrong.
+  
+  Sonics & Production Profile: Sparse but highly detailed alternative pop production. Detuned upright piano, toy piano, music-box plucks, muted pizzicato-like synth sounds, soft sub bass, dry handclaps, finger snaps, tiny ticking percussion and occasional distorted low-frequency impacts. Use reversed textures, warped tape effects, pitch-bent bells and sudden moments of silence. Avoid conventional EDM drops, rock guitars, huge cinematic strings or generic glossy pop production.
+  
+  Vocal Details
+  Vocal Gender & Timbre: Female lead, light mezzo-soprano with an intimate, youthful tone that can move between sweet sing-song phrasing, whispering, clipped speech and sudden emotionally sharper notes.
+  
+  Vocal Style: Highly characterful and theatrical without becoming cartoonish. Verses should alternate between melodic singing and rhythmic spoken-sung delivery. Tongue twisters should remain very clearly articulated but increasingly fast and playful. Some lines should sound almost like playground chants. Allow occasional breathy laughs, whispered corrections and unnaturally calm delivery of increasingly absurd lyrics.
+  
+  Harmony/Backing Vocals: Layered self-harmonies used selectively. High childlike doubles, whispered responses and tightly stacked unison phrases can appear in choruses. Parenthetical lines should often sound like a second personality or distant voice answering from elsewhere in the room. Avoid large conventional choir textures.
+  
+  Vocal FX: Close, dry lead with selective short room reverb. Use telephone filtering, whispered stereo doubles, reversed vocal tails, subtle pitch shifting and occasional formant manipulation. Keep the main vocal understandable at all times.
+  
+  Arrangement
+  Instrument Lifecycle: Start with music-box or toy-piano alone. Add soft low percussion and bass gradually. Verses remain relatively sparse so the rapid lyrics stay intelligible. Choruses widen with additional vocal layers, low bass reinforcement and brighter toy-like melodic figures. Later sections introduce more detuned and broken-sounding variations of the same motifs instead of adding unrelated instrumentation.
+  
+  Groove & Foundation Progression: Use a restrained programmed beat with dry kick, clap, finger snaps and ticking percussion. The groove should feel slightly mechanical, almost like a wind-up toy. Occasionally remove or misalign a percussion hit to make the rhythm feel subtly unstable. During very dense tongue-twister passages, simplify the instrumental and let the vocal provide most of the rhythmic complexity.
+  
+  Embellishments, Textures & Spatial FX: Music-box chimes, reversed breaths, tiny bell hits, creaking-room textures, subtle tape warble, whispered counting, abrupt silence and pitch-bent toy sounds. Repeated motifs should become slightly more distorted each time they return.
+  
+  Section Performance Guidance
+  
+  [intro]
+  Music-box only. Very soft, almost innocent delivery.
+  
+  “Moses...”
+  “supposes...”
+  “his toeses...”
+  “are Roses...”
+  
+  Each phrase separated by silence.
+  
+  “But Moses...” should introduce a quiet low pulse.
+  
+  “Erroneously...” should stretch slightly longer, with a faint reversed vocal tail.
+  
+  [verse]
+  Sweet, controlled sing-song delivery. Keep the first Moses section simple and catchy.
+  
+  [chorus]
+  Brightest and most memorable section, but still uncanny.
+  “A mose is a mose!”
+  “A rose is a rose!”
+  “A toes is a toes!”
+  
+  Use layered doubles on each final noun.
+  
+  “Mose rose toes” should sound like a playground chant.
+  
+  “Hooptie doodie doodle” should become rhythmically playful, with tiny toy-percussion accents.
+  
+  The laugh should sound cheerful at first, but slightly unnatural.
+  
+  [verse — Peter Piper / woodchuck / seashells]
+  Move toward spoken-sung phrasing. Increase lyrical speed while keeping the voice calm. Parenthetical questions should come from a whispered secondary vocal placed further back in the mix.
+  
+  [verse — kitty kat]
+  Very playful and bouncy. Emphasise repeated K and T sounds. Use tiny percussion clicks that mirror the consonants. The melody should feel almost too cute compared with the increasingly nonsensical lyric.
+  
+  [chorus]
+  Same melody, but add subtly detuned backing doubles.
+  
+  [verse — wish / fish / frogs / snakes]
+  Introduce darker bass and lower piano notes. Let “fresh fried fish” and “five fat frogs” become increasingly rhythmic and clipped.
+  
+  At “while six shocked sheep shouted stop!” cut the instrumental abruptly.
+  
+  “(neigh)” should arrive alone in the silence.
+  
+  [pre-chorus]
+  Nearly empty arrangement.
+  
+  “I thought a thought...” should be delivered slowly and thoughtfully, with each repetition becoming less certain.
+  
+  Pause.
+  
+  “(ha-ha-ha-ha)” enters quietly from different stereo positions.
+  
+  [chorus]
+  Fullest pop chorus so far. Add higher harmonies and stronger bass, but keep the toy-box character.
+  
+  [verse — red lorry / witches]
+  More mechanical and hypnotic. Repetition should feel like a wind-up phrase getting stuck.
+  
+  “yellow leather, red leather” becomes a rapid chant.
+  
+  “(got you)” whispered directly into the listener’s ear.
+  
+  For the witches/wristwatch passage, drop the melody lower and make the delivery colder.
+  
+  [chorus]
+  Keep the melody intact, but distort selected backing vocals and bells slightly.
+  
+  [bridge]
+  Begin almost conversationally:
+  
+  “Very well, very well, very well...”
+  
+  Minimal piano and ticking sound.
+  
+  The hiccup / pickup / teacup sequence should steadily accelerate while more warped toy sounds enter.
+  
+  At:
+  
+  “you've lost me”
+  
+  everything stops.
+  
+  Then restart with a softer, eerier version of the main motif.
+  
+  The long Peter Piper recap should feel like a nursery story being retold incorrectly from memory. Earlier phrases return over increasingly unstable music-box loops.
+  
+  As the list of callbacks grows, layer whispered fragments from previous sections underneath the lead vocal.
+  
+  During:
+  
+  “think about it, thought about it...”
+  “red leather yellow lorry...”
+  “ragged rascal...”
+  “two witches...”
+  
+  the backing track should become increasingly crowded and warped.
+  
+  Then strip everything away for:
+  
+  “but most importantly of all, there is
+  no Moses
+  no roses
+  or no toses to be seen”
+  
+  Each phrase should be delivered sweetly and quietly, with one isolated piano note underneath.
+  
+  “ha ha” follows after a short silence.
+  
+  [outro]
+  Return to the original music-box motif.
+  
+  “A mose a rose a tose
+  A rose a tose a mose
+  A tose a mose a rose”
+  
+  Layer increasingly distant whispered copies of the words.
+  
+  Final “ha ha ha ha ha ha” should slow slightly and disappear into tape warble or an abrupt hard stop.
+lyrics: |
+  [intro]
+    Moses...
+    supposes... 
+    his toeses...
+    are Roses... 
+    But Moses...
+    supposes...
+    Erroneously... 
+    [verse]
+    Moses supposes his toeses are Roses
+    But Moses supposes Erroneously
+    Moses he knowses his toeses aren't roses
+    As Moses supposes his toeses to be!
+    Moses supposes his toeses are Roses
+    But Moses supposes Erroneously
+    [chorus]
+    A mose is a mose!
+    A rose is a rose! 
+    A toes is a toes!
+    mose rose toes (mose rose toes)
+    Hooptie doodie doodle
+    doodle doodie hooptie
+  (ha ha ha ha ha ha)
+  [verse]
+  Peter (Peter) Piper (Piper)
+  Peter Piper picked a peck of pickled peppers
+  A peck of pickled peppers Peter Piper picked
+  If Peter Piper picked a peck of pickled peppers
+  Where's the peck of pickled peppers Peter Piper picked?
+  (Did you look in the woods?)
+  How much wood would a woodchuck chuck if a woodchuck could chuck wood?
+  if a woodchuck could chuck wood How much wood would a woodchuck chuck
+  (Did you try asking Mary?)
+  Well, she sells seashells by the seashore.
+  the shells she sells are seashells, I'm sure
+  what she sells in her sea shell store by the seashore
+  not a woodchuck chuck book in sight for sure
+  (so who will have the aswers?)
+  Sharp sharks seek snacks and Selfish shellfish sellers
+  Six sticky skeletons scuttle slippy sidewalks
+  Seven small Dwarves swing, sing and sling short little picks
+  (who gets pick of the litter?)
+  kitty cat? kitty cat?
+  would a kitkat eating kitty kat eat a kitkat?
+  would that kitten kitty kat eat its kitkat whole?
+  would it make any difference if that kitty kat was a city cat?
+  would the kitty kat city cat eat it's city bitty kitkat?
+  or would the city kitty kat be a sittin' pretty kat
+  not a fussy pussy but a busy little pussy cat?
+  busy kitty, pretty kitty
+  picky kitty, city kitty
+  bitty kitkat, ate its kitty kat
+  which kitty gets the kitty's kitkat?
+  the sittin' pretty city kat?
+  or the itty bitty kitty kat?
+  which kitty kat is the real fat kat?
+  [chorus]
+  A mose is a mose!
+  A rose is a rose!
+  A toes is a toes!
+  mose rose toes (mose rose toes)
+  Hooptie doodie doodle
+  doodle doodie hooptie
+  (ha ha ha ha ha ha)
+  [verse]
+  well...
+  I wish to wish the wish you wish to wish
+  but if you wish the wish the witch wishes
+  I won't wish the wish you wish to wish
+  I wish you were the fish in my dish
+  Fresh fried fish, fish fresh fried,
+  fried fish fresh, fish fried fresh
+  Four fresh fish flashed fins at five fat frogs
+  five fat frogs flipped fast from five flat logs
+  Six slick snakes slipped straight through six small slots
+  while six shocked sheep shouted stop!
+  (neigh)
+  One one was a racehorse
+  two two was one too
+  one one won one race
+  and two two won one too
+  [pre-chorus]
+  (i've shared my ideas, what about you?)
+  I thought a thought
+  but the thought I thought
+  wasn't the thought I thought I thought
+  ....
+  (ha-ha-ha-ha)
+  [chorus]
+  A mose is a mose!
+  A rose is a rose! 
+  A toes is a toes!
+  mose rose toes (mose rose toes)
+  Hooptie doodie doodle
+  doodle doodie hooptie
+  (ha ha ha ha ha ha)
+  [verse]
+  Red lorry, yellow lorry
+  lorry yellow, lorry red
+  Red lorry, yellow lorry
+  lorry yellow, lorry red
+  Red lorry, yellow lorry
+  lorry yellow, lorry red
+  yellow leather, red leather
+  (got you)
+  A crisp crust crackles crunchily
+  with Peter Pipers pickled peppers
+  that ragged rascal ran 'round the rugged rock
+  the ragged rascal and his rugged flock
+  meanwhile two witches were watching two wrist watches
+  which witch would watch which wrist watch
+  which witch wrist would which witch watch rest on?
+  If “there” is there
+  and “their” is theirs
+  and “they’re” means they are they are
+  then where are they?
+  (ha ha)
+  [chorus]
+  A mose is a mose!
+  A rose is a rose! 
+  A toes is a toes!
+  mose rose toes (mose rose toes)
+  Hooptie doodie doodle
+  doodle doodie hooptie
+  doodle doodle doodie 
+  hooptie hooptie hoo
+  (ha ha ha ha ha ha)
+  [bridge]
+  Very well, very well, very well...
+  the wrist watch witch casts a wicked spell
+  a hiccup in the pick up of the pickled pepper smell
+  but is a hiccup in a tea cup a hiccup you can pick up
+  if you pick up a hiccup in a tea cup
+  that tea cup is now a hiccup cup, a pickup hiccup cup
+  so a hiccup pickup tea cup cup will serve you well
+  (you've lost me)
+  well let me try and explain again
+  ...
+  Peter Piper's pickled pepers were lost in the woods
+  Those wood chucking woodchucks could tell you more
+  But don't go asking questions down by the sea shore
+  the sharks, skeletons and the seashell seller don't know more
+  so think of that itty bitty city kitty, always hungry for more
+  that kitkat city kat should make a fresh fish dish wish
+  you can search under five fat frogs and five flat logs
+  while the six slick snakes leave six sleepy sheep shocked
+  you can search the forest faster riding one one who won one
+  or two two who won one too, pick and choose, its up to you
+  think about it, thought about it, i thought you thought about it too
+  if you find peter pipers pickled pepers
+  load a red leather yellow lorry, a yellow leather red lorry
+  a red leather red lorry or a yellow leather red lorry (haha, got you again)
+  failing finding pickled peppers the ragged rascal likely stole the lot
+  around the ragged rock, he drove his rugged flock
+  be careful two witches will be watching wrist watches
+  they're there, but they won't help you with your hiccup
+  no pickup hiccup cup or pickle pepper pickup truck
+  but most importantly of all, there is
+  no moses
+  no roses
+  or no toses to be seen
+  ha ha
+  [outro]
+  A mose a rose a tose
+  A rose a tose a mose
+  A tose a mose a rose
+  (ha ha ha ha ha ha)
