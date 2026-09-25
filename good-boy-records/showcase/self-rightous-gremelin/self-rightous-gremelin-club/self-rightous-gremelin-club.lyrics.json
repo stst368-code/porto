@@ -2,9 +2,9 @@
   "format": "gbr-word-lyrics-v1",
   "version": 2,
   "title": "self-rightous-gremelin",
-  "song_version": "pop",
-  "source_yaml": "self-rightous-gremelin/self-rightous-gremelin-pop/self-rightous-gremelin-pop.yaml",
-  "source_audio": "self-rightous-gremelin-pop.flac",
+  "song_version": "club",
+  "source_yaml": "self-rightous-gremelin/self-rightous-gremelin-club/self-rightous-gremelin-club.yaml",
+  "source_audio": "self-rightous-gremelin-club.flac",
   "language": "en",
   "engine": "demucs:htdemucs+whisperx:large-v3",
   "runtime": {
@@ -15,15 +15,15 @@
     "batch_size": 4,
     "cpu_fallback_used": false
   },
-  "generated_at": "2026-09-25T20:28:37+00:00",
+  "generated_at": "2026-09-25T20:51:20+00:00",
   "stats": {
     "lyric_words": 266,
-    "recognised_words": 256,
-    "matched_words": 239,
-    "coverage": 0.8985
+    "recognised_words": 313,
+    "matched_words": 250,
+    "coverage": 0.9398
   },
   "quality": {
-    "rating": "good",
+    "rating": "excellent",
     "review_threshold": 0.8,
     "review_required": false,
     "approved": false,
@@ -34,44 +34,44 @@
       "id": "l1",
       "text": "\"We're rolling Gremelin\"",
       "start": 0.031,
-      "end": 4.817,
+      "end": 1.552,
       "words": [
         {
           "text": "\"We're",
           "start": 0.031,
-          "end": 0.291,
+          "end": 0.311,
           "matched": true
         },
         {
           "text": "rolling",
-          "start": 0.331,
-          "end": 0.712,
+          "start": 0.351,
+          "end": 0.791,
           "matched": true
         },
         {
           "text": "Gremelin\"",
-          "start": 0.712,
-          "end": 4.817,
-          "matched": false
+          "start": 0.831,
+          "end": 1.552,
+          "matched": true
         }
       ]
     },
     {
       "id": "l2",
       "text": "Mama! (mama)",
-      "start": 4.817,
-      "end": 9.824,
+      "start": 2.052,
+      "end": 3.212,
       "words": [
         {
           "text": "Mama!",
-          "start": 4.817,
-          "end": 8.922,
-          "matched": false
+          "start": 2.052,
+          "end": 2.452,
+          "matched": true
         },
         {
           "text": "(mama)",
-          "start": 8.922,
-          "end": 9.824,
+          "start": 2.812,
+          "end": 3.212,
           "matched": true
         }
       ]
@@ -79,61 +79,61 @@
     {
       "id": "l3",
       "text": "Grab a lead and put your little shoes on!",
-      "start": 10.584,
-      "end": 13.128,
+      "start": 3.212,
+      "end": 5.753,
       "words": [
         {
           "text": "Grab",
-          "start": 10.584,
-          "end": 10.745,
-          "matched": true
+          "start": 3.212,
+          "end": 3.652,
+          "matched": false
         },
         {
           "text": "a",
-          "start": 10.785,
-          "end": 10.885,
+          "start": 3.652,
+          "end": 3.752,
           "matched": true
         },
         {
           "text": "lead",
-          "start": 10.905,
-          "end": 11.105,
+          "start": 3.812,
+          "end": 4.092,
           "matched": true
         },
         {
           "text": "and",
-          "start": 11.165,
-          "end": 11.285,
+          "start": 4.132,
+          "end": 4.252,
           "matched": true
         },
         {
           "text": "put",
-          "start": 11.325,
-          "end": 11.526,
+          "start": 4.292,
+          "end": 4.493,
           "matched": true
         },
         {
           "text": "your",
-          "start": 11.566,
-          "end": 11.806,
+          "start": 4.533,
+          "end": 4.753,
           "matched": true
         },
         {
           "text": "little",
-          "start": 11.866,
-          "end": 12.207,
+          "start": 4.813,
+          "end": 5.213,
           "matched": true
         },
         {
           "text": "shoes",
-          "start": 12.267,
-          "end": 12.767,
+          "start": 5.253,
+          "end": 5.553,
           "matched": true
         },
         {
           "text": "on!",
-          "start": 13.008,
-          "end": 13.128,
+          "start": 5.653,
+          "end": 5.753,
           "matched": true
         }
       ]
@@ -141,55 +141,55 @@
     {
       "id": "l4",
       "text": "Hide your phone and forget about your makeup!",
-      "start": 13.148,
-      "end": 15.531,
+      "start": 6.033,
+      "end": 7.734,
       "words": [
         {
           "text": "Hide",
-          "start": 13.148,
-          "end": 14.069,
+          "start": 6.033,
+          "end": 6.133,
           "matched": true
         },
         {
           "text": "your",
-          "start": 14.089,
-          "end": 14.189,
+          "start": 6.153,
+          "end": 6.273,
           "matched": true
         },
         {
           "text": "phone",
-          "start": 14.209,
-          "end": 14.469,
+          "start": 6.293,
+          "end": 6.533,
           "matched": true
         },
         {
           "text": "and",
-          "start": 14.489,
-          "end": 14.55,
+          "start": 6.573,
+          "end": 6.633,
           "matched": true
         },
         {
           "text": "forget",
-          "start": 14.59,
-          "end": 14.81,
+          "start": 6.673,
+          "end": 6.953,
           "matched": true
         },
         {
           "text": "about",
-          "start": 14.87,
-          "end": 15.05,
+          "start": 6.993,
+          "end": 7.153,
           "matched": true
         },
         {
           "text": "your",
-          "start": 15.07,
-          "end": 15.19,
+          "start": 7.173,
+          "end": 7.293,
           "matched": true
         },
         {
           "text": "makeup!",
-          "start": 15.21,
-          "end": 15.531,
+          "start": 7.313,
+          "end": 7.734,
           "matched": true
         }
       ]
@@ -197,55 +197,55 @@
     {
       "id": "l5",
       "text": "Why'd you leave the treats upon the table?",
-      "start": 17.75,
-      "end": 20.151,
+      "start": 8.014,
+      "end": 9.674,
       "words": [
         {
           "text": "Why'd",
-          "start": 17.75,
-          "end": 17.91,
+          "start": 8.014,
+          "end": 8.154,
           "matched": true
         },
         {
           "text": "you",
-          "start": 17.93,
-          "end": 18.03,
+          "start": 8.174,
+          "end": 8.294,
           "matched": true
         },
         {
           "text": "leave",
-          "start": 18.07,
-          "end": 18.27,
+          "start": 8.314,
+          "end": 8.534,
           "matched": true
         },
         {
           "text": "the",
-          "start": 18.31,
-          "end": 18.41,
+          "start": 8.574,
+          "end": 8.674,
           "matched": true
         },
         {
           "text": "treats",
-          "start": 18.47,
-          "end": 18.77,
+          "start": 8.734,
+          "end": 8.954,
           "matched": true
         },
         {
           "text": "upon",
-          "start": 18.85,
-          "end": 19.25,
-          "matched": true
+          "start": 8.954,
+          "end": 9.194,
+          "matched": false
         },
         {
           "text": "the",
-          "start": 19.29,
-          "end": 19.35,
+          "start": 9.194,
+          "end": 9.254,
           "matched": true
         },
         {
           "text": "table?",
-          "start": 19.47,
-          "end": 20.151,
+          "start": 9.314,
+          "end": 9.674,
           "matched": true
         }
       ]
@@ -253,43 +253,43 @@
     {
       "id": "l6",
       "text": "Here you go, create another fable!",
-      "start": 20.671,
-      "end": 24.191,
+      "start": 10.775,
+      "end": 12.975,
       "words": [
         {
           "text": "Here",
-          "start": 20.671,
-          "end": 20.871,
+          "start": 10.775,
+          "end": 11.015,
           "matched": true
         },
         {
           "text": "you",
-          "start": 20.931,
-          "end": 21.111,
+          "start": 11.035,
+          "end": 11.135,
           "matched": true
         },
         {
           "text": "go,",
-          "start": 21.151,
-          "end": 21.391,
+          "start": 11.175,
+          "end": 11.395,
           "matched": true
         },
         {
           "text": "create",
-          "start": 21.631,
-          "end": 22.171,
+          "start": 11.675,
+          "end": 12.015,
           "matched": true
         },
         {
           "text": "another",
-          "start": 22.231,
-          "end": 22.891,
+          "start": 12.075,
+          "end": 12.475,
           "matched": true
         },
         {
           "text": "fable!",
-          "start": 23.071,
-          "end": 24.191,
+          "start": 12.555,
+          "end": 12.975,
           "matched": true
         }
       ]
@@ -297,87 +297,87 @@
     {
       "id": "l7",
       "text": "You wanted to!",
-      "start": 24.191,
-      "end": 24.711,
+      "start": 13.055,
+      "end": 14.016,
       "words": [
         {
           "text": "You",
-          "start": 24.191,
-          "end": 24.364,
-          "matched": false
+          "start": 13.055,
+          "end": 13.276,
+          "matched": true
         },
         {
           "text": "wanted",
-          "start": 24.364,
-          "end": 24.538,
-          "matched": false
+          "start": 13.336,
+          "end": 13.716,
+          "matched": true
         },
         {
           "text": "to!",
-          "start": 24.538,
-          "end": 24.711,
-          "matched": false
+          "start": 13.796,
+          "end": 14.016,
+          "matched": true
         }
       ]
     },
     {
       "id": "l8",
       "text": "Grab a lead and put your little shoes on!",
-      "start": 24.711,
-      "end": 28.052,
+      "start": 14.016,
+      "end": 15.696,
       "words": [
         {
           "text": "Grab",
-          "start": 24.711,
-          "end": 24.932,
-          "matched": true
+          "start": 14.016,
+          "end": 14.236,
+          "matched": false
         },
         {
           "text": "a",
-          "start": 24.952,
-          "end": 25.012,
+          "start": 14.236,
+          "end": 14.296,
           "matched": true
         },
         {
           "text": "lead",
-          "start": 25.012,
-          "end": 25.552,
-          "matched": false
+          "start": 14.316,
+          "end": 14.576,
+          "matched": true
         },
         {
           "text": "and",
-          "start": 25.552,
-          "end": 25.652,
+          "start": 14.636,
+          "end": 14.736,
           "matched": true
         },
         {
           "text": "put",
-          "start": 25.692,
-          "end": 25.892,
+          "start": 14.776,
+          "end": 14.916,
           "matched": true
         },
         {
           "text": "your",
-          "start": 25.932,
-          "end": 26.112,
+          "start": 14.936,
+          "end": 15.036,
           "matched": true
         },
         {
           "text": "little",
-          "start": 26.212,
-          "end": 26.612,
+          "start": 15.076,
+          "end": 15.256,
           "matched": true
         },
         {
           "text": "shoes",
-          "start": 26.652,
-          "end": 27.392,
+          "start": 15.296,
+          "end": 15.556,
           "matched": true
         },
         {
           "text": "on!",
-          "start": 27.492,
-          "end": 28.052,
+          "start": 15.616,
+          "end": 15.696,
           "matched": true
         }
       ]
@@ -385,81 +385,81 @@
     {
       "id": "l9",
       "text": "You wanted to!",
-      "start": 28.052,
-      "end": 28.572,
+      "start": 16.697,
+      "end": 17.337,
       "words": [
         {
           "text": "You",
-          "start": 28.052,
-          "end": 28.225,
-          "matched": false
+          "start": 16.697,
+          "end": 16.797,
+          "matched": true
         },
         {
           "text": "wanted",
-          "start": 28.225,
-          "end": 28.399,
-          "matched": false
+          "start": 16.837,
+          "end": 17.157,
+          "matched": true
         },
         {
           "text": "to!",
-          "start": 28.399,
-          "end": 28.572,
-          "matched": false
+          "start": 17.197,
+          "end": 17.337,
+          "matched": true
         }
       ]
     },
     {
       "id": "l10",
       "text": "Hide your phone and forget about your makeup!",
-      "start": 28.572,
-      "end": 31.653,
+      "start": 17.797,
+      "end": 19.658,
       "words": [
         {
           "text": "Hide",
-          "start": 28.572,
-          "end": 28.712,
+          "start": 17.797,
+          "end": 18.017,
           "matched": true
         },
         {
           "text": "your",
-          "start": 28.732,
-          "end": 28.852,
+          "start": 18.037,
+          "end": 18.137,
           "matched": true
         },
         {
           "text": "phone",
-          "start": 28.872,
-          "end": 29.332,
+          "start": 18.157,
+          "end": 18.397,
           "matched": true
         },
         {
           "text": "and",
-          "start": 29.372,
-          "end": 29.432,
+          "start": 18.437,
+          "end": 18.517,
           "matched": true
         },
         {
           "text": "forget",
-          "start": 29.473,
-          "end": 29.713,
+          "start": 18.537,
+          "end": 18.837,
           "matched": true
         },
         {
           "text": "about",
-          "start": 29.753,
-          "end": 29.913,
+          "start": 18.877,
+          "end": 19.118,
           "matched": true
         },
         {
           "text": "your",
-          "start": 29.933,
-          "end": 30.033,
+          "start": 19.158,
+          "end": 19.278,
           "matched": true
         },
         {
           "text": "makeup!",
-          "start": 30.073,
-          "end": 31.653,
+          "start": 19.298,
+          "end": 19.658,
           "matched": true
         }
       ]
@@ -467,81 +467,81 @@
     {
       "id": "l11",
       "text": "You wanted to!",
-      "start": 31.653,
-      "end": 32.413,
+      "start": 19.678,
+      "end": 20.338,
       "words": [
         {
           "text": "You",
-          "start": 31.653,
-          "end": 31.906,
-          "matched": false
+          "start": 19.678,
+          "end": 19.798,
+          "matched": true
         },
         {
           "text": "wanted",
-          "start": 31.906,
-          "end": 32.16,
-          "matched": false
+          "start": 19.838,
+          "end": 20.158,
+          "matched": true
         },
         {
           "text": "to!",
-          "start": 32.16,
-          "end": 32.413,
-          "matched": false
+          "start": 20.198,
+          "end": 20.338,
+          "matched": true
         }
       ]
     },
     {
       "id": "l12",
       "text": "Why'd you leave the treats upon the table?",
-      "start": 32.413,
-      "end": 35.734,
+      "start": 20.938,
+      "end": 23.479,
       "words": [
         {
           "text": "Why'd",
-          "start": 32.413,
-          "end": 32.733,
+          "start": 20.938,
+          "end": 21.118,
           "matched": true
         },
         {
           "text": "you",
-          "start": 32.773,
-          "end": 32.873,
+          "start": 21.158,
+          "end": 21.338,
           "matched": true
         },
         {
           "text": "leave",
-          "start": 32.953,
-          "end": 33.173,
+          "start": 21.358,
+          "end": 21.558,
           "matched": true
         },
         {
           "text": "the",
-          "start": 33.213,
-          "end": 33.293,
+          "start": 21.598,
+          "end": 21.698,
           "matched": true
         },
         {
           "text": "treats",
-          "start": 33.373,
-          "end": 33.653,
+          "start": 21.758,
+          "end": 22.099,
           "matched": true
         },
         {
           "text": "upon",
-          "start": 33.733,
-          "end": 34.374,
-          "matched": true
+          "start": 22.099,
+          "end": 22.619,
+          "matched": false
         },
         {
           "text": "the",
-          "start": 34.414,
-          "end": 34.514,
+          "start": 22.619,
+          "end": 22.719,
           "matched": true
         },
         {
           "text": "table?",
-          "start": 34.594,
-          "end": 35.734,
+          "start": 22.799,
+          "end": 23.479,
           "matched": true
         }
       ]
@@ -549,63 +549,63 @@
     {
       "id": "l13",
       "text": "You wanted to!",
-      "start": 35.734,
-      "end": 36.914,
+      "start": 23.559,
+      "end": 24.479,
       "words": [
         {
           "text": "You",
-          "start": 35.734,
-          "end": 36.127,
-          "matched": false
+          "start": 23.559,
+          "end": 23.779,
+          "matched": true
         },
         {
           "text": "wanted",
-          "start": 36.127,
-          "end": 36.521,
-          "matched": false
+          "start": 23.839,
+          "end": 24.219,
+          "matched": true
         },
         {
           "text": "to!",
-          "start": 36.521,
-          "end": 36.914,
-          "matched": false
+          "start": 24.279,
+          "end": 24.479,
+          "matched": true
         }
       ]
     },
     {
       "id": "l14",
       "text": "I don't think you trust!",
-      "start": 36.914,
-      "end": 38.034,
+      "start": 24.98,
+      "end": 26.16,
       "words": [
         {
           "text": "I",
-          "start": 36.914,
-          "end": 36.954,
+          "start": 24.98,
+          "end": 25.04,
           "matched": true
         },
         {
           "text": "don't",
-          "start": 36.994,
-          "end": 37.154,
+          "start": 25.06,
+          "end": 25.26,
           "matched": true
         },
         {
           "text": "think",
-          "start": 37.214,
-          "end": 37.434,
+          "start": 25.3,
+          "end": 25.54,
           "matched": true
         },
         {
           "text": "you",
-          "start": 37.474,
-          "end": 37.634,
+          "start": 25.56,
+          "end": 25.74,
           "matched": true
         },
         {
           "text": "trust!",
-          "start": 37.694,
-          "end": 38.034,
+          "start": 25.78,
+          "end": 26.16,
           "matched": true
         }
       ]
@@ -613,13 +613,13 @@
     {
       "id": "l15",
       "text": "In!",
-      "start": 38.314,
-      "end": 38.414,
+      "start": 26.6,
+      "end": 26.76,
       "words": [
         {
           "text": "In!",
-          "start": 38.314,
-          "end": 38.414,
+          "start": 26.6,
+          "end": 26.76,
           "matched": true
         }
       ]
@@ -627,13 +627,13 @@
     {
       "id": "l16",
       "text": "my!",
-      "start": 38.674,
-      "end": 38.875,
+      "start": 26.82,
+      "end": 27.0,
       "words": [
         {
           "text": "my!",
-          "start": 38.674,
-          "end": 38.875,
+          "start": 26.82,
+          "end": 27.0,
           "matched": true
         }
       ]
@@ -641,33 +641,33 @@
     {
       "id": "l17",
       "text": "self-righteous gremelin!",
-      "start": 39.115,
-      "end": 42.389,
+      "start": 27.02,
+      "end": 28.381,
       "words": [
         {
           "text": "self-righteous",
-          "start": 39.115,
-          "end": 40.035,
+          "start": 27.02,
+          "end": 27.68,
           "matched": true
         },
         {
           "text": "gremelin!",
-          "start": 40.035,
-          "end": 42.389,
-          "matched": false
+          "start": 27.78,
+          "end": 28.381,
+          "matched": true
         }
       ]
     },
     {
       "id": "l18",
       "text": "I!",
-      "start": 42.389,
-      "end": 42.469,
+      "start": 30.241,
+      "end": 30.261,
       "words": [
         {
           "text": "I!",
-          "start": 42.389,
-          "end": 42.469,
+          "start": 30.241,
+          "end": 30.261,
           "matched": true
         }
       ]
@@ -675,13 +675,13 @@
     {
       "id": "l19",
       "text": "cry!",
-      "start": 43.21,
-      "end": 43.85,
+      "start": 30.521,
+      "end": 31.002,
       "words": [
         {
           "text": "cry!",
-          "start": 43.21,
-          "end": 43.85,
+          "start": 30.521,
+          "end": 31.002,
           "matched": true
         }
       ]
@@ -689,31 +689,31 @@
     {
       "id": "l20",
       "text": "when BamBam deserve outside!",
-      "start": 44.15,
-      "end": 46.471,
+      "start": 31.042,
+      "end": 32.822,
       "words": [
         {
           "text": "when",
-          "start": 44.15,
-          "end": 44.35,
+          "start": 31.042,
+          "end": 31.242,
           "matched": true
         },
         {
           "text": "BamBam",
-          "start": 44.67,
-          "end": 44.911,
+          "start": 31.542,
+          "end": 31.762,
           "matched": true
         },
         {
           "text": "deserve",
-          "start": 44.931,
-          "end": 45.531,
+          "start": 31.802,
+          "end": 32.322,
           "matched": true
         },
         {
           "text": "outside!",
-          "start": 45.791,
-          "end": 46.471,
+          "start": 32.382,
+          "end": 32.822,
           "matched": true
         }
       ]
@@ -721,37 +721,37 @@
     {
       "id": "l21",
       "text": "I don't think you trust!",
-      "start": 46.532,
-      "end": 47.632,
+      "start": 32.842,
+      "end": 34.083,
       "words": [
         {
           "text": "I",
-          "start": 46.532,
-          "end": 46.572,
+          "start": 32.842,
+          "end": 32.862,
           "matched": true
         },
         {
           "text": "don't",
-          "start": 46.612,
-          "end": 46.792,
+          "start": 33.062,
+          "end": 33.242,
           "matched": true
         },
         {
           "text": "think",
-          "start": 46.852,
-          "end": 47.032,
+          "start": 33.302,
+          "end": 33.522,
           "matched": true
         },
         {
           "text": "you",
-          "start": 47.072,
-          "end": 47.232,
+          "start": 33.562,
+          "end": 33.742,
           "matched": true
         },
         {
           "text": "trust!",
-          "start": 47.272,
-          "end": 47.632,
+          "start": 33.762,
+          "end": 34.083,
           "matched": true
         }
       ]
@@ -759,19 +759,19 @@
     {
       "id": "l22",
       "text": "self-righteous gremelin!",
-      "start": 53.035,
-      "end": 54.576,
+      "start": 34.503,
+      "end": 35.843,
       "words": [
         {
           "text": "self-righteous",
-          "start": 53.035,
-          "end": 53.956,
+          "start": 34.503,
+          "end": 35.203,
           "matched": true
         },
         {
           "text": "gremelin!",
-          "start": 54.036,
-          "end": 54.576,
+          "start": 35.303,
+          "end": 35.843,
           "matched": true
         }
       ]
@@ -779,25 +779,25 @@
     {
       "id": "l23",
       "text": "Rah, Mama! (mama)",
-      "start": 54.716,
-      "end": 55.957,
+      "start": 36.023,
+      "end": 37.184,
       "words": [
         {
           "text": "Rah,",
-          "start": 54.716,
-          "end": 55.197,
+          "start": 36.023,
+          "end": 36.303,
           "matched": true
         },
         {
           "text": "Mama!",
-          "start": 55.197,
-          "end": 55.237,
+          "start": 36.303,
+          "end": 36.323,
           "matched": false
         },
         {
           "text": "(mama)",
-          "start": 55.237,
-          "end": 55.957,
+          "start": 36.323,
+          "end": 37.184,
           "matched": true
         }
       ]
@@ -805,135 +805,135 @@
     {
       "id": "l24",
       "text": "Grab a lead and put your little shoes on! (The little ones)",
-      "start": 56.638,
-      "end": 59.939,
+      "start": 37.264,
+      "end": 40.065,
       "words": [
         {
           "text": "Grab",
-          "start": 56.638,
-          "end": 56.798,
+          "start": 37.264,
+          "end": 37.564,
           "matched": true
         },
         {
           "text": "a",
-          "start": 56.858,
-          "end": 56.958,
+          "start": 37.644,
+          "end": 37.744,
           "matched": true
         },
         {
           "text": "lead",
-          "start": 56.978,
-          "end": 57.178,
+          "start": 37.804,
+          "end": 38.064,
           "matched": true
         },
         {
           "text": "and",
-          "start": 57.218,
-          "end": 57.338,
+          "start": 38.124,
+          "end": 38.224,
           "matched": true
         },
         {
           "text": "put",
-          "start": 57.378,
-          "end": 57.558,
+          "start": 38.284,
+          "end": 38.484,
           "matched": true
         },
         {
           "text": "your",
-          "start": 57.618,
-          "end": 57.938,
+          "start": 38.524,
+          "end": 38.744,
           "matched": true
         },
         {
           "text": "little",
-          "start": 57.958,
-          "end": 58.258,
+          "start": 38.824,
+          "end": 39.184,
           "matched": true
         },
         {
           "text": "shoes",
-          "start": 58.319,
-          "end": 58.839,
+          "start": 39.264,
+          "end": 39.544,
           "matched": true
         },
         {
           "text": "on!",
-          "start": 58.979,
-          "end": 59.079,
+          "start": 39.624,
+          "end": 39.704,
           "matched": true
         },
         {
           "text": "(The",
-          "start": 59.119,
-          "end": 59.259,
-          "matched": true
+          "start": 39.704,
+          "end": 39.824,
+          "matched": false
         },
         {
           "text": "little",
-          "start": 59.339,
-          "end": 59.619,
-          "matched": true
+          "start": 39.824,
+          "end": 39.945,
+          "matched": false
         },
         {
           "text": "ones)",
-          "start": 59.739,
-          "end": 59.939,
-          "matched": true
+          "start": 39.945,
+          "end": 40.065,
+          "matched": false
         }
       ]
     },
     {
       "id": "l25",
       "text": "Hide your phone and forget about your makeup!",
-      "start": 59.98,
-      "end": 62.661,
+      "start": 40.065,
+      "end": 41.725,
       "words": [
         {
           "text": "Hide",
-          "start": 59.98,
-          "end": 60.16,
-          "matched": true
+          "start": 40.065,
+          "end": 40.185,
+          "matched": false
         },
         {
           "text": "your",
-          "start": 60.18,
-          "end": 60.28,
+          "start": 40.185,
+          "end": 40.265,
           "matched": true
         },
         {
           "text": "phone",
-          "start": 60.3,
-          "end": 60.54,
+          "start": 40.285,
+          "end": 40.525,
           "matched": true
         },
         {
           "text": "and",
-          "start": 60.56,
-          "end": 60.62,
+          "start": 40.545,
+          "end": 40.625,
           "matched": true
         },
         {
           "text": "forget",
-          "start": 60.66,
-          "end": 60.9,
+          "start": 40.665,
+          "end": 40.925,
           "matched": true
         },
         {
           "text": "about",
-          "start": 60.94,
-          "end": 61.12,
+          "start": 40.985,
+          "end": 41.145,
           "matched": true
         },
         {
           "text": "your",
-          "start": 61.14,
-          "end": 61.26,
+          "start": 41.185,
+          "end": 41.285,
           "matched": true
         },
         {
           "text": "makeup!",
-          "start": 61.28,
-          "end": 62.661,
+          "start": 41.305,
+          "end": 41.725,
           "matched": true
         }
       ]
@@ -941,55 +941,55 @@
     {
       "id": "l26",
       "text": "Why'd you leave the treats upon the table?",
-      "start": 63.822,
-      "end": 66.223,
+      "start": 42.005,
+      "end": 43.746,
       "words": [
         {
           "text": "Why'd",
-          "start": 63.822,
-          "end": 63.962,
+          "start": 42.005,
+          "end": 42.145,
           "matched": true
         },
         {
           "text": "you",
-          "start": 63.982,
-          "end": 64.162,
+          "start": 42.165,
+          "end": 42.305,
           "matched": true
         },
         {
           "text": "leave",
-          "start": 64.182,
-          "end": 64.382,
+          "start": 42.325,
+          "end": 42.525,
           "matched": true
         },
         {
           "text": "the",
-          "start": 64.402,
-          "end": 64.502,
+          "start": 42.585,
+          "end": 42.665,
           "matched": true
         },
         {
           "text": "treats",
-          "start": 64.562,
-          "end": 64.882,
+          "start": 42.725,
+          "end": 42.945,
           "matched": true
         },
         {
           "text": "upon",
-          "start": 64.982,
-          "end": 65.323,
-          "matched": true
+          "start": 42.945,
+          "end": 43.186,
+          "matched": false
         },
         {
           "text": "the",
-          "start": 65.363,
-          "end": 65.463,
+          "start": 43.186,
+          "end": 43.246,
           "matched": true
         },
         {
           "text": "table?",
-          "start": 65.563,
-          "end": 66.223,
+          "start": 43.306,
+          "end": 43.746,
           "matched": true
         }
       ]
@@ -997,43 +997,43 @@
     {
       "id": "l27",
       "text": "Here you go, create another fable!",
-      "start": 66.744,
-      "end": 69.665,
+      "start": 44.766,
+      "end": 46.967,
       "words": [
         {
           "text": "Here",
-          "start": 66.744,
-          "end": 66.984,
+          "start": 44.766,
+          "end": 45.006,
           "matched": true
         },
         {
           "text": "you",
-          "start": 67.024,
-          "end": 67.204,
+          "start": 45.026,
+          "end": 45.126,
           "matched": true
         },
         {
           "text": "go,",
-          "start": 67.244,
-          "end": 67.524,
+          "start": 45.166,
+          "end": 45.326,
           "matched": true
         },
         {
           "text": "create",
-          "start": 67.704,
-          "end": 68.024,
+          "start": 45.666,
+          "end": 45.986,
           "matched": true
         },
         {
           "text": "another",
-          "start": 68.184,
-          "end": 69.005,
+          "start": 46.026,
+          "end": 46.467,
           "matched": true
         },
         {
           "text": "fable!",
-          "start": 69.145,
-          "end": 69.665,
+          "start": 46.527,
+          "end": 46.967,
           "matched": true
         }
       ]
@@ -1041,25 +1041,25 @@
     {
       "id": "l28",
       "text": "You wanted to!",
-      "start": 69.725,
-      "end": 70.586,
+      "start": 47.047,
+      "end": 47.987,
       "words": [
         {
           "text": "You",
-          "start": 69.725,
-          "end": 69.885,
+          "start": 47.047,
+          "end": 47.307,
           "matched": true
         },
         {
           "text": "wanted",
-          "start": 69.925,
-          "end": 70.286,
+          "start": 47.367,
+          "end": 47.727,
           "matched": true
         },
         {
           "text": "to!",
-          "start": 70.346,
-          "end": 70.586,
+          "start": 47.787,
+          "end": 47.987,
           "matched": true
         }
       ]
@@ -1067,61 +1067,61 @@
     {
       "id": "l29",
       "text": "Grab a lead and put your little shoes on!",
-      "start": 71.517,
-      "end": 74.658,
+      "start": 48.047,
+      "end": 49.668,
       "words": [
         {
           "text": "Grab",
-          "start": 71.517,
-          "end": 71.697,
+          "start": 48.047,
+          "end": 48.207,
           "matched": true
         },
         {
           "text": "a",
-          "start": 71.737,
-          "end": 71.797,
+          "start": 48.227,
+          "end": 48.307,
           "matched": true
         },
         {
           "text": "lead",
-          "start": 71.797,
-          "end": 72.137,
-          "matched": false
+          "start": 48.327,
+          "end": 48.587,
+          "matched": true
         },
         {
           "text": "and",
-          "start": 72.137,
-          "end": 72.237,
+          "start": 48.627,
+          "end": 48.727,
           "matched": true
         },
         {
           "text": "put",
-          "start": 72.277,
-          "end": 72.477,
+          "start": 48.767,
+          "end": 48.907,
           "matched": true
         },
         {
           "text": "your",
-          "start": 72.517,
-          "end": 72.738,
+          "start": 48.947,
+          "end": 49.047,
           "matched": true
         },
         {
           "text": "little",
-          "start": 72.798,
-          "end": 73.138,
+          "start": 49.067,
+          "end": 49.248,
           "matched": true
         },
         {
           "text": "shoes",
-          "start": 73.198,
-          "end": 73.678,
+          "start": 49.288,
+          "end": 49.548,
           "matched": true
         },
         {
           "text": "on!",
-          "start": 74.418,
-          "end": 74.658,
+          "start": 49.588,
+          "end": 49.668,
           "matched": true
         }
       ]
@@ -1129,25 +1129,25 @@
     {
       "id": "l30",
       "text": "You wanted to!",
-      "start": 75.379,
-      "end": 76.339,
+      "start": 49.688,
+      "end": 50.328,
       "words": [
         {
           "text": "You",
-          "start": 75.379,
-          "end": 75.579,
+          "start": 49.688,
+          "end": 49.808,
           "matched": true
         },
         {
           "text": "wanted",
-          "start": 75.639,
-          "end": 76.039,
+          "start": 49.828,
+          "end": 50.148,
           "matched": true
         },
         {
           "text": "to!",
-          "start": 76.099,
-          "end": 76.339,
+          "start": 50.188,
+          "end": 50.328,
           "matched": true
         }
       ]
@@ -1155,55 +1155,55 @@
     {
       "id": "l31",
       "text": "Hide your phone and forget about your makeup!",
-      "start": 78.48,
-      "end": 80.421,
+      "start": 51.789,
+      "end": 53.65,
       "words": [
         {
           "text": "Hide",
-          "start": 78.48,
-          "end": 78.78,
+          "start": 51.789,
+          "end": 51.989,
           "matched": true
         },
         {
           "text": "your",
-          "start": 78.8,
-          "end": 78.92,
+          "start": 52.009,
+          "end": 52.129,
           "matched": true
         },
         {
           "text": "phone",
-          "start": 78.98,
-          "end": 79.22,
+          "start": 52.149,
+          "end": 52.389,
           "matched": true
         },
         {
           "text": "and",
-          "start": 79.24,
-          "end": 79.32,
+          "start": 52.429,
+          "end": 52.509,
           "matched": true
         },
         {
           "text": "forget",
-          "start": 79.34,
-          "end": 79.6,
+          "start": 52.529,
+          "end": 52.809,
           "matched": true
         },
         {
           "text": "about",
-          "start": 79.66,
-          "end": 79.82,
+          "start": 52.849,
+          "end": 53.109,
           "matched": true
         },
         {
           "text": "your",
-          "start": 79.841,
-          "end": 79.961,
+          "start": 53.149,
+          "end": 53.27,
           "matched": true
         },
         {
           "text": "makeup!",
-          "start": 79.981,
-          "end": 80.421,
+          "start": 53.29,
+          "end": 53.65,
           "matched": true
         }
       ]
@@ -1211,25 +1211,25 @@
     {
       "id": "l32",
       "text": "You wanted to!",
-      "start": 80.661,
-      "end": 82.141,
+      "start": 53.67,
+      "end": 54.33,
       "words": [
         {
           "text": "You",
-          "start": 80.661,
-          "end": 80.861,
+          "start": 53.67,
+          "end": 53.79,
           "matched": true
         },
         {
           "text": "wanted",
-          "start": 80.921,
-          "end": 81.561,
+          "start": 53.85,
+          "end": 54.15,
           "matched": true
         },
         {
           "text": "to!",
-          "start": 81.641,
-          "end": 82.141,
+          "start": 54.19,
+          "end": 54.33,
           "matched": true
         }
       ]
@@ -1237,55 +1237,55 @@
     {
       "id": "l33",
       "text": "Why'd you leave the treats upon the table?",
-      "start": 82.161,
-      "end": 85.003,
+      "start": 54.911,
+      "end": 57.492,
       "words": [
         {
           "text": "Why'd",
-          "start": 82.161,
-          "end": 82.582,
+          "start": 54.911,
+          "end": 55.151,
           "matched": true
         },
         {
           "text": "you",
-          "start": 82.602,
-          "end": 82.802,
+          "start": 55.171,
+          "end": 55.271,
           "matched": true
         },
         {
           "text": "leave",
-          "start": 82.882,
-          "end": 83.102,
+          "start": 55.311,
+          "end": 55.551,
           "matched": true
         },
         {
           "text": "the",
-          "start": 83.142,
-          "end": 83.222,
+          "start": 55.591,
+          "end": 55.691,
           "matched": true
         },
         {
           "text": "treats",
-          "start": 83.302,
-          "end": 83.582,
+          "start": 55.751,
+          "end": 56.091,
           "matched": true
         },
         {
           "text": "upon",
-          "start": 83.682,
-          "end": 84.302,
+          "start": 56.191,
+          "end": 56.571,
           "matched": true
         },
         {
           "text": "the",
-          "start": 84.322,
-          "end": 84.402,
+          "start": 56.591,
+          "end": 56.712,
           "matched": true
         },
         {
           "text": "table?",
-          "start": 84.502,
-          "end": 85.003,
+          "start": 56.792,
+          "end": 57.492,
           "matched": true
         }
       ]
@@ -1293,25 +1293,25 @@
     {
       "id": "l34",
       "text": "You wanted to!",
-      "start": 86.783,
-      "end": 87.544,
+      "start": 57.552,
+      "end": 58.473,
       "words": [
         {
           "text": "You",
-          "start": 86.783,
-          "end": 86.903,
+          "start": 57.552,
+          "end": 57.752,
           "matched": true
         },
         {
           "text": "wanted",
-          "start": 86.943,
-          "end": 87.304,
+          "start": 57.812,
+          "end": 58.212,
           "matched": true
         },
         {
           "text": "to!",
-          "start": 87.384,
-          "end": 87.544,
+          "start": 58.272,
+          "end": 58.473,
           "matched": true
         }
       ]
@@ -1319,37 +1319,37 @@
     {
       "id": "l35",
       "text": "I don't think you trust!",
-      "start": 87.824,
-      "end": 88.824,
+      "start": 58.953,
+      "end": 60.034,
       "words": [
         {
           "text": "I",
-          "start": 87.824,
-          "end": 87.864,
+          "start": 58.953,
+          "end": 59.033,
           "matched": true
         },
         {
           "text": "don't",
-          "start": 87.904,
-          "end": 88.064,
+          "start": 59.073,
+          "end": 59.253,
           "matched": true
         },
         {
           "text": "think",
-          "start": 88.104,
-          "end": 88.304,
+          "start": 59.313,
+          "end": 59.513,
           "matched": true
         },
         {
           "text": "you",
-          "start": 88.364,
-          "end": 88.544,
+          "start": 59.553,
+          "end": 59.733,
           "matched": true
         },
         {
           "text": "trust!",
-          "start": 88.564,
-          "end": 88.824,
+          "start": 59.753,
+          "end": 60.034,
           "matched": true
         }
       ]
@@ -1357,31 +1357,31 @@
     {
       "id": "l36",
       "text": "In my self-righteous gremelin!",
-      "start": 88.924,
-      "end": 92.786,
+      "start": 60.614,
+      "end": 61.374,
       "words": [
         {
           "text": "In",
-          "start": 88.924,
-          "end": 89.044,
+          "start": 60.614,
+          "end": 60.754,
           "matched": true
         },
         {
           "text": "my",
-          "start": 89.104,
-          "end": 89.244,
+          "start": 60.814,
+          "end": 60.974,
           "matched": true
         },
         {
           "text": "self-righteous",
-          "start": 89.284,
-          "end": 89.925,
-          "matched": true
+          "start": 60.974,
+          "end": 61.174,
+          "matched": false
         },
         {
           "text": "gremelin!",
-          "start": 89.925,
-          "end": 92.786,
+          "start": 61.174,
+          "end": 61.374,
           "matched": false
         }
       ]
@@ -1389,43 +1389,43 @@
     {
       "id": "l37",
       "text": "I cry when BamBam deserve outside!",
-      "start": 92.786,
-      "end": 96.467,
+      "start": 61.374,
+      "end": 66.837,
       "words": [
         {
           "text": "I",
-          "start": 92.786,
-          "end": 92.926,
+          "start": 61.374,
+          "end": 61.494,
           "matched": true
         },
         {
           "text": "cry",
-          "start": 93.146,
-          "end": 93.726,
+          "start": 64.536,
+          "end": 64.836,
           "matched": true
         },
         {
           "text": "when",
-          "start": 94.107,
-          "end": 94.287,
+          "start": 64.996,
+          "end": 65.257,
           "matched": true
         },
         {
           "text": "BamBam",
-          "start": 94.607,
-          "end": 94.847,
+          "start": 65.537,
+          "end": 65.777,
           "matched": true
         },
         {
           "text": "deserve",
-          "start": 94.887,
-          "end": 95.567,
+          "start": 65.797,
+          "end": 66.337,
           "matched": true
         },
         {
           "text": "outside!",
-          "start": 95.727,
-          "end": 96.467,
+          "start": 66.377,
+          "end": 66.837,
           "matched": true
         }
       ]
@@ -1433,31 +1433,31 @@
     {
       "id": "l38",
       "text": "In my self-righteous gremelin!",
-      "start": 96.628,
-      "end": 99.574,
+      "start": 67.138,
+      "end": 69.619,
       "words": [
         {
           "text": "In",
-          "start": 96.628,
-          "end": 96.748,
+          "start": 67.138,
+          "end": 67.258,
           "matched": true
         },
         {
           "text": "my",
-          "start": 96.788,
-          "end": 96.948,
+          "start": 67.298,
+          "end": 67.498,
           "matched": true
         },
         {
           "text": "self-righteous",
-          "start": 96.968,
-          "end": 97.868,
-          "matched": true
+          "start": 67.498,
+          "end": 68.559,
+          "matched": false
         },
         {
           "text": "gremelin!",
-          "start": 97.868,
-          "end": 99.574,
+          "start": 68.559,
+          "end": 69.619,
           "matched": false
         }
       ]
@@ -1465,43 +1465,43 @@
     {
       "id": "l39",
       "text": "I cry when BamBam deserve outside!",
-      "start": 99.574,
-      "end": 104.503,
+      "start": 69.619,
+      "end": 71.8,
       "words": [
         {
           "text": "I",
-          "start": 99.574,
-          "end": 101.28,
-          "matched": false
+          "start": 69.619,
+          "end": 69.739,
+          "matched": true
         },
         {
           "text": "cry",
-          "start": 101.28,
-          "end": 101.52,
+          "start": 69.779,
+          "end": 70.079,
           "matched": true
         },
         {
           "text": "when",
-          "start": 101.56,
-          "end": 101.981,
+          "start": 70.099,
+          "end": 70.259,
           "matched": true
         },
         {
           "text": "BamBam",
-          "start": 102.401,
-          "end": 102.701,
+          "start": 70.54,
+          "end": 70.76,
           "matched": true
         },
         {
           "text": "deserve",
-          "start": 102.761,
-          "end": 103.502,
+          "start": 70.78,
+          "end": 71.34,
           "matched": true
         },
         {
           "text": "outside!",
-          "start": 103.622,
-          "end": 104.503,
+          "start": 71.4,
+          "end": 71.8,
           "matched": true
         }
       ]
@@ -1509,37 +1509,37 @@
     {
       "id": "l40",
       "text": "I don't think you trust!",
-      "start": 104.523,
-      "end": 108.026,
+      "start": 71.8,
+      "end": 80.089,
       "words": [
         {
           "text": "I",
-          "start": 104.523,
-          "end": 104.543,
-          "matched": true
+          "start": 71.8,
+          "end": 79.048,
+          "matched": false
         },
         {
           "text": "don't",
-          "start": 107.105,
-          "end": 107.265,
+          "start": 79.048,
+          "end": 79.248,
           "matched": true
         },
         {
           "text": "think",
-          "start": 107.325,
-          "end": 107.525,
+          "start": 79.288,
+          "end": 79.508,
           "matched": true
         },
         {
           "text": "you",
-          "start": 107.565,
-          "end": 107.746,
+          "start": 79.548,
+          "end": 79.728,
           "matched": true
         },
         {
           "text": "trust!",
-          "start": 107.766,
-          "end": 108.026,
+          "start": 79.768,
+          "end": 80.089,
           "matched": true
         }
       ]
@@ -1547,19 +1547,19 @@
     {
       "id": "l41",
       "text": "self-righteous gremelin!",
-      "start": 108.046,
-      "end": 109.067,
+      "start": 80.509,
+      "end": 81.829,
       "words": [
         {
           "text": "self-righteous",
-          "start": 108.046,
-          "end": 108.666,
+          "start": 80.509,
+          "end": 81.189,
           "matched": true
         },
         {
           "text": "gremelin!",
-          "start": 108.746,
-          "end": 109.067,
+          "start": 81.269,
+          "end": 81.829,
           "matched": true
         }
       ]
@@ -1567,45 +1567,45 @@
     {
       "id": "l42",
       "text": "Mother, (Mother), Mother, (Mother)",
-      "start": 109.067,
-      "end": 109.087,
+      "start": 82.049,
+      "end": 84.51,
       "words": [
         {
           "text": "Mother,",
-          "start": 109.067,
-          "end": 109.072,
-          "matched": false
+          "start": 82.049,
+          "end": 82.429,
+          "matched": true
         },
         {
           "text": "(Mother),",
-          "start": 109.072,
-          "end": 109.077,
-          "matched": false
+          "start": 82.79,
+          "end": 83.19,
+          "matched": true
         },
         {
           "text": "Mother,",
-          "start": 109.077,
-          "end": 109.082,
-          "matched": false
+          "start": 83.29,
+          "end": 83.69,
+          "matched": true
         },
         {
           "text": "(Mother)",
-          "start": 109.082,
-          "end": 109.087,
-          "matched": false
+          "start": 84.03,
+          "end": 84.51,
+          "matched": true
         }
       ]
     },
     {
       "id": "l43",
       "text": "Mother,",
-      "start": 109.087,
-      "end": 109.347,
+      "start": 85.771,
+      "end": 86.231,
       "words": [
         {
           "text": "Mother,",
-          "start": 109.087,
-          "end": 109.347,
+          "start": 85.771,
+          "end": 86.231,
           "matched": true
         }
       ]
@@ -1613,49 +1613,49 @@
     {
       "id": "l44",
       "text": "into your hands I commend my spirit",
-      "start": 128.053,
-      "end": 131.334,
+      "start": 86.851,
+      "end": 89.713,
       "words": [
         {
           "text": "into",
-          "start": 128.053,
-          "end": 128.393,
+          "start": 86.851,
+          "end": 87.071,
           "matched": true
         },
         {
           "text": "your",
-          "start": 128.433,
-          "end": 128.673,
+          "start": 87.111,
+          "end": 87.272,
           "matched": true
         },
         {
           "text": "hands",
-          "start": 128.733,
-          "end": 129.174,
+          "start": 87.312,
+          "end": 87.492,
           "matched": true
         },
         {
           "text": "I",
-          "start": 129.294,
-          "end": 129.394,
+          "start": 87.552,
+          "end": 87.612,
           "matched": true
         },
         {
           "text": "commend",
-          "start": 129.434,
-          "end": 130.074,
+          "start": 87.632,
+          "end": 88.112,
           "matched": true
         },
         {
           "text": "my",
-          "start": 130.174,
-          "end": 130.514,
+          "start": 88.272,
+          "end": 88.552,
           "matched": true
         },
         {
           "text": "spirit",
-          "start": 130.534,
-          "end": 131.334,
+          "start": 88.652,
+          "end": 89.713,
           "matched": true
         }
       ]
@@ -1663,31 +1663,31 @@
     {
       "id": "l45",
       "text": "Mother, into your hands",
-      "start": 132.735,
-      "end": 135.096,
+      "start": 89.793,
+      "end": 91.713,
       "words": [
         {
           "text": "Mother,",
-          "start": 132.735,
-          "end": 133.275,
+          "start": 89.793,
+          "end": 90.213,
           "matched": true
         },
         {
           "text": "into",
-          "start": 133.816,
-          "end": 134.156,
+          "start": 90.773,
+          "end": 91.073,
           "matched": true
         },
         {
           "text": "your",
-          "start": 134.196,
-          "end": 134.436,
+          "start": 91.113,
+          "end": 91.273,
           "matched": true
         },
         {
           "text": "hands",
-          "start": 134.476,
-          "end": 135.096,
+          "start": 91.333,
+          "end": 91.713,
           "matched": true
         }
       ]
@@ -1695,37 +1695,37 @@
     {
       "id": "l46",
       "text": "Why have you forsaken me?",
-      "start": 136.077,
-      "end": 138.538,
+      "start": 91.773,
+      "end": 93.454,
       "words": [
         {
           "text": "Why",
-          "start": 136.077,
-          "end": 136.417,
+          "start": 91.773,
+          "end": 92.033,
           "matched": true
         },
         {
           "text": "have",
-          "start": 136.457,
-          "end": 136.577,
+          "start": 92.074,
+          "end": 92.254,
           "matched": true
         },
         {
           "text": "you",
-          "start": 136.597,
-          "end": 136.917,
+          "start": 92.294,
+          "end": 92.454,
           "matched": true
         },
         {
           "text": "forsaken",
-          "start": 137.037,
-          "end": 138.177,
+          "start": 92.534,
+          "end": 93.174,
           "matched": true
         },
         {
           "text": "me?",
-          "start": 138.278,
-          "end": 138.538,
+          "start": 93.274,
+          "end": 93.454,
           "matched": true
         }
       ]
@@ -1733,37 +1733,37 @@
     {
       "id": "l47",
       "text": "In your eyes, forsaken me?",
-      "start": 138.798,
-      "end": 142.179,
+      "start": 94.374,
+      "end": 95.915,
       "words": [
         {
           "text": "In",
-          "start": 138.798,
-          "end": 138.918,
+          "start": 94.374,
+          "end": 94.475,
           "matched": true
         },
         {
           "text": "your",
-          "start": 138.978,
-          "end": 139.258,
+          "start": 94.535,
+          "end": 94.755,
           "matched": true
         },
         {
           "text": "eyes,",
-          "start": 139.798,
-          "end": 140.018,
+          "start": 94.875,
+          "end": 95.015,
           "matched": true
         },
         {
           "text": "forsaken",
-          "start": 140.839,
-          "end": 141.819,
+          "start": 95.055,
+          "end": 95.695,
           "matched": true
         },
         {
           "text": "me?",
-          "start": 141.899,
-          "end": 142.179,
+          "start": 95.795,
+          "end": 95.915,
           "matched": true
         }
       ]
@@ -1771,37 +1771,37 @@
     {
       "id": "l48",
       "text": "In your thoughts, forsaken me?",
-      "start": 142.659,
-      "end": 146.021,
+      "start": 96.355,
+      "end": 97.956,
       "words": [
         {
           "text": "In",
-          "start": 142.659,
-          "end": 142.759,
+          "start": 96.355,
+          "end": 96.475,
           "matched": true
         },
         {
           "text": "your",
-          "start": 142.799,
-          "end": 142.96,
+          "start": 96.515,
+          "end": 96.675,
           "matched": true
         },
         {
           "text": "thoughts,",
-          "start": 143.06,
-          "end": 143.76,
+          "start": 96.755,
+          "end": 97.016,
           "matched": true
         },
         {
           "text": "forsaken",
-          "start": 144.7,
-          "end": 145.661,
+          "start": 97.036,
+          "end": 97.696,
           "matched": true
         },
         {
           "text": "me?",
-          "start": 145.741,
-          "end": 146.021,
+          "start": 97.776,
+          "end": 97.956,
           "matched": true
         }
       ]
@@ -1809,43 +1809,43 @@
     {
       "id": "l49",
       "text": "In your heart, forsaken me? Oh!",
-      "start": 146.501,
-      "end": 155.732,
+      "start": 98.376,
+      "end": 104.759,
       "words": [
         {
           "text": "In",
-          "start": 146.501,
-          "end": 146.601,
+          "start": 98.376,
+          "end": 98.476,
           "matched": true
         },
         {
           "text": "your",
-          "start": 146.661,
-          "end": 146.921,
+          "start": 98.536,
+          "end": 98.736,
           "matched": true
         },
         {
           "text": "heart,",
-          "start": 147.001,
-          "end": 148.582,
+          "start": 98.776,
+          "end": 99.016,
           "matched": true
         },
         {
           "text": "forsaken",
-          "start": 149.743,
-          "end": 150.623,
+          "start": 99.056,
+          "end": 99.697,
           "matched": true
         },
         {
           "text": "me?",
-          "start": 150.743,
-          "end": 150.843,
+          "start": 99.797,
+          "end": 99.897,
           "matched": true
         },
         {
           "text": "Oh!",
-          "start": 150.843,
-          "end": 155.732,
+          "start": 99.897,
+          "end": 104.759,
           "matched": false
         }
       ]
@@ -1853,45 +1853,45 @@
     {
       "id": "l50",
       "text": "Trust!",
-      "start": 155.732,
-      "end": 160.621,
+      "start": 104.759,
+      "end": 105.019,
       "words": [
         {
           "text": "Trust!",
-          "start": 155.732,
-          "end": 160.621,
-          "matched": false
+          "start": 104.759,
+          "end": 105.019,
+          "matched": true
         }
       ]
     },
     {
       "id": "l51",
       "text": "In my self-righteous gremelin!",
-      "start": 160.621,
-      "end": 162.261,
+      "start": 112.125,
+      "end": 114.367,
       "words": [
         {
           "text": "In",
-          "start": 160.621,
-          "end": 160.681,
+          "start": 112.125,
+          "end": 112.245,
           "matched": true
         },
         {
           "text": "my",
-          "start": 160.721,
-          "end": 160.841,
+          "start": 112.305,
+          "end": 112.506,
           "matched": true
         },
         {
           "text": "self-righteous",
-          "start": 160.861,
-          "end": 161.481,
+          "start": 112.526,
+          "end": 113.727,
           "matched": true
         },
         {
           "text": "gremelin!",
-          "start": 161.521,
-          "end": 162.261,
+          "start": 113.787,
+          "end": 114.367,
           "matched": true
         }
       ]
@@ -1899,43 +1899,43 @@
     {
       "id": "l52",
       "text": "I cry when BamBam deserve outside!",
-      "start": 162.361,
-      "end": 165.882,
+      "start": 114.627,
+      "end": 117.23,
       "words": [
         {
           "text": "I",
-          "start": 162.361,
-          "end": 162.441,
+          "start": 114.627,
+          "end": 114.748,
           "matched": true
         },
         {
           "text": "cry",
-          "start": 162.501,
-          "end": 162.921,
+          "start": 114.788,
+          "end": 115.048,
           "matched": true
         },
         {
           "text": "when",
-          "start": 163.001,
-          "end": 163.421,
+          "start": 115.068,
+          "end": 115.268,
           "matched": true
         },
         {
           "text": "BamBam",
-          "start": 163.461,
-          "end": 164.182,
+          "start": 115.548,
+          "end": 115.769,
           "matched": true
         },
         {
           "text": "deserve",
-          "start": 164.202,
-          "end": 164.942,
+          "start": 115.789,
+          "end": 116.329,
           "matched": true
         },
         {
           "text": "outside!",
-          "start": 165.062,
-          "end": 165.882,
+          "start": 116.389,
+          "end": 117.23,
           "matched": true
         }
       ]
@@ -1943,31 +1943,31 @@
     {
       "id": "l53",
       "text": "In my self-righteous gremelin!",
-      "start": 165.902,
-      "end": 175.464,
+      "start": 143.864,
+      "end": 147.066,
       "words": [
         {
           "text": "In",
-          "start": 165.902,
-          "end": 165.942,
+          "start": 143.864,
+          "end": 143.964,
           "matched": true
         },
         {
           "text": "my",
-          "start": 165.962,
-          "end": 166.022,
+          "start": 144.024,
+          "end": 144.184,
           "matched": true
         },
         {
           "text": "self-righteous",
-          "start": 166.062,
-          "end": 171.143,
+          "start": 144.244,
+          "end": 145.705,
           "matched": true
         },
         {
           "text": "gremelin!",
-          "start": 171.203,
-          "end": 175.464,
+          "start": 145.765,
+          "end": 147.066,
           "matched": true
         }
       ]
@@ -1975,43 +1975,43 @@
     {
       "id": "l54",
       "text": "I cry when BamBam deserve outside!",
-      "start": 185.672,
-      "end": 188.955,
+      "start": 148.127,
+      "end": 152.99,
       "words": [
         {
           "text": "I",
-          "start": 185.672,
-          "end": 185.732,
+          "start": 148.127,
+          "end": 148.207,
           "matched": true
         },
         {
           "text": "cry",
-          "start": 185.772,
-          "end": 186.012,
+          "start": 148.267,
+          "end": 148.987,
           "matched": true
         },
         {
           "text": "when",
-          "start": 186.032,
-          "end": 186.473,
+          "start": 149.027,
+          "end": 149.228,
           "matched": true
         },
         {
           "text": "BamBam",
-          "start": 186.873,
-          "end": 187.194,
+          "start": 149.788,
+          "end": 150.268,
           "matched": true
         },
         {
           "text": "deserve",
-          "start": 187.234,
-          "end": 187.974,
+          "start": 150.288,
+          "end": 151.229,
           "matched": true
         },
         {
           "text": "outside!",
-          "start": 188.094,
-          "end": 188.955,
+          "start": 151.509,
+          "end": 152.99,
           "matched": true
         }
       ]
@@ -2019,37 +2019,37 @@
     {
       "id": "l55",
       "text": "I don't think you trust!",
-      "start": 188.975,
-      "end": 192.479,
+      "start": 158.93,
+      "end": 162.615,
       "words": [
         {
           "text": "I",
-          "start": 188.975,
-          "end": 188.995,
+          "start": 158.93,
+          "end": 159.831,
           "matched": true
         },
         {
           "text": "don't",
-          "start": 191.458,
-          "end": 191.618,
+          "start": 159.851,
+          "end": 161.774,
           "matched": true
         },
         {
           "text": "think",
-          "start": 191.778,
-          "end": 191.978,
+          "start": 161.794,
+          "end": 161.994,
           "matched": true
         },
         {
           "text": "you",
-          "start": 192.018,
-          "end": 192.218,
+          "start": 162.034,
+          "end": 162.214,
           "matched": true
         },
         {
           "text": "trust!",
-          "start": 192.238,
-          "end": 192.479,
+          "start": 162.254,
+          "end": 162.615,
           "matched": true
         }
       ]
@@ -2057,19 +2057,19 @@
     {
       "id": "l56",
       "text": "self-righteous gremelin!",
-      "start": 192.499,
-      "end": 193.76,
+      "start": 162.755,
+      "end": 163.937,
       "words": [
         {
           "text": "self-righteous",
-          "start": 192.499,
-          "end": 193.159,
+          "start": 162.755,
+          "end": 163.476,
           "matched": true
         },
         {
           "text": "gremelin!",
-          "start": 193.219,
-          "end": 193.76,
+          "start": 163.536,
+          "end": 163.937,
           "matched": true
         }
       ]

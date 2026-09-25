@@ -76,6 +76,57 @@ def humanise(value: str) -> str:
 
 VALID_SIDES = ("A", "B", "C")
 
+GENRE_FAMILIES = [
+    (0.0, "orchestral-classical", ("orchestral", "symphony", "symphonic", "classical", "baroque", "romantic", "oratorio", "opera", "operatic", "chamber", "choir", "choral")),
+    (1.0, "folk-acoustic", ("folk", "acoustic", "bardcore", "medieval", "singer-songwriter", "singer songwriter", "bluegrass")),
+    (2.0, "country-americana", ("country", "americana", "rockabilly", "outlaw", "western")),
+    (3.0, "rock", ("rock", "soft rock", "psychedelic rock", "garage rock", "alternative rock", "glam rock")),
+    (4.0, "punk-ska", ("punk", "skate punk", "pop-punk", "ska", "reggae", "hardcore punk")),
+    (5.0, "metal", ("metal", "death metal", "black metal", "power metal", "nwobhm", "nu metal", "thrash", "doom", "gothic metal")),
+    (6.0, "industrial-dark", ("industrial", "gothic", "darkwave", "ebm", "noise rock")),
+    (7.0, "electronic-club", ("electronic", "club", "house", "techno", "synth", "hyperpop", "dance", "jungle", "dnb", "drum and bass")),
+    (8.0, "disco", ("disco", "disco-pop", "disco-funk", "italo")),
+    (9.0, "pop", ("pop", "city pop", "sophisti-pop", "bubblegum", "j-pop", "jpop")),
+    (10.0, "rnb-soul", ("r&b", "rnb", "soul", "quiet storm", "gospel", "torch ballad", "doo-wop", "doo wop")),
+    (11.0, "funk", ("funk", "jazz-funk", "psychedelic funk")),
+    (12.0, "hiphop", ("hip-hop", "hip hop", "rap", "trap", "drill", "grime", "g-funk", "boom bap")),
+    (13.0, "jazz-crooner", ("jazz", "vocal jazz", "crooner", "swing", "big band", "film noir")),
+    (14.0, "theatre-experimental", ("musical", "theatrical", "experimental", "novelty", "spoken word")),
+]
+
+def derive_genre_profile(raw: dict[str, Any], variant_raw: str) -> dict[str, Any]:
+    text = " ".join([
+        str(raw.get("genre") or ""),
+        str(raw.get("version") or variant_raw or ""),
+        str(raw.get("caption") or ""),
+        str(raw.get("story") or ""),
+    ]).casefold()
+
+    scored: list[tuple[float, float, str]] = []
+    tags: set[str] = set()
+    for position, family, keywords in GENRE_FAMILIES:
+        score = 0.0
+        for keyword in keywords:
+            hits = text.count(keyword)
+            if hits:
+                score += min(4, hits) * (2.2 if " " in keyword or "-" in keyword else 1.0)
+                tags.add(keyword.replace(" ", "-"))
+        if score:
+            scored.append((score, position, family))
+
+    if not scored:
+        return {"family": "uncategorised", "position": 99.0, "tags": [str(raw.get("genre") or variant_raw or "uncategorised").casefold()]}
+
+    scored.sort(reverse=True)
+    total = sum(score for score, _, _ in scored)
+    weighted_position = sum(score * position for score, position, _ in scored) / total
+    family = scored[0][2]
+    return {
+        "family": family,
+        "position": round(weighted_position, 4),
+        "tags": sorted(tags),
+    }
+
 def normalise_side(value: Any) -> str:
     side = str(value or "A").strip().upper()
     aliases = {
@@ -356,6 +407,7 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
     # Human-facing genre can contain any wording; the slug is only used
     # internally for grouping/side lookup.
     special_label = str(raw.get("genre") or raw.get("special_label") or raw.get("special") or variant_raw or "Uncategorised").strip()
+    genre_profile = derive_genre_profile(raw, variant_raw)
 
     record = {
         "id": release_id,
@@ -367,6 +419,9 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         "variantSlot": slot,
         "variantLabel": special_label or humanise(variant_raw),
         "genre": special_label or humanise(variant_raw),
+        "genreFamily": genre_profile["family"],
+        "genrePosition": genre_profile["position"],
+        "genreTags": genre_profile["tags"],
         "side": side,
         "model": {
             "name": str(raw.get("model") or "").strip(),

@@ -54,6 +54,9 @@
     conveyorPhase: 0,
     conveyorLastFrame: 0,
     conveyorIdleUntil: 0,
+    wallVisibleSlots: 20,
+    wallColumns: 5,
+    wallRows: 4,
     currentTrack: null,
     currentSong: null,
     quality: recall("gbr:quality") || "stream",
@@ -265,8 +268,7 @@
   const CONVEYOR_VISIBLE = 20;
   const CONVEYOR_RESUME_DELAY = 2600;
   const CONVEYOR_FOCUS_SLOT = 12;
-  const COVER_WALL_COLUMNS = 5;
-  const COVER_WALL_ROWS = 4;
+  const COVER_WALL_TARGET_TILE = 116;
 
   function ensureConveyorTrack() {
     if (!el.wheelStage) return null;
@@ -309,7 +311,7 @@
       el.wheelSlots.appendChild(wrap);
     });
     state.wheelIndex = Math.min(state.wheelIndex, Math.max(0, list.length - 1));
-    state.conveyorPhase = -state.wheelIndex + CONVEYOR_FOCUS_SLOT;
+    state.conveyorPhase = 0;
     renderWheelContents();
     positionWheel();
   }
@@ -361,7 +363,11 @@
   function setWheelIndex(index, immediate = false) {
     const next = normaliseWheelIndex(index);
     state.wheelIndex = next;
-    if (immediate) state.conveyorPhase = -next + CONVEYOR_FOCUS_SLOT;
+    const visiblePhase = conveyorProgressForIndex(next);
+    if (immediate && visiblePhase === null) {
+      const focus = Math.floor(Math.max(1, state.wallVisibleSlots) / 2);
+      state.conveyorPhase = -next + focus;
+    }
     renderWheelCenter(activeTracks()[next] || state.currentTrack);
     positionWheel();
   }
@@ -370,7 +376,7 @@
     const count = activeCount();
     if (!count) return null;
     const phase = ((index + state.conveyorPhase) % count + count) % count;
-    if (phase >= CONVEYOR_VISIBLE) return null;
+    if (phase >= Math.max(1, state.wallVisibleSlots)) return null;
     return phase;
   }
 
@@ -379,57 +385,65 @@
     const stageHeight = el.wheelStage.clientHeight;
     if (stageWidth < 100 || stageHeight < 100) return;
 
-    const cols = COVER_WALL_COLUMNS;
-    const rows = COVER_WALL_ROWS;
-    const gridLeft = stageWidth * 0.055;
-    const gridTop = stageHeight * 0.07;
-    const gridWidth = stageWidth * 0.88;
-    const gridHeight = stageHeight * 0.84;
-    const cellWidth = gridWidth / cols;
-    const cellHeight = gridHeight / rows;
-    const tileSize = Math.min(cellWidth, cellHeight) * 0.76;
-    const focusCol = CONVEYOR_FOCUS_SLOT % cols;
-    const focusRow = Math.floor(CONVEYOR_FOCUS_SLOT / cols);
+    // The wall is deliberately over-filled. Tiles are square, edge-to-edge,
+    // and the outer row/column may crop slightly so the panel reads as one
+    // continuous sleeve wall rather than a grid floating inside a frame.
+    const cols = Math.max(6, Math.ceil(stageWidth / COVER_WALL_TARGET_TILE));
+    const tileSize = stageWidth / cols;
+    const rows = Math.max(4, Math.ceil(stageHeight / tileSize));
+    const visibleSlots = Math.min(activeCount(), cols * rows);
+    const wallHeight = rows * tileSize;
+    const yOffset = (stageHeight - wallHeight) / 2;
+
+    state.wallColumns = cols;
+    state.wallRows = rows;
+    state.wallVisibleSlots = visibleSlots;
 
     [...el.wheelSlots.children].forEach((wrap, index) => {
-      const phase = conveyorProgressForIndex(index);
-      if (phase === null) {
+      const slotIndex = conveyorProgressForIndex(index);
+      if (slotIndex === null || slotIndex >= visibleSlots) {
         wrap.hidden = true;
         return;
       }
 
-      const slotIndex = Math.round(phase);
       const col = slotIndex % cols;
       const row = Math.floor(slotIndex / cols);
-      const dx = col - focusCol;
-      const dy = row - focusRow;
-      const dist = Math.hypot(dx, dy) || 0.001;
-      const unitX = dx / dist;
-      const unitY = dy / dist;
-      const primaryPush = Math.max(0, 1.9 - dist) * tileSize * 0.38;
-      const secondaryPush = Math.max(0, 3.05 - dist) * tileSize * 0.07;
-      const push = index === state.wheelIndex ? 0 : primaryPush + secondaryPush;
-      const x = gridLeft + col * cellWidth + cellWidth / 2 + unitX * push;
-      const y = gridTop + row * cellHeight + cellHeight / 2 + unitY * push;
-      const edgeWeight = Math.max(0, 1 - (Math.abs(col - focusCol) + Math.abs(row - focusRow)) / 6);
-      const scale = index === state.wheelIndex ? 1.88 : 1;
-      const opacity = 0.92 + edgeWeight * 0.08;
+      const selectedSlot = conveyorProgressForIndex(state.wheelIndex);
+      const selectedCol = selectedSlot === null ? -99 : selectedSlot % cols;
+      const selectedRow = selectedSlot === null ? -99 : Math.floor(selectedSlot / cols);
+      const dx = col - selectedCol;
+      const dy = row - selectedRow;
+      const dist = Math.hypot(dx, dy);
+
+      // Ripple: the selected sleeve grows while its nearest neighbours move
+      // out of the way. The displacement fades over roughly three tile rings.
+      let pushX = 0;
+      let pushY = 0;
+      if (index !== state.wheelIndex && selectedSlot !== null && dist > 0 && dist < 3.25) {
+        const strength = Math.pow((3.25 - dist) / 2.25, 1.45);
+        const push = tileSize * 0.46 * strength;
+        pushX = (dx / dist) * push;
+        pushY = (dy / dist) * push;
+      }
+
+      const x = col * tileSize + tileSize / 2 + pushX;
+      const y = yOffset + row * tileSize + tileSize / 2 + pushY;
+      const selected = index === state.wheelIndex;
 
       wrap.hidden = false;
-      wrap.style.width = `${tileSize}px`;
+      wrap.style.width = `${tileSize + 0.4}px`;
       wrap.style.left = `${x}px`;
       wrap.style.top = `${y}px`;
       wrap.style.transform = 'translate3d(-50%, -50%, 0)';
-      wrap.style.zIndex = String(index === state.wheelIndex ? 80 : 20 + Math.round(edgeWeight * 20));
-      wrap.style.opacity = String(opacity);
+      wrap.style.zIndex = String(selected ? 100 : 20 + Math.max(0, Math.round(12 - dist * 3)));
+      wrap.style.opacity = '1';
 
       const button = wrap.querySelector('.gbr-slot-card');
-      button.style.setProperty('--card-scale', String(scale));
+      button.style.setProperty('--card-scale', selected ? '1.72' : '1');
       button.style.removeProperty('--card-counter');
-      button.dataset.atGate = index === state.wheelIndex ? 'true' : 'false';
+      button.dataset.atGate = selected ? 'true' : 'false';
     });
   }
-
   function positionLegacyWheel() {
     const count = activeCount();
     const step = 360 / count;
@@ -486,7 +500,9 @@
     if (index < 0) return;
     state.wheelIndex = index;
     if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
-      state.conveyorPhase = -index + CONVEYOR_FOCUS_SLOT;
+      if (conveyorProgressForIndex(index) === null) {
+        state.conveyorPhase = -index + Math.floor(Math.max(1, state.wallVisibleSlots) / 2);
+      }
       positionWheel();
     } else {
       const step = 360 / activeCount();

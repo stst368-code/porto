@@ -254,9 +254,42 @@ def load_tracks(report: Report) -> list[dict[str, Any]]:
         tracks.append(track)
 
     side_rank = {"A": 0, "B": 1, "C": 2}
+
+    # If a legacy/base YAML has no usable style text, keep it beside the other
+    # versions of the same composition rather than dumping it at the end.
+    positions_by_composition: dict[str, list[float]] = {}
+    for track in tracks:
+        try:
+            position = float(track.get("genrePosition", 99.0))
+        except (TypeError, ValueError):
+            position = 99.0
+        if position < 90:
+            key = str(track.get("composition") or track.get("title") or "").casefold()
+            positions_by_composition.setdefault(key, []).append(position)
+
+    def effective_genre_position(track: dict[str, Any]) -> float:
+        try:
+            position = float(track.get("genrePosition", 99.0))
+        except (TypeError, ValueError):
+            position = 99.0
+        if position < 90:
+            return position
+        key = str(track.get("composition") or track.get("title") or "").casefold()
+        siblings = positions_by_composition.get(key) or []
+        if siblings:
+            ordered = sorted(siblings)
+            return ordered[len(ordered) // 2]
+        return 99.0
+
+    # YAML-derived genrePosition is a weighted musical continuum. Hybrid
+    # descriptions naturally land between families, so the wall flows through
+    # classical -> folk/country -> rock/punk/metal -> electronic/disco/pop ->
+    # soul/funk/hip-hop -> jazz/theatre instead of jumping by filename.
     tracks.sort(key=lambda t: (
-        str(t.get("displayTitle") or t.get("title") or t.get("composition") or "").casefold(),
+        effective_genre_position(t),
+        str(t.get("genreFamily") or "uncategorised").casefold(),
         str(t.get("genre") or t.get("variantLabel") or t.get("variantSlot") or "").casefold(),
+        str(t.get("displayTitle") or t.get("title") or t.get("composition") or "").casefold(),
         side_rank.get(str(t.get("side") or "A"), 99),
         str(t.get("id") or "").casefold(),
     ))
