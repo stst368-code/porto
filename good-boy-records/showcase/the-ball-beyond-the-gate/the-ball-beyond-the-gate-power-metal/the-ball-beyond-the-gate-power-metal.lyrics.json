@@ -2,9 +2,9 @@
   "format": "gbr-word-lyrics-v1",
   "version": 2,
   "title": "the-ball-beyond-the-gate",
-  "song_version": "orchestral",
-  "source_yaml": "the-ball-beyond-the-gate/the-ball-beyond-the-gate-orchestral/the-ball-beyond-the-gate-orhcestral.yaml",
-  "source_audio": "the-ball-beyond-the-gate-orchestral.flac",
+  "song_version": "power-metal",
+  "source_yaml": "the-ball-beyond-the-gate/the-ball-beyond-the-gate-power-metal/the-ball-beyond-the-gate-power-metal.yaml",
+  "source_audio": "the-ball-beyond-the-gate-power-metal.flac",
   "language": "en",
   "engine": "demucs:htdemucs+whisperx:large-v3",
   "runtime": {
@@ -15,12 +15,12 @@
     "batch_size": 4,
     "cpu_fallback_used": false
   },
-  "generated_at": "2026-09-25T19:23:22+00:00",
+  "generated_at": "2026-09-25T19:24:36+00:00",
   "stats": {
     "lyric_words": 388,
-    "recognised_words": 378,
-    "matched_words": 363,
-    "coverage": 0.9356
+    "recognised_words": 382,
+    "matched_words": 376,
+    "coverage": 0.9691
   },
   "quality": {
     "rating": "excellent",
@@ -33,25 +33,25 @@
     {
       "id": "l1",
       "text": "Beyond the garden...",
-      "start": 3.621,
-      "end": 5.822,
+      "start": 0.071,
+      "end": 1.111,
       "words": [
         {
           "text": "Beyond",
-          "start": 3.621,
-          "end": 4.201,
+          "start": 0.071,
+          "end": 0.451,
           "matched": true
         },
         {
           "text": "the",
-          "start": 4.301,
-          "end": 4.561,
+          "start": 0.491,
+          "end": 0.571,
           "matched": true
         },
         {
           "text": "garden...",
-          "start": 4.701,
-          "end": 5.822,
+          "start": 0.611,
+          "end": 1.111,
           "matched": true
         }
       ]
@@ -59,25 +59,25 @@
     {
       "id": "l2",
       "text": "Beyond the gate...",
-      "start": 7.402,
-      "end": 9.083,
+      "start": 2.612,
+      "end": 3.612,
       "words": [
         {
           "text": "Beyond",
-          "start": 7.402,
-          "end": 8.203,
+          "start": 2.612,
+          "end": 2.972,
           "matched": true
         },
         {
           "text": "the",
-          "start": 8.343,
-          "end": 8.483,
+          "start": 3.032,
+          "end": 3.132,
           "matched": true
         },
         {
           "text": "gate...",
-          "start": 8.643,
-          "end": 9.083,
+          "start": 3.172,
+          "end": 3.612,
           "matched": true
         }
       ]
@@ -85,19 +85,19 @@
     {
       "id": "l3",
       "text": "There lies...",
-      "start": 10.864,
-      "end": 13.565,
+      "start": 4.352,
+      "end": 7.473,
       "words": [
         {
           "text": "There",
-          "start": 10.864,
-          "end": 11.464,
+          "start": 4.352,
+          "end": 4.793,
           "matched": true
         },
         {
           "text": "lies...",
-          "start": 11.604,
-          "end": 13.565,
+          "start": 4.813,
+          "end": 7.473,
           "matched": true
         }
       ]
@@ -105,57 +105,57 @@
     {
       "id": "l4",
       "text": "The ball.",
-      "start": 13.665,
-      "end": 19.264,
+      "start": 8.394,
+      "end": 9.934,
       "words": [
         {
           "text": "The",
-          "start": 13.665,
-          "end": 13.805,
+          "start": 8.394,
+          "end": 8.514,
           "matched": true
         },
         {
           "text": "ball.",
-          "start": 13.805,
-          "end": 19.264,
-          "matched": false
+          "start": 8.554,
+          "end": 9.934,
+          "matched": true
         }
       ]
     },
     {
       "id": "l5",
       "text": "At first light she rises",
-      "start": 19.264,
-      "end": 21.507,
+      "start": 18.357,
+      "end": 19.817,
       "words": [
         {
           "text": "At",
-          "start": 19.264,
-          "end": 19.324,
+          "start": 18.357,
+          "end": 18.437,
           "matched": true
         },
         {
           "text": "first",
-          "start": 19.424,
-          "end": 19.745,
+          "start": 18.497,
+          "end": 18.737,
           "matched": true
         },
         {
           "text": "light",
-          "start": 19.905,
-          "end": 20.225,
+          "start": 18.817,
+          "end": 19.057,
           "matched": true
         },
         {
           "text": "she",
-          "start": 20.326,
-          "end": 20.506,
+          "start": 19.137,
+          "end": 19.257,
           "matched": true
         },
         {
           "text": "rises",
-          "start": 20.626,
-          "end": 21.507,
+          "start": 19.337,
+          "end": 19.817,
           "matched": true
         }
       ]
@@ -163,37 +163,37 @@
     {
       "id": "l6",
       "text": "Golden fire upon her crown",
-      "start": 21.627,
-      "end": 24.811,
+      "start": 19.837,
+      "end": 21.878,
       "words": [
         {
           "text": "Golden",
-          "start": 21.627,
-          "end": 22.288,
+          "start": 19.837,
+          "end": 20.138,
           "matched": true
         },
         {
           "text": "fire",
-          "start": 22.488,
-          "end": 23.149,
+          "start": 20.198,
+          "end": 20.558,
           "matched": true
         },
         {
           "text": "upon",
-          "start": 23.249,
-          "end": 23.73,
+          "start": 20.638,
+          "end": 20.938,
           "matched": true
         },
         {
           "text": "her",
-          "start": 23.83,
-          "end": 23.99,
+          "start": 21.018,
+          "end": 21.178,
           "matched": true
         },
         {
           "text": "crown",
-          "start": 24.09,
-          "end": 24.811,
+          "start": 21.278,
+          "end": 21.878,
           "matched": true
         }
       ]
@@ -201,31 +201,31 @@
     {
       "id": "l7",
       "text": "Doja surveys her kingdom",
-      "start": 26.373,
-      "end": 29.237,
+      "start": 23.459,
+      "end": 25.139,
       "words": [
         {
           "text": "Doja",
-          "start": 26.373,
-          "end": 27.134,
+          "start": 23.459,
+          "end": 23.779,
           "matched": true
         },
         {
           "text": "surveys",
-          "start": 27.235,
-          "end": 28.076,
+          "start": 23.819,
+          "end": 24.299,
           "matched": true
         },
         {
           "text": "her",
-          "start": 28.176,
-          "end": 28.376,
+          "start": 24.359,
+          "end": 24.519,
           "matched": true
         },
         {
           "text": "kingdom",
-          "start": 28.516,
-          "end": 29.237,
+          "start": 24.639,
+          "end": 25.139,
           "matched": true
         }
       ]
@@ -233,37 +233,37 @@
     {
       "id": "l8",
       "text": "Not a pawprint goes unfound",
-      "start": 29.838,
-      "end": 32.582,
+      "start": 25.179,
+      "end": 27.16,
       "words": [
         {
           "text": "Not",
-          "start": 29.838,
-          "end": 30.038,
+          "start": 25.179,
+          "end": 25.339,
           "matched": true
         },
         {
           "text": "a",
-          "start": 30.078,
-          "end": 30.098,
+          "start": 25.399,
+          "end": 25.419,
           "matched": true
         },
         {
           "text": "pawprint",
-          "start": 30.219,
-          "end": 31.02,
+          "start": 25.499,
+          "end": 25.979,
           "matched": true
         },
         {
           "text": "goes",
-          "start": 31.12,
-          "end": 31.58,
+          "start": 26.02,
+          "end": 26.34,
           "matched": true
         },
         {
           "text": "unfound",
-          "start": 31.741,
-          "end": 32.582,
+          "start": 26.44,
+          "end": 27.16,
           "matched": true
         }
       ]
@@ -271,43 +271,43 @@
     {
       "id": "l9",
       "text": "From the fortress of the sofa",
-      "start": 33.323,
-      "end": 36.186,
+      "start": 28.752,
+      "end": 30.973,
       "words": [
         {
           "text": "From",
-          "start": 33.323,
-          "end": 33.543,
+          "start": 28.752,
+          "end": 28.952,
           "matched": true
         },
         {
           "text": "the",
-          "start": 33.563,
-          "end": 33.643,
+          "start": 28.972,
+          "end": 29.052,
           "matched": true
         },
         {
           "text": "fortress",
-          "start": 33.783,
-          "end": 34.544,
+          "start": 29.132,
+          "end": 29.733,
           "matched": true
         },
         {
           "text": "of",
-          "start": 34.945,
-          "end": 35.165,
+          "start": 29.933,
+          "end": 30.073,
           "matched": true
         },
         {
           "text": "the",
-          "start": 35.325,
-          "end": 35.445,
+          "start": 30.133,
+          "end": 30.213,
           "matched": true
         },
         {
           "text": "sofa",
-          "start": 35.566,
-          "end": 36.186,
+          "start": 30.313,
+          "end": 30.973,
           "matched": true
         }
       ]
@@ -315,43 +315,43 @@
     {
       "id": "l10",
       "text": "To the borders of the lawn",
-      "start": 36.827,
-      "end": 39.568,
+      "start": 31.313,
+      "end": 33.535,
       "words": [
         {
           "text": "To",
-          "start": 36.827,
-          "end": 37.007,
+          "start": 31.313,
+          "end": 31.494,
           "matched": true
         },
         {
           "text": "the",
-          "start": 37.047,
-          "end": 37.147,
+          "start": 31.514,
+          "end": 31.574,
           "matched": true
         },
         {
           "text": "borders",
-          "start": 37.287,
-          "end": 38.088,
+          "start": 31.654,
+          "end": 32.254,
           "matched": true
         },
         {
           "text": "of",
-          "start": 38.488,
-          "end": 38.668,
+          "start": 32.474,
+          "end": 32.614,
           "matched": true
         },
         {
           "text": "the",
-          "start": 38.828,
-          "end": 38.948,
+          "start": 32.674,
+          "end": 32.774,
           "matched": true
         },
         {
           "text": "lawn",
-          "start": 39.068,
-          "end": 39.568,
+          "start": 32.954,
+          "end": 33.535,
           "matched": true
         }
       ]
@@ -359,37 +359,37 @@
     {
       "id": "l11",
       "text": "Every treat belongs unto her",
-      "start": 40.389,
-      "end": 43.07,
+      "start": 34.215,
+      "end": 36.276,
       "words": [
         {
           "text": "Every",
-          "start": 40.389,
-          "end": 40.609,
+          "start": 34.215,
+          "end": 34.415,
           "matched": true
         },
         {
           "text": "treat",
-          "start": 40.709,
-          "end": 41.109,
+          "start": 34.455,
+          "end": 34.755,
           "matched": true
         },
         {
           "text": "belongs",
-          "start": 41.209,
-          "end": 42.029,
+          "start": 34.815,
+          "end": 35.316,
           "matched": true
         },
         {
           "text": "unto",
-          "start": 42.209,
-          "end": 42.67,
+          "start": 35.456,
+          "end": 35.796,
           "matched": true
         },
         {
           "text": "her",
-          "start": 42.77,
-          "end": 43.07,
+          "start": 35.876,
+          "end": 36.276,
           "matched": true
         }
       ]
@@ -397,37 +397,37 @@
     {
       "id": "l12",
       "text": "By the ancient golden law",
-      "start": 43.73,
-      "end": 46.751,
+      "start": 36.677,
+      "end": 38.818,
       "words": [
         {
           "text": "By",
-          "start": 43.73,
-          "end": 43.93,
+          "start": 36.677,
+          "end": 36.817,
           "matched": true
         },
         {
           "text": "the",
-          "start": 43.99,
-          "end": 44.15,
+          "start": 36.857,
+          "end": 36.977,
           "matched": true
         },
         {
           "text": "ancient",
-          "start": 44.37,
-          "end": 44.91,
+          "start": 37.137,
+          "end": 37.557,
           "matched": true
         },
         {
           "text": "golden",
-          "start": 45.051,
-          "end": 45.751,
+          "start": 37.657,
+          "end": 38.157,
           "matched": true
         },
         {
           "text": "law",
-          "start": 45.951,
-          "end": 46.751,
+          "start": 38.338,
+          "end": 38.818,
           "matched": true
         }
       ]
@@ -435,43 +435,43 @@
     {
       "id": "l13",
       "text": "But a shadow shakes the hallway",
-      "start": 47.251,
-      "end": 50.153,
+      "start": 39.158,
+      "end": 40.879,
       "words": [
         {
           "text": "But",
-          "start": 47.251,
-          "end": 47.472,
+          "start": 39.158,
+          "end": 39.338,
           "matched": true
         },
         {
           "text": "a",
-          "start": 47.512,
-          "end": 47.552,
+          "start": 39.398,
+          "end": 39.458,
           "matched": true
         },
         {
           "text": "shadow",
-          "start": 47.672,
-          "end": 48.412,
+          "start": 39.578,
+          "end": 39.918,
           "matched": true
         },
         {
           "text": "shakes",
-          "start": 48.572,
-          "end": 49.152,
+          "start": 39.938,
+          "end": 40.159,
           "matched": true
         },
         {
           "text": "the",
-          "start": 49.272,
-          "end": 49.452,
+          "start": 40.179,
+          "end": 40.279,
           "matched": true
         },
         {
           "text": "hallway",
-          "start": 49.512,
-          "end": 50.153,
+          "start": 40.339,
+          "end": 40.879,
           "matched": true
         }
       ]
@@ -479,31 +479,31 @@
     {
       "id": "l14",
       "text": "Something mighty has awoke",
-      "start": 50.753,
-      "end": 53.334,
+      "start": 40.959,
+      "end": 42.26,
       "words": [
         {
           "text": "Something",
-          "start": 50.753,
-          "end": 51.193,
+          "start": 40.959,
+          "end": 41.279,
           "matched": true
         },
         {
           "text": "mighty",
-          "start": 51.273,
-          "end": 51.993,
+          "start": 41.319,
+          "end": 41.619,
           "matched": true
         },
         {
           "text": "has",
-          "start": 52.113,
-          "end": 52.734,
+          "start": 41.659,
+          "end": 41.84,
           "matched": true
         },
         {
           "text": "awoke",
-          "start": 52.894,
-          "end": 53.334,
+          "start": 41.92,
+          "end": 42.26,
           "matched": true
         }
       ]
@@ -511,43 +511,43 @@
     {
       "id": "l15",
       "text": "Bam Bam comes like rolling thunder",
-      "start": 53.894,
-      "end": 57.216,
+      "start": 44.301,
+      "end": 46.842,
       "words": [
         {
           "text": "Bam",
-          "start": 53.894,
-          "end": 54.274,
+          "start": 44.301,
+          "end": 44.601,
           "matched": true
         },
         {
           "text": "Bam",
-          "start": 54.354,
-          "end": 54.675,
+          "start": 44.641,
+          "end": 44.921,
           "matched": true
         },
         {
           "text": "comes",
-          "start": 54.775,
-          "end": 55.135,
+          "start": 44.981,
+          "end": 45.262,
           "matched": true
         },
         {
           "text": "like",
-          "start": 55.235,
-          "end": 55.495,
+          "start": 45.342,
+          "end": 45.562,
           "matched": true
         },
         {
           "text": "rolling",
-          "start": 55.635,
-          "end": 56.295,
+          "start": 45.662,
+          "end": 46.162,
           "matched": true
         },
         {
           "text": "thunder",
-          "start": 56.495,
-          "end": 57.216,
+          "start": 46.302,
+          "end": 46.842,
           "matched": true
         }
       ]
@@ -555,43 +555,43 @@
     {
       "id": "l16",
       "text": "Through a table made of oak",
-      "start": 57.316,
-      "end": 60.177,
+      "start": 47.263,
+      "end": 49.184,
       "words": [
         {
           "text": "Through",
-          "start": 57.316,
-          "end": 57.816,
+          "start": 47.263,
+          "end": 47.483,
           "matched": true
         },
         {
           "text": "a",
-          "start": 57.996,
-          "end": 58.036,
+          "start": 47.523,
+          "end": 47.563,
           "matched": true
         },
         {
           "text": "table",
-          "start": 58.176,
-          "end": 58.936,
+          "start": 47.623,
+          "end": 48.143,
           "matched": true
         },
         {
           "text": "made",
-          "start": 59.096,
-          "end": 59.557,
+          "start": 48.283,
+          "end": 48.703,
           "matched": true
         },
         {
           "text": "of",
-          "start": 59.777,
-          "end": 59.877,
+          "start": 48.764,
+          "end": 48.804,
           "matched": true
         },
         {
           "text": "oak",
-          "start": 60.057,
-          "end": 60.177,
+          "start": 48.964,
+          "end": 49.184,
           "matched": true
         }
       ]
@@ -599,57 +599,57 @@
     {
       "id": "l17",
       "text": "BAM! BAM!",
-      "start": 60.177,
-      "end": 62.2,
+      "start": 49.624,
+      "end": 50.304,
       "words": [
         {
           "text": "BAM!",
-          "start": 60.177,
-          "end": 61.189,
-          "matched": false
+          "start": 49.624,
+          "end": 49.924,
+          "matched": true
         },
         {
           "text": "BAM!",
-          "start": 61.189,
-          "end": 62.2,
-          "matched": false
+          "start": 49.964,
+          "end": 50.304,
+          "matched": true
         }
       ]
     },
     {
       "id": "l18",
       "text": "One thought burns within him",
-      "start": 62.2,
-      "end": 64.441,
+      "start": 50.745,
+      "end": 52.165,
       "words": [
         {
           "text": "One",
-          "start": 62.2,
-          "end": 62.34,
+          "start": 50.745,
+          "end": 50.885,
           "matched": true
         },
         {
           "text": "thought",
-          "start": 62.48,
-          "end": 62.8,
+          "start": 50.965,
+          "end": 51.225,
           "matched": true
         },
         {
           "text": "burns",
-          "start": 62.92,
-          "end": 63.541,
+          "start": 51.285,
+          "end": 51.505,
           "matched": true
         },
         {
           "text": "within",
-          "start": 63.621,
-          "end": 64.081,
+          "start": 51.545,
+          "end": 51.885,
           "matched": true
         },
         {
           "text": "him",
-          "start": 64.201,
-          "end": 64.441,
+          "start": 51.965,
+          "end": 52.165,
           "matched": true
         }
       ]
@@ -657,37 +657,37 @@
     {
       "id": "l19",
       "text": "One command controls his fate",
-      "start": 64.701,
-      "end": 67.122,
+      "start": 52.686,
+      "end": 54.427,
       "words": [
         {
           "text": "One",
-          "start": 64.701,
-          "end": 64.801,
+          "start": 52.686,
+          "end": 52.786,
           "matched": true
         },
         {
           "text": "command",
-          "start": 64.841,
-          "end": 65.401,
+          "start": 52.826,
+          "end": 53.246,
           "matched": true
         },
         {
           "text": "controls",
-          "start": 65.481,
-          "end": 66.282,
+          "start": 53.306,
+          "end": 53.806,
           "matched": true
         },
         {
           "text": "his",
-          "start": 66.382,
-          "end": 66.562,
+          "start": 53.866,
+          "end": 54.027,
           "matched": true
         },
         {
           "text": "fate",
-          "start": 66.742,
-          "end": 67.122,
+          "start": 54.147,
+          "end": 54.427,
           "matched": true
         }
       ]
@@ -695,43 +695,43 @@
     {
       "id": "l20",
       "text": "He has heard the sacred bouncing",
-      "start": 68.082,
-      "end": 70.843,
+      "start": 55.32,
+      "end": 57.501,
       "words": [
         {
           "text": "He",
-          "start": 68.082,
-          "end": 68.222,
+          "start": 55.32,
+          "end": 55.42,
           "matched": true
         },
         {
           "text": "has",
-          "start": 68.262,
-          "end": 68.442,
+          "start": 55.46,
+          "end": 55.6,
           "matched": true
         },
         {
           "text": "heard",
-          "start": 68.502,
-          "end": 68.882,
+          "start": 55.64,
+          "end": 55.94,
           "matched": true
         },
         {
           "text": "the",
-          "start": 68.963,
-          "end": 69.083,
+          "start": 55.98,
+          "end": 56.08,
           "matched": true
         },
         {
           "text": "sacred",
-          "start": 69.183,
-          "end": 70.083,
+          "start": 56.14,
+          "end": 56.72,
           "matched": true
         },
         {
           "text": "bouncing",
-          "start": 70.183,
-          "end": 70.843,
+          "start": 56.8,
+          "end": 57.501,
           "matched": true
         }
       ]
@@ -739,37 +739,37 @@
     {
       "id": "l21",
       "text": "From somewhere beyond the gate!",
-      "start": 71.443,
-      "end": 74.705,
+      "start": 57.921,
+      "end": 59.861,
       "words": [
         {
           "text": "From",
-          "start": 71.443,
-          "end": 71.704,
+          "start": 57.921,
+          "end": 58.141,
           "matched": true
         },
         {
           "text": "somewhere",
-          "start": 71.864,
-          "end": 72.504,
+          "start": 58.261,
+          "end": 58.781,
           "matched": true
         },
         {
           "text": "beyond",
-          "start": 72.544,
-          "end": 73.144,
+          "start": 58.841,
+          "end": 59.281,
           "matched": true
         },
         {
           "text": "the",
-          "start": 73.224,
-          "end": 73.484,
+          "start": 59.321,
+          "end": 59.421,
           "matched": true
         },
         {
           "text": "gate!",
-          "start": 73.584,
-          "end": 74.705,
+          "start": 59.481,
+          "end": 59.861,
           "matched": true
         }
       ]
@@ -777,37 +777,37 @@
     {
       "id": "l22",
       "text": "THE BALL BEYOND THE GATE!",
-      "start": 75.745,
-      "end": 78.126,
+      "start": 61.322,
+      "end": 62.662,
       "words": [
         {
           "text": "THE",
-          "start": 75.745,
-          "end": 75.885,
+          "start": 61.322,
+          "end": 61.442,
           "matched": true
         },
         {
           "text": "BALL",
-          "start": 76.605,
-          "end": 76.925,
+          "start": 61.482,
+          "end": 61.782,
           "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 77.005,
-          "end": 77.346,
+          "start": 61.822,
+          "end": 62.162,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 77.366,
-          "end": 77.686,
+          "start": 62.202,
+          "end": 62.282,
           "matched": true
         },
         {
           "text": "GATE!",
-          "start": 77.726,
-          "end": 78.126,
+          "start": 62.322,
+          "end": 62.662,
           "matched": true
         }
       ]
@@ -815,37 +815,37 @@
     {
       "id": "l23",
       "text": "He can hear it calling!",
-      "start": 79.566,
-      "end": 81.167,
+      "start": 63.302,
+      "end": 64.803,
       "words": [
         {
           "text": "He",
-          "start": 79.566,
-          "end": 79.726,
+          "start": 63.302,
+          "end": 63.422,
           "matched": true
         },
         {
           "text": "can",
-          "start": 79.766,
-          "end": 79.987,
+          "start": 63.442,
+          "end": 63.622,
           "matched": true
         },
         {
           "text": "hear",
-          "start": 80.027,
-          "end": 80.247,
+          "start": 63.662,
+          "end": 63.882,
           "matched": true
         },
         {
           "text": "it",
-          "start": 80.307,
-          "end": 80.367,
+          "start": 63.962,
+          "end": 64.022,
           "matched": true
         },
         {
           "text": "calling!",
-          "start": 80.447,
-          "end": 81.167,
+          "start": 64.142,
+          "end": 64.803,
           "matched": true
         }
       ]
@@ -853,69 +853,69 @@
     {
       "id": "l24",
       "text": "THE BALL BEYOND THE GATE!",
-      "start": 81.167,
-      "end": 86.312,
+      "start": 64.803,
+      "end": 66.263,
       "words": [
         {
           "text": "THE",
-          "start": 81.167,
-          "end": 82.196,
+          "start": 64.803,
+          "end": 64.983,
           "matched": false
         },
         {
           "text": "BALL",
-          "start": 82.196,
-          "end": 83.225,
-          "matched": false
+          "start": 64.983,
+          "end": 65.303,
+          "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 83.225,
-          "end": 84.254,
-          "matched": false
+          "start": 65.323,
+          "end": 65.743,
+          "matched": true
         },
         {
           "text": "THE",
-          "start": 84.254,
-          "end": 85.283,
-          "matched": false
+          "start": 65.823,
+          "end": 65.943,
+          "matched": true
         },
         {
           "text": "GATE!",
-          "start": 85.283,
-          "end": 86.312,
-          "matched": false
+          "start": 65.983,
+          "end": 66.263,
+          "matched": true
         }
       ]
     },
     {
       "id": "l25",
       "text": "Through the darkness falling!",
-      "start": 86.312,
-      "end": 88.833,
+      "start": 66.283,
+      "end": 68.404,
       "words": [
         {
           "text": "Through",
-          "start": 86.312,
-          "end": 86.612,
+          "start": 66.283,
+          "end": 66.623,
           "matched": true
         },
         {
           "text": "the",
-          "start": 86.652,
-          "end": 86.752,
+          "start": 66.683,
+          "end": 66.783,
           "matched": true
         },
         {
           "text": "darkness",
-          "start": 86.812,
-          "end": 87.253,
+          "start": 66.823,
+          "end": 67.423,
           "matched": true
         },
         {
           "text": "falling!",
-          "start": 87.293,
-          "end": 88.833,
+          "start": 67.503,
+          "end": 68.404,
           "matched": true
         }
       ]
@@ -923,25 +923,25 @@
     {
       "id": "l26",
       "text": "Rain and thunder!",
-      "start": 89.333,
-      "end": 90.433,
+      "start": 68.924,
+      "end": 70.284,
       "words": [
         {
           "text": "Rain",
-          "start": 89.333,
-          "end": 89.573,
+          "start": 68.924,
+          "end": 69.204,
           "matched": true
         },
         {
           "text": "and",
-          "start": 89.613,
-          "end": 89.693,
+          "start": 69.264,
+          "end": 69.384,
           "matched": true
         },
         {
           "text": "thunder!",
-          "start": 89.793,
-          "end": 90.433,
+          "start": 69.464,
+          "end": 70.284,
           "matched": true
         }
       ]
@@ -949,25 +949,25 @@
     {
       "id": "l27",
       "text": "Wind and flame!",
-      "start": 90.894,
-      "end": 91.954,
+      "start": 70.304,
+      "end": 71.224,
       "words": [
         {
           "text": "Wind",
-          "start": 90.894,
-          "end": 91.214,
+          "start": 70.304,
+          "end": 70.504,
           "matched": true
         },
         {
           "text": "and",
-          "start": 91.294,
-          "end": 91.394,
+          "start": 70.584,
+          "end": 70.684,
           "matched": true
         },
         {
           "text": "flame!",
-          "start": 91.454,
-          "end": 91.954,
+          "start": 70.784,
+          "end": 71.224,
           "matched": true
         }
       ]
@@ -975,25 +975,25 @@
     {
       "id": "l28",
       "text": "Throw it once",
-      "start": 92.494,
-      "end": 93.494,
+      "start": 71.564,
+      "end": 72.465,
       "words": [
         {
           "text": "Throw",
-          "start": 92.494,
-          "end": 92.914,
+          "start": 71.564,
+          "end": 71.845,
           "matched": true
         },
         {
           "text": "it",
-          "start": 92.994,
-          "end": 93.074,
+          "start": 71.925,
+          "end": 72.025,
           "matched": true
         },
         {
           "text": "once",
-          "start": 93.254,
-          "end": 93.494,
+          "start": 72.265,
+          "end": 72.465,
           "matched": true
         }
       ]
@@ -1001,25 +1001,25 @@
     {
       "id": "l29",
       "text": "He'll run again!",
-      "start": 93.554,
-      "end": 95.155,
+      "start": 72.485,
+      "end": 73.865,
       "words": [
         {
           "text": "He'll",
-          "start": 93.554,
-          "end": 93.954,
+          "start": 72.485,
+          "end": 72.865,
           "matched": true
         },
         {
           "text": "run",
-          "start": 94.215,
-          "end": 94.675,
+          "start": 72.985,
+          "end": 73.245,
           "matched": true
         },
         {
           "text": "again!",
-          "start": 94.735,
-          "end": 95.155,
+          "start": 73.365,
+          "end": 73.865,
           "matched": true
         }
       ]
@@ -1027,37 +1027,37 @@
     {
       "id": "l30",
       "text": "No wall can hold him!",
-      "start": 95.255,
-      "end": 97.235,
+      "start": 74.305,
+      "end": 76.266,
       "words": [
         {
           "text": "No",
-          "start": 95.255,
-          "end": 95.615,
+          "start": 74.305,
+          "end": 74.705,
           "matched": true
         },
         {
           "text": "wall",
-          "start": 95.655,
-          "end": 96.015,
+          "start": 74.785,
+          "end": 75.085,
           "matched": true
         },
         {
           "text": "can",
-          "start": 96.075,
-          "end": 96.375,
+          "start": 75.145,
+          "end": 75.446,
           "matched": true
         },
         {
           "text": "hold",
-          "start": 96.495,
-          "end": 96.915,
+          "start": 75.506,
+          "end": 75.946,
           "matched": true
         },
         {
           "text": "him!",
-          "start": 96.955,
-          "end": 97.235,
+          "start": 76.006,
+          "end": 76.266,
           "matched": true
         }
       ]
@@ -1065,31 +1065,31 @@
     {
       "id": "l31",
       "text": "No law can wait!",
-      "start": 97.575,
-      "end": 98.596,
+      "start": 76.646,
+      "end": 78.686,
       "words": [
         {
           "text": "No",
-          "start": 97.575,
-          "end": 97.716,
+          "start": 76.646,
+          "end": 76.886,
           "matched": true
         },
         {
           "text": "law",
-          "start": 97.716,
-          "end": 97.976,
-          "matched": false
+          "start": 76.986,
+          "end": 77.646,
+          "matched": true
         },
         {
           "text": "can",
-          "start": 97.976,
-          "end": 98.116,
+          "start": 77.726,
+          "end": 78.206,
           "matched": true
         },
         {
           "text": "wait!",
-          "start": 98.196,
-          "end": 98.596,
+          "start": 78.306,
+          "end": 78.686,
           "matched": true
         }
       ]
@@ -1097,69 +1097,69 @@
     {
       "id": "l32",
       "text": "BAM BAM RIDES",
-      "start": 99.016,
-      "end": 100.256,
+      "start": 80.287,
+      "end": 81.627,
       "words": [
         {
           "text": "BAM",
-          "start": 99.016,
-          "end": 99.336,
+          "start": 80.287,
+          "end": 80.607,
           "matched": true
         },
         {
           "text": "BAM",
-          "start": 99.436,
-          "end": 99.736,
+          "start": 80.647,
+          "end": 80.927,
           "matched": true
         },
         {
           "text": "RIDES",
-          "start": 99.736,
-          "end": 100.256,
-          "matched": false
+          "start": 80.987,
+          "end": 81.627,
+          "matched": true
         }
       ]
     },
     {
       "id": "l33",
       "text": "FOR THE BALL BEYOND THE GATE!",
-      "start": 100.256,
-      "end": 103.977,
+      "start": 82.087,
+      "end": 83.808,
       "words": [
         {
           "text": "FOR",
-          "start": 100.256,
-          "end": 100.476,
+          "start": 82.087,
+          "end": 82.207,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 100.516,
-          "end": 100.636,
+          "start": 82.227,
+          "end": 82.287,
           "matched": true
         },
         {
           "text": "BALL",
-          "start": 100.696,
-          "end": 101.096,
+          "start": 82.327,
+          "end": 82.628,
           "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 101.157,
-          "end": 101.897,
+          "start": 82.688,
+          "end": 83.268,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 101.977,
-          "end": 102.277,
+          "start": 83.348,
+          "end": 83.428,
           "matched": true
         },
         {
           "text": "GATE!",
-          "start": 102.397,
-          "end": 103.977,
+          "start": 83.488,
+          "end": 83.808,
           "matched": true
         }
       ]
@@ -1167,13 +1167,13 @@
     {
       "id": "l34",
       "text": "Woah-oh-oh!",
-      "start": 103.977,
-      "end": 108.041,
+      "start": 83.808,
+      "end": 88.719,
       "words": [
         {
           "text": "Woah-oh-oh!",
-          "start": 103.977,
-          "end": 108.041,
+          "start": 83.808,
+          "end": 88.719,
           "matched": false
         }
       ]
@@ -1181,13 +1181,13 @@
     {
       "id": "l35",
       "text": "Woah-oh-oh!",
-      "start": 108.041,
-      "end": 112.104,
+      "start": 88.719,
+      "end": 93.629,
       "words": [
         {
           "text": "Woah-oh-oh!",
-          "start": 108.041,
-          "end": 112.104,
+          "start": 88.719,
+          "end": 93.629,
           "matched": false
         }
       ]
@@ -1195,37 +1195,37 @@
     {
       "id": "l36",
       "text": "Doja watches from her kingdom",
-      "start": 112.104,
-      "end": 114.926,
+      "start": 93.629,
+      "end": 95.291,
       "words": [
         {
           "text": "Doja",
-          "start": 112.104,
-          "end": 112.504,
+          "start": 93.629,
+          "end": 94.11,
           "matched": true
         },
         {
           "text": "watches",
-          "start": 112.544,
-          "end": 112.925,
+          "start": 94.19,
+          "end": 94.61,
           "matched": true
         },
         {
           "text": "from",
-          "start": 113.205,
-          "end": 113.725,
+          "start": 94.65,
+          "end": 94.79,
           "matched": true
         },
         {
           "text": "her",
-          "start": 113.845,
-          "end": 114.066,
+          "start": 94.83,
+          "end": 94.951,
           "matched": true
         },
         {
           "text": "kingdom",
-          "start": 114.226,
-          "end": 114.926,
+          "start": 94.991,
+          "end": 95.291,
           "matched": true
         }
       ]
@@ -1233,37 +1233,37 @@
     {
       "id": "l37",
       "text": "With contempt upon her face",
-      "start": 115.507,
-      "end": 117.809,
+      "start": 95.331,
+      "end": 96.693,
       "words": [
         {
           "text": "With",
-          "start": 115.507,
-          "end": 115.667,
+          "start": 95.331,
+          "end": 95.451,
           "matched": true
         },
         {
           "text": "contempt",
-          "start": 115.727,
-          "end": 116.387,
+          "start": 95.491,
+          "end": 95.872,
           "matched": true
         },
         {
           "text": "upon",
-          "start": 116.488,
-          "end": 116.988,
+          "start": 95.932,
+          "end": 96.152,
           "matched": true
         },
         {
           "text": "her",
-          "start": 117.068,
-          "end": 117.248,
+          "start": 96.192,
+          "end": 96.292,
           "matched": true
         },
         {
           "text": "face",
-          "start": 117.408,
-          "end": 117.809,
+          "start": 96.332,
+          "end": 96.693,
           "matched": true
         }
       ]
@@ -1271,37 +1271,37 @@
     {
       "id": "l38",
       "text": "\"Have some dignity, you creature,",
-      "start": 118.91,
-      "end": 121.432,
+      "start": 99.315,
+      "end": 100.617,
       "words": [
         {
           "text": "\"Have",
-          "start": 118.91,
-          "end": 119.05,
+          "start": 99.315,
+          "end": 99.436,
           "matched": true
         },
         {
           "text": "some",
-          "start": 119.09,
-          "end": 119.29,
+          "start": 99.476,
+          "end": 99.616,
           "matched": true
         },
         {
           "text": "dignity,",
-          "start": 119.37,
-          "end": 120.431,
+          "start": 99.656,
+          "end": 100.116,
           "matched": true
         },
         {
           "text": "you",
-          "start": 120.591,
-          "end": 120.751,
+          "start": 100.136,
+          "end": 100.277,
           "matched": true
         },
         {
           "text": "creature,",
-          "start": 120.851,
-          "end": 121.432,
+          "start": 100.317,
+          "end": 100.617,
           "matched": true
         }
       ]
@@ -1309,43 +1309,43 @@
     {
       "id": "l39",
       "text": "There are standards in this place.\"",
-      "start": 121.852,
-      "end": 124.594,
+      "start": 100.637,
+      "end": 101.998,
       "words": [
         {
           "text": "There",
-          "start": 121.852,
-          "end": 122.252,
+          "start": 100.637,
+          "end": 100.797,
           "matched": true
         },
         {
           "text": "are",
-          "start": 122.392,
-          "end": 122.512,
+          "start": 100.837,
+          "end": 100.917,
           "matched": true
         },
         {
           "text": "standards",
-          "start": 122.613,
-          "end": 123.353,
+          "start": 100.957,
+          "end": 101.358,
           "matched": true
         },
         {
           "text": "in",
-          "start": 123.473,
-          "end": 123.633,
+          "start": 101.378,
+          "end": 101.438,
           "matched": true
         },
         {
           "text": "this",
-          "start": 123.773,
-          "end": 123.974,
+          "start": 101.478,
+          "end": 101.618,
           "matched": true
         },
         {
           "text": "place.\"",
-          "start": 124.134,
-          "end": 124.594,
+          "start": 101.658,
+          "end": 101.998,
           "matched": true
         }
       ]
@@ -1353,49 +1353,49 @@
     {
       "id": "l40",
       "text": "Bam Bam hears but does not answer",
-      "start": 125.215,
-      "end": 128.157,
+      "start": 104.308,
+      "end": 106.749,
       "words": [
         {
           "text": "Bam",
-          "start": 125.215,
-          "end": 125.595,
+          "start": 104.308,
+          "end": 104.608,
           "matched": true
         },
         {
           "text": "Bam",
-          "start": 125.635,
-          "end": 125.995,
+          "start": 104.648,
+          "end": 104.968,
           "matched": true
         },
         {
           "text": "hears",
-          "start": 126.055,
-          "end": 126.416,
+          "start": 105.008,
+          "end": 105.288,
           "matched": true
         },
         {
           "text": "but",
-          "start": 126.516,
-          "end": 126.716,
+          "start": 105.328,
+          "end": 105.468,
           "matched": true
         },
         {
           "text": "does",
-          "start": 126.916,
-          "end": 127.236,
+          "start": 105.508,
+          "end": 105.768,
           "matched": true
         },
         {
           "text": "not",
-          "start": 127.356,
-          "end": 127.577,
+          "start": 105.848,
+          "end": 106.168,
           "matched": true
         },
         {
           "text": "answer",
-          "start": 127.757,
-          "end": 128.157,
+          "start": 106.288,
+          "end": 106.749,
           "matched": true
         }
       ]
@@ -1403,37 +1403,37 @@
     {
       "id": "l41",
       "text": "For his destiny is clear",
-      "start": 128.557,
-      "end": 131.32,
+      "start": 107.249,
+      "end": 109.269,
       "words": [
         {
           "text": "For",
-          "start": 128.557,
-          "end": 128.918,
+          "start": 107.249,
+          "end": 107.449,
           "matched": true
         },
         {
           "text": "his",
-          "start": 129.018,
-          "end": 129.238,
+          "start": 107.489,
+          "end": 107.589,
           "matched": true
         },
         {
           "text": "destiny",
-          "start": 129.418,
-          "end": 130.399,
+          "start": 107.649,
+          "end": 108.489,
           "matched": true
         },
         {
           "text": "is",
-          "start": 130.579,
-          "end": 130.699,
+          "start": 108.589,
+          "end": 108.669,
           "matched": true
         },
         {
           "text": "clear",
-          "start": 130.839,
-          "end": 131.32,
+          "start": 108.769,
+          "end": 109.269,
           "matched": true
         }
       ]
@@ -1441,43 +1441,43 @@
     {
       "id": "l42",
       "text": "There are tennis balls in peril",
-      "start": 131.92,
-      "end": 135.003,
+      "start": 109.789,
+      "end": 112.11,
       "words": [
         {
           "text": "There",
-          "start": 131.92,
-          "end": 132.2,
+          "start": 109.789,
+          "end": 110.009,
           "matched": true
         },
         {
           "text": "are",
-          "start": 132.42,
-          "end": 132.561,
+          "start": 110.089,
+          "end": 110.209,
           "matched": true
         },
         {
           "text": "tennis",
-          "start": 132.721,
-          "end": 133.261,
+          "start": 110.269,
+          "end": 110.71,
           "matched": true
         },
         {
           "text": "balls",
-          "start": 133.381,
-          "end": 133.982,
+          "start": 110.81,
+          "end": 111.17,
           "matched": true
         },
         {
           "text": "in",
-          "start": 134.122,
-          "end": 134.202,
+          "start": 111.27,
+          "end": 111.39,
           "matched": true
         },
         {
           "text": "peril",
-          "start": 134.362,
-          "end": 135.003,
+          "start": 111.49,
+          "end": 112.11,
           "matched": true
         }
       ]
@@ -1485,43 +1485,43 @@
     {
       "id": "l43",
       "text": "And a retriever knows no fear",
-      "start": 135.123,
-      "end": 137.825,
+      "start": 112.51,
+      "end": 114.591,
       "words": [
         {
           "text": "And",
-          "start": 135.123,
-          "end": 135.223,
+          "start": 112.51,
+          "end": 112.61,
           "matched": true
         },
         {
           "text": "a",
-          "start": 135.443,
-          "end": 135.603,
+          "start": 112.71,
+          "end": 112.75,
           "matched": true
         },
         {
           "text": "retriever",
-          "start": 135.663,
-          "end": 136.564,
+          "start": 112.79,
+          "end": 113.39,
           "matched": true
         },
         {
           "text": "knows",
-          "start": 136.684,
-          "end": 137.064,
+          "start": 113.45,
+          "end": 113.77,
           "matched": true
         },
         {
           "text": "no",
-          "start": 137.164,
-          "end": 137.364,
+          "start": 113.83,
+          "end": 114.05,
           "matched": true
         },
         {
           "text": "fear",
-          "start": 137.505,
-          "end": 137.825,
+          "start": 114.15,
+          "end": 114.591,
           "matched": true
         }
       ]
@@ -1529,49 +1529,49 @@
     {
       "id": "l44",
       "text": "Then a name comes through the darkness",
-      "start": 138.935,
-      "end": 141.696,
+      "start": 115.291,
+      "end": 117.411,
       "words": [
         {
           "text": "Then",
-          "start": 138.935,
-          "end": 139.155,
+          "start": 115.291,
+          "end": 115.471,
           "matched": true
         },
         {
           "text": "a",
-          "start": 139.235,
-          "end": 139.275,
+          "start": 115.551,
+          "end": 115.591,
           "matched": true
         },
         {
           "text": "name",
-          "start": 139.355,
-          "end": 139.655,
+          "start": 115.651,
+          "end": 115.911,
           "matched": true
         },
         {
           "text": "comes",
-          "start": 139.755,
-          "end": 140.075,
+          "start": 115.971,
+          "end": 116.211,
           "matched": true
         },
         {
           "text": "through",
-          "start": 140.155,
-          "end": 140.656,
+          "start": 116.251,
+          "end": 116.631,
           "matched": true
         },
         {
           "text": "the",
-          "start": 140.676,
-          "end": 140.736,
+          "start": 116.671,
+          "end": 116.771,
           "matched": true
         },
         {
           "text": "darkness",
-          "start": 141.036,
-          "end": 141.696,
+          "start": 116.811,
+          "end": 117.411,
           "matched": true
         }
       ]
@@ -1579,37 +1579,37 @@
     {
       "id": "l45",
       "text": "And the music falls away",
-      "start": 142.316,
-      "end": 144.637,
+      "start": 117.931,
+      "end": 121.132,
       "words": [
         {
           "text": "And",
-          "start": 142.316,
-          "end": 142.456,
+          "start": 117.931,
+          "end": 118.071,
           "matched": true
         },
         {
           "text": "the",
-          "start": 142.476,
-          "end": 142.556,
+          "start": 118.131,
+          "end": 118.211,
           "matched": true
         },
         {
           "text": "music",
-          "start": 142.656,
-          "end": 143.317,
+          "start": 118.271,
+          "end": 118.832,
           "matched": true
         },
         {
           "text": "falls",
-          "start": 143.477,
-          "end": 144.117,
+          "start": 118.932,
+          "end": 119.332,
           "matched": true
         },
         {
           "text": "away",
-          "start": 144.257,
-          "end": 144.637,
+          "start": 119.432,
+          "end": 121.132,
           "matched": true
         }
       ]
@@ -1617,13 +1617,13 @@
     {
       "id": "l46",
       "text": "Teddy...",
-      "start": 145.137,
-      "end": 145.577,
+      "start": 122.132,
+      "end": 122.513,
       "words": [
         {
           "text": "Teddy...",
-          "start": 145.137,
-          "end": 145.577,
+          "start": 122.132,
+          "end": 122.513,
           "matched": true
         }
       ]
@@ -1631,25 +1631,25 @@
     {
       "id": "l47",
       "text": "Bam Bam freezes",
-      "start": 145.977,
-      "end": 147.498,
+      "start": 122.953,
+      "end": 124.213,
       "words": [
         {
           "text": "Bam",
-          "start": 145.977,
-          "end": 146.358,
+          "start": 122.953,
+          "end": 123.253,
           "matched": true
         },
         {
           "text": "Bam",
-          "start": 146.398,
-          "end": 146.718,
+          "start": 123.293,
+          "end": 123.553,
           "matched": true
         },
         {
           "text": "freezes",
-          "start": 146.798,
-          "end": 147.498,
+          "start": 123.613,
+          "end": 124.213,
           "matched": true
         }
       ]
@@ -1657,19 +1657,19 @@
     {
       "id": "l48",
       "text": "Doja rises",
-      "start": 147.618,
-      "end": 148.918,
+      "start": 124.313,
+      "end": 125.513,
       "words": [
         {
           "text": "Doja",
-          "start": 147.618,
-          "end": 148.218,
+          "start": 124.313,
+          "end": 124.873,
           "matched": true
         },
         {
           "text": "rises",
-          "start": 148.278,
-          "end": 148.918,
+          "start": 124.973,
+          "end": 125.513,
           "matched": true
         }
       ]
@@ -1677,25 +1677,25 @@
     {
       "id": "l49",
       "text": "Someone's gonna pay",
-      "start": 149.259,
-      "end": 151.719,
+      "start": 125.613,
+      "end": 127.934,
       "words": [
         {
           "text": "Someone's",
-          "start": 149.259,
-          "end": 150.039,
+          "start": 125.613,
+          "end": 126.213,
           "matched": true
         },
         {
           "text": "gonna",
-          "start": 150.119,
-          "end": 150.839,
+          "start": 126.293,
+          "end": 127.534,
           "matched": true
         },
         {
           "text": "pay",
-          "start": 150.919,
-          "end": 151.719,
+          "start": 127.614,
+          "end": 127.934,
           "matched": true
         }
       ]
@@ -1703,43 +1703,43 @@
     {
       "id": "l50",
       "text": "Golden fur stands in the moonlight",
-      "start": 151.779,
-      "end": 154.76,
+      "start": 129.972,
+      "end": 132.153,
       "words": [
         {
           "text": "Golden",
-          "start": 151.779,
-          "end": 152.44,
+          "start": 129.972,
+          "end": 130.272,
           "matched": true
         },
         {
           "text": "fur",
-          "start": 152.58,
-          "end": 152.92,
+          "start": 130.332,
+          "end": 130.572,
           "matched": true
         },
         {
           "text": "stands",
-          "start": 152.94,
-          "end": 153.76,
+          "start": 130.612,
+          "end": 131.233,
           "matched": true
         },
         {
           "text": "in",
-          "start": 153.78,
-          "end": 153.82,
+          "start": 131.253,
+          "end": 131.293,
           "matched": true
         },
         {
           "text": "the",
-          "start": 153.88,
-          "end": 153.96,
+          "start": 131.333,
+          "end": 131.413,
           "matched": true
         },
         {
           "text": "moonlight",
-          "start": 154.08,
-          "end": 154.76,
+          "start": 131.513,
+          "end": 132.153,
           "matched": true
         }
       ]
@@ -1747,37 +1747,37 @@
     {
       "id": "l51",
       "text": "Ancient rivals meet once more",
-      "start": 155.161,
-      "end": 157.701,
+      "start": 132.673,
+      "end": 134.514,
       "words": [
         {
           "text": "Ancient",
-          "start": 155.161,
-          "end": 155.841,
+          "start": 132.673,
+          "end": 132.953,
           "matched": true
         },
         {
           "text": "rivals",
-          "start": 155.921,
-          "end": 156.641,
+          "start": 133.013,
+          "end": 133.574,
           "matched": true
         },
         {
           "text": "meet",
-          "start": 156.721,
-          "end": 156.921,
+          "start": 133.634,
+          "end": 133.794,
           "matched": true
         },
         {
           "text": "once",
-          "start": 157.061,
-          "end": 157.261,
+          "start": 133.914,
+          "end": 134.074,
           "matched": true
         },
         {
           "text": "more",
-          "start": 157.361,
-          "end": 157.701,
+          "start": 134.174,
+          "end": 134.514,
           "matched": true
         }
       ]
@@ -1785,43 +1785,43 @@
     {
       "id": "l52",
       "text": "Doja sighs and shows her daggers",
-      "start": 158.342,
-      "end": 161.263,
+      "start": 135.114,
+      "end": 137.436,
       "words": [
         {
           "text": "Doja",
-          "start": 158.342,
-          "end": 158.922,
+          "start": 135.114,
+          "end": 135.555,
           "matched": true
         },
         {
           "text": "sighs",
-          "start": 158.982,
-          "end": 159.582,
+          "start": 135.615,
+          "end": 135.955,
           "matched": true
         },
         {
           "text": "and",
-          "start": 159.702,
-          "end": 159.822,
+          "start": 136.015,
+          "end": 136.095,
           "matched": true
         },
         {
           "text": "shows",
-          "start": 159.962,
-          "end": 160.382,
+          "start": 136.155,
+          "end": 136.475,
           "matched": true
         },
         {
           "text": "her",
-          "start": 160.442,
-          "end": 160.582,
+          "start": 136.515,
+          "end": 136.755,
           "matched": true
         },
         {
           "text": "daggers",
-          "start": 160.642,
-          "end": 161.263,
+          "start": 136.815,
+          "end": 137.436,
           "matched": true
         }
       ]
@@ -1829,43 +1829,43 @@
     {
       "id": "l53",
       "text": "Boys are such a fucking chore.",
-      "start": 161.623,
-      "end": 165.364,
+      "start": 137.796,
+      "end": 139.897,
       "words": [
         {
           "text": "Boys",
-          "start": 161.623,
-          "end": 162.023,
+          "start": 137.796,
+          "end": 138.076,
           "matched": true
         },
         {
           "text": "are",
-          "start": 162.183,
-          "end": 162.323,
+          "start": 138.156,
+          "end": 138.256,
           "matched": true
         },
         {
           "text": "such",
-          "start": 162.423,
-          "end": 162.803,
+          "start": 138.336,
+          "end": 138.556,
           "matched": true
         },
         {
           "text": "a",
-          "start": 163.003,
-          "end": 163.103,
+          "start": 138.656,
+          "end": 138.696,
           "matched": true
         },
         {
           "text": "fucking",
-          "start": 163.263,
-          "end": 163.944,
+          "start": 138.876,
+          "end": 139.336,
           "matched": true
         },
         {
           "text": "chore.",
-          "start": 164.064,
-          "end": 165.364,
+          "start": 139.436,
+          "end": 139.897,
           "matched": true
         }
       ]
@@ -1873,37 +1873,37 @@
     {
       "id": "l54",
       "text": "THE BALL BEYOND THE GATE!",
-      "start": 165.404,
-      "end": 167.665,
+      "start": 139.917,
+      "end": 141.277,
       "words": [
         {
           "text": "THE",
-          "start": 165.404,
-          "end": 165.664,
+          "start": 139.917,
+          "end": 140.097,
           "matched": true
         },
         {
           "text": "BALL",
-          "start": 165.784,
-          "end": 166.144,
+          "start": 140.137,
+          "end": 140.457,
           "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 166.204,
-          "end": 166.745,
+          "start": 140.477,
+          "end": 140.817,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 167.025,
-          "end": 167.305,
+          "start": 140.837,
+          "end": 140.957,
           "matched": true
         },
         {
           "text": "GATE!",
-          "start": 167.425,
-          "end": 167.665,
+          "start": 140.977,
+          "end": 141.277,
           "matched": true
         }
       ]
@@ -1911,37 +1911,37 @@
     {
       "id": "l55",
       "text": "He can hear it calling!",
-      "start": 168.217,
-      "end": 171.879,
+      "start": 141.978,
+      "end": 143.418,
       "words": [
         {
           "text": "He",
-          "start": 168.217,
-          "end": 168.397,
+          "start": 141.978,
+          "end": 142.098,
           "matched": true
         },
         {
           "text": "can",
-          "start": 168.417,
-          "end": 168.617,
+          "start": 142.138,
+          "end": 142.298,
           "matched": true
         },
         {
           "text": "hear",
-          "start": 168.657,
-          "end": 168.857,
+          "start": 142.338,
+          "end": 142.558,
           "matched": true
         },
         {
           "text": "it",
-          "start": 168.938,
-          "end": 168.998,
+          "start": 142.618,
+          "end": 142.678,
           "matched": true
         },
         {
           "text": "calling!",
-          "start": 169.058,
-          "end": 171.879,
+          "start": 142.818,
+          "end": 143.418,
           "matched": true
         }
       ]
@@ -1949,37 +1949,37 @@
     {
       "id": "l56",
       "text": "THE BALL BEYOND THE GATE!",
-      "start": 171.94,
-      "end": 174.221,
+      "start": 143.418,
+      "end": 144.919,
       "words": [
         {
           "text": "THE",
-          "start": 171.94,
-          "end": 172.26,
-          "matched": true
+          "start": 143.418,
+          "end": 143.658,
+          "matched": false
         },
         {
           "text": "BALL",
-          "start": 172.3,
-          "end": 172.7,
+          "start": 143.658,
+          "end": 143.959,
           "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 172.76,
-          "end": 173.42,
+          "start": 143.979,
+          "end": 144.459,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 173.541,
-          "end": 173.821,
+          "start": 144.499,
+          "end": 144.619,
           "matched": true
         },
         {
           "text": "GATE!",
-          "start": 173.941,
-          "end": 174.221,
+          "start": 144.639,
+          "end": 144.919,
           "matched": true
         }
       ]
@@ -1987,31 +1987,31 @@
     {
       "id": "l57",
       "text": "Through the darkness falling!",
-      "start": 174.721,
-      "end": 177.443,
+      "start": 144.959,
+      "end": 146.96,
       "words": [
         {
           "text": "Through",
-          "start": 174.721,
-          "end": 175.002,
+          "start": 144.959,
+          "end": 145.299,
           "matched": true
         },
         {
           "text": "the",
-          "start": 175.042,
-          "end": 175.142,
+          "start": 145.359,
+          "end": 145.479,
           "matched": true
         },
         {
           "text": "darkness",
-          "start": 175.182,
-          "end": 175.582,
+          "start": 145.499,
+          "end": 146.06,
           "matched": true
         },
         {
           "text": "falling!",
-          "start": 175.622,
-          "end": 177.443,
+          "start": 146.16,
+          "end": 146.96,
           "matched": true
         }
       ]
@@ -2019,25 +2019,25 @@
     {
       "id": "l58",
       "text": "Rain and thunder!",
-      "start": 177.603,
-      "end": 178.664,
+      "start": 147.62,
+      "end": 148.961,
       "words": [
         {
           "text": "Rain",
-          "start": 177.603,
-          "end": 177.843,
+          "start": 147.62,
+          "end": 147.86,
           "matched": true
         },
         {
           "text": "and",
-          "start": 177.883,
-          "end": 177.963,
+          "start": 147.92,
+          "end": 148.04,
           "matched": true
         },
         {
           "text": "thunder!",
-          "start": 178.044,
-          "end": 178.664,
+          "start": 148.141,
+          "end": 148.961,
           "matched": true
         }
       ]
@@ -2045,25 +2045,25 @@
     {
       "id": "l59",
       "text": "Wind and flame!",
-      "start": 179.104,
-      "end": 180.205,
+      "start": 148.981,
+      "end": 149.881,
       "words": [
         {
           "text": "Wind",
-          "start": 179.104,
-          "end": 179.444,
+          "start": 148.981,
+          "end": 149.141,
           "matched": true
         },
         {
           "text": "and",
-          "start": 179.525,
-          "end": 179.605,
+          "start": 149.261,
+          "end": 149.381,
           "matched": true
         },
         {
           "text": "flame!",
-          "start": 179.665,
-          "end": 180.205,
+          "start": 149.441,
+          "end": 149.881,
           "matched": true
         }
       ]
@@ -2071,25 +2071,25 @@
     {
       "id": "l60",
       "text": "Lose the ball",
-      "start": 180.725,
-      "end": 181.646,
+      "start": 150.181,
+      "end": 151.142,
       "words": [
         {
           "text": "Lose",
-          "start": 180.725,
-          "end": 181.046,
+          "start": 150.181,
+          "end": 150.502,
           "matched": true
         },
         {
           "text": "the",
-          "start": 181.106,
-          "end": 181.226,
+          "start": 150.522,
+          "end": 150.762,
           "matched": true
         },
         {
           "text": "ball",
-          "start": 181.286,
-          "end": 181.646,
+          "start": 150.822,
+          "end": 151.142,
           "matched": true
         }
       ]
@@ -2097,25 +2097,25 @@
     {
       "id": "l61",
       "text": "He'll find again!",
-      "start": 181.706,
-      "end": 183.247,
+      "start": 151.182,
+      "end": 152.523,
       "words": [
         {
           "text": "He'll",
-          "start": 181.706,
-          "end": 182.086,
+          "start": 151.182,
+          "end": 151.522,
           "matched": true
         },
         {
           "text": "find",
-          "start": 182.306,
-          "end": 182.727,
+          "start": 151.622,
+          "end": 151.962,
           "matched": true
         },
         {
           "text": "again!",
-          "start": 182.807,
-          "end": 183.247,
+          "start": 152.042,
+          "end": 152.523,
           "matched": true
         }
       ]
@@ -2123,37 +2123,37 @@
     {
       "id": "l62",
       "text": "No wall can hold him!",
-      "start": 183.327,
-      "end": 185.188,
+      "start": 152.963,
+      "end": 154.904,
       "words": [
         {
           "text": "No",
-          "start": 183.327,
-          "end": 183.647,
+          "start": 152.963,
+          "end": 153.423,
           "matched": true
         },
         {
           "text": "wall",
-          "start": 183.707,
-          "end": 184.048,
+          "start": 153.483,
+          "end": 153.763,
           "matched": true
         },
         {
           "text": "can",
-          "start": 184.108,
-          "end": 184.428,
+          "start": 153.823,
+          "end": 154.123,
           "matched": true
         },
         {
           "text": "hold",
-          "start": 184.508,
-          "end": 184.888,
+          "start": 154.183,
+          "end": 154.644,
           "matched": true
         },
         {
           "text": "him!",
-          "start": 184.948,
-          "end": 185.188,
+          "start": 154.704,
+          "end": 154.904,
           "matched": true
         }
       ]
@@ -2161,31 +2161,31 @@
     {
       "id": "l63",
       "text": "No law can wait!",
-      "start": 185.528,
-      "end": 186.509,
+      "start": 154.924,
+      "end": 157.225,
       "words": [
         {
           "text": "No",
-          "start": 185.528,
-          "end": 185.689,
+          "start": 154.924,
+          "end": 155.584,
           "matched": true
         },
         {
           "text": "law",
-          "start": 185.709,
-          "end": 185.909,
+          "start": 155.664,
+          "end": 156.284,
           "matched": true
         },
         {
           "text": "can",
-          "start": 185.929,
-          "end": 186.069,
+          "start": 156.384,
+          "end": 156.945,
           "matched": true
         },
         {
           "text": "wait!",
-          "start": 186.129,
-          "end": 186.509,
+          "start": 156.985,
+          "end": 157.225,
           "matched": true
         }
       ]
@@ -2193,69 +2193,69 @@
     {
       "id": "l64",
       "text": "BAM BAM RIDES",
-      "start": 186.889,
-      "end": 188.09,
+      "start": 158.946,
+      "end": 160.287,
       "words": [
         {
           "text": "BAM",
-          "start": 186.889,
-          "end": 187.25,
+          "start": 158.946,
+          "end": 159.266,
           "matched": true
         },
         {
           "text": "BAM",
-          "start": 187.33,
-          "end": 187.65,
+          "start": 159.286,
+          "end": 159.606,
           "matched": true
         },
         {
           "text": "RIDES",
-          "start": 187.65,
-          "end": 188.09,
-          "matched": false
+          "start": 159.666,
+          "end": 160.287,
+          "matched": true
         }
       ]
     },
     {
       "id": "l65",
       "text": "FOR THE BALL BEYOND THE GATE!",
-      "start": 188.09,
-      "end": 193.314,
+      "start": 160.727,
+      "end": 162.487,
       "words": [
         {
           "text": "FOR",
-          "start": 188.09,
-          "end": 188.31,
+          "start": 160.727,
+          "end": 160.867,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 188.35,
-          "end": 188.47,
+          "start": 160.887,
+          "end": 160.947,
           "matched": true
         },
         {
           "text": "BALL",
-          "start": 188.53,
-          "end": 188.911,
+          "start": 160.987,
+          "end": 161.287,
           "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 188.951,
-          "end": 189.651,
+          "start": 161.347,
+          "end": 161.927,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 189.731,
-          "end": 190.031,
+          "start": 161.987,
+          "end": 162.087,
           "matched": true
         },
         {
           "text": "GATE!",
-          "start": 190.152,
-          "end": 193.314,
+          "start": 162.147,
+          "end": 162.487,
           "matched": true
         }
       ]
@@ -2263,59 +2263,59 @@
     {
       "id": "l66",
       "text": "Do-ja...",
-      "start": 193.314,
-      "end": 200.972,
+      "start": 180.955,
+      "end": 181.535,
       "words": [
         {
           "text": "Do-ja...",
-          "start": 193.314,
-          "end": 200.972,
-          "matched": false
+          "start": 180.955,
+          "end": 181.535,
+          "matched": true
         }
       ]
     },
     {
       "id": "l67",
       "text": "Do-ja...",
-      "start": 200.972,
-      "end": 208.631,
+      "start": 182.635,
+      "end": 183.236,
       "words": [
         {
           "text": "Do-ja...",
-          "start": 200.972,
-          "end": 208.631,
-          "matched": false
+          "start": 182.635,
+          "end": 183.236,
+          "matched": true
         }
       ]
     },
     {
       "id": "l68",
       "text": "I need no prophecy",
-      "start": 208.631,
-      "end": 210.572,
+      "start": 185.877,
+      "end": 186.777,
       "words": [
         {
           "text": "I",
-          "start": 208.631,
-          "end": 208.691,
+          "start": 185.877,
+          "end": 185.937,
           "matched": true
         },
         {
           "text": "need",
-          "start": 208.751,
-          "end": 209.051,
+          "start": 185.977,
+          "end": 186.137,
           "matched": true
         },
         {
           "text": "no",
-          "start": 209.131,
-          "end": 209.412,
+          "start": 186.157,
+          "end": 186.277,
           "matched": true
         },
         {
           "text": "prophecy",
-          "start": 209.512,
-          "end": 210.572,
+          "start": 186.317,
+          "end": 186.777,
           "matched": true
         }
       ]
@@ -2323,31 +2323,31 @@
     {
       "id": "l69",
       "text": "I need no throne",
-      "start": 210.733,
-      "end": 212.174,
+      "start": 188.537,
+      "end": 189.598,
       "words": [
         {
           "text": "I",
-          "start": 210.733,
-          "end": 210.793,
+          "start": 188.537,
+          "end": 188.577,
           "matched": true
         },
         {
           "text": "need",
-          "start": 210.853,
-          "end": 211.173,
+          "start": 188.617,
+          "end": 188.817,
           "matched": true
         },
         {
           "text": "no",
-          "start": 211.273,
-          "end": 211.693,
+          "start": 188.857,
+          "end": 189.017,
           "matched": true
         },
         {
           "text": "throne",
-          "start": 211.813,
-          "end": 212.174,
+          "start": 189.097,
+          "end": 189.598,
           "matched": true
         }
       ]
@@ -2355,37 +2355,37 @@
     {
       "id": "l70",
       "text": "Every chair within this house",
-      "start": 212.634,
-      "end": 214.876,
+      "start": 191.379,
+      "end": 192.64,
       "words": [
         {
           "text": "Every",
-          "start": 212.634,
-          "end": 212.854,
+          "start": 191.379,
+          "end": 191.559,
           "matched": true
         },
         {
           "text": "chair",
-          "start": 212.914,
-          "end": 213.314,
+          "start": 191.619,
+          "end": 191.819,
           "matched": true
         },
         {
           "text": "within",
-          "start": 213.395,
-          "end": 213.935,
+          "start": 191.839,
+          "end": 192.1,
           "matched": true
         },
         {
           "text": "this",
-          "start": 214.035,
-          "end": 214.375,
+          "start": 192.14,
+          "end": 192.28,
           "matched": true
         },
         {
           "text": "house",
-          "start": 214.455,
-          "end": 214.876,
+          "start": 192.32,
+          "end": 192.64,
           "matched": true
         }
       ]
@@ -2393,31 +2393,31 @@
     {
       "id": "l71",
       "text": "Is already mine alone",
-      "start": 215.016,
-      "end": 218.678,
+      "start": 192.72,
+      "end": 194.641,
       "words": [
         {
           "text": "Is",
-          "start": 215.016,
-          "end": 215.116,
+          "start": 192.72,
+          "end": 192.82,
           "matched": true
         },
         {
           "text": "already",
-          "start": 215.316,
-          "end": 215.976,
+          "start": 192.88,
+          "end": 193.3,
           "matched": true
         },
         {
           "text": "mine",
-          "start": 216.136,
-          "end": 217.638,
+          "start": 193.481,
+          "end": 193.981,
           "matched": true
         },
         {
           "text": "alone",
-          "start": 217.718,
-          "end": 218.678,
+          "start": 194.061,
+          "end": 194.641,
           "matched": true
         }
       ]
@@ -2425,43 +2425,43 @@
     {
       "id": "l72",
       "text": "I do not beg for glory",
-      "start": 218.798,
-      "end": 221.26,
+      "start": 194.661,
+      "end": 199.045,
       "words": [
         {
           "text": "I",
-          "start": 218.798,
-          "end": 218.858,
+          "start": 194.661,
+          "end": 194.681,
           "matched": true
         },
         {
           "text": "do",
-          "start": 218.898,
-          "end": 219.079,
+          "start": 196.643,
+          "end": 196.783,
           "matched": true
         },
         {
           "text": "not",
-          "start": 219.159,
-          "end": 219.539,
+          "start": 196.823,
+          "end": 196.963,
           "matched": true
         },
         {
           "text": "beg",
-          "start": 219.719,
-          "end": 220.219,
+          "start": 197.003,
+          "end": 197.524,
           "matched": true
         },
         {
           "text": "for",
-          "start": 220.34,
-          "end": 220.5,
+          "start": 197.644,
+          "end": 198.184,
           "matched": true
         },
         {
           "text": "glory",
-          "start": 220.56,
-          "end": 221.26,
+          "start": 198.284,
+          "end": 199.045,
           "matched": true
         }
       ]
@@ -2469,43 +2469,43 @@
     {
       "id": "l73",
       "text": "I do not chase or wait",
-      "start": 222.201,
-      "end": 224.763,
+      "start": 199.165,
+      "end": 201.006,
       "words": [
         {
           "text": "I",
-          "start": 222.201,
-          "end": 222.261,
+          "start": 199.165,
+          "end": 199.225,
           "matched": true
         },
         {
           "text": "do",
-          "start": 222.321,
-          "end": 222.501,
+          "start": 199.265,
+          "end": 199.425,
           "matched": true
         },
         {
           "text": "not",
-          "start": 222.561,
-          "end": 222.941,
+          "start": 199.465,
+          "end": 199.645,
           "matched": true
         },
         {
           "text": "chase",
-          "start": 223.102,
-          "end": 223.782,
+          "start": 199.725,
+          "end": 200.125,
           "matched": true
         },
         {
           "text": "or",
-          "start": 224.182,
-          "end": 224.362,
+          "start": 200.366,
+          "end": 200.526,
           "matched": true
         },
         {
           "text": "wait",
-          "start": 224.442,
-          "end": 224.763,
+          "start": 200.626,
+          "end": 201.006,
           "matched": true
         }
       ]
@@ -2513,43 +2513,43 @@
     {
       "id": "l74",
       "text": "But Mama has the treat bag...",
-      "start": 226.176,
-      "end": 229.119,
+      "start": 202.127,
+      "end": 204.228,
       "words": [
         {
           "text": "But",
-          "start": 226.176,
-          "end": 226.436,
+          "start": 202.127,
+          "end": 202.247,
           "matched": true
         },
         {
           "text": "Mama",
-          "start": 226.576,
-          "end": 227.357,
+          "start": 202.327,
+          "end": 202.747,
           "matched": true
         },
         {
           "text": "has",
-          "start": 227.457,
-          "end": 227.978,
+          "start": 202.827,
+          "end": 203.128,
           "matched": true
         },
         {
           "text": "the",
-          "start": 228.058,
-          "end": 228.178,
+          "start": 203.208,
+          "end": 203.308,
           "matched": true
         },
         {
           "text": "treat",
-          "start": 228.258,
-          "end": 228.618,
+          "start": 203.388,
+          "end": 203.708,
           "matched": true
         },
         {
           "text": "bag...",
-          "start": 228.699,
-          "end": 229.119,
+          "start": 203.768,
+          "end": 204.228,
           "matched": true
         }
       ]
@@ -2557,37 +2557,37 @@
     {
       "id": "l75",
       "text": "So open up the gate.",
-      "start": 229.72,
-      "end": 233.443,
+      "start": 205.429,
+      "end": 212.154,
       "words": [
         {
           "text": "So",
-          "start": 229.72,
-          "end": 230.0,
+          "start": 205.429,
+          "end": 205.629,
           "matched": true
         },
         {
           "text": "open",
-          "start": 230.24,
-          "end": 230.861,
+          "start": 205.749,
+          "end": 206.31,
           "matched": true
         },
         {
           "text": "up",
-          "start": 231.041,
-          "end": 231.201,
+          "start": 206.71,
+          "end": 206.87,
           "matched": true
         },
         {
           "text": "the",
-          "start": 231.281,
-          "end": 231.401,
+          "start": 206.97,
+          "end": 207.551,
           "matched": true
         },
         {
           "text": "gate.",
-          "start": 231.481,
-          "end": 233.443,
+          "start": 207.631,
+          "end": 212.154,
           "matched": true
         }
       ]
@@ -2595,25 +2595,25 @@
     {
       "id": "l76",
       "text": "OPEN THE GATE!",
-      "start": 233.744,
-      "end": 238.248,
+      "start": 212.334,
+      "end": 213.215,
       "words": [
         {
           "text": "OPEN",
-          "start": 233.744,
-          "end": 234.244,
+          "start": 212.334,
+          "end": 212.634,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 234.364,
-          "end": 234.644,
+          "start": 212.654,
+          "end": 212.955,
           "matched": true
         },
         {
           "text": "GATE!",
-          "start": 234.745,
-          "end": 238.248,
+          "start": 212.975,
+          "end": 213.215,
           "matched": true
         }
       ]
@@ -2621,37 +2621,37 @@
     {
       "id": "l77",
       "text": "THE BALL BEYOND THE GATE!",
-      "start": 238.268,
-      "end": 240.47,
+      "start": 217.313,
+      "end": 218.634,
       "words": [
         {
           "text": "THE",
-          "start": 238.268,
-          "end": 238.448,
+          "start": 217.313,
+          "end": 217.433,
           "matched": true
         },
         {
           "text": "BALL",
-          "start": 238.448,
-          "end": 238.929,
-          "matched": false
+          "start": 217.474,
+          "end": 217.794,
+          "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 238.929,
-          "end": 239.149,
+          "start": 217.834,
+          "end": 218.154,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 239.189,
-          "end": 239.569,
+          "start": 218.194,
+          "end": 218.274,
           "matched": true
         },
         {
           "text": "GATE!",
-          "start": 240.13,
-          "end": 240.47,
+          "start": 218.314,
+          "end": 218.634,
           "matched": true
         }
       ]
@@ -2659,37 +2659,37 @@
     {
       "id": "l78",
       "text": "NOW THE GOLDENS ARE RUNNING!",
-      "start": 240.55,
-      "end": 243.213,
+      "start": 219.315,
+      "end": 220.796,
       "words": [
         {
           "text": "NOW",
-          "start": 240.55,
-          "end": 240.731,
+          "start": 219.315,
+          "end": 219.475,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 240.791,
-          "end": 240.891,
+          "start": 219.515,
+          "end": 219.595,
           "matched": true
         },
         {
           "text": "GOLDENS",
-          "start": 240.951,
-          "end": 242.272,
+          "start": 219.635,
+          "end": 219.975,
           "matched": true
         },
         {
           "text": "ARE",
-          "start": 242.292,
-          "end": 242.492,
+          "start": 220.055,
+          "end": 220.156,
           "matched": true
         },
         {
           "text": "RUNNING!",
-          "start": 242.572,
-          "end": 243.213,
+          "start": 220.176,
+          "end": 220.796,
           "matched": true
         }
       ]
@@ -2697,75 +2697,75 @@
     {
       "id": "l79",
       "text": "THE BALL BEYOND THE GATE!",
-      "start": 243.213,
-      "end": 247.075,
+      "start": 220.796,
+      "end": 222.277,
       "words": [
         {
           "text": "THE",
-          "start": 243.213,
-          "end": 243.985,
+          "start": 220.796,
+          "end": 220.976,
           "matched": false
         },
         {
           "text": "BALL",
-          "start": 243.985,
-          "end": 244.758,
-          "matched": false
+          "start": 220.976,
+          "end": 221.316,
+          "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 244.758,
-          "end": 245.53,
-          "matched": false
+          "start": 221.356,
+          "end": 221.797,
+          "matched": true
         },
         {
           "text": "THE",
-          "start": 245.53,
-          "end": 246.303,
-          "matched": false
+          "start": 221.817,
+          "end": 221.917,
+          "matched": true
         },
         {
           "text": "GATE!",
-          "start": 246.303,
-          "end": 247.075,
-          "matched": false
+          "start": 221.957,
+          "end": 222.277,
+          "matched": true
         }
       ]
     },
     {
       "id": "l80",
       "text": "AND THE MORNING IS COMING!",
-      "start": 247.075,
-      "end": 250.116,
+      "start": 222.477,
+      "end": 224.319,
       "words": [
         {
           "text": "AND",
-          "start": 247.075,
-          "end": 247.175,
+          "start": 222.477,
+          "end": 222.617,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 247.235,
-          "end": 247.335,
+          "start": 222.657,
+          "end": 222.717,
           "matched": true
         },
         {
           "text": "MORNING",
-          "start": 247.435,
-          "end": 248.195,
+          "start": 222.818,
+          "end": 223.298,
           "matched": true
         },
         {
           "text": "IS",
-          "start": 248.736,
-          "end": 248.916,
+          "start": 223.438,
+          "end": 223.558,
           "matched": true
         },
         {
           "text": "COMING!",
-          "start": 249.016,
-          "end": 250.116,
+          "start": 223.638,
+          "end": 224.319,
           "matched": true
         }
       ]
@@ -2773,19 +2773,19 @@
     {
       "id": "l81",
       "text": "Golden thunder!",
-      "start": 250.216,
-      "end": 251.316,
+      "start": 224.979,
+      "end": 226.16,
       "words": [
         {
           "text": "Golden",
-          "start": 250.216,
-          "end": 250.556,
+          "start": 224.979,
+          "end": 225.379,
           "matched": true
         },
         {
           "text": "thunder!",
-          "start": 250.656,
-          "end": 251.316,
+          "start": 225.48,
+          "end": 226.16,
           "matched": true
         }
       ]
@@ -2793,45 +2793,45 @@
     {
       "id": "l82",
       "text": "Flying mane!",
-      "start": 251.657,
-      "end": 253.197,
+      "start": 226.24,
+      "end": 227.281,
       "words": [
         {
           "text": "Flying",
-          "start": 251.657,
-          "end": 252.197,
+          "start": 226.24,
+          "end": 226.74,
           "matched": true
         },
         {
           "text": "mane!",
-          "start": 252.197,
-          "end": 253.197,
-          "matched": false
+          "start": 226.801,
+          "end": 227.281,
+          "matched": true
         }
       ]
     },
     {
       "id": "l83",
       "text": "Throw it once!",
-      "start": 253.197,
-      "end": 254.137,
+      "start": 227.581,
+      "end": 228.462,
       "words": [
         {
           "text": "Throw",
-          "start": 253.197,
-          "end": 253.597,
+          "start": 227.581,
+          "end": 227.881,
           "matched": true
         },
         {
           "text": "it",
-          "start": 253.717,
-          "end": 253.797,
+          "start": 227.941,
+          "end": 228.001,
           "matched": true
         },
         {
           "text": "once!",
-          "start": 253.957,
-          "end": 254.137,
+          "start": 228.262,
+          "end": 228.462,
           "matched": true
         }
       ]
@@ -2839,25 +2839,25 @@
     {
       "id": "l84",
       "text": "THROW IT AGAIN!",
-      "start": 254.197,
-      "end": 256.098,
+      "start": 228.882,
+      "end": 229.823,
       "words": [
         {
           "text": "THROW",
-          "start": 254.197,
-          "end": 254.598,
+          "start": 228.882,
+          "end": 229.202,
           "matched": true
         },
         {
           "text": "IT",
-          "start": 254.798,
-          "end": 254.978,
+          "start": 229.262,
+          "end": 229.322,
           "matched": true
         },
         {
           "text": "AGAIN!",
-          "start": 255.158,
-          "end": 256.098,
+          "start": 229.422,
+          "end": 229.823,
           "matched": true
         }
       ]
@@ -2865,25 +2865,25 @@
     {
       "id": "l85",
       "text": "Doja leads them!",
-      "start": 256.218,
-      "end": 257.719,
+      "start": 229.843,
+      "end": 232.645,
       "words": [
         {
           "text": "Doja",
-          "start": 256.218,
-          "end": 256.798,
+          "start": 229.843,
+          "end": 230.944,
           "matched": true
         },
         {
           "text": "leads",
-          "start": 256.858,
-          "end": 257.178,
+          "start": 231.624,
+          "end": 232.225,
           "matched": true
         },
         {
           "text": "them!",
-          "start": 257.238,
-          "end": 257.719,
+          "start": 232.305,
+          "end": 232.645,
           "matched": true
         }
       ]
@@ -2891,25 +2891,25 @@
     {
       "id": "l86",
       "text": "Bam won't wait!",
-      "start": 257.819,
-      "end": 258.919,
+      "start": 232.985,
+      "end": 234.646,
       "words": [
         {
           "text": "Bam",
-          "start": 257.819,
-          "end": 258.159,
+          "start": 232.985,
+          "end": 233.566,
           "matched": true
         },
         {
           "text": "won't",
-          "start": 258.219,
-          "end": 258.519,
+          "start": 233.646,
+          "end": 234.106,
           "matched": true
         },
         {
           "text": "wait!",
-          "start": 258.619,
-          "end": 258.919,
+          "start": 234.266,
+          "end": 234.646,
           "matched": true
         }
       ]
@@ -2917,25 +2917,25 @@
     {
       "id": "l87",
       "text": "TWO GOLDENS RIDE",
-      "start": 258.919,
-      "end": 261.52,
+      "start": 235.907,
+      "end": 237.669,
       "words": [
         {
           "text": "TWO",
-          "start": 258.919,
-          "end": 259.399,
-          "matched": false
+          "start": 235.907,
+          "end": 236.248,
+          "matched": true
         },
         {
           "text": "GOLDENS",
-          "start": 259.399,
-          "end": 260.099,
+          "start": 236.308,
+          "end": 236.828,
           "matched": true
         },
         {
           "text": "RIDE",
-          "start": 260.219,
-          "end": 261.52,
+          "start": 236.908,
+          "end": 237.669,
           "matched": true
         }
       ]
@@ -2943,43 +2943,43 @@
     {
       "id": "l88",
       "text": "FOR THE BALL BEYOND THE GATE!",
-      "start": 261.52,
-      "end": 265.281,
+      "start": 238.029,
+      "end": 242.012,
       "words": [
         {
           "text": "FOR",
-          "start": 261.52,
-          "end": 263.02,
-          "matched": false
+          "start": 238.029,
+          "end": 238.149,
+          "matched": true
         },
         {
           "text": "THE",
-          "start": 263.02,
-          "end": 263.34,
+          "start": 238.189,
+          "end": 238.249,
           "matched": true
         },
         {
           "text": "BALL",
-          "start": 263.401,
-          "end": 263.761,
+          "start": 238.309,
+          "end": 238.609,
           "matched": true
         },
         {
           "text": "BEYOND",
-          "start": 263.821,
-          "end": 264.201,
+          "start": 238.649,
+          "end": 239.27,
           "matched": true
         },
         {
           "text": "THE",
-          "start": 264.621,
-          "end": 264.921,
+          "start": 239.33,
+          "end": 239.43,
           "matched": true
         },
         {
           "text": "GATE!",
-          "start": 264.981,
-          "end": 265.281,
+          "start": 239.47,
+          "end": 242.012,
           "matched": true
         }
       ]
@@ -2987,13 +2987,13 @@
     {
       "id": "l89",
       "text": "THROW!",
-      "start": 265.321,
-      "end": 265.761,
+      "start": 242.272,
+      "end": 242.532,
       "words": [
         {
           "text": "THROW!",
-          "start": 265.321,
-          "end": 265.761,
+          "start": 242.272,
+          "end": 242.532,
           "matched": true
         }
       ]
@@ -3001,13 +3001,13 @@
     {
       "id": "l90",
       "text": "IT!",
-      "start": 266.321,
-      "end": 266.442,
+      "start": 242.712,
+      "end": 242.873,
       "words": [
         {
           "text": "IT!",
-          "start": 266.321,
-          "end": 266.442,
+          "start": 242.712,
+          "end": 242.873,
           "matched": true
         }
       ]
@@ -3015,41 +3015,41 @@
     {
       "id": "l91",
       "text": "AGAIN!",
-      "start": 266.902,
-      "end": 267.242,
+      "start": 242.873,
+      "end": 244.335,
       "words": [
         {
           "text": "AGAIN!",
-          "start": 266.902,
-          "end": 267.242,
-          "matched": true
+          "start": 242.873,
+          "end": 244.335,
+          "matched": false
         }
       ]
     },
     {
       "id": "l92",
       "text": "THROW!",
-      "start": 267.702,
-      "end": 268.162,
+      "start": 244.335,
+      "end": 245.798,
       "words": [
         {
           "text": "THROW!",
-          "start": 267.702,
-          "end": 268.162,
-          "matched": true
+          "start": 244.335,
+          "end": 245.798,
+          "matched": false
         }
       ]
     },
     {
       "id": "l93",
       "text": "IT!",
-      "start": 268.662,
-      "end": 268.802,
+      "start": 245.798,
+      "end": 253.242,
       "words": [
         {
           "text": "IT!",
-          "start": 268.662,
-          "end": 268.802,
+          "start": 245.798,
+          "end": 253.242,
           "matched": true
         }
       ]
@@ -3057,51 +3057,51 @@
     {
       "id": "l94",
       "text": "AGAIN!",
-      "start": 269.282,
-      "end": 269.623,
+      "start": 253.242,
+      "end": 253.622,
       "words": [
         {
           "text": "AGAIN!",
-          "start": 269.282,
-          "end": 269.623,
-          "matched": true
+          "start": 253.242,
+          "end": 253.622,
+          "matched": false
         }
       ]
     },
     {
       "id": "l95",
       "text": "Bam Bam, bring it back.",
-      "start": 270.543,
-      "end": 273.224,
+      "start": 253.622,
+      "end": 255.343,
       "words": [
         {
           "text": "Bam",
-          "start": 270.543,
-          "end": 270.923,
-          "matched": true
+          "start": 253.622,
+          "end": 254.002,
+          "matched": false
         },
         {
           "text": "Bam,",
-          "start": 271.343,
-          "end": 271.723,
-          "matched": true
+          "start": 254.002,
+          "end": 254.383,
+          "matched": false
         },
         {
           "text": "bring",
-          "start": 272.103,
-          "end": 272.384,
-          "matched": true
+          "start": 254.383,
+          "end": 254.763,
+          "matched": false
         },
         {
           "text": "it",
-          "start": 272.664,
-          "end": 272.824,
+          "start": 254.763,
+          "end": 254.883,
           "matched": true
         },
         {
           "text": "back.",
-          "start": 272.924,
-          "end": 273.224,
+          "start": 254.963,
+          "end": 255.343,
           "matched": true
         }
       ]
@@ -3109,13 +3109,13 @@
     {
       "id": "l96",
       "text": "BALL!",
-      "start": 273.224,
-      "end": 273.724,
+      "start": 255.343,
+      "end": 257.284,
       "words": [
         {
           "text": "BALL!",
-          "start": 273.224,
-          "end": 273.724,
+          "start": 255.343,
+          "end": 257.284,
           "matched": false
         }
       ]
@@ -3123,13 +3123,13 @@
     {
       "id": "l97",
       "text": "Woof.",
-      "start": 273.724,
-      "end": 274.564,
+      "start": 257.284,
+      "end": 257.985,
       "words": [
         {
           "text": "Woof.",
-          "start": 273.724,
-          "end": 274.564,
+          "start": 257.284,
+          "end": 257.985,
           "matched": true
         }
       ]

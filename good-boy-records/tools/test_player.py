@@ -71,7 +71,7 @@ check("redundant browse playing genre strip removed", 'id="gbr-browse-genre"' no
 check("explicit wheel activation loads browsed cut", "function activateWheelSlot" in js and "primaryTrack(song, state.browseGenre)" in js and "selectTrack(track" in js)
 
 # Catalogue conveyor
-check("conveyor has a bounded visible window", "const CONVEYOR_VISIBLE = 16" in js and "phase >= CONVEYOR_VISIBLE" in js)
+check("conveyor has a bounded visible window", "const CONVEYOR_VISIBLE = 20" in js and "phase >= CONVEYOR_VISIBLE" in js)
 check("conveyor artwork uses real img elements", 'button.innerHTML = `<img alt="" loading="eager" decoding="async">' in js and "img.src = src" in js)
 check("conveyor art falls back to placeholder", 'return `assets/img/sleeves/${base}-${size}.${ext}`' in js and '"gbr-placeholder"' in js)
 check("conveyor cards contain artwork only", "gbr-track-tag" not in js[js.index("function buildWheel"):js.index("function normaliseWheelIndex")])
@@ -82,7 +82,7 @@ check("conveyor auto moves while idle", "CONVEYOR_IDLE_SPEED" in js and "animate
 check("conveyor pauses after interaction", "markConveyorInteraction" in js and "CONVEYOR_RESUME_DELAY" in js)
 check("catalogue supports pointer drag", "addEventListener('pointermove'" in js)
 check("cover clicks are not swallowed by drag capture", "event.target.closest('.gbr-slot-card')" in js)
-check("loaded track syncs into conveyor", "function syncWheelToTrack" in js and "state.conveyorPhase = -index" in js and "syncWheelToTrack(track);" in js[js.index("function selectTrack"):js.index("async function playAudio")])
+check("loaded track syncs into conveyor", "function syncWheelToTrack" in js and "CONVEYOR_FOCUS_SLOT" in js and "syncWheelToTrack(track);" in js[js.index("function selectTrack"):js.index("async function playAudio")])
 check("conveyor supports mouse wheel", "addEventListener('wheel'" in js)
 check("mobile artwork rail exists", 'id="gbr-mobile-rail"' in html and ".gbr-mobile-rail" in css)
 check("catalogue title bar is removed", ".gbr-genre-bank {\n  display:none!important;" in css)
@@ -195,7 +195,7 @@ check("hidden service visual treatment exists", 'html[data-easter="true"]' in cs
 check("reverse detail grid explicitly fills card width", all(token in css for token in [".gbr-card-backplate > .gbr-eyebrow", "width:100%", "justify-self:stretch"]))
 check("wheel artwork uses square full-bleed carriers", all(token in css for token in [".gbr-slot {", "aspect-ratio:1", ".gbr-slot-card img", "inset:0", "background:transparent"]))
 check("desktop gives reclaimed height to lyrics", "grid-template-rows:minmax(560px,calc(100dvh - 320px)) 165px" in css and ".gbr-lyrics {\n  height:165px" in css)
-check("short desktop still enlarges lyrics", "grid-template-rows:minmax(500px,calc(100dvh - 250px)) 112px" in css)
+check("short desktop still enlarges lyrics", "grid-template-rows:minmax(0,calc(100dvh - 134px)) 106px" in css)
 
 # Surrounding systems
 check("folder drawer retained", "{{FOLDERS}}" in template and "setupFolders" in js and "build_folders" in builder)

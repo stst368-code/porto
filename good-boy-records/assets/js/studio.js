@@ -262,9 +262,10 @@
   }
 
   /* ------------------------------------------------------------ conveyor */
-  const CONVEYOR_VISIBLE = 16;
-  const CONVEYOR_IDLE_SPEED = 0.085; // catalogue positions per second
+  const CONVEYOR_VISIBLE = 20;
+  const CONVEYOR_IDLE_SPEED = 0.06; // catalogue positions per second
   const CONVEYOR_RESUME_DELAY = 2600;
+  const CONVEYOR_FOCUS_SLOT = 13;
 
   function ensureConveyorTrack() {
     if (!el.wheelStage) return null;
@@ -276,10 +277,11 @@
     svg.setAttribute('viewBox', '0 0 1000 1000');
     svg.setAttribute('preserveAspectRatio', 'none');
     svg.setAttribute('aria-hidden', 'true');
+    const d = "M -150 390 L 190 390 C 225 390 242 386 260 366 C 285 338 300 292 336 230 C 414 98 602 70 758 120 C 905 168 975 304 975 485 C 975 682 894 825 742 870 C 585 916 404 888 322 754 C 292 705 279 649 257 622 C 240 600 222 592 190 592 L -150 592";
     svg.innerHTML = `
-      <path class="gbr-conveyor-track-outer" d="M -90 330 L 235 330 C 275 150 435 72 650 78 C 870 84 970 245 970 500 C 970 760 842 915 620 922 C 405 928 275 835 235 670 L -90 670" />
-      <path class="gbr-conveyor-track-bed" d="M -90 330 L 235 330 C 275 150 435 72 650 78 C 870 84 970 245 970 500 C 970 760 842 915 620 922 C 405 928 275 835 235 670 L -90 670" />
-      <path class="gbr-conveyor-track-seams" data-conveyor-path d="M -90 330 L 235 330 C 275 150 435 72 650 78 C 870 84 970 245 970 500 C 970 760 842 915 620 922 C 405 928 275 835 235 670 L -90 670" />`;
+      <path class="gbr-conveyor-track-outer" d="${d}" />
+      <path class="gbr-conveyor-track-bed" d="${d}" />
+      <path class="gbr-conveyor-track-seams" data-conveyor-path d="${d}" />`;
     el.wheelStage.insertBefore(svg, el.wheelSlots);
     return svg.querySelector('path[data-conveyor-path]');
   }
@@ -306,7 +308,7 @@
       el.wheelSlots.appendChild(wrap);
     });
     state.wheelIndex = Math.min(state.wheelIndex, Math.max(0, list.length - 1));
-    state.conveyorPhase = -state.wheelIndex;
+    state.conveyorPhase = -state.wheelIndex + CONVEYOR_FOCUS_SLOT;
     renderWheelContents();
     positionWheel();
   }
@@ -358,7 +360,7 @@
   function setWheelIndex(index, immediate = false) {
     const next = normaliseWheelIndex(index);
     state.wheelIndex = next;
-    if (immediate) state.conveyorPhase = -next;
+    if (immediate) state.conveyorPhase = -next + CONVEYOR_FOCUS_SLOT;
     renderWheelCenter(activeTracks()[next] || state.currentTrack);
     positionWheel();
   }
@@ -390,15 +392,16 @@
       const point = path.getPointAtLength(progress * total);
       const x = point.x / 1000 * stageWidth;
       const y = point.y / 1000 * stageHeight;
-      const edgeDistance = Math.min(progress, 1 - progress);
-      const edgeScale = Math.min(1, 0.72 + edgeDistance * 2.5);
-      const focusBoost = index === state.wheelIndex ? 1.12 : 1;
-      const opacity = Math.min(1, 0.45 + edgeDistance * 4.2);
+      const edgeFade = Math.min(progress / 0.11, (1 - progress) / 0.11, 1);
+      const centerWeight = Math.max(0, 1 - Math.abs(progress - 0.56) / 0.56);
+      const edgeScale = 0.82 + centerWeight * 0.16;
+      const focusBoost = index === state.wheelIndex ? 1.08 : 1;
+      const opacity = 0.18 + edgeFade * 0.82;
 
       wrap.style.left = `${x}px`;
       wrap.style.top = `${y}px`;
-      wrap.style.transform = 'translate(-50%, -50%)';
-      wrap.style.zIndex = String(10 + Math.round((1 - Math.abs(progress - 0.5)) * 10));
+      wrap.style.transform = 'translate3d(-50%, -50%, 0)';
+      wrap.style.zIndex = String(10 + Math.round(centerWeight * 12));
       wrap.style.opacity = String(opacity);
 
       const button = wrap.querySelector('.gbr-slot-card');
@@ -451,7 +454,7 @@
   function rotateWheel(delta) {
     markConveyorInteraction();
     if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
-      state.conveyorPhase += delta < 0 ? -0.8 : 0.8;
+      state.conveyorPhase += delta < 0 ? -1 : 1;
       positionWheel();
       return;
     }
@@ -465,7 +468,7 @@
     if (index < 0) return;
     state.wheelIndex = index;
     if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
-      state.conveyorPhase = -index + Math.floor(CONVEYOR_VISIBLE * .48);
+      state.conveyorPhase = -index + CONVEYOR_FOCUS_SLOT;
       positionWheel();
     } else {
       const step = 360 / activeCount();
@@ -541,7 +544,7 @@
       if (!drag || drag.id !== event.pointerId) return;
       markConveyorInteraction();
       if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
-        state.conveyorPhase = drag.phase + (event.clientX - drag.x) / 110;
+        state.conveyorPhase = drag.phase + (event.clientX - drag.x) / 90;
         positionWheel();
         return;
       }
