@@ -26,22 +26,22 @@
   const wheelStep = () => 360 / activeCount();
 
   const el = {
-    app: $("gbr11-app"), status: $("gbr11-status"), audio: $("gbr11-audio"),
-    genreBank: $("gbr11-genre-bank"), magazineModeLabel: $("gbr11-magazine-mode-label"),
-    wheelStage: $("gbr11-wheel-stage"), wheelDisc: $("gbr11-wheel-disc"), wheelSlots: $("gbr11-wheel-slots"),
-    mobileRail: $("gbr11-mobile-rail"),
-    lampKnob: $("gbr11-lamp-knob"),
-    releaseLabel: $("gbr11-release-label"), artwork: $("gbr11-artwork"), releaseArtWrap: $("gbr11-release-art-wrap"),
-    easterTerminal: $("gbr11-easter-terminal"), easterReject: $("gbr11-easter-reject"), easterFilename: $("gbr11-easter-filename"), description: $("gbr11-description"),
-    inspiration: $("gbr11-inspiration"), detailsButton: $("gbr11-details-button"), yaml: $("gbr11-yaml-link"),
-    releaseCard: $("gbr11-release-card"), cardBackTitle: $("gbr11-card-back-title"),
-    atrButton: $("gbr11-atr-button"), atrDrawer: $("gbr11-atr-drawer"),
-    techGrid: $("gbr11-tech-grid"), atrList: $("gbr11-atr-list"), atrAudio: $("gbr11-atr-audio"),
-    spectrum: $("gbr11-spectrum"), vu: $("gbr11-vu"), power: $("gbr11-power"),
-    volume: $("gbr11-volume"), volumeKnob: $("gbr11-volume-knob"), volumeDb: $("gbr11-volume-db"), volumeMeter: $("gbr11-volume-meter"),
-    nowTitle: $("gbr11-now-title"), nowVersion: $("gbr11-now-version"), shuffle: $("gbr11-shuffle"), prev: $("gbr11-prev"), play: $("gbr11-play"), next: $("gbr11-next"),
-    sideSwitch: $("gbr11-side-switch"), progress: $("gbr11-progress"), time: $("gbr11-time"), total: $("gbr11-total"),
-    lyricLine: $("gbr11-lyric-line"),
+    app: $("gbr-app"), status: $("gbr-status"), audio: $("gbr-audio"),
+    genreBank: $("gbr-genre-bank"), magazineModeLabel: $("gbr-magazine-mode-label"),
+    wheelStage: $("gbr-wheel-stage"), wheelDisc: $("gbr-wheel-disc"), wheelSlots: $("gbr-wheel-slots"),
+    mobileRail: $("gbr-mobile-rail"),
+    lampKnob: $("gbr-lamp-knob"),
+    releaseLabel: $("gbr-release-label"), artwork: $("gbr-artwork"), releaseArtWrap: $("gbr-release-art-wrap"),
+    easterTerminal: $("gbr-easter-terminal"), easterReject: $("gbr-easter-reject"), easterFilename: $("gbr-easter-filename"), description: $("gbr-description"),
+    inspiration: $("gbr-inspiration"), detailsButton: $("gbr-details-button"), yaml: $("gbr-yaml-link"),
+    releaseCard: $("gbr-release-card"), cardBackTitle: $("gbr-card-back-title"),
+    atrButton: $("gbr-atr-button"), atrDrawer: $("gbr-atr-drawer"),
+    techGrid: $("gbr-tech-grid"), atrList: $("gbr-atr-list"), atrAudio: $("gbr-atr-audio"),
+    spectrum: $("gbr-spectrum"), vu: $("gbr-vu"), power: $("gbr-power"),
+    volume: $("gbr-volume"), volumeKnob: $("gbr-volume-knob"), volumeDb: $("gbr-volume-db"), volumeMeter: $("gbr-volume-meter"),
+    nowTitle: $("gbr-now-title"), nowVersion: $("gbr-now-version"), shuffle: $("gbr-shuffle"), prev: $("gbr-prev"), play: $("gbr-play"), next: $("gbr-next"),
+    sideSwitch: $("gbr-side-switch"), progress: $("gbr-progress"), time: $("gbr-time"), total: $("gbr-total"),
+    lyricLine: $("gbr-lyric-line"),
   };
   const qualityButtons = [...document.querySelectorAll("[data-quality]")];
   const sideButtons = [...document.querySelectorAll("[data-side]")];
@@ -52,11 +52,11 @@
     wheelSpin: 0,
     currentTrack: null,
     currentSong: null,
-    quality: recall("gbr11:quality") || "stream",
-    shuffle: recall("gbr11:shuffle") === "true",
-    lamp: numberOr(recall("gbr11:lamp"), .62),
-    volume: numberOr(recall("gbr11:volume"), .9),
-    power: recall("gbr11:power") !== "false",
+    quality: recall("gbr:quality") || "stream",
+    shuffle: recall("gbr:shuffle") === "true",
+    lamp: numberOr(recall("gbr:lamp"), .62),
+    volume: numberOr(recall("gbr:volume"), .9),
+    power: recall("gbr:power") !== "false",
     easter: false,
     savedNormalTrack: null,
     savedNormalTime: 0,
@@ -82,13 +82,25 @@
   function clamp(lo, value, hi) { return Math.max(lo, Math.min(hi, value)); }
   function esc(value) { return String(value == null ? "" : value).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]); }
   function humanise(value) { return String(value || "").replace(/[-_]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()); }
-  function clock(value) { const s = Number(value); if (!Number.isFinite(s) || s < 0) return "--:--"; const whole = Math.floor(s); return `${Math.floor(whole/60)}:${String(whole%60).padStart(2,"0")}`; }
+  function clock(value) { const s = Number(value);
+  if (!Number.isFinite(s) || s < 0) return "--:--";
+  const whole = Math.floor(s);
+  return `${Math.floor(whole/60)}:${String(whole%60).padStart(2,"0")}`;
+  }
   function songForTrack(track) { return track ? songById[String(track.composition)] || null : null; }
-  function sideIds(song, genre) { return song && song.sideIds && song.sideIds[genre] && typeof song.sideIds[genre] === "object" ? song.sideIds[genre] : {}; }
-  function sidesFor(song, genre) { const ids = sideIds(song, genre); const out = {}; ["A","B"].forEach((side) => { if (ids[side] && trackById[ids[side]]) out[side] = trackById[ids[side]]; }); if (!out.A && song && song.variantIds && song.variantIds[genre] && trackById[song.variantIds[genre]]) out.A = trackById[song.variantIds[genre]]; return out; }
+  function sideIds(song, genre) { return song && song.sideIds && song.sideIds[genre] && typeof song.sideIds[genre] === "object" ? song.sideIds[genre] : {};
+  }
+  function sidesFor(song, genre) { const ids = sideIds(song, genre);
+  const out = {};
+  ["A","B"].forEach((side) => { if (ids[side] && trackById[ids[side]]) out[side] = trackById[ids[side]]; });
+  if (!out.A && song && song.variantIds && song.variantIds[genre] && trackById[song.variantIds[genre]]) out.A = trackById[song.variantIds[genre]];
+  return out;
+  }
   function primaryTrack(song, genre) { const sides = sidesFor(song, genre); return sides.A || sides.B || null; }
   function sideOf(track) { return String(track && track.side || "A").toUpperCase() === "B" ? "B" : "A"; }
-  function artworkUrl(track, size = 640, ext = "webp") { const base = track && track.artwork && track.artwork.base ? track.artwork.base : "gbr-placeholder"; return `assets/img/sleeves/${base}-${size}.${ext}`; }
+  function artworkUrl(track, size = 640, ext = "webp") { const base = track && track.artwork && track.artwork.base ? track.artwork.base : "gbr-placeholder";
+  return `assets/img/sleeves/${base}-${size}.${ext}`;
+  }
   function preloadArtwork(track, size = 640) {
     if (!track) return;
     const src = artworkUrl(track, size, "webp");
@@ -105,7 +117,9 @@
     if (state.quality === "lossless") return sources.flac || sources.mp3 || Object.values(sources).find(Boolean) || null;
     return sources.mp3 || sources.flac || Object.values(sources).find(Boolean) || null;
   }
-  function availableQuality(track, quality) { const sources = track && track.audio && track.audio.sources || {}; return quality === "lossless" ? !!sources.flac : !!sources.mp3; }
+  function availableQuality(track, quality) { const sources = track && track.audio && track.audio.sources || {};
+  return quality === "lossless" ? !!sources.flac : !!sources.mp3;
+  }
 
   function setStatus(text, tone = "") { if (!el.status) return; el.status.textContent = text; el.status.dataset.tone = tone; }
 
@@ -182,7 +196,7 @@
     if (!el.genreBank) return;
     el.genreBank.replaceChildren();
     const plate = document.createElement("div");
-    plate.className = "gbr11-service-bank gbr11-all-tracks-bank";
+    plate.className = "gbr-service-bank gbr-all-tracks-bank";
     if (state.easter) {
       plate.innerHTML = `<span>SERVICE BANK</span><strong>REJECT MASTERS</strong><small>${String(easterTracks.length).padStart(2,"0")} FAILED CUTS</small>`;
     } else {
@@ -191,7 +205,7 @@
     el.genreBank.appendChild(plate);
   }
 
-  function setBrowseGenre() { /* v12: genres are metadata, never navigation. */ }
+  function setBrowseGenre() { /* Genres are metadata, never navigation. */ }
 
   function updateThemeMeta() {
     const meta = document.querySelector('meta[name="theme-color"]');
@@ -204,13 +218,13 @@
     const list = activeTracks();
     list.forEach((track, index) => {
       const wrap = document.createElement("div");
-      wrap.className = "gbr11-slot";
+      wrap.className = "gbr-slot";
       wrap.dataset.index = String(index);
       const button = document.createElement("button");
       button.type = "button";
-      button.className = "gbr11-slot-card";
+      button.className = "gbr-slot-card";
       button.dataset.index = String(index);
-      button.innerHTML = `<img alt="" loading="eager" decoding="async"><span class="gbr11-reject-label" hidden><b></b><small></small></span><span class="gbr11-track-tag"></span>`;
+      button.innerHTML = `<img alt="" loading="eager" decoding="async"><span class="gbr-reject-label" hidden><b></b><small></small></span><span class="gbr-track-tag"></span>`;
       button.addEventListener("click", () => activateWheelSlot(index));
       wrap.appendChild(button);
       el.wheelSlots.appendChild(wrap);
@@ -223,10 +237,10 @@
   function renderWheelContents() {
     const list = activeTracks();
     [...el.wheelSlots.children].forEach((wrap, index) => {
-      const button = wrap.querySelector(".gbr11-slot-card");
+      const button = wrap.querySelector(".gbr-slot-card");
       const img = button.querySelector("img");
-      const rejectLabel = button.querySelector(".gbr11-reject-label");
-      const tag = button.querySelector(".gbr11-track-tag");
+      const rejectLabel = button.querySelector(".gbr-reject-label");
+      const tag = button.querySelector(".gbr-track-tag");
       const track = list[index] || null;
       const ready = !!track;
 
@@ -291,7 +305,7 @@
     const rotorWidth = el.wheelSlots.offsetWidth;
     const rotorHeight = el.wheelSlots.offsetHeight;
     if (rotorWidth < 100 || rotorHeight < 100) return;
-    const firstCard = el.wheelSlots.querySelector(".gbr11-slot-card");
+    const firstCard = el.wheelSlots.querySelector(".gbr-slot-card");
     const cardWidth = firstCard ? firstCard.offsetWidth : 92;
     const cardHeight = firstCard ? firstCard.offsetHeight : 116;
     const radius = Math.max(150, Math.min(rotorWidth/2-cardWidth/2-18,rotorHeight/2-cardHeight/2-18));
@@ -308,7 +322,7 @@
       wrap.style.setProperty("--slot-angle",`${baseAngle}deg`);
       wrap.style.zIndex=String(4+Math.round(depth*8));
       wrap.style.opacity=String(.62+depth*.38);
-      const button=wrap.querySelector(".gbr11-slot-card");
+      const button=wrap.querySelector(".gbr-slot-card");
       button.style.setProperty("--card-counter",`${-displayAngle}deg`);
       button.dataset.atGate=index===state.wheelIndex?"true":"false";
     });
@@ -337,10 +351,10 @@
     activeTracks().forEach((track,index)=>{
       const card=document.createElement("button");
       card.type="button";
-      card.className="gbr11-mobile-card";
+      card.className="gbr-mobile-card";
       card.dataset.active=index===state.wheelIndex?"true":"false";
       if(state.easter){
-        card.classList.add("gbr11-mobile-card--reject");
+        card.classList.add("gbr-mobile-card--reject");
         card.innerHTML=`<strong>REJECT ${String(index+1).padStart(2,"0")}</strong><small>${esc(track.displayTitle||track.filename||"FAILED MASTER")}</small>`;
       }else{
         const title=track.displayTitle||humanise(track.title||track.id);
@@ -367,7 +381,7 @@
       /* A cassette click is a load command, not the start of a wheel drag. Do
          not capture its pointer or the browser will retarget the eventual
          click to the wheel stage. */
-      if (event.target.closest(".gbr11-slot-card")) return;
+      if (event.target.closest(".gbr-slot-card")) return;
       state.draggingWheel = { id: event.pointerId, x: event.clientX, index: state.wheelIndex, spin: state.wheelSpin, steps: 0 };
       try { el.wheelStage.setPointerCapture(event.pointerId); } catch (_) {}
     });
@@ -461,8 +475,8 @@
     el.atrButton.disabled = !atr.length;
     el.atrButton.setAttribute("aria-disabled", atr.length ? "false" : "true");
     el.atrList.innerHTML = atr.length
-      ? atr.map((item, index) => `<article class="gbr11-atr-entry"><small>ARCHIVE ${String(index+1).padStart(2,"0")}</small><strong>${esc(item.label || item.filename || "Unreleased")}</strong><button type="button" data-atr-src="${esc(item.src || "")}">PLAY ARCHIVE</button></article>`).join("")
-      : `<article class="gbr11-atr-entry"><strong>No unreleased audio has been added for this song.</strong></article>`;
+      ? atr.map((item, index) => `<article class="gbr-atr-entry"><small>ARCHIVE ${String(index+1).padStart(2,"0")}</small><strong>${esc(item.label || item.filename || "Unreleased")}</strong><button type="button" data-atr-src="${esc(item.src || "")}">PLAY ARCHIVE</button></article>`).join("")
+      : `<article class="gbr-atr-entry"><strong>No unreleased audio has been added for this song.</strong></article>`;
     el.atrList.querySelectorAll("[data-atr-src]").forEach((button) => button.addEventListener("click", () => { el.atrAudio.src = button.dataset.atrSrc; el.atrAudio.play().catch(() => {}); }));
     closeReleaseDrawers();
   }
@@ -659,7 +673,8 @@
     el.nowTitle.textContent = title;
     el.nowVersion.textContent = `${variant}${sides.B ? ` · SIDE ${sideOf(track)}` : ""}`;
     if ("mediaSession" in navigator) {
-      try { navigator.mediaSession.metadata = new MediaMetadata({ title, artist: "Good Boy Records", album: variant, artwork: [{ src: artworkUrl(track,640,"webp"), sizes: "640x640", type: "image/webp" }] }); } catch (_) {}
+      try { navigator.mediaSession.metadata = new MediaMetadata({ title, artist: "Good Boy Records", album: variant, artwork: [{ src: artworkUrl(track,640,"webp"), sizes: "640x640", type: "image/webp" }] });
+      } catch (_) {}
     }
   }
 
@@ -710,7 +725,7 @@
 
   function setQuality(quality, userChange = true) {
     state.quality = quality === "lossless" ? "lossless" : "stream";
-    remember("gbr11:quality", state.quality);
+    remember("gbr:quality", state.quality);
     paintQuality();
     if (!userChange || !state.currentTrack) return;
     const source = sourceFor(state.currentTrack);
@@ -738,7 +753,11 @@
     if (timing && timing.src && timing.usable !== false) {
       try {
         let data = lyricCache.get(timing.src);
-        if (!data) { const response = await fetch(timing.src); if (!response.ok) throw new Error(`HTTP ${response.status}`); data = await response.json(); lyricCache.set(timing.src,data); }
+        if (!data) { const response = await fetch(timing.src);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        data = await response.json();
+        lyricCache.set(timing.src,data);
+        }
         if (token !== state.lyricToken) return;
         if (data && Array.isArray(data.lines)) state.lyricLines = data.lines;
       } catch (error) { console.warn("Live lyric timing unavailable", error); }
@@ -774,7 +793,7 @@
     words.forEach((item, index) => {
       if (index) fragment.appendChild(document.createTextNode(" "));
       const span = document.createElement("span");
-      span.className = "gbr11-lyric-token";
+      span.className = "gbr-lyric-token";
       span.dataset.wordIndex = String(index);
       span.textContent = String(item.text || "");
       if (index === activeWord) span.classList.add("is-current");
@@ -813,7 +832,7 @@
     }
     if (lineIndex !== state.lyricLastLine) { renderLyricLine(line, lineIndex, wordIndex); return; }
     if (wordIndex !== state.lyricLastWord) {
-      el.lyricLine.querySelectorAll(".gbr11-lyric-token").forEach((span, index) => span.classList.toggle("is-current", index === wordIndex));
+      el.lyricLine.querySelectorAll(".gbr-lyric-token").forEach((span, index) => span.classList.toggle("is-current", index === wordIndex));
       state.lyricLastWord = wordIndex;
     }
   }
@@ -821,11 +840,14 @@
   /* ------------------------------------------------------------- EQ/volume */
   function buildVolumeMeter() {
     el.volumeMeter.replaceChildren();
-    for (let i=0;i<24;i++) { const segment = document.createElement("span"); segment.className = "gbr11-volume-segment"; el.volumeMeter.appendChild(segment); }
+    for (let i=0;i<24;i++) { const segment = document.createElement("span");
+    segment.className = "gbr-volume-segment";
+    el.volumeMeter.appendChild(segment);
+    }
   }
   function applyVolume(save = true) {
     state.volume = clamp(0, Number(el.volume.value), 1);
-    if (save) remember("gbr11:volume", state.volume);
+    if (save) remember("gbr:volume", state.volume);
     /* HTMLMediaElement volume remains authoritative whether or not the
        visual analyser is available. */
     el.audio.volume = state.volume;
@@ -839,7 +861,7 @@
   }
   function applyLamp(save = true) {
     state.lamp = clamp(0, state.lamp, 1);
-    if (save) remember("gbr11:lamp", state.lamp);
+    if (save) remember("gbr:lamp", state.lamp);
     const angle = -130 + state.lamp * 260;
     el.lampKnob.style.setProperty("--knob-angle", `${angle}deg`);
     el.lampKnob.setAttribute("aria-valuenow", String(Math.round(state.lamp*100)));
@@ -918,7 +940,15 @@
     for (let i=0;i<buffer.length;i++) { const n=(buffer[i]-128)/128; sum += n*n; }
     return Math.sqrt(sum/buffer.length);
   }
-  function roundRect(ctx,x,y,w,h,r) { r=Math.min(r,w/2,h/2); ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  function roundRect(ctx,x,y,w,h,r) { r=Math.min(r,w/2,h/2);
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+  }
   function drawVu() {
     const fit = fitCanvas(el.vu); if (!fit) return;
     const {ctx,w,h}=fit; ctx.clearRect(0,0,w,h);
@@ -930,12 +960,45 @@
     [vuLeft,vuRight].forEach((level,index) => {
       const x=index*(meterW+gap), pad=9, fw=meterW-pad*2, fh=h-pad*2;
       ctx.save();
-      const bezel=ctx.createLinearGradient(0,0,0,h); bezel.addColorStop(0,"#2c2925"); bezel.addColorStop(1,"#050403"); ctx.fillStyle=bezel; roundRect(ctx,x+2,2,meterW-4,h-4,8); ctx.fill();
-      const face=ctx.createLinearGradient(0,pad,0,pad+fh); face.addColorStop(0,state.power?"#ead8b1":"#575147"); face.addColorStop(.75,state.power?"#d0ac78":"#342f29"); face.addColorStop(1,state.power?"#a27648":"#201d1a"); ctx.fillStyle=face; roundRect(ctx,x+pad,pad,fw,fh,7); ctx.fill();
+      const bezel=ctx.createLinearGradient(0,0,0,h);
+      bezel.addColorStop(0,"#2c2925");
+      bezel.addColorStop(1,"#050403");
+      ctx.fillStyle=bezel;
+      roundRect(ctx,x+2,2,meterW-4,h-4,8);
+      ctx.fill();
+      const face=ctx.createLinearGradient(0,pad,0,pad+fh);
+      face.addColorStop(0,state.power?"#ead8b1":"#575147");
+      face.addColorStop(.75,state.power?"#d0ac78":"#342f29");
+      face.addColorStop(1,state.power?"#a27648":"#201d1a");
+      ctx.fillStyle=face;
+      roundRect(ctx,x+pad,pad,fw,fh,7);
+      ctx.fill();
       const cx=x+meterW/2, cy=pad+fh*.95, radius=Math.min(fw*.46,fh*.72);
-      for(let i=0;i<=10;i++){ const frac=i/10, angle=-Math.PI*.82+frac*Math.PI*.64; const r1=radius*.78,r2=radius*.92; ctx.strokeStyle=i>8?"#a1322d":"#3f3428"; ctx.lineWidth=i===8?1.5:1; ctx.beginPath(); ctx.moveTo(cx+Math.cos(angle)*r1,cy+Math.sin(angle)*r1); ctx.lineTo(cx+Math.cos(angle)*r2,cy+Math.sin(angle)*r2); ctx.stroke(); }
-      ctx.fillStyle="#35281d"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.font=`700 ${Math.max(8,Math.min(12,meterW*.042))}px ui-monospace,monospace`; ctx.fillText(index===0?"LEFT VU":"RIGHT VU",cx,pad+Math.max(14,fh*.17));
-      const angle=-Math.PI*.82+clamp(0,level,1)*Math.PI*.64; ctx.strokeStyle="#17100b"; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(angle)*radius,cy+Math.sin(angle)*radius); ctx.stroke(); ctx.fillStyle="#25180f"; ctx.beginPath(); ctx.arc(cx,cy,4,0,Math.PI*2); ctx.fill();
+      for(let i=0;i<=10;i++){ const frac=i/10, angle=-Math.PI*.82+frac*Math.PI*.64;
+      const r1=radius*.78,r2=radius*.92;
+      ctx.strokeStyle=i>8?"#a1322d":"#3f3428";
+      ctx.lineWidth=i===8?1.5:1;
+      ctx.beginPath();
+      ctx.moveTo(cx+Math.cos(angle)*r1,cy+Math.sin(angle)*r1);
+      ctx.lineTo(cx+Math.cos(angle)*r2,cy+Math.sin(angle)*r2);
+      ctx.stroke();
+      }
+      ctx.fillStyle="#35281d";
+      ctx.textAlign="center";
+      ctx.textBaseline="middle";
+      ctx.font=`700 ${Math.max(8,Math.min(12,meterW*.042))}px ui-monospace,monospace`;
+      ctx.fillText(index===0?"LEFT VU":"RIGHT VU",cx,pad+Math.max(14,fh*.17));
+      const angle=-Math.PI*.82+clamp(0,level,1)*Math.PI*.64;
+      ctx.strokeStyle="#17100b";
+      ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.lineTo(cx+Math.cos(angle)*radius,cy+Math.sin(angle)*radius);
+      ctx.stroke();
+      ctx.fillStyle="#25180f";
+      ctx.beginPath();
+      ctx.arc(cx,cy,4,0,Math.PI*2);
+      ctx.fill();
       ctx.restore();
     });
   }
@@ -959,22 +1022,40 @@
     const drawer = $("gbr-folder-drawer"), resizer = $("gbr-folder-resizer");
     const tabs = [...root.querySelectorAll(".gbr-folder-tab")], sheets = [...root.querySelectorAll(".gbr-folder-sheet")];
     const setTop = () => {
-      const topbar = document.querySelector(".gbr11-topbar");
+      const topbar = document.querySelector(".gbr-topbar");
       const anchor = topbar || root;
       root.style.setProperty("--folder-drawer-top", `${Math.round(anchor.getBoundingClientRect().bottom)}px`);
     };
     const close = () => { root.dataset.open=""; tabs.forEach((tab)=>tab.setAttribute("aria-selected","false")); };
-    const open = (id) => { root.dataset.open=id; tabs.forEach((tab)=>tab.setAttribute("aria-selected",tab.dataset.folder===id?"true":"false")); sheets.forEach((sheet)=>sheet.hidden=sheet.id!==`gbr-folder-${id}`); setTop(); };
+    const open = (id) => { root.dataset.open=id;
+    tabs.forEach((tab)=>tab.setAttribute("aria-selected",tab.dataset.folder===id?"true":"false"));
+    sheets.forEach((sheet)=>sheet.hidden=sheet.id!==`gbr-folder-${id}`);
+    setTop();
+    };
     tabs.forEach((tab,index)=>{
       tab.addEventListener("click",()=> root.dataset.open===tab.dataset.folder ? close() : open(tab.dataset.folder));
       tab.addEventListener("keydown",(event)=>{ let next=null; if(event.key==="ArrowLeft")next=(index-1+tabs.length)%tabs.length; else if(event.key==="ArrowRight")next=(index+1)%tabs.length; else if(event.key==="Home")next=0; else if(event.key==="End")next=tabs.length-1; if(next!==null){event.preventDefault();tabs[next].focus();}});
     });
     $("gbr-folder-close")?.addEventListener("click",close); $("gbr-folder-scrim")?.addEventListener("click",close);
-    const saved=numberOr(recall("gbr11:folder-height"),760);
-    const setHeight=(height,save=true)=>{ const top=root.getBoundingClientRect().bottom; const max=Math.max(260,innerHeight-top-10); const value=clamp(260,height,max); root.style.setProperty("--folder-drawer-height",`${Math.round(value)}px`); if(save)remember("gbr11:folder-height",value); };
+    const saved=numberOr(recall("gbr:folder-height"),760);
+    const setHeight=(height,save=true)=>{ const top=root.getBoundingClientRect().bottom;
+    const max=Math.max(260,innerHeight-top-10);
+    const value=clamp(260,height,max);
+    root.style.setProperty("--folder-drawer-height",`${Math.round(value)}px`);
+    if(save)remember("gbr:folder-height",value);
+    };
     setTop(); setHeight(saved,false);
-    if(resizer&&drawer){ let drag=null; resizer.addEventListener("pointerdown",(e)=>{drag={id:e.pointerId,top:drawer.getBoundingClientRect().top};try{resizer.setPointerCapture(e.pointerId);}catch(_){}}); resizer.addEventListener("pointermove",(e)=>{if(drag&&drag.id===e.pointerId)setHeight(e.clientY-drag.top,false);}); const end=(e)=>{if(!drag||drag.id!==e.pointerId)return;remember("gbr11:folder-height",drawer.getBoundingClientRect().height);drag=null;};resizer.addEventListener("pointerup",end);resizer.addEventListener("pointercancel",end); }
-    addEventListener("resize",()=>{setTop();setHeight(numberOr(recall("gbr11:folder-height"),760),false);});
+    if(resizer&&drawer){ let drag=null;
+    resizer.addEventListener("pointerdown",(e)=>{drag={id:e.pointerId,top:drawer.getBoundingClientRect().top};try{resizer.setPointerCapture(e.pointerId);}catch(_){}});
+    resizer.addEventListener("pointermove",(e)=>{if(drag&&drag.id===e.pointerId)setHeight(e.clientY-drag.top,false);});
+    const end=(e)=>{if(!drag||drag.id!==e.pointerId)return;
+    remember("gbr:folder-height",drawer.getBoundingClientRect().height);
+    drag=null;
+    };
+    resizer.addEventListener("pointerup",end);
+    resizer.addEventListener("pointercancel",end);
+    }
+    addEventListener("resize",()=>{setTop();setHeight(numberOr(recall("gbr:folder-height"),760),false);});
     document.addEventListener("keydown",(event)=>{if(event.key==="Escape"&&root.dataset.open)close();});
   }
 
@@ -1064,7 +1145,7 @@
   }
 
   function setPower(on, userAction = false) {
-    state.power = !!on; remember("gbr11:power", state.power);
+    state.power = !!on; remember("gbr:power", state.power);
     el.app.dataset.power = state.power ? "on" : "off";
     el.power.setAttribute("aria-checked", state.power ? "true" : "false");
     if (!state.power) {
@@ -1087,14 +1168,15 @@
 
     el.play.addEventListener("click",()=> el.audio.paused ? playAudio() : el.audio.pause());
     el.prev.addEventListener("click",()=>stepPlayback(-1)); el.next.addEventListener("click",()=>nextPlayback());
-    el.shuffle.addEventListener("click",()=>{state.shuffle=!state.shuffle;remember("gbr11:shuffle",state.shuffle);el.shuffle.setAttribute("aria-pressed",state.shuffle?"true":"false");});
+    el.shuffle.addEventListener("click",()=>{state.shuffle=!state.shuffle;remember("gbr:shuffle",state.shuffle);el.shuffle.setAttribute("aria-pressed",state.shuffle?"true":"false");});
     sideButtons.forEach((button)=>button.addEventListener("click",()=>selectSide(button.dataset.side)));
     qualityButtons.forEach((button)=>button.addEventListener("click",()=>setQuality(button.dataset.quality,true)));
     el.progress.addEventListener("input",()=>{if(Number.isFinite(el.audio.duration))el.audio.currentTime=Number(el.progress.value)||0;updateTransport();});
 
     el.audio.addEventListener("play",()=>{syncWheelToTrack(state.currentTrack);el.play.textContent="❚❚";setStatus("PLAYING","live");});
     el.audio.addEventListener("pause",()=>{el.play.textContent="▶";if(!el.audio.ended)setStatus(state.power ? "PAUSED" : "POWER OFF","");});
-    el.audio.addEventListener("timeupdate",updateTransport); el.audio.addEventListener("loadedmetadata",()=>{updateTransport(); if(!state.lyricLines.length&&state.currentTrack)state.lyricLines=fallbackLyricLines(state.currentTrack);});
+    el.audio.addEventListener("timeupdate",updateTransport);
+    el.audio.addEventListener("loadedmetadata",()=>{updateTransport(); if(!state.lyricLines.length&&state.currentTrack)state.lyricLines=fallbackLyricLines(state.currentTrack);});
     el.audio.addEventListener("ended",nextPlayback);
     el.audio.addEventListener("canplay",()=>{ if (el.audio.paused) setStatus("LOADED",""); });
     el.audio.addEventListener("error",()=>{
@@ -1108,14 +1190,18 @@
     el.app.addEventListener("click", (event) => {
       const button = event.target.closest("button");
       if (!button || button.disabled) return;
-      const weight = button === el.power ? 1.42 : (button.closest(".gbr11-transport-controls") ? 1.24 : (button.classList.contains("gbr11-genre-button") ? 1.0 : .92));
+      const weight = button === el.power ? 1.42 : (button.closest(".gbr-transport-controls") ? 1.24 : (button.classList.contains("gbr-genre-button") ? 1.0 : .92));
       playClunk(weight);
     });
     el.volume.value=String(state.volume); el.volume.addEventListener("input",()=>applyVolume(true));
     knobInteraction(el.volumeKnob,()=>state.volume,(value)=>{el.volume.value=String(value);applyVolume(true);});
     knobInteraction(el.lampKnob,()=>state.lamp,(value)=>{state.lamp=value;applyLamp(true);});
 
-    if("mediaSession" in navigator){ try { navigator.mediaSession.setActionHandler("play",playAudio); navigator.mediaSession.setActionHandler("pause",()=>el.audio.pause()); navigator.mediaSession.setActionHandler("previoustrack",()=>stepPlayback(-1)); navigator.mediaSession.setActionHandler("nexttrack",nextPlayback); } catch(_){} }
+    if("mediaSession" in navigator){ try { navigator.mediaSession.setActionHandler("play",playAudio);
+    navigator.mediaSession.setActionHandler("pause",()=>el.audio.pause());
+    navigator.mediaSession.setActionHandler("previoustrack",()=>stepPlayback(-1));
+    navigator.mediaSession.setActionHandler("nexttrack",nextPlayback);
+    } catch(_){} }
   }
 
   function initialTrack() {

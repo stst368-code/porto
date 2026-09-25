@@ -7,15 +7,15 @@
 <meta name="theme-color" content="#c47b21">
 <title>Good Boy Records</title>
 <meta name="description" content="Good Boy Records — fourteen songs, six genre cuts">
-<link rel="stylesheet" href="{{ROOT}}assets/css/studio-v11.css?v=11.15">
+<link rel="stylesheet" href="{{ROOT}}assets/css/studio.css?v=11.15">
 <link rel="stylesheet" href="{{ROOT}}assets/css/comfy-workflow.css">
 <link rel="stylesheet" href="{{ROOT}}assets/css/gbr-matrix-lab.css">
 </head>
 <body>
-<div class="gbr11-app" id="gbr11-app" data-power="on">
-  <header class="gbr11-topbar">
-    <div class="gbr11-brand-block">
-      <span class="gbr11-brand-mark" aria-hidden="true">GBR</span>
+<div class="gbr-app" id="gbr-app" data-power="on">
+  <header class="gbr-topbar">
+    <div class="gbr-brand-block">
+      <span class="gbr-brand-mark" aria-hidden="true">GBR</span>
       <div>
         <strong>GOOD BOY RECORDS</strong>
         <small>AI MUSIC LABORATORY · 14 × 6 SHOWCASE</small>
@@ -24,154 +24,154 @@
 
 {{FOLDERS}}
 
-    <div class="gbr11-top-power">
-      <div class="gbr11-top-lamp" aria-label="Page illumination">
-        <span class="gbr11-top-lamp-label">DISPLAY LAMP</span>
-        <div class="gbr11-knob gbr11-knob--small" id="gbr11-lamp-knob" role="slider" tabindex="0" aria-label="Display lamp" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55"><i></i></div>
-        <div class="gbr11-top-lamp-scale" aria-hidden="true"><span>OFF</span><span>BRIGHT</span></div>
+    <div class="gbr-top-power">
+      <div class="gbr-top-lamp" aria-label="Page illumination">
+        <span class="gbr-top-lamp-label">DISPLAY LAMP</span>
+        <div class="gbr-knob gbr-knob--small" id="gbr-lamp-knob" role="slider" tabindex="0" aria-label="Display lamp" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55"><i></i></div>
+        <div class="gbr-top-lamp-scale" aria-hidden="true"><span>OFF</span><span>BRIGHT</span></div>
       </div>
-      <div class="gbr11-power-pack">
-        <button type="button" id="gbr11-power" class="gbr11-power-switch" role="switch" aria-checked="true" aria-label="Instrument power"><span></span></button>
+      <div class="gbr-power-pack">
+        <button type="button" id="gbr-power" class="gbr-power-switch" role="switch" aria-checked="true" aria-label="Instrument power"><span></span></button>
         <strong>POWER</strong>
       </div>
-      <span id="gbr11-status" role="status" class="gbr11-sr-status">READY</span>
+      <span id="gbr-status" role="status" class="gbr-sr-status">READY</span>
     </div>
   </header>
 
-  <main class="gbr11-machine" id="gbr11-machine">
-    <section class="gbr11-magazine gbr11-panel" aria-label="Rotary album magazine">
-      <span id="gbr11-magazine-mode-label" class="gbr11-sr-status">14 SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK</span>
-      <div class="gbr11-genre-bank" id="gbr11-genre-bank" role="group" aria-label="Browse genre"></div>
+  <main class="gbr-machine" id="gbr-machine">
+    <section class="gbr-magazine gbr-panel" aria-label="Rotary album magazine">
+      <span id="gbr-magazine-mode-label" class="gbr-sr-status">14 SONG POSITIONS · BROWSE WITHOUT INTERRUPTING PLAYBACK</span>
+      <div class="gbr-genre-bank" id="gbr-genre-bank" role="group" aria-label="Browse genre"></div>
 
-      <div class="gbr11-wheel-stage" id="gbr11-wheel-stage" tabindex="0" aria-label="Fourteen-song rotary magazine. Scroll, drag, or use arrow keys to browse.">
-        <div class="gbr11-lamp-wash" aria-hidden="true"></div>
-        <div class="gbr11-wheel-disc" id="gbr11-wheel-disc" aria-hidden="true"><div class="gbr11-wheel-hub"><span>GOOD BOY</span><strong>RECORDS</strong></div></div>
-        <div class="gbr11-wheel-slots" id="gbr11-wheel-slots" aria-label="Song wheel"></div>
+      <div class="gbr-wheel-stage" id="gbr-wheel-stage" tabindex="0" aria-label="Fourteen-song rotary magazine. Scroll, drag, or use arrow keys to browse.">
+        <div class="gbr-lamp-wash" aria-hidden="true"></div>
+        <div class="gbr-wheel-disc" id="gbr-wheel-disc" aria-hidden="true"><div class="gbr-wheel-hub"><span>GOOD BOY</span><strong>RECORDS</strong></div></div>
+        <div class="gbr-wheel-slots" id="gbr-wheel-slots" aria-label="Song wheel"></div>
       </div>
 
-      <div class="gbr11-mobile-rail" id="gbr11-mobile-rail" aria-label="Song rail"></div>
+      <div class="gbr-mobile-rail" id="gbr-mobile-rail" aria-label="Song rail"></div>
 
     </section>
 
-    <section class="gbr11-panel gbr11-release" aria-label="Loaded release">
-      <header class="gbr11-panel-head gbr11-release-head">
+    <section class="gbr-panel gbr-release" aria-label="Loaded release">
+      <header class="gbr-panel-head gbr-release-head">
         <div>
-          <span class="gbr11-eyebrow">LOADED MASTER</span>
-          <strong id="gbr11-release-label">NO RELEASE LOADED</strong>
+          <span class="gbr-eyebrow">LOADED MASTER</span>
+          <strong id="gbr-release-label">NO RELEASE LOADED</strong>
         </div>
-        <div class="gbr11-release-head-actions">
-          <button type="button" id="gbr11-details-button" class="gbr11-hw-button" aria-pressed="false">DETAILS</button>
-          <a id="gbr11-yaml-link" class="gbr11-hw-button" href="#" target="_blank" rel="noopener" aria-disabled="true">YAML ↗</a>
+        <div class="gbr-release-head-actions">
+          <button type="button" id="gbr-details-button" class="gbr-hw-button" aria-pressed="false">DETAILS</button>
+          <a id="gbr-yaml-link" class="gbr-hw-button" href="#" target="_blank" rel="noopener" aria-disabled="true">YAML ↗</a>
         </div>
       </header>
 
-      <div class="gbr11-release-card" id="gbr11-release-card" data-flipped="false">
-        <div class="gbr11-release-card-inner">
-          <div class="gbr11-release-face gbr11-release-face--front">
-            <div class="gbr11-release-art-wrap" id="gbr11-release-art-wrap">
-              <img id="gbr11-artwork" class="gbr11-release-art" src="{{ROOT}}assets/img/sleeves/gbr-placeholder-1280.webp" alt="" width="1280" height="1280">
-              <div class="gbr11-art-glass" aria-hidden="true"></div>
+      <div class="gbr-release-card" id="gbr-release-card" data-flipped="false">
+        <div class="gbr-release-card-inner">
+          <div class="gbr-release-face gbr-release-face--front">
+            <div class="gbr-release-art-wrap" id="gbr-release-art-wrap">
+              <img id="gbr-artwork" class="gbr-release-art" src="{{ROOT}}assets/img/sleeves/gbr-placeholder-1280.webp" alt="" width="1280" height="1280">
+              <div class="gbr-art-glass" aria-hidden="true"></div>
             </div>
-            <div class="gbr11-easter-terminal" id="gbr11-easter-terminal" hidden>
-              <span class="gbr11-easter-stamp">QUALITY CONTROL FAILURE</span>
-              <strong id="gbr11-easter-reject">REJECT 01</strong>
-              <code id="gbr11-easter-filename">NO FILE LOADED</code>
-              <div class="gbr11-easter-diagnostics">
+            <div class="gbr-easter-terminal" id="gbr-easter-terminal" hidden>
+              <span class="gbr-easter-stamp">QUALITY CONTROL FAILURE</span>
+              <strong id="gbr-easter-reject">REJECT 01</strong>
+              <code id="gbr-easter-filename">NO FILE LOADED</code>
+              <div class="gbr-easter-diagnostics">
                 <span>MASTER STATUS</span><b>REJECTED</b>
                 <span>LYRIC DATA</span><b>NOT FOUND</b>
                 <span>RELEASE STATUS</span><b>DO NOT RELEASE</b>
               </div>
             </div>
           </div>
-          <div class="gbr11-release-face gbr11-release-face--back" aria-label="Generation details">
-            <div class="gbr11-card-backplate">
-              <span class="gbr11-eyebrow">GENERATION DETAILS</span>
-              <h2 id="gbr11-card-back-title">NO RELEASE LOADED</h2>
-              <dl id="gbr11-tech-grid"></dl>
+          <div class="gbr-release-face gbr-release-face--back" aria-label="Generation details">
+            <div class="gbr-card-backplate">
+              <span class="gbr-eyebrow">GENERATION DETAILS</span>
+              <h2 id="gbr-card-back-title">NO RELEASE LOADED</h2>
+              <dl id="gbr-tech-grid"></dl>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="gbr11-release-actions" aria-label="Release extras">
-        <button type="button" class="gbr11-hw-button" id="gbr11-atr-button" aria-expanded="false">UNRELEASED</button>
+      <div class="gbr-release-actions" aria-label="Release extras">
+        <button type="button" class="gbr-hw-button" id="gbr-atr-button" aria-expanded="false">UNRELEASED</button>
       </div>
-      <section class="gbr11-inline-drawer" id="gbr11-atr-drawer" hidden aria-label="Unreleased audio">
+      <section class="gbr-inline-drawer" id="gbr-atr-drawer" hidden aria-label="Unreleased audio">
         <header><strong>UNRELEASED</strong><button type="button" data-close-drawer="atr">×</button></header>
-        <div id="gbr11-atr-list"></div>
-        <audio id="gbr11-atr-audio" controls preload="metadata"></audio>
+        <div id="gbr-atr-list"></div>
+        <audio id="gbr-atr-audio" controls preload="metadata"></audio>
       </section>
     </section>
 
-    <aside class="gbr11-console-stack" aria-label="Output console">
-      <section class="gbr11-panel gbr11-spectrum-panel" aria-label="Program EQ visualiser">
-        <div class="gbr11-module-label"><span>PROGRAM EQ VISUALISER</span><span>LIVE</span></div>
-        <div class="gbr11-canvas-well gbr11-spectrum-well"><canvas id="gbr11-spectrum" aria-hidden="true"></canvas></div>
+    <aside class="gbr-console-stack" aria-label="Output console">
+      <section class="gbr-panel gbr-spectrum-panel" aria-label="Program EQ visualiser">
+        <div class="gbr-module-label"><span>PROGRAM EQ VISUALISER</span><span>LIVE</span></div>
+        <div class="gbr-canvas-well gbr-spectrum-well"><canvas id="gbr-spectrum" aria-hidden="true"></canvas></div>
       </section>
 
-      <section class="gbr11-panel gbr11-vu-panel" aria-label="Stereo VU meters">
-        <div class="gbr11-module-label"><span>OUTPUT LEVEL</span><span>STEREO VU</span></div>
-        <div class="gbr11-canvas-well gbr11-vu-well"><canvas id="gbr11-vu" aria-hidden="true"></canvas></div>
+      <section class="gbr-panel gbr-vu-panel" aria-label="Stereo VU meters">
+        <div class="gbr-module-label"><span>OUTPUT LEVEL</span><span>STEREO VU</span></div>
+        <div class="gbr-canvas-well gbr-vu-well"><canvas id="gbr-vu" aria-hidden="true"></canvas></div>
       </section>
 
-      <section class="gbr11-panel gbr11-volume-panel" aria-label="Output volume">
-        <div class="gbr11-module-label"><span>OUTPUT</span><span id="gbr11-volume-db">-0.9 dB</span></div>
-        <div class="gbr11-volume-layout">
-          <input id="gbr11-volume" class="gbr11-native-volume" type="range" min="0" max="1" value="0.9" step="0.01" aria-label="Volume">
-          <div class="gbr11-knob gbr11-knob--volume" id="gbr11-volume-knob" role="slider" tabindex="0" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90"><i></i></div>
-          <div class="gbr11-volume-meter" id="gbr11-volume-meter" aria-hidden="true"></div>
-          <div class="gbr11-volume-scale"><span>MIN</span><span>-24</span><span>-12</span><span>-6</span><span>0</span><span>MAX</span></div>
+      <section class="gbr-panel gbr-volume-panel" aria-label="Output volume">
+        <div class="gbr-module-label"><span>OUTPUT</span><span id="gbr-volume-db">-0.9 dB</span></div>
+        <div class="gbr-volume-layout">
+          <input id="gbr-volume" class="gbr-native-volume" type="range" min="0" max="1" value="0.9" step="0.01" aria-label="Volume">
+          <div class="gbr-knob gbr-knob--volume" id="gbr-volume-knob" role="slider" tabindex="0" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90"><i></i></div>
+          <div class="gbr-volume-meter" id="gbr-volume-meter" aria-hidden="true"></div>
+          <div class="gbr-volume-scale"><span>MIN</span><span>-24</span><span>-12</span><span>-6</span><span>0</span><span>MAX</span></div>
         </div>
-        <div class="gbr11-console-transport" aria-label="Player controls">
-          <div class="gbr11-transport-controls">
-            <button type="button" class="gbr11-hw-button gbr11-transport-button" id="gbr11-shuffle" aria-pressed="false">SHUF</button>
-            <button type="button" class="gbr11-hw-button gbr11-transport-button" id="gbr11-prev" aria-label="Previous">⏮</button>
-            <button type="button" class="gbr11-hw-button gbr11-transport-button gbr11-transport-button--main" id="gbr11-play" aria-label="Play">▶</button>
-            <button type="button" class="gbr11-hw-button gbr11-transport-button" id="gbr11-next" aria-label="Next">⏭</button>
+        <div class="gbr-console-transport" aria-label="Player controls">
+          <div class="gbr-transport-controls">
+            <button type="button" class="gbr-hw-button gbr-transport-button" id="gbr-shuffle" aria-pressed="false">SHUF</button>
+            <button type="button" class="gbr-hw-button gbr-transport-button" id="gbr-prev" aria-label="Previous">⏮</button>
+            <button type="button" class="gbr-hw-button gbr-transport-button gbr-transport-button--main" id="gbr-play" aria-label="Play">▶</button>
+            <button type="button" class="gbr-hw-button gbr-transport-button" id="gbr-next" aria-label="Next">⏭</button>
           </div>
-          <div class="gbr11-transport-options">
-            <div class="gbr11-side-switch" id="gbr11-side-switch" hidden>
+          <div class="gbr-transport-options">
+            <div class="gbr-side-switch" id="gbr-side-switch" hidden>
               <span>SIDE</span><button type="button" data-side="A" aria-pressed="true">A</button><button type="button" data-side="B" aria-pressed="false">B</button>
             </div>
-            <div class="gbr11-quality" role="group" aria-label="Audio quality">
+            <div class="gbr-quality" role="group" aria-label="Audio quality">
               <button type="button" data-quality="stream" aria-pressed="true">MP3</button>
               <button type="button" data-quality="lossless" aria-pressed="false">FLAC</button>
             </div>
           </div>
-          <div class="gbr11-seek-block">
-            <span id="gbr11-time">0:00</span>
-            <input id="gbr11-progress" type="range" min="0" max="0" value="0" step="0.05" aria-label="Seek">
-            <span id="gbr11-total">--:--</span>
+          <div class="gbr-seek-block">
+            <span id="gbr-time">0:00</span>
+            <input id="gbr-progress" type="range" min="0" max="0" value="0" step="0.05" aria-label="Seek">
+            <span id="gbr-total">--:--</span>
           </div>
         </div>
 
-        <section class="gbr11-playback-info" aria-label="Now playing information">
-          <div class="gbr11-now-playing">
-            <span class="gbr11-eyebrow">NOW PLAYING</span>
-            <div class="gbr11-now-playing-copy">
-              <strong id="gbr11-now-title">Nothing loaded</strong>
-              <small id="gbr11-now-version">—</small>
+        <section class="gbr-playback-info" aria-label="Now playing information">
+          <div class="gbr-now-playing">
+            <span class="gbr-eyebrow">NOW PLAYING</span>
+            <div class="gbr-now-playing-copy">
+              <strong id="gbr-now-title">Nothing loaded</strong>
+              <small id="gbr-now-version">—</small>
             </div>
           </div>
-          <div class="gbr11-inspiration" id="gbr11-inspiration" hidden></div>
-          <div class="gbr11-playback-story">
-            <span class="gbr11-eyebrow">DESCRIPTION</span>
-            <p id="gbr11-description">Select a song from the magazine.</p>
+          <div class="gbr-inspiration" id="gbr-inspiration" hidden></div>
+          <div class="gbr-playback-story">
+            <span class="gbr-eyebrow">DESCRIPTION</span>
+            <p id="gbr-description">Select a song from the magazine.</p>
           </div>
         </section>
       </section>
     </aside>
 
-    <section class="gbr11-panel gbr11-lyrics" aria-label="Live lyrics">
-      <div class="gbr11-lyric-line" id="gbr11-lyric-line" aria-live="off">READY</div>
+    <section class="gbr-panel gbr-lyrics" aria-label="Live lyrics">
+      <div class="gbr-lyric-line" id="gbr-lyric-line" aria-live="off">READY</div>
     </section>
   </main>
 
-  <audio id="gbr11-audio" preload="metadata"></audio>
+  <audio id="gbr-audio" preload="metadata"></audio>
 </div>
 
 <script id="gbr-catalogue" type="application/json">{{CATALOGUE_JSON}}</script>
-<script src="{{ROOT}}assets/js/studio-v11.js?v=11.15"></script>
+<script src="{{ROOT}}assets/js/studio.js?v=11.15"></script>
 <script src="{{ROOT}}assets/js/comfy-workflow.js"></script>
 <script type="module" src="{{ROOT}}assets/js/gbr-matrix-lab.js"></script>
 </body>
