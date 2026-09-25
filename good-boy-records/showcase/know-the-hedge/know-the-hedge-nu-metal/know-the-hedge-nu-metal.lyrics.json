@@ -2,9 +2,9 @@
   "format": "gbr-word-lyrics-v1",
   "version": 2,
   "title": "know-the-hedge",
-  "song_version": "pop",
-  "source_yaml": "know-the-hedge/know-the-hedge-pop/know-the-hedge-pop.yaml",
-  "source_audio": "know-the-hedge-pop.flac",
+  "song_version": "nu-metal",
+  "source_yaml": "know-the-hedge/know-the-hedge-nu-metal/know-the-hedge-nu-metal.yaml",
+  "source_audio": "know-the-hedge-nu-metal.flac",
   "language": "en",
   "engine": "demucs:htdemucs+whisperx:large-v3",
   "runtime": {
@@ -15,12 +15,12 @@
     "batch_size": 4,
     "cpu_fallback_used": false
   },
-  "generated_at": "2026-09-12T16:57:35+00:00",
+  "generated_at": "2026-09-25T17:13:03+00:00",
   "stats": {
-    "lyric_words": 387,
-    "recognised_words": 391,
-    "matched_words": 381,
-    "coverage": 0.9845
+    "lyric_words": 389,
+    "recognised_words": 392,
+    "matched_words": 385,
+    "coverage": 0.9897
   },
   "quality": {
     "rating": "excellent",
@@ -32,26 +32,20 @@
   "lines": [
     {
       "id": "l1",
-      "text": "Chunk Lion productions",
-      "start": 0.874,
-      "end": 2.158,
+      "text": "Shadowhowl productions",
+      "start": 0.331,
+      "end": 2.071,
       "words": [
         {
-          "text": "Chunk",
-          "start": 0.874,
-          "end": 1.135,
-          "matched": true
-        },
-        {
-          "text": "Lion",
-          "start": 1.195,
-          "end": 1.436,
+          "text": "Shadowhowl",
+          "start": 0.331,
+          "end": 0.811,
           "matched": true
         },
         {
           "text": "productions",
-          "start": 1.476,
-          "end": 2.158,
+          "start": 0.831,
+          "end": 2.071,
           "matched": true
         }
       ]
@@ -59,89 +53,89 @@
     {
       "id": "l2",
       "text": "Know the hedge",
-      "start": 3.001,
-      "end": 3.643,
+      "start": 3.612,
+      "end": 4.792,
       "words": [
         {
           "text": "Know",
-          "start": 3.001,
-          "end": 3.161,
+          "start": 3.612,
+          "end": 3.932,
           "matched": true
         },
         {
           "text": "the",
-          "start": 3.201,
-          "end": 3.282,
+          "start": 3.972,
+          "end": 4.192,
           "matched": true
         },
         {
           "text": "hedge",
-          "start": 3.342,
-          "end": 3.643,
+          "start": 4.292,
+          "end": 4.792,
           "matched": true
         }
       ]
     },
     {
       "id": "l3",
-      "text": "Now listen' to the ledge",
-      "start": 5.69,
-      "end": 6.873,
+      "text": "Now listen' to the metal!",
+      "start": 5.132,
+      "end": 10.393,
       "words": [
         {
           "text": "Now",
-          "start": 5.69,
-          "end": 5.87,
+          "start": 5.132,
+          "end": 5.232,
           "matched": true
         },
         {
           "text": "listen'",
-          "start": 5.93,
-          "end": 6.211,
+          "start": 5.272,
+          "end": 5.532,
           "matched": true
         },
         {
           "text": "to",
-          "start": 6.231,
-          "end": 6.352,
+          "start": 5.572,
+          "end": 5.692,
           "matched": true
         },
         {
           "text": "the",
-          "start": 6.392,
-          "end": 6.472,
+          "start": 5.752,
+          "end": 5.872,
           "matched": true
         },
         {
-          "text": "ledge",
-          "start": 6.532,
-          "end": 6.873,
-          "matched": true
+          "text": "metal!",
+          "start": 5.872,
+          "end": 10.393,
+          "matched": false
         }
       ]
     },
     {
       "id": "l4",
       "text": "Take the ball",
-      "start": 11.127,
-      "end": 12.147,
+      "start": 10.393,
+      "end": 11.313,
       "words": [
         {
           "text": "Take",
-          "start": 11.127,
-          "end": 11.347,
+          "start": 10.393,
+          "end": 10.593,
           "matched": true
         },
         {
           "text": "the",
-          "start": 11.387,
-          "end": 11.487,
+          "start": 10.613,
+          "end": 10.713,
           "matched": true
         },
         {
           "text": "ball",
-          "start": 11.567,
-          "end": 12.147,
+          "start": 10.773,
+          "end": 11.313,
           "matched": true
         }
       ]
@@ -149,43 +143,43 @@
     {
       "id": "l5",
       "text": "I'll come take it right back",
-      "start": 12.347,
-      "end": 13.708,
+      "start": 11.733,
+      "end": 12.993,
       "words": [
         {
           "text": "I'll",
-          "start": 12.347,
-          "end": 12.527,
+          "start": 11.733,
+          "end": 11.853,
           "matched": true
         },
         {
           "text": "come",
-          "start": 12.567,
-          "end": 12.767,
+          "start": 11.873,
+          "end": 12.013,
           "matched": true
         },
         {
           "text": "take",
-          "start": 12.827,
-          "end": 12.987,
+          "start": 12.033,
+          "end": 12.193,
           "matched": true
         },
         {
           "text": "it",
-          "start": 13.047,
-          "end": 13.147,
+          "start": 12.253,
+          "end": 12.333,
           "matched": true
         },
         {
           "text": "right",
-          "start": 13.167,
-          "end": 13.367,
+          "start": 12.393,
+          "end": 12.573,
           "matched": true
         },
         {
           "text": "back",
-          "start": 13.428,
-          "end": 13.708,
+          "start": 12.673,
+          "end": 12.993,
           "matched": true
         }
       ]
@@ -193,25 +187,25 @@
     {
       "id": "l6",
       "text": "I won't stop",
-      "start": 13.848,
-      "end": 14.628,
+      "start": 13.053,
+      "end": 13.833,
       "words": [
         {
           "text": "I",
-          "start": 13.848,
-          "end": 13.968,
+          "start": 13.053,
+          "end": 13.133,
           "matched": true
         },
         {
           "text": "won't",
-          "start": 14.008,
-          "end": 14.228,
+          "start": 13.173,
+          "end": 13.393,
           "matched": true
         },
         {
           "text": "stop",
-          "start": 14.268,
-          "end": 14.628,
+          "start": 13.453,
+          "end": 13.833,
           "matched": true
         }
       ]
@@ -219,199 +213,187 @@
     {
       "id": "l7",
       "text": "I'm straight on the attack",
-      "start": 14.768,
-      "end": 15.948,
+      "start": 13.853,
+      "end": 15.414,
       "words": [
         {
           "text": "I'm",
-          "start": 14.768,
-          "end": 14.888,
+          "start": 13.853,
+          "end": 14.233,
           "matched": true
         },
         {
           "text": "straight",
-          "start": 14.948,
-          "end": 15.208,
+          "start": 14.253,
+          "end": 14.633,
           "matched": true
         },
         {
           "text": "on",
-          "start": 15.268,
-          "end": 15.328,
+          "start": 14.693,
+          "end": 14.773,
           "matched": true
         },
         {
           "text": "the",
-          "start": 15.368,
-          "end": 15.488,
+          "start": 14.793,
+          "end": 14.954,
           "matched": true
         },
         {
           "text": "attack",
-          "start": 15.548,
-          "end": 15.948,
+          "start": 15.014,
+          "end": 15.414,
           "matched": true
         }
       ]
     },
     {
       "id": "l8",
-      "text": "Charge through your ends",
-      "start": 16.028,
-      "end": 17.148,
+      "text": "Charge through your legs",
+      "start": 15.714,
+      "end": 16.674,
       "words": [
         {
           "text": "Charge",
-          "start": 16.028,
-          "end": 16.308,
+          "start": 15.714,
+          "end": 15.994,
           "matched": true
         },
         {
           "text": "through",
-          "start": 16.328,
-          "end": 16.568,
+          "start": 16.014,
+          "end": 16.194,
           "matched": true
         },
         {
           "text": "your",
-          "start": 16.608,
-          "end": 16.748,
+          "start": 16.234,
+          "end": 16.354,
           "matched": true
         },
         {
-          "text": "ends",
-          "start": 16.928,
-          "end": 17.148,
+          "text": "legs",
+          "start": 16.394,
+          "end": 16.674,
           "matched": true
         }
       ]
     },
     {
       "id": "l9",
-      "text": "your yard",
-      "start": 17.168,
-      "end": 17.748,
+      "text": "your body",
+      "start": 16.694,
+      "end": 17.174,
       "words": [
         {
           "text": "your",
-          "start": 17.168,
-          "end": 17.328,
+          "start": 16.694,
+          "end": 16.854,
           "matched": true
         },
         {
-          "text": "yard",
-          "start": 17.368,
-          "end": 17.748,
+          "text": "body",
+          "start": 16.874,
+          "end": 17.174,
           "matched": true
         }
       ]
     },
     {
       "id": "l10",
-      "text": "your garden",
-      "start": 17.788,
-      "end": 18.389,
+      "text": "your face",
+      "start": 17.194,
+      "end": 17.634,
       "words": [
         {
           "text": "your",
-          "start": 17.788,
-          "end": 17.928,
+          "start": 17.194,
+          "end": 17.314,
           "matched": true
         },
         {
-          "text": "garden",
-          "start": 17.968,
-          "end": 18.389,
+          "text": "face",
+          "start": 17.354,
+          "end": 17.634,
           "matched": true
         }
       ]
     },
     {
       "id": "l11",
-      "text": "I can't be stopped",
-      "start": 18.689,
-      "end": 19.569,
+      "text": "I can't be stopped!",
+      "start": 17.734,
+      "end": 18.754,
       "words": [
         {
           "text": "I",
-          "start": 18.689,
-          "end": 18.789,
+          "start": 17.734,
+          "end": 17.794,
           "matched": true
         },
         {
           "text": "can't",
-          "start": 18.829,
-          "end": 19.049,
+          "start": 17.814,
+          "end": 18.094,
           "matched": true
         },
         {
           "text": "be",
-          "start": 19.069,
-          "end": 19.169,
+          "start": 18.154,
+          "end": 18.314,
           "matched": true
         },
         {
-          "text": "stopped",
-          "start": 19.209,
-          "end": 19.569,
+          "text": "stopped!",
+          "start": 18.394,
+          "end": 18.754,
           "matched": true
         }
       ]
     },
     {
       "id": "l12",
-      "text": "and I ain't asking",
-      "start": 19.629,
-      "end": 20.429,
+      "text": "I'm not asking",
+      "start": 18.814,
+      "end": 19.614,
       "words": [
         {
-          "text": "and",
-          "start": 19.629,
-          "end": 19.709,
+          "text": "I'm",
+          "start": 18.814,
+          "end": 18.954,
           "matched": true
         },
         {
-          "text": "I",
-          "start": 19.769,
-          "end": 19.829,
-          "matched": true
-        },
-        {
-          "text": "ain't",
-          "start": 19.889,
-          "end": 20.029,
+          "text": "not",
+          "start": 18.974,
+          "end": 19.134,
           "matched": true
         },
         {
           "text": "asking",
-          "start": 20.109,
-          "end": 20.429,
+          "start": 19.234,
+          "end": 19.614,
           "matched": true
         }
       ]
     },
     {
       "id": "l13",
-      "text": "no pardon me",
-      "start": 20.469,
-      "end": 21.149,
+      "text": "no excused",
+      "start": 19.754,
+      "end": 20.614,
       "words": [
         {
           "text": "no",
-          "start": 20.469,
-          "end": 20.629,
+          "start": 19.754,
+          "end": 19.934,
           "matched": true
         },
         {
-          "text": "pardon",
-          "start": 20.649,
-          "end": 21.009,
-          "matched": true
-        },
-        {
-          "text": "me",
-          "start": 21.029,
-          "end": 21.149,
+          "text": "excused",
+          "start": 20.034,
+          "end": 20.614,
           "matched": true
         }
       ]
@@ -419,31 +401,31 @@
     {
       "id": "l14",
       "text": "Not for a treat",
-      "start": 21.429,
-      "end": 22.089,
+      "start": 20.895,
+      "end": 21.775,
       "words": [
         {
           "text": "Not",
-          "start": 21.429,
-          "end": 21.589,
+          "start": 20.895,
+          "end": 21.115,
           "matched": true
         },
         {
           "text": "for",
-          "start": 21.609,
-          "end": 21.709,
+          "start": 21.175,
+          "end": 21.315,
           "matched": true
         },
         {
           "text": "a",
-          "start": 21.789,
-          "end": 21.809,
+          "start": 21.415,
+          "end": 21.455,
           "matched": true
         },
         {
           "text": "treat",
-          "start": 21.869,
-          "end": 22.089,
+          "start": 21.495,
+          "end": 21.775,
           "matched": true
         }
       ]
@@ -451,31 +433,31 @@
     {
       "id": "l15",
       "text": "when a ball's involved",
-      "start": 22.129,
-      "end": 23.15,
+      "start": 21.995,
+      "end": 23.095,
       "words": [
         {
           "text": "when",
-          "start": 22.129,
-          "end": 22.249,
+          "start": 21.995,
+          "end": 22.135,
           "matched": true
         },
         {
           "text": "a",
-          "start": 22.249,
-          "end": 22.409,
+          "start": 22.135,
+          "end": 22.315,
           "matched": false
         },
         {
           "text": "ball's",
-          "start": 22.409,
-          "end": 22.69,
+          "start": 22.315,
+          "end": 22.615,
           "matched": true
         },
         {
           "text": "involved",
-          "start": 22.73,
-          "end": 23.15,
+          "start": 22.675,
+          "end": 23.095,
           "matched": true
         }
       ]
@@ -483,31 +465,31 @@
     {
       "id": "l16",
       "text": "My focus won't retreat",
-      "start": 23.17,
-      "end": 24.11,
+      "start": 23.115,
+      "end": 24.295,
       "words": [
         {
           "text": "My",
-          "start": 23.17,
-          "end": 23.25,
+          "start": 23.115,
+          "end": 23.235,
           "matched": true
         },
         {
           "text": "focus",
-          "start": 23.29,
-          "end": 23.55,
+          "start": 23.255,
+          "end": 23.555,
           "matched": true
         },
         {
           "text": "won't",
-          "start": 23.57,
-          "end": 23.75,
+          "start": 23.595,
+          "end": 23.855,
           "matched": true
         },
         {
           "text": "retreat",
-          "start": 23.77,
-          "end": 24.11,
+          "start": 23.915,
+          "end": 24.295,
           "matched": true
         }
       ]
@@ -515,25 +497,25 @@
     {
       "id": "l17",
       "text": "Four paws down",
-      "start": 24.15,
-      "end": 25.01,
+      "start": 24.535,
+      "end": 25.455,
       "words": [
         {
           "text": "Four",
-          "start": 24.15,
-          "end": 24.37,
+          "start": 24.535,
+          "end": 24.795,
           "matched": true
         },
         {
           "text": "paws",
-          "start": 24.41,
-          "end": 24.71,
+          "start": 24.855,
+          "end": 25.155,
           "matched": true
         },
         {
           "text": "down",
-          "start": 24.73,
-          "end": 25.01,
+          "start": 25.215,
+          "end": 25.455,
           "matched": true
         }
       ]
@@ -541,25 +523,25 @@
     {
       "id": "l18",
       "text": "full speed ahead",
-      "start": 25.03,
-      "end": 25.87,
+      "start": 25.475,
+      "end": 26.315,
       "words": [
         {
           "text": "full",
-          "start": 25.03,
-          "end": 25.23,
+          "start": 25.475,
+          "end": 25.615,
           "matched": true
         },
         {
           "text": "speed",
-          "start": 25.25,
-          "end": 25.47,
+          "start": 25.635,
+          "end": 25.875,
           "matched": true
         },
         {
           "text": "ahead",
-          "start": 25.51,
-          "end": 25.87,
+          "start": 25.935,
+          "end": 26.315,
           "matched": true
         }
       ]
@@ -567,2652 +549,2698 @@
     {
       "id": "l19",
       "text": "I'm a blur down the street",
-      "start": 25.91,
-      "end": 26.99,
+      "start": 26.375,
+      "end": 27.696,
       "words": [
         {
           "text": "I'm",
-          "start": 25.91,
-          "end": 26.09,
+          "start": 26.375,
+          "end": 26.455,
           "matched": true
         },
         {
           "text": "a",
-          "start": 26.09,
-          "end": 26.15,
-          "matched": false
+          "start": 26.515,
+          "end": 26.595,
+          "matched": true
         },
         {
           "text": "blur",
-          "start": 26.15,
-          "end": 26.37,
+          "start": 26.615,
+          "end": 26.936,
           "matched": true
         },
         {
           "text": "down",
-          "start": 26.39,
-          "end": 26.53,
+          "start": 26.976,
+          "end": 27.216,
           "matched": true
         },
         {
           "text": "the",
-          "start": 26.55,
-          "end": 26.65,
+          "start": 27.256,
+          "end": 27.336,
           "matched": true
         },
         {
           "text": "street",
-          "start": 26.69,
-          "end": 26.99,
+          "start": 27.376,
+          "end": 27.696,
           "matched": true
         }
       ]
     },
     {
       "id": "l20",
-      "text": "My skull is titanium",
-      "start": 27.17,
-      "end": 28.491,
+      "text": "you were better off dead!",
+      "start": 27.756,
+      "end": 29.136,
       "words": [
         {
-          "text": "My",
-          "start": 27.17,
-          "end": 27.271,
+          "text": "you",
+          "start": 27.756,
+          "end": 27.876,
           "matched": true
         },
         {
-          "text": "skull",
-          "start": 27.291,
-          "end": 27.491,
+          "text": "were",
+          "start": 27.896,
+          "end": 28.056,
           "matched": true
         },
         {
-          "text": "is",
-          "start": 27.551,
-          "end": 27.631,
+          "text": "better",
+          "start": 28.076,
+          "end": 28.376,
           "matched": true
         },
         {
-          "text": "titanium",
-          "start": 27.651,
-          "end": 28.491,
+          "text": "off",
+          "start": 28.496,
+          "end": 28.656,
+          "matched": true
+        },
+        {
+          "text": "dead!",
+          "start": 28.716,
+          "end": 29.136,
           "matched": true
         }
       ]
     },
     {
       "id": "l21",
-      "text": "just like these bars",
-      "start": 28.511,
-      "end": 29.391,
+      "text": "My skull is titanium",
+      "start": 31.087,
+      "end": 32.488,
       "words": [
         {
-          "text": "just",
-          "start": 28.511,
-          "end": 28.651,
+          "text": "My",
+          "start": 31.087,
+          "end": 31.187,
           "matched": true
         },
         {
-          "text": "like",
-          "start": 28.671,
-          "end": 28.811,
+          "text": "skull",
+          "start": 31.207,
+          "end": 31.427,
           "matched": true
         },
         {
-          "text": "these",
-          "start": 28.851,
-          "end": 29.011,
+          "text": "is",
+          "start": 31.487,
+          "end": 31.547,
           "matched": true
         },
         {
-          "text": "bars",
-          "start": 29.091,
-          "end": 29.391,
+          "text": "titanium",
+          "start": 31.587,
+          "end": 32.488,
           "matched": true
         }
       ]
     },
     {
       "id": "l22",
-      "text": "it's hard",
-      "start": 29.471,
-      "end": 30.051,
+      "text": "call it heavy metal",
+      "start": 32.548,
+      "end": 33.508,
       "words": [
         {
-          "text": "it's",
-          "start": 29.471,
-          "end": 29.571,
+          "text": "call",
+          "start": 32.548,
+          "end": 32.748,
           "matched": true
         },
         {
-          "text": "hard",
-          "start": 29.631,
-          "end": 30.051,
+          "text": "it",
+          "start": 32.788,
+          "end": 32.868,
+          "matched": true
+        },
+        {
+          "text": "heavy",
+          "start": 32.908,
+          "end": 33.148,
+          "matched": true
+        },
+        {
+          "text": "metal",
+          "start": 33.208,
+          "end": 33.508,
           "matched": true
         }
       ]
     },
     {
       "id": "l23",
-      "text": "Smash through with my cranium",
-      "start": 30.151,
-      "end": 31.651,
+      "text": "it's hard",
+      "start": 33.568,
+      "end": 33.948,
       "words": [
         {
-          "text": "Smash",
-          "start": 30.151,
-          "end": 30.491,
+          "text": "it's",
+          "start": 33.568,
+          "end": 33.668,
           "matched": true
         },
         {
-          "text": "through",
-          "start": 30.511,
-          "end": 30.751,
-          "matched": true
-        },
-        {
-          "text": "with",
-          "start": 30.771,
-          "end": 30.911,
-          "matched": true
-        },
-        {
-          "text": "my",
-          "start": 30.931,
-          "end": 31.031,
-          "matched": true
-        },
-        {
-          "text": "cranium",
-          "start": 31.071,
-          "end": 31.651,
+          "text": "hard",
+          "start": 33.708,
+          "end": 33.948,
           "matched": true
         }
       ]
     },
     {
       "id": "l24",
-      "text": "hear the way Chunk Lion roars",
-      "start": 31.671,
-      "end": 33.252,
+      "text": "Smash through with my cranium",
+      "start": 33.968,
+      "end": 35.429,
       "words": [
         {
-          "text": "hear",
-          "start": 31.671,
-          "end": 31.851,
+          "text": "Smash",
+          "start": 33.968,
+          "end": 34.248,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 31.872,
-          "end": 31.972,
+          "text": "through",
+          "start": 34.288,
+          "end": 34.588,
           "matched": true
         },
         {
-          "text": "way",
-          "start": 32.012,
-          "end": 32.192,
+          "text": "with",
+          "start": 34.628,
+          "end": 34.768,
           "matched": true
         },
         {
-          "text": "Chunk",
-          "start": 32.232,
-          "end": 32.492,
+          "text": "my",
+          "start": 34.788,
+          "end": 34.908,
           "matched": true
         },
         {
-          "text": "Lion",
-          "start": 32.532,
-          "end": 32.812,
-          "matched": true
-        },
-        {
-          "text": "roars",
-          "start": 32.852,
-          "end": 33.252,
+          "text": "cranium",
+          "start": 34.948,
+          "end": 35.429,
           "matched": true
         }
       ]
     },
     {
       "id": "l25",
-      "text": "It's not hard",
-      "start": 33.312,
-      "end": 33.972,
+      "text": "hear the way the metal roars",
+      "start": 35.449,
+      "end": 36.709,
       "words": [
         {
-          "text": "It's",
-          "start": 33.312,
-          "end": 33.432,
+          "text": "hear",
+          "start": 35.449,
+          "end": 35.589,
           "matched": true
         },
         {
-          "text": "not",
-          "start": 33.472,
-          "end": 33.652,
+          "text": "the",
+          "start": 35.609,
+          "end": 35.709,
           "matched": true
         },
         {
-          "text": "hard",
-          "start": 33.732,
-          "end": 33.972,
+          "text": "way",
+          "start": 35.749,
+          "end": 35.909,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 35.929,
+          "end": 36.049,
+          "matched": true
+        },
+        {
+          "text": "metal",
+          "start": 36.089,
+          "end": 36.349,
+          "matched": true
+        },
+        {
+          "text": "roars",
+          "start": 36.389,
+          "end": 36.709,
           "matched": true
         }
       ]
     },
     {
       "id": "l26",
-      "text": "that ball is mine",
-      "start": 34.012,
-      "end": 35.072,
+      "text": "It's not hard",
+      "start": 36.769,
+      "end": 37.349,
       "words": [
         {
-          "text": "that",
-          "start": 34.012,
-          "end": 34.192,
+          "text": "It's",
+          "start": 36.769,
+          "end": 36.849,
           "matched": true
         },
         {
-          "text": "ball",
-          "start": 34.252,
-          "end": 34.532,
+          "text": "not",
+          "start": 36.889,
+          "end": 37.029,
           "matched": true
         },
         {
-          "text": "is",
-          "start": 34.572,
-          "end": 34.672,
-          "matched": true
-        },
-        {
-          "text": "mine",
-          "start": 34.712,
-          "end": 35.072,
+          "text": "hard",
+          "start": 37.049,
+          "end": 37.349,
           "matched": true
         }
       ]
     },
     {
       "id": "l27",
-      "text": "Don't care where",
-      "start": 35.152,
-      "end": 35.972,
+      "text": "that ball is mine",
+      "start": 37.369,
+      "end": 38.13,
       "words": [
         {
-          "text": "Don't",
-          "start": 35.152,
-          "end": 35.352,
+          "text": "that",
+          "start": 37.369,
+          "end": 37.489,
           "matched": true
         },
         {
-          "text": "care",
-          "start": 35.412,
-          "end": 35.672,
+          "text": "ball",
+          "start": 37.509,
+          "end": 37.69,
           "matched": true
         },
         {
-          "text": "where",
-          "start": 35.712,
-          "end": 35.972,
+          "text": "is",
+          "start": 37.75,
+          "end": 37.83,
+          "matched": true
+        },
+        {
+          "text": "mine",
+          "start": 37.85,
+          "end": 38.13,
           "matched": true
         }
       ]
     },
     {
       "id": "l28",
-      "text": "don't care when",
-      "start": 36.032,
-      "end": 36.833,
+      "text": "Don't care where",
+      "start": 38.15,
+      "end": 38.61,
       "words": [
         {
-          "text": "don't",
-          "start": 36.032,
-          "end": 36.212,
+          "text": "Don't",
+          "start": 38.15,
+          "end": 38.29,
           "matched": true
         },
         {
           "text": "care",
-          "start": 36.292,
-          "end": 36.533,
+          "start": 38.31,
+          "end": 38.47,
           "matched": true
         },
         {
-          "text": "when",
-          "start": 36.573,
-          "end": 36.833,
+          "text": "where",
+          "start": 38.49,
+          "end": 38.61,
           "matched": true
         }
       ]
     },
     {
       "id": "l29",
-      "text": "Don't care who",
-      "start": 36.893,
-      "end": 37.693,
+      "text": "don't care when",
+      "start": 38.63,
+      "end": 39.09,
       "words": [
         {
-          "text": "Don't",
-          "start": 36.893,
-          "end": 37.093,
+          "text": "don't",
+          "start": 38.63,
+          "end": 38.77,
           "matched": true
         },
         {
           "text": "care",
-          "start": 37.153,
-          "end": 37.433,
+          "start": 38.79,
+          "end": 38.95,
           "matched": true
         },
         {
-          "text": "who",
-          "start": 37.473,
-          "end": 37.693,
+          "text": "when",
+          "start": 38.97,
+          "end": 39.09,
           "matched": true
         }
       ]
     },
     {
       "id": "l30",
-      "text": "don't care why",
-      "start": 37.753,
-      "end": 38.533,
+      "text": "Don't care who",
+      "start": 39.11,
+      "end": 39.87,
       "words": [
         {
-          "text": "don't",
-          "start": 37.753,
-          "end": 37.953,
+          "text": "Don't",
+          "start": 39.11,
+          "end": 39.25,
           "matched": true
         },
         {
           "text": "care",
-          "start": 38.013,
-          "end": 38.253,
+          "start": 39.27,
+          "end": 39.57,
           "matched": true
         },
         {
-          "text": "why",
-          "start": 38.313,
-          "end": 38.533,
+          "text": "who",
+          "start": 39.63,
+          "end": 39.87,
           "matched": true
         }
       ]
     },
     {
       "id": "l31",
-      "text": "Morning to night",
-      "start": 38.893,
-      "end": 39.593,
+      "text": "don't care why",
+      "start": 39.91,
+      "end": 40.651,
       "words": [
         {
-          "text": "Morning",
-          "start": 38.893,
-          "end": 39.213,
+          "text": "don't",
+          "start": 39.91,
+          "end": 40.05,
           "matched": true
         },
         {
-          "text": "to",
-          "start": 39.233,
-          "end": 39.293,
+          "text": "care",
+          "start": 40.07,
+          "end": 40.311,
           "matched": true
         },
         {
-          "text": "night",
-          "start": 39.393,
-          "end": 39.593,
+          "text": "why",
+          "start": 40.391,
+          "end": 40.651,
           "matched": true
         }
       ]
     },
     {
       "id": "l32",
-      "text": "ball hits the ground",
-      "start": 40.014,
-      "end": 40.914,
+      "text": "Morning to night",
+      "start": 40.871,
+      "end": 41.691,
       "words": [
         {
-          "text": "ball",
-          "start": 40.014,
-          "end": 40.234,
+          "text": "Morning",
+          "start": 40.871,
+          "end": 41.151,
           "matched": true
         },
         {
-          "text": "hits",
-          "start": 40.254,
-          "end": 40.434,
+          "text": "to",
+          "start": 41.191,
+          "end": 41.291,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 40.474,
-          "end": 40.554,
-          "matched": true
-        },
-        {
-          "text": "ground",
-          "start": 40.614,
-          "end": 40.914,
+          "text": "night",
+          "start": 41.371,
+          "end": 41.691,
           "matched": true
         }
       ]
     },
     {
       "id": "l33",
-      "text": "and I'm ready to fight",
-      "start": 40.954,
-      "end": 41.915,
+      "text": "ball hits the ground",
+      "start": 42.151,
+      "end": 43.772,
       "words": [
         {
-          "text": "and",
-          "start": 40.954,
-          "end": 41.034,
+          "text": "ball",
+          "start": 42.151,
+          "end": 42.491,
           "matched": true
         },
         {
-          "text": "I'm",
-          "start": 41.094,
-          "end": 41.194,
+          "text": "hits",
+          "start": 42.792,
+          "end": 43.052,
           "matched": true
         },
         {
-          "text": "ready",
-          "start": 41.214,
-          "end": 41.434,
+          "text": "the",
+          "start": 43.112,
+          "end": 43.212,
           "matched": true
         },
         {
-          "text": "to",
-          "start": 41.474,
-          "end": 41.534,
-          "matched": true
-        },
-        {
-          "text": "fight",
-          "start": 41.654,
-          "end": 41.915,
+          "text": "ground",
+          "start": 43.272,
+          "end": 43.772,
           "matched": true
         }
       ]
     },
     {
       "id": "l34",
-      "text": "You throw it once",
-      "start": 43.635,
-      "end": 44.416,
+      "text": "and I'm ready, to, fight!",
+      "start": 43.952,
+      "end": 45.493,
       "words": [
         {
-          "text": "You",
-          "start": 43.635,
-          "end": 43.796,
+          "text": "and",
+          "start": 43.952,
+          "end": 44.112,
           "matched": true
         },
         {
-          "text": "throw",
-          "start": 43.816,
-          "end": 43.976,
+          "text": "I'm",
+          "start": 44.192,
+          "end": 44.332,
           "matched": true
         },
         {
-          "text": "it",
-          "start": 43.996,
-          "end": 44.056,
+          "text": "ready,",
+          "start": 44.412,
+          "end": 44.852,
           "matched": true
         },
         {
-          "text": "once",
-          "start": 44.256,
-          "end": 44.416,
+          "text": "to,",
+          "start": 44.872,
+          "end": 44.912,
+          "matched": true
+        },
+        {
+          "text": "fight!",
+          "start": 44.932,
+          "end": 45.493,
           "matched": true
         }
       ]
     },
     {
       "id": "l35",
-      "text": "that's a contract",
-      "start": 44.816,
-      "end": 45.797,
+      "text": "You throw it once",
+      "start": 56.358,
+      "end": 57.139,
       "words": [
         {
-          "text": "that's",
-          "start": 44.816,
-          "end": 44.996,
+          "text": "You",
+          "start": 56.358,
+          "end": 56.498,
           "matched": true
         },
         {
-          "text": "a",
-          "start": 45.036,
-          "end": 45.076,
+          "text": "throw",
+          "start": 56.518,
+          "end": 56.718,
           "matched": true
         },
         {
-          "text": "contract",
-          "start": 45.136,
-          "end": 45.797,
+          "text": "it",
+          "start": 56.758,
+          "end": 56.818,
+          "matched": true
+        },
+        {
+          "text": "once",
+          "start": 56.959,
+          "end": 57.139,
           "matched": true
         }
       ]
     },
     {
       "id": "l36",
-      "text": "You thought it was yours?",
-      "start": 45.817,
-      "end": 46.857,
+      "text": "that's a contract",
+      "start": 57.179,
+      "end": 58.12,
       "words": [
         {
-          "text": "You",
-          "start": 45.817,
-          "end": 45.957,
+          "text": "that's",
+          "start": 57.179,
+          "end": 57.359,
           "matched": true
         },
         {
-          "text": "thought",
-          "start": 45.977,
-          "end": 46.157,
+          "text": "a",
+          "start": 57.399,
+          "end": 57.439,
           "matched": true
         },
         {
-          "text": "it",
-          "start": 46.177,
-          "end": 46.217,
-          "matched": true
-        },
-        {
-          "text": "was",
-          "start": 46.257,
-          "end": 46.377,
-          "matched": true
-        },
-        {
-          "text": "yours?",
-          "start": 46.417,
-          "end": 46.857,
+          "text": "contract",
+          "start": 57.499,
+          "end": 58.12,
           "matched": true
         }
       ]
     },
     {
       "id": "l37",
-      "text": "That's nonsense",
-      "start": 47.157,
-      "end": 48.098,
+      "text": "You thought it was yours?",
+      "start": 58.6,
+      "end": 59.701,
       "words": [
         {
-          "text": "That's",
-          "start": 47.157,
-          "end": 47.397,
+          "text": "You",
+          "start": 58.6,
+          "end": 58.74,
           "matched": true
         },
         {
-          "text": "nonsense",
-          "start": 47.477,
-          "end": 48.098,
+          "text": "thought",
+          "start": 58.78,
+          "end": 58.98,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 59.02,
+          "end": 59.06,
+          "matched": true
+        },
+        {
+          "text": "was",
+          "start": 59.12,
+          "end": 59.24,
+          "matched": true
+        },
+        {
+          "text": "yours?",
+          "start": 59.28,
+          "end": 59.701,
           "matched": true
         }
       ]
     },
     {
       "id": "l38",
-      "text": "Ball's left your hand",
-      "start": 48.138,
-      "end": 49.078,
+      "text": "That's nonsense",
+      "start": 59.741,
+      "end": 60.662,
       "words": [
         {
-          "text": "Ball's",
-          "start": 48.138,
-          "end": 48.398,
+          "text": "That's",
+          "start": 59.741,
+          "end": 60.001,
           "matched": true
         },
         {
-          "text": "left",
-          "start": 48.418,
-          "end": 48.578,
-          "matched": true
-        },
-        {
-          "text": "your",
-          "start": 48.618,
-          "end": 48.738,
-          "matched": true
-        },
-        {
-          "text": "hand",
-          "start": 48.778,
-          "end": 49.078,
+          "text": "nonsense",
+          "start": 60.061,
+          "end": 60.662,
           "matched": true
         }
       ]
     },
     {
       "id": "l39",
-      "text": "transfer of title",
-      "start": 49.258,
-      "end": 50.179,
+      "text": "Ball's left your hand",
+      "start": 61.022,
+      "end": 61.923,
       "words": [
         {
-          "text": "transfer",
-          "start": 49.258,
-          "end": 49.719,
+          "text": "Ball's",
+          "start": 61.022,
+          "end": 61.302,
           "matched": true
         },
         {
-          "text": "of",
-          "start": 49.719,
-          "end": 49.879,
-          "matched": false
+          "text": "left",
+          "start": 61.322,
+          "end": 61.482,
+          "matched": true
         },
         {
-          "text": "title",
-          "start": 49.879,
-          "end": 50.179,
+          "text": "your",
+          "start": 61.522,
+          "end": 61.642,
+          "matched": true
+        },
+        {
+          "text": "hand",
+          "start": 61.682,
+          "end": 61.923,
           "matched": true
         }
       ]
     },
     {
       "id": "l40",
-      "text": "Possession is law",
-      "start": 50.319,
-      "end": 51.179,
+      "text": "transfer of title",
+      "start": 61.963,
+      "end": 62.924,
       "words": [
         {
-          "text": "Possession",
-          "start": 50.319,
-          "end": 50.739,
+          "text": "transfer",
+          "start": 61.963,
+          "end": 62.463,
           "matched": true
         },
         {
-          "text": "is",
-          "start": 50.799,
-          "end": 50.879,
+          "text": "of",
+          "start": 62.523,
+          "end": 62.583,
           "matched": true
         },
         {
-          "text": "law",
-          "start": 50.919,
-          "end": 51.179,
+          "text": "title",
+          "start": 62.603,
+          "end": 62.924,
           "matched": true
         }
       ]
     },
     {
       "id": "l41",
-      "text": "and my retrieval is final",
-      "start": 51.219,
-      "end": 52.68,
+      "text": "Possession is my law",
+      "start": 62.944,
+      "end": 64.024,
       "words": [
         {
-          "text": "and",
-          "start": 51.219,
-          "end": 51.299,
-          "matched": true
-        },
-        {
-          "text": "my",
-          "start": 51.319,
-          "end": 51.439,
-          "matched": true
-        },
-        {
-          "text": "retrieval",
-          "start": 51.479,
-          "end": 51.9,
+          "text": "Possession",
+          "start": 62.944,
+          "end": 63.404,
           "matched": true
         },
         {
           "text": "is",
-          "start": 51.94,
-          "end": 52.02,
+          "start": 63.464,
+          "end": 63.544,
           "matched": true
         },
         {
-          "text": "final",
-          "start": 52.08,
-          "end": 52.68,
+          "text": "my",
+          "start": 63.584,
+          "end": 63.704,
+          "matched": true
+        },
+        {
+          "text": "law",
+          "start": 63.744,
+          "end": 64.024,
           "matched": true
         }
       ]
     },
     {
       "id": "l42",
-      "text": "Fence in the way?",
-      "start": 52.76,
-      "end": 53.641,
+      "text": "and my retrieval is final",
+      "start": 64.104,
+      "end": 66.226,
       "words": [
         {
-          "text": "Fence",
-          "start": 52.76,
-          "end": 53.04,
+          "text": "and",
+          "start": 64.104,
+          "end": 64.185,
           "matched": true
         },
         {
-          "text": "in",
-          "start": 53.12,
-          "end": 53.2,
+          "text": "my",
+          "start": 64.225,
+          "end": 64.365,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 53.22,
-          "end": 53.3,
+          "text": "retrieval",
+          "start": 64.405,
+          "end": 64.825,
           "matched": true
         },
         {
-          "text": "way?",
-          "start": 53.36,
-          "end": 53.641,
+          "text": "is",
+          "start": 64.905,
+          "end": 64.985,
+          "matched": true
+        },
+        {
+          "text": "final",
+          "start": 65.025,
+          "end": 66.226,
           "matched": true
         }
       ]
     },
     {
       "id": "l43",
-      "text": "Then the fence gets knocked down",
-      "start": 53.661,
-      "end": 55.061,
+      "text": "Fence in the way?",
+      "start": 66.426,
+      "end": 67.247,
       "words": [
         {
-          "text": "Then",
-          "start": 53.661,
-          "end": 53.781,
+          "text": "Fence",
+          "start": 66.426,
+          "end": 66.627,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 66.667,
+          "end": 66.767,
           "matched": true
         },
         {
           "text": "the",
-          "start": 53.801,
-          "end": 53.881,
+          "start": 66.787,
+          "end": 66.867,
           "matched": true
         },
         {
-          "text": "fence",
-          "start": 53.941,
-          "end": 54.181,
-          "matched": true
-        },
-        {
-          "text": "gets",
-          "start": 54.221,
-          "end": 54.401,
-          "matched": true
-        },
-        {
-          "text": "knocked",
-          "start": 54.461,
-          "end": 54.701,
-          "matched": true
-        },
-        {
-          "text": "down",
-          "start": 54.741,
-          "end": 55.061,
+          "text": "way?",
+          "start": 66.927,
+          "end": 67.247,
           "matched": true
         }
       ]
     },
     {
       "id": "l44",
-      "text": "Gate locked shut?",
-      "start": 55.101,
-      "end": 55.902,
+      "text": "Then the fence gets smashed down",
+      "start": 67.267,
+      "end": 69.029,
       "words": [
         {
-          "text": "Gate",
-          "start": 55.101,
-          "end": 55.341,
+          "text": "Then",
+          "start": 67.267,
+          "end": 67.407,
           "matched": true
         },
         {
-          "text": "locked",
-          "start": 55.381,
-          "end": 55.622,
+          "text": "the",
+          "start": 67.427,
+          "end": 67.487,
           "matched": true
         },
         {
-          "text": "shut?",
-          "start": 55.662,
-          "end": 55.902,
+          "text": "fence",
+          "start": 67.567,
+          "end": 67.828,
+          "matched": true
+        },
+        {
+          "text": "gets",
+          "start": 67.888,
+          "end": 68.128,
+          "matched": true
+        },
+        {
+          "text": "smashed",
+          "start": 68.268,
+          "end": 68.668,
+          "matched": true
+        },
+        {
+          "text": "down",
+          "start": 68.688,
+          "end": 69.029,
           "matched": true
         }
       ]
     },
     {
       "id": "l45",
-      "text": "Gate gets knocked down",
-      "start": 56.242,
-      "end": 57.362,
+      "text": "Gate locked shut?",
+      "start": 69.049,
+      "end": 69.969,
       "words": [
         {
           "text": "Gate",
-          "start": 56.242,
-          "end": 56.462,
+          "start": 69.049,
+          "end": 69.269,
           "matched": true
         },
         {
-          "text": "gets",
-          "start": 56.502,
-          "end": 56.702,
+          "text": "locked",
+          "start": 69.309,
+          "end": 69.589,
           "matched": true
         },
         {
-          "text": "knocked",
-          "start": 56.742,
-          "end": 57.002,
-          "matched": true
-        },
-        {
-          "text": "down",
-          "start": 57.042,
-          "end": 57.362,
+          "text": "shut?",
+          "start": 69.609,
+          "end": 69.969,
           "matched": true
         }
       ]
     },
     {
       "id": "l46",
-      "text": "Human in the way?",
-      "start": 57.422,
-      "end": 58.223,
+      "text": "Gate gets smashed down",
+      "start": 70.27,
+      "end": 71.531,
       "words": [
         {
-          "text": "Human",
-          "start": 57.422,
-          "end": 57.723,
+          "text": "Gate",
+          "start": 70.27,
+          "end": 70.55,
           "matched": true
         },
         {
-          "text": "in",
-          "start": 57.763,
-          "end": 57.823,
+          "text": "gets",
+          "start": 70.59,
+          "end": 70.81,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 57.863,
-          "end": 57.943,
+          "text": "smashed",
+          "start": 70.85,
+          "end": 71.23,
           "matched": true
         },
         {
-          "text": "way?",
-          "start": 58.003,
-          "end": 58.223,
+          "text": "down",
+          "start": 71.25,
+          "end": 71.531,
           "matched": true
         }
       ]
     },
     {
       "id": "l47",
-      "text": "Well...",
-      "start": 61.175,
-      "end": 61.535,
+      "text": "Human in the way?",
+      "start": 71.551,
+      "end": 72.451,
       "words": [
         {
-          "text": "Well...",
-          "start": 61.175,
-          "end": 61.535,
+          "text": "Human",
+          "start": 71.551,
+          "end": 71.891,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 71.931,
+          "end": 72.031,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 72.051,
+          "end": 72.131,
+          "matched": true
+        },
+        {
+          "text": "way?",
+          "start": 72.211,
+          "end": 72.451,
           "matched": true
         }
       ]
     },
     {
       "id": "l48",
-      "text": "you know the rest",
-      "start": 61.915,
-      "end": 62.596,
+      "text": "Human,",
+      "start": 72.511,
+      "end": 72.832,
       "words": [
         {
-          "text": "you",
-          "start": 61.915,
-          "end": 62.016,
-          "matched": true
-        },
-        {
-          "text": "know",
-          "start": 62.036,
-          "end": 62.176,
-          "matched": true
-        },
-        {
-          "text": "the",
-          "start": 62.216,
-          "end": 62.296,
-          "matched": true
-        },
-        {
-          "text": "rest",
-          "start": 62.336,
-          "end": 62.596,
+          "text": "Human,",
+          "start": 72.511,
+          "end": 72.832,
           "matched": true
         }
       ]
     },
     {
       "id": "l49",
-      "text": "Bush to hedge",
-      "start": 62.896,
-      "end": 63.737,
+      "text": "GETS,",
+      "start": 72.852,
+      "end": 73.132,
       "words": [
         {
-          "text": "Bush",
-          "start": 62.896,
-          "end": 63.156,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 63.196,
-          "end": 63.316,
-          "matched": true
-        },
-        {
-          "text": "hedge",
-          "start": 63.376,
-          "end": 63.737,
+          "text": "GETS,",
+          "start": 72.852,
+          "end": 73.132,
           "matched": true
         }
       ]
     },
     {
       "id": "l50",
-      "text": "hedge to flowerbed",
-      "start": 63.777,
-      "end": 64.577,
+      "text": "SMASHED,",
+      "start": 73.412,
+      "end": 73.833,
       "words": [
         {
-          "text": "hedge",
-          "start": 63.777,
-          "end": 64.017,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 64.057,
-          "end": 64.157,
-          "matched": true
-        },
-        {
-          "text": "flowerbed",
-          "start": 64.197,
-          "end": 64.577,
+          "text": "SMASHED,",
+          "start": 73.412,
+          "end": 73.833,
           "matched": true
         }
       ]
     },
     {
       "id": "l51",
-      "text": "Flowerbed to your head",
-      "start": 64.897,
-      "end": 66.098,
+      "text": "DOWN!!",
+      "start": 74.753,
+      "end": 75.214,
       "words": [
         {
-          "text": "Flowerbed",
-          "start": 64.897,
-          "end": 65.197,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 65.458,
-          "end": 65.598,
-          "matched": true
-        },
-        {
-          "text": "your",
-          "start": 65.638,
-          "end": 65.798,
-          "matched": true
-        },
-        {
-          "text": "head",
-          "start": 65.838,
-          "end": 66.098,
+          "text": "DOWN!!",
+          "start": 74.753,
+          "end": 75.214,
           "matched": true
         }
       ]
     },
     {
       "id": "l52",
-      "text": "and boom—you're dead",
-      "start": 66.158,
-      "end": 67.179,
+      "text": "Bush to hedge",
+      "start": 77.274,
+      "end": 78.174,
       "words": [
         {
-          "text": "and",
-          "start": 66.158,
-          "end": 66.258,
+          "text": "Bush",
+          "start": 77.274,
+          "end": 77.554,
           "matched": true
         },
         {
-          "text": "boom—you're",
-          "start": 66.378,
-          "end": 66.678,
+          "text": "to",
+          "start": 77.594,
+          "end": 77.714,
           "matched": true
         },
         {
-          "text": "dead",
-          "start": 66.899,
-          "end": 67.179,
+          "text": "hedge",
+          "start": 77.774,
+          "end": 78.174,
           "matched": true
         }
       ]
     },
     {
       "id": "l53",
-      "text": "Straight through the lot",
-      "start": 67.459,
-      "end": 68.359,
+      "text": "hedge to flowerbed",
+      "start": 78.234,
+      "end": 78.995,
       "words": [
         {
-          "text": "Straight",
-          "start": 67.459,
-          "end": 67.719,
+          "text": "hedge",
+          "start": 78.234,
+          "end": 78.494,
           "matched": true
         },
         {
-          "text": "through",
-          "start": 67.759,
-          "end": 67.959,
+          "text": "to",
+          "start": 78.534,
+          "end": 78.655,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 67.979,
-          "end": 68.059,
-          "matched": true
-        },
-        {
-          "text": "lot",
-          "start": 68.119,
-          "end": 68.359,
+          "text": "flowerbed",
+          "start": 78.695,
+          "end": 78.995,
           "matched": true
         }
       ]
     },
     {
       "id": "l54",
-      "text": "singular focus",
-      "start": 68.379,
-      "end": 69.32,
+      "text": "Flowerbed to your head",
+      "start": 79.335,
+      "end": 80.315,
       "words": [
         {
-          "text": "singular",
-          "start": 68.379,
-          "end": 68.8,
+          "text": "Flowerbed",
+          "start": 79.335,
+          "end": 79.635,
           "matched": true
         },
         {
-          "text": "focus",
-          "start": 68.88,
-          "end": 69.32,
+          "text": "to",
+          "start": 79.815,
+          "end": 79.955,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 79.995,
+          "end": 80.135,
+          "matched": true
+        },
+        {
+          "text": "head",
+          "start": 80.155,
+          "end": 80.315,
           "matched": true
         }
       ]
     },
     {
       "id": "l55",
-      "text": "You think I've lost the plot?",
-      "start": 69.34,
-      "end": 70.461,
+      "text": "and boom—you're dead!",
+      "start": 80.335,
+      "end": 81.276,
       "words": [
         {
-          "text": "You",
-          "start": 69.34,
-          "end": 69.5,
+          "text": "and",
+          "start": 80.335,
+          "end": 80.415,
           "matched": true
         },
         {
-          "text": "think",
-          "start": 69.52,
-          "end": 69.66,
+          "text": "boom—you're",
+          "start": 80.455,
+          "end": 80.755,
           "matched": true
         },
         {
-          "text": "I've",
-          "start": 69.7,
-          "end": 69.8,
-          "matched": true
-        },
-        {
-          "text": "lost",
-          "start": 69.82,
-          "end": 70.0,
-          "matched": true
-        },
-        {
-          "text": "the",
-          "start": 70.04,
-          "end": 70.12,
-          "matched": true
-        },
-        {
-          "text": "plot?",
-          "start": 70.16,
-          "end": 70.461,
+          "text": "dead!",
+          "start": 80.955,
+          "end": 81.276,
           "matched": true
         }
       ]
     },
     {
       "id": "l56",
-      "text": "Nah, my mind's on attack",
-      "start": 70.721,
-      "end": 72.082,
+      "text": "Straight through the lot",
+      "start": 81.676,
+      "end": 82.536,
       "words": [
         {
-          "text": "Nah,",
-          "start": 70.721,
-          "end": 70.981,
+          "text": "Straight",
+          "start": 81.676,
+          "end": 81.876,
           "matched": true
         },
         {
-          "text": "my",
-          "start": 71.001,
-          "end": 71.121,
+          "text": "through",
+          "start": 81.896,
+          "end": 82.056,
           "matched": true
         },
         {
-          "text": "mind's",
-          "start": 71.141,
-          "end": 71.461,
+          "text": "the",
+          "start": 82.096,
+          "end": 82.176,
           "matched": true
         },
         {
-          "text": "on",
-          "start": 71.521,
-          "end": 71.581,
-          "matched": true
-        },
-        {
-          "text": "attack",
-          "start": 71.641,
-          "end": 72.082,
+          "text": "lot",
+          "start": 82.216,
+          "end": 82.536,
           "matched": true
         }
       ]
     },
     {
       "id": "l57",
-      "text": "Ball.",
-      "start": 72.142,
-      "end": 72.702,
+      "text": "its my singular focus",
+      "start": 82.556,
+      "end": 83.857,
       "words": [
         {
-          "text": "Ball.",
-          "start": 72.142,
-          "end": 72.702,
+          "text": "its",
+          "start": 82.556,
+          "end": 82.656,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 82.696,
+          "end": 82.836,
+          "matched": true
+        },
+        {
+          "text": "singular",
+          "start": 82.856,
+          "end": 83.276,
+          "matched": true
+        },
+        {
+          "text": "focus",
+          "start": 83.336,
+          "end": 83.857,
           "matched": true
         }
       ]
     },
     {
       "id": "l58",
-      "text": "Ball.",
-      "start": 72.722,
-      "end": 73.042,
+      "text": "You think I've lost the plot?",
+      "start": 84.117,
+      "end": 85.217,
       "words": [
         {
-          "text": "Ball.",
-          "start": 72.722,
-          "end": 73.042,
+          "text": "You",
+          "start": 84.117,
+          "end": 84.257,
+          "matched": true
+        },
+        {
+          "text": "think",
+          "start": 84.277,
+          "end": 84.417,
+          "matched": true
+        },
+        {
+          "text": "I've",
+          "start": 84.477,
+          "end": 84.577,
+          "matched": true
+        },
+        {
+          "text": "lost",
+          "start": 84.597,
+          "end": 84.757,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 84.777,
+          "end": 84.857,
+          "matched": true
+        },
+        {
+          "text": "plot?",
+          "start": 84.897,
+          "end": 85.217,
           "matched": true
         }
       ]
     },
     {
       "id": "l59",
-      "text": "Where's the ball?",
-      "start": 73.282,
-      "end": 74.103,
+      "text": "well, maybe I have!",
+      "start": 85.257,
+      "end": 86.718,
       "words": [
         {
-          "text": "Where's",
-          "start": 73.282,
-          "end": 73.483,
+          "text": "well,",
+          "start": 85.257,
+          "end": 85.517,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 73.503,
-          "end": 73.583,
+          "text": "maybe",
+          "start": 85.557,
+          "end": 85.897,
           "matched": true
         },
         {
-          "text": "ball?",
-          "start": 73.623,
-          "end": 74.103,
+          "text": "I",
+          "start": 86.057,
+          "end": 86.137,
+          "matched": true
+        },
+        {
+          "text": "have!",
+          "start": 86.197,
+          "end": 86.718,
           "matched": true
         }
       ]
     },
     {
       "id": "l60",
-      "text": "Over that wall?",
-      "start": 74.263,
-      "end": 75.164,
+      "text": "Ball.",
+      "start": 88.458,
+      "end": 88.758,
       "words": [
         {
-          "text": "Over",
-          "start": 74.263,
-          "end": 74.443,
-          "matched": true
-        },
-        {
-          "text": "that",
-          "start": 74.483,
-          "end": 74.663,
-          "matched": true
-        },
-        {
-          "text": "wall?",
-          "start": 74.743,
-          "end": 75.164,
+          "text": "Ball.",
+          "start": 88.458,
+          "end": 88.758,
           "matched": true
         }
       ]
     },
     {
       "id": "l61",
-      "text": "Then goodbye wall.",
-      "start": 75.224,
-      "end": 76.344,
+      "text": "Ball.",
+      "start": 88.778,
+      "end": 89.058,
       "words": [
         {
-          "text": "Then",
-          "start": 75.224,
-          "end": 75.424,
-          "matched": true
-        },
-        {
-          "text": "goodbye",
-          "start": 75.464,
-          "end": 75.864,
-          "matched": true
-        },
-        {
-          "text": "wall.",
-          "start": 75.924,
-          "end": 76.344,
+          "text": "Ball.",
+          "start": 88.778,
+          "end": 89.058,
           "matched": true
         }
       ]
     },
     {
       "id": "l62",
-      "text": "Ball.",
-      "start": 76.504,
-      "end": 77.305,
+      "text": "Where's the ball?",
+      "start": 89.078,
+      "end": 89.719,
       "words": [
         {
-          "text": "Ball.",
-          "start": 76.504,
-          "end": 77.305,
+          "text": "Where's",
+          "start": 89.078,
+          "end": 89.219,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 89.259,
+          "end": 89.339,
+          "matched": true
+        },
+        {
+          "text": "ball?",
+          "start": 89.399,
+          "end": 89.719,
           "matched": true
         }
       ]
     },
     {
       "id": "l63",
-      "text": "Ball.",
-      "start": 77.365,
-      "end": 77.725,
+      "text": "Over that wall?",
+      "start": 89.799,
+      "end": 90.619,
       "words": [
         {
-          "text": "Ball.",
-          "start": 77.365,
-          "end": 77.725,
+          "text": "Over",
+          "start": 89.799,
+          "end": 89.979,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 90.019,
+          "end": 90.259,
+          "matched": true
+        },
+        {
+          "text": "wall?",
+          "start": 90.339,
+          "end": 90.619,
           "matched": true
         }
       ]
     },
     {
       "id": "l64",
-      "text": "Where's the ball?",
-      "start": 77.925,
-      "end": 78.746,
+      "text": "goodbye wall.",
+      "start": 90.639,
+      "end": 91.319,
       "words": [
         {
-          "text": "Where's",
-          "start": 77.925,
-          "end": 78.105,
+          "text": "goodbye",
+          "start": 90.639,
+          "end": 90.959,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 78.145,
-          "end": 78.205,
-          "matched": true
-        },
-        {
-          "text": "ball?",
-          "start": 78.245,
-          "end": 78.746,
+          "text": "wall.",
+          "start": 90.979,
+          "end": 91.319,
           "matched": true
         }
       ]
     },
     {
       "id": "l65",
-      "text": "In your hand?",
-      "start": 78.846,
-      "end": 79.406,
+      "text": "Ball.",
+      "start": 91.339,
+      "end": 91.619,
       "words": [
         {
-          "text": "In",
-          "start": 78.846,
-          "end": 78.926,
-          "matched": true
-        },
-        {
-          "text": "your",
-          "start": 78.966,
-          "end": 79.106,
-          "matched": true
-        },
-        {
-          "text": "hand?",
-          "start": 79.146,
-          "end": 79.406,
+          "text": "Ball.",
+          "start": 91.339,
+          "end": 91.619,
           "matched": true
         }
       ]
     },
     {
       "id": "l66",
-      "text": "That's just grand.",
-      "start": 79.426,
-      "end": 80.507,
+      "text": "Ball.",
+      "start": 91.639,
+      "end": 92.24,
       "words": [
         {
-          "text": "That's",
-          "start": 79.426,
-          "end": 79.606,
-          "matched": true
-        },
-        {
-          "text": "just",
-          "start": 79.646,
-          "end": 79.846,
-          "matched": true
-        },
-        {
-          "text": "grand.",
-          "start": 79.946,
-          "end": 80.507,
+          "text": "Ball.",
+          "start": 91.639,
+          "end": 92.24,
           "matched": true
         }
       ]
     },
     {
       "id": "l67",
-      "text": "Ball.",
-      "start": 81.167,
-      "end": 81.968,
+      "text": "Where's the ball?",
+      "start": 92.26,
+      "end": 92.9,
       "words": [
         {
-          "text": "Ball.",
-          "start": 81.167,
-          "end": 81.968,
+          "text": "Where's",
+          "start": 92.26,
+          "end": 92.4,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 92.44,
+          "end": 92.54,
+          "matched": true
+        },
+        {
+          "text": "ball?",
+          "start": 92.58,
+          "end": 92.9,
           "matched": true
         }
       ]
     },
     {
       "id": "l68",
-      "text": "Ball.",
-      "start": 82.008,
-      "end": 82.368,
+      "text": "In your hand?",
+      "start": 92.96,
+      "end": 93.5,
       "words": [
         {
-          "text": "Ball.",
-          "start": 82.008,
-          "end": 82.368,
+          "text": "In",
+          "start": 92.96,
+          "end": 93.04,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 93.06,
+          "end": 93.2,
+          "matched": true
+        },
+        {
+          "text": "hand?",
+          "start": 93.24,
+          "end": 93.5,
           "matched": true
         }
       ]
     },
     {
       "id": "l69",
-      "text": "Where's the ball?",
-      "start": 82.548,
-      "end": 83.288,
+      "text": "That's just grand.",
+      "start": 93.54,
+      "end": 94.16,
       "words": [
         {
-          "text": "Where's",
-          "start": 82.548,
-          "end": 82.728,
+          "text": "That's",
+          "start": 93.54,
+          "end": 93.68,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 82.768,
-          "end": 82.828,
+          "text": "just",
+          "start": 93.7,
+          "end": 93.82,
           "matched": true
         },
         {
-          "text": "ball?",
-          "start": 82.868,
-          "end": 83.288,
+          "text": "grand.",
+          "start": 93.84,
+          "end": 94.16,
           "matched": true
         }
       ]
     },
     {
       "id": "l70",
-      "text": "Floatin' down the river?",
-      "start": 83.389,
-      "end": 84.329,
+      "text": "Ball.",
+      "start": 94.2,
+      "end": 94.481,
       "words": [
         {
-          "text": "Floatin'",
-          "start": 83.389,
-          "end": 83.689,
-          "matched": true
-        },
-        {
-          "text": "down",
-          "start": 83.729,
-          "end": 83.889,
-          "matched": true
-        },
-        {
-          "text": "the",
-          "start": 83.929,
-          "end": 83.989,
-          "matched": true
-        },
-        {
-          "text": "river?",
-          "start": 84.049,
-          "end": 84.329,
+          "text": "Ball.",
+          "start": 94.2,
+          "end": 94.481,
           "matched": true
         }
       ]
     },
     {
       "id": "l71",
-      "text": "Good job I'm a swimmer.",
-      "start": 84.469,
-      "end": 85.53,
+      "text": "Ball.",
+      "start": 94.521,
+      "end": 94.781,
       "words": [
         {
-          "text": "Good",
-          "start": 84.469,
-          "end": 84.669,
-          "matched": true
-        },
-        {
-          "text": "job",
-          "start": 84.709,
-          "end": 84.929,
-          "matched": true
-        },
-        {
-          "text": "I'm",
-          "start": 84.97,
-          "end": 85.07,
-          "matched": true
-        },
-        {
-          "text": "a",
-          "start": 85.09,
-          "end": 85.11,
-          "matched": true
-        },
-        {
-          "text": "swimmer.",
-          "start": 85.17,
-          "end": 85.53,
+          "text": "Ball.",
+          "start": 94.521,
+          "end": 94.781,
           "matched": true
         }
       ]
     },
     {
       "id": "l72",
-      "text": "No pause for thought",
-      "start": 87.456,
-      "end": 88.356,
+      "text": "Where's the ball?",
+      "start": 94.801,
+      "end": 95.461,
       "words": [
         {
-          "text": "No",
-          "start": 87.456,
-          "end": 87.596,
+          "text": "Where's",
+          "start": 94.801,
+          "end": 94.961,
           "matched": true
         },
         {
-          "text": "pause",
-          "start": 87.636,
-          "end": 87.876,
+          "text": "the",
+          "start": 94.981,
+          "end": 95.081,
           "matched": true
         },
         {
-          "text": "for",
-          "start": 87.916,
-          "end": 88.036,
-          "matched": true
-        },
-        {
-          "text": "thought",
-          "start": 88.076,
-          "end": 88.356,
+          "text": "ball?",
+          "start": 95.121,
+          "end": 95.461,
           "matched": true
         }
       ]
     },
     {
       "id": "l73",
-      "text": "no tactic or plan",
-      "start": 88.397,
-      "end": 89.457,
+      "text": "Floatin' down the river?",
+      "start": 95.741,
+      "end": 96.701,
       "words": [
         {
-          "text": "no",
-          "start": 88.397,
-          "end": 88.537,
+          "text": "Floatin'",
+          "start": 95.741,
+          "end": 96.041,
           "matched": true
         },
         {
-          "text": "tactic",
-          "start": 88.617,
-          "end": 89.057,
+          "text": "down",
+          "start": 96.081,
+          "end": 96.241,
           "matched": true
         },
         {
-          "text": "or",
-          "start": 89.057,
-          "end": 89.097,
-          "matched": false
+          "text": "the",
+          "start": 96.281,
+          "end": 96.341,
+          "matched": true
         },
         {
-          "text": "plan",
-          "start": 89.097,
-          "end": 89.457,
+          "text": "river?",
+          "start": 96.421,
+          "end": 96.701,
           "matched": true
         }
       ]
     },
     {
       "id": "l74",
-      "text": "Trajectory focused",
-      "start": 89.457,
-      "end": 90.538,
+      "text": "Good job I'm a swimmer.",
+      "start": 97.021,
+      "end": 97.942,
       "words": [
         {
-          "text": "Trajectory",
-          "start": 89.457,
-          "end": 90.097,
-          "matched": false
+          "text": "Good",
+          "start": 97.021,
+          "end": 97.162,
+          "matched": true
         },
         {
-          "text": "focused",
-          "start": 90.097,
-          "end": 90.538,
+          "text": "job",
+          "start": 97.182,
+          "end": 97.382,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 97.422,
+          "end": 97.502,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 97.562,
+          "end": 97.602,
+          "matched": true
+        },
+        {
+          "text": "swimmer.",
+          "start": 97.622,
+          "end": 97.942,
           "matched": true
         }
       ]
     },
     {
       "id": "l75",
-      "text": "on your throwin' hand",
-      "start": 90.718,
-      "end": 91.698,
+      "text": "No pause for thought",
+      "start": 99.569,
+      "end": 100.49,
       "words": [
         {
-          "text": "on",
-          "start": 90.718,
-          "end": 90.778,
+          "text": "No",
+          "start": 99.569,
+          "end": 99.709,
           "matched": true
         },
         {
-          "text": "your",
-          "start": 90.818,
-          "end": 90.918,
+          "text": "pause",
+          "start": 99.749,
+          "end": 99.989,
           "matched": true
         },
         {
-          "text": "throwin'",
-          "start": 90.938,
-          "end": 91.278,
+          "text": "for",
+          "start": 100.029,
+          "end": 100.15,
           "matched": true
         },
         {
-          "text": "hand",
-          "start": 91.338,
-          "end": 91.698,
+          "text": "thought",
+          "start": 100.21,
+          "end": 100.49,
           "matched": true
         }
       ]
     },
     {
       "id": "l76",
-      "text": "Eyes on the prize",
-      "start": 91.978,
-      "end": 92.999,
+      "text": "no tactic or plan",
+      "start": 100.55,
+      "end": 101.791,
       "words": [
         {
-          "text": "Eyes",
-          "start": 91.978,
-          "end": 92.138,
+          "text": "no",
+          "start": 100.55,
+          "end": 100.75,
           "matched": true
         },
         {
-          "text": "on",
-          "start": 92.198,
-          "end": 92.278,
+          "text": "tactic",
+          "start": 100.83,
+          "end": 101.271,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 92.298,
-          "end": 92.379,
+          "text": "or",
+          "start": 101.391,
+          "end": 101.451,
           "matched": true
         },
         {
-          "text": "prize",
-          "start": 92.419,
-          "end": 92.999,
+          "text": "plan",
+          "start": 101.471,
+          "end": 101.791,
           "matched": true
         }
       ]
     },
     {
       "id": "l77",
-      "text": "I calculate flight",
-      "start": 93.079,
-      "end": 94.099,
+      "text": "Trajectory focused",
+      "start": 101.791,
+      "end": 103.072,
       "words": [
         {
-          "text": "I",
-          "start": 93.079,
-          "end": 93.199,
-          "matched": true
+          "text": "Trajectory",
+          "start": 101.791,
+          "end": 102.432,
+          "matched": false
         },
         {
-          "text": "calculate",
-          "start": 93.259,
-          "end": 93.719,
-          "matched": true
-        },
-        {
-          "text": "flight",
-          "start": 93.799,
-          "end": 94.099,
+          "text": "focused",
+          "start": 102.432,
+          "end": 103.072,
           "matched": true
         }
       ]
     },
     {
       "id": "l78",
-      "text": "One bounce left",
-      "start": 94.239,
-      "end": 94.96,
+      "text": "on your throwing hand",
+      "start": 103.132,
+      "end": 104.333,
       "words": [
         {
-          "text": "One",
-          "start": 94.239,
-          "end": 94.359,
+          "text": "on",
+          "start": 103.132,
+          "end": 103.212,
           "matched": true
         },
         {
-          "text": "bounce",
-          "start": 94.42,
-          "end": 94.7,
+          "text": "your",
+          "start": 103.232,
+          "end": 103.332,
           "matched": true
         },
         {
-          "text": "left",
-          "start": 94.76,
-          "end": 94.96,
+          "text": "throwing",
+          "start": 103.372,
+          "end": 103.973,
+          "matched": true
+        },
+        {
+          "text": "hand",
+          "start": 104.013,
+          "end": 104.333,
           "matched": true
         }
       ]
     },
     {
       "id": "l79",
-      "text": "then I cut to the right",
-      "start": 95.0,
-      "end": 96.12,
+      "text": "my Eyes on the prize",
+      "start": 104.373,
+      "end": 105.635,
       "words": [
         {
-          "text": "then",
-          "start": 95.0,
-          "end": 95.14,
+          "text": "my",
+          "start": 104.373,
+          "end": 104.634,
           "matched": true
         },
         {
-          "text": "I",
-          "start": 95.18,
-          "end": 95.26,
+          "text": "Eyes",
+          "start": 104.654,
+          "end": 104.834,
           "matched": true
         },
         {
-          "text": "cut",
-          "start": 95.3,
-          "end": 95.5,
-          "matched": true
-        },
-        {
-          "text": "to",
-          "start": 95.56,
-          "end": 95.7,
+          "text": "on",
+          "start": 104.894,
+          "end": 104.974,
           "matched": true
         },
         {
           "text": "the",
-          "start": 95.74,
-          "end": 95.82,
+          "start": 105.014,
+          "end": 105.094,
           "matched": true
         },
         {
-          "text": "right",
-          "start": 95.9,
-          "end": 96.12,
+          "text": "prize",
+          "start": 105.134,
+          "end": 105.635,
           "matched": true
         }
       ]
     },
     {
       "id": "l80",
-      "text": "You reach down first?",
-      "start": 96.32,
-      "end": 97.341,
+      "text": "I calculate flight",
+      "start": 105.755,
+      "end": 106.816,
       "words": [
         {
-          "text": "You",
-          "start": 96.32,
-          "end": 96.461,
+          "text": "I",
+          "start": 105.755,
+          "end": 105.855,
           "matched": true
         },
         {
-          "text": "reach",
-          "start": 96.501,
-          "end": 96.701,
+          "text": "calculate",
+          "start": 105.915,
+          "end": 106.475,
           "matched": true
         },
         {
-          "text": "down",
-          "start": 96.761,
-          "end": 96.961,
-          "matched": true
-        },
-        {
-          "text": "first?",
-          "start": 97.041,
-          "end": 97.341,
+          "text": "flight",
+          "start": 106.535,
+          "end": 106.816,
           "matched": true
         }
       ]
     },
     {
       "id": "l81",
-      "text": "Better reconsider",
-      "start": 97.621,
-      "end": 98.482,
+      "text": "One bounce left",
+      "start": 106.976,
+      "end": 107.796,
       "words": [
         {
-          "text": "Better",
-          "start": 97.621,
-          "end": 97.861,
+          "text": "One",
+          "start": 106.976,
+          "end": 107.136,
           "matched": true
         },
         {
-          "text": "reconsider",
-          "start": 97.901,
-          "end": 98.482,
+          "text": "bounce",
+          "start": 107.196,
+          "end": 107.496,
+          "matched": true
+        },
+        {
+          "text": "left",
+          "start": 107.556,
+          "end": 107.796,
           "matched": true
         }
       ]
     },
     {
       "id": "l82",
-      "text": "I'm built like a fridge",
-      "start": 98.662,
-      "end": 99.642,
+      "text": "then I cut to the right",
+      "start": 107.836,
+      "end": 109.418,
       "words": [
         {
-          "text": "I'm",
-          "start": 98.662,
-          "end": 98.762,
+          "text": "then",
+          "start": 107.836,
+          "end": 108.197,
           "matched": true
         },
         {
-          "text": "built",
-          "start": 98.802,
-          "end": 99.022,
+          "text": "I",
+          "start": 108.297,
+          "end": 108.397,
           "matched": true
         },
         {
-          "text": "like",
-          "start": 99.062,
-          "end": 99.222,
+          "text": "cut",
+          "start": 108.477,
+          "end": 108.697,
           "matched": true
         },
         {
-          "text": "a",
-          "start": 99.262,
-          "end": 99.302,
+          "text": "to",
+          "start": 108.777,
+          "end": 108.937,
           "matched": true
         },
         {
-          "text": "fridge",
-          "start": 99.362,
-          "end": 99.642,
+          "text": "the",
+          "start": 108.978,
+          "end": 109.078,
+          "matched": true
+        },
+        {
+          "text": "right",
+          "start": 109.138,
+          "end": 109.418,
           "matched": true
         }
       ]
     },
     {
       "id": "l83",
-      "text": "but like my lyrical flow",
-      "start": 99.662,
-      "end": 100.923,
+      "text": "You reach down first?",
+      "start": 111.32,
+      "end": 112.821,
       "words": [
         {
-          "text": "but",
-          "start": 99.662,
-          "end": 99.782,
+          "text": "You",
+          "start": 111.32,
+          "end": 111.58,
           "matched": true
         },
         {
-          "text": "like",
-          "start": 99.842,
-          "end": 100.002,
+          "text": "reach",
+          "start": 111.68,
+          "end": 111.94,
           "matched": true
         },
         {
-          "text": "my",
-          "start": 100.062,
-          "end": 100.182,
+          "text": "down",
+          "start": 111.98,
+          "end": 112.22,
           "matched": true
         },
         {
-          "text": "lyrical",
-          "start": 100.222,
-          "end": 100.603,
-          "matched": true
-        },
-        {
-          "text": "flow",
-          "start": 100.683,
-          "end": 100.923,
+          "text": "first?",
+          "start": 112.281,
+          "end": 112.821,
           "matched": true
         }
       ]
     },
     {
       "id": "l84",
-      "text": "I move like a river",
-      "start": 101.003,
-      "end": 101.963,
+      "text": "Better reconsider",
+      "start": 112.941,
+      "end": 114.202,
       "words": [
         {
-          "text": "I",
-          "start": 101.003,
-          "end": 101.103,
+          "text": "Better",
+          "start": 112.941,
+          "end": 113.241,
           "matched": true
         },
         {
-          "text": "move",
-          "start": 101.143,
-          "end": 101.343,
-          "matched": true
-        },
-        {
-          "text": "like",
-          "start": 101.383,
-          "end": 101.563,
-          "matched": true
-        },
-        {
-          "text": "a",
-          "start": 101.603,
-          "end": 101.623,
-          "matched": true
-        },
-        {
-          "text": "river",
-          "start": 101.683,
-          "end": 101.963,
+          "text": "reconsider",
+          "start": 113.281,
+          "end": 114.202,
           "matched": true
         }
       ]
     },
     {
       "id": "l85",
-      "text": "ain't no stoppin' me",
-      "start": 102.243,
-      "end": 103.064,
+      "text": "I'm built like a wall",
+      "start": 114.583,
+      "end": 115.804,
       "words": [
         {
-          "text": "ain't",
-          "start": 102.243,
-          "end": 102.363,
+          "text": "I'm",
+          "start": 114.583,
+          "end": 114.763,
           "matched": true
         },
         {
-          "text": "no",
-          "start": 102.384,
-          "end": 102.464,
+          "text": "built",
+          "start": 114.843,
+          "end": 115.123,
           "matched": true
         },
         {
-          "text": "stoppin'",
-          "start": 102.504,
-          "end": 102.864,
+          "text": "like",
+          "start": 115.183,
+          "end": 115.343,
           "matched": true
         },
         {
-          "text": "me",
-          "start": 102.904,
-          "end": 103.064,
+          "text": "a",
+          "start": 115.383,
+          "end": 115.403,
+          "matched": true
+        },
+        {
+          "text": "wall",
+          "start": 115.483,
+          "end": 115.804,
           "matched": true
         }
       ]
     },
     {
       "id": "l86",
-      "text": "Get in my way",
-      "start": 103.104,
-      "end": 103.804,
+      "text": "and I move like a river",
+      "start": 115.884,
+      "end": 117.065,
       "words": [
         {
-          "text": "Get",
-          "start": 103.104,
-          "end": 103.244,
+          "text": "and",
+          "start": 115.884,
+          "end": 115.984,
           "matched": true
         },
         {
-          "text": "in",
-          "start": 103.304,
-          "end": 103.384,
+          "text": "I",
+          "start": 116.024,
+          "end": 116.104,
           "matched": true
         },
         {
-          "text": "my",
-          "start": 103.404,
-          "end": 103.544,
+          "text": "move",
+          "start": 116.144,
+          "end": 116.424,
           "matched": true
         },
         {
-          "text": "way",
-          "start": 103.584,
-          "end": 103.804,
+          "text": "like",
+          "start": 116.444,
+          "end": 116.604,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 116.664,
+          "end": 116.704,
+          "matched": true
+        },
+        {
+          "text": "river",
+          "start": 116.765,
+          "end": 117.065,
           "matched": true
         }
       ]
     },
     {
       "id": "l87",
-      "text": "i got right through ya'",
-      "start": 103.884,
-      "end": 105.025,
+      "text": "there's no stoppin' me",
+      "start": 117.365,
+      "end": 119.207,
       "words": [
         {
-          "text": "i",
-          "start": 103.884,
-          "end": 103.964,
+          "text": "there's",
+          "start": 117.365,
+          "end": 117.685,
           "matched": true
         },
         {
-          "text": "got",
-          "start": 104.004,
-          "end": 104.184,
+          "text": "no",
+          "start": 117.725,
+          "end": 117.886,
           "matched": true
         },
         {
-          "text": "right",
-          "start": 104.284,
-          "end": 104.505,
+          "text": "stoppin'",
+          "start": 117.946,
+          "end": 118.546,
           "matched": true
         },
         {
-          "text": "through",
-          "start": 104.545,
-          "end": 104.805,
-          "matched": true
-        },
-        {
-          "text": "ya'",
-          "start": 104.865,
-          "end": 105.025,
+          "text": "me",
+          "start": 118.666,
+          "end": 119.207,
           "matched": true
         }
       ]
     },
     {
       "id": "l88",
-      "text": "Chunk Lion roar",
-      "start": 106.825,
-      "end": 107.926,
+      "text": "Get in my way",
+      "start": 119.307,
+      "end": 120.588,
       "words": [
         {
-          "text": "Chunk",
-          "start": 106.825,
-          "end": 107.105,
+          "text": "Get",
+          "start": 119.307,
+          "end": 119.667,
           "matched": true
         },
         {
-          "text": "Lion",
-          "start": 107.145,
-          "end": 107.505,
+          "text": "in",
+          "start": 119.767,
+          "end": 119.867,
           "matched": true
         },
         {
-          "text": "roar",
-          "start": 107.545,
-          "end": 107.926,
+          "text": "my",
+          "start": 119.947,
+          "end": 120.208,
+          "matched": true
+        },
+        {
+          "text": "way",
+          "start": 120.268,
+          "end": 120.588,
           "matched": true
         }
       ]
     },
     {
       "id": "l89",
-      "text": "when I enter the race",
-      "start": 107.986,
-      "end": 109.046,
+      "text": "i flow right through you",
+      "start": 120.688,
+      "end": 122.089,
       "words": [
         {
-          "text": "when",
-          "start": 107.986,
-          "end": 108.146,
+          "text": "i",
+          "start": 120.688,
+          "end": 120.788,
           "matched": true
         },
         {
-          "text": "I",
-          "start": 108.206,
-          "end": 108.266,
+          "text": "flow",
+          "start": 120.828,
+          "end": 121.148,
           "matched": true
         },
         {
-          "text": "enter",
-          "start": 108.346,
-          "end": 108.586,
+          "text": "right",
+          "start": 121.229,
+          "end": 121.429,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 108.606,
-          "end": 108.686,
+          "text": "through",
+          "start": 121.489,
+          "end": 121.769,
           "matched": true
         },
         {
-          "text": "race",
-          "start": 108.766,
-          "end": 109.046,
+          "text": "you",
+          "start": 121.829,
+          "end": 122.089,
           "matched": true
         }
       ]
     },
     {
       "id": "l90",
-      "text": "Ears flying back",
-      "start": 109.226,
-      "end": 110.187,
+      "text": "my metal roars",
+      "start": 123.753,
+      "end": 124.654,
       "words": [
         {
-          "text": "Ears",
-          "start": 109.226,
-          "end": 109.386,
+          "text": "my",
+          "start": 123.753,
+          "end": 124.014,
           "matched": true
         },
         {
-          "text": "flying",
-          "start": 109.446,
-          "end": 109.847,
+          "text": "metal",
+          "start": 124.054,
+          "end": 124.334,
           "matched": true
         },
         {
-          "text": "back",
-          "start": 109.907,
-          "end": 110.187,
+          "text": "roars",
+          "start": 124.394,
+          "end": 124.654,
           "matched": true
         }
       ]
     },
     {
       "id": "l91",
-      "text": "with the wind in my face",
-      "start": 110.247,
-      "end": 111.327,
+      "text": "when I enter the race",
+      "start": 124.694,
+      "end": 125.855,
       "words": [
         {
-          "text": "with",
-          "start": 110.247,
-          "end": 110.427,
+          "text": "when",
+          "start": 124.694,
+          "end": 124.854,
+          "matched": true
+        },
+        {
+          "text": "I",
+          "start": 124.914,
+          "end": 124.974,
+          "matched": true
+        },
+        {
+          "text": "enter",
+          "start": 125.054,
+          "end": 125.294,
           "matched": true
         },
         {
           "text": "the",
-          "start": 110.467,
-          "end": 110.547,
+          "start": 125.334,
+          "end": 125.415,
           "matched": true
         },
         {
-          "text": "wind",
-          "start": 110.587,
-          "end": 110.767,
-          "matched": true
-        },
-        {
-          "text": "in",
-          "start": 110.807,
-          "end": 110.867,
-          "matched": true
-        },
-        {
-          "text": "my",
-          "start": 110.907,
-          "end": 111.027,
-          "matched": true
-        },
-        {
-          "text": "face",
-          "start": 111.067,
-          "end": 111.327,
+          "text": "race",
+          "start": 125.475,
+          "end": 125.855,
           "matched": true
         }
       ]
     },
     {
       "id": "l92",
-      "text": "Shoulder through shrubbery",
-      "start": 111.427,
-      "end": 112.548,
+      "text": "Ears flying back",
+      "start": 126.375,
+      "end": 127.156,
       "words": [
         {
-          "text": "Shoulder",
-          "start": 111.427,
-          "end": 111.728,
+          "text": "Ears",
+          "start": 126.375,
+          "end": 126.495,
           "matched": true
         },
         {
-          "text": "through",
-          "start": 111.748,
-          "end": 111.948,
+          "text": "flying",
+          "start": 126.515,
+          "end": 126.855,
           "matched": true
         },
         {
-          "text": "shrubbery",
-          "start": 111.988,
-          "end": 112.548,
+          "text": "back",
+          "start": 126.895,
+          "end": 127.156,
           "matched": true
         }
       ]
     },
     {
       "id": "l93",
-      "text": "branches get parted",
-      "start": 112.588,
-      "end": 113.568,
+      "text": "with the wind in my face",
+      "start": 127.196,
+      "end": 128.376,
       "words": [
         {
-          "text": "branches",
-          "start": 112.588,
-          "end": 112.948,
+          "text": "with",
+          "start": 127.196,
+          "end": 127.336,
           "matched": true
         },
         {
-          "text": "get",
-          "start": 112.988,
-          "end": 113.128,
+          "text": "the",
+          "start": 127.376,
+          "end": 127.476,
           "matched": true
         },
         {
-          "text": "parted",
-          "start": 113.188,
-          "end": 113.568,
+          "text": "wind",
+          "start": 127.516,
+          "end": 127.696,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 127.756,
+          "end": 127.836,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 127.856,
+          "end": 127.956,
+          "matched": true
+        },
+        {
+          "text": "face",
+          "start": 127.996,
+          "end": 128.376,
           "matched": true
         }
       ]
     },
     {
       "id": "l94",
-      "text": "By the time you shout \"Bam!\"",
-      "start": 113.609,
-      "end": 115.169,
+      "text": "Shoulder through shrubbery",
+      "start": 128.456,
+      "end": 129.997,
       "words": [
         {
-          "text": "By",
-          "start": 113.609,
-          "end": 113.709,
+          "text": "Shoulder",
+          "start": 128.456,
+          "end": 129.077,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 113.749,
-          "end": 113.809,
+          "text": "through",
+          "start": 129.117,
+          "end": 129.357,
           "matched": true
         },
         {
-          "text": "time",
-          "start": 113.869,
-          "end": 114.089,
-          "matched": true
-        },
-        {
-          "text": "you",
-          "start": 114.129,
-          "end": 114.269,
-          "matched": true
-        },
-        {
-          "text": "shout",
-          "start": 114.309,
-          "end": 114.569,
-          "matched": true
-        },
-        {
-          "text": "\"Bam!\"",
-          "start": 114.649,
-          "end": 115.169,
+          "text": "shrubbery",
+          "start": 129.377,
+          "end": 129.997,
           "matched": true
         }
       ]
     },
     {
       "id": "l95",
-      "text": "I've already departed",
-      "start": 115.169,
-      "end": 116.17,
+      "text": "branches get de-parted",
+      "start": 130.037,
+      "end": 130.958,
       "words": [
         {
-          "text": "I've",
-          "start": 115.169,
-          "end": 115.309,
-          "matched": false
-        },
-        {
-          "text": "already",
-          "start": 115.309,
-          "end": 115.65,
+          "text": "branches",
+          "start": 130.037,
+          "end": 130.358,
           "matched": true
         },
         {
-          "text": "departed",
-          "start": 115.69,
-          "end": 116.17,
+          "text": "get",
+          "start": 130.378,
+          "end": 130.518,
+          "matched": true
+        },
+        {
+          "text": "de-parted",
+          "start": 130.538,
+          "end": 130.958,
           "matched": true
         }
       ]
     },
     {
       "id": "l96",
-      "text": "Ball in my jaws",
-      "start": 116.39,
-      "end": 117.25,
+      "text": "By the time you shout \"Bam!\"",
+      "start": 130.998,
+      "end": 132.719,
       "words": [
         {
-          "text": "Ball",
-          "start": 116.39,
-          "end": 116.69,
+          "text": "By",
+          "start": 130.998,
+          "end": 131.138,
           "matched": true
         },
         {
-          "text": "in",
-          "start": 116.73,
-          "end": 116.81,
+          "text": "the",
+          "start": 131.158,
+          "end": 131.258,
           "matched": true
         },
         {
-          "text": "my",
-          "start": 116.83,
-          "end": 116.93,
+          "text": "time",
+          "start": 131.298,
+          "end": 131.618,
           "matched": true
         },
         {
-          "text": "jaws",
-          "start": 116.97,
-          "end": 117.25,
+          "text": "you",
+          "start": 131.658,
+          "end": 131.839,
+          "matched": true
+        },
+        {
+          "text": "shout",
+          "start": 131.899,
+          "end": 132.219,
+          "matched": true
+        },
+        {
+          "text": "\"Bam!\"",
+          "start": 132.259,
+          "end": 132.719,
           "matched": true
         }
       ]
     },
     {
       "id": "l97",
-      "text": "now the victory lap",
-      "start": 117.29,
-      "end": 118.311,
+      "text": "I've already started",
+      "start": 133.88,
+      "end": 135.001,
       "words": [
         {
-          "text": "now",
-          "start": 117.29,
-          "end": 117.41,
+          "text": "I've",
+          "start": 133.88,
+          "end": 134.0,
           "matched": true
         },
         {
-          "text": "the",
-          "start": 117.45,
-          "end": 117.531,
+          "text": "already",
+          "start": 134.06,
+          "end": 134.4,
           "matched": true
         },
         {
-          "text": "victory",
-          "start": 117.571,
-          "end": 117.971,
-          "matched": true
-        },
-        {
-          "text": "lap",
-          "start": 118.031,
-          "end": 118.311,
+          "text": "started",
+          "start": 134.42,
+          "end": 135.001,
           "matched": true
         }
       ]
     },
     {
       "id": "l98",
-      "text": "You want it returned?",
-      "start": 118.571,
-      "end": 119.512,
+      "text": "Ball in my jaws",
+      "start": 135.101,
+      "end": 136.001,
       "words": [
         {
-          "text": "You",
-          "start": 118.571,
-          "end": 118.711,
+          "text": "Ball",
+          "start": 135.101,
+          "end": 135.281,
           "matched": true
         },
         {
-          "text": "want",
-          "start": 118.731,
-          "end": 118.891,
+          "text": "in",
+          "start": 135.341,
+          "end": 135.401,
           "matched": true
         },
         {
-          "text": "it",
-          "start": 118.931,
-          "end": 118.991,
+          "text": "my",
+          "start": 135.441,
+          "end": 135.561,
           "matched": true
         },
         {
-          "text": "returned?",
-          "start": 119.031,
-          "end": 119.512,
+          "text": "jaws",
+          "start": 135.581,
+          "end": 136.001,
           "matched": true
         }
       ]
     },
     {
       "id": "l99",
-      "text": "Come try take it back",
-      "start": 119.592,
-      "end": 120.732,
+      "text": "watch my victory lap",
+      "start": 136.041,
+      "end": 137.142,
       "words": [
         {
-          "text": "Come",
-          "start": 119.592,
-          "end": 119.792,
+          "text": "watch",
+          "start": 136.041,
+          "end": 136.181,
           "matched": true
         },
         {
-          "text": "try",
-          "start": 119.832,
-          "end": 120.112,
+          "text": "my",
+          "start": 136.221,
+          "end": 136.361,
           "matched": true
         },
         {
-          "text": "take",
-          "start": 120.152,
-          "end": 120.312,
+          "text": "victory",
+          "start": 136.381,
+          "end": 136.802,
           "matched": true
         },
         {
-          "text": "it",
-          "start": 120.372,
-          "end": 120.432,
-          "matched": true
-        },
-        {
-          "text": "back",
-          "start": 120.492,
-          "end": 120.732,
+          "text": "lap",
+          "start": 136.842,
+          "end": 137.142,
           "matched": true
         }
       ]
     },
     {
       "id": "l100",
-      "text": "Take one little step",
-      "start": 120.772,
-      "end": 121.853,
+      "text": "You want it returned?",
+      "start": 137.482,
+      "end": 138.503,
       "words": [
         {
-          "text": "Take",
-          "start": 120.772,
-          "end": 120.972,
+          "text": "You",
+          "start": 137.482,
+          "end": 137.622,
           "matched": true
         },
         {
-          "text": "one",
-          "start": 121.132,
-          "end": 121.272,
+          "text": "want",
+          "start": 137.642,
+          "end": 137.782,
           "matched": true
         },
         {
-          "text": "little",
-          "start": 121.332,
-          "end": 121.553,
+          "text": "it",
+          "start": 137.842,
+          "end": 137.922,
           "matched": true
         },
         {
-          "text": "step",
-          "start": 121.593,
-          "end": 121.853,
+          "text": "returned?",
+          "start": 137.962,
+          "end": 138.503,
           "matched": true
         }
       ]
     },
     {
       "id": "l101",
-      "text": "and I'm straight on attack",
-      "start": 121.933,
-      "end": 122.893,
+      "text": "Come try take it back",
+      "start": 138.563,
+      "end": 139.804,
       "words": [
         {
-          "text": "and",
-          "start": 121.933,
-          "end": 122.013,
+          "text": "Come",
+          "start": 138.563,
+          "end": 138.823,
           "matched": true
         },
         {
-          "text": "I'm",
-          "start": 122.033,
-          "end": 122.133,
+          "text": "try",
+          "start": 138.863,
+          "end": 139.183,
           "matched": true
         },
         {
-          "text": "straight",
-          "start": 122.173,
-          "end": 122.373,
+          "text": "take",
+          "start": 139.203,
+          "end": 139.363,
           "matched": true
         },
         {
-          "text": "on",
-          "start": 122.433,
-          "end": 122.493,
+          "text": "it",
+          "start": 139.423,
+          "end": 139.503,
           "matched": true
         },
         {
-          "text": "attack",
-          "start": 122.553,
-          "end": 122.893,
+          "text": "back",
+          "start": 139.543,
+          "end": 139.804,
           "matched": true
         }
       ]
     },
     {
       "id": "l102",
-      "text": "You started this game",
-      "start": 122.933,
-      "end": 124.034,
+      "text": "Take one little step",
+      "start": 139.844,
+      "end": 141.064,
       "words": [
         {
-          "text": "You",
-          "start": 122.933,
-          "end": 123.053,
+          "text": "Take",
+          "start": 139.844,
+          "end": 140.104,
           "matched": true
         },
         {
-          "text": "started",
-          "start": 123.073,
-          "end": 123.414,
+          "text": "one",
+          "start": 140.264,
+          "end": 140.404,
           "matched": true
         },
         {
-          "text": "this",
-          "start": 123.434,
-          "end": 123.594,
+          "text": "little",
+          "start": 140.464,
+          "end": 140.724,
           "matched": true
         },
         {
-          "text": "game",
-          "start": 123.654,
-          "end": 124.034,
+          "text": "step",
+          "start": 140.744,
+          "end": 141.064,
           "matched": true
         }
       ]
     },
     {
       "id": "l103",
-      "text": "now you're caught in my trap",
-      "start": 124.074,
-      "end": 125.275,
+      "text": "and I'm back on attack",
+      "start": 141.145,
+      "end": 142.325,
       "words": [
         {
-          "text": "now",
-          "start": 124.074,
-          "end": 124.194,
+          "text": "and",
+          "start": 141.145,
+          "end": 141.265,
           "matched": true
         },
         {
-          "text": "you're",
-          "start": 124.214,
-          "end": 124.354,
+          "text": "I'm",
+          "start": 141.305,
+          "end": 141.405,
           "matched": true
         },
         {
-          "text": "caught",
-          "start": 124.394,
-          "end": 124.594,
+          "text": "back",
+          "start": 141.445,
+          "end": 141.705,
           "matched": true
         },
         {
-          "text": "in",
-          "start": 124.634,
-          "end": 124.694,
+          "text": "on",
+          "start": 141.825,
+          "end": 141.885,
           "matched": true
         },
         {
-          "text": "my",
-          "start": 124.734,
-          "end": 124.854,
-          "matched": true
-        },
-        {
-          "text": "trap",
-          "start": 124.934,
-          "end": 125.275,
+          "text": "attack",
+          "start": 141.965,
+          "end": 142.325,
           "matched": true
         }
       ]
     },
     {
       "id": "l104",
-      "text": "And I'm done.",
-      "start": 125.975,
-      "end": 126.575,
+      "text": "You started this game",
+      "start": 142.385,
+      "end": 143.586,
       "words": [
         {
-          "text": "And",
-          "start": 125.975,
-          "end": 126.075,
+          "text": "You",
+          "start": 142.385,
+          "end": 142.585,
           "matched": true
         },
         {
-          "text": "I'm",
-          "start": 126.135,
-          "end": 126.235,
+          "text": "started",
+          "start": 142.625,
+          "end": 142.966,
           "matched": true
         },
         {
-          "text": "done.",
-          "start": 126.295,
-          "end": 126.575,
+          "text": "this",
+          "start": 143.006,
+          "end": 143.126,
+          "matched": true
+        },
+        {
+          "text": "game",
+          "start": 143.166,
+          "end": 143.586,
           "matched": true
         }
       ]
     },
     {
       "id": "l105",
-      "text": "Chunk Lion.",
-      "start": 127.356,
-      "end": 128.896,
+      "text": "now you're caught in my trap",
+      "start": 143.626,
+      "end": 144.867,
       "words": [
         {
-          "text": "Chunk",
-          "start": 127.356,
-          "end": 127.656,
+          "text": "now",
+          "start": 143.626,
+          "end": 143.746,
           "matched": true
         },
         {
-          "text": "Lion.",
-          "start": 127.696,
-          "end": 128.896,
+          "text": "you're",
+          "start": 143.766,
+          "end": 143.906,
+          "matched": true
+        },
+        {
+          "text": "caught",
+          "start": 143.926,
+          "end": 144.126,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 144.166,
+          "end": 144.226,
+          "matched": true
+        },
+        {
+          "text": "my",
+          "start": 144.266,
+          "end": 144.467,
+          "matched": true
+        },
+        {
+          "text": "trap",
+          "start": 144.527,
+          "end": 144.867,
           "matched": true
         }
       ]
     },
     {
       "id": "l106",
-      "text": "2026.",
-      "start": 128.976,
-      "end": 129.697,
+      "text": "now I'm done.",
+      "start": 148.029,
+      "end": 149.009,
       "words": [
         {
-          "text": "2026.",
-          "start": 128.976,
-          "end": 129.697,
+          "text": "now",
+          "start": 148.029,
+          "end": 148.369,
+          "matched": true
+        },
+        {
+          "text": "I'm",
+          "start": 148.449,
+          "end": 148.629,
+          "matched": true
+        },
+        {
+          "text": "done.",
+          "start": 148.689,
+          "end": 149.009,
           "matched": true
         }
       ]
     },
     {
       "id": "l107",
-      "text": "And let me say...",
-      "start": 130.097,
-      "end": 131.198,
+      "text": "the metal lives once more",
+      "start": 149.33,
+      "end": 152.592,
       "words": [
         {
-          "text": "And",
-          "start": 130.097,
-          "end": 130.217,
+          "text": "the",
+          "start": 149.33,
+          "end": 149.49,
           "matched": true
         },
         {
-          "text": "let",
-          "start": 130.297,
-          "end": 130.457,
+          "text": "metal",
+          "start": 149.61,
+          "end": 150.13,
           "matched": true
         },
         {
-          "text": "me",
-          "start": 130.517,
-          "end": 130.617,
+          "text": "lives",
+          "start": 150.27,
+          "end": 150.791,
           "matched": true
         },
         {
-          "text": "say...",
-          "start": 130.717,
-          "end": 131.198,
+          "text": "once",
+          "start": 151.011,
+          "end": 151.231,
+          "matched": true
+        },
+        {
+          "text": "more",
+          "start": 151.511,
+          "end": 152.592,
           "matched": true
         }
       ]
     },
     {
       "id": "l108",
-      "text": "Peace!",
-      "start": 131.438,
-      "end": 131.838,
+      "text": "2026.",
+      "start": 153.427,
+      "end": 153.628,
       "words": [
         {
-          "text": "Peace!",
-          "start": 131.438,
-          "end": 131.838,
+          "text": "2026.",
+          "start": 153.427,
+          "end": 153.628,
           "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l109",
+      "text": "And let me say...",
+      "start": 153.789,
+      "end": 156.198,
+      "words": [
+        {
+          "text": "And",
+          "start": 153.789,
+          "end": 153.949,
+          "matched": true
+        },
+        {
+          "text": "let",
+          "start": 155.335,
+          "end": 155.576,
+          "matched": true
+        },
+        {
+          "text": "me",
+          "start": 155.616,
+          "end": 155.796,
+          "matched": true
+        },
+        {
+          "text": "say...",
+          "start": 155.897,
+          "end": 156.198,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l110",
+      "text": "Urrgghhhhagghhhhh!!!",
+      "start": 156.198,
+      "end": 156.538,
+      "words": [
+        {
+          "text": "Urrgghhhhagghhhhh!!!",
+          "start": 156.198,
+          "end": 156.538,
+          "matched": false
         }
       ]
     }

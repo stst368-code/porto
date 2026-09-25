@@ -1,26 +1,35 @@
 title: know-the-hedge
 version: metal
-model: minimax H3
-dit: fp16
+model: minimax music3
+dit: fp32
 text_encoder: bf16
 encoder_cfg: 1.7
-encoder_seed: 4460874186
-top_k: 50
-sampler: seeds_2
-scheduler: ddim_uniform
-sampler_cfg: 1.6
-sampler_seed: 6465007251
-sampler_steps: 60
+encoder_seed: 717933107829780
+top_k: 70
+sampler: seeds_3
+scheduler: beta
+sampler_cfg: 1.7
+sampler_seed: 980238700860617
+sampler_steps: 40
 inspiration:
 inspirationyt:
 story:
-caption: |
+caption: |-
   Global Metadata
-  Basic Attributes: extreme double-kick drive, roughly 190–225 BPM. Brutal Death Metal / Technical Death Metal. Rebuild the song as a dense, low-tuned assault with precise double-kick drumming, violent syncopation and sharply articulated riff changes. Verses should feel claustrophobic and rhythmically intricate, choruses lock into memorable crushing motifs, and the bridge should slow into a massive but brief half-time section before the final acceleration. Imagine a concrete underground venue with the band almost physically on top of the listener. Production should be modern enough for riff definition but not sterile: huge kick attack, dense guitars, audible bass grind and controlled cymbal detail. Avoid black-metal lo-fi haze, symphonic strings, electronic drops, nu-metal bounce and melodic hard-rock choruses.
+  Basic Attributes: 218–238 BPM. Raw second-wave black metal fused with blackened death metal. Primitive, malignant and frantic, never melodic metalcore, nu-metal, deathcore, arena metal or polished 2000s heavy rock. A relentless ball-pursuit song about charging through obstacles, refusing restraint and attacking the game at full speed. The music should feel physically unstoppable rather than heroic.
+  Global Emotional Progression: Start under attack with amplifier hiss, dissonant tremolo and immediate full-speed drums. Verses remain breathless; choruses become wider and more ritualistic without becoming melodic. Bridges change harmony or register rather than dropping into a breakdown. End at maximum instability with an abrupt cutoff or feedback collapse.
+  Application Scenarios & Imagery: freezing night air, wet stone, scorched timber, candle smoke and a rehearsal room that feels more like a forbidden rite than a concert.
+  Sonics & Production Profile: thin abrasive guitars with hard pick attack, dirty audible bass and natural frantic drums. Blast beats and rapid double-kick dominate. Allow cymbals and room spill to create controlled chaos. No glossy master, giant sub-bass, radio-metal guitars, orchestral layers, synth drops, heroic harmony or clean pop chorus.
   Vocal Details
-  Vocal Gender & Timbre: Singer A (Male), a deep male guttural growl with powerful low-mid resonance and occasional higher bark accents. Vocal Style: Verses use compact guttural phrasing that locks to riff accents. Choruses can stretch into longer roars with a second higher extreme-vocal layer for contrast. Keep clean singing absent. The bridge uses slower, heavier sustained growls, then the final return restores rapid articulation. Apply very short room ambience and compression only; no lush reverb or melodic tuning. Keep the same lead identity across repeated sections so the performance feels continuous rather than recast between verses.
+  Vocal Gender & Timbre: Singer A (Female), piercing black-metal rasp, torn upper-register shrieks and occasional throat-driven lower screams. A secondary low death growl may reinforce isolated words.
+  Vocal Style: no clean singing. Verses use clipped rapid screaming locked to the riff; choruses use sustained cracked shrieks and doubled ritual phrases; bridges stay extreme rather than whispered or melodic. Keep enough diction for the lyric rhythm to remain audible.
+  Harmony/Backing Vocals: sparse doubled shrieks, distant hostile responses and occasional low growl reinforcement only.
+  Vocal FX: short filthy room reverb, restrained saturation and minimal compression.
   Arrangement
-  Section Timeline: [intro] to [verse] to [verse] to [verse] to [verse] to [verse] to [verse] to [verse] to [verse] to [verse] to [outro]. Instrument Lifecycle / Groove / Texture: Down-tuned guitars, distorted bass and double-kick drums enter immediately after any brief intro noise. Verses cycle through palm-muted chromatic riffs, fast tremolo bursts and abrupt metric accents. Pre-choruses tighten around ascending riff sequences. Choruses use a simpler, heavier central riff with wider cymbal crashes. Instrumental sections introduce technical guitar or bass figures but remain riff-first, not shred showcases. The bridge drops to half-time kick, floor toms and dissonant sustained chords, then a snare pickup launches the final high-speed section. End on a coordinated full-band cutoff or one massive low chord. Establish the signature texture immediately and leave clear room for the first vocal entrance. Keep the lead intelligible and let the core groove carry the narrative without unnecessary density. Resolve by subtracting layers or using a decisive cadence that belongs to the established sound world. Keep transitions connected so changes in density, register and instrumentation clearly serve the section change.
+  Section Timeline: intro → verse → verse → verse → verse → verse → verse → verse → verse → verse → outro.
+  Instrument Lifecycle: two thin high-gain guitars, dirty bass and live drums remain the permanent core. One guitar carries malignant tremolo or dissonant chord motion while the second answers with related lines. Song-specific motif: keep a motoric pursuit riff almost constantly moving, changing accents rather than stopping for impact.
+  Groove & Foundation Progression: blasts and rapid double-kick dominate. Verses may alternate blast patterns with violent straight-ahead propulsion; choruses broaden through longer tremolo shapes and cymbal wash while staying fast. A bridge may briefly use stalking dissonant chords, but never half-time breakdown language. Solos should be chaotic, atonal or tremolo-led, not hard-rock showcases.
+  Embellishments, Textures & Spatial FX: feedback, pick scrape, stick count and room bleed are welcome. Every transition must remain attached to the same hostile ensemble so the track never mutates into modern alternative metal.
 lyrics: |
   [intro]
   Shadowhowl productions

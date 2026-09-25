@@ -51,6 +51,9 @@
     browseGenre: "all",
     wheelIndex: 0,
     wheelSpin: 0,
+    conveyorPhase: 0,
+    conveyorLastFrame: 0,
+    conveyorIdleUntil: 0,
     currentTrack: null,
     currentSong: null,
     quality: recall("gbr:quality") || "stream",
@@ -258,24 +261,52 @@
     }
   }
 
-  /* --------------------------------------------------------------- wheel */
+  /* ------------------------------------------------------------ conveyor */
+  const CONVEYOR_VISIBLE = 16;
+  const CONVEYOR_IDLE_SPEED = 0.085; // catalogue positions per second
+  const CONVEYOR_RESUME_DELAY = 2600;
+
+  function ensureConveyorTrack() {
+    if (!el.wheelStage) return null;
+    let svg = el.wheelStage.querySelector('.gbr-conveyor-track');
+    if (svg) return svg.querySelector('path[data-conveyor-path]');
+
+    svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.classList.add('gbr-conveyor-track');
+    svg.setAttribute('viewBox', '0 0 1000 1000');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = `
+      <path class="gbr-conveyor-track-outer" d="M -90 330 L 235 330 C 275 150 435 72 650 78 C 870 84 970 245 970 500 C 970 760 842 915 620 922 C 405 928 275 835 235 670 L -90 670" />
+      <path class="gbr-conveyor-track-bed" d="M -90 330 L 235 330 C 275 150 435 72 650 78 C 870 84 970 245 970 500 C 970 760 842 915 620 922 C 405 928 275 835 235 670 L -90 670" />
+      <path class="gbr-conveyor-track-seams" data-conveyor-path d="M -90 330 L 235 330 C 275 150 435 72 650 78 C 870 84 970 245 970 500 C 970 760 842 915 620 922 C 405 928 275 835 235 670 L -90 670" />`;
+    el.wheelStage.insertBefore(svg, el.wheelSlots);
+    return svg.querySelector('path[data-conveyor-path]');
+  }
+
+  function markConveyorInteraction() {
+    state.conveyorIdleUntil = performance.now() + CONVEYOR_RESUME_DELAY;
+  }
+
   function buildWheel() {
+    ensureConveyorTrack();
     el.wheelSlots.replaceChildren();
     const list = activeTracks();
     list.forEach((track, index) => {
-      const wrap = document.createElement("div");
-      wrap.className = "gbr-slot";
+      const wrap = document.createElement('div');
+      wrap.className = 'gbr-slot';
       wrap.dataset.index = String(index);
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "gbr-slot-card";
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'gbr-slot-card';
       button.dataset.index = String(index);
-      button.innerHTML = `<img alt="" loading="eager" decoding="async"><span class="gbr-reject-label" hidden><b></b><small></small></span><span class="gbr-track-tag"></span>`;
-      button.addEventListener("click", () => activateWheelSlot(index));
+      button.innerHTML = `<img alt="" loading="eager" decoding="async"><span class="gbr-reject-label" hidden><b></b><small></small></span>`;
+      button.addEventListener('click', () => activateWheelSlot(index));
       wrap.appendChild(button);
       el.wheelSlots.appendChild(wrap);
     });
     state.wheelIndex = Math.min(state.wheelIndex, Math.max(0, list.length - 1));
+    state.conveyorPhase = -state.wheelIndex;
     renderWheelContents();
     positionWheel();
   }
@@ -283,39 +314,38 @@
   function renderWheelContents() {
     const list = activeTracks();
     [...el.wheelSlots.children].forEach((wrap, index) => {
-      const button = wrap.querySelector(".gbr-slot-card");
-      const img = button.querySelector("img");
-      const rejectLabel = button.querySelector(".gbr-reject-label");
-      const tag = button.querySelector(".gbr-track-tag");
+      const button = wrap.querySelector('.gbr-slot-card');
+      const img = button.querySelector('img');
+      const rejectLabel = button.querySelector('.gbr-reject-label');
       const track = list[index] || null;
       const ready = !!track;
 
       if (state.easter) {
         img.hidden = true;
         rejectLabel.hidden = false;
-        rejectLabel.querySelector("b").textContent = `REJECT ${String(index+1).padStart(2,"0")}`;
-        rejectLabel.querySelector("small").textContent = track ? (track.displayTitle || track.filename || "FAILED MASTER") : "EMPTY";
-        if (tag) tag.hidden = true;
+        rejectLabel.querySelector('b').textContent = `REJECT ${String(index + 1).padStart(2, '0')}`;
+        rejectLabel.querySelector('small').textContent = track ? (track.displayTitle || track.filename || 'FAILED MASTER') : 'EMPTY';
       } else {
         rejectLabel.hidden = true;
         img.hidden = false;
-        const title = track ? (track.displayTitle || humanise(track.title || track.id)) : "";
-        const genre = track ? (track.genre || track.variantLabel || humanise(track.variantSlot || track.variant)) : "";
-        const src = artworkUrl(track,640,"webp");
-        if (img.getAttribute("src") !== src) img.src = src;
-        img.alt = track ? ((track.artwork && track.artwork.alt) || `Album artwork for ${title}`) : "";
-        img.onerror = () => { const fallback=artworkUrl(null,640,"webp"); if(!img.src.endsWith(fallback))img.src=fallback; };
-        if (tag) { tag.hidden = false; tag.innerHTML = `<strong>${esc(title)}</strong><small>${esc(genre)}</small>`; }
+        const title = track ? (track.displayTitle || humanise(track.title || track.id)) : '';
+        const src = artworkUrl(track, 640, 'webp');
+        if (img.getAttribute('src') !== src) img.src = src;
+        img.alt = track ? ((track.artwork && track.artwork.alt) || `Album artwork for ${title}`) : '';
+        img.onerror = () => {
+          const fallback = artworkUrl(null, 640, 'webp');
+          if (!img.src.endsWith(fallback)) img.src = fallback;
+        };
       }
 
-      button.dataset.ready = ready ? "true" : "false";
+      button.dataset.ready = ready ? 'true' : 'false';
       button.disabled = !ready;
-      button.dataset.atGate = index === state.wheelIndex ? "true" : "false";
-      button.dataset.playing = !!(state.currentTrack && track && state.currentTrack.id === track.id) ? "true" : "false";
-      const title = track ? (track.displayTitle || track.filename || humanise(track.title || track.id)) : "EMPTY";
-      const genre = track && !state.easter ? (track.genre || track.variantLabel || humanise(track.variantSlot || track.variant)) : "";
-      button.setAttribute("aria-label", track ? `${title}${genre ? ` — ${genre}` : ""}` : "Empty");
-      button.title = button.getAttribute("aria-label");
+      button.dataset.atGate = index === state.wheelIndex ? 'true' : 'false';
+      button.dataset.playing = !!(state.currentTrack && track && state.currentTrack.id === track.id) ? 'true' : 'false';
+      const title = track ? (track.displayTitle || track.filename || humanise(track.title || track.id)) : 'EMPTY';
+      const genre = track && !state.easter ? (track.genre || track.variantLabel || humanise(track.variantSlot || track.variant)) : '';
+      button.setAttribute('aria-label', track ? `${title}${genre ? ` — ${genre}` : ''}` : 'Empty');
+      button.title = button.getAttribute('aria-label');
     });
     positionWheel();
   }
@@ -326,126 +356,223 @@
   }
 
   function setWheelIndex(index, immediate = false) {
-    const count = activeCount();
-    const step = 360 / count;
     const next = normaliseWheelIndex(index);
-    if (immediate) {
-      state.wheelIndex = next;
-      state.wheelSpin = -next * step;
-      positionWheel();
-      return;
-    }
-    let delta = next - state.wheelIndex;
-    const half = count / 2;
-    if (delta > half) delta -= count;
-    if (delta < -half) delta += count;
     state.wheelIndex = next;
-    state.wheelSpin -= delta * step;
+    if (immediate) state.conveyorPhase = -next;
+    renderWheelCenter(activeTracks()[next] || state.currentTrack);
     positionWheel();
   }
 
-  function positionWheel() {
-    if (!el.wheelStage || getComputedStyle(el.wheelStage).display === "none") return;
+  function conveyorProgressForIndex(index) {
+    const count = activeCount();
+    if (!count) return null;
+    const phase = ((index + state.conveyorPhase) % count + count) % count;
+    if (phase >= CONVEYOR_VISIBLE) return null;
+    return phase / Math.max(1, CONVEYOR_VISIBLE - 1);
+  }
+
+  function positionConveyor() {
+    const path = ensureConveyorTrack();
+    if (!path) return;
+    const stageWidth = el.wheelStage.clientWidth;
+    const stageHeight = el.wheelStage.clientHeight;
+    if (stageWidth < 100 || stageHeight < 100) return;
+
+    const total = path.getTotalLength();
+    [...el.wheelSlots.children].forEach((wrap, index) => {
+      const progress = conveyorProgressForIndex(index);
+      if (progress === null) {
+        wrap.hidden = true;
+        return;
+      }
+
+      wrap.hidden = false;
+      const point = path.getPointAtLength(progress * total);
+      const x = point.x / 1000 * stageWidth;
+      const y = point.y / 1000 * stageHeight;
+      const edgeDistance = Math.min(progress, 1 - progress);
+      const edgeScale = Math.min(1, 0.72 + edgeDistance * 2.5);
+      const focusBoost = index === state.wheelIndex ? 1.12 : 1;
+      const opacity = Math.min(1, 0.45 + edgeDistance * 4.2);
+
+      wrap.style.left = `${x}px`;
+      wrap.style.top = `${y}px`;
+      wrap.style.transform = 'translate(-50%, -50%)';
+      wrap.style.zIndex = String(10 + Math.round((1 - Math.abs(progress - 0.5)) * 10));
+      wrap.style.opacity = String(opacity);
+
+      const button = wrap.querySelector('.gbr-slot-card');
+      button.style.setProperty('--card-scale', String(edgeScale * focusBoost));
+      button.style.removeProperty('--card-counter');
+      button.dataset.atGate = index === state.wheelIndex ? 'true' : 'false';
+    });
+  }
+
+  function positionLegacyWheel() {
     const count = activeCount();
     const step = 360 / count;
     const rotorWidth = el.wheelSlots.offsetWidth;
     const rotorHeight = el.wheelSlots.offsetHeight;
     if (rotorWidth < 100 || rotorHeight < 100) return;
-    const firstCard = el.wheelSlots.querySelector(".gbr-slot-card");
+    const firstCard = el.wheelSlots.querySelector('.gbr-slot-card');
     const cardWidth = firstCard ? firstCard.offsetWidth : 92;
     const cardHeight = firstCard ? firstCard.offsetHeight : 116;
-    const radius = Math.max(150, Math.min(rotorWidth/2-cardWidth/2-18,rotorHeight/2-cardHeight/2-18));
+    const radius = Math.max(150, Math.min(rotorWidth / 2 - cardWidth / 2 - 18, rotorHeight / 2 - cardHeight / 2 - 18));
 
-    el.wheelSlots.style.setProperty("--wheel-spin",`${state.wheelSpin}deg`);
-    el.wheelDisc.style.setProperty("--wheel-spin",`${state.wheelSpin}deg`);
-    el.wheelSlots.style.setProperty("--slot-radius",`${radius}px`);
+    el.wheelSlots.style.setProperty('--wheel-spin', `${state.wheelSpin}deg`);
+    el.wheelDisc.style.setProperty('--wheel-spin', `${state.wheelSpin}deg`);
+    el.wheelSlots.style.setProperty('--slot-radius', `${radius}px`);
 
-    [...el.wheelSlots.children].forEach((wrap,index)=>{
-      const baseAngle=index*step;
-      const displayAngle=baseAngle+state.wheelSpin;
-      const radians=displayAngle*Math.PI/180;
-      const depth=(Math.cos(radians)+1)/2;
-      wrap.style.setProperty("--slot-angle",`${baseAngle}deg`);
-      wrap.style.zIndex=String(4+Math.round(depth*8));
-      wrap.style.opacity=String(.62+depth*.38);
-      const button=wrap.querySelector(".gbr-slot-card");
-      button.style.setProperty("--card-counter",`${-displayAngle}deg`);
-      button.dataset.atGate=index===state.wheelIndex?"true":"false";
+    [...el.wheelSlots.children].forEach((wrap, index) => {
+      wrap.hidden = false;
+      const baseAngle = index * step;
+      const displayAngle = baseAngle + state.wheelSpin;
+      const radians = displayAngle * Math.PI / 180;
+      const depth = (Math.cos(radians) + 1) / 2;
+      wrap.style.left = '50%';
+      wrap.style.top = '50%';
+      wrap.style.transform = '';
+      wrap.style.setProperty('--slot-angle', `${baseAngle}deg`);
+      wrap.style.zIndex = String(4 + Math.round(depth * 8));
+      wrap.style.opacity = String(.62 + depth * .38);
+      const button = wrap.querySelector('.gbr-slot-card');
+      button.style.setProperty('--card-counter', `${-displayAngle}deg`);
+      button.style.setProperty('--card-scale', '1');
+      button.dataset.atGate = index === state.wheelIndex ? 'true' : 'false';
     });
   }
 
-  function rotateWheel(delta) { setWheelIndex(state.wheelIndex + (delta < 0 ? -1 : 1)); }
+  function positionWheel() {
+    if (!el.wheelStage || getComputedStyle(el.wheelStage).display === 'none') return;
+    if (matchMedia('(min-width: 1181px)').matches && !state.easter) positionConveyor();
+    else positionLegacyWheel();
+  }
+
+  function rotateWheel(delta) {
+    markConveyorInteraction();
+    if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
+      state.conveyorPhase += delta < 0 ? -0.8 : 0.8;
+      positionWheel();
+      return;
+    }
+    setWheelIndex(state.wheelIndex + (delta < 0 ? -1 : 1));
+  }
 
   function syncWheelToTrack(track) {
     if (!track) return;
     const list = activeTracks();
-    const index = list.findIndex((item)=>item.id===track.id);
-    if(index>=0 && index!==state.wheelIndex)setWheelIndex(index);
+    const index = list.findIndex((item) => item.id === track.id);
+    if (index < 0) return;
+    state.wheelIndex = index;
+    if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
+      state.conveyorPhase = -index + Math.floor(CONVEYOR_VISIBLE * .48);
+      positionWheel();
+    } else {
+      const step = 360 / activeCount();
+      state.wheelSpin = -index * step;
+      positionWheel();
+    }
   }
 
   function activateWheelSlot(index) {
-    setWheelIndex(index);
-    const continuePlaying=!!(el.audio&&!el.audio.paused&&!el.audio.ended);
-    const track=activeTracks()[index]||null;
-    if(!track)return;
-    if(state.easter)selectEasterTrack(track,continuePlaying);
-    else selectTrack(track,continuePlaying);
+    markConveyorInteraction();
+    state.wheelIndex = normaliseWheelIndex(index);
+    const continuePlaying = !!(el.audio && !el.audio.paused && !el.audio.ended);
+    const track = activeTracks()[state.wheelIndex] || null;
+    if (!track) return;
+    if (state.easter) selectEasterTrack(track, continuePlaying);
+    else selectTrack(track, continuePlaying);
   }
 
   function renderMobileRail() {
     el.mobileRail.replaceChildren();
-    activeTracks().forEach((track,index)=>{
-      const card=document.createElement("button");
-      card.type="button";
-      card.className="gbr-mobile-card";
-      card.dataset.active=index===state.wheelIndex?"true":"false";
-      if(state.easter){
-        card.classList.add("gbr-mobile-card--reject");
-        card.innerHTML=`<strong>REJECT ${String(index+1).padStart(2,"0")}</strong><small>${esc(track.displayTitle||track.filename||"FAILED MASTER")}</small>`;
-      }else{
-        const title=track.displayTitle||humanise(track.title||track.id);
-        const genre=track.genre||track.variantLabel||humanise(track.variantSlot||track.variant);
-        card.innerHTML=`<img src="${artworkUrl(track,640,"webp")}" alt="${esc(`Album artwork for ${title}`)}" loading="eager" decoding="async"><span><strong>${esc(title)}</strong><small>${esc(genre)}</small></span>`;
+    activeTracks().forEach((track, index) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'gbr-mobile-card';
+      card.dataset.active = index === state.wheelIndex ? 'true' : 'false';
+      if (state.easter) {
+        card.classList.add('gbr-mobile-card--reject');
+        card.innerHTML = `<strong>REJECT ${String(index + 1).padStart(2, '0')}</strong><small>${esc(track.displayTitle || track.filename || 'FAILED MASTER')}</small>`;
+      } else {
+        const title = track.displayTitle || humanise(track.title || track.id);
+        const genre = track.genre || track.variantLabel || humanise(track.variantSlot || track.variant);
+        card.innerHTML = `<img src="${artworkUrl(track, 640, 'webp')}" alt="${esc(`Album artwork for ${title}`)}" loading="eager" decoding="async"><span><strong>${esc(title)}</strong><small>${esc(genre)}</small></span>`;
       }
-      card.setAttribute("aria-label",track.displayTitle||track.filename||track.id);
-      card.addEventListener("click",()=>activateWheelSlot(index));
+      card.setAttribute('aria-label', track.displayTitle || track.filename || track.id);
+      card.addEventListener('click', () => activateWheelSlot(index));
       el.mobileRail.appendChild(card);
     });
   }
 
   function setupWheelInput() {
-    el.wheelStage.addEventListener("wheel", (event) => {
+    el.wheelStage.addEventListener('wheel', (event) => {
       event.preventDefault();
       rotateWheel(event.deltaY > 0 || event.deltaX > 0 ? 1 : -1);
     }, { passive: false });
-    el.wheelStage.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft" || event.key === "ArrowUp") { event.preventDefault(); rotateWheel(-1); }
-      else if (event.key === "ArrowRight" || event.key === "ArrowDown") { event.preventDefault(); rotateWheel(1); }
-      else if (event.key === "Enter" || event.key === " ") { event.preventDefault(); activateWheelSlot(state.wheelIndex); }
+    el.wheelStage.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        rotateWheel(-1);
+      } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        rotateWheel(1);
+      } else if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        activateWheelSlot(state.wheelIndex);
+      }
     });
-    el.wheelStage.addEventListener("pointerdown", (event) => {
-      /* A cassette click is a load command, not the start of a wheel drag. Do
-         not capture its pointer or the browser will retarget the eventual
-         click to the wheel stage. */
-      if (event.target.closest(".gbr-slot-card")) return;
-      state.draggingWheel = { id: event.pointerId, x: event.clientX, index: state.wheelIndex, spin: state.wheelSpin, steps: 0 };
+    el.wheelStage.addEventListener('pointerenter', markConveyorInteraction);
+    el.wheelStage.addEventListener('pointerdown', (event) => {
+      markConveyorInteraction();
+      if (event.target.closest('.gbr-slot-card')) return;
+      state.draggingWheel = {
+        id: event.pointerId,
+        x: event.clientX,
+        phase: state.conveyorPhase,
+        index: state.wheelIndex,
+        spin: state.wheelSpin,
+        steps: 0,
+      };
       try { el.wheelStage.setPointerCapture(event.pointerId); } catch (_) {}
     });
-    el.wheelStage.addEventListener("pointermove", (event) => {
+    el.wheelStage.addEventListener('pointermove', (event) => {
       const drag = state.draggingWheel;
       if (!drag || drag.id !== event.pointerId) return;
+      markConveyorInteraction();
+      if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
+        state.conveyorPhase = drag.phase + (event.clientX - drag.x) / 110;
+        positionWheel();
+        return;
+      }
       const steps = Math.trunc((drag.x - event.clientX) / 70);
       if (steps !== drag.steps) {
         drag.steps = steps;
         state.wheelIndex = normaliseWheelIndex(drag.index + steps);
-        state.wheelSpin = drag.spin - steps * WHEEL_STEP;
+        state.wheelSpin = drag.spin - steps * wheelStep();
         positionWheel();
       }
     });
-    const end = (event) => { if (state.draggingWheel && state.draggingWheel.id === event.pointerId) state.draggingWheel = null; };
-    el.wheelStage.addEventListener("pointerup", end);
-    el.wheelStage.addEventListener("pointercancel", end);
+    const end = (event) => {
+      if (state.draggingWheel && state.draggingWheel.id === event.pointerId) state.draggingWheel = null;
+      markConveyorInteraction();
+    };
+    el.wheelStage.addEventListener('pointerup', end);
+    el.wheelStage.addEventListener('pointercancel', end);
     new ResizeObserver(positionWheel).observe(el.wheelStage);
+  }
+
+  function animateConveyor(now) {
+    if (!matchMedia('(min-width: 1181px)').matches || state.easter || !state.power || state.draggingWheel) {
+      state.conveyorLastFrame = now;
+      return;
+    }
+    if (!state.conveyorLastFrame) state.conveyorLastFrame = now;
+    const elapsed = Math.min(50, now - state.conveyorLastFrame);
+    state.conveyorLastFrame = now;
+    if (now < state.conveyorIdleUntil) return;
+    state.conveyorPhase += elapsed / 1000 * CONVEYOR_IDLE_SPEED;
+    positionConveyor();
   }
 
   /* ---------------------------------------------------------- loaded release */
@@ -1050,7 +1177,14 @@
       ctx.restore();
     });
   }
-  function animate() { drawSpectrum(); drawVu(); updateLyrics(); updateLampPulse(); animationFrame=requestAnimationFrame(animate); }
+  function animate(now) {
+    animateConveyor(now);
+    drawSpectrum();
+    drawVu();
+    updateLyrics();
+    updateLampPulse();
+    animationFrame = requestAnimationFrame(animate);
+  }
 
   /* -------------------------------------------------------------- transport */
   function updateTransport() {
@@ -1145,7 +1279,7 @@
     state.easter = next;
     el.app.dataset.easter = state.easter ? "true" : "false";
     document.documentElement.dataset.easter = state.easter ? "true" : "false";
-    if (el.magazineModeLabel) el.magazineModeLabel.textContent = state.easter ? "SERVICE BANK // REJECT MASTERS" : `${tracks.length} TRACKS · ONE WHEEL · ${genres.length} GENRES`;
+    if (el.magazineModeLabel) el.magazineModeLabel.textContent = state.easter ? "SERVICE BANK // REJECT MASTERS" : `${tracks.length} TRACKS · CONVEYOR CATALOGUE · ${genres.length} GENRES`;
     renderGenreBank();
     state.wheelIndex = 0;
     state.wheelSpin = 0;
@@ -1277,7 +1411,7 @@
     buildVolumeMeter();
     setupFolders();
     wireControls();
-    if(el.magazineModeLabel)el.magazineModeLabel.textContent=`${tracks.length} TRACKS · ONE WHEEL · ${genres.length} GENRES`;
+    if(el.magazineModeLabel)el.magazineModeLabel.textContent=`${tracks.length} TRACKS · CONVEYOR CATALOGUE · ${genres.length} GENRES`;
     el.shuffle.setAttribute("aria-pressed",state.shuffle?"true":"false");
     applyVolume(false);
     paintQuality();
