@@ -261,11 +261,12 @@
     }
   }
 
-  /* ------------------------------------------------------------ conveyor */
+  /* ----------------------------------------------------------- cover wall */
   const CONVEYOR_VISIBLE = 20;
-  const CONVEYOR_IDLE_SPEED = 0.06; // catalogue positions per second
   const CONVEYOR_RESUME_DELAY = 2600;
-  const CONVEYOR_FOCUS_SLOT = 13;
+  const CONVEYOR_FOCUS_SLOT = 12;
+  const COVER_WALL_COLUMNS = 5;
+  const COVER_WALL_ROWS = 4;
 
   function ensureConveyorTrack() {
     if (!el.wheelStage) return null;
@@ -370,42 +371,60 @@
     if (!count) return null;
     const phase = ((index + state.conveyorPhase) % count + count) % count;
     if (phase >= CONVEYOR_VISIBLE) return null;
-    return phase / Math.max(1, CONVEYOR_VISIBLE - 1);
+    return phase;
   }
 
   function positionConveyor() {
-    const path = ensureConveyorTrack();
-    if (!path) return;
     const stageWidth = el.wheelStage.clientWidth;
     const stageHeight = el.wheelStage.clientHeight;
     if (stageWidth < 100 || stageHeight < 100) return;
 
-    const total = path.getTotalLength();
+    const cols = COVER_WALL_COLUMNS;
+    const rows = COVER_WALL_ROWS;
+    const gridLeft = stageWidth * 0.055;
+    const gridTop = stageHeight * 0.07;
+    const gridWidth = stageWidth * 0.88;
+    const gridHeight = stageHeight * 0.84;
+    const cellWidth = gridWidth / cols;
+    const cellHeight = gridHeight / rows;
+    const tileSize = Math.min(cellWidth, cellHeight) * 0.76;
+    const focusCol = CONVEYOR_FOCUS_SLOT % cols;
+    const focusRow = Math.floor(CONVEYOR_FOCUS_SLOT / cols);
+
     [...el.wheelSlots.children].forEach((wrap, index) => {
-      const progress = conveyorProgressForIndex(index);
-      if (progress === null) {
+      const phase = conveyorProgressForIndex(index);
+      if (phase === null) {
         wrap.hidden = true;
         return;
       }
 
-      wrap.hidden = false;
-      const point = path.getPointAtLength(progress * total);
-      const x = point.x / 1000 * stageWidth;
-      const y = point.y / 1000 * stageHeight;
-      const edgeFade = Math.min(progress / 0.11, (1 - progress) / 0.11, 1);
-      const centerWeight = Math.max(0, 1 - Math.abs(progress - 0.56) / 0.56);
-      const edgeScale = 0.82 + centerWeight * 0.16;
-      const focusBoost = index === state.wheelIndex ? 1.08 : 1;
-      const opacity = 0.18 + edgeFade * 0.82;
+      const slotIndex = Math.round(phase);
+      const col = slotIndex % cols;
+      const row = Math.floor(slotIndex / cols);
+      const dx = col - focusCol;
+      const dy = row - focusRow;
+      const dist = Math.hypot(dx, dy) || 0.001;
+      const unitX = dx / dist;
+      const unitY = dy / dist;
+      const primaryPush = Math.max(0, 1.9 - dist) * tileSize * 0.38;
+      const secondaryPush = Math.max(0, 3.05 - dist) * tileSize * 0.07;
+      const push = index === state.wheelIndex ? 0 : primaryPush + secondaryPush;
+      const x = gridLeft + col * cellWidth + cellWidth / 2 + unitX * push;
+      const y = gridTop + row * cellHeight + cellHeight / 2 + unitY * push;
+      const edgeWeight = Math.max(0, 1 - (Math.abs(col - focusCol) + Math.abs(row - focusRow)) / 6);
+      const scale = index === state.wheelIndex ? 1.88 : 1;
+      const opacity = 0.92 + edgeWeight * 0.08;
 
+      wrap.hidden = false;
+      wrap.style.width = `${tileSize}px`;
       wrap.style.left = `${x}px`;
       wrap.style.top = `${y}px`;
       wrap.style.transform = 'translate3d(-50%, -50%, 0)';
-      wrap.style.zIndex = String(10 + Math.round(centerWeight * 12));
+      wrap.style.zIndex = String(index === state.wheelIndex ? 80 : 20 + Math.round(edgeWeight * 20));
       wrap.style.opacity = String(opacity);
 
       const button = wrap.querySelector('.gbr-slot-card');
-      button.style.setProperty('--card-scale', String(edgeScale * focusBoost));
+      button.style.setProperty('--card-scale', String(scale));
       button.style.removeProperty('--card-counter');
       button.dataset.atGate = index === state.wheelIndex ? 'true' : 'false';
     });
@@ -454,8 +473,7 @@
   function rotateWheel(delta) {
     markConveyorInteraction();
     if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
-      state.conveyorPhase += delta < 0 ? -1 : 1;
-      positionWheel();
+      setWheelIndex(state.wheelIndex + (delta < 0 ? -1 : 1), true);
       return;
     }
     setWheelIndex(state.wheelIndex + (delta < 0 ? -1 : 1));
@@ -544,8 +562,11 @@
       if (!drag || drag.id !== event.pointerId) return;
       markConveyorInteraction();
       if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
-        state.conveyorPhase = drag.phase + (event.clientX - drag.x) / 90;
-        positionWheel();
+        const steps = Math.trunc((drag.x - event.clientX) / 70);
+        if (steps !== drag.steps) {
+          drag.steps = steps;
+          setWheelIndex(drag.index + steps, true);
+        }
         return;
       }
       const steps = Math.trunc((drag.x - event.clientX) / 70);
@@ -566,16 +587,7 @@
   }
 
   function animateConveyor(now) {
-    if (!matchMedia('(min-width: 1181px)').matches || state.easter || !state.power || state.draggingWheel) {
-      state.conveyorLastFrame = now;
-      return;
-    }
-    if (!state.conveyorLastFrame) state.conveyorLastFrame = now;
-    const elapsed = Math.min(50, now - state.conveyorLastFrame);
     state.conveyorLastFrame = now;
-    if (now < state.conveyorIdleUntil) return;
-    state.conveyorPhase += elapsed / 1000 * CONVEYOR_IDLE_SPEED;
-    positionConveyor();
   }
 
   /* ---------------------------------------------------------- loaded release */
