@@ -2,9 +2,9 @@
   "format": "gbr-word-lyrics-v1",
   "version": 2,
   "title": "the-endless-game",
-  "song_version": "orchestral",
-  "source_yaml": "the-endless-game/the-endless-game-orchestral/the-endless-game-orchestral.yaml",
-  "source_audio": "the-endless-game-orchestral.flac",
+  "song_version": "industrial-metal",
+  "source_yaml": "the-endless-game/the-endless-game-industrial metal/the-endless-game-industrial-metal.yaml",
+  "source_audio": "the-endless-game-industrial-metal.flac",
   "language": "en",
   "engine": "demucs:htdemucs+whisperx:large-v3",
   "runtime": {
@@ -15,12 +15,12 @@
     "batch_size": 4,
     "cpu_fallback_used": false
   },
-  "generated_at": "2026-09-25T19:33:43+00:00",
+  "generated_at": "2026-09-25T19:43:01+00:00",
   "stats": {
-    "lyric_words": 171,
-    "recognised_words": 168,
-    "matched_words": 165,
-    "coverage": 0.9649
+    "lyric_words": 182,
+    "recognised_words": 181,
+    "matched_words": 178,
+    "coverage": 0.978
   },
   "quality": {
     "rating": "excellent",
@@ -33,41 +33,41 @@
     {
       "id": "l1",
       "text": "Ball!",
-      "start": 3.431,
-      "end": 3.771,
+      "start": 9.418,
+      "end": 9.979,
       "words": [
         {
           "text": "Ball!",
-          "start": 3.431,
-          "end": 3.771,
-          "matched": false
+          "start": 9.418,
+          "end": 9.979,
+          "matched": true
         }
       ]
     },
     {
       "id": "l2",
       "text": "BALL!!",
-      "start": 3.771,
-      "end": 4.111,
+      "start": 14.122,
+      "end": 14.642,
       "words": [
         {
           "text": "BALL!!",
-          "start": 3.771,
-          "end": 4.111,
-          "matched": false
+          "start": 14.122,
+          "end": 14.642,
+          "matched": true
         }
       ]
     },
     {
       "id": "l3",
       "text": "BAAALLLL!!",
-      "start": 4.111,
-      "end": 4.451,
+      "start": 14.642,
+      "end": 24.049,
       "words": [
         {
           "text": "BAAALLLL!!",
-          "start": 4.111,
-          "end": 4.451,
+          "start": 14.642,
+          "end": 24.049,
           "matched": false
         }
       ]
@@ -75,37 +75,37 @@
     {
       "id": "l4",
       "text": "Swallowed by the endless void",
-      "start": 4.451,
-      "end": 7.372,
+      "start": 24.049,
+      "end": 27.032,
       "words": [
         {
           "text": "Swallowed",
-          "start": 4.451,
-          "end": 4.931,
+          "start": 24.049,
+          "end": 24.67,
           "matched": true
         },
         {
           "text": "by",
-          "start": 4.951,
-          "end": 5.131,
+          "start": 24.73,
+          "end": 24.99,
           "matched": true
         },
         {
           "text": "the",
-          "start": 5.171,
-          "end": 5.311,
+          "start": 25.05,
+          "end": 25.23,
           "matched": true
         },
         {
           "text": "endless",
-          "start": 5.531,
-          "end": 6.511,
+          "start": 25.551,
+          "end": 26.311,
           "matched": true
         },
         {
           "text": "void",
-          "start": 6.732,
-          "end": 7.372,
+          "start": 26.451,
+          "end": 27.032,
           "matched": true
         }
       ]
@@ -113,43 +113,43 @@
     {
       "id": "l5",
       "text": "Water and current ball now destroyed",
-      "start": 7.752,
-      "end": 10.852,
+      "start": 28.823,
+      "end": 31.786,
       "words": [
         {
           "text": "Water",
-          "start": 7.752,
-          "end": 8.172,
+          "start": 28.823,
+          "end": 29.383,
           "matched": true
         },
         {
           "text": "and",
-          "start": 8.292,
-          "end": 8.432,
+          "start": 29.484,
+          "end": 29.584,
           "matched": true
         },
         {
           "text": "current",
-          "start": 8.532,
-          "end": 9.052,
+          "start": 29.704,
+          "end": 30.184,
           "matched": true
         },
         {
           "text": "ball",
-          "start": 9.152,
-          "end": 9.512,
+          "start": 30.264,
+          "end": 30.544,
           "matched": true
         },
         {
           "text": "now",
-          "start": 9.572,
-          "end": 9.752,
+          "start": 30.605,
+          "end": 30.845,
           "matched": true
         },
         {
           "text": "destroyed",
-          "start": 9.792,
-          "end": 10.852,
+          "start": 30.905,
+          "end": 31.786,
           "matched": true
         }
       ]
@@ -157,31 +157,31 @@
     {
       "id": "l6",
       "text": "Monoliths of nature rise",
-      "start": 10.973,
-      "end": 13.293,
+      "start": 33.487,
+      "end": 37.57,
       "words": [
         {
           "text": "Monoliths",
-          "start": 10.973,
-          "end": 11.593,
+          "start": 33.487,
+          "end": 34.388,
           "matched": true
         },
         {
           "text": "of",
-          "start": 11.633,
-          "end": 11.713,
+          "start": 34.488,
+          "end": 34.568,
           "matched": true
         },
         {
           "text": "nature",
-          "start": 11.833,
-          "end": 12.413,
+          "start": 34.728,
+          "end": 35.749,
           "matched": true
         },
         {
           "text": "rise",
-          "start": 12.593,
-          "end": 13.293,
+          "start": 35.909,
+          "end": 37.57,
           "matched": true
         }
       ]
@@ -189,87 +189,87 @@
     {
       "id": "l7",
       "text": "Taking out my sphere shaped prize",
-      "start": 13.373,
-      "end": 18.094,
+      "start": 38.191,
+      "end": 41.153,
       "words": [
         {
           "text": "Taking",
-          "start": 13.373,
-          "end": 14.173,
+          "start": 38.191,
+          "end": 38.791,
           "matched": true
         },
         {
           "text": "out",
-          "start": 14.333,
-          "end": 14.473,
+          "start": 38.932,
+          "end": 39.052,
           "matched": true
         },
         {
           "text": "my",
-          "start": 14.573,
-          "end": 14.793,
+          "start": 39.112,
+          "end": 39.252,
           "matched": true
         },
         {
           "text": "sphere",
-          "start": 14.853,
-          "end": 16.154,
+          "start": 39.272,
+          "end": 39.852,
           "matched": true
         },
         {
           "text": "shaped",
-          "start": 16.154,
-          "end": 17.124,
-          "matched": false
+          "start": 39.952,
+          "end": 40.333,
+          "matched": true
         },
         {
           "text": "prize",
-          "start": 17.124,
-          "end": 18.094,
-          "matched": false
+          "start": 40.533,
+          "end": 41.153,
+          "matched": true
         }
       ]
     },
     {
       "id": "l8",
       "text": "Ripped apart, my ball it bleeds",
-      "start": 18.094,
-      "end": 20.855,
+      "start": 42.355,
+      "end": 45.837,
       "words": [
         {
           "text": "Ripped",
-          "start": 18.094,
-          "end": 18.494,
+          "start": 42.355,
+          "end": 42.695,
           "matched": true
         },
         {
           "text": "apart,",
-          "start": 18.614,
-          "end": 19.074,
+          "start": 42.815,
+          "end": 43.415,
           "matched": true
         },
         {
           "text": "my",
-          "start": 19.134,
-          "end": 19.414,
+          "start": 43.536,
+          "end": 44.016,
           "matched": true
         },
         {
           "text": "ball",
-          "start": 19.494,
-          "end": 20.035,
+          "start": 44.136,
+          "end": 44.757,
           "matched": true
         },
         {
           "text": "it",
-          "start": 20.175,
-          "end": 20.275,
+          "start": 44.957,
+          "end": 45.077,
           "matched": true
         },
         {
           "text": "bleeds",
-          "start": 20.375,
-          "end": 20.855,
+          "start": 45.237,
+          "end": 45.837,
           "matched": true
         }
       ]
@@ -277,37 +277,37 @@
     {
       "id": "l9",
       "text": "Feeding on the darkened void",
-      "start": 21.215,
-      "end": 23.835,
+      "start": 47.038,
+      "end": 50.541,
       "words": [
         {
           "text": "Feeding",
-          "start": 21.215,
-          "end": 21.815,
+          "start": 47.038,
+          "end": 47.659,
           "matched": true
         },
         {
           "text": "on",
-          "start": 22.015,
-          "end": 22.155,
+          "start": 47.959,
+          "end": 48.119,
           "matched": true
         },
         {
           "text": "the",
-          "start": 22.235,
-          "end": 22.455,
+          "start": 48.28,
+          "end": 48.68,
           "matched": true
         },
         {
           "text": "darkened",
-          "start": 22.555,
-          "end": 23.235,
+          "start": 48.82,
+          "end": 49.901,
           "matched": true
         },
         {
           "text": "void",
-          "start": 23.335,
-          "end": 23.835,
+          "start": 50.001,
+          "end": 50.541,
           "matched": true
         }
       ]
@@ -315,43 +315,43 @@
     {
       "id": "l10",
       "text": "Crush my crown, erase the name",
-      "start": 24.256,
-      "end": 26.876,
+      "start": 51.664,
+      "end": 55.247,
       "words": [
         {
           "text": "Crush",
-          "start": 24.256,
-          "end": 24.636,
+          "start": 51.664,
+          "end": 51.984,
           "matched": true
         },
         {
           "text": "my",
-          "start": 24.696,
-          "end": 24.836,
+          "start": 52.044,
+          "end": 52.225,
           "matched": true
         },
         {
           "text": "crown,",
-          "start": 24.896,
-          "end": 25.316,
+          "start": 52.285,
+          "end": 52.925,
           "matched": true
         },
         {
           "text": "erase",
-          "start": 25.476,
-          "end": 26.136,
+          "start": 53.145,
+          "end": 54.026,
           "matched": true
         },
         {
           "text": "the",
-          "start": 26.236,
-          "end": 26.396,
+          "start": 54.106,
+          "end": 54.526,
           "matched": true
         },
         {
           "text": "name",
-          "start": 26.436,
-          "end": 26.876,
+          "start": 54.687,
+          "end": 55.247,
           "matched": true
         }
       ]
@@ -359,37 +359,37 @@
     {
       "id": "l11",
       "text": "Consumed inside the eternal game",
-      "start": 27.196,
-      "end": 30.337,
+      "start": 56.148,
+      "end": 59.931,
       "words": [
         {
           "text": "Consumed",
-          "start": 27.196,
-          "end": 27.816,
+          "start": 56.148,
+          "end": 56.748,
           "matched": true
         },
         {
           "text": "inside",
-          "start": 27.936,
-          "end": 28.556,
+          "start": 56.828,
+          "end": 57.549,
           "matched": true
         },
         {
           "text": "the",
-          "start": 28.617,
-          "end": 28.737,
+          "start": 57.649,
+          "end": 57.929,
           "matched": true
         },
         {
           "text": "eternal",
-          "start": 28.817,
-          "end": 29.617,
+          "start": 58.049,
+          "end": 59.23,
           "matched": true
         },
         {
           "text": "game",
-          "start": 29.737,
-          "end": 30.337,
+          "start": 59.391,
+          "end": 59.931,
           "matched": true
         }
       ]
@@ -397,37 +397,37 @@
     {
       "id": "l12",
       "text": "Footballs my mouth cannot abide",
-      "start": 31.641,
-      "end": 34.742,
+      "start": 61.432,
+      "end": 64.695,
       "words": [
         {
           "text": "Footballs",
-          "start": 31.641,
-          "end": 32.541,
+          "start": 61.432,
+          "end": 62.033,
           "matched": true
         },
         {
           "text": "my",
-          "start": 32.641,
-          "end": 32.801,
+          "start": 62.073,
+          "end": 62.273,
           "matched": true
         },
         {
           "text": "mouth",
-          "start": 32.861,
-          "end": 33.122,
+          "start": 62.333,
+          "end": 62.593,
           "matched": true
         },
         {
           "text": "cannot",
-          "start": 33.202,
-          "end": 33.842,
+          "start": 62.633,
+          "end": 63.274,
           "matched": true
         },
         {
           "text": "abide",
-          "start": 34.082,
-          "end": 34.742,
+          "start": 63.714,
+          "end": 64.695,
           "matched": true
         }
       ]
@@ -435,37 +435,37 @@
     {
       "id": "l13",
       "text": "Chained in teeth, trapped inside",
-      "start": 35.082,
-      "end": 37.923,
+      "start": 66.416,
+      "end": 69.319,
       "words": [
         {
           "text": "Chained",
-          "start": 35.082,
-          "end": 35.562,
+          "start": 66.416,
+          "end": 67.057,
           "matched": true
         },
         {
           "text": "in",
-          "start": 35.662,
-          "end": 35.782,
+          "start": 67.257,
+          "end": 67.457,
           "matched": true
         },
         {
           "text": "teeth,",
-          "start": 35.882,
-          "end": 36.263,
+          "start": 67.617,
+          "end": 68.018,
           "matched": true
         },
         {
           "text": "trapped",
-          "start": 36.443,
-          "end": 36.883,
+          "start": 68.158,
+          "end": 68.538,
           "matched": true
         },
         {
           "text": "inside",
-          "start": 37.023,
-          "end": 37.923,
+          "start": 68.598,
+          "end": 69.319,
           "matched": true
         }
       ]
@@ -473,31 +473,31 @@
     {
       "id": "l14",
       "text": "Hear my declaration cry",
-      "start": 38.243,
-      "end": 40.864,
+      "start": 69.339,
+      "end": 75.004,
       "words": [
         {
           "text": "Hear",
-          "start": 38.243,
-          "end": 38.563,
+          "start": 69.339,
+          "end": 69.419,
           "matched": true
         },
         {
           "text": "my",
-          "start": 38.643,
-          "end": 38.923,
+          "start": 71.481,
+          "end": 71.681,
           "matched": true
         },
         {
           "text": "declaration",
-          "start": 39.024,
-          "end": 40.184,
+          "start": 71.761,
+          "end": 73.242,
           "matched": true
         },
         {
           "text": "cry",
-          "start": 40.324,
-          "end": 40.864,
+          "start": 73.462,
+          "end": 75.004,
           "matched": true
         }
       ]
@@ -505,49 +505,49 @@
     {
       "id": "l15",
       "text": "This ball, my mouth, will not comply",
-      "start": 40.944,
-      "end": 46.566,
+      "start": 75.564,
+      "end": 78.607,
       "words": [
         {
           "text": "This",
-          "start": 40.944,
-          "end": 41.184,
+          "start": 75.564,
+          "end": 75.764,
           "matched": true
         },
         {
           "text": "ball,",
-          "start": 41.344,
-          "end": 41.724,
+          "start": 75.884,
+          "end": 76.405,
           "matched": true
         },
         {
           "text": "my",
-          "start": 41.764,
-          "end": 42.045,
+          "start": 76.485,
+          "end": 76.925,
           "matched": true
         },
         {
           "text": "mouth,",
-          "start": 42.125,
-          "end": 42.425,
+          "start": 77.045,
+          "end": 77.326,
           "matched": true
         },
         {
           "text": "will",
-          "start": 42.505,
-          "end": 42.785,
+          "start": 77.346,
+          "end": 77.566,
           "matched": true
         },
         {
           "text": "not",
-          "start": 42.905,
-          "end": 43.205,
+          "start": 77.646,
+          "end": 77.886,
           "matched": true
         },
         {
           "text": "comply",
-          "start": 43.645,
-          "end": 46.566,
+          "start": 77.946,
+          "end": 78.607,
           "matched": true
         }
       ]
@@ -555,31 +555,31 @@
     {
       "id": "l16",
       "text": "Fall. Into. The. Deep.",
-      "start": 47.566,
-      "end": 51.988,
+      "start": 79.963,
+      "end": 82.124,
       "words": [
         {
           "text": "Fall.",
-          "start": 47.566,
-          "end": 49.087,
+          "start": 79.963,
+          "end": 80.603,
           "matched": true
         },
         {
           "text": "Into.",
-          "start": 49.307,
-          "end": 50.187,
+          "start": 80.903,
+          "end": 81.463,
           "matched": true
         },
         {
           "text": "The.",
-          "start": 50.267,
-          "end": 50.547,
+          "start": 81.503,
+          "end": 81.623,
           "matched": true
         },
         {
           "text": "Deep.",
-          "start": 50.667,
-          "end": 51.988,
+          "start": 81.743,
+          "end": 82.124,
           "matched": true
         }
       ]
@@ -587,43 +587,43 @@
     {
       "id": "l17",
       "text": "The cycle ends, the waters sweep.",
-      "start": 52.608,
-      "end": 57.17,
+      "start": 82.644,
+      "end": 85.084,
       "words": [
         {
           "text": "The",
-          "start": 52.608,
-          "end": 52.768,
+          "start": 82.644,
+          "end": 82.744,
           "matched": true
         },
         {
           "text": "cycle",
-          "start": 52.928,
-          "end": 53.628,
+          "start": 82.904,
+          "end": 83.524,
           "matched": true
         },
         {
           "text": "ends,",
-          "start": 54.229,
-          "end": 54.489,
+          "start": 83.624,
+          "end": 83.804,
           "matched": true
         },
         {
           "text": "the",
-          "start": 54.529,
-          "end": 55.209,
+          "start": 83.824,
+          "end": 83.964,
           "matched": true
         },
         {
           "text": "waters",
-          "start": 55.809,
-          "end": 56.669,
+          "start": 84.084,
+          "end": 84.544,
           "matched": true
         },
         {
           "text": "sweep.",
-          "start": 56.749,
-          "end": 57.17,
+          "start": 84.624,
+          "end": 85.084,
           "matched": true
         }
       ]
@@ -631,31 +631,31 @@
     {
       "id": "l18",
       "text": "Fall. From. The. Mouth.",
-      "start": 59.882,
-      "end": 64.004,
+      "start": 85.244,
+      "end": 86.905,
       "words": [
         {
           "text": "Fall.",
-          "start": 59.882,
-          "end": 61.183,
+          "start": 85.244,
+          "end": 85.704,
           "matched": true
         },
         {
           "text": "From.",
-          "start": 61.423,
-          "end": 61.963,
+          "start": 85.844,
+          "end": 86.104,
           "matched": true
         },
         {
           "text": "The.",
-          "start": 62.243,
-          "end": 62.904,
+          "start": 86.184,
+          "end": 86.285,
           "matched": true
         },
         {
           "text": "Mouth.",
-          "start": 63.024,
-          "end": 64.004,
+          "start": 86.465,
+          "end": 86.905,
           "matched": true
         }
       ]
@@ -663,43 +663,43 @@
     {
       "id": "l19",
       "text": "The water, my ball does keep.",
-      "start": 64.164,
-      "end": 69.547,
+      "start": 87.365,
+      "end": 89.765,
       "words": [
         {
           "text": "The",
-          "start": 64.164,
-          "end": 64.525,
+          "start": 87.365,
+          "end": 87.485,
           "matched": true
         },
         {
           "text": "water,",
-          "start": 64.545,
-          "end": 65.445,
+          "start": 87.625,
+          "end": 88.125,
           "matched": true
         },
         {
           "text": "my",
-          "start": 65.705,
-          "end": 66.025,
+          "start": 88.225,
+          "end": 88.665,
           "matched": true
         },
         {
           "text": "ball",
-          "start": 66.126,
-          "end": 66.946,
+          "start": 88.785,
+          "end": 89.065,
           "matched": true
         },
         {
           "text": "does",
-          "start": 67.606,
-          "end": 68.787,
+          "start": 89.085,
+          "end": 89.305,
           "matched": true
         },
         {
           "text": "keep.",
-          "start": 69.127,
-          "end": 69.547,
+          "start": 89.365,
+          "end": 89.765,
           "matched": true
         }
       ]
@@ -707,43 +707,43 @@
     {
       "id": "l20",
       "text": "Ripped apart, my ball it bleeds",
-      "start": 72.289,
-      "end": 74.95,
+      "start": 91.766,
+      "end": 95.227,
       "words": [
         {
           "text": "Ripped",
-          "start": 72.289,
-          "end": 72.649,
+          "start": 91.766,
+          "end": 92.086,
           "matched": true
         },
         {
           "text": "apart,",
-          "start": 72.789,
-          "end": 73.23,
+          "start": 92.186,
+          "end": 92.806,
           "matched": true
         },
         {
           "text": "my",
-          "start": 73.29,
-          "end": 73.59,
+          "start": 92.946,
+          "end": 93.366,
           "matched": true
         },
         {
           "text": "ball",
-          "start": 73.67,
-          "end": 74.19,
+          "start": 93.526,
+          "end": 94.166,
           "matched": true
         },
         {
           "text": "it",
-          "start": 74.33,
-          "end": 74.43,
+          "start": 94.366,
+          "end": 94.486,
           "matched": true
         },
         {
           "text": "bleeds",
-          "start": 74.55,
-          "end": 74.95,
+          "start": 94.646,
+          "end": 95.227,
           "matched": true
         }
       ]
@@ -751,37 +751,37 @@
     {
       "id": "l21",
       "text": "Feeding on the darkened void",
-      "start": 75.391,
-      "end": 78.032,
+      "start": 96.427,
+      "end": 99.968,
       "words": [
         {
           "text": "Feeding",
-          "start": 75.391,
-          "end": 76.011,
+          "start": 96.427,
+          "end": 97.047,
           "matched": true
         },
         {
           "text": "on",
-          "start": 76.171,
-          "end": 76.311,
+          "start": 97.347,
+          "end": 97.507,
           "matched": true
         },
         {
           "text": "the",
-          "start": 76.411,
-          "end": 76.651,
+          "start": 97.667,
+          "end": 98.027,
           "matched": true
         },
         {
           "text": "darkened",
-          "start": 76.752,
-          "end": 77.412,
+          "start": 98.227,
+          "end": 99.268,
           "matched": true
         },
         {
           "text": "void",
-          "start": 77.512,
-          "end": 78.032,
+          "start": 99.388,
+          "end": 99.968,
           "matched": true
         }
       ]
@@ -789,43 +789,43 @@
     {
       "id": "l22",
       "text": "Crush my crown, erase the name",
-      "start": 78.432,
-      "end": 81.074,
+      "start": 101.088,
+      "end": 104.609,
       "words": [
         {
           "text": "Crush",
-          "start": 78.432,
-          "end": 78.793,
+          "start": 101.088,
+          "end": 101.428,
           "matched": true
         },
         {
           "text": "my",
-          "start": 78.873,
-          "end": 79.033,
+          "start": 101.488,
+          "end": 101.648,
           "matched": true
         },
         {
           "text": "crown,",
-          "start": 79.093,
-          "end": 79.633,
+          "start": 101.728,
+          "end": 102.288,
           "matched": true
         },
         {
           "text": "erase",
-          "start": 79.753,
-          "end": 80.334,
+          "start": 102.608,
+          "end": 103.429,
           "matched": true
         },
         {
           "text": "the",
-          "start": 80.434,
-          "end": 80.594,
+          "start": 103.509,
+          "end": 103.869,
           "matched": true
         },
         {
           "text": "name",
-          "start": 80.654,
-          "end": 81.074,
+          "start": 104.089,
+          "end": 104.609,
           "matched": true
         }
       ]
@@ -833,37 +833,37 @@
     {
       "id": "l23",
       "text": "Consumed inside the eternal game",
-      "start": 81.354,
-      "end": 84.456,
+      "start": 105.569,
+      "end": 109.23,
       "words": [
         {
           "text": "Consumed",
-          "start": 81.354,
-          "end": 81.954,
+          "start": 105.569,
+          "end": 106.169,
           "matched": true
         },
         {
           "text": "inside",
-          "start": 82.115,
-          "end": 82.695,
+          "start": 106.249,
+          "end": 106.969,
           "matched": true
         },
         {
           "text": "the",
-          "start": 82.775,
-          "end": 82.915,
+          "start": 107.069,
+          "end": 107.389,
           "matched": true
         },
         {
           "text": "eternal",
-          "start": 82.975,
-          "end": 83.655,
+          "start": 107.409,
+          "end": 108.65,
           "matched": true
         },
         {
           "text": "game",
-          "start": 83.715,
-          "end": 84.456,
+          "start": 108.79,
+          "end": 109.23,
           "matched": true
         }
       ]
@@ -871,19 +871,19 @@
     {
       "id": "l24",
       "text": "Afraid? Afraid?",
-      "start": 84.556,
-      "end": 86.157,
+      "start": 110.933,
+      "end": 112.754,
       "words": [
         {
           "text": "Afraid?",
-          "start": 84.556,
-          "end": 85.276,
+          "start": 110.933,
+          "end": 111.593,
           "matched": true
         },
         {
           "text": "Afraid?",
-          "start": 85.396,
-          "end": 86.157,
+          "start": 112.114,
+          "end": 112.754,
           "matched": true
         }
       ]
@@ -891,13 +891,13 @@
     {
       "id": "l25",
       "text": "A...FRAID",
-      "start": 86.597,
-      "end": 88.318,
+      "start": 113.294,
+      "end": 113.935,
       "words": [
         {
           "text": "A...FRAID",
-          "start": 86.597,
-          "end": 88.318,
+          "start": 113.294,
+          "end": 113.935,
           "matched": true
         }
       ]
@@ -905,25 +905,25 @@
     {
       "id": "l26",
       "text": "What heavy monster!?",
-      "start": 90.558,
-      "end": 92.001,
+      "start": 115.215,
+      "end": 116.356,
       "words": [
         {
           "text": "What",
-          "start": 90.558,
-          "end": 90.759,
+          "start": 115.215,
+          "end": 115.455,
           "matched": true
         },
         {
           "text": "heavy",
-          "start": 90.819,
-          "end": 91.139,
+          "start": 115.495,
+          "end": 115.735,
           "matched": true
         },
         {
           "text": "monster!?",
-          "start": 91.219,
-          "end": 92.001,
+          "start": 115.795,
+          "end": 116.356,
           "matched": true
         }
       ]
@@ -931,25 +931,25 @@
     {
       "id": "l27",
       "text": "Lost my ball!?",
-      "start": 92.422,
-      "end": 93.785,
+      "start": 117.596,
+      "end": 118.657,
       "words": [
         {
           "text": "Lost",
-          "start": 92.422,
-          "end": 92.803,
+          "start": 117.596,
+          "end": 117.897,
           "matched": true
         },
         {
           "text": "my",
-          "start": 92.863,
-          "end": 93.163,
+          "start": 117.957,
+          "end": 118.137,
           "matched": true
         },
         {
           "text": "ball!?",
-          "start": 93.243,
-          "end": 93.785,
+          "start": 118.217,
+          "end": 118.657,
           "matched": true
         }
       ]
@@ -957,31 +957,31 @@
     {
       "id": "l28",
       "text": "You think it's me?",
-      "start": 94.165,
-      "end": 95.328,
+      "start": 119.698,
+      "end": 120.858,
       "words": [
         {
           "text": "You",
-          "start": 94.165,
-          "end": 94.366,
+          "start": 119.698,
+          "end": 119.878,
           "matched": true
         },
         {
           "text": "think",
-          "start": 94.426,
-          "end": 94.666,
+          "start": 119.958,
+          "end": 120.258,
           "matched": true
         },
         {
           "text": "it's",
-          "start": 94.746,
-          "end": 94.907,
+          "start": 120.338,
+          "end": 120.478,
           "matched": true
         },
         {
           "text": "me?",
-          "start": 94.987,
-          "end": 95.328,
+          "start": 120.578,
+          "end": 120.858,
           "matched": true
         }
       ]
@@ -989,31 +989,31 @@
     {
       "id": "l29",
       "text": "I cannot accept that!",
-      "start": 96.029,
-      "end": 97.372,
+      "start": 121.538,
+      "end": 123.479,
       "words": [
         {
           "text": "I",
-          "start": 96.029,
-          "end": 96.089,
+          "start": 121.538,
+          "end": 121.598,
           "matched": true
         },
         {
           "text": "cannot",
-          "start": 96.189,
-          "end": 96.57,
+          "start": 121.739,
+          "end": 122.339,
           "matched": true
         },
         {
           "text": "accept",
-          "start": 96.63,
-          "end": 97.051,
+          "start": 122.439,
+          "end": 122.939,
           "matched": true
         },
         {
           "text": "that!",
-          "start": 97.131,
-          "end": 97.372,
+          "start": 123.219,
+          "end": 123.479,
           "matched": true
         }
       ]
@@ -1021,25 +1021,25 @@
     {
       "id": "l30",
       "text": "That chunky monster",
-      "start": 98.112,
-      "end": 99.992,
+      "start": 124.38,
+      "end": 125.761,
       "words": [
         {
           "text": "That",
-          "start": 98.112,
-          "end": 98.292,
+          "start": 124.38,
+          "end": 124.56,
           "matched": true
         },
         {
           "text": "chunky",
-          "start": 98.452,
-          "end": 99.012,
+          "start": 124.66,
+          "end": 125.14,
           "matched": true
         },
         {
           "text": "monster",
-          "start": 99.072,
-          "end": 99.992,
+          "start": 125.24,
+          "end": 125.761,
           "matched": true
         }
       ]
@@ -1047,19 +1047,19 @@
     {
       "id": "l31",
       "text": "BE AFRAID!",
-      "start": 100.172,
-      "end": 101.273,
+      "start": 126.481,
+      "end": 128.222,
       "words": [
         {
           "text": "BE",
-          "start": 100.172,
-          "end": 100.492,
+          "start": 126.481,
+          "end": 127.041,
           "matched": true
         },
         {
           "text": "AFRAID!",
-          "start": 100.593,
-          "end": 101.273,
+          "start": 127.341,
+          "end": 128.222,
           "matched": true
         }
       ]
@@ -1067,37 +1067,37 @@
     {
       "id": "l32",
       "text": "Now I've brought my metal",
-      "start": 101.733,
-      "end": 103.653,
+      "start": 129.362,
+      "end": 130.903,
       "words": [
         {
           "text": "Now",
-          "start": 101.733,
-          "end": 101.953,
+          "start": 129.362,
+          "end": 129.663,
           "matched": true
         },
         {
           "text": "I've",
-          "start": 102.073,
-          "end": 102.253,
+          "start": 129.723,
+          "end": 129.903,
           "matched": true
         },
         {
           "text": "brought",
-          "start": 102.293,
-          "end": 102.613,
+          "start": 129.943,
+          "end": 130.223,
           "matched": true
         },
         {
           "text": "my",
-          "start": 102.713,
-          "end": 103.173,
+          "start": 130.283,
+          "end": 130.483,
           "matched": true
         },
         {
           "text": "metal",
-          "start": 103.253,
-          "end": 103.653,
+          "start": 130.563,
+          "end": 130.903,
           "matched": true
         }
       ]
@@ -1105,81 +1105,81 @@
     {
       "id": "l33",
       "text": "And the monster is slayed",
-      "start": 103.733,
-      "end": 108.714,
+      "start": 131.864,
+      "end": 133.905,
       "words": [
         {
           "text": "And",
-          "start": 103.733,
-          "end": 103.833,
+          "start": 131.864,
+          "end": 132.024,
           "matched": true
         },
         {
           "text": "the",
-          "start": 103.873,
-          "end": 103.953,
+          "start": 132.084,
+          "end": 132.204,
           "matched": true
         },
         {
           "text": "monster",
-          "start": 104.033,
-          "end": 105.173,
+          "start": 132.364,
+          "end": 133.104,
           "matched": true
         },
         {
           "text": "is",
-          "start": 105.333,
-          "end": 105.453,
+          "start": 133.284,
+          "end": 133.365,
           "matched": true
         },
         {
           "text": "slayed",
-          "start": 105.453,
-          "end": 108.714,
-          "matched": false
+          "start": 133.425,
+          "end": 133.905,
+          "matched": true
         }
       ]
     },
     {
       "id": "l34",
       "text": "Ripped apart, my ball it bleeds",
-      "start": 108.714,
-      "end": 111.395,
+      "start": 134.085,
+      "end": 137.547,
       "words": [
         {
           "text": "Ripped",
-          "start": 108.714,
-          "end": 109.214,
+          "start": 134.085,
+          "end": 134.465,
           "matched": true
         },
         {
           "text": "apart,",
-          "start": 109.234,
-          "end": 109.594,
+          "start": 134.565,
+          "end": 135.185,
           "matched": true
         },
         {
           "text": "my",
-          "start": 109.654,
-          "end": 109.974,
+          "start": 135.306,
+          "end": 135.786,
           "matched": true
         },
         {
           "text": "ball",
-          "start": 110.034,
-          "end": 110.575,
+          "start": 135.886,
+          "end": 136.526,
           "matched": true
         },
         {
           "text": "it",
-          "start": 110.695,
-          "end": 110.815,
+          "start": 136.726,
+          "end": 136.846,
           "matched": true
         },
         {
           "text": "bleeds",
-          "start": 110.915,
-          "end": 111.395,
+          "start": 137.026,
+          "end": 137.547,
           "matched": true
         }
       ]
@@ -1187,37 +1187,37 @@
     {
       "id": "l35",
       "text": "Feeding on the darkened void",
-      "start": 111.755,
-      "end": 114.395,
+      "start": 138.793,
+      "end": 142.295,
       "words": [
         {
           "text": "Feeding",
-          "start": 111.755,
-          "end": 112.375,
+          "start": 138.793,
+          "end": 139.393,
           "matched": true
         },
         {
           "text": "on",
-          "start": 112.535,
-          "end": 112.715,
+          "start": 139.714,
+          "end": 139.854,
           "matched": true
         },
         {
           "text": "the",
-          "start": 112.755,
-          "end": 113.075,
+          "start": 140.034,
+          "end": 140.354,
           "matched": true
         },
         {
           "text": "darkened",
-          "start": 113.115,
-          "end": 113.795,
+          "start": 140.594,
+          "end": 141.615,
           "matched": true
         },
         {
           "text": "void",
-          "start": 113.895,
-          "end": 114.395,
+          "start": 141.735,
+          "end": 142.295,
           "matched": true
         }
       ]
@@ -1225,43 +1225,43 @@
     {
       "id": "l36",
       "text": "Crush my crown, erase the name",
-      "start": 114.835,
-      "end": 117.416,
+      "start": 143.436,
+      "end": 146.978,
       "words": [
         {
           "text": "Crush",
-          "start": 114.835,
-          "end": 115.175,
+          "start": 143.436,
+          "end": 143.776,
           "matched": true
         },
         {
           "text": "my",
-          "start": 115.276,
-          "end": 115.396,
+          "start": 143.836,
+          "end": 143.996,
           "matched": true
         },
         {
           "text": "crown,",
-          "start": 115.456,
-          "end": 116.036,
+          "start": 144.076,
+          "end": 144.637,
           "matched": true
         },
         {
           "text": "erase",
-          "start": 116.116,
-          "end": 116.696,
+          "start": 144.937,
+          "end": 145.817,
           "matched": true
         },
         {
           "text": "the",
-          "start": 116.796,
-          "end": 116.976,
+          "start": 145.877,
+          "end": 146.238,
           "matched": true
         },
         {
           "text": "name",
-          "start": 117.016,
-          "end": 117.416,
+          "start": 146.458,
+          "end": 146.978,
           "matched": true
         }
       ]
@@ -1269,109 +1269,191 @@
     {
       "id": "l37",
       "text": "Consumed inside the eternal game",
-      "start": 117.756,
-      "end": 120.697,
+      "start": 147.919,
+      "end": 151.661,
       "words": [
         {
           "text": "Consumed",
-          "start": 117.756,
-          "end": 118.356,
+          "start": 147.919,
+          "end": 148.499,
           "matched": true
         },
         {
           "text": "inside",
-          "start": 118.476,
-          "end": 119.076,
+          "start": 148.599,
+          "end": 149.299,
           "matched": true
         },
         {
           "text": "the",
-          "start": 119.156,
-          "end": 119.356,
+          "start": 149.399,
+          "end": 149.72,
           "matched": true
         },
         {
           "text": "eternal",
-          "start": 119.416,
-          "end": 119.976,
+          "start": 149.8,
+          "end": 151.0,
           "matched": true
         },
         {
           "text": "game",
-          "start": 120.076,
-          "end": 120.697,
+          "start": 151.16,
+          "end": 151.661,
           "matched": true
         }
       ]
     },
     {
       "id": "l38",
-      "text": "Erase the name!",
-      "start": 120.717,
-      "end": 123.997,
+      "text": "Feeding on the darkened void",
+      "start": 156.103,
+      "end": 157.664,
       "words": [
         {
-          "text": "Erase",
-          "start": 120.717,
-          "end": 121.697,
+          "text": "Feeding",
+          "start": 156.103,
+          "end": 156.504,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 156.544,
+          "end": 156.604,
           "matched": true
         },
         {
           "text": "the",
-          "start": 121.857,
-          "end": 122.517,
+          "start": 156.644,
+          "end": 156.724,
           "matched": true
         },
         {
-          "text": "name!",
-          "start": 122.637,
-          "end": 123.997,
+          "text": "darkened",
+          "start": 156.784,
+          "end": 157.264,
+          "matched": true
+        },
+        {
+          "text": "void",
+          "start": 157.324,
+          "end": 157.664,
           "matched": true
         }
       ]
     },
     {
       "id": "l39",
-      "text": "Consumed by!",
-      "start": 124.157,
-      "end": 127.078,
+      "text": "Crush my crown, erase the name",
+      "start": 162.287,
+      "end": 168.267,
       "words": [
         {
-          "text": "Consumed",
-          "start": 124.157,
-          "end": 125.658,
+          "text": "Crush",
+          "start": 162.287,
+          "end": 162.607,
           "matched": true
         },
         {
-          "text": "by!",
-          "start": 125.758,
-          "end": 127.078,
+          "text": "my",
+          "start": 162.667,
+          "end": 162.827,
           "matched": true
+        },
+        {
+          "text": "crown,",
+          "start": 162.908,
+          "end": 163.328,
+          "matched": true
+        },
+        {
+          "text": "erase",
+          "start": 163.328,
+          "end": 164.974,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 164.974,
+          "end": 166.621,
+          "matched": false
+        },
+        {
+          "text": "name",
+          "start": 166.621,
+          "end": 168.267,
+          "matched": false
         }
       ]
     },
     {
       "id": "l40",
+      "text": "Erase the name!",
+      "start": 168.267,
+      "end": 170.45,
+      "words": [
+        {
+          "text": "Erase",
+          "start": 168.267,
+          "end": 169.329,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 169.409,
+          "end": 169.769,
+          "matched": true
+        },
+        {
+          "text": "name!",
+          "start": 169.969,
+          "end": 170.45,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l41",
+      "text": "Consumed by!",
+      "start": 170.57,
+      "end": 172.332,
+      "words": [
+        {
+          "text": "Consumed",
+          "start": 170.57,
+          "end": 171.271,
+          "matched": true
+        },
+        {
+          "text": "by!",
+          "start": 171.351,
+          "end": 172.332,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l42",
       "text": "the endless game",
-      "start": 128.453,
-      "end": 131.078,
+      "start": 180.902,
+      "end": 182.144,
       "words": [
         {
           "text": "the",
-          "start": 128.453,
-          "end": 128.653,
+          "start": 180.902,
+          "end": 181.123,
           "matched": true
         },
         {
           "text": "endless",
-          "start": 128.954,
-          "end": 130.076,
+          "start": 181.263,
+          "end": 181.683,
           "matched": true
         },
         {
           "text": "game",
-          "start": 130.317,
-          "end": 131.078,
+          "start": 181.743,
+          "end": 182.144,
           "matched": true
         }
       ]
