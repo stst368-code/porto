@@ -1,54 +1,57 @@
-# Porto multi-site GitHub Pages
+# Markdown-driven portfolio
 
-This package changes deployment from GBR occupying `/porto/` to sibling routes:
+Place this entire folder at `porto/cv/`.
 
-```text
-/porto/cv/
-/porto/good-boy-records/
-/porto/blabla/
+## Edit content
+Edit the Markdown files in `content/`.
+
+Images can be embedded directly:
+
+```md
+![Diagram](images/my-diagram.png)
 ```
 
-Merge these into the existing repository:
+Put the image at:
 
 ```text
-porto/
-├── .github/
-│   ├── scripts/
-│   │   └── stage_portfolio.py
-│   └── workflows/
-│       └── portfolio-pages.yml
-├── cv/
-│   ├── index.html
-│   ├── styles.css
-│   ├── app.js
-│   ├── CV_SimonTaylor.pdf
-│   └── certs/
-├── gbr/
-└── good-boy-records/
+content/images/my-diagram.png
 ```
 
-The existing GBR build still creates:
+## Add a new page
+Create a `.md` file and add it to `content/manifest.json`.
 
-```text
-good-boy-records/_site/
+```json
+{
+  "file": "11-new-project.md",
+  "x": 1200,
+  "y": 2600,
+  "w": 650,
+  "rotate": -0.6,
+  "z": 70
+}
 ```
 
-The new staging script creates the actual GitHub Pages artifact:
+Width is configured; page height is automatic from the Markdown content.
 
-```text
-_pages/
-├── cv/
-└── good-boy-records/
-```
+## Desktop
+- Drag empty spreadsheet: pan camera
+- Wheel: zoom around cursor
+- Drag any page/certificate/GBR object: reposition it
+- RESET VIEW: camera only
+- RESET LAYOUT: objects only
+- LinkedIn stays fixed to the viewport
 
-Any other root-level folder containing `index.html` is also copied automatically,
-so `blabla/index.html` becomes `/porto/blabla/`.
+## Mobile
+At 900px or below, the 3D canvas is replaced by a conventional single-column layout using the same Markdown content. This is intentional: the content remains readable and touch-friendly rather than forcing desktop pan/zoom interactions onto mobile.
 
-The CV package has already been rewritten for its new location:
-- `CV_SimonTaylor.pdf`
-- `certs/...`
-- `../good-boy-records/`
-- `../good-boy-records/#how-it-works`
+## Certificates
+Expected:
+- `certs/CSCP.pdf`
+- `certs/IBMDA.pdf`
+- `certs/GoogleDA.pdf`
+- `certs/CMILT.pdf`
 
-Important: disable/remove the old Pages deployment workflow after installing
-`portfolio-pages.yml`, otherwise both workflows may attempt to deploy Pages.
+`CMILT.pdf` is optional until added.
+
+## Existing examples
+The supplied Markdown files are pre-segmented from the current CV and are intended as editable starting points.
