@@ -1,58 +1,52 @@
 title: smooth-pawterator
-version: orchestral
+version: romantic-ballad
 model:
 dit: fp32
 text_encoder: bf16
-encoder_cfg: 1.7
-encoder_seed: 426890926754062
-top_k: 90
-sampler: seeds_2
-scheduler: ddim_uniform
+encoder_cfg: 1.6
+encoder_seed: 218865241816248
+top_k: 45
+sampler: euler
+scheduler: simple
 sampler_cfg: 1.7
-sampler_seed: 866043213089008
-sampler_steps: 40
+sampler_seed: 516033202748232
+sampler_steps: 37
 inspiration:
 inspirationyt:
 story:
-caption: |
+caption: |-
   Global Metadata
   Basic Attributes: Late-Romantic Symphony / Operatic Ballad, roughly 68–84 BPM, broad lyrical pacing, rich chromatic harmony and long dramatic arcs rather than beat-driven repetition. Global Emotional Progression: Rebuild the supplied song completely inside this style while preserving its narrative identity: a relaxed portrait of two goldens, one regal and cool, the other affectionate and chaotic, held together by domestic warmth. Let repeated sections evolve through arrangement, register and intensity. Application Scenarios & Imagery: late-evening lamplight, polished wood and two golden retrievers occupying the room as if they commissioned the furniture. Sonics & Production Profile: Full acoustic symphony: strings, woodwinds, horns, trumpets, trombones, timpani, harp and piano where useful. Preserve wide natural dynamics and a deep concert-hall image. No drum kit, synths, trailer percussion, electric guitar or pop compression.
   Vocal Details
   Vocal Gender & Timbre: Singer A (Female), a sultry breathy mezzo-soprano with intimate close-miked delivery and effortless phrasing. Vocal Style: Use lyrical classical phrasing with careful diction and flexible rubato. Verses remain intimate and speech-aware; climactic sections expand into sustained operatic projection without becoming a modern pop belt. Harmony/Backing Vocals: Use subtle classical ensemble or choir support only at major peaks; avoid constant block harmony that flattens the dramatic arc. Role Continuity: Keep the female lead understated and continuous; harmonies should support warmth rather than create a giant chorus unless the target genre explicitly calls for it. Vocal FX: Natural hall acoustics only, with the singer placed clearly in front of the orchestra.
   Arrangement
-  Section Timeline: [intro] → [verse] → [chorus] → [verse] → [chorus] → [bridge] → [outro]. Instrument Lifecycle: Strings carry long harmonic motion from the opening. Woodwinds provide intimate counter-lines; horns and low brass enter as emotion grows; timpani is reserved for true structural peaks. Section Directives: [intro]: Begin with a fragile orchestral motif, exposed strings or woodwind and generous space before the voice. [verse]: Support the vocal with restrained strings and solo wind responses, allowing rubato and lyric clarity. [chorus]: Open into broad full-orchestra harmony and sustained vocal projection, using brass and timpani selectively. [bridge]: Suspend time with thinner orchestration, exposed harmony and a darker chromatic turn. [outro]: Return to the opening intimacy and let the final harmonic resolution ring naturally in the hall. Groove & Foundation Progression: All transitions must remain native to the stated genre. Preserve recognisable motifs across repeated sections while changing density, register, voicing or articulation. Keep the target genre dominant throughout.
-lyrics: |
-  [intro]
+  Section Timeline: [intro] to  [verse] to  [chorus] to  [verse] to  [bridge] to  [outro]. Instrument Lifecycle: Strings carry long harmonic motion from the opening. Woodwinds provide intimate counter-lines; horns and low brass enter as emotion grows; timpani is reserved for true structural peaks. Section Directives: [intro]: Begin with a fragile orchestral motif, exposed strings or woodwind and generous space before the voice. [verse]: Support the vocal with restrained strings and solo wind responses, allowing rubato and lyric clarity. [chorus]: Open into broad full-orchestra harmony and sustained vocal projection, using brass and timpani selectively. [bridge]: Suspend time with thinner orchestration, exposed harmony and a darker chromatic turn. [outro]: Return to the opening intimacy and let the final harmonic resolution ring naturally in the hall. Groove & Foundation Progression: All transitions must remain native to the stated genre. Preserve recognisable motifs across repeated sections while changing density, register, voicing or articulation. Keep the target genre dominant throughout.
+lyrics: |-
+  [Intro]
   (Woof, soft)
   Mmm... two goldens...
-  [verse]
+  [Verse 1]
   She moves through the room like she's made out of silk
   Cool as the morning, calm as the milk
   She won't chase a thing,
   what she wants, It comes to her
   A golden-eyed lady, with that regal glow
-  [chorus]
+  [Chorus]
   She's a smooth paw-ter-arator, running your home
   Cool little princess on her velvet throne
   And her chunk's all heart, all sunshine and sway
   Two goldens, one home, at the end of the day
   (mmm)
-  [verse]
+  [Verse 2]
   He's a big gentle giant with a mouth soft and wide
   Loves every stranger, takes them all in his stride
   But Teddy, sweet Teddy, he just cannot abide
   And nobody knows what he's feeling inside
-  [chorus]
-  She's a smooth paw-ter-arator, running your home
-  Cool little princess on her velvet throne
-  And her chunk's all heart, all sunshine and sway
-  Two goldens, one home, at the end of the day
-  (mmm)
-  [bridge]
+  [Bridge]
   Two sides of a golden, one cool and one warm
   She's the calm in the quiet, he's the joy in the storm
   (soft) Doja... Bam Bam...
-  [outro]
+  [Outro]
   Two goldens, one home, and they've got it all
   (whispered) Go on... fetch the ball...
   (Woof)
