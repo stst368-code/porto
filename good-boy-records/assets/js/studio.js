@@ -380,24 +380,44 @@
     return phase;
   }
 
+  function bestWallGrid(count, stageWidth, stageHeight) {
+    let best = { cols: Math.max(1, count), rows: 1, tile: 0, empty: 0 };
+    const minCols = Math.max(1, Math.floor(Math.sqrt(count * stageWidth / Math.max(1, stageHeight)) * 0.6));
+    const maxCols = Math.max(minCols, Math.ceil(Math.sqrt(count * stageWidth / Math.max(1, stageHeight)) * 1.8));
+    for (let cols = minCols; cols <= Math.min(count, maxCols + 8); cols += 1) {
+      const rows = Math.ceil(count / cols);
+      const tile = Math.min(stageWidth / cols, stageHeight / rows);
+      const empty = cols * rows - count;
+      if (tile > best.tile + 0.001 || (Math.abs(tile - best.tile) < 0.001 && empty < best.empty)) {
+        best = { cols, rows, tile, empty };
+      }
+    }
+    return best;
+  }
+
   function positionConveyor() {
     const stageWidth = el.wheelStage.clientWidth;
     const stageHeight = el.wheelStage.clientHeight;
     if (stageWidth < 100 || stageHeight < 100) return;
 
-    // The wall is deliberately over-filled. Tiles are square, edge-to-edge,
-    // and the outer row/column may crop slightly so the panel reads as one
-    // continuous sleeve wall rather than a grid floating inside a frame.
-    const cols = Math.max(6, Math.ceil(stageWidth / COVER_WALL_TARGET_TILE));
-    const tileSize = stageWidth / cols;
-    const rows = Math.max(4, Math.ceil(stageHeight / tileSize));
-    const visibleSlots = Math.min(activeCount(), cols * rows);
+    const count = activeCount();
+    const grid = bestWallGrid(count, stageWidth, stageHeight);
+    const cols = grid.cols;
+    const rows = grid.rows;
+    const tileSize = grid.tile * 1.03;
+    const visibleSlots = count;
+    const wallWidth = cols * tileSize;
     const wallHeight = rows * tileSize;
+    const xOffset = (stageWidth - wallWidth) / 2;
     const yOffset = (stageHeight - wallHeight) / 2;
 
     state.wallColumns = cols;
     state.wallRows = rows;
     state.wallVisibleSlots = visibleSlots;
+
+    const selectedSlot = conveyorProgressForIndex(state.wheelIndex);
+    const selectedCol = selectedSlot === null ? -99 : selectedSlot % cols;
+    const selectedRow = selectedSlot === null ? -99 : Math.floor(selectedSlot / cols);
 
     [...el.wheelSlots.children].forEach((wrap, index) => {
       const slotIndex = conveyorProgressForIndex(index);
@@ -406,27 +426,26 @@
         return;
       }
 
-      const col = slotIndex % cols;
       const row = Math.floor(slotIndex / cols);
-      const selectedSlot = conveyorProgressForIndex(state.wheelIndex);
-      const selectedCol = selectedSlot === null ? -99 : selectedSlot % cols;
-      const selectedRow = selectedSlot === null ? -99 : Math.floor(selectedSlot / cols);
+      const colInRow = slotIndex - row * cols;
+      const itemsInRow = Math.min(cols, Math.max(0, count - row * cols));
+      const rowWidth = itemsInRow * tileSize;
+      const rowXOffset = xOffset + (wallWidth - rowWidth) / 2;
+      const col = colInRow;
       const dx = col - selectedCol;
       const dy = row - selectedRow;
       const dist = Math.hypot(dx, dy);
 
-      // Ripple: the selected sleeve grows while its nearest neighbours move
-      // out of the way. The displacement fades over roughly three tile rings.
       let pushX = 0;
       let pushY = 0;
-      if (index !== state.wheelIndex && selectedSlot !== null && dist > 0 && dist < 3.25) {
-        const strength = Math.pow((3.25 - dist) / 2.25, 1.45);
-        const push = tileSize * 0.46 * strength;
+      if (index !== state.wheelIndex && selectedSlot !== null && dist > 0 && dist < 3.1) {
+        const strength = Math.pow((3.1 - dist) / 2.1, 1.35);
+        const push = tileSize * 0.40 * strength;
         pushX = (dx / dist) * push;
         pushY = (dy / dist) * push;
       }
 
-      const x = col * tileSize + tileSize / 2 + pushX;
+      const x = rowXOffset + colInRow * tileSize + tileSize / 2 + pushX;
       const y = yOffset + row * tileSize + tileSize / 2 + pushY;
       const selected = index === state.wheelIndex;
 
@@ -439,7 +458,7 @@
       wrap.style.opacity = '1';
 
       const button = wrap.querySelector('.gbr-slot-card');
-      button.style.setProperty('--card-scale', selected ? '1.72' : '1');
+      button.style.setProperty('--card-scale', selected ? '1.68' : '1');
       button.style.removeProperty('--card-counter');
       button.dataset.atGate = selected ? 'true' : 'false';
     });
