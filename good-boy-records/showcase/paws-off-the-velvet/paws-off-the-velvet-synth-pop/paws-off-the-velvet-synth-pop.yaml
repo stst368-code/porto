@@ -1,40 +1,33 @@
 title: paws-off-the-velvet
-version: metal
+version: synth-pop
 model: minimax H3
-dit: fp32
-text_encoder: bf16
+dit: fp16
+text_encoder: pruned_int8_convrot
 encoder_cfg: 1.7
-encoder_seed: 884934951141983
-top_k: 70
-sampler: seeds_3
-scheduler: beta
-sampler_cfg: 1.7
-sampler_seed: 454491444439736
-sampler_steps: 40
+encoder_seed: 0
+top_k: 50
+sampler: euler
+scheduler: simple
+sampler_cfg: 1.6
+sampler_seed: 0
+sampler_steps: 30
 inspiration:
 inspirationyt:
 story:
-caption: |-
-  Global Metadata
-  Basic Attributes: Melodic Death Metal / Extreme Heavy Metal, roughly 170–190 BPM, fast and aggressive but built around clearly shaped twin-guitar melody rather than breakdown-heavy metalcore. Global Emotional Progression: Recast a witty character duet led by regal, possessive Doja and repeatedly disrupted by enthusiastic Bam Bam and his complete lack of spatial awareness as a coherent extreme-metal performance with one recognisable riff identity running through the song. Begin decisively, keep the verses rhythmically aggressive, and let pre-choruses increase tension through denser riffing and drum pressure rather than slowing down. Choruses should recur as brutal, memorable motifs rather than pop hooks. Use bridges for colder harmony, counter-riffs or rhythmic mutation, not a genre-breaking soft section or metalcore breakdown. The final return should be the densest and most ferocious statement of the established material. Application Scenarios & Imagery: a velvet chair, a sunlit room and a princess trying to maintain standards while a large golden retriever arrives sideways with a tennis ball. Sonics & Production Profile: Tight live drums with sustained double-kick drive, distorted but articulate rhythm guitars, audible bass grind and bright harmonised lead-guitar lines. Production should be modern enough for detail without becoming sterile. Avoid pop-rock choruses, electronic drops and half-time breakdown dependence.
-  Vocal Details
-  Vocal Gender & Timbre: Keep the established character roles but translate them into distinct melodic-death-metal voices: female roles use a fierce mid/high rasp, male roles use deep growls and rough barked projection, and ensemble responses use harsh unison shouts. No clean singing.
-  Vocal Style: Verses use rhythmically precise harsh phrasing locked tightly to the riff; choruses lengthen into sustained growls or rasps while the guitars carry the melodic identity. Increase intensity with layering and register changes, not clean-sung choruses, half-time breakdowns or metalcore phrasing.
-  Harmony/Backing Vocals: Use occasional low group shouts or a second harsh layer at peaks; no glossy clean choir unless the supplied character roles require contrast. Role Continuity: Preserve the female/male character split indicated by the supplied role tags. Do not collapse the duet into one generic lead. Vocal FX: Compact room, saturation and firm compression; keep consonants and attack clear.
-  Arrangement
-  Section Timeline: [intro] → [verse] → [pre-chorus] → [chorus] → [verse] → [verse] → [chorus] → [instrumental] → [bridge] → [instrumental] → [chorus] → [outro]. Instrument Lifecycle: Twin guitars establish a recurring harmonised motif over bass and double-kick drums. Verses alternate tight rhythm figures with melodic runs; choruses simplify the chord foundation so lead harmonies can become memorable. Section Directives: [intro]: Open with the central harmonised guitar motif and immediate drum urgency. [verse]: Drive with tightly articulated riffing and sustained double-kick, leaving small gaps around vocal attacks. [pre-chorus]: Climb harmonically and increase cymbal density without slowing down. [chorus]: Broaden into a memorable twin-guitar line over a simpler crushing rhythm foundation. [instrumental]: Let harmonised guitars carry the narrative over relentless drums. [bridge]: Change riff contour and harmonic colour but keep momentum; avoid a lazy half-time breakdown. [outro]: Accelerate or intensify the main motif and end with a decisive final hit. Groove & Foundation Progression:
+caption: |
+  Genre and sonic identity: sophisticated soul funk, disco-funk, and extended funk vamp. Emotional arc: 1970s psychedelic funk and witty theatrical performance. Rhythmic character: playful stop-start arrangement and seductive groove should define the pocket and motion. Production profile: favour psychedelic phaser effects, warm analog tape saturation, vintage studio production, and rich live instrumentation, with the mix and spatial character appropriate to the stated era. Vocal Details: Base the lead and supporting vocal treatment on charismatic female soul vocals, silky confident lead vocal, playful spoken character vocals, male and female call-and-response, and stacked soul backing harmonies. Treat lyric control tags such as Female, Male, Backing Vocals, Bam Bam, and Doja as explicit performer or delivery changes; recurring named or gendered voices should remain recognisably stable. Keep lead, backing, choir, spoken, and character roles clearly separated, and use vocal effects only where they serve the stated style. Arrangement: Follow the lyric-section timeline Intro → Verse 1 → Pre-Chorus → Chorus → Verse 2 → Verse 2B → Chorus → Instrumental → Bridge → Instrumental → Chorus → Outro. Section directives: Intro: wah-wah guitar, clavinet, deep syncopated bass; Intro: Female Spoken Vocal; Intro: Pitched Male Voice; Intro: Groove Drops; Verse 1: silky female soul vocal; Pre-Chorus: strings and horns enter; Chorus: lush female harmonies, brass hits; Verse 2: bass-led funk groove; Verse 2: Bam Bam - enthusiastic male spoken vocal; Verse 2: Horn Break; Verse 2B: male/female call and response; Verse 2B: Music Stops; Verse 2B: Full Band Hit; Instrumental: wah guitar and clavinet trading solos; Bridge: psychedelic breakdown, phaser, dreamy strings; Bridge: Doja - soft; Instrumental: Bass Break; Final Chorus: full horns, strings, stacked soul vocals; Outro: vamp bass, clavinet, wah guitar. Instrument lifecycle: deep syncopated electric bass, funky wah-wah guitar, clavinet groove, Rhodes electric piano, tight acoustic drums, hand percussion, punchy brass section, and sweeping orchestral strings should enter, recede, and return as one evolving arrangement rather than remain as a static stack. Shape transitions through changes in density, register, articulation, percussion, and ambience so the energy curve remains clearly audible. Explicit exclusions: avoid modern disco house, EDM, synthwave, 1980s synth-funk, trap drums, 808 bass, rock distortion, digital production, aggressive modern compression.
 lyrics: |
-  [intro]
-  [female]
+  [Intro]
+  [Female]
   Mm.
   You can sit there.
   Not there.
   That's my spot.
-  [male]
+  [Male]
   Doja...
-  [female]
+  [Female]
   Paws off.
-  [verse]
+  [Verse 1]
   Golden in the doorway
   Sunlight on my hair
   Everybody looking
@@ -47,19 +40,19 @@ lyrics: |
   Maybe to the right
   Keep it going, human
   You might earn your place tonight
-  [backing vocals]
+  [Backing Vocals]
   Paws off!
   Unless she says so!
-  [female]
+  [Female]
   That's right.
-  [pre-chorus]
+  [Pre-Chorus]
   I got four paws
   One crown
   Whole house
   Locked down
   If you're wondering who owns it
   Baby, look around
-  [chorus]
+  [Chorus]
   Paws off the velvet
   That's the princess's chair
   Paws off the velvet
@@ -68,11 +61,11 @@ lyrics: |
   I might want to be alone
   Either way the simple fact is
   Everything I see I own
-  [backing vocals]
+  [Backing Vocals]
   Everything!
-  [female]
+  [Female]
   Everything.
-  [verse]
+  [Verse 2]
   Then I hear a rumble
   Coming down the hall
   Here comes Mister Bam Bam
@@ -82,53 +75,53 @@ lyrics: |
   Absolutely no grace
   Hit the corner sideways
   Nearly rearranged my place
-  [bam bam]
+  [Bam Bam]
   Doja!
-  [doja]
+  [Doja]
   No.
-  [bam bam]
+  [Bam Bam]
   Ball?
-  [doja]
+  [Doja]
   No.
-  [bam bam]
+  [Bam Bam]
   Mama?
-  [doja]
+  [Doja]
   Maybe.
-  [bam bam]
+  [Bam Bam]
   BALL?
-  [doja]
+  [Doja]
   Good lord.
-  [verse]
-  [bam bam]
+  [Verse 2B]
+  [Bam Bam]
   I got love for everybody!
-  [doja]
+  [Doja]
   We know.
-  [bam bam]
+  [Bam Bam]
   I got places I can go!
-  [doja]
+  [Doja]
   Then go.
-  [bam bam]
+  [Bam Bam]
   Throw it to the garden
   I'll retrieve it through the snow!
-  [doja]
+  [Doja]
   Just don't bring Teddy.
-  [bam bam]
+  [Bam Bam]
   Fluff Teddy.
-  [chorus]
+  [Chorus]
   Paws off the velvet
   That's the princess's chair
   Paws off the velvet
   There's enough Bam Bam everywhere
   One of us has standards
   One's a hurricane of gold
-  [backing vocals]
+  [Backing Vocals]
   Which is which?
-  [doja]
+  [Doja]
   If you have to ask
   You're not as clever as I'm told
-  [instrumental]
-  [bridge]
-  [doja]
+  [Instrumental]
+  [Bridge]
+  [Doja]
   Sometimes when the lights go down
   And everybody's sleeping
   I hear him dreaming by the door
@@ -137,12 +130,12 @@ lyrics: |
   And maybe he's obscene
   But every proper princess
   Needs a slobber-covered team
-  [backing vocals]
+  [Backing Vocals]
   Awwww...
-  [doja]
+  [Doja]
   Don't make this weird.
-  [instrumental]
-  [chorus]
+  [Instrumental]
+  [Chorus]
   Paws off the velvet
   Let the golden people through
   Paws off the velvet
@@ -151,24 +144,83 @@ lyrics: |
   Bam Bam's got the ball
   I've got every single chair
   So who's really got it all?
-  [backing vocals]
+  [Backing Vocals]
   DOJA!
-  [doja]
+  [Doja]
   Correct.
-  [outro]
+  [Outro]
   Paws off
   Paws off
   P-p-p-paws off
-  [bam bam]
+  [Bam Bam]
   Ball!
   Paws off
   Paws off
   Keep your paws off
-  [bam bam]
+  [Bam Bam]
   Ball!
-  [doja]
+  [Doja]
   Somebody throw it before he explodes.
-  [backing vocals]
+  [Backing Vocals]
   Paws off!
-  [doja]
+  [Doja]
   Woof.
+generation:
+  source_file: PAWS-OFF-THE-VELVET_V2_P0_00001.flac
+  source_sha256: 97045a4fdce0032a0061a92546de37413224dcab8d52b5270d9d1c7f95cc5f3d
+  source_file_mtime_utc: '2026-08-24T18:43:06Z'
+  source_filename_version_label: 2
+  actual_audio_duration_seconds: 245.318821
+  max_duration_seconds: 293.0
+  model_file: minimax_music3_dit_fp16.safetensors
+  model_weight_dtype: default
+  vae_file: minimax_music3_dav.safetensors
+  clip_model: minimax_music3_text_encoder_pruned_int8_convrot.safetensors
+  clip_type: minimax
+  clip_device: default
+  batch_size: 1
+  seeds:
+    text_encoder_seed: 0
+    sampler_seed: 0
+  prompt_variant:
+    index: 0
+    cycler_node_id: 20:1016
+    cycler_seed: 198
+    cycle_mode: sequential
+    variant_count: 1
+  text_conditioning:
+    cfg_scale: 1.7
+    top_k: 50
+  sampler:
+    steps: 30
+    cfg: 1.7
+    name: euler
+    scheduler: simple
+    denoise: 1.0
+  audio_encoding:
+    format: flac
+    duration: 245.318821
+    container_bit_rate: 975484
+    encoder: Lavf62.12.102
+    codec: flac
+    codec_long_name: FLAC (Free Lossless Audio Codec)
+    sample_rate_hz: 44100
+    channels: 2
+    channel_layout: stereo
+    bits_per_sample: 16
+    stream_bit_rate: null
+    stream_encoder: null
+  comfyui:
+    workflow_id: d0315e3e-da4d-4a0b-b9fa-009950f02c41
+    workflow_revision: 0
+    workflow_version: 0.4
+    frontend_version: 1.49.6
+    workflow_renderer_version: null
+  selected_graph_branch:
+    text_encoder_node_id: 20:1030
+    sampler_node_id: 20:1033
+    latent_node_id: 20:1032
+    prompt_cycler_node_id: 20:1016
+    save_node_id: 20:1041
+  caption_source: embedded_prompt_cycler_P0
+  lyrics_source: embedded_literal
