@@ -25,6 +25,7 @@ def normalize(value: Any) -> str:
 def load_taxonomy(path: Path):
     rows = []
     by_key = {}
+    by_parent = {}
     with path.open("r", encoding="utf-8-sig", newline="") as f:
         for idx, row in enumerate(csv.DictReader(f)):
             item = {
@@ -37,10 +38,13 @@ def load_taxonomy(path: Path):
                 "normalised_child": normalize(row.get("normalised_child") or row.get("child_genre")),
             }
             rows.append(item)
-            for candidate in (item["normalised_child"], normalize(item["child_genre"]), normalize(item["parent_genre"])):
+            for candidate in (item["normalised_child"], normalize(item["child_genre"])):
                 if candidate and candidate not in by_key:
                     by_key[candidate] = item
-    return rows, by_key
+            parent_key = normalize(item["parent_genre"])
+            if parent_key and parent_key not in by_parent:
+                by_parent[parent_key] = item
+    return rows, by_key, by_parent
 
 
 def candidate_labels(track: dict):
@@ -59,11 +63,21 @@ def candidate_labels(track: dict):
     return vals
 
 
-def find_taxonomy(track: dict, by_key: dict):
+def find_taxonomy(track: dict, by_key: dict, by_parent: dict):
     for label in candidate_labels(track):
         key = normalize(label)
         if key in by_key:
             return by_key[key]
+    # If the release only names a parent genre (e.g. "metal"), preserve that
+    # parent explicitly instead of arbitrarily assigning its first child genre.
+    for label in candidate_labels(track):
+        key = normalize(label)
+        if key in by_parent:
+            base = dict(by_parent[key])
+            base["child_genre"] = str(label).strip()
+            base["child_colour"] = base["parent_colour"]
+            base["normalised_child"] = key
+            return base
     # Conservative partial match only for long labels, to avoid bad matches.
     for label in candidate_labels(track):
         key = normalize(label)
@@ -169,7 +183,7 @@ def main():
     if not tracks:
         raise SystemExit(f"No tracks found in {source_path}")
 
-    tax_rows, by_key = load_taxonomy(taxonomy_path)
+    tax_rows, by_key, by_parent = load_taxonomy(taxonomy_path)
     max_order = max((x["order"] for x in tax_rows), default=1)
     parent_first = {}
     parent_last = {}
@@ -192,7 +206,7 @@ def main():
     unmatched = []
     for index, track in enumerate(tracks):
         item = dict(track)
-        match = find_taxonomy(item, by_key)
+        match = find_taxonomy(item, by_key, by_parent)
         variant = item.get("variant") or item.get("version") or item.get("genre") or "Unknown"
         if match:
             genre = {
