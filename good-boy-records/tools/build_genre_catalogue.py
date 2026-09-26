@@ -95,13 +95,25 @@ def audio_url(track: dict):
 
 def artwork_url(track: dict):
     art = track.get("artwork")
-    if isinstance(art, str): return art
+    if isinstance(art, str):
+        return art
     if isinstance(art, dict):
         for key in ("url", "src", "webp", "png", "jpg"):
-            if art.get(key): return art[key]
+            if art.get(key):
+                return art[key]
+        # Native GBR catalogue shape: artwork.base -> generated sleeve derivatives.
+        base = art.get("base")
+        if base:
+            return f"assets/img/sleeves/{base}-1280.webp"
     for key in ("artworkUrl", "artwork_url", "cover", "image"):
-        if track.get(key): return track[key]
-    return None
+        if track.get(key):
+            return track[key]
+    # Last-resort fallback follows the normal sleeve naming convention.
+    ident = track.get("id") or track.get("filename") or track.get("title")
+    if ident:
+        stem = re.sub(r"\.[^.]+$", "", str(ident))
+        return f"assets/img/sleeves/{stem}-1280.webp"
+    return "assets/img/sleeves/gbr-placeholder-1280.webp"
 
 
 def main():
@@ -118,6 +130,15 @@ def main():
 
     tax_rows, by_key = load_taxonomy(taxonomy_path)
     max_order = max((x["order"] for x in tax_rows), default=1)
+    parent_first = {}
+    cluster_first = {}
+    for row in tax_rows:
+        parent_first.setdefault(row["parent_genre"], row["order"])
+        cluster_first.setdefault(row["cluster"], row["order"])
+    ordered_parents = {name: i for i, (name, _) in enumerate(sorted(parent_first.items(), key=lambda kv: kv[1]))}
+    ordered_clusters = {name: i for i, (name, _) in enumerate(sorted(cluster_first.items(), key=lambda kv: kv[1]))}
+    parent_den = max(1, len(ordered_parents) - 1)
+    cluster_den = max(1, len(ordered_clusters) - 1)
 
     compositions = {}
     for t in tracks:
@@ -139,6 +160,10 @@ def main():
                 "child_colour": match["child_colour"],
                 "position": (match["order"] - 1) / max(1, max_order - 1),
                 "taxonomy_order": match["order"],
+                "parent_order": ordered_parents.get(match["parent_genre"], 0),
+                "parent_position": ordered_parents.get(match["parent_genre"], 0) / parent_den,
+                "cluster_order": ordered_clusters.get(match["cluster"], 0),
+                "cluster_position": ordered_clusters.get(match["cluster"], 0) / cluster_den,
                 "matched": True,
             }
         else:
@@ -151,6 +176,10 @@ def main():
                 "child_colour": "#8b98a8",
                 "position": 0.5,
                 "taxonomy_order": max_order + index + 1,
+                "parent_order": len(ordered_parents),
+                "parent_position": 1.0,
+                "cluster_order": len(ordered_clusters),
+                "cluster_position": 1.0,
                 "matched": False,
             }
         item["genre"] = genre
