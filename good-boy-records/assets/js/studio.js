@@ -463,6 +463,12 @@
       button.style.setProperty('--card-scale', '1');
       button.style.removeProperty('--card-counter');
       button.dataset.atGate = selected ? 'true' : 'false';
+
+      if (selected && el.wheelCenter) {
+        el.wheelCenter.style.left = `${x}px`;
+        el.wheelCenter.style.top = `${y}px`;
+        el.wheelCenter.style.setProperty('--selected-tile-size', `${tileSize}px`);
+      }
     });
   }
 
