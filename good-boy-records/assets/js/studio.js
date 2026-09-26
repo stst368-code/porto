@@ -428,21 +428,6 @@
       cursor += rowCounts[row];
     }
 
-    const selectedSlot = conveyorProgressForIndex(state.wheelIndex);
-    let selectedRow = -99;
-    let selectedCol = -99;
-    if (selectedSlot !== null) {
-      for (let row = 0; row < rows; row += 1) {
-        const start = offsets[row];
-        const end = start + rowCounts[row];
-        if (selectedSlot >= start && selectedSlot < end) {
-          selectedRow = row;
-          selectedCol = selectedSlot - start;
-          break;
-        }
-      }
-    }
-
     [...el.wheelSlots.children].forEach((wrap, index) => {
       const slotIndex = conveyorProgressForIndex(index);
       if (slotIndex === null || slotIndex >= visibleSlots) {
@@ -456,42 +441,31 @@
         if (slotIndex < start + rowCounts[row]) break;
       }
       const rowStart = offsets[row];
-      const col = slotIndex - rowStart;
+      const colInSequence = slotIndex - rowStart;
       const itemsInRow = rowCounts[row];
+      const visualCol = row % 2 === 1 ? (itemsInRow - 1 - colInSequence) : colInSequence;
       const rowWidth = itemsInRow * tileSize;
       const rowXOffset = (stageWidth - rowWidth) / 2;
 
-      const dx = col - selectedCol;
-      const dy = row - selectedRow;
-      const dist = Math.hypot(dx, dy);
-
-      let pushX = 0;
-      let pushY = 0;
-      if (index !== state.wheelIndex && selectedSlot !== null && dist > 0 && dist < 3.0) {
-        const strength = Math.pow((3.0 - dist) / 2.0, 1.32);
-        const push = tileSize * 0.34 * strength;
-        pushX = (dx / dist) * push;
-        pushY = (dy / dist) * push;
-      }
-
-      const x = rowXOffset + col * tileSize + tileSize / 2 + pushX;
-      const y = row * tileSize + tileSize / 2 + pushY;
+      const x = rowXOffset + visualCol * tileSize + tileSize / 2;
+      const y = row * tileSize + tileSize / 2;
       const selected = index === state.wheelIndex;
 
       wrap.hidden = false;
-      wrap.style.width = `${tileSize + 0.4}px`;
+      wrap.style.width = `${tileSize + 0.35}px`;
       wrap.style.left = `${x}px`;
       wrap.style.top = `${y}px`;
       wrap.style.transform = 'translate3d(-50%, -50%, 0)';
-      wrap.style.zIndex = String(selected ? 100 : 20 + Math.max(0, Math.round(12 - dist * 3)));
+      wrap.style.zIndex = String(selected ? 30 : 10);
       wrap.style.opacity = '1';
 
       const button = wrap.querySelector('.gbr-slot-card');
-      button.style.setProperty('--card-scale', selected ? '1.62' : '1');
+      button.style.setProperty('--card-scale', '1');
       button.style.removeProperty('--card-counter');
       button.dataset.atGate = selected ? 'true' : 'false';
     });
   }
+
   function positionLegacyWheel() {
     const count = activeCount();
     const step = 360 / count;
@@ -548,9 +522,7 @@
     if (index < 0) return;
     state.wheelIndex = index;
     if (matchMedia('(min-width: 1181px)').matches && !state.easter) {
-      if (conveyorProgressForIndex(index) === null) {
-        state.conveyorPhase = -index + Math.floor(Math.max(1, state.wallVisibleSlots) / 2);
-      }
+      state.conveyorPhase = 0;
       positionWheel();
     } else {
       const step = 360 / activeCount();
