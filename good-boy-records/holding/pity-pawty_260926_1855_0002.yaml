@@ -1,0 +1,105 @@
+title: pity-pawty
+version: bluegrass
+model: minimax H3
+inspiration: Melanie Martinez - Pity Party
+inspirationyt: ''
+story: ''
+caption: |
+  Global Metadata
+  Basic Attributes: bpm is 128. key is Bb, and scale is major. Country / Bluegrass.
+  Global Emotional Progression: The piece opens with an energetic, driving instrumental introduction that immediately establishes a lively and rustic atmosphere.
+  Application Scenarios & Imagery: A bustling barn dance, a road trip through rolling countryside landscapes, or a lively gathering around a campfire under a starry sky.
+  Sonics & Production Profile: The soundstage is wide and well-defined, allowing each acoustic instrument distinct placement within the stereo field. The frequency response is bright and crisp, highlighting the attack of the plucked strings and the clarity of the bowed instruments, while the low end remains tight and supportive.
+
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Female), a clear mezzo-soprano with a sarcastic conversational edge, controlled vulnerability and a stronger chest-led chorus tone.
+  Vocal Style: The performance is rooted in traditional country storytelling, featuring a relaxed yet rhythmic delivery in the verses that shifts to a more open, anthemic projection during the choruses. The phrasing is precise, emphasizing the narrative flow without excessive ornamentation.
+  Harmony/Backing Vocals: Tight, three-part male harmony layers enter prominently during the choruses, providing a rich, full-bodied texture that supports the lead vocal.
+  Vocal FX: The vocals are treated with a modest amount of plate reverb to add spatial depth without obscuring clarity, and a subtle compression ensures consistent presence throughout the dynamic shifts of the arrangement.
+
+  Arrangement
+  Instrument Lifecycle (Primary/Secondary): Primary: A bright, percussive banjo playing rapid, rolling arpeggios serves as the primary melodic and rhythmic driver, present from the Intro through to the Outro. An acoustic guitar provides the core harmonic strumming pattern, anchoring the rhythm section continuously. Secondary: A fiddle (bowed string) weaves melodic counter-lines and fills, entering prominently in the intro, interludes, and soaring over the choruses.
+  Groove & Foundation Progression: The rhythm is propelled by a live acoustic drum kit featuring a crisp snare backbeat and a steady kick drum pattern that locks tightly with the upright bass.
+  Embellishments, Textures & Spatial FX: Occasional fiddle slides and banjo rolls act as transitional embellishments between sections.
+  Section Continuity: Follow the lyric macro structure in order ([verse] → [pre-chorus] → [chorus] → [solo] → [verse] → [pre-chorus] → [chorus] → [bridge] → [instrumental] → [chorus] → [outro]). Keep the target genre active in every sung section; use changes in density, register, articulation and groove for contrast rather than switching to a different style.
+lyrics: |
+  [verse]
+  Oh...
+  Did my invitations disappear...?
+  Why'd I put my paws on every cursive letter?
+  Tell me why the hell no human's here
+  Tell me what to do to make them all scratch better
+  [pre-chorus]
+  Maybe it's a cruel joke on me
+  Whatever, whatever
+  Just means there's less chunk annoying me
+  Forever, forever
+  [chorus]
+  It's my Paw tea, and I'll bark if I want to
+  Bark if I want to (bark, bark, bark)
+  I'll bark until the chunk's kicked out of my place
+  I'll bark until my pity Paw tea's in flames
+  It's my Paw tea, and I'll bark if I want to
+  bark if I want to (bark, bark, bark)
+  I'll bark until the chunk's kicked out of my place
+  I'll bark until my pity Paw tea's in flames
+  [solo]
+  [verse]
+  Maybe if I grumble like a bell
+  I wouldn't have been trapped inside this fluffing-hell
+  Maybe if I barked out a grumbling spell
+  That chunk would be put back in his ball-less cell
+  [pre-chorus]
+  Maybe it's a cruel joke on me
+  Whatever, whatever
+  Just means there's way more treats for me
+  Forever, forever
+  [chorus]
+  It's my Paw tea, and I'll bark if I want to
+  bark if I want to (bark, bark, bark)
+  I'll bark until the chunk's kicked out of my place
+  I'll bark until my pity PAW tea's in flames
+  It's my Paw tea, and I'll bark if I want to
+  bark if I want to (bark, bark, bark)
+  I'll bark until the chunk's kicked out of my place
+  I'll bark until my pity PAW tea's in flames
+  [bridge]
+  I'm laughin', I'm barkin'
+  It feels like I'm dyin'
+  I'm laughin', I'm barkin'
+  It feels like I'm dyin'
+  I'm laughin', I'm barkin'
+  It feels like I'm dyin'
+  I'm dyin', I'm dyin'
+  [instrumental]
+  It's my Paw tea, and I'll bark if I want to
+  (If I want to, if I want to)
+  It's my PAW tea, and I'll bark if I want to
+  (Ah)
+  [chorus]
+  It's my PAW tea, and I'll bark if I want to
+  bark if I want to (bark, bark, bark)
+  I'll bark until the chunk's kicked out of my place
+  I'll bark until my pity Paw tea's in flames
+  It's my PAW tea, and I'll bark if I want to
+  bark if I want to (bark, bark, bark)
+  I'll bark until the chunk's kicked out of my place
+  I'll bark until my pity Paw tea's in flames
+  [outro]
+  It's my Paw tea
+  it's-it's my Paw tea
+  It's my Paw tea
+  it's-it's my Paw tea
+  It's my Paw tea and I'll bark if I want to
+  bark if I want to (bark, bark, bark, bark, bark)
+  (woof!!)
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 538400937897486
+top_k: 45
+sampler: seeds_2
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 829691500305982
+sampler_steps: 40

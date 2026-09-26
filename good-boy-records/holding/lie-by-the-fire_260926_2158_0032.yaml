@@ -1,0 +1,123 @@
+title: lie-by-the-fire
+version: indie-pop
+model: minimax H3
+inspiration: Original!
+inspirationyt: ''
+story: This is an original, sparked from original trying to emulate a pink floyd type sound, but that is long gone, like the fast fading embers of fire.
+caption: |
+  Global Metadata
+  Basic Attributes: bpm is 85. key is C, and scale is major. Indie Pop / Alternative Rock.
+  Global Emotional Progression: The piece opens with a somber, introspective mood characterized by sparse instrumentation and a restrained vocal delivery.
+  Application Scenarios & Imagery: Ideal for scenes depicting a journey from isolation to community, such as a solitary traveler finding a new home, or montage sequences showing personal growth and overcoming adversity.
+  Sonics & Production Profile: The production features a wide, cinematic soundstage with a clear separation between the intimate verses and the expansive choruses. The frequency response is balanced, with a warm, rounded low end supporting crisp, articulate highs.
+
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Male), an intimate warm baritone-tenor with natural storytelling phrasing, gentle breath detail and controlled dynamic growth.
+  Vocal Style: The performance begins with a soft, narrative style, almost conversational, emphasizing vulnerability. As the song progresses, the delivery becomes increasingly passionate and assertive, utilizing strong belting techniques in the choruses to convey urgency and hope.
+  Harmony/Backing Vocals: Rich, multi-layered backing vocals enter prominently in the choruses, creating a choir-like texture that supports the lead melody.
+  Vocal FX: The lead vocal is treated with a moderate amount of plate reverb throughout, giving it space without obscuring articulation.
+
+  Arrangement
+  Instrument Lifecycle (Primary/Secondary): Primary: A clean electric guitar playing arpeggiated chords serves as the primary harmonic driver from the Intro through the first verse. In the choruses, this shifts to a distorted, overdriven rhythm guitar pattern that anchors the song's energy. Secondary: A warm, melodic bass guitar enters in the first verse, providing a solid low-end foundation.
+  Groove & Foundation Progression: The track begins with a minimal drum pattern, featuring a soft kick and brushed snare, establishing a gentle pulse.
+  Embellishments, Textures & Spatial FX: Subtle reverse cymbal swells and white noise risers are used as transitional elements leading into each chorus.
+  Section Continuity: Follow the lyric macro structure in order ([verse] → [chorus] → [instrumental] → [post-chorus] → [verse] → [chorus] → [post-chorus] → [bridge] → [verse] → [chorus] → [post-chorus] → [outro]). Keep the target genre active in every sung section; use changes in density, register, articulation and groove for contrast rather than switching to a different style.
+lyrics: |
+  [verse]
+  Lay down beside me
+  The daylight is done
+  Rest now your paws
+  By the fire, everyone
+  No need for kingdoms
+  No battles tonight
+  Only two goldens
+  Asleep by the light
+  [verse]
+  Doja, my lady
+  So watchful and wise
+  Firelight dancing
+  Like stars in your eyes
+  Bam Bam, brave hunter
+  Your quest is complete
+  The ball has been captured
+  Now rest at my feet
+  [chorus]
+  Stay by the fire
+  Stay here awhile
+  Dream of the meadows
+  And morning's first mile
+  Wherever we wander
+  Whatever we see
+  Home is wherever
+  You both are with me
+  [instrumental]
+  [post-chorus]
+  Stay by the fire
+  Dream of the meadows
+  [verse]
+  Tomorrow the pathway
+  Will call us once more
+  Bam will stand waiting
+  Beside the old door
+  Doja will linger
+  And judge us all first
+  Then follow behind us
+  When curiosity wins
+  [chorus]
+  Stay by the fire
+  Stay here awhile
+  Dream of the meadows
+  And morning's first mile
+  Wherever we wander
+  Whatever we see
+  Home is wherever
+  You both are with me
+  [post-chorus]
+  Stay by the fire
+  Dream of the meadows
+  [bridge]
+  No gold from the mountain
+  No jewel from the sea
+  Could purchase the hours
+  You've given to me
+  So sleep without worry
+  The watch I shall keep
+  While two golden guardians
+  Lie dreaming in sleep
+  [verse]
+  Stay by the fire
+  Stay here awhile
+  Tomorrow we'll wander
+  Another good mile
+  Through forest and meadows
+  Wherever we roam
+  Two golden companions
+  Will always come home
+  [chorus]
+  Stay by the fire
+  Stay here awhile
+  Dream of the meadows
+  And morning's first mile
+  Wherever we wander
+  Whatever we see
+  Home is wherever
+  You both are with me
+  [post-chorus]
+  Stay by the fire
+  Dream of the meadows
+  [outro]
+  Rest now, Doja
+  Rest, Bam Bam
+  The fire burns low
+  And morning will come
+  Woof
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 475640451621772
+top_k: 45
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 501220287810560
+sampler_steps: 30

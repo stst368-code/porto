@@ -1,0 +1,129 @@
+title: dogtushya
+version: gospel
+model: minimax H3
+inspiration: Matvey Blanter - Katyusha
+inspirationyt: https://www.youtube.com/watch?v=UUcnw1iNN-8
+story: Who knows how we launched from that inspiration to this, but it doesn't matter, we just need to be sure to celebrate the great and glorious, smart and devious, Doja Dog.
+caption: |
+  Global Metadata
+  Basic Attributes: bpm is 167. key is C, and scale is minor. Gospel / Soul-Blues.
+  Global Emotional Progression: The piece opens with a grounded, anticipatory atmosphere that gradually builds in spiritual intensity. The verses maintain a soulful, storytelling restraint which gives way to powerful, cathartic releases in the choruses.
+  Application Scenarios & Imagery: A dramatic scene of spiritual awakening or redemption, a cinematic depiction of a storm breaking a drought, or a powerful moment of communal worship in a large sanctuary.
+  Sonics & Production Profile: The soundstage is wide and immersive, utilizing a live-room aesthetic with natural reverb to simulate a large performance space. The frequency response is warm and full-bodied, emphasizing the richness of the low-mids from the organ and bass while keeping the vocal presence crisp and forward.
+
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Male), a firm mid-range baritone with clear diction, dry comic authority and a controlled upper edge; ensemble responses may reinforce major refrains.
+  Vocal Style: Singer A employs a highly expressive delivery that evolves from a conversational, blues-inflected tone in the verses to soaring, melismatic runs and powerful belts in the choruses and bridge.
+  Harmony/Backing Vocals: The choir provides extensive support throughout, starting with subtle harmonic pads in the intro and evolving into tight, gospel-style four-part harmonies during the choruses.
+  Vocal FX: The lead vocal is treated with a lush, long-decay plate reverb to enhance the sense of space and grandeur, particularly during sustained notes.
+
+  Arrangement
+  Instrument Lifecycle (Primary/Secondary): Primary: A Hammond-style organ serves as the harmonic backbone, present from the very beginning with swelling chords that dictate the song's emotional contour. An electric guitar with a clean, slightly overdriven tone plays rhythmic stabs and melodic fills, interacting closely with the vocal phrasing. Secondary: A warm, round electric bass enters immediately, locking in with the drums to provide a solid groove.
+  Groove & Foundation Progression: The rhythm section establishes a slow, heavy backbeat with a deep kick drum and a sharp snare on beats 2 and 4.
+  Embellishments, Textures & Spatial FX: Occasional tambourine shakes add high-frequency shimmer during the choruses. Subtle synth pads swell in the background during the bridge to increase tension before the final release.
+  Section Continuity: Follow the lyric macro structure in order ([verse] → [chorus] → [verse] → [bridge] → [verse] → [bridge] → [verse] → [chorus] → [outro]). Keep the target genre active in every sung section; use changes in density, register, articulation and groove for contrast rather than switching to a different style.
+lyrics: |
+  [verse]
+  From the throne upon the sofa,
+  She surveys the land once more.
+  Every hallway,
+  Every doorway,
+  Every rug from wall to wall.
+  [verse]
+  None may question,
+  None oppose her,
+  All rejoice beneath her reign.
+  Princess Beauts,
+  Great Gremlin Leader,
+  Guardian of treats and praise.
+  [chorus]
+  Glory! Glory!
+  Great Doja!
+  Leader of the Pack Union!
+  Strongest heart and clever mind,
+  Guide us through these peaceful times!
+  [chorus]
+  Glory! Glory!
+  Great Doja!
+  Every tail now wags as one!
+  Long may Princess Doja command,
+  Brightest dog in all the land!
+  [verse]
+  When brave Chunk returns with treasure,
+  Bearing forth the sacred ball,
+  She accepts his humble offering,
+  For the good and joy of all.
+  Then with wisdom
+  Beyond measure,
+  She declares the royal fee:
+  "One Dentastick...
+  Many scratches...
+  Then perhaps this ball goes free."
+  Wise is Doja!
+  Strong is Doja!
+  Nothing happens by mistake!
+  Every scheme already planned,
+  Before the humans even wake!
+  [bridge]
+  Wise is Doja!
+  Strong is Doja!
+  Opossum Face forever reigns!
+  Every victory was foretold,
+  Inside her magnificent brain!
+  [verse]
+  Once there stood a mighty ladder,
+  Built for humans, tall and steep.
+  Others searched
+  For little dog doors...
+  But not Doja
+  She climbed the ladder.
+  The people watched in silent wonder.
+  The birds forgot their songs.
+  Even the Chunk looked up in awe.
+  The Princess simply carried on.
+  [bridge]
+  Raise the banner!
+  Sound the brass!
+  Let the mighty chorus sing!
+  [verse]
+  She who conquered
+  Walls at Lyme,
+  She who made the Gremlin spring!
+  River waters cannot tame her!
+  Rain awakens glorious might!
+  Digging, charging,
+  Leading chaos,
+  Victory in every fight!
+  Should the Chunk commit misfortune,
+  She need never bark or shout.
+  Just one gentle nudge upon your arm...
+  Justice finds him.
+  [chorus]
+  Glory! Glory!
+  Great Doja!
+  Supreme Leader of the Pack!
+  Every cushion,
+  Every blanket,
+  Every sunny patch is hers!
+  Treats are hers!
+  Scratches hers!
+  Walks begin upon command!
+  [outro]
+  Long live Princess Doja forever!
+  Long live Gremlin Leader!
+  Long live Doja!
+  (DOJA!)
+  Long live Doja!
+  (DOJA!)
+  Long live Doja!
+  (DOJA!)
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 772477351755412
+top_k: 45
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 492431503203285
+sampler_steps: 40
