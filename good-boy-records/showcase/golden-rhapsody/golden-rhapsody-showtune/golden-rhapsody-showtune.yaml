@@ -1,16 +1,16 @@
 title: golden-rhapsody
-version: orchestral
+version: showtune
 model: minimax H3
 dit: fp32
 text_encoder: bf16
-encoder_cfg: 1.6
-encoder_seed: 6429145869
+encoder_cfg: 1.7
+encoder_seed: 4651158634
 top_k: 75
-sampler: euler
-scheduler: simple
+sampler: seeds_2
+scheduler: ddim_uniform
 sampler_cfg: 1.6
-sampler_seed: 7746147665
-sampler_steps: 45
+sampler_seed: 4485932017
+sampler_steps: 37
 inspiration:
 inspirationyt:
 story:
