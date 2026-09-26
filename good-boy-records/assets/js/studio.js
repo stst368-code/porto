@@ -381,26 +381,15 @@
   }
 
   function fullBleedWallRows(count, stageWidth, stageHeight) {
-    let best = null;
-    for (let rows = 1; rows <= count; rows += 1) {
-      const tile = stageHeight / rows;
-      const minPerRow = Math.max(1, Math.ceil(stageWidth / tile));
-      const needed = rows * minPerRow;
-      if (needed > count) continue;
-      const leftover = count - needed;
-      const overscan = (count / rows - minPerRow) * tile;
-      const score = rows * 1000 - overscan;
-      if (!best || score > best.score) {
-        best = { rows, tile, minPerRow, leftover, score };
-      }
-    }
-    if (best) return best;
-
-    // Fallback: if the library is tiny, use the tallest near-square layout we can.
-    const rows = Math.max(1, Math.round(Math.sqrt(count * stageHeight / Math.max(1, stageWidth))));
-    const cols = Math.ceil(count / rows);
-    const tile = Math.max(stageWidth / cols, stageHeight / rows);
-    return { rows, tile, minPerRow: cols, leftover: 0, score: 0 };
+    // Packed-field layout: keep a similar number of rows, but scale sleeves up
+    // until the gaps disappear and the wall naturally overscans the viewport.
+    const rawRows = Math.sqrt(count * stageHeight / Math.max(1, stageWidth)) * 0.88;
+    const rows = Math.max(1, Math.min(count, Math.max(4, Math.min(6, Math.round(rawRows)))));
+    const perRow = Math.ceil(count / rows);
+    const tile = Math.max(stageWidth / perRow, stageHeight / rows) * 1.03;
+    const base = Math.floor(count / rows);
+    const leftover = count - base * rows;
+    return { rows, tile, minPerRow: base, leftover, score: 0, perRow };
   }
 
   function positionConveyor() {
@@ -415,7 +404,8 @@
     const visibleSlots = count;
 
     const rowCounts = new Array(rows).fill(wall.minPerRow);
-    for (let i = 0; i < wall.leftover; i += 1) rowCounts[i % rows] += 1;
+    const centreBias = Math.max(0, Math.floor((rows - wall.leftover) / 2));
+    for (let i = 0; i < wall.leftover; i += 1) rowCounts[(centreBias + i) % rows] += 1;
 
     state.wallColumns = Math.max(...rowCounts);
     state.wallRows = rows;
@@ -465,8 +455,9 @@
       button.dataset.atGate = selected ? 'true' : 'false';
 
       if (selected && el.wheelCenter) {
+        const liftY = tileSize * (y > stageHeight * 0.66 ? 0.18 : 0.08);
         el.wheelCenter.style.left = `${x}px`;
-        el.wheelCenter.style.top = `${y}px`;
+        el.wheelCenter.style.top = `${Math.max(tileSize * 0.68, y - liftY)}px`;
         el.wheelCenter.style.setProperty('--selected-tile-size', `${tileSize}px`);
       }
     });

@@ -1,16 +1,16 @@
 title: lie-by-the-fire
-version: country
+version: folk
 model: minimax H3
 dit: fp32
 text_encoder: bf16
 encoder_cfg: 1.7
-encoder_seed: 968259945361230
-top_k: 70
+encoder_seed: 651347884288741
+top_k: 60
 sampler: euler
-scheduler: beta
+scheduler: simple
 sampler_cfg: 1.7
-sampler_seed: 974223744709184
-sampler_steps: 40
+sampler_seed: 976449797230371
+sampler_steps: 30
 inspiration:
 inspirationyt:
 story:
