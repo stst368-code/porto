@@ -1,15 +1,15 @@
 title: gimmie-gimmie-ball
-version: orchestral-b
-model:
+version: blue-eyed-soul
+model: minimax H3
 dit: fp32
 text_encoder: bf16
 encoder_cfg: 1.7
-encoder_seed: 422666149554138
-top_k: 70
-sampler: seeds_3
-scheduler: beta
+encoder_seed: 737354139980266
+top_k: 30
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
 sampler_cfg: 1.7
-sampler_seed: 54925406013591
+sampler_seed: 725049664220941
 sampler_steps: 40
 inspiration:
 inspirationyt:
@@ -20,7 +20,7 @@ caption: |
   Vocal Details
   Vocal Gender & Timbre: Singer A (Female), a clear dramatic mezzo-soprano with strong diction, expressive lower phrases and a powerful upper register. Vocal Style: Use an intimate exposed performance that can move from conversational restraint to rawer melodic intensity. Emotional growth must come from phrasing, register and breath, not added production. Harmony/Backing Vocals: No conventional backing vocals unless a very quiet self-double is essential at the single largest moment; the dominant impression is one singer alone with piano. Role Continuity: Keep the female lead continuous; backing voices may expand at hooks but should never replace her narrative role. Vocal FX: Minimal natural room or short plate, gentle compression only; preserve breath and piano/vocal detail.
   Arrangement
-  Section Timeline: [verse] → [pre-chorus] → [chorus] → [verse] → [pre-chorus] → [chorus] → [bridge] → [solo] → [chorus] → [outro]. Instrument Lifecycle: Piano carries rhythm, harmony and counter-melody continuously. Use fast-moving figures, repeated ostinati, octave motion and changing register so the track has forward motion without percussion. Section Directives: [intro]: Begin immediately with an exposed repeating piano figure that defines both pulse and harmony. [verse]: Keep the piano restless but dynamically restrained under close conversational singing. [pre-chorus]: Increase register, left-hand motion or harmonic tension without adding instruments. [chorus]: Use stronger piano attack, wider voicings and a more open vocal melody while remaining only piano and voice. [bridge]: Thin to exposed notes, unstable harmony or near-rubato, creating the most vulnerable moment. [solo]: Use a short piano interlude that develops the vocal motif rather than virtuosic display. [outro]: Return to the simplest figure and end naturally with ringing piano decay or a clean final chord. Groove & Foundation Progression: All transitions must remain native to the stated genre. Preserve recognisable motifs across repeated sections while changing density, register, voicing or articulation. Keep the target genre dominant throughout.
+  Section Timeline: [verse] to [pre-chorus] to [chorus] to [verse] to [pre-chorus] to [chorus] to [bridge] to [solo] to [chorus] to [outro]. Instrument Lifecycle: Piano carries rhythm, harmony and counter-melody continuously. Use fast-moving figures, repeated ostinati, octave motion and changing register so the track has forward motion without percussion. Section Directives: [intro]: Begin immediately with an exposed repeating piano figure that defines both pulse and harmony. [verse]: Keep the piano restless but dynamically restrained under close conversational singing. [pre-chorus]: Increase register, left-hand motion or harmonic tension without adding instruments. [chorus]: Use stronger piano attack, wider voicings and a more open vocal melody while remaining only piano and voice. [bridge]: Thin to exposed notes, unstable harmony or near-rubato, creating the most vulnerable moment. [solo]: Use a short piano interlude that develops the vocal motif rather than virtuosic display. [outro]: Return to the simplest figure and end naturally with ringing piano decay or a clean final chord. Groove & Foundation Progression: All transitions must remain native to the stated genre. Preserve recognisable motifs across repeated sections while changing density, register, voicing or articulation. Keep the target genre dominant throughout.
 lyrics: |
   [verse]
   the time was half past chunk upon the clock

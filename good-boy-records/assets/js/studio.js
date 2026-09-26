@@ -381,15 +381,19 @@
   }
 
   function fullBleedWallRows(count, stageWidth, stageHeight) {
-    // Packed-field layout: keep a similar number of rows, but scale sleeves up
-    // until the gaps disappear and the wall naturally overscans the viewport.
-    const rawRows = Math.sqrt(count * stageHeight / Math.max(1, stageWidth)) * 0.88;
-    const rows = Math.max(1, Math.min(count, Math.max(4, Math.min(6, Math.round(rawRows)))));
-    const perRow = Math.ceil(count / rows);
-    const tile = Math.max(stageWidth / perRow, stageHeight / rows) * 1.03;
-    const base = Math.floor(count / rows);
-    const leftover = count - base * rows;
-    return { rows, tile, minPerRow: base, leftover, score: 0, perRow };
+    // Exact fit for square covers: choose the grid that maximises the square
+    // draw size while keeping every cover fully in view.
+    let best = null;
+    for (let cols = 1; cols <= count; cols += 1) {
+      const rows = Math.ceil(count / cols);
+      const tile = Math.min(stageWidth / cols, stageHeight / rows);
+      const empty = cols * rows - count;
+      const shapePenalty = Math.abs(cols - rows) * 0.0001;
+      if (!best || tile > best.tile + 0.0001 || (Math.abs(tile - best.tile) < 0.0001 && (empty < best.empty || (empty === best.empty && shapePenalty < best.shapePenalty)))) {
+        best = { cols, rows, tile, empty, shapePenalty };
+      }
+    }
+    return best || { cols: count, rows: 1, tile: stageHeight, empty: 0, shapePenalty: 0 };
   }
 
   function positionConveyor() {
@@ -399,68 +403,49 @@
 
     const count = activeCount();
     const wall = fullBleedWallRows(count, stageWidth, stageHeight);
+    const cols = wall.cols;
     const rows = wall.rows;
     const tileSize = wall.tile;
-    const visibleSlots = count;
+    const wallWidth = cols * tileSize;
+    const wallHeight = rows * tileSize;
+    const xOffset = (stageWidth - wallWidth) / 2;
+    const yOffset = (stageHeight - wallHeight) / 2;
 
-    const rowCounts = new Array(rows).fill(wall.minPerRow);
-    const centreBias = Math.max(0, Math.floor((rows - wall.leftover) / 2));
-    for (let i = 0; i < wall.leftover; i += 1) rowCounts[(centreBias + i) % rows] += 1;
-
-    state.wallColumns = Math.max(...rowCounts);
+    state.wallColumns = cols;
     state.wallRows = rows;
-    state.wallVisibleSlots = visibleSlots;
-
-    const offsets = [];
-    let cursor = 0;
-    for (let row = 0; row < rows; row += 1) {
-      offsets.push(cursor);
-      cursor += rowCounts[row];
-    }
+    state.wallVisibleSlots = count;
 
     [...el.wheelSlots.children].forEach((wrap, index) => {
       const slotIndex = conveyorProgressForIndex(index);
-      if (slotIndex === null || slotIndex >= visibleSlots) {
+      if (slotIndex === null || slotIndex >= count) {
         wrap.hidden = true;
         return;
       }
 
-      let row = 0;
-      for (; row < rows; row += 1) {
-        const start = offsets[row];
-        if (slotIndex < start + rowCounts[row]) break;
-      }
-      const rowStart = offsets[row];
-      const colInSequence = slotIndex - rowStart;
-      const itemsInRow = rowCounts[row];
-      const visualCol = row % 2 === 1 ? (itemsInRow - 1 - colInSequence) : colInSequence;
-      const rowWidth = itemsInRow * tileSize;
-      const rowXOffset = (stageWidth - rowWidth) / 2;
-
+      const row = Math.floor(slotIndex / cols);
+      const sequenceCol = slotIndex % cols;
+      const itemsInRow = Math.min(cols, Math.max(0, count - row * cols));
+      const visualCol = row % 2 === 1 ? (itemsInRow - 1 - sequenceCol) : sequenceCol;
+      const rowXOffset = xOffset + (cols - itemsInRow) * tileSize / 2;
       const x = rowXOffset + visualCol * tileSize + tileSize / 2;
-      const y = row * tileSize + tileSize / 2;
+      const y = yOffset + row * tileSize + tileSize / 2;
       const selected = index === state.wheelIndex;
 
       wrap.hidden = false;
-      wrap.style.width = `${tileSize + 0.35}px`;
+      wrap.style.width = `${tileSize}px`;
       wrap.style.left = `${x}px`;
       wrap.style.top = `${y}px`;
       wrap.style.transform = 'translate3d(-50%, -50%, 0)';
-      wrap.style.zIndex = String(selected ? 30 : 10);
+      wrap.style.zIndex = selected ? '20' : '10';
       wrap.style.opacity = '1';
 
       const button = wrap.querySelector('.gbr-slot-card');
-      button.style.setProperty('--card-scale', '1');
+      button.style.setProperty('--card-scale', selected ? '1.035' : '1');
       button.style.removeProperty('--card-counter');
       button.dataset.atGate = selected ? 'true' : 'false';
-
-      if (selected && el.wheelCenter) {
-        const liftY = tileSize * (y > stageHeight * 0.66 ? 0.18 : 0.08);
-        el.wheelCenter.style.left = `${x}px`;
-        el.wheelCenter.style.top = `${Math.max(tileSize * 0.68, y - liftY)}px`;
-        el.wheelCenter.style.setProperty('--selected-tile-size', `${tileSize}px`);
-      }
     });
+
+    if (el.wheelCenter) el.wheelCenter.style.display = 'none';
   }
 
   function positionLegacyWheel() {
