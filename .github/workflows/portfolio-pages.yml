@@ -2,8 +2,7 @@ name: Build and deploy portfolio
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,7 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     env:
       PROJECT_DIR: ${{ github.workspace }}/good-boy-records
 
@@ -36,19 +34,59 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install PyYAML Pillow
 
-      - name: Build Good Boy Records
+      - name: Build existing GBR generated data/assets
+        working-directory: good-boy-records
         run: |
-          cd "$PROJECT_DIR"
           rm -rf _site
-          python tools/import_showcase.py
-          python tools/prepare_artwork.py masters assets/img/sleeves
-          python tools/build_catalogue.py
-          python tools/check_links.py
-          python tools/stage_pages.py
+          mkdir -p _site
+          if [ -f tools/import_showcase.py ]; then python tools/import_showcase.py; fi
+          if [ -f tools/prepare_artwork.py ] && [ -d masters ]; then python tools/prepare_artwork.py masters assets/img/sleeves; fi
+          if [ -f tools/build_catalogue.py ]; then python tools/build_catalogue.py; fi
+          if [ -f tools/check_links.py ]; then python tools/check_links.py; fi
+          if [ -f tools/stage_pages.py ]; then python tools/stage_pages.py; fi
+
+      - name: Find GBR catalogue input
+        id: catalogue
+        working-directory: good-boy-records
+        shell: bash
+        run: |
+          for f in showcase-manifest.json content-source/showcase-manifest.json data/catalogue.json catalogue.json; do
+            if [ -f "$f" ]; then
+              echo "input=$f" >> "$GITHUB_OUTPUT"
+              echo "Using $f"
+              exit 0
+            fi
+          done
+          echo "No catalogue input found" >&2
+          exit 1
+
+      - name: Build genre-enriched Sonic catalogue
+        working-directory: good-boy-records
+        run: |
+          python tools/build_genre_catalogue.py \
+            "${{ steps.catalogue.outputs.input }}" \
+            templates/music_genre_taxonomy.csv \
+            _site/catalogue.json
+
+      - name: Make Sonic Landscape the GBR index
+        working-directory: good-boy-records
+        run: |
+          test -f templates/landscape.html
+          cp templates/landscape.html _site/landscape.html
+          cp templates/landscape.html _site/index.html
+          echo "GBR index title:"
+          grep -m1 '<title>' _site/index.html
+          test -f _site/catalogue.json
 
       - name: Assemble portfolio routes
         run: |
           python .github/scripts/stage_portfolio.py
+
+      - name: Verify staged GBR route
+        run: |
+          test -f _pages/good-boy-records/index.html
+          grep -q 'Sonic Landscape' _pages/good-boy-records/index.html
+          echo "Verified: _pages/good-boy-records/index.html is Sonic Landscape"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -62,10 +100,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
     needs: build
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
