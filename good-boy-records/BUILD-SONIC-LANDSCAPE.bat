@@ -38,15 +38,24 @@ echo [2/5] Enriching %INPUT% with genre taxonomy...
 py -3 tools\build_genre_catalogue.py "%INPUT%" templates\music_genre_taxonomy.csv _site\catalogue.json
 if errorlevel 1 goto :error
 
-echo [3/5] Staging Sonic Landscape...
+echo [3/6] Publishing showcase media into _site...
+if exist showcase (
+  if exist _site\showcase rmdir /s /q _site\showcase
+  xcopy /e /i /y showcase _site\showcase >nul
+  if errorlevel 1 goto :error
+) else (
+  echo WARNING: showcase directory is missing. Direct media URLs will not work.
+)
+
+echo [4/6] Staging Sonic Landscape...
 copy /y templates\landscape.html _site\landscape.html >nul
 if errorlevel 1 goto :error
 
-echo [4/5] Making Sonic Landscape the route index...
+echo [5/6] Making Sonic Landscape the route index...
 copy /y templates\landscape.html _site\index.html >nul
 if errorlevel 1 goto :error
 
-echo [5/5] Verifying output...
+echo [6/6] Verifying output...
 if not exist _site\index.html goto :error
 if not exist _site\landscape.html goto :error
 if not exist _site\catalogue.json goto :error

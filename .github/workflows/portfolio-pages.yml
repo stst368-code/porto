@@ -68,6 +68,14 @@ jobs:
             templates/music_genre_taxonomy.csv \
             _site/catalogue.json
 
+      - name: Publish direct showcase media
+        working-directory: good-boy-records
+        run: |
+          test -d showcase
+          rm -rf _site/showcase
+          cp -R showcase _site/showcase
+          test -d _site/showcase
+
       - name: Make Sonic Landscape the GBR index
         working-directory: good-boy-records
         run: |

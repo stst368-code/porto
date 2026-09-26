@@ -93,27 +93,68 @@ def audio_url(track: dict):
     return None
 
 
+def slug(value: Any) -> str:
+    text = str(value or "").strip().casefold()
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    return text.strip("-")
+
+
+def composition_slug(track: dict) -> str:
+    comp = track.get("composition") or track.get("song") or track.get("title") or ""
+    value = slug(comp)
+    if value:
+        return value
+    ident = slug(track.get("id") or track.get("filename") or "")
+    variant = slug(track.get("variant") or track.get("version") or "")
+    if variant and ident.endswith("-" + variant):
+        return ident[:-(len(variant) + 1)]
+    return ident
+
+
+def release_slug(track: dict) -> str:
+    return slug(track.get("id") or track.get("filename") or track.get("title") or "")
+
+
+def showcase_url(track: dict, extension: str) -> str | None:
+    comp = composition_slug(track)
+    rel = release_slug(track)
+    if not comp or not rel:
+        return None
+    return f"showcase/{comp}/{rel}/{rel}.{extension}"
+
+
 def artwork_url(track: dict):
+    # GBR's showcase PNG is the canonical source. The frontend falls back to
+    # derivatives only if a specific old release does not have the PNG.
+    direct = showcase_url(track, "png")
+    if direct:
+        return direct
     art = track.get("artwork")
     if isinstance(art, str):
         return art
     if isinstance(art, dict):
-        for key in ("url", "src", "webp", "png", "jpg"):
+        for key in ("url", "src", "png", "webp", "jpg"):
             if art.get(key):
                 return art[key]
-        # Native GBR catalogue shape: artwork.base -> generated sleeve derivatives.
         base = art.get("base")
         if base:
             return f"assets/img/sleeves/{base}-1280.webp"
-    for key in ("artworkUrl", "artwork_url", "cover", "image"):
-        if track.get(key):
-            return track[key]
-    # Last-resort fallback follows the normal sleeve naming convention.
-    ident = track.get("id") or track.get("filename") or track.get("title")
-    if ident:
-        stem = re.sub(r"\.[^.]+$", "", str(ident))
-        return f"assets/img/sleeves/{stem}-1280.webp"
     return "assets/img/sleeves/gbr-placeholder-1280.webp"
+
+
+def direct_audio_url(track: dict):
+    # Prefer the showcase MP3 because it is browser-friendly and lives beside
+    # the canonical PNG/YAML/lyrics assets. Fall back to the catalogue audio.
+    direct = showcase_url(track, "mp3")
+    return direct or audio_url(track)
+
+
+def lyrics_url(track: dict):
+    timing = ((track.get("lyrics") or {}).get("wordTiming") or {}) if isinstance(track.get("lyrics"), dict) else {}
+    if timing.get("src"):
+        return timing["src"]
+    direct = showcase_url(track, "lyrics.json")
+    return direct
 
 
 def main():
@@ -131,9 +172,11 @@ def main():
     tax_rows, by_key = load_taxonomy(taxonomy_path)
     max_order = max((x["order"] for x in tax_rows), default=1)
     parent_first = {}
+    parent_last = {}
     cluster_first = {}
     for row in tax_rows:
         parent_first.setdefault(row["parent_genre"], row["order"])
+        parent_last[row["parent_genre"]] = row["order"]
         cluster_first.setdefault(row["cluster"], row["order"])
     ordered_parents = {name: i for i, (name, _) in enumerate(sorted(parent_first.items(), key=lambda kv: kv[1]))}
     ordered_clusters = {name: i for i, (name, _) in enumerate(sorted(cluster_first.items(), key=lambda kv: kv[1]))}
@@ -159,6 +202,7 @@ def main():
                 "parent_colour": match["parent_colour"],
                 "child_colour": match["child_colour"],
                 "position": (match["order"] - 1) / max(1, max_order - 1),
+                "lane_position": (match["order"] - parent_first.get(match["parent_genre"], match["order"])) / max(1, parent_last.get(match["parent_genre"], match["order"]) - parent_first.get(match["parent_genre"], match["order"])),
                 "taxonomy_order": match["order"],
                 "parent_order": ordered_parents.get(match["parent_genre"], 0),
                 "parent_position": ordered_parents.get(match["parent_genre"], 0) / parent_den,
@@ -175,6 +219,7 @@ def main():
                 "parent_colour": "#657080",
                 "child_colour": "#8b98a8",
                 "position": 0.5,
+                "lane_position": 0.5,
                 "taxonomy_order": max_order + index + 1,
                 "parent_order": len(ordered_parents),
                 "parent_position": 1.0,
@@ -183,8 +228,9 @@ def main():
                 "matched": False,
             }
         item["genre"] = genre
-        item["audio_url"] = audio_url(item)
+        item["audio_url"] = direct_audio_url(item)
         item["artwork_url"] = artwork_url(item)
+        item["lyrics_url"] = lyrics_url(item)
         comp = str(item.get("composition") or item.get("title") or item.get("song") or item.get("id") or "unknown")
         item["variants"] = [
             {"id": x.get("id"), "variant": x.get("variant") or x.get("version")}
