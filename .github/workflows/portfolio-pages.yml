@@ -76,6 +76,16 @@ jobs:
           cp -R showcase _site/showcase
           test -d _site/showcase
 
+      - name: Publish GBR document tabs
+        working-directory: good-boy-records
+        run: |
+          test -d content-source/folders
+          mkdir -p _site/content-source
+          rm -rf _site/content-source/folders
+          cp -R content-source/folders _site/content-source/folders
+          test -f _site/content-source/folders/01-about.md
+          test -f _site/content-source/folders/10-requests.md
+
       - name: Make Sonic Landscape the GBR index
         working-directory: good-boy-records
         run: |

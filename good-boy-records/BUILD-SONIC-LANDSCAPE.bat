@@ -47,15 +47,25 @@ if exist showcase (
   echo WARNING: showcase directory is missing. Direct media URLs will not work.
 )
 
-echo [4/6] Staging Sonic Landscape...
+echo [4/7] Publishing document tabs...
+if exist content-source\folders (
+  if not exist _site\content-source mkdir _site\content-source
+  if exist _site\content-source\folders rmdir /s /q _site\content-source\folders
+  xcopy /e /i /y content-source\folders _site\content-source\folders >nul
+  if errorlevel 1 goto :error
+) else (
+  echo WARNING: content-source\folders is missing. Document tabs will not load.
+)
+
+echo [5/7] Staging Sonic Landscape...
 copy /y templates\landscape.html _site\landscape.html >nul
 if errorlevel 1 goto :error
 
-echo [5/6] Making Sonic Landscape the route index...
+echo [6/7] Making Sonic Landscape the route index...
 copy /y templates\landscape.html _site\index.html >nul
 if errorlevel 1 goto :error
 
-echo [6/6] Verifying output...
+echo [7/7] Verifying output...
 if not exist _site\index.html goto :error
 if not exist _site\landscape.html goto :error
 if not exist _site\catalogue.json goto :error
