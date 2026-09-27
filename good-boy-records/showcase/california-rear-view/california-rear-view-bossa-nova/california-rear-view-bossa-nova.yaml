@@ -1,0 +1,159 @@
+title: california-rear-view
+version: bossa-nova
+model: minimax H3
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 764779556296213
+top_k: 45
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 490914468376356
+sampler_steps: 40
+inspiration:
+inspirationyt:
+story:
+caption: |
+  Global Metadata
+  Basic Attributes: bpm is 133. key is D, and scale is minor. Bossa Nova / Smooth Jazz.
+  Global Emotional Progression: The piece opens with a serene, floating atmosphere that establishes an intimate and dreamy mood. This gentle sway remains consistent through the verses, while the choruses introduce a subtle lift in emotional warmth and harmonic richness without breaking the relaxed vibe.
+  Application Scenarios & Imagery: Ideal for a late-night lounge setting, a quiet coffee shop during a rainy afternoon, or background music for a romantic dinner scene under soft lighting.
+  Sonics & Production Profile: The mix is clean and spacious, with a warm mid-range focus that highlights the acoustic instruments. The soundstage feels intimate yet wide, allowing each instrument to breathe.
+
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Female), an intimate mezzo-soprano with a soft lower register, clear diction and enough chest resonance for emotionally stronger refrains.
+  Vocal Style: The delivery is consistently understated and melodic, employing a legato phrasing style that mirrors the swaying rhythm of the accompaniment. There is minimal dynamic variation, maintaining a calm, storytelling approach throughout all sections.
+  Harmony/Backing Vocals: Subtle, self-layered harmonies appear in the choruses, adding depth without overpowering the lead line.
+  Vocal FX: A generous amount of plate reverb is applied to create a sense of space and distance, while a very subtle delay adds rhythmic movement to the sustained notes.
+
+  Arrangement
+  Instrument Lifecycle (Primary/Secondary): Primary: A nylon-string acoustic guitar playing syncopated Bossa Nova chords serves as the harmonic backbone from the Intro to the Outro. An upright bass provides a walking, melodic low-end foundation that enters immediately and persists throughout the track. Secondary: A piano enters during the first verse, offering sparse, jazz-inflected fills and chordal support.
+  Groove & Foundation Progression: The rhythm section is driven by a light drum kit featuring brushed snares and a soft kick pattern, establishing a gentle swing feel.
+  Embellishments, Textures & Spatial FX: Occasional wind chime-like synth pads appear in the background during the bridge, adding a celestial texture that complements the lyrical theme.
+  Section Continuity: Follow the lyric macro structure in order ([intro] → [verse] → [pre-chorus] → [chorus] → [instrumental] → [post-chorus] → [bridge] → [verse] → [pre-chorus] → [chorus] → [verse] → [bridge] → [pre-chorus] → [chorus] → [outro]). Keep the target genre active in every sung section; use changes in density, register, articulation and groove for contrast rather than switching to a different style.
+lyrics: |
+  [intro]
+  mmm mmm mmm mmm
+  I saw your name light up again
+  Like some bad sign I should've read
+  You say we're nothing, say we're friends
+  Funny how that story never ends
+  [verse]
+  I don't need another explanation
+  Don't need another late-night conversation
+  You had me building something in my head
+  While you were somewhere else instead
+  Now I'm riding round with nowhere to be
+  Cheap coffee, back seat, quarter past three
+  Everybody told me what I couldn't see
+  Guess the joke was always me
+  [pre-chorus]
+  You pull me close, then tell me go
+  Make up your mind, I need to know
+  One minute yes, the next minute no
+  I'm already halfway down the road
+  [chorus]
+  Baby, take me out to California (oh)
+  Drive until the morning comes (oh ho)
+  You can tell me that you want me
+  Then pretend that we're just having fun
+  If you're leaving, keep on leaving
+  If you're staying, do your thing
+  I've been waiting, I've been dreaming
+  I've been cutting every string
+  [instrumental]
+  [post-chorus]
+  Your name rolls round like a mantra
+  Back of a Hyundai, maybe an Lancia
+  Bad behaviour, baby, I'm your karma
+  Keep playing games and my girls might haunt ya
+  Blueberry pancakes at a quarter to eight
+  You say come over, then you make me wait
+  Engine running while you change your mind
+  Put it in gear, baby, don't waste my time
+  [bridge]
+  Do what you do
+  Don't stop now
+  Do what you do
+  You know how
+  Do what you do
+  If you're gonna come through
+  Don't keep me hanging
+  I've got things to do
+  [verse]
+  Then I see you standing out with her
+  Heard you call her name, fuck you Jennifer
+  Suddenly every little rumour has words
+  All those nights you said I was absurd
+  Now the truth looks worse than what I'd heard
+  So go on, tell everybody we're cool
+  Tell them I'm dramatic, tell them I'm cruel
+  I'll be the one that slipped through your hands
+  You can keep my made up future plans
+  [pre-chorus]
+  I stayed awake with one eye open
+  While every promise came back broken
+  Now you're asking why I'm going
+  Funny how you never noticed
+  [chorus]
+  Baby, take me out to California (oh)
+  Drive until the morning comes (oh ho)
+  You can tell me that you want me
+  Then pretend that we're just having fun
+  If you're leaving, keep on leaving
+  If you're staying, do your thing
+  I've been waiting, I've been dreaming
+  I've been cutting every string
+  [verse]
+  I don't want another little fight
+  I just want the truth for once tonight
+  You say stay, then disappear from sight
+  Baby, pick a lane and drive it right
+  Maybe we could make it till tomorrow
+  Maybe all we've got is borrowed
+  Maybe I should pack and let it go
+  You already know
+  You already know
+  [bridge]
+  Don't stop, don't stop
+  If you're gonna do it, do it
+  Don't talk, don't talk
+  Like there's nothing running through it
+  I need somebody I can count on
+  Somebody there when the lights go out
+  Not another name that I obsess on
+  Not another reason for doubt
+  So do your thing
+  I'll do mine
+  You had your shot
+  You had your time
+  Don't reload
+  A death sentence, I already got mine
+  [pre-chorus]
+  California in the rear-view
+  Your perfume on my clothes
+  I could spend another year here
+  Waiting for a door you've closed
+  But I'd rather be the story
+  That you tell somebody new
+  About the girl who finally left you
+  When she figured out the truth
+  [chorus]
+  Baby, take yourself to California (oh)
+  I don't care where you go (oh ho)
+  You can tell her that you love her
+  You can put on your little show
+  I'm not waiting, I'm not dreaming
+  I'm not hanging by a string
+  You can keep your explanations
+  You can go and do your thing
+  [outro]
+  Do your thing
+  Do your thing
+  Go ahead and do your thing
+  California's getting smaller
+  In the mirror as I leave
+  Do your thing
+  Do your thing
+  Just don't come looking back for me
