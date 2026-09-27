@@ -67,6 +67,9 @@ jobs:
             "${{ steps.catalogue.outputs.input }}" \
             templates/music_genre_taxonomy.csv \
             _site/catalogue.json
+          if [ -f tools/augment_easter_catalogue.py ]; then
+            python tools/augment_easter_catalogue.py _site/catalogue.json .
+          fi
 
       - name: Publish direct showcase media
         working-directory: good-boy-records

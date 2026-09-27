@@ -38,6 +38,12 @@ echo [2/5] Enriching %INPUT% with genre taxonomy...
 py -3 tools\build_genre_catalogue.py "%INPUT%" templates\music_genre_taxonomy.csv _site\catalogue.json
 if errorlevel 1 goto :error
 
+echo [2b/7] Building Easter Universe catalogue...
+if exist tools\augment_easter_catalogue.py (
+  py -3 tools\augment_easter_catalogue.py _site\catalogue.json .
+  if errorlevel 1 goto :error
+)
+
 echo [3/6] Publishing showcase media into _site...
 if exist showcase (
   if exist _site\showcase rmdir /s /q _site\showcase
