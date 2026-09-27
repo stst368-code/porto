@@ -74,70 +74,6 @@ def humanise(value: str) -> str:
     return re.sub(r"[-_]+", " ", str(value or "")).strip().title()
 
 
-VALID_SIDES = ("A", "B", "C")
-
-GENRE_FAMILIES = [
-    (0.0, "orchestral-classical", ("orchestral", "symphony", "symphonic", "classical", "baroque", "romantic", "oratorio", "opera", "operatic", "chamber", "choir", "choral")),
-    (1.0, "folk-acoustic", ("folk", "acoustic", "bardcore", "medieval", "singer-songwriter", "singer songwriter", "bluegrass")),
-    (2.0, "country-americana", ("country", "americana", "rockabilly", "outlaw", "western")),
-    (3.0, "rock", ("rock", "soft rock", "psychedelic rock", "garage rock", "alternative rock", "glam rock")),
-    (4.0, "punk-ska", ("punk", "skate punk", "pop-punk", "ska", "reggae", "hardcore punk")),
-    (5.0, "metal", ("metal", "death metal", "black metal", "power metal", "nwobhm", "nu metal", "thrash", "doom", "gothic metal")),
-    (6.0, "industrial-dark", ("industrial", "gothic", "darkwave", "ebm", "noise rock")),
-    (7.0, "electronic-club", ("electronic", "club", "house", "techno", "synth", "hyperpop", "dance", "jungle", "dnb", "drum and bass")),
-    (8.0, "disco", ("disco", "disco-pop", "disco-funk", "italo")),
-    (9.0, "pop", ("pop", "city pop", "sophisti-pop", "bubblegum", "j-pop", "jpop")),
-    (10.0, "rnb-soul", ("r&b", "rnb", "soul", "quiet storm", "gospel", "torch ballad", "doo-wop", "doo wop")),
-    (11.0, "funk", ("funk", "jazz-funk", "psychedelic funk")),
-    (12.0, "hiphop", ("hip-hop", "hip hop", "rap", "trap", "drill", "grime", "g-funk", "boom bap")),
-    (13.0, "jazz-crooner", ("jazz", "vocal jazz", "crooner", "swing", "big band", "film noir")),
-    (14.0, "theatre-experimental", ("musical", "theatrical", "experimental", "novelty", "spoken word")),
-]
-
-def derive_genre_profile(raw: dict[str, Any], variant_raw: str) -> dict[str, Any]:
-    text = " ".join([
-        str(raw.get("genre") or ""),
-        str(raw.get("version") or variant_raw or ""),
-        str(raw.get("caption") or ""),
-        str(raw.get("story") or ""),
-    ]).casefold()
-
-    scored: list[tuple[float, float, str]] = []
-    tags: set[str] = set()
-    for position, family, keywords in GENRE_FAMILIES:
-        score = 0.0
-        for keyword in keywords:
-            hits = text.count(keyword)
-            if hits:
-                score += min(4, hits) * (2.2 if " " in keyword or "-" in keyword else 1.0)
-                tags.add(keyword.replace(" ", "-"))
-        if score:
-            scored.append((score, position, family))
-
-    if not scored:
-        return {"family": "uncategorised", "position": 99.0, "tags": [str(raw.get("genre") or variant_raw or "uncategorised").casefold()]}
-
-    scored.sort(reverse=True)
-    total = sum(score for score, _, _ in scored)
-    weighted_position = sum(score * position for score, position, _ in scored) / total
-    family = scored[0][2]
-    return {
-        "family": family,
-        "position": round(weighted_position, 4),
-        "tags": sorted(tags),
-    }
-
-def normalise_side(value: Any) -> str:
-    side = str(value or "A").strip().upper()
-    aliases = {
-        "1": "A", "SIDE A": "A", "SIDE-A": "A",
-        "2": "B", "SIDE B": "B", "SIDE-B": "B",
-        "3": "C", "SIDE C": "C", "SIDE-C": "C",
-    }
-    side = aliases.get(side, side)
-    return side if side in VALID_SIDES else "A"
-
-
 def choose_file(directory: Path, expected_stem: str, suffixes: set[str]) -> Path | None:
     files = sorted(p for p in directory.iterdir() if p.is_file() and p.suffix.lower() in suffixes)
     exact = [p for p in files if slugify(p.stem) == slugify(expected_stem)]
@@ -158,9 +94,8 @@ def resolve_artwork(source_yaml: Path, raw: dict[str, Any], release_id: str) -> 
             with_ext = source_yaml.parent / (str(explicit) + ext)
             if with_ext.is_file():
                 return with_ext
-    # Side-aware one-offs are often named song-b.yaml + song-b.png rather
-    # than the generated catalogue id song-one-off-b. Honour the YAML stem
-    # before falling back to the older release-id/single-file behaviour.
+    # Honour the YAML stem as well as the generated release id so curated
+    # artwork can keep the source filename when it differs from the catalogue id.
     for expected in (release_id, source_yaml.stem):
         found = choose_file(source_yaml.parent, expected, IMAGE_EXTS)
         if found:
@@ -325,39 +260,12 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         print(f"warn {source_yaml.relative_to(DROP)}: no version field; inferred {variant_raw!r} from directory")
 
     variant_slug = slugify(variant_raw)
-    # v12.1: version names are opaque. Never infer cassette side from
-    # suffixes such as -a, -b or -c. A track called `one-off-c` is simply
-    # version `one-off-c` unless the YAML explicitly supplies `side:`.
-    side_value = raw.get("side")
-    side_raw = str(side_value or "").strip()
-    side_explicit = bool(side_raw)
-    side = normalise_side(side_raw) if side_explicit else "A"
-
-    supported_side_tokens = {
-        "A", "B", "C",
-        "1", "2", "3",
-        "SIDE A", "SIDE B", "SIDE C",
-        "SIDE-A", "SIDE-B", "SIDE-C",
-    }
-    if side_explicit and side_raw.upper() not in supported_side_tokens:
-        print(f"warn {source_yaml.relative_to(DROP)}: unsupported side {side_raw!r}; defaulting to Side A")
-        side = "A"
-
-    # v12: genre is free-form metadata, not a fixed UI slot.
-    # Prefer an explicit `genre:` field; retain `version:` as a backwards-
-    # compatible fallback so the existing showcase can migrate incrementally.
-    genre_raw = str(raw.get("genre") or variant_raw or "Uncategorised").strip()
-    slot = slugify(genre_raw)
-    base_release_id = slugify(f"{title}-{variant_slug}")
-    release_id = base_release_id if side == "A" else slugify(f"{base_release_id}-{side.lower()}")
-    expected_dir = base_release_id
-    accepted_dirs = {expected_dir, release_id}
-    if side == "A":
-        accepted_dirs.add(slugify(f"{base_release_id}-a"))
+    slot = variant_slug if variant_slug in VARIANT_SLOTS else "special"
+    release_id = slugify(f"{title}-{variant_slug}")
+    expected_dir = release_id
     actual_dir = slugify(source_yaml.parent.name)
-    if actual_dir not in accepted_dirs:
-        expected_note = expected_dir if side == "A" else slugify(f"{base_release_id}-{side.lower()}")
-        print(f"warn {source_yaml.relative_to(DROP)}: directory is {source_yaml.parent.name!r}; expected {expected_note!r}")
+    if actual_dir != expected_dir:
+        print(f"warn {source_yaml.relative_to(DROP)}: directory is {source_yaml.parent.name!r}; expected {expected_dir!r}")
 
     artwork = resolve_artwork(source_yaml, raw, release_id)
     audio = resolve_audio(source_yaml, release_id)
@@ -404,10 +312,9 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
             "usable": usable,
         }
 
-    # Human-facing genre can contain any wording; the slug is only used
-    # internally for grouping/side lookup.
-    special_label = str(raw.get("genre") or raw.get("special_label") or raw.get("special") or variant_raw or "Uncategorised").strip()
-    genre_profile = derive_genre_profile(raw, variant_raw)
+    special_label = None
+    if slot == "special":
+        special_label = str(raw.get("special_label") or raw.get("special") or (variant_raw if variant_slug != "special" else "Special")).strip()
 
     record = {
         "id": release_id,
@@ -418,11 +325,6 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         "variant": variant_slug,
         "variantSlot": slot,
         "variantLabel": special_label or humanise(variant_raw),
-        "genre": special_label or humanise(variant_raw),
-        "genreFamily": genre_profile["family"],
-        "genrePosition": genre_profile["position"],
-        "genreTags": genre_profile["tags"],
-        "side": side,
         "model": {
             "name": str(raw.get("model") or "").strip(),
             "dit": str(raw.get("dit") or "").strip(),
@@ -449,7 +351,7 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         },
         "artwork": {
             "base": art_base,
-            "alt": f"Album artwork for {humanise(title)} — {special_label or humanise(variant_raw)} — Side {side}",
+            "alt": f"Album artwork for {humanise(title)} — {special_label or humanise(variant_raw)}",
             "placeholder": artwork is None,
         },
         "lyrics": {
@@ -471,7 +373,6 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         "composition": title,
         "variant": variant_slug,
         "slot": slot,
-        "side": side,
         "source": record["source"]["directory"],
         "songYaml": (song_record or {}).get("yamlUrl"),
         "yaml": raw_yaml_target.name,
@@ -484,34 +385,12 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
 
 
 def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Stage one public standalone release, optionally as Side A/B/C.
-
-    Multiple YAMLs with the same title are grouped into one ONE-OFF magazine
-    position. Side can be declared with ``side: A|B|C`` or inferred from a
-    ``-a``/``-b``/``-c`` YAML filename or directory suffix.
-    """
+    """Stage one public standalone release."""
     title = slugify(raw.get("title") or source_yaml.parent.name)
     label = str(raw.get("one_off_label") or raw.get("version") or "One-Off").strip() or "One-Off"
 
-    side_value = raw.get("side")
-    side_explicit = side_value is not None and str(side_value).strip() != ""
-    side_raw = str(side_value).strip() if side_explicit else ""
-    side = normalise_side(side_raw or "A")
-    supported_side_tokens = {"A", "B", "C", "1", "2", "3", "SIDE A", "SIDE B", "SIDE C", "SIDE-A", "SIDE-B", "SIDE-C"}
-    if side_explicit and side_raw.upper() not in supported_side_tokens:
-        print(f"warn {source_yaml.relative_to(DROP)}: unsupported side {side_raw!r}; defaulting to Side A")
-
-    if not side_explicit:
-        folder_slug = slugify(source_yaml.parent.name)
-        stem_slug = slugify(source_yaml.stem)
-        for suffix, candidate_side in (("-c", "C"), ("-b", "B"), ("-a", "A")):
-            if folder_slug.endswith(suffix) or stem_slug.endswith(suffix):
-                side = candidate_side
-                print(f"info {source_yaml.relative_to(DROP)}: inferred Side {side} from one-off filename/directory")
-                break
-
     composition_id = slugify(f"{title}-one-off")
-    release_id = composition_id if side == "A" else slugify(f"{composition_id}-{side.lower()}")
+    release_id = composition_id
 
     artwork = resolve_artwork(source_yaml, raw, release_id)
     audio = resolve_audio(source_yaml, release_id)
@@ -563,7 +442,6 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
         "variant": ONE_OFF_SLOT,
         "variantSlot": ONE_OFF_SLOT,
         "variantLabel": label,
-        "side": side,
         "model": {
             "name": str(raw.get("model") or "").strip(),
             "dit": str(raw.get("dit") or "").strip(),
@@ -590,7 +468,7 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
         },
         "artwork": {
             "base": art_base,
-            "alt": f"Album artwork for {humanise(title)} — {label} — Side {side}",
+            "alt": f"Album artwork for {humanise(title)} — {label}",
             "placeholder": artwork is None,
         },
         "lyrics": {
@@ -612,7 +490,6 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
         "composition": composition_id,
         "variant": ONE_OFF_SLOT,
         "slot": ONE_OFF_SLOT,
-        "side": side,
         "oneOff": True,
         "source": record["source"]["directory"],
         "songYaml": None,
@@ -691,7 +568,7 @@ def main() -> int:
 
         record, entry = stage_variant(source_yaml, raw, song_record)
         if record["id"] in seen:
-            raise SystemExit(f"Duplicate release id {record['id']!r}; check title/version/side combinations")
+            raise SystemExit(f"Duplicate release id {record['id']!r}; check title/version combinations")
         seen.add(record["id"])
         manifest.append(entry)
 
@@ -702,7 +579,7 @@ def main() -> int:
         if timing:
             cov = timing.get("coverage")
             timing_note = f" | lyrics {float(cov)*100:.1f}%" if isinstance(cov, (int, float)) else " | lyrics staged"
-        print(f"{record['id']} [Side {record['side']}]: {' + '.join(available) if available else 'NO AUDIO'}{timing_note}")
+        print(f"{record['id']}: {' + '.join(available) if available else 'NO AUDIO'}{timing_note}")
 
     for source_yaml in one_off_yamls:
         raw = load_mapping(source_yaml)
@@ -723,7 +600,7 @@ def main() -> int:
         if timing:
             cov = timing.get("coverage")
             timing_note = f" | lyrics {float(cov)*100:.1f}%" if isinstance(cov, (int, float)) else " | lyrics staged"
-        print(f"{record['id']} [ONE-OFF Side {record['side']}]: {' + '.join(available) if available else 'NO AUDIO'}{timing_note}")
+        print(f"{record['id']} [ONE-OFF]: {' + '.join(available) if available else 'NO AUDIO'}{timing_note}")
 
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
