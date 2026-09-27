@@ -1,0 +1,116 @@
+title: johnny-three-fridges
+version: indie-folk
+model: minimax H3
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 752285532645471
+top_k: 45
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 824556336272682
+sampler_steps: 30
+inspiration:
+inspirationyt:
+story:
+caption: |
+  Global Metadata
+  Basic Attributes: bpm is 75. key is C, and scale is minor. A Cappella / Choral Folk.
+  Global Emotional Progression: The piece opens with a solitary, ethereal atmosphere that feels intimate and fragile.
+  Application Scenarios & Imagery: A candlelit vigil, a moment of collective mourning in a vast stone hall, or the visual of a flame slowly extinguishing in darkness.
+  Sonics & Production Profile: The soundstage is exceptionally wide and immersive, utilizing the stereo field to place vocal layers across the spectrum, creating a cathedral-like acoustic space.
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Male), a very deep resonant baritone with dry humour, crisp storytelling diction and relaxed rhythmic confidence.
+  Vocal Style: The lead vocalist maintains a gentle, storytelling delivery throughout, emphasizing vulnerability and clarity. The supporting ensemble employs a smooth, legato choral style, shifting from wordless humming in the introduction to tight, consonant harmonic support in the verses and choruses.
+  Harmony/Backing Vocals: Dense, multi-part harmonies are present from the very beginning, starting as atmospheric pads and evolving into structured chordal progressions that underpin the lead melody.
+  Vocal FX: The vocals are treated with a long-tail, lush hall reverb that simulates a large, reverberant space, enhancing the sense of depth and spirituality.
+  Arrangement
+  Instrument Lifecycle (Primary/Secondary): Primary: The human voice serves as the sole instrument. A solo male voice carries the main melodic narrative from start to finish. Secondary: Layered vocal harmonies act as the harmonic and rhythmic foundation. Deep bass voices provide the low-end "bass guitar" function, while mid-range and high-range voices simulate keyboard pads and string textures. These layers enter progressively, building density towards the climax and stripping back for the outro.
+  Groove & Foundation Progression: In the absence of percussion, the groove is established through the rhythmic phrasing of the vocal lines and the sustained duration of the harmonic chords.
+  Embellishments, Textures & Spatial FX: Wordless vocalizations ("oohs" and "aahs") serve as atmospheric textures in the intro and bridge, adding an ethereal quality.
+  Section Continuity: Follow the lyric macro structure in order ([intro] → [verse] → [pre-chorus] → [chorus] → [post-chorus] → [verse] → [pre-chorus] → [chorus] → [post-chorus] → [verse] → [chorus] → [post-chorus] → [outro]). Human voices are the only sound source throughout; create all bass, pulse, pads, accents and transitions vocally, with no instruments or synthesized accompaniment.
+lyrics: |
+  [intro]
+  they call him Johnny
+  ...
+  Johnny, Three Fridges
+  a name enough to chill the bone
+  once you've heard my story
+  i'll let you judge if you're safe at home
+  [verse]
+  so,
+  what's a man to do with three whole fridges
+  one for food, one for beer
+  third one you'll never get near
+  he'll have you over, n' cook you dinner
+  delicious to eat, calories for a sinner
+  hear it hum, hear it shiver
+  go near fridge three and you'll hear him snigger
+  [pre-chorus]
+  so what he heck is going down
+  in that sweet ol' minnesota town?
+  well keep on 'a listenin'
+  cuz I know the story,
+  i wrote it down
+  [chorus]
+  ol' Johnny Three Fridges, sinister by name
+  livin' the dream, playin' his all American game
+  what's he got in 'em?
+  day to day, never the same
+  don't get nosey, don't go pryin'
+  else you'll be the one runnin' away cryin'
+  [post-chorus]
+  so, listen up and listen real close
+  won't be long before i'm gone ghost
+  i'm spillin' the beans
+  on ol Johnny Three Fridges dreams
+  [verse]
+  see, ain't nothin' sinister
+  ain't nothin' chillin'
+  except a white tailed deer
+  and some ruffed grouse dead from killin'
+  that's it that's all
+  least that's all he'll tell ya' he got chilling'
+  [pre-chorus]
+  so, listen again, listen well
+  my song my story should ring a bell
+  what's in fridge number three ain' nobody around to tell
+  [chorus]
+  ol' Johnny Three Fridges, sinister by name
+  livin' the dream, playin' his all American game
+  what's he got in 'em?
+  day to day, never the same
+  don't get nosey, don't go pryin'
+  else you'll be the one runnin' away cryin'
+  [post-chorus]
+  family man, family man
+  ol' Johnny Three Fridges got a big family,
+  man
+  mouths to feed from dawn till eve
+  maybe three fridges ain't so hard to believe
+  [verse]
+  bet with that revelation
+  you're startin' to relax now but hear my hesitation
+  one's in the kitchen, ordinary as can be
+  second in the garage, nothin' hauntin' there still
+  but when you find that third fridge
+  tucked behind the basement door
+  you'll see why Johnny told me
+  I ain't welcome anymore
+  [chorus]
+  ol' Johnny Three Fridges, sinister by name
+  livin' the dream, playin' his all American game
+  what's he got in 'em?
+  day to day, never the same
+  don't get nosey, don't go pryin'
+  else you'll be the one runnin' away cryin'
+  [post-chorus]
+  ol' Johnny Three Fridges, sinister by name
+  what's he got in 'em?
+  [outro]
+  so dear friend
+  time's now for this here song to end
+  hear my message, understand my warnin'
+  maybe you'll wake to a delicious breakfast in the mornin'
+  superchaosialidocious

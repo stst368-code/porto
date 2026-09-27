@@ -2,9 +2,9 @@
   "format": "gbr-word-lyrics-v1",
   "version": 2,
   "title": "you-make-me-holy",
-  "song_version": "R&B",
-  "source_yaml": "you-make-me-holy/you-make-me-holy-R&B/you-make-me-holy-R&B.yaml",
-  "source_audio": "you-make-me-holy-R&B.flac",
+  "song_version": "pop",
+  "source_yaml": "you-make-me-holy/you-make-me-holy-pop/you-make-me-holy-pop.yaml",
+  "source_audio": "you-make-me-holy-pop.flac",
   "language": "en",
   "engine": "demucs:htdemucs+whisperx:large-v3",
   "runtime": {
@@ -15,49 +15,49 @@
     "batch_size": 4,
     "cpu_fallback_used": false
   },
-  "generated_at": "2026-09-25T20:24:42+00:00",
+  "generated_at": "2026-09-27T10:24:10+00:00",
   "stats": {
     "lyric_words": 384,
-    "recognised_words": 375,
-    "matched_words": 362,
-    "coverage": 0.9427
+    "recognised_words": 317,
+    "matched_words": 302,
+    "coverage": 0.7865
   },
   "quality": {
-    "rating": "excellent",
+    "rating": "review",
     "review_threshold": 0.8,
-    "review_required": false,
+    "review_required": true,
     "approved": false,
-    "usable_for_live_lyrics": true
+    "usable_for_live_lyrics": false
   },
   "lines": [
     {
       "id": "l1",
       "text": "You make me holy",
       "start": 0.031,
-      "end": 1.693,
+      "end": 1.152,
       "words": [
         {
           "text": "You",
           "start": 0.031,
-          "end": 0.331,
+          "end": 0.131,
           "matched": true
         },
         {
           "text": "make",
-          "start": 0.411,
-          "end": 0.652,
+          "start": 0.171,
+          "end": 0.331,
           "matched": true
         },
         {
           "text": "me",
-          "start": 0.712,
-          "end": 0.912,
+          "start": 0.351,
+          "end": 0.491,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 0.932,
-          "end": 1.693,
+          "start": 0.631,
+          "end": 1.152,
           "matched": true
         }
       ]
@@ -65,79 +65,79 @@
     {
       "id": "l2",
       "text": "You make me turn my hands up onto the skies and pray",
-      "start": 2.613,
-      "end": 6.537,
+      "start": 2.332,
+      "end": 6.294,
       "words": [
         {
           "text": "You",
-          "start": 2.613,
-          "end": 2.914,
+          "start": 2.332,
+          "end": 2.652,
           "matched": true
         },
         {
           "text": "make",
-          "start": 2.994,
-          "end": 3.234,
+          "start": 2.692,
+          "end": 2.953,
           "matched": true
         },
         {
           "text": "me",
-          "start": 3.294,
-          "end": 3.454,
+          "start": 3.013,
+          "end": 3.193,
           "matched": true
         },
         {
           "text": "turn",
-          "start": 3.534,
-          "end": 3.854,
+          "start": 3.313,
+          "end": 3.653,
           "matched": true
         },
         {
           "text": "my",
-          "start": 3.935,
-          "end": 4.195,
+          "start": 3.693,
+          "end": 3.893,
           "matched": true
         },
         {
           "text": "hands",
-          "start": 4.255,
-          "end": 4.555,
+          "start": 3.993,
+          "end": 4.333,
           "matched": true
         },
         {
           "text": "up",
-          "start": 4.695,
-          "end": 4.795,
+          "start": 4.433,
+          "end": 4.553,
           "matched": true
         },
         {
           "text": "onto",
-          "start": 4.996,
-          "end": 5.316,
+          "start": 4.733,
+          "end": 5.054,
           "matched": true
         },
         {
           "text": "the",
-          "start": 5.356,
-          "end": 5.436,
+          "start": 5.094,
+          "end": 5.194,
           "matched": true
         },
         {
           "text": "skies",
-          "start": 5.456,
-          "end": 5.856,
+          "start": 5.254,
+          "end": 5.694,
           "matched": true
         },
         {
           "text": "and",
-          "start": 5.936,
-          "end": 6.036,
+          "start": 5.754,
+          "end": 5.854,
           "matched": true
         },
         {
           "text": "pray",
-          "start": 6.137,
-          "end": 6.537,
+          "start": 5.974,
+          "end": 6.294,
           "matched": true
         }
       ]
@@ -145,55 +145,55 @@
     {
       "id": "l3",
       "text": "I could never complain whilst I have you",
-      "start": 8.158,
-      "end": 10.661,
+      "start": 7.075,
+      "end": 9.136,
       "words": [
         {
           "text": "I",
-          "start": 8.158,
-          "end": 8.259,
+          "start": 7.075,
+          "end": 7.135,
           "matched": true
         },
         {
           "text": "could",
-          "start": 8.359,
-          "end": 8.559,
+          "start": 7.175,
+          "end": 7.335,
           "matched": true
         },
         {
           "text": "never",
-          "start": 8.619,
-          "end": 8.999,
+          "start": 7.375,
+          "end": 7.615,
           "matched": true
         },
         {
           "text": "complain",
-          "start": 9.079,
-          "end": 9.62,
+          "start": 7.695,
+          "end": 8.295,
           "matched": true
         },
         {
           "text": "whilst",
-          "start": 9.68,
-          "end": 10.0,
+          "start": 8.355,
+          "end": 8.536,
           "matched": true
         },
         {
           "text": "I",
-          "start": 10.22,
-          "end": 10.26,
+          "start": 8.736,
+          "end": 8.776,
           "matched": true
         },
         {
           "text": "have",
-          "start": 10.3,
-          "end": 10.461,
+          "start": 8.836,
+          "end": 8.976,
           "matched": true
         },
         {
           "text": "you",
-          "start": 10.501,
-          "end": 10.661,
+          "start": 9.056,
+          "end": 9.136,
           "matched": true
         }
       ]
@@ -201,37 +201,37 @@
     {
       "id": "l4",
       "text": "Click, c-c-click, c-c-click, click (Woof)",
-      "start": 10.661,
-      "end": 13.503,
+      "start": 9.136,
+      "end": 13.008,
       "words": [
         {
           "text": "Click,",
-          "start": 10.661,
-          "end": 11.229,
+          "start": 9.136,
+          "end": 9.91,
           "matched": false
         },
         {
           "text": "c-c-click,",
-          "start": 11.229,
-          "end": 11.798,
+          "start": 9.91,
+          "end": 10.685,
           "matched": false
         },
         {
           "text": "c-c-click,",
-          "start": 11.798,
-          "end": 12.366,
+          "start": 10.685,
+          "end": 11.459,
           "matched": false
         },
         {
           "text": "click",
-          "start": 12.366,
-          "end": 12.935,
+          "start": 11.459,
+          "end": 12.234,
           "matched": false
         },
         {
           "text": "(Woof)",
-          "start": 12.935,
-          "end": 13.503,
+          "start": 12.234,
+          "end": 13.008,
           "matched": false
         }
       ]
@@ -239,37 +239,37 @@
     {
       "id": "l5",
       "text": "You like my holy books?",
-      "start": 13.503,
-      "end": 15.245,
+      "start": 13.008,
+      "end": 14.93,
       "words": [
         {
           "text": "You",
-          "start": 13.503,
-          "end": 13.784,
+          "start": 13.008,
+          "end": 13.328,
           "matched": true
         },
         {
           "text": "like",
-          "start": 13.844,
-          "end": 14.064,
+          "start": 13.368,
+          "end": 13.588,
           "matched": true
         },
         {
           "text": "my",
-          "start": 14.164,
-          "end": 14.384,
+          "start": 13.689,
+          "end": 13.889,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 14.484,
-          "end": 14.885,
+          "start": 14.029,
+          "end": 14.509,
           "matched": true
         },
         {
           "text": "books?",
-          "start": 14.945,
-          "end": 15.245,
+          "start": 14.669,
+          "end": 14.93,
           "matched": true
         }
       ]
@@ -277,73 +277,73 @@
     {
       "id": "l6",
       "text": "I could lend them to you like a little garden fruit",
-      "start": 15.485,
-      "end": 17.727,
+      "start": 15.07,
+      "end": 17.532,
       "words": [
         {
           "text": "I",
-          "start": 15.485,
-          "end": 15.545,
+          "start": 15.07,
+          "end": 15.09,
           "matched": true
         },
         {
           "text": "could",
-          "start": 15.565,
-          "end": 15.705,
+          "start": 15.15,
+          "end": 15.33,
           "matched": true
         },
         {
           "text": "lend",
-          "start": 15.725,
-          "end": 15.885,
+          "start": 15.35,
+          "end": 15.49,
           "matched": true
         },
         {
           "text": "them",
-          "start": 15.905,
-          "end": 16.006,
+          "start": 15.51,
+          "end": 15.63,
           "matched": true
         },
         {
           "text": "to",
-          "start": 16.046,
-          "end": 16.146,
+          "start": 15.67,
+          "end": 15.79,
           "matched": true
         },
         {
           "text": "you",
-          "start": 16.186,
-          "end": 16.326,
+          "start": 15.83,
+          "end": 15.97,
           "matched": true
         },
         {
           "text": "like",
-          "start": 16.366,
-          "end": 16.566,
+          "start": 16.03,
+          "end": 16.211,
           "matched": true
         },
         {
           "text": "a",
-          "start": 16.606,
-          "end": 16.646,
+          "start": 16.251,
+          "end": 16.291,
           "matched": true
         },
         {
           "text": "little",
-          "start": 16.706,
-          "end": 16.966,
+          "start": 16.351,
+          "end": 16.611,
           "matched": true
         },
         {
           "text": "garden",
-          "start": 17.006,
-          "end": 17.447,
+          "start": 16.671,
+          "end": 17.211,
           "matched": true
         },
         {
           "text": "fruit",
-          "start": 17.507,
-          "end": 17.727,
+          "start": 17.311,
+          "end": 17.532,
           "matched": true
         }
       ]
@@ -351,49 +351,49 @@
     {
       "id": "l7",
       "text": "Attitude and the prayer will save you",
-      "start": 18.388,
-      "end": 20.87,
+      "start": 18.232,
+      "end": 20.514,
       "words": [
         {
           "text": "Attitude",
-          "start": 18.388,
-          "end": 19.028,
+          "start": 18.232,
+          "end": 19.033,
           "matched": true
         },
         {
           "text": "and",
-          "start": 19.289,
-          "end": 19.389,
+          "start": 19.073,
+          "end": 19.173,
           "matched": true
         },
         {
           "text": "the",
-          "start": 19.429,
-          "end": 19.509,
-          "matched": true
+          "start": 19.173,
+          "end": 19.333,
+          "matched": false
         },
         {
           "text": "prayer",
-          "start": 19.569,
-          "end": 19.869,
+          "start": 19.333,
+          "end": 19.653,
           "matched": true
         },
         {
           "text": "will",
-          "start": 19.889,
-          "end": 20.089,
+          "start": 19.713,
+          "end": 19.894,
           "matched": true
         },
         {
           "text": "save",
-          "start": 20.169,
-          "end": 20.67,
+          "start": 19.974,
+          "end": 20.354,
           "matched": true
         },
         {
           "text": "you",
-          "start": 20.71,
-          "end": 20.87,
+          "start": 20.394,
+          "end": 20.514,
           "matched": true
         }
       ]
@@ -401,25 +401,25 @@
     {
       "id": "l8",
       "text": "Your holy saviour",
-      "start": 21.17,
-      "end": 22.632,
+      "start": 21.515,
+      "end": 22.516,
       "words": [
         {
           "text": "Your",
-          "start": 21.17,
-          "end": 21.491,
+          "start": 21.515,
+          "end": 21.715,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 21.591,
-          "end": 21.971,
+          "start": 21.755,
+          "end": 21.975,
           "matched": true
         },
         {
           "text": "saviour",
-          "start": 22.111,
-          "end": 22.632,
+          "start": 22.035,
+          "end": 22.516,
           "matched": true
         }
       ]
@@ -427,61 +427,61 @@
     {
       "id": "l9",
       "text": "Red wine, holy bread, he can cure a tumor",
-      "start": 23.398,
-      "end": 26.462,
+      "start": 22.736,
+      "end": 25.118,
       "words": [
         {
           "text": "Red",
-          "start": 23.398,
-          "end": 23.638,
+          "start": 22.736,
+          "end": 22.936,
           "matched": true
         },
         {
           "text": "wine,",
-          "start": 23.678,
-          "end": 24.019,
+          "start": 23.036,
+          "end": 23.316,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 24.079,
-          "end": 24.539,
+          "start": 23.376,
+          "end": 23.637,
           "matched": true
         },
         {
           "text": "bread,",
-          "start": 24.66,
-          "end": 25.28,
+          "start": 23.697,
+          "end": 24.017,
           "matched": true
         },
         {
           "text": "he",
-          "start": 25.34,
-          "end": 25.42,
+          "start": 24.057,
+          "end": 24.137,
           "matched": true
         },
         {
           "text": "can",
-          "start": 25.461,
-          "end": 25.581,
+          "start": 24.177,
+          "end": 24.297,
           "matched": true
         },
         {
           "text": "cure",
-          "start": 25.621,
-          "end": 25.841,
+          "start": 24.337,
+          "end": 24.577,
           "matched": true
         },
         {
           "text": "a",
-          "start": 25.861,
-          "end": 25.881,
+          "start": 24.617,
+          "end": 24.637,
           "matched": true
         },
         {
           "text": "tumor",
-          "start": 25.941,
-          "end": 26.462,
+          "start": 24.697,
+          "end": 25.118,
           "matched": true
         }
       ]
@@ -489,123 +489,123 @@
     {
       "id": "l10",
       "text": "Can't believe we'd ever let hands stray from him (no no)",
-      "start": 26.582,
-      "end": 30.306,
+      "start": 25.338,
+      "end": 28.761,
       "words": [
         {
           "text": "Can't",
-          "start": 26.582,
-          "end": 26.762,
+          "start": 25.338,
+          "end": 25.518,
           "matched": true
         },
         {
           "text": "believe",
-          "start": 26.782,
-          "end": 27.082,
+          "start": 25.558,
+          "end": 25.858,
           "matched": true
         },
         {
           "text": "we'd",
-          "start": 27.102,
-          "end": 27.263,
+          "start": 25.898,
+          "end": 26.059,
           "matched": true
         },
         {
           "text": "ever",
-          "start": 27.303,
-          "end": 27.483,
+          "start": 26.119,
+          "end": 26.299,
           "matched": true
         },
         {
           "text": "let",
-          "start": 27.483,
-          "end": 27.903,
-          "matched": false
+          "start": 26.379,
+          "end": 26.579,
+          "matched": true
         },
         {
           "text": "hands",
-          "start": 27.903,
-          "end": 28.104,
+          "start": 26.679,
+          "end": 26.939,
           "matched": true
         },
         {
           "text": "stray",
-          "start": 28.104,
-          "end": 28.504,
-          "matched": false
+          "start": 26.979,
+          "end": 27.279,
+          "matched": true
         },
         {
           "text": "from",
-          "start": 28.504,
-          "end": 28.804,
+          "start": 27.36,
+          "end": 27.7,
           "matched": true
         },
         {
           "text": "him",
-          "start": 28.865,
-          "end": 29.045,
+          "start": 27.76,
+          "end": 28.621,
           "matched": true
         },
         {
           "text": "(no",
-          "start": 29.145,
-          "end": 30.046,
-          "matched": true
+          "start": 28.621,
+          "end": 28.691,
+          "matched": false
         },
         {
           "text": "no)",
-          "start": 30.086,
-          "end": 30.306,
-          "matched": true
+          "start": 28.691,
+          "end": 28.761,
+          "matched": false
         }
       ]
     },
     {
       "id": "l11",
       "text": "I count my blessings, you count yours",
-      "start": 30.947,
-      "end": 33.27,
+      "start": 28.761,
+      "end": 30.662,
       "words": [
         {
           "text": "I",
-          "start": 30.947,
-          "end": 30.987,
+          "start": 28.761,
+          "end": 28.901,
           "matched": true
         },
         {
           "text": "count",
-          "start": 31.067,
-          "end": 31.367,
+          "start": 28.941,
+          "end": 29.141,
           "matched": true
         },
         {
           "text": "my",
-          "start": 31.428,
-          "end": 31.608,
+          "start": 29.181,
+          "end": 29.301,
           "matched": true
         },
         {
           "text": "blessings,",
-          "start": 31.668,
-          "end": 32.309,
+          "start": 29.341,
+          "end": 29.802,
           "matched": true
         },
         {
           "text": "you",
-          "start": 32.349,
-          "end": 32.549,
+          "start": 29.822,
+          "end": 29.942,
           "matched": true
         },
         {
           "text": "count",
-          "start": 32.649,
-          "end": 32.949,
+          "start": 30.042,
+          "end": 30.302,
           "matched": true
         },
         {
           "text": "yours",
-          "start": 32.989,
-          "end": 33.27,
+          "start": 30.342,
+          "end": 30.662,
           "matched": true
         }
       ]
@@ -613,67 +613,67 @@
     {
       "id": "l12",
       "text": "Got a life of meaning too, call it his will",
-      "start": 33.31,
-      "end": 35.813,
+      "start": 30.702,
+      "end": 32.984,
       "words": [
         {
           "text": "Got",
-          "start": 33.31,
-          "end": 33.47,
+          "start": 30.702,
+          "end": 30.882,
           "matched": true
         },
         {
           "text": "a",
-          "start": 33.53,
-          "end": 33.57,
+          "start": 30.922,
+          "end": 30.982,
           "matched": true
         },
         {
           "text": "life",
-          "start": 33.61,
-          "end": 33.79,
+          "start": 31.023,
+          "end": 31.183,
           "matched": true
         },
         {
           "text": "of",
-          "start": 33.83,
-          "end": 33.89,
+          "start": 31.263,
+          "end": 31.323,
           "matched": true
         },
         {
           "text": "meaning",
-          "start": 33.931,
-          "end": 34.191,
+          "start": 31.363,
+          "end": 31.643,
           "matched": true
         },
         {
           "text": "too,",
-          "start": 34.231,
-          "end": 34.431,
+          "start": 31.703,
+          "end": 31.903,
           "matched": true
         },
         {
           "text": "call",
-          "start": 34.571,
-          "end": 34.932,
+          "start": 32.023,
+          "end": 32.223,
           "matched": true
         },
         {
           "text": "it",
-          "start": 35.032,
-          "end": 35.132,
+          "start": 32.304,
+          "end": 32.384,
           "matched": true
         },
         {
           "text": "his",
-          "start": 35.252,
-          "end": 35.432,
+          "start": 32.444,
+          "end": 32.644,
           "matched": true
         },
         {
           "text": "will",
-          "start": 35.532,
-          "end": 35.813,
+          "start": 32.704,
+          "end": 32.984,
           "matched": true
         }
       ]
@@ -681,69 +681,69 @@
     {
       "id": "l13",
       "text": "Bet your contribution that I'ma pray here",
-      "start": 35.853,
-      "end": 38.216,
+      "start": 32.984,
+      "end": 35.586,
       "words": [
         {
           "text": "Bet",
-          "start": 35.853,
-          "end": 35.973,
-          "matched": true
+          "start": 32.984,
+          "end": 33.525,
+          "matched": false
         },
         {
           "text": "your",
-          "start": 35.993,
-          "end": 36.153,
+          "start": 33.525,
+          "end": 33.645,
           "matched": true
         },
         {
           "text": "contribution",
-          "start": 36.173,
-          "end": 36.974,
+          "start": 33.685,
+          "end": 34.325,
           "matched": true
         },
         {
           "text": "that",
-          "start": 36.994,
-          "end": 37.134,
+          "start": 34.365,
+          "end": 34.525,
           "matched": true
         },
         {
           "text": "I'ma",
-          "start": 37.174,
-          "end": 37.315,
+          "start": 34.746,
+          "end": 34.966,
           "matched": true
         },
         {
           "text": "pray",
-          "start": 37.455,
-          "end": 38.095,
+          "start": 35.026,
+          "end": 35.346,
           "matched": true
         },
         {
           "text": "here",
-          "start": 38.095,
-          "end": 38.216,
-          "matched": false
+          "start": 35.386,
+          "end": 35.586,
+          "matched": true
         }
       ]
     },
     {
       "id": "l14",
       "text": "Absoloute gospel",
-      "start": 38.216,
-      "end": 39.938,
+      "start": 36.067,
+      "end": 37.308,
       "words": [
         {
           "text": "Absoloute",
-          "start": 38.216,
-          "end": 38.936,
+          "start": 36.067,
+          "end": 36.587,
           "matched": true
         },
         {
           "text": "gospel",
-          "start": 39.057,
-          "end": 39.938,
+          "start": 36.667,
+          "end": 37.308,
           "matched": true
         }
       ]
@@ -751,43 +751,43 @@
     {
       "id": "l15",
       "text": "Wise headed brother, holy hearted sister",
-      "start": 41.266,
-      "end": 43.447,
+      "start": 37.368,
+      "end": 39.329,
       "words": [
         {
           "text": "Wise",
-          "start": 41.266,
-          "end": 41.886,
+          "start": 37.368,
+          "end": 37.968,
           "matched": true
         },
         {
           "text": "headed",
-          "start": 41.906,
-          "end": 42.186,
-          "matched": true
+          "start": 37.968,
+          "end": 38.028,
+          "matched": false
         },
         {
           "text": "brother,",
-          "start": 42.206,
-          "end": 42.506,
+          "start": 38.028,
+          "end": 38.328,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 42.546,
-          "end": 42.807,
-          "matched": true
+          "start": 38.328,
+          "end": 38.689,
+          "matched": false
         },
         {
           "text": "hearted",
-          "start": 42.847,
-          "end": 43.127,
+          "start": 38.689,
+          "end": 39.009,
           "matched": true
         },
         {
           "text": "sister",
-          "start": 43.147,
-          "end": 43.447,
+          "start": 39.029,
+          "end": 39.329,
           "matched": true
         }
       ]
@@ -795,67 +795,67 @@
     {
       "id": "l16",
       "text": "Living life so good, we were born in his garden",
-      "start": 43.487,
-      "end": 46.008,
+      "start": 39.369,
+      "end": 41.671,
       "words": [
         {
           "text": "Living",
-          "start": 43.487,
-          "end": 43.747,
+          "start": 39.369,
+          "end": 39.649,
           "matched": true
         },
         {
           "text": "life",
-          "start": 43.847,
-          "end": 44.067,
+          "start": 39.689,
+          "end": 39.83,
           "matched": true
         },
         {
           "text": "so",
-          "start": 44.107,
-          "end": 44.347,
+          "start": 39.85,
+          "end": 39.99,
           "matched": true
         },
         {
           "text": "good,",
-          "start": 44.447,
-          "end": 44.727,
+          "start": 40.01,
+          "end": 40.33,
           "matched": true
         },
         {
           "text": "we",
-          "start": 44.767,
-          "end": 44.867,
+          "start": 40.37,
+          "end": 40.47,
           "matched": true
         },
         {
           "text": "were",
-          "start": 44.887,
-          "end": 45.027,
+          "start": 40.51,
+          "end": 40.65,
           "matched": true
         },
         {
           "text": "born",
-          "start": 45.067,
-          "end": 45.407,
+          "start": 40.69,
+          "end": 41.051,
           "matched": true
         },
         {
           "text": "in",
-          "start": 45.447,
-          "end": 45.527,
+          "start": 41.111,
+          "end": 41.171,
           "matched": true
         },
         {
           "text": "his",
-          "start": 45.567,
-          "end": 45.687,
+          "start": 41.191,
+          "end": 41.331,
           "matched": true
         },
         {
           "text": "garden",
-          "start": 45.707,
-          "end": 46.008,
+          "start": 41.351,
+          "end": 41.671,
           "matched": true
         }
       ]
@@ -863,391 +863,391 @@
     {
       "id": "l17",
       "text": "Share a verse with me (believer)",
-      "start": 46.028,
-      "end": 47.928,
+      "start": 41.691,
+      "end": 42.478,
       "words": [
         {
           "text": "Share",
-          "start": 46.028,
-          "end": 46.228,
+          "start": 41.691,
+          "end": 41.871,
           "matched": true
         },
         {
           "text": "a",
-          "start": 46.268,
-          "end": 46.348,
+          "start": 41.931,
+          "end": 41.991,
           "matched": true
         },
         {
           "text": "verse",
-          "start": 46.388,
-          "end": 46.648,
+          "start": 42.011,
+          "end": 42.212,
           "matched": true
         },
         {
           "text": "with",
-          "start": 46.668,
-          "end": 46.848,
+          "start": 42.252,
+          "end": 42.392,
           "matched": true
         },
         {
           "text": "me",
-          "start": 46.868,
-          "end": 47.008,
+          "start": 42.412,
+          "end": 42.452,
           "matched": true
         },
         {
           "text": "(believer)",
-          "start": 47.468,
-          "end": 47.928,
-          "matched": true
+          "start": 42.452,
+          "end": 42.478,
+          "matched": false
         }
       ]
     },
     {
       "id": "l18",
       "text": "Shine the lords light upon he",
-      "start": 48.228,
-      "end": 49.809,
+      "start": 42.478,
+      "end": 42.636,
       "words": [
         {
           "text": "Shine",
-          "start": 48.228,
-          "end": 48.448,
-          "matched": true
+          "start": 42.478,
+          "end": 42.505,
+          "matched": false
         },
         {
           "text": "the",
-          "start": 48.468,
-          "end": 48.568,
-          "matched": true
+          "start": 42.505,
+          "end": 42.531,
+          "matched": false
         },
         {
           "text": "lords",
-          "start": 48.608,
-          "end": 48.888,
-          "matched": true
+          "start": 42.531,
+          "end": 42.557,
+          "matched": false
         },
         {
           "text": "light",
-          "start": 48.949,
-          "end": 49.269,
-          "matched": true
+          "start": 42.557,
+          "end": 42.583,
+          "matched": false
         },
         {
           "text": "upon",
-          "start": 49.329,
-          "end": 49.689,
-          "matched": true
+          "start": 42.583,
+          "end": 42.609,
+          "matched": false
         },
         {
           "text": "he",
-          "start": 49.729,
-          "end": 49.809,
-          "matched": true
+          "start": 42.609,
+          "end": 42.636,
+          "matched": false
         }
       ]
     },
     {
       "id": "l19",
       "text": "Count the days until we preach again (it's tomorrow)",
-      "start": 49.849,
-      "end": 52.47,
+      "start": 42.636,
+      "end": 42.872,
       "words": [
         {
           "text": "Count",
-          "start": 49.849,
-          "end": 50.029,
-          "matched": true
+          "start": 42.636,
+          "end": 42.662,
+          "matched": false
         },
         {
           "text": "the",
-          "start": 50.049,
-          "end": 50.149,
-          "matched": true
+          "start": 42.662,
+          "end": 42.688,
+          "matched": false
         },
         {
           "text": "days",
-          "start": 50.189,
-          "end": 50.369,
-          "matched": true
+          "start": 42.688,
+          "end": 42.715,
+          "matched": false
         },
         {
           "text": "until",
-          "start": 50.409,
-          "end": 50.649,
-          "matched": true
+          "start": 42.715,
+          "end": 42.741,
+          "matched": false
         },
         {
           "text": "we",
-          "start": 50.669,
-          "end": 50.789,
-          "matched": true
+          "start": 42.741,
+          "end": 42.767,
+          "matched": false
         },
         {
           "text": "preach",
-          "start": 50.809,
-          "end": 51.149,
-          "matched": true
+          "start": 42.767,
+          "end": 42.793,
+          "matched": false
         },
         {
           "text": "again",
-          "start": 51.229,
-          "end": 51.569,
-          "matched": true
+          "start": 42.793,
+          "end": 42.819,
+          "matched": false
         },
         {
           "text": "(it's",
-          "start": 51.789,
-          "end": 51.909,
-          "matched": true
+          "start": 42.819,
+          "end": 42.846,
+          "matched": false
         },
         {
           "text": "tomorrow)",
-          "start": 51.929,
-          "end": 52.47,
-          "matched": true
+          "start": 42.846,
+          "end": 42.872,
+          "matched": false
         }
       ]
     },
     {
       "id": "l20",
       "text": "I'm holy",
-      "start": 52.55,
-      "end": 53.21,
+      "start": 42.872,
+      "end": 42.957,
       "words": [
         {
           "text": "I'm",
-          "start": 52.55,
-          "end": 52.71,
+          "start": 42.872,
+          "end": 42.952,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 52.79,
-          "end": 53.21,
-          "matched": true
+          "start": 42.952,
+          "end": 42.957,
+          "matched": false
         }
       ]
     },
     {
       "id": "l21",
       "text": "You raise my life up then you say, (Don't be bad)",
-      "start": 53.73,
-      "end": 57.131,
+      "start": 42.957,
+      "end": 43.014,
       "words": [
         {
           "text": "You",
-          "start": 53.73,
-          "end": 53.97,
-          "matched": true
+          "start": 42.957,
+          "end": 42.962,
+          "matched": false
         },
         {
           "text": "raise",
-          "start": 54.03,
-          "end": 54.33,
-          "matched": true
+          "start": 42.962,
+          "end": 42.968,
+          "matched": false
         },
         {
           "text": "my",
-          "start": 54.37,
-          "end": 54.59,
-          "matched": true
+          "start": 42.968,
+          "end": 42.973,
+          "matched": false
         },
         {
           "text": "life",
-          "start": 54.67,
-          "end": 54.95,
-          "matched": true
+          "start": 42.973,
+          "end": 42.978,
+          "matched": false
         },
         {
           "text": "up",
-          "start": 55.091,
-          "end": 55.211,
-          "matched": true
+          "start": 42.978,
+          "end": 42.983,
+          "matched": false
         },
         {
           "text": "then",
-          "start": 55.291,
-          "end": 55.551,
-          "matched": true
+          "start": 42.983,
+          "end": 42.988,
+          "matched": false
         },
         {
           "text": "you",
-          "start": 55.591,
-          "end": 55.731,
-          "matched": true
+          "start": 42.988,
+          "end": 42.993,
+          "matched": false
         },
         {
           "text": "say,",
-          "start": 55.771,
-          "end": 56.051,
-          "matched": true
+          "start": 42.993,
+          "end": 42.999,
+          "matched": false
         },
         {
           "text": "(Don't",
-          "start": 56.211,
-          "end": 56.431,
-          "matched": true
+          "start": 42.999,
+          "end": 43.004,
+          "matched": false
         },
         {
           "text": "be",
-          "start": 56.451,
-          "end": 56.551,
-          "matched": true
+          "start": 43.004,
+          "end": 43.009,
+          "matched": false
         },
         {
           "text": "bad)",
-          "start": 56.591,
-          "end": 57.131,
-          "matched": true
+          "start": 43.009,
+          "end": 43.014,
+          "matched": false
         }
       ]
     },
     {
       "id": "l22",
       "text": "You know your way around a Holy book, (call you Dad)",
-      "start": 57.551,
-      "end": 62.013,
+      "start": 43.014,
+      "end": 43.071,
       "words": [
         {
           "text": "You",
-          "start": 57.551,
-          "end": 57.771,
-          "matched": true
+          "start": 43.014,
+          "end": 43.019,
+          "matched": false
         },
         {
           "text": "know",
-          "start": 57.851,
-          "end": 58.131,
-          "matched": true
+          "start": 43.019,
+          "end": 43.025,
+          "matched": false
         },
         {
           "text": "your",
-          "start": 58.172,
-          "end": 58.452,
-          "matched": true
+          "start": 43.025,
+          "end": 43.03,
+          "matched": false
         },
         {
           "text": "way",
-          "start": 58.512,
-          "end": 59.052,
-          "matched": true
+          "start": 43.03,
+          "end": 43.035,
+          "matched": false
         },
         {
           "text": "around",
-          "start": 59.072,
-          "end": 59.452,
-          "matched": true
+          "start": 43.035,
+          "end": 43.04,
+          "matched": false
         },
         {
           "text": "a",
-          "start": 59.472,
-          "end": 59.492,
-          "matched": true
+          "start": 43.04,
+          "end": 43.045,
+          "matched": false
         },
         {
           "text": "Holy",
-          "start": 59.512,
-          "end": 60.832,
-          "matched": true
+          "start": 43.045,
+          "end": 43.051,
+          "matched": false
         },
         {
           "text": "book,",
-          "start": 60.892,
-          "end": 61.092,
-          "matched": true
+          "start": 43.051,
+          "end": 43.056,
+          "matched": false
         },
         {
           "text": "(call",
-          "start": 61.333,
-          "end": 61.513,
-          "matched": true
+          "start": 43.056,
+          "end": 43.061,
+          "matched": false
         },
         {
           "text": "you",
-          "start": 61.553,
-          "end": 61.653,
-          "matched": true
+          "start": 43.061,
+          "end": 43.066,
+          "matched": false
         },
         {
           "text": "Dad)",
-          "start": 61.693,
-          "end": 62.013,
-          "matched": true
+          "start": 43.066,
+          "end": 43.071,
+          "matched": false
         }
       ]
     },
     {
       "id": "l23",
       "text": "Throwing sermons every time I go to Church (Preach brother, preach)",
-      "start": 62.033,
-      "end": 65.314,
+      "start": 43.071,
+      "end": 43.205,
       "words": [
         {
           "text": "Throwing",
-          "start": 62.033,
-          "end": 62.253,
-          "matched": true
+          "start": 43.071,
+          "end": 43.076,
+          "matched": false
         },
         {
           "text": "sermons",
-          "start": 62.313,
-          "end": 62.953,
-          "matched": true
+          "start": 43.076,
+          "end": 43.082,
+          "matched": false
         },
         {
           "text": "every",
-          "start": 63.053,
-          "end": 63.233,
-          "matched": true
+          "start": 43.082,
+          "end": 43.087,
+          "matched": false
         },
         {
           "text": "time",
-          "start": 63.273,
-          "end": 63.453,
-          "matched": true
+          "start": 43.087,
+          "end": 43.092,
+          "matched": false
         },
         {
           "text": "I",
-          "start": 63.493,
-          "end": 63.573,
+          "start": 43.092,
+          "end": 43.112,
           "matched": true
         },
         {
           "text": "go",
-          "start": 63.593,
-          "end": 63.813,
-          "matched": true
+          "start": 43.112,
+          "end": 43.128,
+          "matched": false
         },
         {
           "text": "to",
-          "start": 63.873,
-          "end": 63.973,
-          "matched": true
+          "start": 43.128,
+          "end": 43.143,
+          "matched": false
         },
         {
           "text": "Church",
-          "start": 64.053,
-          "end": 64.394,
-          "matched": true
+          "start": 43.143,
+          "end": 43.159,
+          "matched": false
         },
         {
           "text": "(Preach",
-          "start": 64.514,
-          "end": 64.794,
-          "matched": true
+          "start": 43.159,
+          "end": 43.174,
+          "matched": false
         },
         {
           "text": "brother,",
-          "start": 64.854,
-          "end": 65.214,
-          "matched": true
+          "start": 43.174,
+          "end": 43.19,
+          "matched": false
         },
         {
           "text": "preach)",
-          "start": 65.214,
-          "end": 65.314,
+          "start": 43.19,
+          "end": 43.205,
           "matched": false
         }
       ]
@@ -1255,67 +1255,67 @@
     {
       "id": "l24",
       "text": "I'm glad, give big thanks, I'm glad (Praise the lord)",
-      "start": 65.314,
-      "end": 68.655,
+      "start": 43.205,
+      "end": 44.854,
       "words": [
         {
           "text": "I'm",
-          "start": 65.314,
-          "end": 65.454,
-          "matched": true
+          "start": 43.205,
+          "end": 43.221,
+          "matched": false
         },
         {
           "text": "glad,",
-          "start": 65.494,
-          "end": 65.814,
-          "matched": true
+          "start": 43.221,
+          "end": 43.236,
+          "matched": false
         },
         {
           "text": "give",
-          "start": 65.854,
-          "end": 66.074,
-          "matched": true
+          "start": 43.236,
+          "end": 43.252,
+          "matched": false
         },
         {
           "text": "big",
-          "start": 66.154,
-          "end": 66.374,
+          "start": 43.252,
+          "end": 43.353,
           "matched": true
         },
         {
           "text": "thanks,",
-          "start": 66.454,
-          "end": 66.654,
+          "start": 43.653,
+          "end": 43.873,
           "matched": true
         },
         {
           "text": "I'm",
-          "start": 66.694,
-          "end": 66.774,
+          "start": 43.913,
+          "end": 43.993,
           "matched": true
         },
         {
           "text": "glad",
-          "start": 66.794,
-          "end": 67.094,
+          "start": 44.013,
+          "end": 44.314,
           "matched": true
         },
         {
           "text": "(Praise",
-          "start": 67.114,
-          "end": 67.314,
+          "start": 44.334,
+          "end": 44.514,
           "matched": true
         },
         {
           "text": "the",
-          "start": 67.334,
-          "end": 67.395,
+          "start": 44.554,
+          "end": 44.634,
           "matched": true
         },
         {
           "text": "lord)",
-          "start": 67.475,
-          "end": 68.655,
+          "start": 44.674,
+          "end": 44.854,
           "matched": true
         }
       ]
@@ -1323,31 +1323,31 @@
     {
       "id": "l25",
       "text": "You make me holy",
-      "start": 69.015,
-      "end": 70.737,
+      "start": 64.179,
+      "end": 65.159,
       "words": [
         {
           "text": "You",
-          "start": 69.015,
-          "end": 69.335,
+          "start": 64.179,
+          "end": 64.319,
           "matched": true
         },
         {
           "text": "make",
-          "start": 69.396,
-          "end": 69.616,
+          "start": 64.359,
+          "end": 64.499,
           "matched": true
         },
         {
           "text": "me",
-          "start": 69.696,
-          "end": 69.896,
+          "start": 64.539,
+          "end": 64.639,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 69.916,
-          "end": 70.737,
+          "start": 64.719,
+          "end": 65.159,
           "matched": true
         }
       ]
@@ -1355,79 +1355,79 @@
     {
       "id": "l26",
       "text": "You make me turn my hands up onto the skies and pray",
-      "start": 71.578,
-      "end": 75.482,
+      "start": 65.94,
+      "end": 70.282,
       "words": [
         {
           "text": "You",
-          "start": 71.578,
-          "end": 71.898,
+          "start": 65.94,
+          "end": 66.64,
           "matched": true
         },
         {
           "text": "make",
-          "start": 71.958,
-          "end": 72.179,
+          "start": 66.7,
+          "end": 66.96,
           "matched": true
         },
         {
           "text": "me",
-          "start": 72.239,
-          "end": 72.419,
+          "start": 67.02,
+          "end": 67.16,
           "matched": true
         },
         {
           "text": "turn",
-          "start": 72.499,
-          "end": 72.819,
+          "start": 67.3,
+          "end": 67.681,
           "matched": true
         },
         {
           "text": "my",
-          "start": 72.879,
-          "end": 73.18,
+          "start": 67.721,
+          "end": 67.921,
           "matched": true
         },
         {
           "text": "hands",
-          "start": 73.22,
-          "end": 73.5,
+          "start": 68.001,
+          "end": 68.321,
           "matched": true
         },
         {
           "text": "up",
-          "start": 73.64,
-          "end": 73.76,
+          "start": 68.421,
+          "end": 68.541,
           "matched": true
         },
         {
           "text": "onto",
-          "start": 73.921,
-          "end": 74.241,
+          "start": 68.741,
+          "end": 69.001,
           "matched": true
         },
         {
           "text": "the",
-          "start": 74.281,
-          "end": 74.361,
+          "start": 69.061,
+          "end": 69.161,
           "matched": true
         },
         {
           "text": "skies",
-          "start": 74.401,
-          "end": 74.781,
+          "start": 69.241,
+          "end": 69.702,
           "matched": true
         },
         {
           "text": "and",
-          "start": 74.882,
-          "end": 75.002,
+          "start": 69.782,
+          "end": 69.902,
           "matched": true
         },
         {
           "text": "pray",
-          "start": 75.082,
-          "end": 75.482,
+          "start": 69.982,
+          "end": 70.282,
           "matched": true
         }
       ]
@@ -1435,55 +1435,55 @@
     {
       "id": "l27",
       "text": "I could never complain whilst I have you",
-      "start": 77.124,
-      "end": 79.607,
+      "start": 70.742,
+      "end": 72.823,
       "words": [
         {
           "text": "I",
-          "start": 77.124,
-          "end": 77.204,
+          "start": 70.742,
+          "end": 70.802,
           "matched": true
         },
         {
           "text": "could",
-          "start": 77.304,
-          "end": 77.645,
+          "start": 70.842,
+          "end": 71.022,
           "matched": true
         },
         {
           "text": "never",
-          "start": 77.685,
-          "end": 77.905,
+          "start": 71.062,
+          "end": 71.282,
           "matched": true
         },
         {
           "text": "complain",
-          "start": 78.005,
-          "end": 78.566,
+          "start": 71.362,
+          "end": 71.943,
           "matched": true
         },
         {
           "text": "whilst",
-          "start": 78.606,
-          "end": 78.926,
-          "matched": true
+          "start": 71.943,
+          "end": 72.263,
+          "matched": false
         },
         {
           "text": "I",
-          "start": 79.106,
-          "end": 79.206,
+          "start": 72.263,
+          "end": 72.343,
           "matched": true
         },
         {
           "text": "have",
-          "start": 79.246,
-          "end": 79.407,
+          "start": 72.383,
+          "end": 72.663,
           "matched": true
         },
         {
           "text": "you",
-          "start": 79.447,
-          "end": 79.607,
+          "start": 72.703,
+          "end": 72.823,
           "matched": true
         }
       ]
@@ -1491,37 +1491,37 @@
     {
       "id": "l28",
       "text": "Click, c-c-click, c-c-click, click (Woof)",
-      "start": 80.688,
-      "end": 84.348,
+      "start": 72.823,
+      "end": 75.445,
       "words": [
         {
           "text": "Click,",
-          "start": 80.688,
-          "end": 80.968,
-          "matched": true
+          "start": 72.823,
+          "end": 73.347,
+          "matched": false
         },
         {
           "text": "c-c-click,",
-          "start": 81.148,
-          "end": 81.429,
-          "matched": true
+          "start": 73.347,
+          "end": 73.872,
+          "matched": false
         },
         {
           "text": "c-c-click,",
-          "start": 81.469,
-          "end": 81.729,
-          "matched": true
+          "start": 73.872,
+          "end": 74.396,
+          "matched": false
         },
         {
           "text": "click",
-          "start": 81.789,
-          "end": 82.049,
-          "matched": true
+          "start": 74.396,
+          "end": 74.921,
+          "matched": false
         },
         {
           "text": "(Woof)",
-          "start": 82.049,
-          "end": 84.348,
+          "start": 74.921,
+          "end": 75.445,
           "matched": false
         }
       ]
@@ -1529,37 +1529,37 @@
     {
       "id": "l29",
       "text": "You like my holy books?",
-      "start": 84.348,
-      "end": 86.629,
+      "start": 75.445,
+      "end": 78.906,
       "words": [
         {
           "text": "You",
-          "start": 84.348,
-          "end": 84.628,
+          "start": 75.445,
+          "end": 77.326,
           "matched": true
         },
         {
           "text": "like",
-          "start": 84.668,
-          "end": 84.908,
+          "start": 77.386,
+          "end": 77.626,
           "matched": true
         },
         {
           "text": "my",
-          "start": 84.988,
-          "end": 85.269,
+          "start": 77.706,
+          "end": 77.906,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 85.369,
-          "end": 86.149,
+          "start": 78.026,
+          "end": 78.526,
           "matched": true
         },
         {
           "text": "books?",
-          "start": 86.269,
-          "end": 86.629,
+          "start": 78.666,
+          "end": 78.906,
           "matched": true
         }
       ]
@@ -1567,73 +1567,73 @@
     {
       "id": "l30",
       "text": "I could lend them to you like a little garden fruit",
-      "start": 86.95,
-      "end": 89.231,
+      "start": 78.926,
+      "end": 81.568,
       "words": [
         {
           "text": "I",
-          "start": 86.95,
-          "end": 87.07,
+          "start": 78.926,
+          "end": 78.946,
           "matched": true
         },
         {
           "text": "could",
-          "start": 87.07,
-          "end": 87.21,
-          "matched": false
+          "start": 78.987,
+          "end": 79.327,
+          "matched": true
         },
         {
           "text": "lend",
-          "start": 87.21,
-          "end": 87.35,
+          "start": 79.347,
+          "end": 79.487,
           "matched": true
         },
         {
           "text": "them",
-          "start": 87.37,
-          "end": 87.49,
+          "start": 79.507,
+          "end": 79.627,
           "matched": true
         },
         {
           "text": "to",
-          "start": 87.51,
-          "end": 87.63,
+          "start": 79.687,
+          "end": 79.807,
           "matched": true
         },
         {
           "text": "you",
-          "start": 87.67,
-          "end": 87.81,
+          "start": 79.847,
+          "end": 79.987,
           "matched": true
         },
         {
           "text": "like",
-          "start": 87.85,
-          "end": 88.05,
+          "start": 80.027,
+          "end": 80.207,
           "matched": true
         },
         {
           "text": "a",
-          "start": 88.07,
-          "end": 88.11,
+          "start": 80.247,
+          "end": 80.307,
           "matched": true
         },
         {
           "text": "little",
-          "start": 88.19,
-          "end": 88.43,
+          "start": 80.367,
+          "end": 80.627,
           "matched": true
         },
         {
           "text": "garden",
-          "start": 88.471,
-          "end": 88.931,
+          "start": 80.667,
+          "end": 81.228,
           "matched": true
         },
         {
           "text": "fruit",
-          "start": 88.971,
-          "end": 89.231,
+          "start": 81.288,
+          "end": 81.568,
           "matched": true
         }
       ]
@@ -1641,49 +1641,49 @@
     {
       "id": "l31",
       "text": "Attitude and the prayer will save you",
-      "start": 89.871,
-      "end": 92.393,
+      "start": 82.208,
+      "end": 84.469,
       "words": [
         {
           "text": "Attitude",
-          "start": 89.871,
-          "end": 90.552,
+          "start": 82.208,
+          "end": 83.049,
           "matched": true
         },
         {
           "text": "and",
-          "start": 90.772,
-          "end": 90.872,
+          "start": 83.089,
+          "end": 83.209,
           "matched": true
         },
         {
           "text": "the",
-          "start": 90.892,
-          "end": 90.972,
-          "matched": true
+          "start": 83.209,
+          "end": 83.329,
+          "matched": false
         },
         {
           "text": "prayer",
-          "start": 91.032,
-          "end": 91.332,
+          "start": 83.329,
+          "end": 83.669,
           "matched": true
         },
         {
           "text": "will",
-          "start": 91.372,
-          "end": 91.532,
+          "start": 83.709,
+          "end": 83.909,
           "matched": true
         },
         {
           "text": "save",
-          "start": 91.612,
-          "end": 92.193,
+          "start": 83.969,
+          "end": 84.329,
           "matched": true
         },
         {
           "text": "you",
-          "start": 92.233,
-          "end": 92.393,
+          "start": 84.369,
+          "end": 84.469,
           "matched": true
         }
       ]
@@ -1691,81 +1691,81 @@
     {
       "id": "l32",
       "text": "Hello, waitress",
-      "start": 93.253,
-      "end": 94.134,
+      "start": 85.69,
+      "end": 86.891,
       "words": [
         {
           "text": "Hello,",
-          "start": 93.253,
-          "end": 93.594,
+          "start": 85.69,
+          "end": 85.99,
           "matched": true
         },
         {
           "text": "waitress",
-          "start": 93.614,
-          "end": 94.134,
-          "matched": true
+          "start": 85.99,
+          "end": 86.891,
+          "matched": false
         }
       ]
     },
     {
       "id": "l33",
       "text": "I want this bread for dinner, paper plate it",
-      "start": 94.774,
-      "end": 96.775,
+      "start": 86.891,
+      "end": 88.831,
       "words": [
         {
           "text": "I",
-          "start": 94.774,
-          "end": 94.834,
+          "start": 86.891,
+          "end": 86.951,
           "matched": true
         },
         {
           "text": "want",
-          "start": 94.874,
-          "end": 95.014,
+          "start": 86.991,
+          "end": 87.171,
           "matched": true
         },
         {
           "text": "this",
-          "start": 95.054,
-          "end": 95.155,
+          "start": 87.191,
+          "end": 87.311,
           "matched": true
         },
         {
           "text": "bread",
-          "start": 95.195,
-          "end": 95.335,
+          "start": 87.351,
+          "end": 87.531,
           "matched": true
         },
         {
           "text": "for",
-          "start": 95.355,
-          "end": 95.495,
+          "start": 87.551,
+          "end": 87.651,
           "matched": true
         },
         {
           "text": "dinner,",
-          "start": 95.515,
-          "end": 95.795,
+          "start": 87.691,
+          "end": 87.971,
           "matched": true
         },
         {
           "text": "paper",
-          "start": 95.815,
-          "end": 96.095,
+          "start": 88.011,
+          "end": 88.611,
           "matched": true
         },
         {
           "text": "plate",
-          "start": 96.135,
-          "end": 96.655,
-          "matched": true
+          "start": 88.611,
+          "end": 88.721,
+          "matched": false
         },
         {
           "text": "it",
-          "start": 96.655,
-          "end": 96.775,
+          "start": 88.721,
+          "end": 88.831,
           "matched": false
         }
       ]
@@ -1773,61 +1773,61 @@
     {
       "id": "l34",
       "text": "Cut this loaf  first, let's share and enjoy it",
-      "start": 96.775,
-      "end": 99.177,
+      "start": 88.831,
+      "end": 90.832,
       "words": [
         {
           "text": "Cut",
-          "start": 96.775,
-          "end": 96.976,
+          "start": 88.831,
+          "end": 88.991,
           "matched": true
         },
         {
           "text": "this",
-          "start": 96.996,
-          "end": 97.156,
+          "start": 89.011,
+          "end": 89.131,
           "matched": true
         },
         {
           "text": "loaf",
-          "start": 97.296,
-          "end": 97.536,
+          "start": 89.191,
+          "end": 89.391,
           "matched": true
         },
         {
           "text": "first,",
-          "start": 97.576,
-          "end": 97.896,
+          "start": 89.492,
+          "end": 89.812,
           "matched": true
         },
         {
           "text": "let's",
-          "start": 97.916,
-          "end": 98.056,
+          "start": 89.852,
+          "end": 89.972,
           "matched": true
         },
         {
           "text": "share",
-          "start": 98.076,
-          "end": 98.416,
+          "start": 89.992,
+          "end": 90.252,
           "matched": true
         },
         {
           "text": "and",
-          "start": 98.476,
-          "end": 98.557,
+          "start": 90.292,
+          "end": 90.372,
           "matched": true
         },
         {
           "text": "enjoy",
-          "start": 98.617,
-          "end": 99.097,
+          "start": 90.412,
+          "end": 90.752,
           "matched": true
         },
         {
           "text": "it",
-          "start": 99.117,
-          "end": 99.177,
+          "start": 90.772,
+          "end": 90.832,
           "matched": true
         }
       ]
@@ -1835,63 +1835,63 @@
     {
       "id": "l35",
       "text": "I'm abrasive?",
-      "start": 99.697,
-      "end": 100.978,
+      "start": 91.052,
+      "end": 91.692,
       "words": [
         {
           "text": "I'm",
-          "start": 99.697,
-          "end": 99.937,
+          "start": 91.052,
+          "end": 91.192,
           "matched": true
         },
         {
           "text": "abrasive?",
-          "start": 99.937,
-          "end": 100.978,
-          "matched": false
+          "start": 91.232,
+          "end": 91.692,
+          "matched": true
         }
       ]
     },
     {
       "id": "l36",
       "text": "I'm a follower, devout and unbroken",
-      "start": 100.978,
-      "end": 103.059,
+      "start": 91.852,
+      "end": 93.493,
       "words": [
         {
           "text": "I'm",
-          "start": 100.978,
-          "end": 101.198,
+          "start": 91.852,
+          "end": 91.952,
           "matched": true
         },
         {
           "text": "a",
-          "start": 101.658,
-          "end": 101.738,
+          "start": 91.972,
+          "end": 91.992,
           "matched": true
         },
         {
           "text": "follower,",
-          "start": 101.738,
-          "end": 101.778,
-          "matched": false
+          "start": 92.093,
+          "end": 92.533,
+          "matched": true
         },
         {
           "text": "devout",
-          "start": 101.778,
-          "end": 102.099,
+          "start": 92.553,
+          "end": 92.893,
           "matched": true
         },
         {
           "text": "and",
-          "start": 102.139,
-          "end": 102.239,
+          "start": 92.933,
+          "end": 93.013,
           "matched": true
         },
         {
           "text": "unbroken",
-          "start": 102.359,
-          "end": 103.059,
+          "start": 93.053,
+          "end": 93.493,
           "matched": true
         }
       ]
@@ -1899,43 +1899,43 @@
     {
       "id": "l37",
       "text": "Holy preaching, spread the good word",
-      "start": 103.499,
-      "end": 105.02,
+      "start": 93.693,
+      "end": 94.994,
       "words": [
         {
           "text": "Holy",
-          "start": 103.499,
-          "end": 103.76,
+          "start": 93.693,
+          "end": 93.953,
           "matched": true
         },
         {
           "text": "preaching,",
-          "start": 103.8,
-          "end": 104.08,
+          "start": 93.993,
+          "end": 94.293,
           "matched": true
         },
         {
           "text": "spread",
-          "start": 104.1,
-          "end": 104.3,
+          "start": 94.313,
+          "end": 94.513,
           "matched": true
         },
         {
           "text": "the",
-          "start": 104.32,
-          "end": 104.42,
+          "start": 94.533,
+          "end": 94.634,
           "matched": true
         },
         {
           "text": "good",
-          "start": 104.46,
-          "end": 104.7,
+          "start": 94.674,
+          "end": 94.814,
           "matched": true
         },
         {
           "text": "word",
-          "start": 104.74,
-          "end": 105.02,
+          "start": 94.834,
+          "end": 94.994,
           "matched": true
         }
       ]
@@ -1943,61 +1943,61 @@
     {
       "id": "l38",
       "text": "Brain-expanding preacher, coming for you, I'm contagious (ha ha)",
-      "start": 105.08,
-      "end": 108.102,
+      "start": 95.014,
+      "end": 97.855,
       "words": [
         {
           "text": "Brain-expanding",
-          "start": 105.08,
-          "end": 105.241,
+          "start": 95.014,
+          "end": 95.654,
           "matched": true
         },
         {
           "text": "preacher,",
-          "start": 105.721,
-          "end": 106.001,
+          "start": 95.674,
+          "end": 95.994,
           "matched": true
         },
         {
           "text": "coming",
-          "start": 106.041,
-          "end": 106.321,
+          "start": 96.014,
+          "end": 96.294,
           "matched": true
         },
         {
           "text": "for",
-          "start": 106.361,
-          "end": 106.521,
+          "start": 96.334,
+          "end": 96.434,
           "matched": true
         },
         {
           "text": "you,",
-          "start": 106.561,
-          "end": 106.681,
+          "start": 96.474,
+          "end": 96.634,
           "matched": true
         },
         {
           "text": "I'm",
-          "start": 106.741,
-          "end": 106.821,
+          "start": 96.714,
+          "end": 96.814,
           "matched": true
         },
         {
           "text": "contagious",
-          "start": 106.841,
-          "end": 107.502,
+          "start": 96.834,
+          "end": 97.335,
           "matched": true
         },
         {
           "text": "(ha",
-          "start": 107.502,
-          "end": 107.802,
+          "start": 97.335,
+          "end": 97.595,
           "matched": false
         },
         {
           "text": "ha)",
-          "start": 107.802,
-          "end": 108.102,
+          "start": 97.595,
+          "end": 97.855,
           "matched": false
         }
       ]
@@ -2005,31 +2005,31 @@
     {
       "id": "l39",
       "text": "Protecting what is sacred",
-      "start": 108.102,
-      "end": 109.503,
+      "start": 97.855,
+      "end": 99.015,
       "words": [
         {
           "text": "Protecting",
-          "start": 108.102,
-          "end": 108.563,
+          "start": 97.855,
+          "end": 98.315,
           "matched": true
         },
         {
           "text": "what",
-          "start": 108.603,
-          "end": 108.743,
+          "start": 98.355,
+          "end": 98.515,
           "matched": true
         },
         {
           "text": "is",
-          "start": 108.803,
-          "end": 108.883,
+          "start": 98.555,
+          "end": 98.615,
           "matched": true
         },
         {
           "text": "sacred",
-          "start": 108.903,
-          "end": 109.503,
+          "start": 98.655,
+          "end": 99.015,
           "matched": true
         }
       ]
@@ -2037,55 +2037,55 @@
     {
       "id": "l40",
       "text": "I am living good before your holy words",
-      "start": 109.643,
-      "end": 111.684,
+      "start": 99.115,
+      "end": 100.876,
       "words": [
         {
           "text": "I",
-          "start": 109.643,
-          "end": 109.703,
+          "start": 99.115,
+          "end": 99.175,
           "matched": true
         },
         {
           "text": "am",
-          "start": 109.763,
-          "end": 109.863,
+          "start": 99.215,
+          "end": 99.315,
           "matched": true
         },
         {
           "text": "living",
-          "start": 109.903,
-          "end": 110.163,
+          "start": 99.375,
+          "end": 99.635,
           "matched": true
         },
         {
           "text": "good",
-          "start": 110.224,
-          "end": 110.464,
+          "start": 99.675,
+          "end": 99.836,
           "matched": true
         },
         {
           "text": "before",
-          "start": 110.504,
-          "end": 110.944,
+          "start": 99.876,
+          "end": 100.156,
           "matched": true
         },
         {
           "text": "your",
-          "start": 110.984,
-          "end": 111.144,
+          "start": 100.176,
+          "end": 100.316,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 111.184,
-          "end": 111.424,
+          "start": 100.376,
+          "end": 100.616,
           "matched": true
         },
         {
           "text": "words",
-          "start": 111.464,
-          "end": 111.684,
+          "start": 100.656,
+          "end": 100.876,
           "matched": true
         }
       ]
@@ -2093,31 +2093,31 @@
     {
       "id": "l41",
       "text": "I always preach it",
-      "start": 111.704,
-      "end": 112.645,
+      "start": 100.916,
+      "end": 101.676,
       "words": [
         {
           "text": "I",
-          "start": 111.704,
-          "end": 111.804,
+          "start": 100.916,
+          "end": 101.016,
           "matched": true
         },
         {
           "text": "always",
-          "start": 111.824,
-          "end": 112.065,
+          "start": 101.056,
+          "end": 101.276,
           "matched": true
         },
         {
           "text": "preach",
-          "start": 112.125,
-          "end": 112.465,
+          "start": 101.336,
+          "end": 101.536,
           "matched": true
         },
         {
           "text": "it",
-          "start": 112.565,
-          "end": 112.645,
+          "start": 101.576,
+          "end": 101.676,
           "matched": true
         }
       ]
@@ -2125,43 +2125,43 @@
     {
       "id": "l42",
       "text": "Now you're crying and you're shaking?",
-      "start": 112.725,
-      "end": 114.386,
+      "start": 101.696,
+      "end": 102.997,
       "words": [
         {
           "text": "Now",
-          "start": 112.725,
-          "end": 112.865,
+          "start": 101.696,
+          "end": 101.796,
           "matched": true
         },
         {
           "text": "you're",
-          "start": 112.885,
-          "end": 113.025,
+          "start": 101.816,
+          "end": 101.976,
           "matched": true
         },
         {
           "text": "crying",
-          "start": 113.045,
-          "end": 113.385,
+          "start": 101.996,
+          "end": 102.337,
           "matched": true
         },
         {
           "text": "and",
-          "start": 113.426,
-          "end": 113.526,
+          "start": 102.377,
+          "end": 102.457,
           "matched": true
         },
         {
           "text": "you're",
-          "start": 113.566,
-          "end": 113.786,
+          "start": 102.477,
+          "end": 102.617,
           "matched": true
         },
         {
           "text": "shaking?",
-          "start": 113.826,
-          "end": 114.386,
+          "start": 102.657,
+          "end": 102.997,
           "matched": true
         }
       ]
@@ -2169,55 +2169,55 @@
     {
       "id": "l43",
       "text": "Take your tears and enjoy the lords gifts",
-      "start": 114.787,
-      "end": 117.228,
+      "start": 103.017,
+      "end": 104.317,
       "words": [
         {
           "text": "Take",
-          "start": 114.787,
-          "end": 114.987,
+          "start": 103.017,
+          "end": 103.157,
           "matched": true
         },
         {
           "text": "your",
-          "start": 115.007,
-          "end": 115.107,
+          "start": 103.177,
+          "end": 103.297,
           "matched": true
         },
         {
           "text": "tears",
-          "start": 115.147,
-          "end": 115.607,
+          "start": 103.317,
+          "end": 103.517,
           "matched": true
         },
         {
           "text": "and",
-          "start": 115.687,
-          "end": 115.767,
+          "start": 103.537,
+          "end": 103.597,
           "matched": true
         },
         {
           "text": "enjoy",
-          "start": 115.847,
-          "end": 116.208,
+          "start": 103.617,
+          "end": 103.857,
           "matched": true
         },
         {
           "text": "the",
-          "start": 116.268,
-          "end": 116.368,
+          "start": 103.877,
+          "end": 103.957,
           "matched": true
         },
         {
           "text": "lords",
-          "start": 116.428,
-          "end": 116.828,
+          "start": 103.997,
+          "end": 104.157,
           "matched": true
         },
         {
           "text": "gifts",
-          "start": 116.868,
-          "end": 117.228,
+          "start": 104.177,
+          "end": 104.317,
           "matched": true
         }
       ]
@@ -2225,19 +2225,19 @@
     {
       "id": "l44",
       "text": "Your beautiful",
-      "start": 117.589,
-      "end": 118.749,
+      "start": 104.337,
+      "end": 104.958,
       "words": [
         {
           "text": "Your",
-          "start": 117.589,
-          "end": 118.129,
+          "start": 104.337,
+          "end": 104.477,
           "matched": true
         },
         {
           "text": "beautiful",
-          "start": 118.169,
-          "end": 118.749,
+          "start": 104.497,
+          "end": 104.958,
           "matched": true
         }
       ]
@@ -2245,19 +2245,19 @@
     {
       "id": "l45",
       "text": "I'm holy",
-      "start": 122.732,
-      "end": 123.453,
+      "start": 106.83,
+      "end": 107.391,
       "words": [
         {
           "text": "I'm",
-          "start": 122.732,
-          "end": 122.912,
+          "start": 106.83,
+          "end": 106.991,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 122.992,
-          "end": 123.453,
+          "start": 107.031,
+          "end": 107.391,
           "matched": true
         }
       ]
@@ -2265,73 +2265,73 @@
     {
       "id": "l46",
       "text": "You raise my life up then you say, (Don't be bad)",
-      "start": 123.933,
-      "end": 127.336,
+      "start": 107.671,
+      "end": 110.013,
       "words": [
         {
           "text": "You",
-          "start": 123.933,
-          "end": 124.213,
+          "start": 107.671,
+          "end": 107.831,
           "matched": true
         },
         {
           "text": "raise",
-          "start": 124.273,
-          "end": 124.534,
+          "start": 107.971,
+          "end": 108.151,
           "matched": true
         },
         {
           "text": "my",
-          "start": 124.574,
-          "end": 124.814,
+          "start": 108.172,
+          "end": 108.312,
           "matched": true
         },
         {
           "text": "life",
-          "start": 124.894,
-          "end": 125.174,
+          "start": 108.352,
+          "end": 108.512,
           "matched": true
         },
         {
           "text": "up",
-          "start": 125.334,
-          "end": 125.454,
+          "start": 108.572,
+          "end": 108.652,
           "matched": true
         },
         {
           "text": "then",
-          "start": 125.514,
-          "end": 125.754,
+          "start": 108.672,
+          "end": 108.812,
           "matched": true
         },
         {
           "text": "you",
-          "start": 125.794,
-          "end": 125.955,
+          "start": 108.832,
+          "end": 108.952,
           "matched": true
         },
         {
           "text": "say,",
-          "start": 125.975,
-          "end": 126.215,
+          "start": 108.972,
+          "end": 109.272,
           "matched": true
         },
         {
           "text": "(Don't",
-          "start": 126.415,
-          "end": 126.635,
+          "start": 109.332,
+          "end": 109.513,
           "matched": true
         },
         {
           "text": "be",
-          "start": 126.655,
-          "end": 126.755,
+          "start": 109.553,
+          "end": 109.653,
           "matched": true
         },
         {
           "text": "bad)",
-          "start": 127.015,
-          "end": 127.336,
+          "start": 109.673,
+          "end": 110.013,
           "matched": true
         }
       ]
@@ -2339,215 +2339,215 @@
     {
       "id": "l47",
       "text": "You know your way around a Holy book, (call you Dad)",
-      "start": 127.756,
-      "end": 131.899,
+      "start": 110.153,
+      "end": 112.695,
       "words": [
         {
           "text": "You",
-          "start": 127.756,
-          "end": 128.016,
+          "start": 110.153,
+          "end": 110.293,
           "matched": true
         },
         {
           "text": "know",
-          "start": 128.076,
-          "end": 128.356,
+          "start": 110.333,
+          "end": 110.473,
           "matched": true
         },
         {
           "text": "your",
-          "start": 128.396,
-          "end": 128.677,
+          "start": 110.513,
+          "end": 110.674,
           "matched": true
         },
         {
           "text": "way",
-          "start": 128.737,
-          "end": 129.037,
+          "start": 110.714,
+          "end": 110.854,
           "matched": true
         },
         {
           "text": "around",
-          "start": 129.057,
-          "end": 129.677,
+          "start": 110.934,
+          "end": 111.194,
           "matched": true
         },
         {
           "text": "a",
-          "start": 129.857,
-          "end": 129.937,
-          "matched": true
+          "start": 111.194,
+          "end": 111.354,
+          "matched": false
         },
         {
           "text": "Holy",
-          "start": 130.037,
-          "end": 131.058,
+          "start": 111.354,
+          "end": 111.634,
           "matched": true
         },
         {
           "text": "book,",
-          "start": 131.098,
-          "end": 131.879,
+          "start": 111.674,
+          "end": 111.915,
           "matched": true
         },
         {
           "text": "(call",
-          "start": 131.879,
-          "end": 131.886,
-          "matched": false
+          "start": 111.995,
+          "end": 112.175,
+          "matched": true
         },
         {
           "text": "you",
-          "start": 131.886,
-          "end": 131.892,
-          "matched": false
+          "start": 112.195,
+          "end": 112.315,
+          "matched": true
         },
         {
           "text": "Dad)",
-          "start": 131.892,
-          "end": 131.899,
-          "matched": false
+          "start": 112.335,
+          "end": 112.695,
+          "matched": true
         }
       ]
     },
     {
       "id": "l48",
       "text": "Throwing sermons every time I go to Church (Preach brother, preach)",
-      "start": 131.899,
-      "end": 135.561,
+      "start": 112.975,
+      "end": 115.898,
       "words": [
         {
           "text": "Throwing",
-          "start": 131.899,
-          "end": 132.479,
+          "start": 112.975,
+          "end": 113.296,
           "matched": true
         },
         {
           "text": "sermons",
-          "start": 132.499,
-          "end": 133.16,
+          "start": 113.316,
+          "end": 113.676,
           "matched": true
         },
         {
           "text": "every",
-          "start": 133.26,
-          "end": 133.46,
+          "start": 113.756,
+          "end": 113.956,
           "matched": true
         },
         {
           "text": "time",
-          "start": 133.48,
-          "end": 133.68,
+          "start": 113.996,
+          "end": 114.176,
           "matched": true
         },
         {
           "text": "I",
-          "start": 133.72,
-          "end": 133.8,
+          "start": 114.216,
+          "end": 114.316,
           "matched": true
         },
         {
           "text": "go",
-          "start": 133.82,
-          "end": 134.04,
+          "start": 114.356,
+          "end": 114.497,
           "matched": true
         },
         {
           "text": "to",
-          "start": 134.08,
-          "end": 134.2,
+          "start": 114.517,
+          "end": 114.597,
           "matched": true
         },
         {
           "text": "Church",
-          "start": 134.261,
-          "end": 135.381,
+          "start": 114.657,
+          "end": 114.957,
           "matched": true
         },
         {
           "text": "(Preach",
-          "start": 135.381,
-          "end": 135.441,
-          "matched": false
+          "start": 114.997,
+          "end": 115.297,
+          "matched": true
         },
         {
           "text": "brother,",
-          "start": 135.441,
-          "end": 135.501,
-          "matched": false
+          "start": 115.317,
+          "end": 115.638,
+          "matched": true
         },
         {
           "text": "preach)",
-          "start": 135.501,
-          "end": 135.561,
-          "matched": false
+          "start": 115.678,
+          "end": 115.898,
+          "matched": true
         }
       ]
     },
     {
       "id": "l49",
       "text": "I'm glad, give big thanks, I'm glad (Praise the lord)",
-      "start": 135.561,
-      "end": 138.904,
+      "start": 115.918,
+      "end": 122.523,
       "words": [
         {
           "text": "I'm",
-          "start": 135.561,
-          "end": 135.702,
+          "start": 115.918,
+          "end": 116.018,
           "matched": true
         },
         {
           "text": "glad,",
-          "start": 135.722,
-          "end": 136.042,
+          "start": 116.038,
+          "end": 116.298,
           "matched": true
         },
         {
           "text": "give",
-          "start": 136.082,
-          "end": 136.282,
-          "matched": true
+          "start": 116.298,
+          "end": 116.678,
+          "matched": false
         },
         {
           "text": "big",
-          "start": 136.362,
-          "end": 136.602,
+          "start": 116.678,
+          "end": 116.939,
           "matched": true
         },
         {
           "text": "thanks,",
-          "start": 136.662,
-          "end": 136.862,
+          "start": 116.999,
+          "end": 117.179,
           "matched": true
         },
         {
           "text": "I'm",
-          "start": 136.902,
-          "end": 136.982,
+          "start": 117.219,
+          "end": 117.339,
           "matched": true
         },
         {
           "text": "glad",
-          "start": 137.003,
-          "end": 137.283,
+          "start": 117.359,
+          "end": 117.679,
           "matched": true
         },
         {
           "text": "(Praise",
-          "start": 137.303,
-          "end": 137.543,
+          "start": 121.682,
+          "end": 121.843,
           "matched": true
         },
         {
           "text": "the",
-          "start": 137.563,
-          "end": 137.623,
+          "start": 121.863,
+          "end": 122.003,
           "matched": true
         },
         {
           "text": "lord)",
-          "start": 137.703,
-          "end": 138.904,
+          "start": 122.023,
+          "end": 122.523,
           "matched": true
         }
       ]
@@ -2555,31 +2555,31 @@
     {
       "id": "l50",
       "text": "You make me holy",
-      "start": 139.219,
-      "end": 140.941,
+      "start": 122.883,
+      "end": 123.824,
       "words": [
         {
           "text": "You",
-          "start": 139.219,
-          "end": 139.539,
+          "start": 122.883,
+          "end": 122.983,
           "matched": true
         },
         {
           "text": "make",
-          "start": 139.579,
-          "end": 139.84,
+          "start": 123.023,
+          "end": 123.184,
           "matched": true
         },
         {
           "text": "me",
-          "start": 139.9,
-          "end": 140.1,
+          "start": 123.224,
+          "end": 123.344,
           "matched": true
         },
         {
           "text": "holy",
-          "start": 140.12,
-          "end": 140.941,
+          "start": 123.404,
+          "end": 123.824,
           "matched": true
         }
       ]
@@ -2587,79 +2587,79 @@
     {
       "id": "l51",
       "text": "You make me turn my hands up onto the skies and pray",
-      "start": 140.961,
-      "end": 145.647,
+      "start": 124.465,
+      "end": 128.928,
       "words": [
         {
           "text": "You",
-          "start": 140.961,
-          "end": 142.102,
+          "start": 124.465,
+          "end": 125.305,
           "matched": true
         },
         {
           "text": "make",
-          "start": 142.142,
-          "end": 142.383,
+          "start": 125.365,
+          "end": 125.626,
           "matched": true
         },
         {
           "text": "me",
-          "start": 142.443,
-          "end": 142.603,
+          "start": 125.686,
+          "end": 125.926,
           "matched": true
         },
         {
           "text": "turn",
-          "start": 142.703,
-          "end": 143.044,
+          "start": 126.006,
+          "end": 126.326,
           "matched": true
         },
         {
           "text": "my",
-          "start": 143.104,
-          "end": 143.364,
+          "start": 126.366,
+          "end": 126.586,
           "matched": true
         },
         {
           "text": "hands",
-          "start": 143.424,
-          "end": 143.704,
+          "start": 126.686,
+          "end": 127.027,
           "matched": true
         },
         {
           "text": "up",
-          "start": 143.865,
-          "end": 143.985,
+          "start": 127.107,
+          "end": 127.207,
           "matched": true
         },
         {
           "text": "onto",
-          "start": 144.165,
-          "end": 144.445,
+          "start": 127.427,
+          "end": 127.707,
           "matched": true
         },
         {
           "text": "the",
-          "start": 144.485,
-          "end": 144.585,
+          "start": 127.747,
+          "end": 127.887,
           "matched": true
         },
         {
           "text": "skies",
-          "start": 144.605,
-          "end": 145.006,
+          "start": 127.927,
+          "end": 128.368,
           "matched": true
         },
         {
           "text": "and",
-          "start": 145.106,
-          "end": 145.206,
+          "start": 128.448,
+          "end": 128.568,
           "matched": true
         },
         {
           "text": "pray",
-          "start": 145.266,
-          "end": 145.647,
+          "start": 128.648,
+          "end": 128.928,
           "matched": true
         }
       ]
@@ -2667,55 +2667,55 @@
     {
       "id": "l52",
       "text": "I could never complain whilst I have you",
-      "start": 145.667,
-      "end": 149.852,
+      "start": 129.409,
+      "end": 131.53,
       "words": [
         {
           "text": "I",
-          "start": 145.667,
-          "end": 145.687,
+          "start": 129.409,
+          "end": 129.489,
           "matched": true
         },
         {
           "text": "could",
-          "start": 147.509,
-          "end": 147.709,
-          "matched": true
+          "start": 129.489,
+          "end": 129.709,
+          "matched": false
         },
         {
           "text": "never",
-          "start": 147.749,
-          "end": 148.13,
+          "start": 129.709,
+          "end": 129.949,
           "matched": true
         },
         {
           "text": "complain",
-          "start": 148.21,
-          "end": 148.75,
+          "start": 130.029,
+          "end": 130.63,
           "matched": true
         },
         {
           "text": "whilst",
-          "start": 148.81,
-          "end": 149.131,
+          "start": 130.69,
+          "end": 130.89,
           "matched": true
         },
         {
           "text": "I",
-          "start": 149.391,
-          "end": 149.411,
+          "start": 130.93,
+          "end": 131.01,
           "matched": true
         },
         {
           "text": "have",
-          "start": 149.451,
-          "end": 149.611,
+          "start": 131.07,
+          "end": 131.33,
           "matched": true
         },
         {
           "text": "you",
-          "start": 149.651,
-          "end": 149.852,
+          "start": 131.37,
+          "end": 131.53,
           "matched": true
         }
       ]
@@ -2723,38 +2723,38 @@
     {
       "id": "l53",
       "text": "Click, c-c-click, c-c-click, click (Woof)",
-      "start": 150.372,
-      "end": 154.697,
+      "start": 131.53,
+      "end": 132.571,
       "words": [
         {
           "text": "Click,",
-          "start": 150.372,
-          "end": 150.693,
-          "matched": true
+          "start": 131.53,
+          "end": 131.684,
+          "matched": false
         },
         {
           "text": "c-c-click,",
-          "start": 151.193,
-          "end": 151.634,
-          "matched": true
+          "start": 131.684,
+          "end": 131.837,
+          "matched": false
         },
         {
           "text": "c-c-click,",
-          "start": 151.674,
-          "end": 151.954,
-          "matched": true
+          "start": 131.837,
+          "end": 131.991,
+          "matched": false
         },
         {
           "text": "click",
-          "start": 151.994,
-          "end": 152.234,
+          "start": 131.991,
+          "end": 132.231,
           "matched": true
         },
         {
           "text": "(Woof)",
-          "start": 153.896,
-          "end": 154.697,
-          "matched": true
+          "start": 132.231,
+          "end": 132.571,
+          "matched": false
         }
       ]
     }
