@@ -1,22 +1,30 @@
 title: paws-off
 version: bossa-nova
 model: minimax H3
-inspiration: Future - Mask Off
-inspirationyt: https://www.youtube.com/watch?v=xvZqHgFz51I
-story: Watch out who you disrespect on the street, one day, you might find your neck in their mouth
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 57453711674471
+top_k: 45
+sampler: seeds_2
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 89551651825345
+sampler_steps: 40
+inspiration:
+inspirationyt:
+story:
 caption: |
   Global Metadata
   Basic Attributes: bpm is 133. key is D, and scale is minor. Bossa Nova / Smooth Jazz.
   Global Emotional Progression: The piece opens with a serene, floating atmosphere that establishes an intimate and dreamy mood. This gentle sway remains consistent through the verses, while the choruses introduce a subtle lift in emotional warmth and harmonic richness without breaking the relaxed vibe.
   Application Scenarios & Imagery: Ideal for a late-night lounge setting, a quiet coffee shop during a rainy afternoon, or background music for a romantic dinner scene under soft lighting.
   Sonics & Production Profile: The mix is clean and spacious, with a warm mid-range focus that highlights the acoustic instruments. The soundstage feels intimate yet wide, allowing each instrument to breathe.
-
   Vocal Details
   Vocal Gender & Timbre: Singer A (Male), a low, close-miked baritone/rap voice with clipped rhythmic phrasing, a dry conversational attack and occasional melodic drawl.
   Vocal Style: The delivery is consistently understated and melodic, employing a legato phrasing style that mirrors the swaying rhythm of the accompaniment. There is minimal dynamic variation, maintaining a calm, storytelling approach throughout all sections.
   Harmony/Backing Vocals: Subtle, self-layered harmonies appear in the choruses, adding depth without overpowering the lead line.
   Vocal FX: A generous amount of plate reverb is applied to create a sense of space and distance, while a very subtle delay adds rhythmic movement to the sustained notes.
-
   Arrangement
   Instrument Lifecycle (Primary/Secondary): Primary: A nylon-string acoustic guitar playing syncopated Bossa Nova chords serves as the harmonic backbone from the Intro to the Outro. An upright bass provides a walking, melodic low-end foundation that enters immediately and persists throughout the track. Secondary: A piano enters during the first verse, offering sparse, jazz-inflected fills and chordal support.
   Groove & Foundation Progression: The rhythm section is driven by a light drum kit featuring brushed snares and a soft kick pattern, establishing a gentle swing feel.
@@ -156,13 +164,3 @@ lyrics: |
   Go get that treat
   Walk this on repeat
   Woof
-dit: fp32
-text_encoder: bf16
-encoder_cfg: 1.6
-encoder_seed: 57453711674471
-top_k: 45
-sampler: seeds_2
-scheduler: ddim_uniform
-sampler_cfg: 1.7
-sampler_seed: 89551651825345
-sampler_steps: 40

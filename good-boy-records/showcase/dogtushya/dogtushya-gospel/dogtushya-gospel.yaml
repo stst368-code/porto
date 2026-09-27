@@ -1,22 +1,30 @@
 title: dogtushya
 version: gospel
 model: minimax H3
-inspiration: Matvey Blanter - Katyusha
-inspirationyt: https://www.youtube.com/watch?v=UUcnw1iNN-8
-story: Who knows how we launched from that inspiration to this, but it doesn't matter, we just need to be sure to celebrate the great and glorious, smart and devious, Doja Dog.
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 772477351755412
+top_k: 45
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 492431503203285
+sampler_steps: 40
+inspiration:
+inspirationyt:
+story:
 caption: |
   Global Metadata
   Basic Attributes: bpm is 167. key is C, and scale is minor. Gospel / Soul-Blues.
   Global Emotional Progression: The piece opens with a grounded, anticipatory atmosphere that gradually builds in spiritual intensity. The verses maintain a soulful, storytelling restraint which gives way to powerful, cathartic releases in the choruses.
   Application Scenarios & Imagery: A dramatic scene of spiritual awakening or redemption, a cinematic depiction of a storm breaking a drought, or a powerful moment of communal worship in a large sanctuary.
   Sonics & Production Profile: The soundstage is wide and immersive, utilizing a live-room aesthetic with natural reverb to simulate a large performance space. The frequency response is warm and full-bodied, emphasizing the richness of the low-mids from the organ and bass while keeping the vocal presence crisp and forward.
-
   Vocal Details
   Vocal Gender & Timbre: Singer A (Male), a firm mid-range baritone with clear diction, dry comic authority and a controlled upper edge; ensemble responses may reinforce major refrains.
   Vocal Style: Singer A employs a highly expressive delivery that evolves from a conversational, blues-inflected tone in the verses to soaring, melismatic runs and powerful belts in the choruses and bridge.
   Harmony/Backing Vocals: The choir provides extensive support throughout, starting with subtle harmonic pads in the intro and evolving into tight, gospel-style four-part harmonies during the choruses.
   Vocal FX: The lead vocal is treated with a lush, long-decay plate reverb to enhance the sense of space and grandeur, particularly during sustained notes.
-
   Arrangement
   Instrument Lifecycle (Primary/Secondary): Primary: A Hammond-style organ serves as the harmonic backbone, present from the very beginning with swelling chords that dictate the song's emotional contour. An electric guitar with a clean, slightly overdriven tone plays rhythmic stabs and melodic fills, interacting closely with the vocal phrasing. Secondary: A warm, round electric bass enters immediately, locking in with the drums to provide a solid groove.
   Groove & Foundation Progression: The rhythm section establishes a slow, heavy backbeat with a deep kick drum and a sharp snare on beats 2 and 4.
@@ -117,13 +125,3 @@ lyrics: |
   (DOJA!)
   Long live Doja!
   (DOJA!)
-dit: fp32
-text_encoder: bf16
-encoder_cfg: 1.6
-encoder_seed: 772477351755412
-top_k: 45
-sampler: dpmpp_sde_gpu
-scheduler: ddim_uniform
-sampler_cfg: 1.7
-sampler_seed: 492431503203285
-sampler_steps: 40

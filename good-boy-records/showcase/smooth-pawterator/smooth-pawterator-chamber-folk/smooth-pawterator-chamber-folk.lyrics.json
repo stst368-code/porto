@@ -1,0 +1,1814 @@
+{
+  "format": "gbr-word-lyrics-v1",
+  "version": 2,
+  "title": "smooth-pawterator",
+  "song_version": "chamber-folk",
+  "source_yaml": "smooth-pawterator/smooth-pawterator-chamber-folk/smooth-pawterator-chamber-folk.yaml",
+  "source_audio": "smooth-pawterator-chamber-folk.flac",
+  "language": "en",
+  "engine": "demucs:htdemucs+whisperx:large-v3",
+  "runtime": {
+    "requested_device": "auto",
+    "demucs_device": "cuda",
+    "whisperx_device": "cuda",
+    "whisperx_compute_type": "float16",
+    "batch_size": 4,
+    "cpu_fallback_used": false
+  },
+  "generated_at": "2026-09-27T10:05:21+00:00",
+  "stats": {
+    "lyric_words": 230,
+    "recognised_words": 230,
+    "matched_words": 211,
+    "coverage": 0.9174
+  },
+  "quality": {
+    "rating": "good",
+    "review_threshold": 0.8,
+    "review_required": false,
+    "approved": false,
+    "usable_for_live_lyrics": true
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "(Woof, soft)",
+      "start": 5.09,
+      "end": 5.77,
+      "words": [
+        {
+          "text": "(Woof,",
+          "start": 5.09,
+          "end": 5.43,
+          "matched": false
+        },
+        {
+          "text": "soft)",
+          "start": 5.43,
+          "end": 5.77,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "text": "Mmm... two goldens...",
+      "start": 5.77,
+      "end": 7.751,
+      "words": [
+        {
+          "text": "Mmm...",
+          "start": 5.77,
+          "end": 6.11,
+          "matched": false
+        },
+        {
+          "text": "two",
+          "start": 6.11,
+          "end": 6.51,
+          "matched": true
+        },
+        {
+          "text": "goldens...",
+          "start": 6.81,
+          "end": 7.751,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "text": "She moves through the room like she's made out of",
+      "start": 10.012,
+      "end": 13.274,
+      "words": [
+        {
+          "text": "She",
+          "start": 10.012,
+          "end": 10.192,
+          "matched": true
+        },
+        {
+          "text": "moves",
+          "start": 10.312,
+          "end": 10.652,
+          "matched": true
+        },
+        {
+          "text": "through",
+          "start": 10.692,
+          "end": 10.993,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 11.053,
+          "end": 11.213,
+          "matched": true
+        },
+        {
+          "text": "room",
+          "start": 11.273,
+          "end": 11.613,
+          "matched": true
+        },
+        {
+          "text": "like",
+          "start": 11.673,
+          "end": 11.913,
+          "matched": true
+        },
+        {
+          "text": "she's",
+          "start": 11.953,
+          "end": 12.253,
+          "matched": true
+        },
+        {
+          "text": "made",
+          "start": 12.313,
+          "end": 12.653,
+          "matched": true
+        },
+        {
+          "text": "out",
+          "start": 12.833,
+          "end": 13.214,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 13.234,
+          "end": 13.274,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "text": "silk",
+      "start": 13.534,
+      "end": 13.894,
+      "words": [
+        {
+          "text": "silk",
+          "start": 13.534,
+          "end": 13.894,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "text": "Cool as the morning, calm as the milk",
+      "start": 15.555,
+      "end": 19.317,
+      "words": [
+        {
+          "text": "Cool",
+          "start": 15.555,
+          "end": 15.955,
+          "matched": true
+        },
+        {
+          "text": "as",
+          "start": 16.055,
+          "end": 16.195,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 16.255,
+          "end": 16.355,
+          "matched": true
+        },
+        {
+          "text": "morning,",
+          "start": 16.415,
+          "end": 17.136,
+          "matched": true
+        },
+        {
+          "text": "calm",
+          "start": 17.856,
+          "end": 18.416,
+          "matched": true
+        },
+        {
+          "text": "as",
+          "start": 18.636,
+          "end": 18.837,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 18.897,
+          "end": 18.997,
+          "matched": true
+        },
+        {
+          "text": "milk",
+          "start": 19.057,
+          "end": 19.317,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "text": "She won't chase a thing,",
+      "start": 20.965,
+      "end": 22.186,
+      "words": [
+        {
+          "text": "She",
+          "start": 20.965,
+          "end": 21.105,
+          "matched": true
+        },
+        {
+          "text": "won't",
+          "start": 21.165,
+          "end": 21.405,
+          "matched": true
+        },
+        {
+          "text": "chase",
+          "start": 21.445,
+          "end": 21.706,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 21.746,
+          "end": 21.786,
+          "matched": true
+        },
+        {
+          "text": "thing,",
+          "start": 21.846,
+          "end": 22.186,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "text": "what she wants, It comes to her",
+      "start": 22.466,
+      "end": 24.648,
+      "words": [
+        {
+          "text": "what",
+          "start": 22.466,
+          "end": 22.646,
+          "matched": true
+        },
+        {
+          "text": "she",
+          "start": 22.726,
+          "end": 22.906,
+          "matched": true
+        },
+        {
+          "text": "wants,",
+          "start": 22.966,
+          "end": 23.427,
+          "matched": true
+        },
+        {
+          "text": "It",
+          "start": 23.547,
+          "end": 23.647,
+          "matched": true
+        },
+        {
+          "text": "comes",
+          "start": 23.747,
+          "end": 24.047,
+          "matched": true
+        },
+        {
+          "text": "to",
+          "start": 24.107,
+          "end": 24.307,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 24.407,
+          "end": 24.648,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l8",
+      "text": "A golden-eyed lady, with that regal glow",
+      "start": 24.668,
+      "end": 29.751,
+      "words": [
+        {
+          "text": "A",
+          "start": 24.668,
+          "end": 24.688,
+          "matched": true
+        },
+        {
+          "text": "golden-eyed",
+          "start": 25.748,
+          "end": 26.409,
+          "matched": true
+        },
+        {
+          "text": "lady,",
+          "start": 27.089,
+          "end": 27.63,
+          "matched": true
+        },
+        {
+          "text": "with",
+          "start": 27.71,
+          "end": 27.89,
+          "matched": true
+        },
+        {
+          "text": "that",
+          "start": 27.89,
+          "end": 28.62,
+          "matched": false
+        },
+        {
+          "text": "regal",
+          "start": 28.62,
+          "end": 29.351,
+          "matched": false
+        },
+        {
+          "text": "glow",
+          "start": 29.351,
+          "end": 29.751,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l9",
+      "text": "She's a smooth paw-ter-arator, running your home",
+      "start": 31.332,
+      "end": 33.974,
+      "words": [
+        {
+          "text": "She's",
+          "start": 31.332,
+          "end": 31.552,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 31.592,
+          "end": 31.612,
+          "matched": true
+        },
+        {
+          "text": "smooth",
+          "start": 31.653,
+          "end": 31.973,
+          "matched": true
+        },
+        {
+          "text": "paw-ter-arator,",
+          "start": 31.973,
+          "end": 33.053,
+          "matched": false
+        },
+        {
+          "text": "running",
+          "start": 33.053,
+          "end": 33.354,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 33.394,
+          "end": 33.634,
+          "matched": true
+        },
+        {
+          "text": "home",
+          "start": 33.694,
+          "end": 33.974,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l10",
+      "text": "Cool little princess on her velvet throne",
+      "start": 34.034,
+      "end": 36.676,
+      "words": [
+        {
+          "text": "Cool",
+          "start": 34.034,
+          "end": 34.394,
+          "matched": true
+        },
+        {
+          "text": "little",
+          "start": 34.414,
+          "end": 34.675,
+          "matched": true
+        },
+        {
+          "text": "princess",
+          "start": 34.695,
+          "end": 35.055,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 35.215,
+          "end": 35.335,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 35.395,
+          "end": 35.615,
+          "matched": true
+        },
+        {
+          "text": "velvet",
+          "start": 35.675,
+          "end": 36.216,
+          "matched": true
+        },
+        {
+          "text": "throne",
+          "start": 36.276,
+          "end": 36.676,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l11",
+      "text": "And her chunk's all heart,",
+      "start": 36.716,
+      "end": 38.077,
+      "words": [
+        {
+          "text": "And",
+          "start": 36.716,
+          "end": 36.816,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 36.836,
+          "end": 36.956,
+          "matched": true
+        },
+        {
+          "text": "chunk's",
+          "start": 36.976,
+          "end": 37.316,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 37.477,
+          "end": 37.637,
+          "matched": true
+        },
+        {
+          "text": "heart,",
+          "start": 37.637,
+          "end": 38.077,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l12",
+      "text": "all sunshine and sway",
+      "start": 38.077,
+      "end": 39.278,
+      "words": [
+        {
+          "text": "all",
+          "start": 38.077,
+          "end": 38.237,
+          "matched": true
+        },
+        {
+          "text": "sunshine",
+          "start": 38.297,
+          "end": 38.697,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 38.757,
+          "end": 38.858,
+          "matched": true
+        },
+        {
+          "text": "sway",
+          "start": 38.918,
+          "end": 39.278,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l13",
+      "text": "Two goldens,",
+      "start": 39.618,
+      "end": 40.559,
+      "words": [
+        {
+          "text": "Two",
+          "start": 39.618,
+          "end": 39.818,
+          "matched": true
+        },
+        {
+          "text": "goldens,",
+          "start": 39.878,
+          "end": 40.559,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l14",
+      "text": "one home,",
+      "start": 40.759,
+      "end": 41.299,
+      "words": [
+        {
+          "text": "one",
+          "start": 40.759,
+          "end": 40.899,
+          "matched": true
+        },
+        {
+          "text": "home,",
+          "start": 40.959,
+          "end": 41.299,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l15",
+      "text": "at the end of the day",
+      "start": 41.379,
+      "end": 42.96,
+      "words": [
+        {
+          "text": "at",
+          "start": 41.379,
+          "end": 41.459,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 41.499,
+          "end": 41.619,
+          "matched": true
+        },
+        {
+          "text": "end",
+          "start": 41.78,
+          "end": 41.98,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 42.14,
+          "end": 42.26,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 42.36,
+          "end": 42.52,
+          "matched": true
+        },
+        {
+          "text": "day",
+          "start": 42.62,
+          "end": 42.96,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l16",
+      "text": "(mmm)",
+      "start": 42.96,
+      "end": 58.118,
+      "words": [
+        {
+          "text": "(mmm)",
+          "start": 42.96,
+          "end": 58.118,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l17",
+      "text": "He's a big gentle giant with a mouth soft and",
+      "start": 58.118,
+      "end": 61.64,
+      "words": [
+        {
+          "text": "He's",
+          "start": 58.118,
+          "end": 58.478,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 58.538,
+          "end": 58.578,
+          "matched": true
+        },
+        {
+          "text": "big",
+          "start": 58.658,
+          "end": 58.919,
+          "matched": true
+        },
+        {
+          "text": "gentle",
+          "start": 59.099,
+          "end": 59.679,
+          "matched": true
+        },
+        {
+          "text": "giant",
+          "start": 59.759,
+          "end": 60.259,
+          "matched": true
+        },
+        {
+          "text": "with",
+          "start": 60.399,
+          "end": 60.599,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 60.679,
+          "end": 60.719,
+          "matched": true
+        },
+        {
+          "text": "mouth",
+          "start": 60.779,
+          "end": 61.059,
+          "matched": true
+        },
+        {
+          "text": "soft",
+          "start": 61.099,
+          "end": 61.44,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 61.5,
+          "end": 61.64,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l18",
+      "text": "wide",
+      "start": 61.74,
+      "end": 62.28,
+      "words": [
+        {
+          "text": "wide",
+          "start": 61.74,
+          "end": 62.28,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l19",
+      "text": "Loves every stranger,",
+      "start": 63.4,
+      "end": 64.721,
+      "words": [
+        {
+          "text": "Loves",
+          "start": 63.4,
+          "end": 63.741,
+          "matched": true
+        },
+        {
+          "text": "every",
+          "start": 63.821,
+          "end": 64.021,
+          "matched": true
+        },
+        {
+          "text": "stranger,",
+          "start": 64.081,
+          "end": 64.721,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l20",
+      "text": "takes them all in his stride",
+      "start": 65.021,
+      "end": 67.082,
+      "words": [
+        {
+          "text": "takes",
+          "start": 65.021,
+          "end": 65.261,
+          "matched": true
+        },
+        {
+          "text": "them",
+          "start": 65.301,
+          "end": 65.441,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 65.721,
+          "end": 65.941,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 66.061,
+          "end": 66.202,
+          "matched": true
+        },
+        {
+          "text": "his",
+          "start": 66.262,
+          "end": 66.482,
+          "matched": true
+        },
+        {
+          "text": "stride",
+          "start": 66.562,
+          "end": 67.082,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l21",
+      "text": "But Teddy, sweet Teddy, he just cannot abide",
+      "start": 69.12,
+      "end": 73.642,
+      "words": [
+        {
+          "text": "But",
+          "start": 69.12,
+          "end": 69.26,
+          "matched": true
+        },
+        {
+          "text": "Teddy,",
+          "start": 69.32,
+          "end": 69.78,
+          "matched": true
+        },
+        {
+          "text": "sweet",
+          "start": 69.98,
+          "end": 70.3,
+          "matched": true
+        },
+        {
+          "text": "Teddy,",
+          "start": 70.641,
+          "end": 71.041,
+          "matched": true
+        },
+        {
+          "text": "he",
+          "start": 71.301,
+          "end": 71.481,
+          "matched": true
+        },
+        {
+          "text": "just",
+          "start": 71.521,
+          "end": 71.761,
+          "matched": true
+        },
+        {
+          "text": "cannot",
+          "start": 71.921,
+          "end": 72.661,
+          "matched": true
+        },
+        {
+          "text": "abide",
+          "start": 72.761,
+          "end": 73.642,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l22",
+      "text": "And nobody knows what he's feeling inside",
+      "start": 74.382,
+      "end": 78.744,
+      "words": [
+        {
+          "text": "And",
+          "start": 74.382,
+          "end": 74.522,
+          "matched": true
+        },
+        {
+          "text": "nobody",
+          "start": 74.642,
+          "end": 75.723,
+          "matched": true
+        },
+        {
+          "text": "knows",
+          "start": 75.803,
+          "end": 76.523,
+          "matched": true
+        },
+        {
+          "text": "what",
+          "start": 76.603,
+          "end": 76.803,
+          "matched": true
+        },
+        {
+          "text": "he's",
+          "start": 76.843,
+          "end": 77.123,
+          "matched": true
+        },
+        {
+          "text": "feeling",
+          "start": 77.243,
+          "end": 77.944,
+          "matched": true
+        },
+        {
+          "text": "inside",
+          "start": 78.024,
+          "end": 78.744,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l23",
+      "text": "She's a smooth paw-ter-arator, running your home",
+      "start": 78.884,
+      "end": 81.525,
+      "words": [
+        {
+          "text": "She's",
+          "start": 78.884,
+          "end": 79.104,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 79.144,
+          "end": 79.164,
+          "matched": true
+        },
+        {
+          "text": "smooth",
+          "start": 79.224,
+          "end": 79.544,
+          "matched": true
+        },
+        {
+          "text": "paw-ter-arator,",
+          "start": 79.544,
+          "end": 80.605,
+          "matched": false
+        },
+        {
+          "text": "running",
+          "start": 80.605,
+          "end": 80.765,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 80.945,
+          "end": 81.205,
+          "matched": true
+        },
+        {
+          "text": "home",
+          "start": 81.265,
+          "end": 81.525,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l24",
+      "text": "Cool little princess on her velvet throne",
+      "start": 81.585,
+      "end": 84.226,
+      "words": [
+        {
+          "text": "Cool",
+          "start": 81.585,
+          "end": 81.925,
+          "matched": true
+        },
+        {
+          "text": "little",
+          "start": 81.965,
+          "end": 82.225,
+          "matched": true
+        },
+        {
+          "text": "princess",
+          "start": 82.245,
+          "end": 82.626,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 82.786,
+          "end": 82.886,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 82.946,
+          "end": 83.166,
+          "matched": true
+        },
+        {
+          "text": "velvet",
+          "start": 83.246,
+          "end": 83.786,
+          "matched": true
+        },
+        {
+          "text": "throne",
+          "start": 83.826,
+          "end": 84.226,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l25",
+      "text": "And her chunk's all heart,",
+      "start": 84.266,
+      "end": 85.627,
+      "words": [
+        {
+          "text": "And",
+          "start": 84.266,
+          "end": 84.366,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 84.406,
+          "end": 84.506,
+          "matched": true
+        },
+        {
+          "text": "chunk's",
+          "start": 84.526,
+          "end": 84.886,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 85.026,
+          "end": 85.187,
+          "matched": true
+        },
+        {
+          "text": "heart,",
+          "start": 85.187,
+          "end": 85.627,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l26",
+      "text": "all sunshine and sway",
+      "start": 85.627,
+      "end": 86.827,
+      "words": [
+        {
+          "text": "all",
+          "start": 85.627,
+          "end": 85.787,
+          "matched": true
+        },
+        {
+          "text": "sunshine",
+          "start": 85.847,
+          "end": 86.247,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 86.307,
+          "end": 86.407,
+          "matched": true
+        },
+        {
+          "text": "sway",
+          "start": 86.467,
+          "end": 86.827,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l27",
+      "text": "Two goldens,",
+      "start": 87.167,
+      "end": 88.108,
+      "words": [
+        {
+          "text": "Two",
+          "start": 87.167,
+          "end": 87.387,
+          "matched": true
+        },
+        {
+          "text": "goldens,",
+          "start": 87.427,
+          "end": 88.108,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l28",
+      "text": "one home,",
+      "start": 88.308,
+      "end": 88.868,
+      "words": [
+        {
+          "text": "one",
+          "start": 88.308,
+          "end": 88.448,
+          "matched": true
+        },
+        {
+          "text": "home,",
+          "start": 88.508,
+          "end": 88.868,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l29",
+      "text": "at the end of the day",
+      "start": 88.928,
+      "end": 90.729,
+      "words": [
+        {
+          "text": "at",
+          "start": 88.928,
+          "end": 89.008,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 89.048,
+          "end": 89.188,
+          "matched": true
+        },
+        {
+          "text": "end",
+          "start": 89.328,
+          "end": 89.528,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 89.668,
+          "end": 89.788,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 89.908,
+          "end": 90.089,
+          "matched": true
+        },
+        {
+          "text": "day",
+          "start": 90.169,
+          "end": 90.729,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l30",
+      "text": "(mmm)",
+      "start": 90.729,
+      "end": 93.11,
+      "words": [
+        {
+          "text": "(mmm)",
+          "start": 90.729,
+          "end": 93.11,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l31",
+      "text": "Two sides of a golden,",
+      "start": 93.11,
+      "end": 96.051,
+      "words": [
+        {
+          "text": "Two",
+          "start": 93.11,
+          "end": 93.59,
+          "matched": true
+        },
+        {
+          "text": "sides",
+          "start": 93.77,
+          "end": 94.47,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 94.67,
+          "end": 94.81,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 94.931,
+          "end": 95.051,
+          "matched": true
+        },
+        {
+          "text": "golden,",
+          "start": 95.131,
+          "end": 96.051,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l32",
+      "text": "one cool and one warm",
+      "start": 98.825,
+      "end": 101.786,
+      "words": [
+        {
+          "text": "one",
+          "start": 98.825,
+          "end": 98.985,
+          "matched": true
+        },
+        {
+          "text": "cool",
+          "start": 99.065,
+          "end": 99.645,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 100.145,
+          "end": 100.305,
+          "matched": true
+        },
+        {
+          "text": "one",
+          "start": 100.746,
+          "end": 100.986,
+          "matched": true
+        },
+        {
+          "text": "warm",
+          "start": 101.086,
+          "end": 101.786,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l33",
+      "text": "She's the calm in the quiet,",
+      "start": 103.286,
+      "end": 104.827,
+      "words": [
+        {
+          "text": "She's",
+          "start": 103.286,
+          "end": 103.526,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 103.566,
+          "end": 103.646,
+          "matched": true
+        },
+        {
+          "text": "calm",
+          "start": 103.706,
+          "end": 104.046,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 104.046,
+          "end": 104.206,
+          "matched": false
+        },
+        {
+          "text": "the",
+          "start": 104.206,
+          "end": 104.287,
+          "matched": true
+        },
+        {
+          "text": "quiet,",
+          "start": 104.347,
+          "end": 104.827,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l34",
+      "text": "he's the joy in the storm",
+      "start": 105.907,
+      "end": 107.667,
+      "words": [
+        {
+          "text": "he's",
+          "start": 105.907,
+          "end": 106.167,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 106.187,
+          "end": 106.287,
+          "matched": true
+        },
+        {
+          "text": "joy",
+          "start": 106.347,
+          "end": 106.727,
+          "matched": true
+        },
+        {
+          "text": "in",
+          "start": 106.767,
+          "end": 106.847,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 106.867,
+          "end": 106.967,
+          "matched": true
+        },
+        {
+          "text": "storm",
+          "start": 107.047,
+          "end": 107.667,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l35",
+      "text": "(soft) Doja... Bam Bam...",
+      "start": 107.667,
+      "end": 112.269,
+      "words": [
+        {
+          "text": "(soft)",
+          "start": 107.667,
+          "end": 108.988,
+          "matched": false
+        },
+        {
+          "text": "Doja...",
+          "start": 108.988,
+          "end": 110.128,
+          "matched": true
+        },
+        {
+          "text": "Bam",
+          "start": 111.609,
+          "end": 111.929,
+          "matched": true
+        },
+        {
+          "text": "Bam...",
+          "start": 111.969,
+          "end": 112.269,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l36",
+      "text": "She's a smooth paw-ter-arator, running your home",
+      "start": 112.549,
+      "end": 115.209,
+      "words": [
+        {
+          "text": "She's",
+          "start": 112.549,
+          "end": 112.789,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 112.829,
+          "end": 112.869,
+          "matched": true
+        },
+        {
+          "text": "smooth",
+          "start": 112.929,
+          "end": 113.229,
+          "matched": true
+        },
+        {
+          "text": "paw-ter-arator,",
+          "start": 113.229,
+          "end": 114.289,
+          "matched": false
+        },
+        {
+          "text": "running",
+          "start": 114.289,
+          "end": 114.589,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 114.629,
+          "end": 114.889,
+          "matched": true
+        },
+        {
+          "text": "home",
+          "start": 114.949,
+          "end": 115.209,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l37",
+      "text": "Cool little princess on her velvet throne",
+      "start": 115.269,
+      "end": 117.91,
+      "words": [
+        {
+          "text": "Cool",
+          "start": 115.269,
+          "end": 115.63,
+          "matched": true
+        },
+        {
+          "text": "little",
+          "start": 115.67,
+          "end": 115.91,
+          "matched": true
+        },
+        {
+          "text": "princess",
+          "start": 115.95,
+          "end": 116.33,
+          "matched": true
+        },
+        {
+          "text": "on",
+          "start": 116.47,
+          "end": 116.59,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 116.63,
+          "end": 116.83,
+          "matched": true
+        },
+        {
+          "text": "velvet",
+          "start": 116.91,
+          "end": 117.45,
+          "matched": true
+        },
+        {
+          "text": "throne",
+          "start": 117.51,
+          "end": 117.91,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l38",
+      "text": "And her chunk's all heart,",
+      "start": 117.97,
+      "end": 119.331,
+      "words": [
+        {
+          "text": "And",
+          "start": 117.97,
+          "end": 118.05,
+          "matched": true
+        },
+        {
+          "text": "her",
+          "start": 118.09,
+          "end": 118.19,
+          "matched": true
+        },
+        {
+          "text": "chunk's",
+          "start": 118.21,
+          "end": 118.55,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 118.71,
+          "end": 118.87,
+          "matched": true
+        },
+        {
+          "text": "heart,",
+          "start": 118.87,
+          "end": 119.331,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l39",
+      "text": "all sunshine and sway",
+      "start": 119.331,
+      "end": 120.531,
+      "words": [
+        {
+          "text": "all",
+          "start": 119.331,
+          "end": 119.471,
+          "matched": true
+        },
+        {
+          "text": "sunshine",
+          "start": 119.531,
+          "end": 119.951,
+          "matched": true
+        },
+        {
+          "text": "and",
+          "start": 119.991,
+          "end": 120.111,
+          "matched": true
+        },
+        {
+          "text": "sway",
+          "start": 120.151,
+          "end": 120.531,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l40",
+      "text": "Two goldens,",
+      "start": 120.851,
+      "end": 121.771,
+      "words": [
+        {
+          "text": "Two",
+          "start": 120.851,
+          "end": 121.071,
+          "matched": true
+        },
+        {
+          "text": "goldens,",
+          "start": 121.111,
+          "end": 121.771,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l41",
+      "text": "one home,",
+      "start": 121.991,
+      "end": 122.551,
+      "words": [
+        {
+          "text": "one",
+          "start": 121.991,
+          "end": 122.151,
+          "matched": true
+        },
+        {
+          "text": "home,",
+          "start": 122.211,
+          "end": 122.551,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l42",
+      "text": "at the end of the day",
+      "start": 122.631,
+      "end": 124.192,
+      "words": [
+        {
+          "text": "at",
+          "start": 122.631,
+          "end": 122.691,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 122.752,
+          "end": 122.872,
+          "matched": true
+        },
+        {
+          "text": "end",
+          "start": 122.972,
+          "end": 123.212,
+          "matched": true
+        },
+        {
+          "text": "of",
+          "start": 123.352,
+          "end": 123.472,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 123.592,
+          "end": 123.752,
+          "matched": true
+        },
+        {
+          "text": "day",
+          "start": 123.852,
+          "end": 124.192,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l43",
+      "text": "(mmm)",
+      "start": 124.192,
+      "end": 126.123,
+      "words": [
+        {
+          "text": "(mmm)",
+          "start": 124.192,
+          "end": 126.123,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l44",
+      "text": "She's a smooth paw-ter-arator, running your home",
+      "start": 126.123,
+      "end": 135.228,
+      "words": [
+        {
+          "text": "She's",
+          "start": 126.123,
+          "end": 126.503,
+          "matched": true
+        },
+        {
+          "text": "a",
+          "start": 126.563,
+          "end": 126.643,
+          "matched": true
+        },
+        {
+          "text": "smooth",
+          "start": 126.723,
+          "end": 127.364,
+          "matched": true
+        },
+        {
+          "text": "paw-ter-arator,",
+          "start": 127.364,
+          "end": 128.945,
+          "matched": false
+        },
+        {
+          "text": "running",
+          "start": 128.945,
+          "end": 129.365,
+          "matched": true
+        },
+        {
+          "text": "your",
+          "start": 129.425,
+          "end": 129.705,
+          "matched": true
+        },
+        {
+          "text": "home",
+          "start": 129.785,
+          "end": 135.228,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l45",
+      "text": "(mmm)",
+      "start": 135.228,
+      "end": 135.248,
+      "words": [
+        {
+          "text": "(mmm)",
+          "start": 135.228,
+          "end": 135.248,
+          "matched": false
+        }
+      ]
+    },
+    {
+      "id": "l46",
+      "text": "Two goldens,",
+      "start": 135.248,
+      "end": 136.649,
+      "words": [
+        {
+          "text": "Two",
+          "start": 135.248,
+          "end": 135.308,
+          "matched": true
+        },
+        {
+          "text": "goldens,",
+          "start": 135.428,
+          "end": 136.649,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l47",
+      "text": "one home,",
+      "start": 136.929,
+      "end": 137.729,
+      "words": [
+        {
+          "text": "one",
+          "start": 136.929,
+          "end": 137.149,
+          "matched": true
+        },
+        {
+          "text": "home,",
+          "start": 137.349,
+          "end": 137.729,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l48",
+      "text": "and they've got it all",
+      "start": 138.23,
+      "end": 141.251,
+      "words": [
+        {
+          "text": "and",
+          "start": 138.23,
+          "end": 138.41,
+          "matched": true
+        },
+        {
+          "text": "they've",
+          "start": 138.45,
+          "end": 138.75,
+          "matched": true
+        },
+        {
+          "text": "got",
+          "start": 138.81,
+          "end": 139.21,
+          "matched": true
+        },
+        {
+          "text": "it",
+          "start": 139.41,
+          "end": 139.49,
+          "matched": true
+        },
+        {
+          "text": "all",
+          "start": 140.191,
+          "end": 141.251,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l49",
+      "text": "(whispered) Go on... fetch the ball...",
+      "start": 141.251,
+      "end": 144.073,
+      "words": [
+        {
+          "text": "(whispered)",
+          "start": 141.251,
+          "end": 142.012,
+          "matched": false
+        },
+        {
+          "text": "Go",
+          "start": 142.012,
+          "end": 142.212,
+          "matched": true
+        },
+        {
+          "text": "on...",
+          "start": 142.372,
+          "end": 142.532,
+          "matched": true
+        },
+        {
+          "text": "fetch",
+          "start": 143.152,
+          "end": 143.473,
+          "matched": true
+        },
+        {
+          "text": "the",
+          "start": 143.513,
+          "end": 143.613,
+          "matched": true
+        },
+        {
+          "text": "ball...",
+          "start": 143.653,
+          "end": 144.073,
+          "matched": true
+        }
+      ]
+    },
+    {
+      "id": "l50",
+      "text": "(Woof)",
+      "start": 145.293,
+      "end": 145.654,
+      "words": [
+        {
+          "text": "(Woof)",
+          "start": 145.293,
+          "end": 145.654,
+          "matched": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,22 +1,30 @@
 title: lie-by-the-fire
 version: indie-pop
 model: minimax H3
-inspiration: Original!
-inspirationyt: ''
-story: This is an original, sparked from original trying to emulate a pink floyd type sound, but that is long gone, like the fast fading embers of fire.
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 475640451621772
+top_k: 45
+sampler: dpmpp_sde_gpu
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 501220287810560
+sampler_steps: 30
+inspiration:
+inspirationyt:
+story:
 caption: |
   Global Metadata
   Basic Attributes: bpm is 85. key is C, and scale is major. Indie Pop / Alternative Rock.
   Global Emotional Progression: The piece opens with a somber, introspective mood characterized by sparse instrumentation and a restrained vocal delivery.
   Application Scenarios & Imagery: Ideal for scenes depicting a journey from isolation to community, such as a solitary traveler finding a new home, or montage sequences showing personal growth and overcoming adversity.
   Sonics & Production Profile: The production features a wide, cinematic soundstage with a clear separation between the intimate verses and the expansive choruses. The frequency response is balanced, with a warm, rounded low end supporting crisp, articulate highs.
-
   Vocal Details
   Vocal Gender & Timbre: Singer A (Male), an intimate warm baritone-tenor with natural storytelling phrasing, gentle breath detail and controlled dynamic growth.
   Vocal Style: The performance begins with a soft, narrative style, almost conversational, emphasizing vulnerability. As the song progresses, the delivery becomes increasingly passionate and assertive, utilizing strong belting techniques in the choruses to convey urgency and hope.
   Harmony/Backing Vocals: Rich, multi-layered backing vocals enter prominently in the choruses, creating a choir-like texture that supports the lead melody.
   Vocal FX: The lead vocal is treated with a moderate amount of plate reverb throughout, giving it space without obscuring articulation.
-
   Arrangement
   Instrument Lifecycle (Primary/Secondary): Primary: A clean electric guitar playing arpeggiated chords serves as the primary harmonic driver from the Intro through the first verse. In the choruses, this shifts to a distorted, overdriven rhythm guitar pattern that anchors the song's energy. Secondary: A warm, melodic bass guitar enters in the first verse, providing a solid low-end foundation.
   Groove & Foundation Progression: The track begins with a minimal drum pattern, featuring a soft kick and brushed snare, establishing a gentle pulse.
@@ -111,13 +119,3 @@ lyrics: |
   The fire burns low
   And morning will come
   Woof
-dit: fp32
-text_encoder: bf16
-encoder_cfg: 1.6
-encoder_seed: 475640451621772
-top_k: 45
-sampler: dpmpp_sde_gpu
-scheduler: ddim_uniform
-sampler_cfg: 1.7
-sampler_seed: 501220287810560
-sampler_steps: 30
