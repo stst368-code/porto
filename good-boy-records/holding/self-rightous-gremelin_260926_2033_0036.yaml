@@ -1,0 +1,102 @@
+title: self-rightous-gremelin
+version: chinese-traditional
+model: minimax H3
+inspiration: System of a Down - Chop Suey
+inspirationyt: https://www.youtube.com/watch?v=CSvFpBOe8eY
+story: She really doesn't like to wait, and when Bam goes out without her... well there's nothing more she can hate.
+caption: |
+  Global Metadata
+  Basic Attributes: bpm is 73. key is A, and scale is minor. C-Pop / Chinese Traditional Fusion.
+  Global Emotional Progression: The piece opens with a serene, ethereal atmosphere that evokes a sense of ancient solitude and vastness.
+  Application Scenarios & Imagery: Ideal for historical drama soundtracks, scenes depicting moonlit landscapes or ancient ruins, and moments of introspective storytelling involving themes of destiny and separation.
+  Sonics & Production Profile: The production features a wide, deep soundstage where traditional acoustic instruments are placed distinctly against a modern, polished backdrop. The frequency response balances the airy highs of the woodwinds with a warm, rounded low-end foundation.
+
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Female), a forceful mezzo/alto character voice with clipped attack, sudden dynamic jumps and a deliberately impatient, confrontational edge.
+  Vocal Style: The performance begins with a soft, narrative delivery in the verses, utilizing gentle vibrato and precise articulation.
+  Harmony/Backing Vocals: Layered self-harmonies appear prominently in the choruses, creating a lush, choral effect that widens the vocal presence.
+  Vocal FX: The lead vocal is treated with a tasteful amount of plate reverb throughout, giving it a sense of depth and distance.
+
+  Arrangement
+  Instrument Lifecycle (Primary/Secondary): Primary: A solo bamboo flute (Dizi) serves as the primary melodic voice in the intro and interludes, characterized by its breathy, expressive tone. An acoustic piano provides the core harmonic structure throughout the entire track, playing arpeggiated patterns in the verses and block chords in the choruses.
+  Groove & Foundation Progression: The track begins without percussion, relying on the fluid rhythm of the flute and piano.
+  Embellishments, Textures & Spatial FX: Atmospheric wind chimes and subtle synth pads create an ambient bed in the background, particularly noticeable in the intro and outro.
+  Section Continuity: Follow the lyric macro structure in order ([intro] → [verse] → [chorus] → [instrumental] → [post-chorus] → [verse] → [chorus] → [post-chorus] → [bridge] → [chorus] → [post-chorus]). Keep the target genre active in every sung section; use changes in density, register, articulation and groove for contrast rather than switching to a different style.
+lyrics: |
+  [intro]
+  "We're rolling Gremelin"
+  [verse]
+  Mama! (mama)
+  Grab a lead and put your little shoes on!
+  Hide your phone and forget about your makeup!
+  Why'd you leave the treats upon the table?
+  Here you go, create another fable!
+  You wanted to!
+  Grab a lead and put your little shoes on!
+  You wanted to!
+  Hide your phone and forget about your makeup!
+  You wanted to!
+  Why'd you leave the treats upon the table?
+  You wanted to!
+  [chorus]
+  I don't think you trust!
+  In!
+  my!
+  self-righteous gremelin!
+  I!
+  cry!
+  when BamBam deserve outside!
+  [instrumental]
+  [post-chorus]
+  I don't think you trust!
+  self-righteous gremelin!
+  [verse]
+  Rah, Mama! (mama)
+  Grab a lead and put your little shoes on! (The little ones)
+  Hide your phone and forget about your makeup!
+  Why'd you leave the treats upon the table?
+  Here you go, create another fable!
+  You wanted to!
+  Grab a lead and put your little shoes on!
+  You wanted to!
+  Hide your phone and forget about your makeup!
+  You wanted to!
+  Why'd you leave the treats upon the table?
+  You wanted to!
+  [chorus]
+  I don't think you trust!
+  In my self-righteous gremelin!
+  I cry when BamBam deserve outside!
+  In my self-righteous gremelin!
+  I cry when BamBam deserve outside!
+  [post-chorus]
+  I don't think you trust!
+  self-righteous gremelin!
+  [bridge]
+  Mother, (Mother), Mother, (Mother)
+  Mother,
+  into your hands I commend my spirit
+  Mother, into your hands
+  Why have you forsaken me?
+  In your eyes, forsaken me?
+  In your thoughts, forsaken me?
+  In your heart, forsaken me? Oh!
+  [chorus]
+  Trust!
+  In my self-righteous gremelin!
+  I cry when BamBam deserve outside!
+  In my self-righteous gremelin!
+  I cry when BamBam deserve outside!
+  [post-chorus]
+  I don't think you trust!
+  self-righteous gremelin!
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 968826259181402
+top_k: 45
+sampler: seeds_2
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 459969051539817
+sampler_steps: 30

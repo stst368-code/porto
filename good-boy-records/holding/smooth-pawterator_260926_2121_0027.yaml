@@ -1,0 +1,95 @@
+title: smooth-pawterator
+version: chamber-folk
+model: minimax H3
+inspiration: Sade - Smooth Operator
+inspirationyt: https://www.youtube.com/watch?v=4TYv2PhG89A
+story: Evidently the LLMs of the day have some challenges saying 'Pawterator', a completely made up original word so we can't blame the model for having no reference for pronounciation, enjoy it failing in several different styles.
+caption: |
+  Global Metadata
+  Basic Attributes: bpm is 136. key is C, and scale is minor. Contemporary Folk / Chamber Folk.
+  Global Emotional Progression: The piece opens with a somber, reflective atmosphere established by a solitary bowed instrument, setting a tone of quiet introspection. As the vocals enter, the mood shifts to one of humble storytelling and grounded resilience.
+  Application Scenarios & Imagery: A solitary walk through an ancient, mist-covered landscape, a scene in a historical drama depicting a craftsman's quiet pride, or a contemplative moment in a documentary about geology and time.
+  Sonics & Production Profile: The soundstage is intimate and focused, with a natural, acoustic warmth dominating the frequency spectrum. The low-mids are rich due to the cello, while the highs are soft and rolled-off, avoiding harshness.
+
+  Vocal Details
+  Vocal Gender & Timbre: Singer A (Female), a sultry breathy mezzo-soprano with intimate close-miked delivery, effortless phrasing and clean diction.
+  Vocal Style: The delivery is narrative and earnest, employing a clean, unadorned folk style. The phrasing is deliberate and measured, emphasizing the weight of the words without resorting to vocal theatrics or significant dynamic shifts.
+  Harmony/Backing Vocals: Self-layered harmonies appear during the refrain sections, where the lead vocal is doubled at the third and fifth intervals to create a choral, hymn-like thickness that reinforces the lyrical mantra.
+  Vocal FX: The vocal track is treated with a subtle, short-room reverb to place the voice in a natural acoustic space, enhancing intimacy without creating a sense of distance.
+
+  Arrangement
+  Instrument Lifecycle (Primary/Secondary): Primary: A solo cello serves as the harmonic and melodic anchor throughout the entire track. It alternates between playing sustained, bowing-heavy chords that provide a drone-like foundation and intricate, counter-melodic lines that weave around the vocal phrases. Secondary: There are no secondary instruments; the arrangement relies exclusively on the interplay between the solo cello and the human voice.
+  Groove & Foundation Progression: The track lacks traditional percussion. Instead, the rhythmic momentum is driven entirely by the articulation of the cello—shifting between long, legato bows in the verses and more staccato, rhythmic plucking or shorter bow strokes during the refrains to propel the song forward.
+  Embellishments, Textures & Spatial FX: The primary textural element is the natural resonance and slight friction noise of the cello strings, which adds an organic grit to the sound.
+  Section Continuity: Follow the lyric macro structure in order ([intro] → [verse] → [chorus] → [solo] → [verse] → [chorus] → [bridge] → [chorus] → [post-chorus] → [outro]). Keep the target genre active in every sung section; use changes in density, register, articulation and groove for contrast rather than switching to a different style.
+lyrics: |
+  [intro]
+  (Woof, soft)
+  Mmm... two goldens...
+  [verse]
+  She moves through the room like she's made out of
+  silk
+  Cool as the morning, calm as the milk
+  She won't chase a thing,
+  what she wants, It comes to her
+  A golden-eyed lady, with that regal glow
+  [chorus]
+  She's a smooth paw-ter-arator, running your home
+  Cool little princess on her velvet throne
+  And her chunk's all heart,
+  all sunshine and sway
+  Two goldens,
+  one home,
+  at the end of the day
+  (mmm)
+  [solo]
+  [verse]
+  He's a big gentle giant with a mouth soft and
+  wide
+  Loves every stranger,
+  takes them all in his stride
+  But Teddy, sweet Teddy, he just cannot abide
+  And nobody knows what he's feeling inside
+  [chorus]
+  She's a smooth paw-ter-arator, running your home
+  Cool little princess on her velvet throne
+  And her chunk's all heart,
+  all sunshine and sway
+  Two goldens,
+  one home,
+  at the end of the day
+  (mmm)
+  [bridge]
+  Two sides of a golden,
+  one cool and one warm
+  She's the calm in the quiet,
+  he's the joy in the storm
+  (soft) Doja... Bam Bam...
+  [chorus]
+  She's a smooth paw-ter-arator, running your home
+  Cool little princess on her velvet throne
+  And her chunk's all heart,
+  all sunshine and sway
+  Two goldens,
+  one home,
+  at the end of the day
+  (mmm)
+  [post-chorus]
+  She's a smooth paw-ter-arator, running your home
+  (mmm)
+  [outro]
+  Two goldens,
+  one home,
+  and they've got it all
+  (whispered) Go on... fetch the ball...
+  (Woof)
+dit: fp32
+text_encoder: bf16
+encoder_cfg: 1.6
+encoder_seed: 500804026186120
+top_k: 45
+sampler: seeds_2
+scheduler: ddim_uniform
+sampler_cfg: 1.7
+sampler_seed: 511686542943509
+sampler_steps: 40
