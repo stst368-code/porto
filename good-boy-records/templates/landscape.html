@@ -297,10 +297,11 @@ body[data-easter="true"] .axis-guide{opacity:.2}body[data-easter="true"] .genre-
     <button class="mobile-mix-toggle" id="mobileMixToggle" type="button" aria-expanded="false">MIX</button>
   </aside>
 </div>
-<audio id="audio" preload="metadata"></audio>
+<audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
 <script src="showcase-host.js"></script>
 <script>
 const $=id=>document.getElementById(id),canvas=$('canvas'),ctx=canvas.getContext('2d'),audio=$('audio');
+audio.crossOrigin='anonymous';
 const SHOWCASE_ROOT=String(window.GBR_SHOWCASE_ROOT||'').trim().replace(/\/+$/,'');
 function showcaseUrl(value){
   const raw=String(value||'').trim().replace(/\\/g,'/');
@@ -325,9 +326,15 @@ function accent(track){const c=track?.genre?.child_colour||'#d0802f',v=rgb(c);do
 function titleOf(t){return t?.displayTitle||t?.composition||t?.title||t?.id||'Untitled'}
 function variantOf(t){return t?.variant||t?.version||t?.genre?.child_genre||'—'}
 function classifyAudioUrl(url){const clean=String(url||'').split('#')[0].split('?')[0].toLowerCase();if(clean.endsWith('.flac'))return 'flac';if(clean.endsWith('.mp3'))return 'mp3';return 'other'}
+function swapAudioExt(url,ext){
+  const raw=String(url||''),m=/^(.*?)(\.(?:flac|mp3))([?#].*)?$/i.exec(raw);
+  return m?`${m[1]}.${ext}${m[3]||''}`:''
+}
 function audioPools(t){
   const s=t?.audio?.sources||{},raw=[s.flac,s.lossless,s.mp3,s.stream,t?.audio_url,t?.audio?.url,t?.audio?.src].filter(Boolean),seen=new Set(),pools={flac:[],mp3:[],other:[]};
   for(const value of raw){const url=showcaseUrl(value),key=String(url);if(!key||seen.has(key))continue;seen.add(key);const bucket=classifyAudioUrl(url);(pools[bucket]||pools.other).push(url)}
+  if(!pools.flac.length&&pools.mp3.length){for(const url of pools.mp3){const alt=swapAudioExt(url,'flac');if(alt&&!seen.has(alt)){seen.add(alt);pools.flac.push(alt)}}}
+  if(!pools.mp3.length&&pools.flac.length){for(const url of pools.flac){const alt=swapAudioExt(url,'mp3');if(alt&&!seen.has(alt)){seen.add(alt);pools.mp3.push(alt)}}}
   return pools
 }
 function audioCandidates(t,preferred=preferredAudioFormat){
@@ -663,7 +670,7 @@ ui.power.onclick=()=>{
     const needed=easter?1:3;
     if(powerCycleCount>=needed){powerCycleCount=0;if(powerCycleTimer){clearTimeout(powerCycleTimer);powerCycleTimer=null}toggleEaster();clickSound()}
   }
-};if(ui.fmtFlac)ui.fmtFlac.onclick=()=>{clickSound();switchAudioFormat('flac')};if(ui.fmtMp3)ui.fmtMp3.onclick=()=>{clickSound();switchAudioFormat('mp3')};ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound();audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound();next()}};ui.prev.onclick=()=>{if(power){clickSound();prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'S✦':'S';ui.shuffle.title=shuffle?'Shuffle: wild genre jumps':'Shuffle'};ui.seek.oninput=()=>{if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>ui.play.textContent='❚❚';audio.onpause=()=>ui.play.textContent='▶';audio.onended=next;audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0};
+};if(ui.fmtFlac)ui.fmtFlac.onclick=()=>{clickSound();switchAudioFormat('flac')};if(ui.fmtMp3)ui.fmtMp3.onclick=()=>{clickSound();switchAudioFormat('mp3')};ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound();audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound();next()}};ui.prev.onclick=()=>{if(power){clickSound();prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'S✦':'S';ui.shuffle.title=shuffle?'Shuffle: wild genre jumps':'Shuffle'};ui.seek.oninput=()=>{if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>{ui.play.textContent='❚❚';const actual=classifyAudioUrl(audio.currentSrc||audio.src);if(actual==='flac'||actual==='mp3'){ui.fmtFlac?.classList.toggle('active',actual==='flac');ui.fmtMp3?.classList.toggle('active',actual==='mp3')}};audio.onpause=()=>ui.play.textContent='▶';audio.onended=next;audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0};
 bindKnob(ui.volumeKnob,()=>volume,setVolume);bindKnob(ui.lampKnob,()=>lamp,setLamp);
 function hitNode(clientX,clientY){const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top;let best=null;for(const n of nodes){if(n.i===index)continue;const shimmerX=(Math.sin(phase*(.72+n.seed1*.65)+n.seed2*6.283)*n.drift+Math.cos(phase*(.37+n.seed3*.44)+n.seed4*6.283)*n.drift*.35),shimmerY=(Math.cos(phase*(.69+n.seed2*.72)+n.seed1*6.283)*n.drift*.82+Math.sin(phase*(.41+n.seed4*.38)+n.seed3*6.283)*n.drift*.28),sp=viewToScreen(n.x+shimmerX,n.y+shimmerY),hit=Math.max(34,nodeDisplaySize(n,false,false,false)*.58),d=Math.hypot(sx-sp.x,sy-sp.y);if(d<hit&&(!best||d<best.d))best={d,n,sp}}return{best,sx,sy,r}}
 canvas.addEventListener('mousemove',e=>{if(pointer.down)return;const {best,sx,sy,r}=hitNode(e.clientX,e.clientY);hoverIndex=best?best.n.i:-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=titleOf(best.n.t);ui.mapTip.querySelector('small').textContent=[best.n.t.genre?.child_genre||variantOf(best.n.t),best.n.t.genre?.parent_genre,'ORBIT = PARENT · RADIUS = CHILD'].filter(Boolean).join(' · ')}else ui.mapTip.style.display='none'});

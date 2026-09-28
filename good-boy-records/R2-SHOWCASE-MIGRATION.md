@@ -69,3 +69,29 @@ For the current GitHub Pages origin use a bucket CORS policy equivalent to:
 ```
 
 Use a custom R2 domain for production when available; the `r2.dev` endpoint is intended for development/testing.
+
+
+## Cross-origin audio and the Web Audio analyser
+
+The player routes the HTML audio element through `AudioContext.createMediaElementSource()`
+for the spectrum and VU meters. Because R2 is a different origin from GitHub Pages,
+the audio element must use `crossorigin="anonymous"` *before* its `src` is assigned,
+and the R2 bucket must return a matching CORS header.
+
+v10.8.6 sets both the HTML attribute and the JavaScript `crossOrigin` property.
+Opening an R2 track directly in a browser proves the object is public, but does not
+by itself prove that CORS is configured for playback through Web Audio.
+
+The supplied bucket CORS rule should therefore retain:
+
+```json
+[
+  {
+    "AllowedOrigins": ["https://stst368-code.github.io"],
+    "AllowedMethods": ["GET", "HEAD"],
+    "AllowedHeaders": ["*"],
+    "ExposeHeaders": ["ETag", "Content-Length", "Content-Range", "Accept-Ranges"],
+    "MaxAgeSeconds": 3600
+  }
+]
+```
