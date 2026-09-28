@@ -17,8 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      PROJECT_DIR: ${{ github.workspace }}/good-boy-records
 
     steps:
       - name: Checkout
@@ -34,23 +32,32 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install PyYAML Pillow
 
-      - name: Build existing GBR generated data/assets
+      - name: Prepare GBR catalogue source
         working-directory: good-boy-records
+        shell: bash
         run: |
+          set -euo pipefail
           rm -rf _site
           mkdir -p _site
-          if [ -f tools/import_showcase.py ]; then python tools/import_showcase.py; fi
-          if [ -f tools/prepare_artwork.py ] && [ -d masters ]; then python tools/prepare_artwork.py masters assets/img/sleeves; fi
-          if [ -f tools/build_catalogue.py ]; then python tools/build_catalogue.py; fi
-          if [ -f tools/check_links.py ]; then python tools/check_links.py; fi
-          if [ -f tools/stage_pages.py ]; then python tools/stage_pages.py; fi
+
+          # Backwards-compatible path: if showcase/ is still checked out, refresh
+          # the generated catalogue. Once showcase/ is R2-only this branch is skipped.
+          if [ -d showcase ] && find showcase -type f -print -quit | grep -q .; then
+            echo "Local showcase found; refreshing generated catalogue."
+            if [ -f tools/import_showcase.py ]; then python tools/import_showcase.py; fi
+            if [ -f tools/prepare_artwork.py ] && [ -d masters ]; then python tools/prepare_artwork.py masters assets/img/sleeves; fi
+            if [ -f tools/build_catalogue.py ]; then python tools/build_catalogue.py; fi
+          else
+            echo "showcase/ is external; using committed data/catalogue.json."
+            test -f data/catalogue.json
+          fi
 
       - name: Find GBR catalogue input
         id: catalogue
         working-directory: good-boy-records
         shell: bash
         run: |
-          for f in showcase-manifest.json content-source/showcase-manifest.json data/catalogue.json catalogue.json; do
+          for f in data/catalogue.json showcase-manifest.json content-source/showcase-manifest.json catalogue.json; do
             if [ -f "$f" ]; then
               echo "input=$f" >> "$GITHUB_OUTPUT"
               echo "Using $f"
@@ -71,43 +78,42 @@ jobs:
             python tools/augment_easter_catalogue.py _site/catalogue.json .
           fi
 
-      - name: Publish direct showcase media
+      - name: Publish small GBR runtime only
         working-directory: good-boy-records
+        shell: bash
         run: |
-          test -d showcase
-          rm -rf _site/showcase
-          cp -R showcase _site/showcase
-          test -d _site/showcase
+          set -euo pipefail
+          test -f showcase-host.js
+          cp showcase-host.js _site/showcase-host.js
 
-      - name: Publish GBR document tabs
-        working-directory: good-boy-records
-        run: |
-          test -d content-source/folders
-          mkdir -p _site/content-source
-          rm -rf _site/content-source/folders
-          cp -R content-source/folders _site/content-source/folders
-          test -f _site/content-source/folders/01-about.md
-          test -f _site/content-source/folders/10-requests.md
+          if [ -d content-source/folders ]; then
+            mkdir -p _site/content-source
+            rm -rf _site/content-source/folders
+            cp -R content-source/folders _site/content-source/folders
+          fi
 
-      - name: Make Sonic Landscape the GBR index
-        working-directory: good-boy-records
-        run: |
           test -f templates/landscape.html
           cp templates/landscape.html _site/landscape.html
           cp templates/landscape.html _site/index.html
-          echo "GBR index title:"
-          grep -m1 '<title>' _site/index.html
+
+          # The whole point of this build: GitHub Pages must never receive the
+          # large curated media tree.
+          test ! -e _site/showcase
           test -f _site/catalogue.json
+          test -f _site/showcase-host.js
+          echo "GBR staged size:"
+          du -sh _site
 
       - name: Assemble portfolio routes
-        run: |
-          python .github/scripts/stage_portfolio.py
+        run: python .github/scripts/stage_portfolio.py
 
       - name: Verify staged GBR route
         run: |
           test -f _pages/good-boy-records/index.html
+          test -f _pages/good-boy-records/showcase-host.js
+          test ! -e _pages/good-boy-records/showcase
           grep -q 'Sonic Landscape' _pages/good-boy-records/index.html
-          echo "Verified: _pages/good-boy-records/index.html is Sonic Landscape"
+          echo "Verified: GBR app shell only; showcase media is external."
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

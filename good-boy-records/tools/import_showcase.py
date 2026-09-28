@@ -74,6 +74,17 @@ def humanise(value: str) -> str:
     return re.sub(r"[-_]+", " ", str(value or "")).strip().title()
 
 
+def showcase_url(path: Path | None) -> str | None:
+    """Return the public path for a curated file under showcase/."""
+    if path is None:
+        return None
+    try:
+        rel = path.relative_to(DROP).as_posix()
+    except ValueError:
+        return path.relative_to(ROOT).as_posix()
+    return f"showcase/{rel}"
+
+
 def choose_file(directory: Path, expected_stem: str, suffixes: set[str]) -> Path | None:
     files = sorted(p for p in directory.iterdir() if p.is_file() and p.suffix.lower() in suffixes)
     exact = [p for p in files if slugify(p.stem) == slugify(expected_stem)]
@@ -227,7 +238,7 @@ def stage_song(song_dir: Path, source_yaml: Path | None, raw: dict[str, Any] | N
     if source_yaml:
         raw_yaml_target = RAW_YAML_OUT / f"{song_id}.yaml"
         shutil.copy2(source_yaml, raw_yaml_target)
-        raw_yaml_url = f"data/yaml/{raw_yaml_target.name}"
+        raw_yaml_url = showcase_url(source_yaml)
 
     record = {
         "id": song_id,
@@ -303,7 +314,7 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         approved = bool(quality.get("approved", False))
         usable = bool(quality.get("usable_for_live_lyrics", approved or not review_required))
         word_timing = {
-            "src": f"data/live-lyrics/{release_id}.json",
+            "src": showcase_url(lyric_path),
             "format": LIVE_LYRICS_FORMAT,
             "coverage": coverage,
             "rating": quality.get("rating"),
@@ -351,6 +362,7 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
         },
         "artwork": {
             "base": art_base,
+            "src": showcase_url(artwork),
             "alt": f"Album artwork for {humanise(title)} — {special_label or humanise(variant_raw)}",
             "placeholder": artwork is None,
         },
@@ -358,7 +370,7 @@ def stage_variant(source_yaml: Path, raw: dict[str, Any], song_record: dict[str,
             "raw": str(raw.get("lyrics") or "").rstrip(),
             "wordTiming": word_timing,
         },
-        "yamlUrl": f"data/yaml/{release_id}.yaml",
+        "yamlUrl": showcase_url(source_yaml),
         "source": {
             "yaml": str(source_yaml.relative_to(DROP)).replace("\\", "/"),
             "directory": str(source_yaml.parent.relative_to(DROP)).replace("\\", "/"),
@@ -423,7 +435,7 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
         approved = bool(quality.get("approved", False))
         usable = bool(quality.get("usable_for_live_lyrics", approved or not review_required))
         word_timing = {
-            "src": f"data/live-lyrics/{release_id}.json",
+            "src": showcase_url(lyric_path),
             "format": LIVE_LYRICS_FORMAT,
             "coverage": coverage,
             "rating": quality.get("rating"),
@@ -468,6 +480,7 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
         },
         "artwork": {
             "base": art_base,
+            "src": showcase_url(artwork),
             "alt": f"Album artwork for {humanise(title)} — {label}",
             "placeholder": artwork is None,
         },
@@ -475,7 +488,7 @@ def stage_one_off(source_yaml: Path, raw: dict[str, Any]) -> tuple[dict[str, Any
             "raw": str(raw.get("lyrics") or "").rstrip(),
             "wordTiming": word_timing,
         },
-        "yamlUrl": f"data/yaml/{release_id}.yaml",
+        "yamlUrl": showcase_url(source_yaml),
         "source": {
             "yaml": str(source_yaml.relative_to(DROP)).replace("\\", "/"),
             "directory": str(source_yaml.parent.relative_to(DROP)).replace("\\", "/"),

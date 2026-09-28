@@ -47,8 +47,26 @@ def main():
             if art: entry['artwork_url']=rel(art, project)
             if lyrics: entry['lyrics_url']=rel(lyrics, project)
             hidden.append(entry)
+    if not hidden:
+        existing=data.get('easter_tracks') or ((data.get('easter') or {}).get('tracks') if isinstance(data.get('easter'),dict) else None) or []
+        for raw in existing:
+            if not isinstance(raw,dict):
+                continue
+            entry=dict(raw)
+            entry.setdefault('composition','Easter Universe')
+            entry.setdefault('variant','hidden')
+            entry.setdefault('genre',{
+                'cluster':'easter universe',
+                'parent_genre':'Easter Universe',
+                'child_genre':'Hidden Track',
+                'parent_colour':'#7656C7',
+                'child_colour':'#9A7DE1',
+                'taxonomy_order':999999,
+            })
+            hidden.append(entry)
     data['easter_tracks']=hidden
     catalogue.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
-    print(f'Easter catalogue: {len(hidden)} playable tracks from {easter_root}')
+    origin=str(easter_root) if easter_root.exists() else 'prebuilt catalogue (external showcase)'
+    print(f'Easter catalogue: {len(hidden)} playable tracks from {origin}')
 
 if __name__=='__main__': main()
