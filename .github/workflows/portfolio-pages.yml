@@ -112,6 +112,10 @@ jobs:
           grep -q 'crossorigin="anonymous"' _site/index.html
           grep -q 'id="fmtFlac"' _site/index.html
           grep -q 'id="fmtMp3"' _site/index.html
+          grep -q 'class="module master-module"' _site/index.html
+          grep -q '>Shuffle</button>' _site/index.html
+          grep -q 'for(let i=0;i<184;i++)' _site/index.html
+          grep -q 'beatPeriod' _site/index.html
           grep -q 'GBR_SHOWCASE_ROOT' _site/showcase-host.js
           test -f _site/catalogue.json
           test ! -d _site/showcase
@@ -132,6 +136,10 @@ jobs:
           grep -q 'crossorigin="anonymous"' _pages/good-boy-records/index.html
           grep -q 'id="fmtFlac"' _pages/good-boy-records/index.html
           grep -q 'id="fmtMp3"' _pages/good-boy-records/index.html
+          grep -q 'class="module master-module"' _pages/good-boy-records/index.html
+          grep -q '>Shuffle</button>' _pages/good-boy-records/index.html
+          grep -q 'for(let i=0;i<184;i++)' _pages/good-boy-records/index.html
+          grep -q 'beatPeriod' _pages/good-boy-records/index.html
           test ! -d _pages/good-boy-records/showcase
           echo "Verified: GitHub Pages contains player/catalogue only; media stays on R2."
 
