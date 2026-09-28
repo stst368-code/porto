@@ -93,6 +93,8 @@ jobs:
             cp -R content-source/folders _site/content-source/folders
           fi
 
+          python tools/build_knowledge_manifest.py _site/knowledge-manifest.json
+
           test -f showcase-host.js
           cp showcase-host.js _site/showcase-host.js
 
@@ -121,8 +123,11 @@ jobs:
           grep -q 'decayBeats' _site/index.html
           grep -q 'id="knowledgeButton"' _site/index.html
           grep -q 'class="knowledge-reader"' _site/index.html
-          grep -q 'const KNOWLEDGE_DOCS=' _site/index.html
+          grep -q "KNOWLEDGE_MANIFEST_URL='knowledge-manifest.json'" _site/index.html
+          test -f _site/knowledge-manifest.json
           grep -q 'drawKnowledge' _site/index.html
+          grep -q 'knowledgeAddEdge' _site/index.html
+          grep -q 'knowledgePrev' _site/index.html
           grep -q 'GBR_SHOWCASE_ROOT' _site/showcase-host.js
           test -f _site/catalogue.json
           test ! -d _site/showcase
@@ -152,8 +157,11 @@ jobs:
           grep -q 'decayBeats' _pages/good-boy-records/index.html
           grep -q 'id="knowledgeButton"' _pages/good-boy-records/index.html
           grep -q 'class="knowledge-reader"' _pages/good-boy-records/index.html
-          grep -q 'const KNOWLEDGE_DOCS=' _pages/good-boy-records/index.html
+          grep -q "KNOWLEDGE_MANIFEST_URL='knowledge-manifest.json'" _pages/good-boy-records/index.html
+          test -f _pages/good-boy-records/knowledge-manifest.json
           grep -q 'drawKnowledge' _pages/good-boy-records/index.html
+          grep -q 'knowledgeAddEdge' _pages/good-boy-records/index.html
+          grep -q 'knowledgePrev' _pages/good-boy-records/index.html
           test ! -d _pages/good-boy-records/showcase
           echo "Verified: GitHub Pages contains player/catalogue only; media stays on R2."
 

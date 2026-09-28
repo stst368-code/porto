@@ -44,6 +44,8 @@ if exist content-source\folders (
   if exist _site\content-source\folders rmdir /s /q _site\content-source\folders
   xcopy /e /i /y content-source\folders _site\content-source\folders >nul || goto :error
 )
+echo [5b/7] Indexing knowledge markdown...
+py -3 tools\build_knowledge_manifest.py _site\knowledge-manifest.json || goto :error
 copy /y showcase-host.js _site\showcase-host.js >nul || goto :error
 
 echo [6/7] Staging Sonic Landscape...
@@ -57,6 +59,7 @@ if exist _site\showcase (
 )
 if not exist _site\catalogue.json goto :error
 if not exist _site\showcase-host.js goto :error
+if not exist _site\knowledge-manifest.json goto :error
 
 echo.
 echo DONE: _site contains the player/catalogue only. showcase\ remains local/R2.
