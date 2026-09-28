@@ -461,6 +461,97 @@ body[data-power="off"] .master-module{filter:none!important}
 }
 </style>
 
+
+<style id="v1089-master-sliders">
+.master-module{overflow:hidden!important}
+.master-controls{
+  display:grid!important;
+  grid-template-columns:minmax(86px,1.15fr) minmax(48px,.55fr) minmax(48px,.55fr)!important;
+  align-items:stretch!important;
+  justify-items:center!important;
+  gap:12px!important;
+}
+.power-format-stack{
+  width:100%!important;
+  display:grid!important;
+  grid-template-rows:auto auto!important;
+  align-content:center!important;
+  justify-items:center!important;
+  gap:8px!important;
+}
+.power-format-stack .power{width:78px!important;max-width:100%!important;height:42px!important}
+.power-format-stack .format-row{
+  width:78px!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:4px!important;
+}
+.power-format-stack .format-button{
+  min-width:0!important;
+  width:100%!important;
+  height:24px!important;
+  padding:0 3px!important;
+  font-size:7px!important;
+}
+.slider-control{
+  min-width:0!important;
+  height:100%!important;
+  display:grid!important;
+  grid-template-rows:minmax(66px,1fr) auto!important;
+  justify-items:center!important;
+  align-items:center!important;
+  gap:5px!important;
+  cursor:pointer!important;
+}
+.slider-control small{
+  color:#a08c73!important;
+  font:800 7px/1 "Courier New",monospace!important;
+  letter-spacing:.09em!important;
+}
+.vertical-slider{
+  writing-mode:vertical-lr!important;
+  direction:rtl!important;
+  width:22px!important;
+  height:82px!important;
+  min-height:68px!important;
+  margin:0!important;
+  accent-color:var(--accent)!important;
+  cursor:ns-resize!important;
+}
+@media (min-width:901px){
+  .master-module{padding:24px 12px 10px!important}
+  .master-controls{height:100%!important}
+}
+@media (max-width:900px){
+  :root{--mobile-dock:172px!important}
+  .hardware{
+    height:var(--mobile-dock)!important;
+    min-height:var(--mobile-dock)!important;
+    max-height:var(--mobile-dock)!important;
+    grid-template-rows:34px 72px 58px!important;
+  }
+  .master-module{grid-row:2!important;padding:4px 8px!important}
+  .master-controls{
+    height:100%!important;
+    grid-template-columns:minmax(92px,1.15fr) 54px 54px!important;
+    gap:10px!important;
+  }
+  .power-format-stack{gap:4px!important}
+  .power-format-stack .power{width:76px!important;height:36px!important;font-size:9px!important}
+  .power-format-stack .format-row{width:76px!important}
+  .power-format-stack .format-button{height:22px!important;font-size:6.5px!important}
+  .slider-control{grid-template-rows:minmax(44px,1fr) auto!important;gap:2px!important}
+  .vertical-slider{height:51px!important;min-height:51px!important;width:20px!important}
+  .slider-control small{font-size:6px!important}
+}
+@media (max-width:430px){
+  .master-controls{grid-template-columns:minmax(82px,1.15fr) 47px 47px!important;gap:5px!important}
+  .power-format-stack .power{width:70px!important}
+  .power-format-stack .format-row{width:70px!important}
+  .vertical-slider{height:49px!important}
+}
+</style>
+
 </head>
 <body data-power="on">
 <div class="app">
@@ -483,10 +574,21 @@ body[data-power="off"] .master-module{filter:none!important}
     <section class="module master-module">
       <span class="legend">Master</span>
       <div class="master-controls">
-        <button class="power" id="power" aria-pressed="true">POWER</button>
-        <div class="knob-wrap"><div class="knob" id="volumeKnob" role="slider" aria-label="Volume" tabindex="0"></div><small>VOLUME</small></div>
-        <div class="knob-wrap"><div class="knob" id="lampKnob" role="slider" aria-label="Lights" tabindex="0"></div><small>LIGHTS</small></div>
-        <div class="format-bank"><small>FORMAT</small><div class="format-row" aria-label="Audio format"><button class="format-button active" id="fmtFlac" title="Prefer FLAC when available">FLAC</button><button class="format-button" id="fmtMp3" title="Prefer MP3 when available">MP3</button></div></div>
+        <div class="power-format-stack">
+          <button class="power" id="power" aria-pressed="true">POWER</button>
+          <div class="format-row" aria-label="Audio format">
+            <button class="format-button active" id="fmtFlac" title="Prefer FLAC when available">FLAC</button>
+            <button class="format-button" id="fmtMp3" title="Prefer MP3 when available">MP3</button>
+          </div>
+        </div>
+        <label class="slider-control" for="volumeKnob">
+          <input class="vertical-slider" id="volumeKnob" type="range" min="0" max="100" step="1" value="50" aria-label="Volume">
+          <small>VOLUME</small>
+        </label>
+        <label class="slider-control" for="lampKnob">
+          <input class="vertical-slider" id="lampKnob" type="range" min="0" max="100" step="1" value="50" aria-label="Lights">
+          <small>LIGHTS</small>
+        </label>
       </div>
     </section>
     <section class="module vu-module"><span class="legend">Output level</span><div class="vu"><div class="needle" id="vuL"></div><small>LEFT</small></div><div class="vu"><div class="needle" id="vuR"></div><small>RIGHT</small></div></section>
@@ -637,10 +739,19 @@ function musicVisualState(t){
 function fmt(v){if(!Number.isFinite(v))return'0:00';const m=Math.floor(v/60),s=Math.floor(v%60);return`${m}:${String(s).padStart(2,'0')}`}
 function clickSound(){try{if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type='square';o.frequency.value=680;g.gain.setValueAtTime(.018,ac.currentTime);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+.018);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+.02)}catch{}}
 async function graph(){if(analyser)return;if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();analyser=ac.createAnalyser();analyser.fftSize=512;analyser.smoothingTimeConstant=.78;source=ac.createMediaElementSource(audio);source.connect(analyser);analyser.connect(ac.destination);freq=new Uint8Array(analyser.frequencyBinCount);timeData=new Uint8Array(analyser.fftSize)}
-function setKnob(el,val){val=Math.max(0,Math.min(1,val));el.style.setProperty('--v',val);el.setAttribute('aria-valuenow',String(Math.round(val*100)));return val}
-function bindKnob(el,get,set){let drag=null;const apply=(v,sound=true)=>{set(Math.max(0,Math.min(1,v)));if(sound)clickSound()};el.addEventListener('wheel',e=>{e.preventDefault();apply(get()+(e.deltaY<0?.04:-.04))},{passive:false});el.addEventListener('pointerdown',e=>{drag={id:e.pointerId,y:e.clientY,v:get()};el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;set(Math.max(0,Math.min(1,drag.v+(drag.y-e.clientY)/140)))});el.addEventListener('pointerup',e=>{if(drag&&drag.id===e.pointerId){drag=null;clickSound()}});el.addEventListener('keydown',e=>{if(e.key==='ArrowUp'||e.key==='ArrowRight'){e.preventDefault();apply(get()+.03)}else if(e.key==='ArrowDown'||e.key==='ArrowLeft'){e.preventDefault();apply(get()-.03)}})}
-function setVolume(v){volume=setKnob(ui.volumeKnob,v);audio.volume=volume}
-function setLamp(v){lamp=setKnob(ui.lampKnob,v);document.documentElement.style.setProperty('--lamp',lamp)}
+function setSlider(el,val){
+  val=Math.max(0,Math.min(1,val));
+  if(el){el.value=String(Math.round(val*100));el.setAttribute('aria-valuenow',String(Math.round(val*100)))}
+  return val
+}
+function bindSlider(el,set){
+  if(!el)return;
+  el.addEventListener('input',()=>set(Number(el.value)/100));
+  el.addEventListener('change',()=>clickSound());
+  el.addEventListener('wheel',e=>{e.preventDefault();const delta=e.deltaY<0?3:-3;el.value=String(Math.max(0,Math.min(100,Number(el.value)+delta)));set(Number(el.value)/100)},{passive:false})
+}
+function setVolume(v){volume=setSlider(ui.volumeKnob,v);audio.volume=volume}
+function setLamp(v){lamp=setSlider(ui.lampKnob,v);document.documentElement.style.setProperty('--lamp',lamp)}
 const BRIGHT_SKY=[
   ['Sirius',6.7525,-16.7161,-1.46],['Canopus',6.3992,-52.6957,-0.74],['Arcturus',14.2610,19.1824,-0.05],['Vega',18.6156,38.7837,0.03],['Capella',5.2782,45.9980,0.08],['Rigel',5.2423,-8.2016,0.13],['Procyon',7.6550,5.2250,0.34],['Betelgeuse',5.9195,7.4071,0.42],['Achernar',1.6286,-57.2368,0.46],['Hadar',14.0637,-60.3730,0.61],['Altair',19.8464,8.8683,0.77],['Acrux',12.4433,-63.0991,0.76],['Aldebaran',4.5987,16.5093,0.85],['Antares',16.4901,-26.4320,0.96],['Spica',13.4199,-11.1614,0.98],['Pollux',7.7553,28.0262,1.14],['Fomalhaut',22.9608,-29.6222,1.16],['Deneb',20.6905,45.2803,1.25],['Mimosa',12.7953,-59.6888,1.25],['Regulus',10.1395,11.9672,1.35],['Adhara',6.9771,-28.9721,1.50],['Castor',7.5767,31.8883,1.58],['Gacrux',12.5194,-57.1132,1.63],['Shaula',17.5601,-37.1038,1.62],['Bellatrix',5.4189,6.3497,1.64],['Elnath',5.4382,28.6075,1.65],['Miaplacidus',9.2200,-69.7172,1.67],['Alnilam',5.6036,-1.2019,1.69],['Alnair',22.1372,-46.9609,1.74],['Alioth',12.9005,55.9598,1.76],['Dubhe',11.0621,61.7508,1.79],['Mirfak',3.4054,49.8612,1.79],['Wezen',7.1399,-26.3932,1.83],['Kaus Australis',18.4029,-34.3846,1.79]
 ];
@@ -717,15 +828,14 @@ function buildNodes(refit=true){
   if(!tracks.length)return;
   playingAnchor={x:1500,y:1500};world={w:3000,h:3000};
   const starTiming=(key,field=false)=>{
-    const periods=field?[1.5,2,2.5,3,4,6]:[1,1.5,2,3,4,6,8];
+    const periods=field?[4,4,6,8,8,12,16]:[2,4,4,6,8,12,16];
     const period=periods[Math.floor(seededUnit(`${key}|period`)*periods.length)%periods.length];
-    const subdivision=[1,1,1,2,2,3,4][Math.floor(seededUnit(`${key}|sub`)*7)%7];
     return{
       beatPeriod:period,
-      beatOffset:seededUnit(`${key}|offset`)*period,
-      subdivision,
-      pulseWidth:(field?.055:.045)+seededUnit(`${key}|width`)*(field?.060:.050),
-      twinkleGain:(field?.45:.62)+seededUnit(`${key}|gain`)*(field?.70:1.05)
+      beatOffset:Math.floor(seededUnit(`${key}|offset`)*period),
+      attackBeats:.10+seededUnit(`${key}|attack`)*.12,
+      decayBeats:(field?.58:.68)+seededUnit(`${key}|decay`)*(field?.52:.72),
+      twinkleGain:(field?.40:.58)+seededUnit(`${key}|gain`)*(field?.55:.82)
     }
   };
   stars=BRIGHT_SKY.map(([name,ra,dec,mag],i)=>{
@@ -854,24 +964,26 @@ function drawStars(w,h,music={level:0,high:0,bpm:110,beatClock:0,beatPulse:0,sub
   for(const st of stars){
     const sp=viewToScreen(st.x,st.y);if(sp.x<-8||sp.y<-8||sp.x>w+8||sp.y>h+8)continue;
 
-    // Slow independent shimmer prevents a static sky even between beats.
-    const ambient=.94+.06*(.5+.5*Math.sin(phase*st.s+st.p));
+    // A very slow independent shimmer keeps the sky alive between musical pulses.
+    const ambient=.965+.035*(.5+.5*Math.sin(phase*st.s*.45+st.p));
 
-    // Each star owns a deterministic rhythmic schedule. Pulses are locked to
-    // musical subdivisions, but their periods and offsets differ, so only a
-    // scattered subset twinkles on any particular beat.
-    const sub=Math.max(1,st.subdivision||1),period=Math.max(.5,st.beatPeriod||2);
-    const quantisedClock=beatClock*sub;
-    const localPeriod=period*sub;
-    const offset=(st.beatOffset||0)*sub;
-    const local=((quantisedClock+offset)%localPeriod+localPeriod)%localPeriod;
-    const dist=Math.min(local,localPeriod-local)/sub;
-    const width=Math.max(.028,st.pulseWidth||.06);
-    const scheduled=Math.exp(-(dist*dist)/(2*width*width));
+    // Whole-beat triggers with a visible attack and long decay make the musical
+    // timing readable. Different stars have different beat periods and offsets.
+    const period=Math.max(2,st.beatPeriod||4),offset=st.beatOffset||0;
+    const local=((beatClock-offset)%period+period)%period;
+    const attack=Math.max(.08,st.attackBeats||.14),decay=Math.max(.45,st.decayBeats||.75);
+    let scheduled=0;
+    if(local<=attack){
+      const x=local/attack;
+      scheduled=x*x*(3-2*x);
+    }else if(local<=attack+decay){
+      const x=(local-attack)/decay;
+      scheduled=(1-x)*(1-x);
+    }
 
-    // Loud/high-frequency material wakes more of the field, while quieter
-    // passages retain occasional isolated twinkles rather than synchronising.
-    const audioDrive=.16+music.intensity*.56+music.high*.28;
+    // Audio energy changes the size/brightness of the scheduled bloom, while
+    // the BPM clock remains responsible for when it happens.
+    const audioDrive=.26+music.level*.34+music.intensity*.28+music.high*.12;
     const fancy=scheduled*audioDrive*(st.twinkleGain||1);
     const alpha=st.a*ambient*reveal*(1+fancy*(st.field?1.7:2.65));
     const radius=st.r*(1+fancy*(st.field?.48:.78));
@@ -910,7 +1022,7 @@ ui.power.onclick=()=>{
     if(powerCycleCount>=needed){powerCycleCount=0;if(powerCycleTimer){clearTimeout(powerCycleTimer);powerCycleTimer=null}toggleEaster();clickSound()}
   }
 };if(ui.fmtFlac)ui.fmtFlac.onclick=()=>{clickSound();switchAudioFormat('flac')};if(ui.fmtMp3)ui.fmtMp3.onclick=()=>{clickSound();switchAudioFormat('mp3')};ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound();audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound();next()}};ui.prev.onclick=()=>{if(power){clickSound();prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'Shuffle ✓':'Shuffle';ui.shuffle.title=shuffle?'Shuffle on: wild genre jumps':'Shuffle off'};ui.seek.oninput=()=>{if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>{ui.play.textContent='❚❚';const actual=classifyAudioUrl(audio.currentSrc||audio.src);if(actual==='flac'||actual==='mp3'){ui.fmtFlac?.classList.toggle('active',actual==='flac');ui.fmtMp3?.classList.toggle('active',actual==='mp3')}};audio.onpause=()=>ui.play.textContent='▶';audio.onended=next;audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0};
-bindKnob(ui.volumeKnob,()=>volume,setVolume);bindKnob(ui.lampKnob,()=>lamp,setLamp);
+bindSlider(ui.volumeKnob,setVolume);bindSlider(ui.lampKnob,setLamp);
 function hitNode(clientX,clientY){const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top;let best=null;for(const n of nodes){if(n.i===index)continue;const shimmerX=(Math.sin(phase*(.72+n.seed1*.65)+n.seed2*6.283)*n.drift+Math.cos(phase*(.37+n.seed3*.44)+n.seed4*6.283)*n.drift*.35),shimmerY=(Math.cos(phase*(.69+n.seed2*.72)+n.seed1*6.283)*n.drift*.82+Math.sin(phase*(.41+n.seed4*.38)+n.seed3*6.283)*n.drift*.28),sp=viewToScreen(n.x+shimmerX,n.y+shimmerY),hit=Math.max(34,nodeDisplaySize(n,false,false,false)*.58),d=Math.hypot(sx-sp.x,sy-sp.y);if(d<hit&&(!best||d<best.d))best={d,n,sp}}return{best,sx,sy,r}}
 canvas.addEventListener('mousemove',e=>{if(pointer.down)return;const {best,sx,sy,r}=hitNode(e.clientX,e.clientY);hoverIndex=best?best.n.i:-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=titleOf(best.n.t);ui.mapTip.querySelector('small').textContent=[best.n.t.genre?.child_genre||variantOf(best.n.t),best.n.t.genre?.parent_genre,'ORBIT = PARENT · RADIUS = CHILD'].filter(Boolean).join(' · ')}else ui.mapTip.style.display='none'});
 canvas.addEventListener('mouseleave',()=>{if(!pointer.down){hoverIndex=-1;ui.mapTip.style.display='none'}});

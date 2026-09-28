@@ -116,6 +116,9 @@ jobs:
           grep -q '>Shuffle</button>' _site/index.html
           grep -q 'for(let i=0;i<184;i++)' _site/index.html
           grep -q 'beatPeriod' _site/index.html
+          grep -q 'class="vertical-slider"' _site/index.html
+          grep -q 'class="power-format-stack"' _site/index.html
+          grep -q 'decayBeats' _site/index.html
           grep -q 'GBR_SHOWCASE_ROOT' _site/showcase-host.js
           test -f _site/catalogue.json
           test ! -d _site/showcase
@@ -140,6 +143,9 @@ jobs:
           grep -q '>Shuffle</button>' _pages/good-boy-records/index.html
           grep -q 'for(let i=0;i<184;i++)' _pages/good-boy-records/index.html
           grep -q 'beatPeriod' _pages/good-boy-records/index.html
+          grep -q 'class="vertical-slider"' _pages/good-boy-records/index.html
+          grep -q 'class="power-format-stack"' _pages/good-boy-records/index.html
+          grep -q 'decayBeats' _pages/good-boy-records/index.html
           test ! -d _pages/good-boy-records/showcase
           echo "Verified: GitHub Pages contains player/catalogue only; media stays on R2."
 
