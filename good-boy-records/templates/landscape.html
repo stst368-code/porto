@@ -1100,6 +1100,133 @@ body[data-view="knowledge"] .zoom-controls::after{
   .rack-collapse{display:none!important}
 }
 </style>
+
+<style id="v1094-fader-collapse-fix">
+@media (min-width:901px){
+  .slider-control{
+    --fader-pos:50%;
+    position:relative!important;
+    display:grid!important;
+    grid-template-rows:minmax(0,1fr) auto!important;
+    align-items:stretch!important;
+    justify-items:center!important;
+    gap:9px!important;
+    padding:12px 8px 7px!important;
+    overflow:visible!important;
+    cursor:ns-resize!important;
+    touch-action:none;
+  }
+  .slider-control::before,
+  .slider-control::after{
+    content:none!important;
+    display:none!important;
+  }
+  .fader-assembly{
+    position:relative;
+    display:block;
+    width:48px;
+    height:100%;
+    min-height:118px;
+    align-self:stretch;
+    pointer-events:none;
+  }
+  .fader-assembly::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:6px;
+    bottom:6px;
+    width:15px;
+    transform:translateX(-50%);
+    border:1px solid #050605;
+    border-radius:10px;
+    background:linear-gradient(90deg,#020302,#151613 48%,#020302);
+    box-shadow:inset 0 0 8px #000,0 0 0 1px rgba(255,255,255,.035),0 2px 7px rgba(0,0,0,.55);
+  }
+  .fader-fill{
+    position:absolute;
+    z-index:1;
+    left:50%;
+    bottom:6px;
+    width:7px;
+    height:clamp(0px,calc(var(--fader-pos) - 6px),calc(100% - 12px));
+    transform:translateX(-50%);
+    border-radius:6px;
+    background:
+      linear-gradient(90deg,rgba(255,255,255,.16),transparent 35%),
+      linear-gradient(to top,color-mix(in srgb,var(--accent) 68%,#52602e 32%),var(--accent));
+    box-shadow:0 0 8px rgba(var(--accent-rgb),.34),inset 0 0 3px rgba(255,255,255,.22);
+  }
+  .fader-ticks{
+    position:absolute;
+    top:6px;
+    bottom:6px;
+    left:calc(50% + 20px);
+    width:9px;
+    opacity:.55;
+    background:repeating-linear-gradient(to bottom,rgba(190,174,150,.72) 0 1px,transparent 1px 10%);
+  }
+  .fader-cap{
+    position:absolute;
+    z-index:3;
+    left:50%;
+    bottom:clamp(0px,calc(var(--fader-pos) - 10px),calc(100% - 20px));
+    width:29px;
+    height:20px;
+    transform:translateX(-50%);
+    border-radius:5px;
+    border:1px solid color-mix(in srgb,var(--accent) 52%,#827564 48%);
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.26),transparent 28%),
+      linear-gradient(#5c5a53,#272824 60%,#111210);
+    box-shadow:inset 0 0 0 2px #121310,inset 0 -4px 6px rgba(0,0,0,.38),0 3px 7px #000b,0 0 9px rgba(var(--accent-rgb),.24);
+  }
+  .fader-cap::after{
+    content:"";
+    position:absolute;
+    left:4px;
+    right:4px;
+    top:50%;
+    height:1px;
+    background:color-mix(in srgb,var(--accent) 64%,white 36%);
+    opacity:.72;
+    box-shadow:0 0 4px rgba(var(--accent-rgb),.45);
+  }
+
+  .vertical-slider{
+    position:absolute!important;
+    left:50%!important;
+    top:50%!important;
+    width:2px!important;
+    height:2px!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    opacity:.001!important;
+    pointer-events:none!important;
+    appearance:auto!important;
+    -webkit-appearance:auto!important;
+    writing-mode:horizontal-tb!important;
+    direction:ltr!important;
+    transform:none!important;
+  }
+  .slider-control:focus-within{
+    box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.30),inset 0 2px 10px #0008,0 0 0 1px rgba(var(--accent-rgb),.10)!important;
+  }
+
+  body.rack-collapsed .hardware{
+    pointer-events:none!important;
+  }
+  body.rack-collapsed .rack-collapse{
+    pointer-events:auto!important;
+    z-index:999!important;
+  }
+}
+@media (max-width:900px){
+  .fader-assembly{display:none!important}
+}
+</style>
+
 </head>
 <body data-power="on">
 <div class="app">
@@ -1148,11 +1275,21 @@ body[data-view="knowledge"] .zoom-controls::after{
           </div>
         </div>
         <label class="slider-control" for="volumeKnob">
-          <input class="vertical-slider" id="volumeKnob" type="range" min="0" max="100" step="1" value="50" aria-label="Volume">
+          <span class="fader-assembly" aria-hidden="true">
+            <span class="fader-fill"></span>
+            <span class="fader-ticks"></span>
+            <span class="fader-cap"></span>
+          </span>
+          <input class="vertical-slider" id="volumeKnob" type="range" min="0" max="100" step="1" value="50" aria-label="Volume" aria-orientation="vertical">
           <small>VOLUME</small>
         </label>
         <label class="slider-control" for="lampKnob">
-          <input class="vertical-slider" id="lampKnob" type="range" min="0" max="100" step="1" value="50" aria-label="Lights">
+          <span class="fader-assembly" aria-hidden="true">
+            <span class="fader-fill"></span>
+            <span class="fader-ticks"></span>
+            <span class="fader-cap"></span>
+          </span>
+          <input class="vertical-slider" id="lampKnob" type="range" min="0" max="100" step="1" value="50" aria-label="Lights" aria-orientation="vertical">
           <small>LIGHTS</small>
         </label>
       </div>
@@ -1307,19 +1444,126 @@ function musicVisualState(t){
 function fmt(v){if(!Number.isFinite(v))return'0:00';const m=Math.floor(v/60),s=Math.floor(v%60);return`${m}:${String(s).padStart(2,'0')}`}
 function clickSound(){try{if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type='square';o.frequency.value=680;g.gain.setValueAtTime(.018,ac.currentTime);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+.018);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+.02)}catch{}}
 async function graph(){if(analyser)return;if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();analyser=ac.createAnalyser();analyser.fftSize=512;analyser.smoothingTimeConstant=.78;source=ac.createMediaElementSource(audio);source.connect(analyser);analyser.connect(ac.destination);freq=new Uint8Array(analyser.frequencyBinCount);timeData=new Uint8Array(analyser.fftSize)}
+function updateFaderVisual(el){
+  if(!el)return;
+  const control=el.closest('.slider-control');
+  if(!control)return;
+  const value=Math.max(0,Math.min(100,Number(el.value)||0));
+  control.style.setProperty('--fader-pos',`${value}%`);
+}
 function setSlider(el,val){
   val=Math.max(0,Math.min(1,val));
-  if(el){el.value=String(Math.round(val*100));el.setAttribute('aria-valuenow',String(Math.round(val*100)))}
+  if(el){
+    const pct=Math.round(val*100);
+    el.value=String(pct);
+    el.setAttribute('aria-valuenow',String(pct));
+    updateFaderVisual(el);
+  }
   return val
 }
 function bindSlider(el,set){
   if(!el)return;
+  const control=el.closest('.slider-control');
+  const rail=control?.querySelector('.fader-assembly');
+  let activePointer=null;
+
+  const commit=(next,withClick=false)=>{
+    const value=Math.max(0,Math.min(100,Math.round(next)));
+    el.value=String(value);
+    set(value/100);
+    if(withClick)clickSound();
+  };
+
+  const fromClientY=(clientY)=>{
+    if(!rail)return;
+    const r=rail.getBoundingClientRect();
+    if(!r.height)return;
+    const ratio=1-((clientY-r.top)/r.height);
+    commit(ratio*100,false);
+  };
+
   el.addEventListener('input',()=>set(Number(el.value)/100));
-  el.addEventListener('change',()=>clickSound());
-  el.addEventListener('wheel',e=>{e.preventDefault();const delta=e.deltaY<0?3:-3;el.value=String(Math.max(0,Math.min(100,Number(el.value)+delta)));set(Number(el.value)/100)},{passive:false})
+
+  if(control&&rail){
+    control.addEventListener('pointerdown',e=>{
+      if(e.pointerType==='mouse'&&e.button!==0)return;
+      e.preventDefault();
+      activePointer=e.pointerId;
+      try{control.setPointerCapture(e.pointerId)}catch(_){}
+      try{el.focus({preventScroll:true})}catch(_){el.focus()}
+      fromClientY(e.clientY);
+    });
+    control.addEventListener('pointermove',e=>{
+      if(activePointer!==e.pointerId)return;
+      e.preventDefault();
+      fromClientY(e.clientY);
+    });
+    const finish=e=>{
+      if(activePointer!==e.pointerId)return;
+      fromClientY(e.clientY);
+      activePointer=null;
+      try{control.releasePointerCapture(e.pointerId)}catch(_){}
+      clickSound();
+    };
+    control.addEventListener('pointerup',finish);
+    control.addEventListener('pointercancel',e=>{if(activePointer===e.pointerId)activePointer=null});
+    control.addEventListener('wheel',e=>{
+      e.preventDefault();
+      commit(Number(el.value)+(e.deltaY<0?3:-3),false);
+    },{passive:false});
+  }
+
+  el.addEventListener('keydown',e=>{
+    let value=Number(el.value)||0,handled=true;
+    if(e.key==='ArrowUp'||e.key==='ArrowRight')value+=1;
+    else if(e.key==='ArrowDown'||e.key==='ArrowLeft')value-=1;
+    else if(e.key==='PageUp')value+=10;
+    else if(e.key==='PageDown')value-=10;
+    else if(e.key==='Home')value=0;
+    else if(e.key==='End')value=100;
+    else handled=false;
+    if(!handled)return;
+    e.preventDefault();
+    commit(value,false);
+  });
+
+  updateFaderVisual(el);
 }
 function setVolume(v){volume=setSlider(ui.volumeKnob,v);audio.volume=volume}
 function setLamp(v){lamp=setSlider(ui.lampKnob,v);document.documentElement.style.setProperty('--lamp',lamp)}
+
+/* v10.9.4: retractable LEFT control bay.
+   This lives at top-level so CTRL works immediately after page load. */
+const rackCollapse=$('rackCollapse');
+function setRackCollapsed(collapsed,persist=true){
+  document.body.classList.toggle('rack-collapsed',!!collapsed);
+  if(rackCollapse){
+    rackCollapse.setAttribute('aria-expanded',String(!collapsed));
+    rackCollapse.setAttribute('aria-label',collapsed?'Show control bay':'Hide control bay');
+    rackCollapse.title=collapsed?'Show control bay':'Hide control bay';
+  }
+  if(persist){
+    try{localStorage.setItem('gbr:rack-collapsed',collapsed?'1':'0')}catch(_){}
+  }
+  window.setTimeout(()=>{try{resize()}catch(_){}},330);
+}
+if(rackCollapse){
+  let initiallyCollapsed=false;
+  try{initiallyCollapsed=localStorage.getItem('gbr:rack-collapsed')==='1'}catch(_){}
+  setRackCollapsed(initiallyCollapsed,false);
+  rackCollapse.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    clickSound();
+    setRackCollapsed(!document.body.classList.contains('rack-collapsed'));
+  });
+}
+document.addEventListener('keydown',e=>{
+  if(e.key.toLowerCase()!=='m'||e.ctrlKey||e.metaKey||e.altKey)return;
+  const tag=(e.target&&e.target.tagName||'').toLowerCase();
+  if(tag==='input'||tag==='textarea'||tag==='select')return;
+  setRackCollapsed(!document.body.classList.contains('rack-collapsed'));
+});
 const BRIGHT_SKY=[
   ['Sirius',6.7525,-16.7161,-1.46],['Canopus',6.3992,-52.6957,-0.74],['Arcturus',14.2610,19.1824,-0.05],['Vega',18.6156,38.7837,0.03],['Capella',5.2782,45.9980,0.08],['Rigel',5.2423,-8.2016,0.13],['Procyon',7.6550,5.2250,0.34],['Betelgeuse',5.9195,7.4071,0.42],['Achernar',1.6286,-57.2368,0.46],['Hadar',14.0637,-60.3730,0.61],['Altair',19.8464,8.8683,0.77],['Acrux',12.4433,-63.0991,0.76],['Aldebaran',4.5987,16.5093,0.85],['Antares',16.4901,-26.4320,0.96],['Spica',13.4199,-11.1614,0.98],['Pollux',7.7553,28.0262,1.14],['Fomalhaut',22.9608,-29.6222,1.16],['Deneb',20.6905,45.2803,1.25],['Mimosa',12.7953,-59.6888,1.25],['Regulus',10.1395,11.9672,1.35],['Adhara',6.9771,-28.9721,1.50],['Castor',7.5767,31.8883,1.58],['Gacrux',12.5194,-57.1132,1.63],['Shaula',17.5601,-37.1038,1.62],['Bellatrix',5.4189,6.3497,1.64],['Elnath',5.4382,28.6075,1.65],['Miaplacidus',9.2200,-69.7172,1.67],['Alnilam',5.6036,-1.2019,1.69],['Alnair',22.1372,-46.9609,1.74],['Alioth',12.9005,55.9598,1.76],['Dubhe',11.0621,61.7508,1.79],['Mirfak',3.4054,49.8612,1.79],['Wezen',7.1399,-26.3932,1.83],['Kaus Australis',18.4029,-34.3846,1.79]
 ];
@@ -1644,36 +1888,7 @@ async function enterKnowledge(){
 }
 function exitKnowledge(){
   if(viewMode!=='knowledge')return;
-  closeKnowledgeReader();viewMode='tracks';/* v10.9.2 retractable left control bay */
-const rackCollapse=$('rackCollapse');
-function setRackCollapsed(collapsed,persist=true){
-  document.body.classList.toggle('rack-collapsed',!!collapsed);
-  if(rackCollapse){
-    rackCollapse.setAttribute('aria-expanded',String(!collapsed));
-    rackCollapse.setAttribute('aria-label',collapsed?'Show control bay':'Hide control bay');
-    rackCollapse.title=collapsed?'Show control bay':'Hide control bay';
-  }
-  if(persist){
-    try{localStorage.setItem('gbr:rack-collapsed',collapsed?'1':'0')}catch(_){}
-  }
-  window.setTimeout(()=>{try{resize()}catch(_){}},330);
-}
-if(rackCollapse){
-  let initiallyCollapsed=false;
-  try{initiallyCollapsed=localStorage.getItem('gbr:rack-collapsed')==='1'}catch(_){}
-  setRackCollapsed(initiallyCollapsed,false);
-  rackCollapse.onclick=()=>{clickSound();setRackCollapsed(!document.body.classList.contains('rack-collapsed'))};
-}
-document.addEventListener('keydown',e=>{
-  if(e.key.toLowerCase()==='m' && !e.ctrlKey && !e.metaKey && !e.altKey){
-    const tag=(e.target&&e.target.tagName||'').toLowerCase();
-    if(tag!=='input'&&tag!=='textarea'&&tag!=='select'){
-      setRackCollapsed(!document.body.classList.contains('rack-collapsed'));
-    }
-  }
-});
-
-document.body.dataset.view='tracks';knowledgeHoverId=null;ui.knowledgeButton.classList.remove('active');ui.knowledgeButton.textContent='Knowledge';
+  closeKnowledgeReader();viewMode='tracks';document.body.dataset.view='tracks';knowledgeHoverId=null;ui.knowledgeButton.classList.remove('active');ui.knowledgeButton.textContent='Knowledge';
   if(trackCameraSnapshot){Object.assign(camera,trackCameraSnapshot);trackCameraSnapshot=null}else setExplorationStart()
 }
 function openTracksPanel(){
