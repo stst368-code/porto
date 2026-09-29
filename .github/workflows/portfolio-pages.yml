@@ -40,12 +40,10 @@ jobs:
           rm -rf _site
           mkdir -p _site
 
-          # Local authoring keeps showcase/ outside Git. If it happens to be
-          # present in this checkout, refresh the committed compact catalogue.
-          if [ -d showcase ] && find showcase -type f -print -quit | grep -q .; then
-            python tools/build_catalogue.py --output data/catalogue.json
-          fi
-
+          # showcase/ is authored locally and media is served from R2.
+          # The Pages build therefore consumes the compact catalogue committed
+          # by tools/launchers/build-site.bat. Never rebuild it from a stale or
+          # partial showcase tree that may happen to exist in the Git checkout.
           test -f data/catalogue.json
           cp data/catalogue.json _site/catalogue.json
 
