@@ -2,13 +2,14 @@
 """Shared discovery/path helpers for GBR timeline tools.
 
 The important rule is: identity comes from the variant DIRECTORY, not from an
-audio filename. Finished files therefore use fixed names in that directory:
+audio filename. Lyrics use the human-readable variant directory name while the
+other derived sidecars keep fixed names:
 
-    gbr.lyrics.json
+    <variant-folder>.lyrics.json
     gbr.audio.json
     gbr.playback.json
 
-Renaming MP3/FLAC/YAML files later does not change those output paths.
+The lyric JSON contains content fingerprints rather than absolute source paths.
 """
 from __future__ import annotations
 
@@ -28,7 +29,7 @@ except ImportError:
 AUDIO_EXTS = {".flac", ".wav", ".mp3", ".opus", ".ogg", ".m4a", ".aac"}
 AUDIO_RANK = {".flac": 0, ".wav": 1, ".opus": 2, ".ogg": 3, ".mp3": 4, ".m4a": 5, ".aac": 6}
 
-LYRICS_NAME = "gbr.lyrics.json"
+LEGACY_LYRICS_NAME = "gbr.lyrics.json"
 AUDIO_NAME = "gbr.audio.json"
 PLAYBACK_NAME = "gbr.playback.json"
 
@@ -53,6 +54,19 @@ class Variant:
     @property
     def version(self) -> str:
         return str(self.raw.get("version") or "").strip()
+
+
+def lyrics_name(variant: Variant) -> str:
+    """Canonical lyric filename tied to the variant-directory identity."""
+    return f"{variant.directory.name}.lyrics.json"
+
+
+def lyrics_path(variant: Variant) -> Path:
+    return variant.directory / lyrics_name(variant)
+
+
+def legacy_lyrics_path(variant: Variant) -> Path:
+    return variant.directory / LEGACY_LYRICS_NAME
 
 
 def repo_root() -> Path:
@@ -258,20 +272,27 @@ def adopt_signature(path: Path, payload: dict[str, Any], signature: dict[str, st
     atomic_json(path, updated)
 
 
-def migrate_old_lyrics(directory: Path) -> Path | None:
-    """Reuse an existing old *.lyrics.json rather than rerunning WhisperX.
+def migrate_old_lyrics(variant: Variant) -> Path | None:
+    """Reuse/migrate an existing lyric sidecar without rerunning WhisperX.
 
-    If more than one exists, prefer the valid sidecar with the highest direct
-    match coverage. The chosen data is copied into fixed gbr.lyrics.json and
-    brittle source path/filename fields are dropped.
+    Canonical output is <variant-folder>.lyrics.json. The cleanup-era
+    gbr.lyrics.json name is renamed directly when possible, preserving the
+    already path-free JSON contents. Older filename-based sidecars are compacted
+    into the canonical filename and brittle source path/filename fields dropped.
     """
-    target = directory / LYRICS_NAME
+    target = lyrics_path(variant)
     if target.is_file():
         return target
 
+    legacy = legacy_lyrics_path(variant)
+    if legacy.is_file():
+        legacy.replace(target)
+        print(f"  ~ renamed lyric sidecar: {legacy.name} -> {target.name}")
+        return target
+
     candidates = []
-    for p in sorted(directory.glob("*.lyrics.json")):
-        if p.name == LYRICS_NAME:
+    for p in sorted(variant.directory.glob("*.lyrics.json")):
+        if p.name in {target.name, LEGACY_LYRICS_NAME}:
             continue
         data = read_json(p)
         if not data or not isinstance(data.get("lines"), list):
@@ -293,7 +314,6 @@ def migrate_old_lyrics(directory: Path) -> Path | None:
         "quality": data.get("quality") or {},
         "lines": data.get("lines") or [],
     }
-    # Add stable word IDs if the old file did not have them.
     for li, line in enumerate(compact["lines"], start=1):
         line["id"] = str(line.get("id") or f"l{li:04d}")
         words = line.get("words") if isinstance(line.get("words"), list) else []

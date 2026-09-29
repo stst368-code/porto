@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build fixed per-variant gbr.lyrics.json files using Demucs + WhisperX.
+"""Build per-variant <song>-<version>.lyrics.json using Demucs + WhisperX.
 
-Existing gbr.lyrics.json files are skipped unless --force is used.
-Old <audio>.lyrics.json files are migrated/reused when possible, so moving to
-this tool does not require rerunning already-aligned tracks.
+Existing canonical lyric files are skipped unless --force is used. Cleanup-era
+gbr.lyrics.json files are renamed in place; older filename-based lyric files are
+reused when possible. JSON source metadata remains path-independent.
 """
 from __future__ import annotations
 
@@ -22,8 +22,9 @@ from pathlib import Path
 from typing import Any
 
 from common import (
-    LYRICS_FORMAT, LYRICS_NAME, add_common_args, atomic_json, discover_variants,
+    LYRICS_FORMAT, add_common_args, atomic_json, discover_variants,
     migrate_old_lyrics, read_json, resolve_showcase, source_matches, source_signature, adopt_signature,
+    lyrics_name, lyrics_path, legacy_lyrics_path,
 )
 
 TOOL_ROOT = Path(__file__).resolve().parent
@@ -344,7 +345,7 @@ def main() -> int:
 
     jobs = []
     for v in variants:
-        target = v.directory / LYRICS_NAME
+        target = lyrics_path(v)
         signature = source_signature(v)
         old = read_json(target)
         if old and not args.force:
@@ -356,7 +357,7 @@ def main() -> int:
                 adopt_signature(target, old, signature)
                 print(f"skip {v.directory.relative_to(showcase)}: adopted source signature for existing alignment")
                 continue
-        if not old and not args.force and migrate_old_lyrics(v.directory):
+        if not old and not args.force and migrate_old_lyrics(v):
             migrated = read_json(target)
             if migrated:
                 adopt_signature(target, migrated, signature)
@@ -389,8 +390,12 @@ def main() -> int:
             )
             print("  Mapping authored YAML lyrics...")
             payload = build_payload(v.raw, recognised, signature, args.review_threshold)
-            atomic_json(v.directory / LYRICS_NAME, payload)
-            print(f"  + {LYRICS_NAME}: {payload['stats']['coverage']*100:.1f}% direct coverage")
+            target = lyrics_path(v)
+            atomic_json(target, payload)
+            legacy = legacy_lyrics_path(v)
+            if legacy.is_file() and legacy != target:
+                legacy.unlink()
+            print(f"  + {lyrics_name(v)}: {payload['stats']['coverage']*100:.1f}% direct coverage")
         except Exception as exc:
             failures += 1
             print(f"  ERROR: {exc}")

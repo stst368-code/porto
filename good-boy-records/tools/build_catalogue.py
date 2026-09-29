@@ -9,8 +9,9 @@ Source of truth:
         *.flac / *.mp3
         *.png / *.jpg / *.webp
         gbr.playback.json   (preferred timing/reaction file, if present)
-        gbr.lyrics.json     (lyrics-only fallback)
-        *.lyrics.json       (legacy fallback during migration)
+        <variant>.lyrics.json (canonical lyrics-only fallback)
+        gbr.lyrics.json       (cleanup-era fallback)
+        *.lyrics.json         (last-resort compatibility fallback)
 
 Outputs:
     data/catalogue.json     (default, committed metadata for GitHub Pages)
@@ -184,10 +185,15 @@ def read_json(path: Path) -> dict[str, Any] | None:
 def choose_timing(directory: Path) -> tuple[str | None, dict[str, Any] | None]:
     # playback contains the same line timing plus reaction information, so it is
     # the preferred single runtime file when it exists.
-    ordered = [directory / "gbr.playback.json", directory / "gbr.lyrics.json"]
+    canonical_lyrics = directory / f"{directory.name}.lyrics.json"
+    ordered = [
+        directory / "gbr.playback.json",
+        canonical_lyrics,
+        directory / "gbr.lyrics.json",
+    ]
     ordered.extend(
         p for p in sorted(directory.glob("*.lyrics.json"))
-        if p.name not in {"gbr.lyrics.json"}
+        if p.name not in {canonical_lyrics.name, "gbr.lyrics.json"}
     )
     seen: set[Path] = set()
     for path in ordered:

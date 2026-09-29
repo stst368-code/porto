@@ -19,13 +19,13 @@ Audio dependencies once:
 
 Per variant the tools write fixed filenames:
 
-    gbr.lyrics.json
+    <song>-<version>.lyrics.json
     gbr.audio.json
     gbr.playback.json
 
 The variant folder is the durable identity. Audio/YAML filenames and paths are not stored as identity. A fast content fingerprint is stored instead, so renaming a file does not cause expensive work to rerun, while replacing the audio or changing authored lyrics does.
 
-Existing `gbr.lyrics.json` files produced by the cleanup have no content signature. On the first v2 run they are simply adopted/stamped; WhisperX does **not** rerun all of them.
+Existing `<song>-<version>.lyrics.json` files produced by the cleanup have no content signature. On the first v2 run they are simply adopted/stamped; WhisperX does **not** rerun all of them.
 
 ## Deterministic dance data
 
@@ -103,3 +103,21 @@ avoids accidentally picking up a CPU-only Torch installation.
 
 Model caches are normally stored outside the venv in user-level caches, so a
 rebuild usually does not mean copying all model weights into the GBR repo.
+
+
+## Lyric filename migration (v2.2)
+
+Canonical lyric files are named after their variant directory, e.g.
+`gimmie-gimmie-ball-bossa-nova.lyrics.json`. The JSON content remains
+path-independent: source identity is stored as content fingerprints, not an
+absolute path or audio filename.
+
+After overlaying v2.2, run once:
+
+    tools\launchers\timeline-rename-lyrics.bat
+
+Preview only:
+
+    tools\launchers\timeline-rename-lyrics.bat --dry-run
+
+Future lyric alignment writes the canonical filename directly.

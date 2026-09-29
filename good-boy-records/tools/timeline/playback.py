@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Combine gbr.lyrics.json + gbr.audio.json into runtime gbr.playback.json.
+"""Combine canonical <variant>.lyrics.json + gbr.audio.json into runtime gbr.playback.json.
 Manual word/line overrides and manual free-standing events survive recompilation.
 """
 from __future__ import annotations
 import argparse
 from typing import Any
-from common import AUDIO_FORMAT,AUDIO_NAME,LYRICS_NAME,PLAYBACK_FORMAT,PLAYBACK_NAME,add_common_args,atomic_json,discover_variants,read_json,resolve_showcase
+from common import AUDIO_FORMAT,AUDIO_NAME,PLAYBACK_FORMAT,PLAYBACK_NAME,add_common_args,atomic_json,discover_variants,read_json,resolve_showcase,lyrics_name,lyrics_path,legacy_lyrics_path
 
 def f01(v): return round(max(0.0,min(1.0,float(v))),3)
 def old_manual(old):
@@ -70,8 +70,10 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__); add_common_args(ap); args=ap.parse_args(); showcase=resolve_showcase(args.showcase); variants=discover_variants(showcase,args.track); made=missing=0
     print(f'GBR PLAYBACK COMPILER\\nShowcase: {showcase}')
     for v in variants:
-        lp=v.directory/LYRICS_NAME; apath=v.directory/AUDIO_NAME; out=v.directory/PLAYBACK_NAME; lyrics=read_json(lp); audio=read_json(apath)
-        if not lyrics or not isinstance(lyrics.get('lines'),list):print(f'skip {v.directory.relative_to(showcase)}: missing {LYRICS_NAME}');missing+=1;continue
+        lp=lyrics_path(v)
+        if not lp.is_file() and legacy_lyrics_path(v).is_file(): lp=legacy_lyrics_path(v)
+        apath=v.directory/AUDIO_NAME; out=v.directory/PLAYBACK_NAME; lyrics=read_json(lp); audio=read_json(apath)
+        if not lyrics or not isinstance(lyrics.get('lines'),list):print(f'skip {v.directory.relative_to(showcase)}: missing {lyrics_name(v)}');missing+=1;continue
         if not audio or audio.get('format')!=AUDIO_FORMAT:print(f'skip {v.directory.relative_to(showcase)}: missing/current-version {AUDIO_NAME}');missing+=1;continue
         if args.list:print('  ',v.directory.relative_to(showcase),'->',PLAYBACK_NAME);continue
         payload=compile_playback(lyrics,audio,read_json(out)); atomic_json(out,payload); print(f"  + {v.directory.relative_to(showcase)}/{PLAYBACK_NAME}: {len(payload['dance']['events'])} automatic pulsar(s)"); made+=1
