@@ -1,5 +1,22 @@
+\
 #!/usr/bin/env python3
-"""Index content-source/folders/*.md for the Sonic knowledge constellation."""
+"""Build the GBR knowledge-document manifest from content-source/folders/*.md.
+
+No document filenames are hard-coded in the player. Optional YAML front matter:
+
+---
+title: Prompting
+tab: Prompting
+order: 10
+connect:
+  - workflow
+  - 03-Technology.md#models
+knowledge: true
+---
+
+`connect` creates related/dashed cross-cluster edges. Ordinary Markdown links
+between documents/headings also become graph edges automatically.
+"""
 from __future__ import annotations
 
 import json
@@ -31,7 +48,8 @@ def parse_front_matter(text: str) -> tuple[dict[str, Any], str]:
     end = text.find("\n---\n", 4)
     if end < 0:
         return {}, text
-    raw, body = text[4:end], text[end + 5 :]
+    raw = text[4:end]
+    body = text[end + 5 :]
     if yaml is None:
         meta: dict[str, Any] = {}
         for line in raw.splitlines():
@@ -74,27 +92,34 @@ def main() -> int:
 
     documents: list[dict[str, Any]] = []
     if SOURCE.exists():
-        for path in sorted(SOURCE.rglob("*.md"), key=lambda p: p.as_posix().casefold()):
+        for path in sorted(SOURCE.rglob("*.md"), key=lambda p: p.as_posix().lower()):
             raw = path.read_text(encoding="utf-8-sig")
             meta, body = parse_front_matter(raw)
             if meta.get("knowledge") is False or str(meta.get("hidden", "")).lower() in {"true", "1", "yes"}:
                 continue
+
             rel = path.relative_to(ROOT).as_posix()
             title = str(meta.get("title") or meta.get("tab") or first_h1(body) or path.stem).strip()
-            documents.append({
-                "id": slugify(str(meta.get("id") or path.stem)),
-                "title": title,
-                "label": str(meta.get("tab") or title).strip(),
-                "order": numeric_order(meta, path),
-                "path": rel,
-                "filename": path.name,
-                "connect": as_list(meta.get("connect") or meta.get("connections") or meta.get("related")),
-            })
+            doc_id = slugify(str(meta.get("id") or path.stem))
+            documents.append(
+                {
+                    "id": doc_id,
+                    "title": title,
+                    "label": str(meta.get("tab") or title).strip(),
+                    "order": numeric_order(meta, path),
+                    "path": rel,
+                    "filename": path.name,
+                    "connect": as_list(meta.get("connect") or meta.get("connections") or meta.get("related")),
+                }
+            )
 
     documents.sort(key=lambda d: (float(d["order"]), d["title"].casefold(), d["path"].casefold()))
+    payload = {"version": 2, "documents": documents}
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps({"version": 2, "documents": documents}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    output.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Knowledge manifest: {len(documents)} document(s) -> {output}")
+    for doc in documents:
+        print(f"  {doc['order']:g}  {doc['id']}: {doc['path']}")
     return 0
 
 
