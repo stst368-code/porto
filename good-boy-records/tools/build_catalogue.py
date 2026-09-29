@@ -1,462 +1,520 @@
 #!/usr/bin/env python3
-"""Build the Good Boy Records v10 song/variant showcase.
+"""Build the compact Good Boy Records Sonic catalogue directly from showcase/.
 
-The public catalogue is intentionally compact. Full prompts and generation
-notes stay in the original YAML files published under data/yaml/, while the
-browser receives only the metadata needed to render and play the showcase.
+This is intentionally the only catalogue-building pass.
+
+Source of truth:
+    showcase/<song>/<variant>/
+        *.yaml
+        *.flac / *.mp3
+        *.png / *.jpg / *.webp
+        gbr.playback.json   (preferred timing/reaction file, if present)
+        gbr.lyrics.json     (lyrics-only fallback)
+        *.lyrics.json       (legacy fallback during migration)
+
+Outputs:
+    data/catalogue.json     (default, committed metadata for GitHub Pages)
+
+No content-source track mirrors, data/yaml copies, data/live-lyrics copies,
+masters folder, prepared sleeve tree, side-A/B system, or fixed genre slots.
 """
 from __future__ import annotations
 
 import argparse
-import html
+import csv
+import hashlib
 import json
 import re
-from dataclasses import dataclass, field
-from datetime import date
 from pathlib import Path
 from typing import Any
 
 try:
     import yaml
 except ImportError:
-    raise SystemExit("PyYAML is required: pip install PyYAML")
-
-import build_folders
-import build_workflow_media
-from fs_utils import remove_path
+    raise SystemExit("PyYAML is required: python -m pip install PyYAML")
 
 ROOT = Path(__file__).resolve().parent.parent
-TRACK_DIR = ROOT / "content-source" / "tracks" / "showcase"
-SONG_DIR = ROOT / "content-source" / "songs" / "showcase"
-TEMPLATE = ROOT / "templates" / "index.html"
-DATA_DIR = ROOT / "data"
-SLEEVE_DIR = ROOT / "assets" / "img" / "sleeves"
-AUDIO_DIR = ROOT / "assets" / "audio" / "tracks"  # legacy only
-ATR_AUDIO_DIR = ROOT / "assets" / "audio" / "atr"
-LEGACY_MUSIC_DIR = ROOT / "music"
-# v12: no fixed genre taxonomy and no wheel song limit.
-# Genres are discovered from the track YAML records.
-VARIANT_SLOTS: tuple[str, ...] = ()
-MAX_SONGS = None
-MAX_EASTER_TRACKS = 10
-EASTER_DIR = ROOT / "showcase" / "easter"
-EASTER_AUDIO_EXTS = (".mp3", ".flac", ".wav", ".m4a", ".ogg", ".opus", ".webm")
+SHOWCASE = ROOT / "showcase"
+TAXONOMY = ROOT / "templates" / "music_genre_taxonomy.csv"
+DEFAULT_OUTPUT = ROOT / "data" / "catalogue.json"
+
+AUDIO_EXTS = {".flac", ".mp3"}
+IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp"}
+ATR_AUDIO_EXTS = {".flac", ".mp3", ".wav", ".m4a", ".ogg", ".opus", ".webm"}
+AUDIO_RANK = {".flac": 0, ".mp3": 1}
+RESERVED_TOP = {"easter"}
+RESERVED_VARIANT_SUFFIX = "-atr"
 
 
-@dataclass
-class Report:
-    errors: list[str] = field(default_factory=list)
-    warnings: list[str] = field(default_factory=list)
-
-    def error(self, where: str, message: str) -> None:
-        self.errors.append(f"{where}: {message}")
-
-    def warn(self, where: str, message: str) -> None:
-        self.warnings.append(f"{where}: {message}")
-
-    def summarise(self, strict: bool) -> int:
-        for warning in self.warnings:
-            print(f"  warn   {warning}")
-        for error in self.errors:
-            print(f"  ERROR  {error}")
-        if self.errors:
-            print(f"Build failed: {len(self.errors)} error(s).")
-            return 1
-        if strict and self.warnings:
-            print(f"Build failed: {len(self.warnings)} warning(s) under --strict.")
-            return 1
-        return 0
+def slugify(value: Any) -> str:
+    text = str(value or "").strip().lower().replace("_", "-")
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    return re.sub(r"-+", "-", text).strip("-") or "track"
 
 
-
-
-def slugify(value: str) -> str:
-    value = str(value or "").strip().lower().replace("_", "-")
-    value = re.sub(r"[^a-z0-9]+", "-", value)
-    return re.sub(r"-+", "-", value).strip("-") or "reject"
-
-
-def humanise(value: str) -> str:
+def humanise(value: Any) -> str:
     return re.sub(r"[-_]+", " ", str(value or "")).strip().title()
 
 
-def load_easter_tracks(report: Report) -> list[dict[str, Any]]:
-    """Load up to ten metadata-free secret masters from showcase/easter/.
+def norm(value: Any) -> str:
+    """Aggressive lookup normalisation used only for taxonomy matching."""
+    return re.sub(r"[^a-z0-9]+", "", str(value or "").casefold())
 
-    Files with the same stem are treated as format variants of one reject
-    master, e.g. horrible-take.mp3 + horrible-take.flac is one slot. The
-    directory is intentionally absent from the public song matrix.
-    """
-    if not EASTER_DIR.is_dir():
+
+def number(raw: dict[str, Any], *keys: str) -> int | float | None:
+    for key in keys:
+        value = raw.get(key)
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            return value
+        if isinstance(value, str) and value.strip():
+            try:
+                return float(value) if "." in value else int(value)
+            except ValueError:
+                pass
+    return None
+
+
+def repair_literal_block_indentation(text: str, keys: tuple[str, ...] = ("lyrics",)) -> str:
+    """Repair a common generated-YAML literal-block indentation error in memory."""
+    lines = text.splitlines()
+    repaired: list[str] = []
+    block_key: str | None = None
+    block_indent = 0
+    key_re = re.compile(
+        r"^(?P<indent>\s*)(?P<key>" + "|".join(re.escape(k) for k in keys) + r")\s*:\s*[|>]\s*[-+]?\s*$",
+        re.IGNORECASE,
+    )
+    yaml_key_re = re.compile(r"^[A-Za-z0-9_.-]+\s*:\s*(?:\S.*)?$")
+    for line in lines:
+        match = key_re.match(line)
+        if match:
+            block_key = match.group("key").lower()
+            block_indent = len(match.group("indent"))
+            repaired.append(line)
+            continue
+        if block_key is not None and line.strip():
+            indent = len(line) - len(line.lstrip(" "))
+            if indent <= block_indent:
+                stripped = line.strip()
+                if indent == 0 and yaml_key_re.match(stripped) and not stripped.startswith("["):
+                    block_key = None
+                    repaired.append(line)
+                    continue
+                repaired.append(" " * (block_indent + 2) + line.lstrip())
+                continue
+        repaired.append(line)
+    return "\n".join(repaired) + ("\n" if text.endswith("\n") else "")
+
+
+def load_yaml(path: Path) -> dict[str, Any] | None:
+    try:
+        text = path.read_text(encoding="utf-8-sig")
+    except OSError as exc:
+        print(f"skip {path}: {exc}")
+        return None
+    try:
+        raw = yaml.safe_load(text) or {}
+    except yaml.YAMLError:
+        try:
+            raw = yaml.safe_load(repair_literal_block_indentation(text)) or {}
+        except Exception as exc:
+            print(f"skip {path.relative_to(SHOWCASE)}: invalid YAML ({exc})")
+            return None
+    except Exception as exc:
+        print(f"skip {path.relative_to(SHOWCASE)}: invalid YAML ({exc})")
+        return None
+    if not isinstance(raw, dict):
+        print(f"skip {path.relative_to(SHOWCASE)}: YAML root is not a mapping")
+        return None
+    return raw
+
+
+def showcase_url(path: Path) -> str:
+    return "showcase/" + path.relative_to(SHOWCASE).as_posix()
+
+
+def choose_audio(directory: Path, yaml_path: Path, release_id: str) -> dict[str, str]:
+    files = [p for p in directory.iterdir() if p.is_file() and p.suffix.lower() in AUDIO_EXTS]
+    out: dict[str, str] = {}
+    for ext, key in ((".flac", "flac"), (".mp3", "mp3")):
+        candidates = [p for p in files if p.suffix.lower() == ext]
+        if not candidates:
+            continue
+        preferred = []
+        for stem in (release_id, yaml_path.stem):
+            preferred.extend(p for p in candidates if slugify(p.stem) == slugify(stem))
+        pick = preferred[0] if preferred else (candidates[0] if len(candidates) == 1 else None)
+        if pick:
+            out[key] = showcase_url(pick)
+        else:
+            print(f"warn {directory.relative_to(SHOWCASE)}: multiple {ext} files; none clearly owns this YAML")
+    return out
+
+
+def choose_artwork(directory: Path, yaml_path: Path, raw: dict[str, Any], release_id: str) -> str | None:
+    explicit = raw.get("cover") or raw.get("artwork")
+    if explicit:
+        value = str(explicit)
+        candidate = directory / value
+        if candidate.is_file() and candidate.suffix.lower() in IMAGE_EXTS:
+            return showcase_url(candidate)
+        for ext in IMAGE_EXTS:
+            candidate = directory / f"{value}{ext}"
+            if candidate.is_file():
+                return showcase_url(candidate)
+
+    images = [p for p in directory.iterdir() if p.is_file() and p.suffix.lower() in IMAGE_EXTS]
+    for stem in (release_id, yaml_path.stem, directory.name):
+        hits = [p for p in images if slugify(p.stem) == slugify(stem)]
+        if len(hits) == 1:
+            return showcase_url(hits[0])
+    if len(images) == 1:
+        return showcase_url(images[0])
+    return None
+
+
+def read_json(path: Path) -> dict[str, Any] | None:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def choose_timing(directory: Path) -> tuple[str | None, dict[str, Any] | None]:
+    # playback contains the same line timing plus reaction information, so it is
+    # the preferred single runtime file when it exists.
+    ordered = [directory / "gbr.playback.json", directory / "gbr.lyrics.json"]
+    ordered.extend(
+        p for p in sorted(directory.glob("*.lyrics.json"))
+        if p.name not in {"gbr.lyrics.json"}
+    )
+    seen: set[Path] = set()
+    for path in ordered:
+        if path in seen or not path.is_file():
+            continue
+        seen.add(path)
+        data = read_json(path)
+        if data and isinstance(data.get("lines"), list):
+            return showcase_url(path), data
+    return None, None
+
+
+class Taxonomy:
+    def __init__(self, path: Path):
+        self.rows: list[dict[str, Any]] = []
+        self.lookup: dict[str, dict[str, Any]] = {}
+        self.parent_order: dict[str, int] = {}
+        if not path.is_file():
+            print(f"warn taxonomy missing: {path}; unmatched versions will be Unclassified")
+            return
+        with path.open("r", encoding="utf-8-sig", newline="") as handle:
+            reader = csv.DictReader(handle)
+            for idx, row in enumerate(reader, start=1):
+                clean = {str(k or "").strip(): (str(v or "").strip()) for k, v in row.items()}
+                order_raw = clean.get("order") or clean.get("index") or str(idx)
+                try:
+                    order = int(float(order_raw))
+                except ValueError:
+                    order = idx
+                clean["_order"] = order
+                self.rows.append(clean)
+                parent = clean.get("parent_genre") or "Unclassified"
+                self.parent_order[parent] = min(self.parent_order.get(parent, order), order)
+                for source in (clean.get("normalised_child"), clean.get("child_genre")):
+                    key = norm(source)
+                    if key and key not in self.lookup:
+                        self.lookup[key] = clean
+
+    def match(self, version: str) -> dict[str, Any]:
+        row = self.lookup.get(norm(version))
+        if row is None:
+            return {
+                "cluster": "unclassified",
+                "parent_genre": "Unclassified",
+                "child_genre": humanise(version),
+                "parent_colour": "#808080",
+                "child_colour": "#909090",
+                "taxonomy_order": 1_000_000,
+                "parent_order": 1_000_000,
+            }
+        parent = row.get("parent_genre") or "Unclassified"
+        return {
+            "cluster": row.get("cluster") or "",
+            "parent_genre": parent,
+            "child_genre": row.get("child_genre") or humanise(version),
+            "parent_colour": row.get("parent_colour") or "#808080",
+            "child_colour": row.get("child_colour") or row.get("parent_colour") or "#909090",
+            "taxonomy_order": int(row["_order"]),
+            "parent_order": int(self.parent_order.get(parent, row["_order"])),
+        }
+
+
+def composition_yaml(song_dir: Path) -> tuple[Path | None, dict[str, Any]]:
+    exact = [song_dir / f"{song_dir.name}.yaml", song_dir / f"{song_dir.name}.yml"]
+    for path in exact:
+        if path.is_file():
+            return path, load_yaml(path) or {}
+    # Do not guess among several root YAMLs. A composition YAML is optional.
+    roots = [p for p in song_dir.iterdir() if p.is_file() and p.suffix.lower() in {".yaml", ".yml"}]
+    if len(roots) == 1:
+        return roots[0], load_yaml(roots[0]) or {}
+    return None, {}
+
+
+def infer_version(raw: dict[str, Any], yaml_path: Path, composition_id: str) -> str:
+    value = str(raw.get("version") or "").strip()
+    if value:
+        return value
+    folder = slugify(yaml_path.parent.name)
+    prefix = composition_id + "-"
+    return folder[len(prefix):] if folder.startswith(prefix) else folder
+
+
+def stable_track_id(composition_id: str, version: str, directory: Path, seen: set[str]) -> str:
+    base = slugify(f"{composition_id}-{version}")
+    if base not in seen:
+        seen.add(base)
+        return base
+    suffix = hashlib.sha1(directory.relative_to(SHOWCASE).as_posix().encode("utf-8")).hexdigest()[:7]
+    value = f"{base}-{suffix}"
+    seen.add(value)
+    print(f"warn {directory.relative_to(SHOWCASE)}: duplicate title/version; catalogue id disambiguated as {value}")
+    return value
+
+
+def variant_yamls(song_dir: Path) -> list[Path]:
+    out = []
+    for path in [*song_dir.rglob("*.yaml"), *song_dir.rglob("*.yml")]:
+        if path.parent == song_dir:
+            continue
+        if any(part.casefold().endswith(RESERVED_VARIANT_SUFFIX) for part in path.relative_to(song_dir).parts[:-1]):
+            continue
+        out.append(path)
+    return sorted(set(out), key=lambda p: p.as_posix().casefold())
+
+
+def build_track(
+    yaml_path: Path,
+    raw: dict[str, Any],
+    composition_id: str,
+    common: dict[str, Any],
+    taxonomy: Taxonomy,
+    seen_ids: set[str],
+) -> dict[str, Any]:
+    title_id = slugify(raw.get("title") or composition_id)
+    version = infer_version(raw, yaml_path, title_id)
+    track_id = stable_track_id(title_id, version, yaml_path.parent, seen_ids)
+
+    audio = choose_audio(yaml_path.parent, yaml_path, track_id)
+    artwork_url = choose_artwork(yaml_path.parent, yaml_path, raw, track_id)
+    timing_url, timing = choose_timing(yaml_path.parent)
+
+    stats = timing.get("stats") if isinstance(timing, dict) and isinstance(timing.get("stats"), dict) else {}
+    quality = timing.get("quality") if isinstance(timing, dict) and isinstance(timing.get("quality"), dict) else {}
+    coverage = stats.get("coverage")
+    review_required = bool(quality.get("review_required", False))
+    approved = bool(quality.get("approved", False))
+    usable = bool(
+        quality.get(
+            "usable",
+            quality.get("usable_for_live_lyrics", approved or not review_required),
+        )
+    )
+
+    inspiration = str(raw.get("inspiration") or common.get("inspiration") or "").strip()
+    inspiration_url = str(
+        raw.get("inspirationyt") or raw.get("inspiration_url")
+        or common.get("inspirationyt") or common.get("inspiration_url") or ""
+    ).strip()
+
+    track = {
+        "id": track_id,
+        "composition": title_id,
+        "title": title_id,
+        "displayTitle": humanise(raw.get("title") or common.get("title") or title_id),
+        "variant": version,
+        "version": version,
+        "genre": taxonomy.match(version),
+        "audio": {
+            "sources": {
+                "flac": audio.get("flac"),
+                "mp3": audio.get("mp3"),
+            }
+        },
+        "artwork_url": artwork_url,
+        "lyrics": {
+            "raw": str(raw.get("lyrics") or "").rstrip(),
+            "wordTiming": (
+                {
+                    "src": timing_url,
+                    "format": timing.get("format") if isinstance(timing, dict) else None,
+                    "coverage": coverage,
+                    "rating": quality.get("rating"),
+                    "reviewRequired": review_required,
+                    "approved": approved,
+                    "usable": usable,
+                }
+                if timing_url else None
+            ),
+        },
+        "lyrics_url": timing_url,
+        "yamlUrl": showcase_url(yaml_path),
+        "story": str(raw.get("story") or common.get("story") or "").strip(),
+        "style": {
+            "inspiration": inspiration,
+            "inspirationUrl": inspiration_url,
+        },
+        "model": {
+            "name": str(raw.get("model") or "").strip(),
+            "dit": str(raw.get("dit") or "").strip(),
+            "textEncoder": str(raw.get("text_encoder") or raw.get("textenc") or raw.get("text_encoder_model") or "").strip(),
+        },
+        "generation": {
+            "encoderCfg": number(raw, "encoder_cfg"),
+            "encoderSeed": number(raw, "encoder_seed"),
+            "topK": number(raw, "top_k", "topk"),
+            "sampler": str(raw.get("sampler") or "").strip(),
+            "scheduler": str(raw.get("scheduler") or "").strip(),
+            "samplerCfg": number(raw, "sampler_cfg", "cfg"),
+            "samplerSeed": number(raw, "sampler_seed", "seed"),
+            "steps": number(raw, "sampler_steps", "steps"),
+        },
+    }
+    # Future timeline hooks are only present when the files actually exist.
+    playback = yaml_path.parent / "gbr.playback.json"
+    analysis = yaml_path.parent / "gbr.audio.json"
+    if playback.is_file():
+        track["playback_url"] = showcase_url(playback)
+    if analysis.is_file():
+        track["audio_analysis_url"] = showcase_url(analysis)
+    return track
+
+
+def build_easter() -> list[dict[str, Any]]:
+    directory = SHOWCASE / "easter"
+    if not directory.is_dir():
         return []
-
-    grouped: dict[str, dict[str, Any]] = {}
-    for path in sorted(EASTER_DIR.iterdir(), key=lambda item: item.name.casefold()):
-        if not path.is_file() or path.suffix.lower() not in EASTER_AUDIO_EXTS:
+    grouped: dict[str, dict[str, Path]] = {}
+    labels: dict[str, str] = {}
+    for path in sorted(directory.iterdir(), key=lambda p: p.name.casefold()):
+        if not path.is_file() or path.suffix.lower() not in ATR_AUDIO_EXTS:
             continue
-        stem = path.stem
-        key = stem.casefold()
-        group = grouped.setdefault(key, {"stem": stem, "files": {}})
-        fmt = path.suffix.lower().lstrip(".")
-        if fmt in group["files"]:
-            report.warn("easter", f"duplicate {fmt.upper()} for {stem!r}; using {group['files'][fmt].name!r}")
-            continue
-        group["files"][fmt] = path
+        key = path.stem.casefold()
+        labels.setdefault(key, path.stem)
+        grouped.setdefault(key, {})[path.suffix.lower().lstrip(".")] = path
 
-    groups = sorted(grouped.values(), key=lambda item: str(item["stem"]).casefold())
-    if len(groups) > MAX_EASTER_TRACKS:
-        report.warn("easter", f"contains {len(groups)} reject masters; only the first {MAX_EASTER_TRACKS} are exposed")
-        groups = groups[:MAX_EASTER_TRACKS]
-
-    tracks: list[dict[str, Any]] = []
-    for index, group in enumerate(groups, start=1):
-        files: dict[str, Path] = group["files"]
-        stem = str(group["stem"])
-        sources = {fmt: path.relative_to(ROOT).as_posix() for fmt, path in sorted(files.items())}
-        preferred_name = next(iter(sorted(files.values(), key=lambda item: item.suffix.casefold()))).name
+    tracks = []
+    for index, key in enumerate(sorted(grouped, key=lambda x: labels[x].casefold()), start=1):
+        sources = {fmt: showcase_url(path) for fmt, path in grouped[key].items()}
         tracks.append({
-            "id": f"easter-{index:02d}-{slugify(stem)}",
-            "easter": True,
-            "index": index,
-            "title": stem,
-            "displayTitle": humanise(stem),
-            "filename": preferred_name,
-            "audio": {"available": True, "sources": sources},
-            "source": {"directory": "showcase/easter"},
+            "id": f"easter-{index:02d}-{slugify(labels[key])}",
+            "title": labels[key],
+            "displayTitle": humanise(labels[key]),
+            "variant": "Hidden Track",
+            "genre": {
+                "cluster": "easter",
+                "parent_genre": "Easter Universe",
+                "child_genre": "Hidden Track",
+                "parent_colour": "#D0802F",
+                "child_colour": "#D9A65E",
+                "taxonomy_order": index,
+                "parent_order": 0,
+            },
+            "audio": {"sources": sources},
         })
     return tracks
 
-def esc(value: Any) -> str:
-    return html.escape(str(value), quote=True)
 
+def build(output: Path) -> int:
+    if not SHOWCASE.is_dir():
+        raise SystemExit(f"Showcase directory is missing: {SHOWCASE}")
 
-def render(template: str, values: dict[str, str]) -> str:
-    output = template
-    for key, value in values.items():
-        output = output.replace("{{" + key + "}}", value)
-    leftovers = re.findall(r"\{\{([A-Z_]+)\}\}", output)
-    if leftovers:
-        raise SystemExit(f"Template still contains unfilled tokens: {sorted(set(leftovers))}")
-    return output
-
-
-def artwork_url(track: dict[str, Any], width: int = 640, ext: str = "webp") -> str:
-    base = (track.get("artwork") or {}).get("base") or "gbr-placeholder"
-    return f"assets/img/sleeves/{base}-{width}.{ext}"
-
-
-def validate_track(track: dict[str, Any], where: str, report: Report) -> None:
-    required = ("id", "composition", "title", "variant", "variantSlot", "yamlUrl")
-    for key in required:
-        if not track.get(key):
-            report.error(where, f"missing {key}")
-
-
-    side = str(track.get("side") or "A").upper()
-    if side not in {"A", "B", "C"}:
-        report.error(where, f"side {side!r} must be A, B or C")
-
-    art = track.get("artwork") or {}
-    base = art.get("base") or "gbr-placeholder"
-    for width in (640, 1280):
-        for ext in ("webp", "jpg"):
-            if not (SLEEVE_DIR / f"{base}-{width}.{ext}").is_file():
-                report.error(where, f"missing artwork derivative assets/img/sleeves/{base}-{width}.{ext}")
-
-    sources = (track.get("audio") or {}).get("sources") or {}
-    if not any(sources.values()):
-        report.warn(where, "has no MP3 or FLAC yet")
-    for fmt in ("mp3", "flac"):
-        name = sources.get(fmt)
-        if not name:
-            continue
-        rel = Path(str(name))
-        # v10.11+ stores source-relative URLs (normally showcase/...). Keep
-        # compatibility with old catalogues whose value was only a basename.
-        candidate = ROOT / rel if len(rel.parts) > 1 else AUDIO_DIR / rel
-        if not candidate.is_file():
-            report.error(where, f"missing audio {str(name)}")
-
-    yaml_url = ROOT / str(track.get("yamlUrl"))
-    if not yaml_url.is_file():
-        report.error(where, f"published YAML {track.get('yamlUrl')} does not exist")
-
-    timing = (track.get("lyrics") or {}).get("wordTiming")
-    if isinstance(timing, dict) and timing.get("src"):
-        if not (ROOT / str(timing["src"])).is_file():
-            report.error(where, f"word timing {timing['src']} does not exist")
-
-
-
-def validate_song_meta(song: dict[str, Any], where: str, report: Report) -> None:
-    song_id = str(song.get("id") or "")
-    if not song_id:
-        report.error(where, "missing id")
-    yaml_url = song.get("yamlUrl")
-    if yaml_url and not (ROOT / str(yaml_url)).is_file():
-        report.error(where, f"published composition YAML {yaml_url} does not exist")
-    for item in song.get("atr") or []:
-        src = item.get("src") if isinstance(item, dict) else None
-        if not src:
-            report.error(where, "ATR entry missing src")
-            continue
-        if not (ROOT / str(src)).is_file():
-            report.error(where, f"missing unreleased audio {src}")
-
-
-def load_song_meta(report: Report) -> dict[str, dict[str, Any]]:
-    records: dict[str, dict[str, Any]] = {}
-    if not SONG_DIR.exists():
-        return records
-    for path in sorted(SONG_DIR.glob("*.yaml")):
-        try:
-            song = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        except Exception as exc:
-            report.error(path.name, f"invalid composition YAML ({exc})")
-            continue
-        if not isinstance(song, dict):
-            report.error(path.name, "composition root must be a mapping")
-            continue
-        song_id = str(song.get("id") or "")
-        if song_id in records:
-            report.error(path.name, f"duplicate composition id {song_id!r}")
-            continue
-        validate_song_meta(song, path.name, report)
-        records[song_id] = song
-    return records
-
-def load_tracks(report: Report) -> list[dict[str, Any]]:
+    taxonomy = Taxonomy(TAXONOMY)
     tracks: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
 
-    for path in sorted(TRACK_DIR.glob("*.yaml")):
-        try:
-            track = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        except Exception as exc:
-            report.error(path.name, f"invalid YAML ({exc})")
+    song_dirs = [
+        p for p in SHOWCASE.iterdir()
+        if p.is_dir() and not p.name.startswith(".") and p.name.casefold() not in RESERVED_TOP | {"one-off", "oneoff"}
+    ]
+    for song_dir in sorted(song_dirs, key=lambda p: p.name.casefold()):
+        _, common = composition_yaml(song_dir)
+        composition_id = slugify(common.get("title") or song_dir.name)
+        yamls = variant_yamls(song_dir)
+        if not yamls:
+            print(f"warn {song_dir.relative_to(SHOWCASE)}: no variant YAMLs")
+        for yaml_path in yamls:
+            raw = load_yaml(yaml_path)
+            if not raw or not raw.get("lyrics"):
+                continue
+            tracks.append(build_track(yaml_path, raw, composition_id, common, taxonomy, seen_ids))
+
+    # Standalone/one-off bank remains supported without giving it a second
+    # catalogue architecture.
+    for bank_name in ("one-off", "oneoff"):
+        bank = SHOWCASE / bank_name
+        if not bank.is_dir():
             continue
-        if not isinstance(track, dict):
-            report.error(path.name, "root must be a mapping")
-            continue
+        for yaml_path in sorted([*bank.rglob("*.yaml"), *bank.rglob("*.yml")], key=lambda p: p.as_posix().casefold()):
+            raw = load_yaml(yaml_path)
+            if not raw or not raw.get("lyrics"):
+                continue
+            composition_id = slugify(raw.get("title") or yaml_path.parent.name)
+            if not raw.get("version"):
+                raw = dict(raw)
+                raw["version"] = raw.get("one_off_label") or "one-off"
+            tracks.append(build_track(yaml_path, raw, composition_id, {}, taxonomy, seen_ids))
 
-        # Old generated records did not know about cassette sides. Treat them
-        # as Side A so v10 catalogues remain forward-compatible.
-        track["side"] = str(track.get("side") or "A").upper()
+    slot = {t["id"] for t in tracks}
+    if len(slot) != len(tracks):
+        raise SystemExit("Internal error: duplicate catalogue IDs survived disambiguation")
 
-        track_id = str(track.get("id") or "")
-        if track_id in seen_ids:
-            report.error(path.name, f"duplicate id {track_id!r}")
-            continue
-        seen_ids.add(track_id)
-
-
-        validate_track(track, path.name, report)
-        tracks.append(track)
-
-    side_rank = {"A": 0, "B": 1, "C": 2}
-
-    # If a legacy/base YAML has no usable style text, keep it beside the other
-    # versions of the same composition rather than dumping it at the end.
-    positions_by_composition: dict[str, list[float]] = {}
-    for track in tracks:
-        try:
-            position = float(track.get("genrePosition", 99.0))
-        except (TypeError, ValueError):
-            position = 99.0
-        if position < 90:
-            key = str(track.get("composition") or track.get("title") or "").casefold()
-            positions_by_composition.setdefault(key, []).append(position)
-
-    def effective_genre_position(track: dict[str, Any]) -> float:
-        try:
-            position = float(track.get("genrePosition", 99.0))
-        except (TypeError, ValueError):
-            position = 99.0
-        if position < 90:
-            return position
-        key = str(track.get("composition") or track.get("title") or "").casefold()
-        siblings = positions_by_composition.get(key) or []
-        if siblings:
-            ordered = sorted(siblings)
-            return ordered[len(ordered) // 2]
-        return 99.0
-
-    # YAML-derived genrePosition is a weighted musical continuum. Hybrid
-    # descriptions naturally land between families, so the wall flows through
-    # classical -> folk/country -> rock/punk/metal -> electronic/disco/pop ->
-    # soul/funk/hip-hop -> jazz/theatre instead of jumping by filename.
-    tracks.sort(key=lambda t: (
-        effective_genre_position(t),
-        str(t.get("genreFamily") or "uncategorised").casefold(),
-        str(t.get("genre") or t.get("variantLabel") or t.get("variantSlot") or "").casefold(),
-        str(t.get("displayTitle") or t.get("title") or t.get("composition") or "").casefold(),
-        side_rank.get(str(t.get("side") or "A"), 99),
-        str(t.get("id") or "").casefold(),
-    ))
-    return tracks
-
-def picture(track: dict[str, Any], lazy: bool = True) -> str:
-    alt = esc((track.get("artwork") or {}).get("alt") or track.get("displayTitle") or track.get("title") or "Album artwork")
-    loading = ' loading="lazy" decoding="async"' if lazy else ' decoding="async"'
-    return (
-        '<picture>'
-        f'<source type="image/webp" srcset="{artwork_url(track, 640, "webp")} 640w, {artwork_url(track, 1280, "webp")} 1280w">'
-        f'<img src="{artwork_url(track, 640, "jpg")}" srcset="{artwork_url(track, 640, "jpg")} 640w, {artwork_url(track, 1280, "jpg")} 1280w" '
-        f'width="640" height="640" alt="{alt}"{loading}>'
-        '</picture>'
+    tracks.sort(
+        key=lambda t: (
+            int((t.get("genre") or {}).get("parent_order", 1_000_000)),
+            int((t.get("genre") or {}).get("taxonomy_order", 1_000_000)),
+            str(t.get("displayTitle") or "").casefold(),
+            str(t.get("variant") or "").casefold(),
+        )
     )
+    easter = build_easter()
 
-
-def group_songs(tracks: list[dict[str, Any]], song_meta: dict[str, dict[str, Any]] | None = None) -> list[dict[str, Any]]:
-    song_meta = song_meta or {}
-    grouped: dict[str, list[dict[str, Any]]] = {}
-    for track in tracks:
-        grouped.setdefault(str(track.get("composition") or track["id"]), []).append(track)
-
-    songs = []
-    for composition, releases in grouped.items():
-        sides_by_slot: dict[str, dict[str, dict[str, Any]]] = {}
-        for track in releases:
-            slot = str(track.get("variantSlot"))
-            side = str(track.get("side") or "A").upper()
-            sides_by_slot.setdefault(slot, {})[side] = track
-
-        # ``variants`` remains the primary physical cassette for wheel
-        # rendering: Side A where present, otherwise Side B. ``sides`` carries
-        # both playable cuts without creating another magazine position.
-        variants_by_slot = {
-            slot: side_map.get("A") or side_map.get("B")
-            for slot, side_map in sides_by_slot.items()
-            if side_map.get("A") or side_map.get("B")
-        }
-        lead = releases[0]
-        meta = song_meta.get(composition) or {}
-        songs.append({
-            "id": composition,
-            "title": meta.get("displayTitle") or lead.get("displayTitle") or lead.get("title") or composition,
-            "lead": lead,
-            "variants": variants_by_slot,
-            "sides": sides_by_slot,
-            "story": str(meta.get("story") or ""),
-            "style": meta.get("style") or {},
-            "yamlUrl": meta.get("yamlUrl"),
-            "atr": meta.get("atr") or [],
-        })
-    songs.sort(key=lambda song: str(song["title"]).casefold())
-    return songs
-
-def render_wheel_library(tracks: list[dict[str, Any]]) -> str:
-    """Render one physical wheel position per track.
-
-    The browser rebuilds the wheel dynamically too, but keeping a complete
-    server-rendered library preserves useful HTML before JS starts.
-    """
-    cells: list[str] = []
-    count = max(1, len(tracks))
-    for index, track in enumerate(tracks):
-        angle = index * (360 / count)
-        title = str(track.get("displayTitle") or track.get("title") or track.get("id"))
-        genre = str(track.get("genre") or track.get("variantLabel") or track.get("variantSlot") or "Uncategorised")
-        cells.append(
-            f'<div class="showcase-wheel-slot" data-wheel-index="{index}" data-track="{esc(track["id"])}" '
-            f'style="--base-angle:{angle:.3f}deg;--display-angle:{angle:.3f}deg">'
-            f'<button class="showcase-wheel-cassette" type="button" data-track="{esc(track["id"])}" '
-            f'aria-label="{esc(title)} — {esc(genre)}">{picture(track, lazy=False)}'
-            f'<span class="showcase-wheel-label"><strong>{esc(title)}</strong><small>{esc(genre)}</small></span>'
-            f'</button></div>'
-        )
-    return "".join(cells)
-
-
-def render_mobile_library(tracks: list[dict[str, Any]]) -> str:
-    cards: list[str] = []
-    for index, track in enumerate(tracks):
-        title = str(track.get("displayTitle") or track.get("title") or track.get("id"))
-        genre = str(track.get("genre") or track.get("variantLabel") or track.get("variantSlot") or "Uncategorised")
-        cards.append(
-            f'<button class="showcase-mobile-card" type="button" data-track="{esc(track["id"])}" '
-            f'data-wheel-index="{index}" aria-label="{esc(title)} — {esc(genre)}">'
-            f'{picture(track)}<span><strong>{esc(title)}</strong><small>{esc(genre)}</small></span></button>'
-        )
-    return "".join(cards)
-
-def build(strict: bool) -> int:
-    if LEGACY_MUSIC_DIR.exists():
-        remove_path(LEGACY_MUSIC_DIR)
-
-    report = Report()
-    build_workflow_media.sync(report)
-    if report.errors:
-        return report.summarise(strict)
-
-    tracks = load_tracks(report)
-    song_meta = load_song_meta(report)
-    if report.errors:
-        return report.summarise(strict)
-
-    songs = group_songs(tracks, song_meta)
-    easter_tracks = load_easter_tracks(report)
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    catalogue = {
-        "format": "gbr-showcase-v10.5",
-        "genres": sorted({
-            str(track.get("genre") or track.get("variantLabel") or track.get("variantSlot") or "Uncategorised")
-            for track in tracks
-        }, key=str.casefold),
-        "maxEasterTracks": MAX_EASTER_TRACKS,
-        "songCount": len(songs),
-        "variantCount": len(tracks),
-        "songs": [
-            {
-                "id": song["id"],
-                "title": song["title"],
-                "story": song.get("story") or "",
-                "style": song.get("style") or {},
-                "yamlUrl": song.get("yamlUrl"),
-                "atr": song.get("atr") or [],
-                "variantIds": {slot: track["id"] for slot, track in song["variants"].items()},
-                "sideIds": {
-                    slot: {side: track["id"] for side, track in side_map.items()}
-                    for slot, side_map in song.get("sides", {}).items()
-                },
-            }
-            for song in songs
-        ],
+    payload = {
+        "format": "gbr-sonic-catalogue-v1",
+        "trackCount": len(tracks),
         "tracks": tracks,
         "easter": {
-            "enabled": bool(easter_tracks),
-            "count": len(easter_tracks),
-            "tracks": easter_tracks,
+            "enabled": bool(easter),
+            "count": len(easter),
+            "tracks": easter,
         },
     }
-    (DATA_DIR / "catalogue.json").write_text(json.dumps(catalogue, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    template = TEMPLATE.read_text(encoding="utf-8")
-    output = render(template, {
-        "ROOT": "",
-        "FOLDERS": build_folders.build(report.warn),
-        "WHEEL_LIBRARY": render_wheel_library(tracks),
-        "MOBILE_LIBRARY": render_mobile_library(tracks),
-        "CATALOGUE_JSON": json.dumps(catalogue, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/"),
-        "SONG_COUNT": str(len(songs)),
-        "VARIANT_COUNT": str(len(tracks)),
-        "YEAR": str(date.today().year),
-    })
-    (ROOT / "index.html").write_text(output, encoding="utf-8")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temp = output.with_suffix(output.suffix + ".tmp")
+    temp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temp.replace(output)
 
-    print(f"Built {len(songs)} song(s), {len(tracks)} recording(s)")
-    print(f"  easter bank     {len(easter_tracks)} hidden reject master(s)")
-    print(f"  wheel           {len(tracks)} independent track position(s); genres are YAML metadata")
-    print(f"  catalogue.json  {(DATA_DIR / 'catalogue.json').stat().st_size / 1024:.1f} KB")
-    print(f"  index.html      {(ROOT / 'index.html').stat().st_size / 1024:.1f} KB")
-    return report.summarise(strict)
+    missing_audio = sum(1 for t in tracks if not any((t.get("audio") or {}).get("sources", {}).values()))
+    missing_art = sum(1 for t in tracks if not t.get("artwork_url"))
+    missing_timing = sum(1 for t in tracks if not t.get("lyrics_url"))
+    unclassified = sum(1 for t in tracks if (t.get("genre") or {}).get("parent_genre") == "Unclassified")
+
+    print(f"Built {len(tracks)} track(s) -> {output}")
+    print(f"Easter: {len(easter)} hidden track(s)")
+    print(f"Missing audio: {missing_audio}; artwork: {missing_art}; lyric timing: {missing_timing}; taxonomy: {unclassified}")
+    return 0
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--strict", action="store_true")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", default=str(DEFAULT_OUTPUT), help="catalogue JSON destination")
     args = parser.parse_args()
-    return build(args.strict)
+    output = Path(args.output)
+    if not output.is_absolute():
+        output = (ROOT / output).resolve()
+    return build(output)
 
 
 if __name__ == "__main__":
