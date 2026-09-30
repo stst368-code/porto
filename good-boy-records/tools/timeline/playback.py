@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Combine canonical <variant>.lyrics.json + <variant>.audio.json into <variant>.playback.json.
+"""Combine canonical <variant>.lyrics.json + gbr.audio.json into runtime gbr.playback.json.
 Manual word/line overrides and manual free-standing events survive recompilation.
 """
 from __future__ import annotations
 import argparse
 from typing import Any
-from common import AUDIO_FORMAT,PLAYBACK_FORMAT,add_common_args,atomic_json,discover_variants,read_json,resolve_showcase,lyrics_name,lyrics_path,legacy_lyrics_path,audio_name,audio_path,playback_name,playback_path,migrate_audio_sidecar,migrate_playback_sidecar
+from common import AUDIO_FORMAT,AUDIO_NAME,PLAYBACK_FORMAT,PLAYBACK_NAME,add_common_args,atomic_json,discover_variants,read_json,resolve_showcase,lyrics_name,lyrics_path,legacy_lyrics_path
 
 def f01(v): return round(max(0.0,min(1.0,float(v))),3)
 def old_manual(old):
@@ -72,11 +72,11 @@ def main():
     for v in variants:
         lp=lyrics_path(v)
         if not lp.is_file() and legacy_lyrics_path(v).is_file(): lp=legacy_lyrics_path(v)
-        apath=migrate_audio_sidecar(v); out=migrate_playback_sidecar(v); lyrics=read_json(lp); audio=read_json(apath)
+        apath=v.directory/AUDIO_NAME; out=v.directory/PLAYBACK_NAME; lyrics=read_json(lp); audio=read_json(apath)
         if not lyrics or not isinstance(lyrics.get('lines'),list):print(f'skip {v.directory.relative_to(showcase)}: missing {lyrics_name(v)}');missing+=1;continue
-        if not audio or audio.get('format')!=AUDIO_FORMAT:print(f'skip {v.directory.relative_to(showcase)}: missing/current-version {audio_name(v)}');missing+=1;continue
-        if args.list:print('  ',v.directory.relative_to(showcase),'->',playback_name(v));continue
-        payload=compile_playback(lyrics,audio,read_json(out)); atomic_json(out,payload); print(f"  + {v.directory.relative_to(showcase)}/{playback_name(v)}: {len(payload['dance']['events'])} automatic pulsar(s)"); made+=1
+        if not audio or audio.get('format')!=AUDIO_FORMAT:print(f'skip {v.directory.relative_to(showcase)}: missing/current-version {AUDIO_NAME}');missing+=1;continue
+        if args.list:print('  ',v.directory.relative_to(showcase),'->',PLAYBACK_NAME);continue
+        payload=compile_playback(lyrics,audio,read_json(out)); atomic_json(out,payload); print(f"  + {v.directory.relative_to(showcase)}/{PLAYBACK_NAME}: {len(payload['dance']['events'])} automatic pulsar(s)"); made+=1
     if args.list:return 0
     print(f'\\nComplete: {made} playback file(s) written; {missing} waiting for an input sidecar.');return 0
 if __name__=='__main__': raise SystemExit(main())

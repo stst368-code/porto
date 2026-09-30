@@ -2,14 +2,14 @@
 """Shared discovery/path helpers for GBR timeline tools.
 
 The important rule is: identity comes from the variant DIRECTORY, not from an
-audio filename. Every derived sidecar uses the same human-readable variant
-directory identity:
+audio filename. Lyrics use the human-readable variant directory name while the
+other derived sidecars keep fixed names:
 
     <variant-folder>.lyrics.json
-    <variant-folder>.audio.json
-    <variant-folder>.playback.json
+    gbr.audio.json
+    gbr.playback.json
 
-The JSON contains content fingerprints rather than absolute source paths.
+The lyric JSON contains content fingerprints rather than absolute source paths.
 """
 from __future__ import annotations
 
@@ -30,8 +30,8 @@ AUDIO_EXTS = {".flac", ".wav", ".mp3", ".opus", ".ogg", ".m4a", ".aac"}
 AUDIO_RANK = {".flac": 0, ".wav": 1, ".opus": 2, ".ogg": 3, ".mp3": 4, ".m4a": 5, ".aac": 6}
 
 LEGACY_LYRICS_NAME = "gbr.lyrics.json"
-LEGACY_AUDIO_NAME = "gbr.audio.json"
-LEGACY_PLAYBACK_NAME = "gbr.playback.json"
+AUDIO_NAME = "gbr.audio.json"
+PLAYBACK_NAME = "gbr.playback.json"
 
 LYRICS_FORMAT = "gbr-word-lyrics-v2"
 AUDIO_FORMAT = "gbr-audio-analysis-v2"
@@ -67,55 +67,6 @@ def lyrics_path(variant: Variant) -> Path:
 
 def legacy_lyrics_path(variant: Variant) -> Path:
     return variant.directory / LEGACY_LYRICS_NAME
-
-
-def audio_name(variant: Variant) -> str:
-    """Canonical analysis filename tied to the variant-directory identity."""
-    return f"{variant.directory.name}.audio.json"
-
-
-def audio_path(variant: Variant) -> Path:
-    return variant.directory / audio_name(variant)
-
-
-def legacy_audio_path(variant: Variant) -> Path:
-    return variant.directory / LEGACY_AUDIO_NAME
-
-
-def playback_name(variant: Variant) -> str:
-    """Canonical runtime filename tied to the variant-directory identity."""
-    return f"{variant.directory.name}.playback.json"
-
-
-def playback_path(variant: Variant) -> Path:
-    return variant.directory / playback_name(variant)
-
-
-def legacy_playback_path(variant: Variant) -> Path:
-    return variant.directory / LEGACY_PLAYBACK_NAME
-
-
-def migrate_fixed_sidecar(target: Path, legacy: Path) -> Path:
-    """Adopt a cleanup-era fixed-name sidecar without rewriting its JSON."""
-    if target.is_file():
-        if legacy.is_file():
-            try:
-                if target.read_bytes() == legacy.read_bytes():
-                    legacy.unlink()
-            except OSError:
-                pass
-        return target
-    if legacy.is_file():
-        legacy.replace(target)
-    return target
-
-
-def migrate_audio_sidecar(variant: Variant) -> Path:
-    return migrate_fixed_sidecar(audio_path(variant), legacy_audio_path(variant))
-
-
-def migrate_playback_sidecar(variant: Variant) -> Path:
-    return migrate_fixed_sidecar(playback_path(variant), legacy_playback_path(variant))
 
 
 def repo_root() -> Path:
@@ -312,7 +263,18 @@ def source_matches(payload: dict[str, Any] | None, signature: dict[str, str]) ->
     source = payload.get("source")
     if not isinstance(source, dict) or not (source.get("audio") or source.get("lyrics")):
         return None
-    return source.get("audio") == signature["audio"] and source.get("lyrics") == signature["lyrics"]
+    if source.get("audio") != signature["audio"] or source.get("lyrics") != signature["lyrics"]:
+        return False
+
+    # Optional signature dimensions can be added by individual timeline tools.
+    # Language was introduced for lyric alignment in v2.4. Legacy lyric sidecars
+    # did not store it and were all produced with the old hard-coded English
+    # default, so a missing source language is deliberately treated as ``en``.
+    if "language" in signature:
+        source_language = str(source.get("language") or "en").strip().lower().replace("_", "-")
+        if source_language != signature["language"]:
+            return False
+    return True
 
 
 def adopt_signature(path: Path, payload: dict[str, Any], signature: dict[str, str]) -> None:

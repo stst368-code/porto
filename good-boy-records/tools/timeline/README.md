@@ -20,8 +20,8 @@ Audio dependencies once:
 Per variant the tools write fixed filenames:
 
     <song>-<version>.lyrics.json
-    <variant-folder>.audio.json
-    <variant-folder>.playback.json
+    gbr.audio.json
+    gbr.playback.json
 
 The variant folder is the durable identity. Audio/YAML filenames and paths are not stored as identity. A fast content fingerprint is stored instead, so renaming a file does not cause expensive work to rerun, while replacing the audio or changing authored lyrics does.
 
@@ -29,7 +29,7 @@ Existing `<song>-<version>.lyrics.json` files produced by the cleanup have no co
 
 ## Deterministic dance data
 
-`<variant-folder>.audio.json` stores a compact 10 Hz timeline. Each frame is four 0..255 integers:
+`gbr.audio.json` stores a compact 10 Hz timeline. Each frame is four 0..255 integers:
 
     [energy, bass, brightness, change]
 
@@ -37,7 +37,7 @@ Time is implicit: `frame_index / frame_hz`.
 
 It also stores beat `[time, strength]` pairs and sparse `pulsar` events. Pulsars are based primarily on sudden local energy lift plus onset/spectral novelty, so a continuously loud section does not repeatedly fire major blasts.
 
-`<variant-folder>.playback.json` is the combined website-facing file: lyric timings + dance timeline + beats + pulsars + line/word reaction values.
+`gbr.playback.json` is the combined website-facing file: lyric timings + dance timeline + beats + pulsars + line/word reaction values.
 
 Line/word reactions look like:
 
@@ -121,3 +121,25 @@ Preview only:
     tools\launchers\timeline-rename-lyrics.bat --dry-run
 
 Future lyric alignment writes the canonical filename directly.
+
+## Per-track lyric language (v2.4)
+
+Lyric alignment now reads an optional `language:` field from each variant YAML.
+Use short WhisperX/ISO-style language codes, for example:
+
+```yaml
+language: es   # Spanish
+language: ro   # Romanian
+language: pt   # Portuguese
+```
+
+If `language:` is absent, the lyric pipeline uses `en`, preserving all existing
+English tracks. A mixed-language showcase can therefore be processed in one run;
+each track passes its own language to WhisperX. The existing `--language` option
+is retained as an explicit command-line override for all selected tracks.
+
+The effective language is also written into the lyric JSON and its source
+signature. Legacy sidecars without a language signature are treated as English,
+so this update does not force every existing English song to rerun. Adding or
+changing `language:` on a non-English YAML does invalidate that track's lyric
+alignment and causes it to be regenerated on the next normal lyric run.

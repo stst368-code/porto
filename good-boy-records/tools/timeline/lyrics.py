@@ -55,6 +55,30 @@ def normalize_word(value: str) -> str:
     return "".join(ch for ch in text if ch.isalnum())
 
 
+def normalize_language(value: Any, default: str = "en") -> str:
+    """Return a WhisperX language code from YAML/CLI metadata.
+
+    GBR uses short ISO-style codes such as en, es, ro and pt. Underscores are
+    normalised to hyphens so metadata remains predictable. Invalid/blank values
+    fail early with a useful per-track error instead of being silently ignored.
+    """
+    text = str(value or default).strip().lower().replace("_", "-")
+    if not re.fullmatch(r"[a-z]{2,3}(?:-[a-z0-9]{2,8})?", text):
+        raise ValueError(f"invalid language code {value!r}; use a code such as en, es, ro or pt")
+    return text
+
+
+def effective_language(raw: dict[str, Any], cli_override: str | None) -> str:
+    """CLI override wins; otherwise use YAML language, defaulting to English."""
+    return normalize_language(cli_override if cli_override is not None else raw.get("language"), "en")
+
+
+def lyric_source_signature(variant: Any, language: str) -> dict[str, str]:
+    signature = source_signature(variant)
+    signature["language"] = language
+    return signature
+
+
 def lyric_lines(raw: str) -> list[LyricLine]:
     result: list[LyricLine] = []
     for raw_line in str(raw or "").splitlines():
@@ -263,7 +287,10 @@ def quality_bucket(coverage: float) -> str:
     return "poor"
 
 
-def build_payload(raw: dict[str, Any], recognised: list[dict[str, Any]], signature: dict[str, str], review_threshold: float) -> dict[str, Any]:
+def build_payload(
+    raw: dict[str, Any], recognised: list[dict[str, Any]], signature: dict[str, str],
+    review_threshold: float, language: str,
+) -> dict[str, Any]:
     lines = lyric_lines(str(raw.get("lyrics") or ""))
     tokens = [t for line in lines for t in line.tokens]
     if not tokens:
@@ -307,6 +334,7 @@ def build_payload(raw: dict[str, Any], recognised: list[dict[str, Any]], signatu
         "source": signature,
         "title": str(raw.get("title") or ""),
         "song_version": raw.get("version"),
+        "language": language,
         "stats": {
             "lyric_words": len(tokens),
             "recognised_words": len(recognised),
@@ -328,7 +356,10 @@ def main() -> int:
     add_common_args(parser)
     parser.add_argument("--no-demucs", action="store_true")
     parser.add_argument("--model", default="large-v3")
-    parser.add_argument("--language", default="en")
+    parser.add_argument(
+        "--language", default=None,
+        help="override YAML language for every selected track (default: per-track YAML language, then en)",
+    )
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--demucs-model", default="htdemucs")
     parser.add_argument("--device", choices=["auto", "cuda", "cpu"], default="auto")
@@ -346,7 +377,12 @@ def main() -> int:
     jobs = []
     for v in variants:
         target = lyrics_path(v)
-        signature = source_signature(v)
+        try:
+            language = effective_language(v.raw, args.language)
+        except ValueError as exc:
+            print(f"skip {v.directory.relative_to(showcase)}: {exc}")
+            continue
+        signature = lyric_source_signature(v, language)
         old = read_json(target)
         if old and not args.force:
             matched = source_matches(old, signature)
@@ -354,29 +390,39 @@ def main() -> int:
                 print(f"skip {v.directory.relative_to(showcase)}: lyrics current")
                 continue
             if matched is None:
-                adopt_signature(target, old, signature)
-                print(f"skip {v.directory.relative_to(showcase)}: adopted source signature for existing alignment")
-                continue
+                if language == "en":
+                    adopt_signature(target, old, signature)
+                    print(f"skip {v.directory.relative_to(showcase)}: adopted source signature for existing English alignment")
+                    continue
+                print(
+                    f"refresh {v.directory.relative_to(showcase)}: existing lyric alignment has no "
+                    f"language signature; regenerating as {language}"
+                )
         if not old and not args.force and migrate_old_lyrics(v):
             migrated = read_json(target)
-            if migrated:
+            if migrated and language == "en":
                 adopt_signature(target, migrated, signature)
-            continue
-        jobs.append((v, signature))
+                continue
+            if migrated:
+                print(
+                    f"refresh {v.directory.relative_to(showcase)}: migrated lyric alignment predates "
+                    f"language metadata; regenerating as {language}"
+                )
+        jobs.append((v, signature, language))
 
     if not jobs:
         print("No lyric alignment work required.")
         return 0
     print(f"Jobs: {len(jobs)}")
     if args.list:
-        for v, _ in jobs:
-            print("  ", v.directory.relative_to(showcase))
+        for v, _, language in jobs:
+            print(f"  {v.directory.relative_to(showcase)}  [{language}]")
         return 0
 
     WORK_ROOT.mkdir(parents=True, exist_ok=True)
     failures = 0
-    for v, signature in jobs:
-        print(f"\n{v.directory.relative_to(showcase)}")
+    for v, signature, language in jobs:
+        print(f"\n{v.directory.relative_to(showcase)}  [language={language}]")
         work = Path(tempfile.mkdtemp(prefix="gbr-", dir=str(WORK_ROOT)))
         try:
             alignment_audio = v.audio
@@ -385,11 +431,11 @@ def main() -> int:
                 alignment_audio, _, _ = isolate_vocals(v.audio, work, args.demucs_model, device, not args.no_cpu_fallback)
             print("  WhisperX word timing...")
             recognised, _, _, _ = transcribe_words(
-                alignment_audio, work, args.model, args.language, args.batch_size,
+                alignment_audio, work, args.model, language, args.batch_size,
                 device, compute_type, not args.no_cpu_fallback,
             )
             print("  Mapping authored YAML lyrics...")
-            payload = build_payload(v.raw, recognised, signature, args.review_threshold)
+            payload = build_payload(v.raw, recognised, signature, args.review_threshold, language)
             target = lyrics_path(v)
             atomic_json(target, payload)
             legacy = legacy_lyrics_path(v)
