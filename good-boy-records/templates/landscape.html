@@ -2813,6 +2813,316 @@ body.fx-test .fx-test-button{
 }
 </style>
 
+
+<style id="v1099-desktop-legibility-progress">
+/* GBR v10.9.9 — clearer desktop hardware + segmented retro transport */
+
+@media (min-width:901px){
+  /* Rebalance vertical stack: more MASTER and TRANSPORT breathing room. */
+  .hardware{
+    grid-template-rows:
+      minmax(320px,2.75fr)
+      60px
+      108px
+      32px
+      minmax(104px,.90fr)
+      minmax(116px,.98fr)!important;
+    gap:8px!important;
+  }
+
+  /* ---------------- MASTER legibility ---------------- */
+  .desktop-master-panel{
+    grid-template-columns:repeat(3,minmax(0,1fr)) 62px!important;
+    gap:8px!important;
+  }
+
+  .desktop-control-column{
+    grid-template-rows:36px 72px 20px minmax(0,1fr) 34px!important;
+    padding:5px 6px 7px!important;
+  }
+
+  .desktop-switch-label{
+    min-height:28px!important;
+    font-size:9.5px!important;
+    line-height:1.02!important;
+    letter-spacing:.095em!important;
+    text-shadow:0 0 8px rgba(var(--accent-rgb),.28)!important;
+  }
+
+  .toggle-state{
+    width:68px!important;
+    font-size:7px!important;
+    letter-spacing:.08em!important;
+  }
+
+  .desktop-dial{
+    grid-template-rows:22px minmax(72px,1fr) 14px 12px!important;
+    gap:2px!important;
+    padding-top:6px!important;
+  }
+
+  .desktop-dial-label{
+    font-size:8px!important;
+    letter-spacing:.11em!important;
+  }
+
+  .desktop-dial-ring{
+    width:80px!important;
+    height:80px!important;
+  }
+
+  .desktop-dial-ring .desktop-knob{
+    width:62px!important;
+    height:62px!important;
+    min-width:62px!important;
+    min-height:62px!important;
+  }
+
+  .desktop-dial-ring .desktop-knob::before{
+    top:7px!important;
+    height:18px!important;
+    transform-origin:50% 25px!important;
+  }
+
+  .dial-scale{
+    width:72px!important;
+    font-size:6.5px!important;
+  }
+
+  .desktop-dial-readout{
+    font-size:7.5px!important;
+  }
+
+  .desktop-format-block{
+    grid-row:4!important;
+    grid-template-rows:21px 1fr!important;
+    gap:4px!important;
+    padding-top:7px!important;
+  }
+
+  .desktop-format-block .desktop-dial-label{
+    font-size:7.5px!important;
+  }
+
+  .format-switch-row{
+    font-size:6.8px!important;
+    grid-template-columns:1fr 52px 1fr!important;
+  }
+
+  /* TEST now occupies its own grid row. No overlap with volume/fader. */
+  .desktop-test-button{
+    position:relative!important;
+    right:auto!important;
+    bottom:auto!important;
+    grid-row:5!important;
+    align-self:end!important;
+    justify-self:stretch!important;
+    width:calc(100% - 4px)!important;
+    height:30px!important;
+    margin:0 2px!important;
+    font-size:8px!important;
+    letter-spacing:.15em!important;
+  }
+
+  .desktop-volume-control{
+    padding:10px 3px 6px!important;
+  }
+  .desktop-volume-control small{
+    font-size:7.5px!important;
+    letter-spacing:.14em!important;
+  }
+
+  /* ---------------- NOW PLAYING ---------------- */
+  .now-playing-module{
+    min-height:60px!important;
+    height:60px!important;
+    padding:27px 14px 8px!important;
+  }
+  .now-playing-module .legend{
+    top:8px!important;
+    font-size:9px!important;
+  }
+  .now-playing-module .meta strong{
+    font-size:15px!important;
+  }
+  .now-playing-module .meta span{
+    font-size:8px!important;
+  }
+
+  /* ---------------- TRANSPORT ---------------- */
+  .transport-module{
+    min-height:108px!important;
+    height:108px!important;
+    padding:27px 10px 9px!important;
+    display:grid!important;
+    grid-template-rows:52px 28px!important;
+    gap:8px!important;
+  }
+  .transport-module .legend{
+    top:8px!important;
+    font-size:9px!important;
+  }
+
+  .transport{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:50px 62px 50px minmax(96px,1fr)!important;
+    align-items:center!important;
+    gap:8px!important;
+  }
+
+  .hw-button{
+    height:46px!important;
+    min-height:46px!important;
+    font-size:15px!important;
+  }
+  .hw-button.main{
+    height:52px!important;
+    min-height:52px!important;
+    font-size:17px!important;
+  }
+  .shuffle-button{
+    font-size:9px!important;
+    letter-spacing:.04em!important;
+  }
+
+  /* ---------------- segmented retro progress ---------------- */
+  .seek-rack{
+    position:relative;
+    width:100%;
+    height:28px;
+    padding:5px 7px;
+    border:1px solid color-mix(in srgb,var(--accent) 30%,#4a3d33 70%);
+    border-radius:4px;
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.23)),
+      #0b0c0b;
+    box-shadow:
+      inset 0 2px 7px #000b,
+      inset 0 0 0 1px rgba(255,255,255,.018);
+  }
+
+  .seek-segments{
+    position:absolute;
+    inset:6px 8px;
+    display:grid;
+    grid-template-columns:repeat(24,minmax(0,1fr));
+    gap:3px;
+    pointer-events:none;
+  }
+
+  .seek-segments span{
+    position:relative;
+    min-width:0;
+    border:1px solid rgba(118,102,84,.42);
+    border-radius:1px;
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.028),transparent 40%),
+      #171815;
+    box-shadow:
+      inset 0 1px rgba(255,255,255,.025),
+      inset 0 -2px 4px #0006;
+  }
+
+  .seek-segments span:first-child{
+    border-radius:5px 1px 1px 5px;
+  }
+  .seek-segments span:last-child{
+    border-radius:1px 5px 5px 1px;
+  }
+
+  .seek-segments span.lit{
+    border-color:color-mix(in srgb,var(--accent) 62%,#775f49 38%);
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.22),transparent 30%),
+      linear-gradient(180deg,color-mix(in srgb,var(--accent) 82%,white 18%),var(--accent));
+    box-shadow:
+      inset 0 1px rgba(255,255,255,.28),
+      inset 0 -2px 4px rgba(0,0,0,.28),
+      0 0 6px rgba(var(--accent-rgb),.22);
+  }
+
+  .seek-segments span.head{
+    box-shadow:
+      inset 0 1px rgba(255,255,255,.38),
+      inset 0 -2px 4px rgba(0,0,0,.22),
+      0 0 10px rgba(var(--accent-rgb),.55);
+  }
+
+  /* Invisible native range overlays the complete segmented rack for seeking. */
+  .seek-rack .seek{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    margin:0!important;
+    opacity:.001!important;
+    cursor:pointer!important;
+    z-index:3!important;
+    appearance:none!important;
+    -webkit-appearance:none!important;
+  }
+
+  /* ---------------- status / analysis labels ---------------- */
+  .time-module{
+    min-height:32px!important;
+    height:32px!important;
+  }
+  .time-module .time{
+    font-size:9px!important;
+  }
+
+  .vu-module .legend,
+  .spectrum-module .legend{
+    font-size:8.5px!important;
+  }
+}
+
+/* Mobile gets the same segmented transport language without consuming more
+   height. The normal native scrubber remains overlaid and fully interactive. */
+@media (max-width:900px){
+  .seek-rack{
+    position:relative;
+    width:100%;
+    height:20px;
+    padding:3px 5px;
+    border:1px solid color-mix(in srgb,var(--accent) 28%,#4a3d33 72%);
+    border-radius:3px;
+    background:#0a0b0a;
+    box-shadow:inset 0 2px 5px #000a;
+  }
+  .seek-segments{
+    position:absolute;
+    inset:4px 6px;
+    display:grid;
+    grid-template-columns:repeat(24,minmax(0,1fr));
+    gap:2px;
+    pointer-events:none;
+  }
+  .seek-segments span{
+    border:1px solid rgba(118,102,84,.38);
+    border-radius:1px;
+    background:#171815;
+  }
+  .seek-segments span.lit{
+    border-color:color-mix(in srgb,var(--accent) 65%,#6e5945 35%);
+    background:var(--accent);
+    box-shadow:0 0 5px rgba(var(--accent-rgb),.22);
+  }
+  .seek-segments span:first-child{border-radius:4px 1px 1px 4px}
+  .seek-segments span:last-child{border-radius:1px 4px 4px 1px}
+  .seek-rack .seek{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    margin:0!important;
+    opacity:.001!important;
+    z-index:3!important;
+  }
+}
+</style>
+
 </head>
 <body data-power="on">
 <div class="app">
@@ -2988,7 +3298,10 @@ body.fx-test .fx-test-button{
       </div>
     </section>
     <section class="module now-playing-module"><span class="legend">Now playing</span><div class="meta"><strong id="metaTitle">—</strong><span id="metaSub">—</span></div></section>
-    <section class="module transport-module"><span class="legend">Transport</span><div class="transport"><button class="hw-button" id="prev" title="Previous" aria-label="Previous">◀◀</button><button class="hw-button main" id="play" title="Play / Pause">▶</button><button class="hw-button" id="next" title="Next" aria-label="Next">▶▶</button><button class="hw-button shuffle-button" id="shuffle" title="Shuffle">Shuffle</button></div><input class="seek" id="seek" type="range" min="0" max="1" step="0.001" value="0"></section>
+    <section class="module transport-module"><span class="legend">Transport</span><div class="transport"><button class="hw-button" id="prev" title="Previous" aria-label="Previous">◀◀</button><button class="hw-button main" id="play" title="Play / Pause">▶</button><button class="hw-button" id="next" title="Next" aria-label="Next">▶▶</button><button class="hw-button shuffle-button" id="shuffle" title="Shuffle">Shuffle</button></div><div class="seek-rack">
+  <div class="seek-segments" id="seekSegments" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <input class="seek" id="seek" type="range" min="0" max="1" step="0.001" value="0" aria-label="Track position">
+</div></section>
     <section class="module time-module"><span class="status-led on" id="statusLed"></span><span class="time" id="time">0:00 / 0:00</span></section>
     <section class="module vu-module"><span class="legend">Analysis · Output level</span><div class="vu"><div class="needle" id="vuL"></div><small>LEFT</small></div><div class="vu"><div class="needle" id="vuR"></div><small>RIGHT</small></div></section>
     <section class="module spectrum-module"><span class="legend">Live spectrum</span><canvas id="spectrum"></canvas></section>
@@ -3014,7 +3327,7 @@ function externaliseShowcasePaths(value){
   if(value&&typeof value==='object'){for(const k of Object.keys(value))value[k]=externaliseShowcasePaths(value[k]);return value}
   return typeof value==='string'?showcaseUrl(value):value;
 }
-const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
+const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
 deskGenreZones:$('deskGenreZones'),deskAlbumLight:$('deskAlbumLight'),deskPower:$('deskPower'),
 deskFormatToggle:$('deskFormatToggle'),deskIntensity:$('deskIntensity'),deskIntensityValue:$('deskIntensityValue'),
 deskSensitivity:$('deskSensitivity'),deskSensitivityValue:$('deskSensitivityValue'),
@@ -4019,7 +4332,19 @@ ui.power.onclick=()=>{
     const needed=easter?1:3;
     if(powerCycleCount>=needed){powerCycleCount=0;if(powerCycleTimer){clearTimeout(powerCycleTimer);powerCycleTimer=null}toggleEaster();clickSound()}
   }
-};if(ui.fmtFlac)ui.fmtFlac.onclick=()=>{clickSound();switchAudioFormat('flac')};if(ui.fmtMp3)ui.fmtMp3.onclick=()=>{clickSound();switchAudioFormat('mp3')};ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound();audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound();next()}};ui.prev.onclick=()=>{if(power){clickSound();prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'Shuffle ✓':'Shuffle';ui.shuffle.title=shuffle?'Shuffle on: wild genre jumps':'Shuffle off'};ui.seek.oninput=()=>{if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>{ui.play.textContent='❚❚';const actual=classifyAudioUrl(audio.currentSrc||audio.src);if(actual==='flac'||actual==='mp3'){ui.fmtFlac?.classList.toggle('active',actual==='flac');ui.fmtMp3?.classList.toggle('active',actual==='mp3');preferredAudioFormat=actual;syncDesktopFormat()}};audio.onpause=()=>ui.play.textContent='▶';audio.onended=next;audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0};
+};if(ui.fmtFlac)ui.fmtFlac.onclick=()=>{clickSound();switchAudioFormat('flac')};if(ui.fmtMp3)ui.fmtMp3.onclick=()=>{clickSound();switchAudioFormat('mp3')};
+function updateSeekSegments(value){
+  if(!ui.seekSegments)return;
+  const v=Math.max(0,Math.min(1,Number(value)||0));
+  const cells=ui.seekSegments.children;
+  const lit=Math.round(v*cells.length);
+  for(let i=0;i<cells.length;i++){
+    cells[i].classList.toggle('lit',i<lit);
+    cells[i].classList.toggle('head',i===Math.max(0,lit-1)&&lit>0);
+  }
+}
+ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound();audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound();next()}};ui.prev.onclick=()=>{if(power){clickSound();prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'Shuffle ✓':'Shuffle';ui.shuffle.title=shuffle?'Shuffle on: wild genre jumps':'Shuffle off'};ui.seek.oninput=()=>{updateSeekSegments(ui.seek.value);if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>{ui.play.textContent='❚❚';const actual=classifyAudioUrl(audio.currentSrc||audio.src);if(actual==='flac'||actual==='mp3'){ui.fmtFlac?.classList.toggle('active',actual==='flac');ui.fmtMp3?.classList.toggle('active',actual==='mp3');preferredAudioFormat=actual;syncDesktopFormat()}};audio.onpause=()=>ui.play.textContent='▶';audio.onended=next;audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0;updateSeekSegments(ui.seek.value)};
+updateSeekSegments(0);
 bindSlider(ui.volumeKnob,setVolume);bindSlider(ui.lampKnob,setLamp);
 try{
   const savedSense=Number(localStorage.getItem('gbr:fx-sensitivity'));
