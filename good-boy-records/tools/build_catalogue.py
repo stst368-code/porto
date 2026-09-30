@@ -8,7 +8,7 @@ Source of truth:
         *.yaml
         *.flac / *.mp3
         *.png / *.jpg / *.webp
-        gbr.playback.json   (preferred timing/reaction file, if present)
+        <variant>.playback.json   (preferred timing/reaction file, if present)
         <variant>.lyrics.json (canonical lyrics-only fallback)
         gbr.lyrics.json       (cleanup-era fallback)
         *.lyrics.json         (last-resort compatibility fallback)
@@ -186,7 +186,9 @@ def choose_timing(directory: Path) -> tuple[str | None, dict[str, Any] | None]:
     # playback contains the same line timing plus reaction information, so it is
     # the preferred single runtime file when it exists.
     canonical_lyrics = directory / f"{directory.name}.lyrics.json"
+    canonical_playback = directory / f"{directory.name}.playback.json"
     ordered = [
+        canonical_playback,
         directory / "gbr.playback.json",
         canonical_lyrics,
         directory / "gbr.lyrics.json",
@@ -388,8 +390,13 @@ def build_track(
         },
     }
     # Future timeline hooks are only present when the files actually exist.
-    playback = yaml_path.parent / "gbr.playback.json"
-    analysis = yaml_path.parent / "gbr.audio.json"
+    variant_dir = yaml_path.parent
+    playback = variant_dir / f"{variant_dir.name}.playback.json"
+    if not playback.is_file():
+        playback = variant_dir / "gbr.playback.json"
+    analysis = variant_dir / f"{variant_dir.name}.audio.json"
+    if not analysis.is_file():
+        analysis = variant_dir / "gbr.audio.json"
     if playback.is_file():
         track["playback_url"] = showcase_url(playback)
     if analysis.is_file():

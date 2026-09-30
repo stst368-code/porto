@@ -20,8 +20,8 @@ Audio dependencies once:
 Per variant the tools write fixed filenames:
 
     <song>-<version>.lyrics.json
-    gbr.audio.json
-    gbr.playback.json
+    <variant-folder>.audio.json
+    <variant-folder>.playback.json
 
 The variant folder is the durable identity. Audio/YAML filenames and paths are not stored as identity. A fast content fingerprint is stored instead, so renaming a file does not cause expensive work to rerun, while replacing the audio or changing authored lyrics does.
 
@@ -29,7 +29,7 @@ Existing `<song>-<version>.lyrics.json` files produced by the cleanup have no co
 
 ## Deterministic dance data
 
-`gbr.audio.json` stores a compact 10 Hz timeline. Each frame is four 0..255 integers:
+`<variant-folder>.audio.json` stores a compact 10 Hz timeline. Each frame is four 0..255 integers:
 
     [energy, bass, brightness, change]
 
@@ -37,7 +37,7 @@ Time is implicit: `frame_index / frame_hz`.
 
 It also stores beat `[time, strength]` pairs and sparse `pulsar` events. Pulsars are based primarily on sudden local energy lift plus onset/spectral novelty, so a continuously loud section does not repeatedly fire major blasts.
 
-`gbr.playback.json` is the combined website-facing file: lyric timings + dance timeline + beats + pulsars + line/word reaction values.
+`<variant-folder>.playback.json` is the combined website-facing file: lyric timings + dance timeline + beats + pulsars + line/word reaction values.
 
 Line/word reactions look like:
 

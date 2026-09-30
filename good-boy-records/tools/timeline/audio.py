@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Pre-analyse tracks for deterministic GBR music-reactive visuals.
 
-Writes compact gbr.audio.json with whole-track QA values, 10 Hz dance frames,
+Writes compact <variant>.audio.json with whole-track QA values, 10 Hz dance frames,
 beat timing, and sparse pulsar candidates for sudden intensity lifts.
 """
 from __future__ import annotations
@@ -9,7 +9,7 @@ import argparse, math
 from pathlib import Path
 from typing import Any
 import numpy as np
-from common import AUDIO_FORMAT, AUDIO_NAME, add_common_args, atomic_json, discover_variants, read_json, resolve_showcase, source_matches, source_signature, adopt_signature
+from common import AUDIO_FORMAT, add_common_args, atomic_json, discover_variants, read_json, resolve_showcase, source_matches, source_signature, adopt_signature, audio_name, audio_path, migrate_audio_sidecar
 
 def db(v: float, floor: float=1e-12) -> float: return float(20.0 * math.log10(max(float(v), floor)))
 def robust01(v):
@@ -82,7 +82,7 @@ def main():
     showcase=resolve_showcase(args.showcase); variants=discover_variants(showcase,args.track); jobs=[]
     print(f'GBR AUDIO / DANCE ANALYSIS\\nShowcase: {showcase}')
     for v in variants:
-        target=v.directory/AUDIO_NAME; sig=source_signature(v); old=read_json(target)
+        target=migrate_audio_sidecar(v); sig=source_signature(v); old=read_json(target)
         if old and not args.force:
             matched=source_matches(old,sig)
             if matched is True: print(f'skip {v.directory.relative_to(showcase)}: audio analysis current'); continue
@@ -96,8 +96,8 @@ def main():
     for v,sig in jobs:
         print(f'\\n{v.directory.relative_to(showcase)}')
         try:
-            payload=analyse(v.audio,sig,args.frame_hz,args.event_threshold,args.event_gap); atomic_json(v.directory/AUDIO_NAME,payload)
-            print(f"  + {AUDIO_NAME}: {payload['bpm']:.1f} BPM, {len(payload['dance']['frames'])} dance frames, {len(payload['dance']['events'])} pulsar candidate(s)")
+            payload=analyse(v.audio,sig,args.frame_hz,args.event_threshold,args.event_gap); atomic_json(target,payload)
+            print(f"  + {audio_name(v)}: {payload['bpm']:.1f} BPM, {len(payload['dance']['frames'])} dance frames, {len(payload['dance']['events'])} pulsar candidate(s)")
         except Exception as exc: failures+=1; print(f'  ERROR: {exc}')
     print(f'\\nComplete: {len(jobs)-failures} succeeded, {failures} failed.'); return 1 if failures else 0
 if __name__=='__main__': raise SystemExit(main())
