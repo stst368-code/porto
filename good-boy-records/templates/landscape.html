@@ -3123,6 +3123,97 @@ body.fx-test .fx-test-button{
 }
 </style>
 
+
+<style id="v10910-desktop-polish-sfx">
+@media (min-width:901px){
+  /* The thin protruding pseudo-rail was reading as a second panel behind
+     the rack, especially at the lower-right corner. Remove the rail and
+     replace it with a soft chassis backlight. */
+  .hardware::before{
+    display:none!important;
+    content:none!important;
+  }
+
+  .hardware{
+    box-shadow:
+      inset -1px 0 color-mix(in srgb,var(--accent) 28%,#43382e 72%),
+      inset 1px 0 rgba(255,255,255,.025),
+      10px 0 28px rgba(0,0,0,.68),
+      0 0 16px rgba(var(--accent-rgb),.105),
+      0 0 42px rgba(var(--accent-rgb),.052)!important;
+  }
+
+  /* A restrained illuminated chassis edge, rather than another visible panel. */
+  .hardware .module{
+    box-shadow:
+      inset 0 1px rgba(255,255,255,.055),
+      inset 0 -8px 16px rgba(0,0,0,.24),
+      inset 0 0 0 2px rgba(0,0,0,.16),
+      0 4px 10px rgba(0,0,0,.48),
+      0 0 7px rgba(var(--accent-rgb),.035)!important;
+  }
+
+  /* Give the segmented seek rack a little air below it so the lower chassis
+     edge no longer crowds the segments. */
+  .transport-module{
+    min-height:114px!important;
+    height:114px!important;
+    padding:27px 10px 14px!important;
+    grid-template-rows:52px 28px!important;
+    gap:8px!important;
+  }
+
+  .seek-rack{
+    margin:0 3px 5px!important;
+  }
+
+  /* Sharpen the progress rack slightly more: hard metal endcaps and a
+     subtle separator line under the segment bank. */
+  .seek-rack::before,
+  .seek-rack::after{
+    content:"";
+    position:absolute;
+    z-index:1;
+    top:4px;
+    bottom:4px;
+    width:5px;
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.08),transparent 35%),
+      linear-gradient(#302b25,#121310);
+    border:1px solid #4b4035;
+    pointer-events:none;
+  }
+  .seek-rack::before{
+    left:3px;
+    border-radius:4px 1px 1px 4px;
+  }
+  .seek-rack::after{
+    right:3px;
+    border-radius:1px 4px 4px 1px;
+  }
+
+  .seek-segments{
+    inset:6px 11px!important;
+  }
+
+  /* Keep the CTRL tab visually on top of the new halo. */
+  .rack-collapse{
+    filter:drop-shadow(0 0 5px rgba(var(--accent-rgb),.12));
+  }
+}
+
+/* The mobile rack also gets a very restrained accent halo, without changing
+   its geometry from v10.9.8. */
+@media (max-width:900px){
+  .hardware{
+    box-shadow:
+      0 -12px 30px rgba(0,0,0,.64),
+      0 0 13px rgba(var(--accent-rgb),.07),
+      inset 0 1px rgba(255,255,255,.035)!important;
+  }
+}
+</style>
+
 </head>
 <body data-power="on">
 <div class="app">
@@ -3459,7 +3550,64 @@ function musicVisualState(t){
   return{level,high,bpm,beatClock,beat,beatPulse,subPulse,tempo,intensity}
 }
 function fmt(v){if(!Number.isFinite(v))return'0:00';const m=Math.floor(v/60),s=Math.floor(v%60);return`${m}:${String(s).padStart(2,'0')}`}
-function clickSound(){try{if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type='square';o.frequency.value=680;g.gain.setValueAtTime(.018,ac.currentTime);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+.018);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+.02)}catch{}}
+function clickSound(kind='button'){
+  try{
+    if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();
+    const now=ac.currentTime;
+    const master=ac.createGain();
+    master.gain.value=.72;
+    master.connect(ac.destination);
+
+    const tone=(type,f0,f1,amp,dur,delay=0)=>{
+      const o=ac.createOscillator(),g=ac.createGain(),t=now+delay;
+      o.type=type;
+      o.frequency.setValueAtTime(f0,t);
+      if(f1&&f1!==f0)o.frequency.exponentialRampToValueAtTime(Math.max(20,f1),t+dur);
+      g.gain.setValueAtTime(Math.max(.0001,amp),t);
+      g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+      o.connect(g);g.connect(master);o.start(t);o.stop(t+dur+.01);
+    };
+
+    const noise=(amp,dur,delay=0)=>{
+      const len=Math.max(1,Math.floor(ac.sampleRate*dur));
+      const b=ac.createBuffer(1,len,ac.sampleRate),d=b.getChannelData(0);
+      for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*(1-i/len);
+      const s=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter(),t=now+delay;
+      s.buffer=b;f.type='bandpass';f.frequency.value=1250;f.Q.value=.8;
+      g.gain.setValueAtTime(amp,t);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+      s.connect(f);f.connect(g);g.connect(master);s.start(t);
+    };
+
+    switch(kind){
+      case 'toggle':
+        tone('triangle',150,92,.050,.050);
+        noise(.026,.025,.006);
+        tone('square',920,720,.013,.018,.024);
+        break;
+      case 'dial':
+        tone('square',1320,1120,.010,.014);
+        noise(.010,.012);
+        break;
+      case 'fader':
+        noise(.018,.028);
+        tone('triangle',235,180,.018,.032,.004);
+        break;
+      case 'transport':
+        tone('triangle',185,118,.040,.045);
+        tone('square',760,620,.012,.016,.010);
+        break;
+      case 'test':
+        tone('sawtooth',105,72,.046,.070);
+        noise(.030,.035,.004);
+        tone('square',980,760,.014,.022,.042);
+        break;
+      default:
+        tone('triangle',280,190,.026,.026);
+        noise(.013,.016,.002);
+        break;
+    }
+  }catch{}
+}
 async function graph(){if(analyser)return;if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();analyser=ac.createAnalyser();analyser.fftSize=512;analyser.smoothingTimeConstant=.78;source=ac.createMediaElementSource(audio);source.connect(analyser);analyser.connect(ac.destination);freq=new Uint8Array(analyser.frequencyBinCount);timeData=new Uint8Array(analyser.fftSize)}
 function updateFaderVisual(el){
   if(!el)return;
@@ -3524,7 +3672,7 @@ function bindSlider(el,set){
       fromClientPoint(e.clientX,e.clientY);
       activePointer=null;
       try{control.releasePointerCapture(e.pointerId)}catch(_){}
-      clickSound();
+      clickSound('fader');
     };
     control.addEventListener('pointerup',finish);
     control.addEventListener('pointercancel',e=>{if(activePointer===e.pointerId)activePointer=null});
@@ -3626,7 +3774,7 @@ function bindRotary(el,getValue,setValue){
   const finish=e=>{
     if(active!==e.pointerId)return;
     active=null;try{el.releasePointerCapture(e.pointerId)}catch(_){}
-    clickSound()
+    clickSound('dial')
   };
   el.addEventListener('pointerup',finish);
   el.addEventListener('pointercancel',e=>{if(active===e.pointerId)active=null});
@@ -3652,7 +3800,7 @@ function setFxTest(on){
 }
 function bindFxTestButton(button){
   if(!button)return;
-  const on=e=>{e.preventDefault();setFxTest(true)};
+  const on=e=>{e.preventDefault();clickSound('test');setFxTest(true)};
   const off=e=>{e.preventDefault();setFxTest(false)};
   button.addEventListener('pointerdown',e=>{try{button.setPointerCapture(e.pointerId)}catch(_){};on(e)});
   button.addEventListener('pointerup',off);
@@ -4321,7 +4469,7 @@ function wildShuffleIndex(){
 }
 function next(){select(shuffle?wildShuffleIndex():index+1,true)}
 function prev(){select(shuffle?wildShuffleIndex():index-1,true)}
-function setPower(on){power=!!on;document.body.dataset.power=power?'on':'off';ui.power.setAttribute('aria-pressed',String(power));if(ui.deskPower)ui.deskPower.setAttribute('aria-pressed',String(power));ui.statusLed.classList.toggle('on',power);clickSound();if(!power)audio.pause();else if(audio.src){graph().then(()=>ac.resume())}}
+function setPower(on){power=!!on;document.body.dataset.power=power?'on':'off';ui.power.setAttribute('aria-pressed',String(power));if(ui.deskPower)ui.deskPower.setAttribute('aria-pressed',String(power));ui.statusLed.classList.toggle('on',power);clickSound('toggle');if(!power)audio.pause();else if(audio.src){graph().then(()=>ac.resume())}}
 ui.power.onclick=()=>{
   const wasOn=power;setPower(!power);
   // Count complete OFF -> ON cycles, not individual presses.
@@ -4332,7 +4480,7 @@ ui.power.onclick=()=>{
     const needed=easter?1:3;
     if(powerCycleCount>=needed){powerCycleCount=0;if(powerCycleTimer){clearTimeout(powerCycleTimer);powerCycleTimer=null}toggleEaster();clickSound()}
   }
-};if(ui.fmtFlac)ui.fmtFlac.onclick=()=>{clickSound();switchAudioFormat('flac')};if(ui.fmtMp3)ui.fmtMp3.onclick=()=>{clickSound();switchAudioFormat('mp3')};
+};if(ui.fmtFlac)ui.fmtFlac.onclick=()=>{clickSound('toggle');switchAudioFormat('flac')};if(ui.fmtMp3)ui.fmtMp3.onclick=()=>{clickSound('toggle');switchAudioFormat('mp3')};
 function updateSeekSegments(value){
   if(!ui.seekSegments)return;
   const v=Math.max(0,Math.min(1,Number(value)||0));
@@ -4343,7 +4491,7 @@ function updateSeekSegments(value){
     cells[i].classList.toggle('head',i===Math.max(0,lit-1)&&lit>0);
   }
 }
-ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound();audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound();next()}};ui.prev.onclick=()=>{if(power){clickSound();prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'Shuffle ✓':'Shuffle';ui.shuffle.title=shuffle?'Shuffle on: wild genre jumps':'Shuffle off'};ui.seek.oninput=()=>{updateSeekSegments(ui.seek.value);if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>{ui.play.textContent='❚❚';const actual=classifyAudioUrl(audio.currentSrc||audio.src);if(actual==='flac'||actual==='mp3'){ui.fmtFlac?.classList.toggle('active',actual==='flac');ui.fmtMp3?.classList.toggle('active',actual==='mp3');preferredAudioFormat=actual;syncDesktopFormat()}};audio.onpause=()=>ui.play.textContent='▶';audio.onended=next;audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0;updateSeekSegments(ui.seek.value)};
+ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound('transport');audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound('transport');next()}};ui.prev.onclick=()=>{if(power){clickSound('transport');prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'Shuffle ✓':'Shuffle';ui.shuffle.title=shuffle?'Shuffle on: wild genre jumps':'Shuffle off'};ui.seek.oninput=()=>{updateSeekSegments(ui.seek.value);if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>{ui.play.textContent='❚❚';const actual=classifyAudioUrl(audio.currentSrc||audio.src);if(actual==='flac'||actual==='mp3'){ui.fmtFlac?.classList.toggle('active',actual==='flac');ui.fmtMp3?.classList.toggle('active',actual==='mp3');preferredAudioFormat=actual;syncDesktopFormat()}};audio.onpause=()=>ui.play.textContent='▶';audio.onended=next;audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0;updateSeekSegments(ui.seek.value)};
 updateSeekSegments(0);
 bindSlider(ui.volumeKnob,setVolume);bindSlider(ui.lampKnob,setLamp);
 try{
@@ -4366,11 +4514,11 @@ try{
 syncDesktopToggles();
 syncDesktopFormat();
 
-if(ui.deskGenreZones)ui.deskGenreZones.onclick=()=>{clickSound();setGenreZonesEnabled(!genreZonesEnabled)};
-if(ui.deskAlbumLight)ui.deskAlbumLight.onclick=()=>{clickSound();setAlbumLightEnabled(!albumLightEnabled)};
+if(ui.deskGenreZones)ui.deskGenreZones.onclick=()=>{clickSound('toggle');setGenreZonesEnabled(!genreZonesEnabled)};
+if(ui.deskAlbumLight)ui.deskAlbumLight.onclick=()=>{clickSound('toggle');setAlbumLightEnabled(!albumLightEnabled)};
 if(ui.deskPower)ui.deskPower.onclick=()=>ui.power.click();
 if(ui.deskFormatToggle)ui.deskFormatToggle.onclick=()=>{
-  clickSound();
+  clickSound('toggle');
   switchAudioFormat(preferredAudioFormat==='flac'?'mp3':'flac');
 };
 function hitNode(clientX,clientY){if(viewMode==='knowledge')return hitKnowledgeNode(clientX,clientY);const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top,anchor=viewToScreen(playingAnchor.x,playingAnchor.y),mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?(innerWidth<=430?228:260):360,coreMargin=mobileCore?52:76;let best=null;for(const n of nodes){if(n.i===index)continue;const settled=viewToScreen(n.x,n.y),baseSize=nodeDisplaySize(n,false,false,false),halfCore=coreSize/2+coreMargin;if(settled.x+baseSize/2>anchor.x-halfCore&&settled.x-baseSize/2<anchor.x+halfCore&&settled.y+baseSize/2>anchor.y-halfCore&&settled.y-baseSize/2<anchor.y+halfCore+52+coreMargin*.72)continue;const shimmerX=(Math.sin(phase*(.72+n.seed1*.65)+n.seed2*6.283)*n.drift+Math.cos(phase*(.37+n.seed3*.44)+n.seed4*6.283)*n.drift*.35),shimmerY=(Math.cos(phase*(.69+n.seed2*.72)+n.seed1*6.283)*n.drift*.82+Math.sin(phase*(.41+n.seed4*.38)+n.seed3*6.283)*n.drift*.28),sp=viewToScreen(n.x+shimmerX,n.y+shimmerY),hit=Math.max(34,nodeDisplaySize(n,false,false,false)*.58),d=Math.hypot(sx-sp.x,sy-sp.y);if(d<hit&&(!best||d<best.d))best={d,n,sp}}return{best,sx,sy,r}}
