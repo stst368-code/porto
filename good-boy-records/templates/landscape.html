@@ -2538,6 +2538,281 @@ body.fx-test .fx-test-button{
 }
 </style>
 
+
+<style id="v1098-mobile-integrated-desktop-recovery">
+/* GBR v10.9.8
+   - mobile FX controls live permanently inside the control bay
+   - desktop/mobile collapse state is independent
+   - CTRL recovery handle is always reachable */
+
+/* ------------------------------- DESKTOP ------------------------------ */
+@media (min-width:901px){
+  /* v10.9.7 used overflow-y:auto, which clipped the protruding CTRL tab.
+     The rack fits the viewport grid, so let the handle protrude visibly. */
+  .hardware{
+    overflow:visible!important;
+    scrollbar-width:none!important;
+  }
+  .rack-collapse{z-index:999!important}
+
+  /* If the desktop rack is hidden, detach its recovery handle from the
+     translated rack and pin it to the left viewport edge. */
+  body.rack-collapsed .rack-collapse{
+    position:fixed!important;
+    left:0!important;
+    right:auto!important;
+    top:50%!important;
+    bottom:auto!important;
+    width:30px!important;
+    height:100px!important;
+    transform:translateY(-50%)!important;
+    pointer-events:auto!important;
+    border-left:1px solid color-mix(in srgb,var(--accent) 50%,#5e4f42 50%)!important;
+    border-radius:0 8px 8px 0!important;
+  }
+  body.rack-collapsed .rack-collapse .rack-collapse-icon{
+    transform:rotate(180deg)!important;
+  }
+}
+
+/* ------------------------------- MOBILE ------------------------------- */
+@media (max-width:900px){
+  :root{--mobile-dock:178px!important}
+
+  .hardware{
+    height:var(--mobile-dock)!important;
+    min-height:var(--mobile-dock)!important;
+    max-height:var(--mobile-dock)!important;
+    grid-template-rows:30px 86px 54px!important;
+  }
+
+  .master-module{
+    height:86px!important;
+    min-height:86px!important;
+    padding:4px 6px!important;
+    overflow:visible!important;
+  }
+
+  /* Portrait MASTER:
+       POWER/FORMAT | VOLUME | SENSE/LINES
+                    | LIGHTS | TEST
+     No floating FX launcher or popover. */
+  .master-controls{
+    width:100%!important;
+    height:100%!important;
+    display:grid!important;
+    grid-template-columns:86px minmax(0,1fr) 112px!important;
+    grid-template-rows:1fr 1fr!important;
+    grid-template-areas:
+      "power volume fx"
+      "power lights fx"!important;
+    align-items:center!important;
+    column-gap:8px!important;
+    row-gap:3px!important;
+  }
+
+  .power-format-stack{grid-area:power!important}
+  .slider-control:nth-of-type(1){grid-area:volume!important}
+  .slider-control:nth-of-type(2){grid-area:lights!important}
+
+  .mobile-mix-toggle{display:none!important}
+
+  .fx-bank{
+    grid-area:fx!important;
+    position:relative!important;
+    display:grid!important;
+    z-index:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    left:auto!important;
+    width:112px!important;
+    height:76px!important;
+    min-width:112px!important;
+    min-height:76px!important;
+    grid-template-columns:1fr 1fr!important;
+    grid-template-rows:50px 22px!important;
+    align-items:center!important;
+    justify-items:center!important;
+    gap:2px 4px!important;
+    padding:4px!important;
+    border:1px solid rgba(255,255,255,.045)!important;
+    border-radius:6px!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.14))!important;
+    box-shadow:inset 0 2px 9px #0007!important;
+  }
+
+  .fx-knob-wrap{
+    display:grid!important;
+    justify-items:center!important;
+    align-content:center!important;
+    grid-template-rows:34px 8px 7px!important;
+    gap:0!important;
+  }
+  .fx-knob{
+    width:33px!important;
+    height:33px!important;
+    min-width:33px!important;
+    min-height:33px!important;
+    padding:0!important;
+  }
+  .fx-knob::before{
+    top:4px!important;
+    height:9px!important;
+    transform-origin:50% 13px!important;
+  }
+  .fx-knob-wrap small{
+    font-size:5.6px!important;
+    line-height:1!important;
+    letter-spacing:.06em!important;
+  }
+  .fx-readout{
+    font-size:5.4px!important;
+    line-height:1!important;
+  }
+
+  .fx-test-button{
+    grid-column:1/-1!important;
+    width:100%!important;
+    height:21px!important;
+    min-height:21px!important;
+    padding:0!important;
+    margin:0!important;
+    border-radius:4px!important;
+    font-size:6px!important;
+    letter-spacing:.12em!important;
+  }
+
+  /* Old popout state cannot move this group. */
+  body.mobile-mix-open .fx-bank{display:grid!important}
+
+  /* Mobile CTRL recovery. */
+  .rack-collapse{
+    display:grid!important;
+    z-index:999!important;
+  }
+
+  body.rack-collapsed .hardware{
+    transform:translateY(100%)!important;
+    pointer-events:none!important;
+  }
+  body.rack-collapsed .rack-collapse{
+    position:fixed!important;
+    left:50%!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:0!important;
+    width:68px!important;
+    height:30px!important;
+    transform:translateX(-50%)!important;
+    pointer-events:auto!important;
+    border:1px solid color-mix(in srgb,var(--accent) 50%,#5e4f42 50%)!important;
+    border-bottom:0!important;
+    border-radius:7px 7px 0 0!important;
+  }
+  body.rack-collapsed .rack-collapse-icon{
+    transform:rotate(90deg)!important;
+  }
+}
+
+@media (max-width:430px){
+  .master-controls{
+    grid-template-columns:80px minmax(0,1fr) 100px!important;
+    column-gap:6px!important;
+  }
+  .fx-bank{
+    width:100px!important;
+    min-width:100px!important;
+    padding:3px!important;
+  }
+  .fx-knob{
+    width:30px!important;
+    height:30px!important;
+    min-width:30px!important;
+    min-height:30px!important;
+  }
+}
+
+/* Landscape: all controls share one bottom strip.
+   MASTER keeps power/format/volume/lights. FX sits in the reserved right
+   hardware column, not above the artwork. */
+@media (max-width:900px) and (orientation:landscape) and (max-height:600px){
+  :root{--mobile-dock:82px!important}
+
+  .hardware{
+    height:var(--mobile-dock)!important;
+    min-height:var(--mobile-dock)!important;
+    max-height:var(--mobile-dock)!important;
+    grid-template-columns:minmax(128px,.78fr) minmax(260px,1.35fr) minmax(304px,1.55fr) 122px!important;
+    grid-template-rows:1fr!important;
+    gap:6px!important;
+  }
+
+  .now-playing-module{
+    grid-column:1!important;
+    grid-row:1!important;
+    height:66px!important;
+    min-height:66px!important;
+  }
+
+  .master-module{
+    grid-column:2!important;
+    grid-row:1!important;
+    position:static!important;
+    height:66px!important;
+    min-height:66px!important;
+    padding:3px!important;
+  }
+
+  .master-controls{
+    grid-template-columns:76px minmax(0,1fr)!important;
+    grid-template-rows:1fr 1fr!important;
+    grid-template-areas:
+      "power volume"
+      "power lights"!important;
+    column-gap:6px!important;
+    row-gap:2px!important;
+  }
+
+  .fx-bank{
+    position:absolute!important;
+    grid-area:auto!important;
+    left:auto!important;
+    right:8px!important;
+    top:8px!important;
+    bottom:auto!important;
+    width:114px!important;
+    min-width:114px!important;
+    height:66px!important;
+    min-height:66px!important;
+    grid-template-rows:43px 18px!important;
+  }
+
+  .transport-module{
+    grid-column:3!important;
+    grid-row:1!important;
+    height:66px!important;
+    min-height:66px!important;
+  }
+
+  .rack-collapse{
+    left:auto!important;
+    right:8px!important;
+    top:-28px!important;
+    bottom:auto!important;
+    transform:none!important;
+  }
+
+  body.rack-collapsed .rack-collapse{
+    left:auto!important;
+    right:8px!important;
+    top:auto!important;
+    bottom:0!important;
+    transform:none!important;
+  }
+}
+</style>
+
 </head>
 <body data-power="on">
 <div class="app">
@@ -3088,6 +3363,11 @@ function bindFxTest(){
 /* v10.9.4: retractable LEFT control bay.
    This lives at top-level so CTRL works immediately after page load. */
 const rackCollapse=$('rackCollapse');
+function rackCollapseStorageKey(){
+  return window.matchMedia('(max-width:900px)').matches
+    ? 'gbr:rack-collapsed-mobile'
+    : 'gbr:rack-collapsed-desktop';
+}
 function setRackCollapsed(collapsed,persist=true){
   document.body.classList.toggle('rack-collapsed',!!collapsed);
   if(collapsed){
@@ -3103,14 +3383,17 @@ function setRackCollapsed(collapsed,persist=true){
     rackCollapse.title=collapsed?'Show control bay':'Hide control bay';
   }
   if(persist){
-    try{localStorage.setItem('gbr:rack-collapsed',collapsed?'1':'0')}catch(_){}
+    try{localStorage.setItem(rackCollapseStorageKey(),collapsed?'1':'0')}catch(_){}
   }
   window.setTimeout(()=>{try{resize()}catch(_){}},330);
 }
+function restoreRackCollapseForMode(){
+  let collapsed=false;
+  try{collapsed=localStorage.getItem(rackCollapseStorageKey())==='1'}catch(_){}
+  setRackCollapsed(collapsed,false);
+}
 if(rackCollapse){
-  let initiallyCollapsed=false;
-  try{initiallyCollapsed=localStorage.getItem('gbr:rack-collapsed')==='1'}catch(_){}
-  setRackCollapsed(initiallyCollapsed,false);
+  restoreRackCollapseForMode();
   rackCollapse.addEventListener('click',e=>{
     e.preventDefault();
     e.stopPropagation();
@@ -3118,6 +3401,14 @@ if(rackCollapse){
     setRackCollapsed(!document.body.classList.contains('rack-collapsed'));
   });
 }
+let rackModeMobile=window.matchMedia('(max-width:900px)').matches;
+window.addEventListener('resize',()=>{
+  const nowMobile=window.matchMedia('(max-width:900px)').matches;
+  if(nowMobile!==rackModeMobile){
+    rackModeMobile=nowMobile;
+    restoreRackCollapseForMode();
+  }
+});
 document.addEventListener('keydown',e=>{
   if(e.key.toLowerCase()!=='m'||e.ctrlKey||e.metaKey||e.altKey)return;
   const tag=(e.target&&e.target.tagName||'').toLowerCase();
@@ -3777,7 +4068,7 @@ ui.stage.addEventListener('pointerup',endPointer);ui.stage.addEventListener('poi
 ui.stage.addEventListener('wheel',e=>{if(e.target.closest('.side-panel,.utility-nav,.knowledge-reader,.genre-strip,.zoom-controls'))return;if(!power)return;e.preventDefault();const r=canvas.getBoundingClientRect();zoomAt(e.clientX-r.left,e.clientY-r.top,Math.exp(-e.deltaY*.0015))},{passive:false});
 ui.zoomIn.onclick=()=>{const r=canvas.getBoundingClientRect();zoomAt(r.width/2,r.height/2,1.28)};ui.zoomOut.onclick=()=>{const r=canvas.getBoundingClientRect();zoomAt(r.width/2,r.height/2,1/1.28)};ui.zoomReset.onclick=()=>viewMode==='knowledge'?fitKnowledge(false):fitCamera(false);
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&viewMode==='tracks')next();else if(e.key==='ArrowLeft'&&viewMode==='tracks')prev();else if(e.key===' '){e.preventDefault();ui.play.click()}else if(e.key==='+'||e.key==='=')ui.zoomIn.click();else if(e.key==='-')ui.zoomOut.click();else if(e.key==='0')ui.zoomReset.click();else if(e.key.toLowerCase()==='s')ui.shuffle.click();else if(e.key.toLowerCase()==='p')ui.power.click();else if(e.key.toLowerCase()==='e'&&viewMode==='tracks')toggleEaster();else if(e.key.toLowerCase()==='k')ui.knowledgeButton?.click()});new ResizeObserver(resize).observe(ui.stage);
-if(ui.mobileMixToggle){ui.mobileMixToggle.onclick=()=>{const open=document.body.classList.toggle('mobile-mix-open');ui.mobileMixToggle.setAttribute('aria-expanded',String(open));ui.mobileMixToggle.textContent=open?'CLOSE':'FX'}}
+if(ui.mobileMixToggle){ui.mobileMixToggle.onclick=()=>{document.body.classList.remove('mobile-mix-open');ui.mobileMixToggle.setAttribute('aria-expanded','false')}}
 if(ui.knowledgeButton)ui.knowledgeButton.onclick=()=>{clickSound();enterKnowledge()};
 if(ui.tracksButton)ui.tracksButton.onclick=()=>{clickSound();openTracksPanel()};
 if(ui.panelClose)ui.panelClose.onclick=closePanel;
