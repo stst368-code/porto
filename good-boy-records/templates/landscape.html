@@ -3752,6 +3752,34 @@ body.fx-test .fx-test-button{
 }
 </style>
 
+
+<style id="v10915-gas-light-full-control">
+:root{--gas-light:1}
+
+/* GAS LIGHT now truly gates the DOM-side lighting as well as the canvas.
+   At 0 these layers disappear completely. */
+.app{
+  background:
+    radial-gradient(
+      circle at 46% 42%,
+      rgba(var(--accent-rgb),calc(.10 * var(--gas-light))),
+      transparent 34%
+    ),
+    linear-gradient(#080909,#020303)!important;
+}
+
+.center-card::before{
+  opacity:var(--gas-light)!important;
+  transition:opacity .16s ease!important;
+}
+
+/* Keep the actual sleeve/art visible; only its emitted halo is controlled. */
+.center-card,
+.center-card #fixedCover{
+  opacity:1;
+}
+</style>
+
 </head>
 <body data-power="on">
 <div class="app">
@@ -4242,7 +4270,15 @@ function setVolume(v){
   setSlider(ui.deskVolume,volume);
   audio.volume=volume
 }
-function setLamp(v){lamp=setSlider(ui.lampKnob,v);document.documentElement.style.setProperty('--lamp',lamp)}
+function updateGasLightCss(){
+  const gas=testMode?1:(albumLightEnabled?lamp:0);
+  document.documentElement.style.setProperty('--gas-light',gas.toFixed(3));
+}
+function setLamp(v){
+  lamp=setSlider(ui.lampKnob,v);
+  document.documentElement.style.setProperty('--lamp',lamp);
+  updateGasLightCss();
+}
 
 function clamp01(v){return Math.max(0,Math.min(1,Number(v)||0))}
 function fxSensitivityGain(){return .25+fxSensitivity*2.25}
@@ -4286,6 +4322,7 @@ function setGenreZonesEnabled(on,persist=true){
 function setAlbumLightEnabled(on,persist=true){
   albumLightEnabled=!!on;
   if(ui.deskAlbumLight)ui.deskAlbumLight.setAttribute('aria-pressed',String(albumLightEnabled));
+  updateGasLightCss();
   if(persist)try{localStorage.setItem('gbr:gas-light',albumLightEnabled?'1':'0');localStorage.setItem('gbr:album-light',albumLightEnabled?'1':'0')}catch(_){}
 }
 function syncDesktopFormat(){
@@ -4333,6 +4370,7 @@ function bindRotary(el,getValue,setValue){
 function setFxTest(on){
   testMode=!!on;
   document.body.classList.toggle('fx-test',testMode);
+  updateGasLightCss();
   if(ui.fxTest)ui.fxTest.setAttribute('aria-pressed',String(testMode));
   if(ui.deskTest)ui.deskTest.setAttribute('aria-pressed',String(testMode))
 }
@@ -4913,7 +4951,7 @@ function drawKnowledge(w,h,music){
   ctx.restore();positionKnowledgeReader()
 }
 function draw(){
-  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const anchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y);const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?(innerWidth<=430?236:260):360,lyricHeight=mobileCore?52:58;ui.centerStack.style.left=`${anchorScreen.x}px`;ui.centerStack.style.top=`${anchorScreen.y}px`;ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,-50%) scale(1)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('width',`${coreSize}px`,'important');ui.centerCard.style.setProperty('height',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('width',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('height',`${coreSize}px`,'important');ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${c.r},${c.g},${c.b},${(easter?.08:.028)+.08*visualLamp})`);grad.addColorStop(.35,`rgba(${c.r},${c.g},${c.b},${.018+.035*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
+  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const anchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y);const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?(innerWidth<=430?236:260):360,lyricHeight=mobileCore?52:58;ui.centerStack.style.left=`${anchorScreen.x}px`;ui.centerStack.style.top=`${anchorScreen.y}px`;ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,-50%) scale(1)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('width',`${coreSize}px`,'important');ui.centerCard.style.setProperty('height',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('width',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('height',`${coreSize}px`,'important');ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${c.r},${c.g},${c.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${c.r},${c.g},${c.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
   if(viewMode==='knowledge'){
     drawKnowledge(w,h,music);
     document.documentElement.style.setProperty('--audio-level',level.toFixed(3));
@@ -4925,10 +4963,10 @@ function draw(){
   const focus=hoverIndex>=0?hoverIndex:index,focusNode=nodes[focus],parentCentroids=new Map();for(const p of parentLanes){const members=nodes.filter(n=>n.parent===p.name);if(!members.length)continue;const wx=members.reduce((a,n)=>a+n.baseX,0)/members.length,wy=members.reduce((a,n)=>a+n.baseY,0)/members.length,sp=viewToScreen(wx,wy);parentCentroids.set(p.name,{x:sp.x,y:sp.y,count:members.length})}
   drawClusterBoundaries(anchorScreen);
   drawParentSeparators(anchorScreen);
-  ctx.textAlign='center';for(const p of parentLanes){const pc=parentCentroids.get(p.name);if(!pc)continue;const active=!activeParent||activeParent===p.name,sample=nodes.find(n=>n.parent===p.name)?.t,cc=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#806040'),rr=(105+Math.sqrt(pc.count)*22)*camera.zoom,g=ctx.createRadialGradient(pc.x,pc.y,8,pc.x,pc.y,Math.max(50,rr));g.addColorStop(0,`rgba(${cc.r},${cc.g},${cc.b},${active?.10:.018})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pc.x,pc.y,Math.max(50,rr),0,Math.PI*2);ctx.fill();if(camera.zoom>.52){ctx.fillStyle=active?'rgba(225,210,190,.56)':'rgba(140,130,118,.15)';ctx.font=`800 ${Math.max(9,Math.min(16,10.5*camera.zoom))}px Courier New`;ctx.fillText(p.name.toUpperCase(),pc.x,pc.y-Math.max(58,rr*.64))}}
+  ctx.textAlign='center';for(const p of parentLanes){const pc=parentCentroids.get(p.name);if(!pc)continue;const active=!activeParent||activeParent===p.name,sample=nodes.find(n=>n.parent===p.name)?.t,cc=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#806040'),rr=(105+Math.sqrt(pc.count)*22)*camera.zoom,g=ctx.createRadialGradient(pc.x,pc.y,8,pc.x,pc.y,Math.max(50,rr));g.addColorStop(0,`rgba(${cc.r},${cc.g},${cc.b},${(active?.10:.018)*visualLamp})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pc.x,pc.y,Math.max(50,rr),0,Math.PI*2);ctx.fill();if(camera.zoom>.52){ctx.fillStyle=active?'rgba(225,210,190,.56)':'rgba(140,130,118,.15)';ctx.font=`800 ${Math.max(9,Math.min(16,10.5*camera.zoom))}px Courier New`;ctx.fillText(p.name.toUpperCase(),pc.x,pc.y-Math.max(58,rr*.64))}}
   if(camera.zoom>.78){const seen=new Set();ctx.textAlign='left';for(const n of nodes){const key=n.cluster;if(seen.has(key))continue;seen.add(key);const group=nodes.filter(x=>x.cluster===key),wx=group.reduce((a,x)=>a+x.baseX,0)/group.length,wy=group.reduce((a,x)=>a+x.baseY,0)/group.length,sp=viewToScreen(wx,wy);ctx.fillStyle='rgba(205,192,174,.42)';ctx.font=`700 ${Math.max(8,Math.min(12,8.5*camera.zoom))}px Courier New`;ctx.fillText(n.child.toUpperCase(),sp.x+50*camera.zoom,sp.y-48*camera.zoom)}}
   if(focusNode){const fs=focus===index?anchorScreen:viewToScreen(focusNode.x,focusNode.y);for(const n of nodes){if(n.i===focus)continue;if(n.t.composition&&n.t.composition===focusNode.t.composition){const ns=viewToScreen(n.x,n.y);ctx.strokeStyle=`rgba(${c.r},${c.g},${c.b},.32)`;ctx.lineWidth=Math.max(1,1.25*camera.zoom);ctx.beginPath();ctx.moveTo(fs.x,fs.y);ctx.lineTo(ns.x,ns.y);ctx.stroke()}}}
-  document.documentElement.style.setProperty('--audio-level',level.toFixed(3));if(anchorScreen.x>-500&&anchorScreen.x<w+500&&anchorScreen.y>-500&&anchorScreen.y<h+500){const ag=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,80,anchorScreen.x,anchorScreen.y,250+level*110);ag.addColorStop(0,`rgba(${c.r},${c.g},${c.b},${.10+level*.22})`);ag.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=ag;ctx.fillRect(anchorScreen.x-380,anchorScreen.y-380,760,760)}
+  document.documentElement.style.setProperty('--audio-level',level.toFixed(3));if(anchorScreen.x>-500&&anchorScreen.x<w+500&&anchorScreen.y>-500&&anchorScreen.y<h+500){const ag=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,80,anchorScreen.x,anchorScreen.y,250+level*110);ag.addColorStop(0,`rgba(${c.r},${c.g},${c.b},${(.10+level*.22)*visualLamp})`);ag.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=ag;ctx.fillRect(anchorScreen.x-380,anchorScreen.y-380,760,760)}
   for(const n of nodes){
     const laneActive=!activeParent||n.parent===activeParent,sel=n.i===index,hov=n.i===hoverIndex;
     if(sel)continue;
@@ -4982,7 +5020,7 @@ function drawStars(w,h,music={level:0,high:0,bpm:110,beatClock:0,beatPulse:0,sub
     // the BPM clock remains responsible for when it happens.
     const audioDrive=.26+music.level*.34+music.intensity*.28+music.high*.12;
     const fancy=scheduled*audioDrive*(st.twinkleGain||1);
-    const alpha=st.a*ambient*reveal*(1+fancy*(st.field?1.7:2.65));
+    const gasFieldDrive=st.field?visualLamp:1;const alpha=st.a*ambient*reveal*gasFieldDrive*(1+fancy*(st.field?1.7:2.65));
     const radius=st.r*(1+fancy*(st.field?.48:.78));
 
     starCtx.globalAlpha=Math.min(.94,alpha);starCtx.fillStyle='#fffdf7';starCtx.beginPath();starCtx.arc(sp.x,sp.y,radius,0,Math.PI*2);starCtx.fill();
