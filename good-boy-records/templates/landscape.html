@@ -3735,6 +3735,23 @@ body.fx-test .fx-test-button{
 }
 </style>
 
+
+<style id="v10914b-gas-light-safe">
+/* GBR v10.9.14b — rename ALBUM LIGHT to GAS LIGHT.
+   The existing stage-light path already drives the centre halo and the
+   ambient dotted field, so this patch updates the wording/UI to reflect that. */
+.album-light-column .desktop-switch-label{
+  color:#f1e4d1!important;
+  text-shadow:0 0 8px rgba(255,197,120,.18)!important;
+}
+.album-light-column .desktop-dial-label::after{
+  content:"  CLOUDS";
+  color:#a79b8a;
+  font-size:.92em;
+  letter-spacing:.08em;
+}
+</style>
+
 </head>
 <body data-power="on">
 <div class="app">
@@ -3795,7 +3812,7 @@ body.fx-test .fx-test-button{
         </div>
 
         <div class="desktop-control-column album-light-column">
-          <span class="desktop-switch-label">ALBUM<br>LIGHT</span>
+          <span class="desktop-switch-label">GAS<br>LIGHT</span>
           <div class="guarded-switch-shell">
             <button class="guarded-toggle" id="deskAlbumLight" type="button"
                     aria-label="Album light" aria-pressed="true" title="Toggle album lighting">
@@ -4269,7 +4286,7 @@ function setGenreZonesEnabled(on,persist=true){
 function setAlbumLightEnabled(on,persist=true){
   albumLightEnabled=!!on;
   if(ui.deskAlbumLight)ui.deskAlbumLight.setAttribute('aria-pressed',String(albumLightEnabled));
-  if(persist)try{localStorage.setItem('gbr:album-light',albumLightEnabled?'1':'0')}catch(_){}
+  if(persist)try{localStorage.setItem('gbr:gas-light',albumLightEnabled?'1':'0');localStorage.setItem('gbr:album-light',albumLightEnabled?'1':'0')}catch(_){}
 }
 function syncDesktopFormat(){
   if(!ui.deskFormatToggle)return;
@@ -5030,7 +5047,7 @@ bindFxTest();
 
 try{
   setGenreZonesEnabled(localStorage.getItem('gbr:genre-zones')!=='0',false);
-  setAlbumLightEnabled(localStorage.getItem('gbr:album-light')!=='0',false);
+  setAlbumLightEnabled((localStorage.getItem('gbr:gas-light') ?? localStorage.getItem('gbr:album-light'))!=='0',false);
 }catch(_){setGenreZonesEnabled(true,false);setAlbumLightEnabled(true,false)}
 syncDesktopToggles();
 syncDesktopFormat();
