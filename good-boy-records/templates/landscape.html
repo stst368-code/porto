@@ -3762,7 +3762,7 @@ body.fx-test .fx-test-button{
   background:
     radial-gradient(
       circle at 46% 42%,
-      rgba(var(--accent-rgb),calc(.10 * var(--gas-light))),
+      rgba(255,174,82,calc(.10 * var(--gas-light))),
       transparent 34%
     ),
     linear-gradient(#080909,#020303)!important;
@@ -4215,70 +4215,39 @@ body:not([data-view="knowledge"]) .knowledge-world-cards{display:none}
 </style>
 
 
-<style id="v10105-square-knowledge-fixed-core-gas-labels">
-/* GBR v10.10.5 — make the requested geometry literal. */
-:root{
-  --gas-rgb:214,145,72;
-  --gas-hot:#f2c98f;
-  --playing-cover-size:360px;
-}
+<style id="v10106-render-fixes">
+/* GBR v10.10.6 — final render-layer fixes. These are deliberately last in the
+   cascade so older v10 compatibility rules cannot override them. */
+:root{--gas-rgb:255,174,82}
 
-/* GAS LIGHT is a physical warm lamp, not a recoloured genre glow. */
-.app{
-  background:
-    radial-gradient(circle at 46% 42%,rgba(var(--gas-rgb),calc(.13 * var(--gas-light))),transparent 34%),
-    linear-gradient(#080909,#020303)!important;
+/* GAS LIGHT is a physical warm lamp, independent of genre colour. */
+.center-card{
+  box-shadow:0 24px 70px #000d,
+    0 0 calc(34px + var(--audio-level)*52px) rgba(var(--gas-rgb),calc((.20 + var(--audio-level)*.34) * var(--gas-light)))!important;
 }
 .center-card::before{
   background:radial-gradient(circle,
-    rgba(var(--gas-rgb),calc((.22 + var(--audio-level)*.28) * var(--gas-light))) 0%,
-    rgba(var(--gas-rgb),calc((.10 + var(--audio-level)*.18) * var(--gas-light))) 36%,
+    rgba(var(--gas-rgb),calc((.20 + var(--audio-level)*.34) * var(--gas-light))) 0%,
+    rgba(var(--gas-rgb),calc((.10 + var(--audio-level)*.22) * var(--gas-light))) 34%,
     transparent 72%)!important;
-}
-.center-card{
-  box-shadow:0 24px 70px #000d,0 0 44px rgba(var(--gas-rgb),calc(.30 * var(--gas-light)))!important;
+  opacity:var(--gas-light)!important;
 }
 
-/* The now-playing sleeve is screen-space UI: zooming the map must never resize it. */
-.center-stack{
-  width:var(--playing-cover-size)!important;
-  min-width:var(--playing-cover-size)!important;
-  max-width:var(--playing-cover-size)!important;
-  transform:translate(-50%,-50%)!important;
-  zoom:1!important;
+/* The now-playing sleeve is one screen-space size. Map zoom never changes it. */
+.center-stack,.center-card,.center-card #fixedCover{
+  width:360px!important;min-width:360px!important;max-width:360px!important;
 }
 .center-card,.center-card #fixedCover{
-  width:var(--playing-cover-size)!important;
-  min-width:var(--playing-cover-size)!important;
-  max-width:var(--playing-cover-size)!important;
-  height:var(--playing-cover-size)!important;
-  min-height:var(--playing-cover-size)!important;
-  max-height:var(--playing-cover-size)!important;
-  flex-basis:var(--playing-cover-size)!important;
-  transform:none!important;
-}
-.lyrics{width:var(--playing-cover-size)!important;min-width:var(--playing-cover-size)!important;max-width:var(--playing-cover-size)!important}
-
-/* Stronger top HUD genre identity. */
-.genre-label strong{
-  color:color-mix(in srgb,var(--accent) 58%,#fff4df 42%)!important;
-  text-shadow:0 1px 2px #000,0 0 10px rgba(var(--accent-rgb),.34)!important;
-}
-.genre-label small{
-  color:color-mix(in srgb,var(--accent) 82%,#fff0d4 18%)!important;
-  text-shadow:0 1px 2px #000,0 0 10px rgba(var(--accent-rgb),.40)!important;
+  height:360px!important;min-height:360px!important;max-height:360px!important;
 }
 
-/* Expanded Knowledge cards remain strict album-cover squares. */
-.knowledge-world-card{border-radius:0!important;aspect-ratio:1/1!important}
-.knowledge-world-card-head,.knowledge-world-card-foot{border-radius:0!important}
-
-@media(max-width:900px){
-  :root{--playing-cover-size:min(360px,calc(100vw - 38px))}
-}
+/* Expanded Knowledge cards deliberately share the square album-cover geometry. */
+.knowledge-world-card{width:360px!important;height:360px!important;border-radius:0!important}
+@media(max-width:900px){.knowledge-world-card{width:300px!important;height:300px!important;border-radius:0!important}}
 </style>
 
 </head>
+<!-- GBR_BUILD: v10.10.6 FRESH_RENDER_FIX -->
 <body data-power="on">
 <div class="app">
   <main class="stage" id="stage" tabindex="0">
@@ -5795,8 +5764,8 @@ function hitKnowledgeNode(clientX,clientY){
   for(const n of knowledgeNodes){
     if(!visible.has(n.id)||knowledgeExpanded.has(n.id))continue;
     const p=layout.get(n.id);if(!p)continue;
-    const sp=viewToScreen(p.x,p.y),hit=knowledgeNodeSize(n)*.54+12,dx=Math.abs(sx-sp.x),dy=Math.abs(sy-sp.y),d=Math.max(dx,dy);
-    if(dx<hit&&dy<hit&&(!best||d<best.d))best={d,n,sp}
+    const sp=viewToScreen(p.x,p.y),side=knowledgeNodeSize(n),dx=Math.abs(sx-sp.x),dy=Math.abs(sy-sp.y),d=Math.hypot(dx,dy);
+    if(dx<=side*.5+14&&dy<=side*.5+14&&(!best||d<best.d))best={d,n,sp}
   }
   return{best,sx,sy,r}
 }
@@ -5834,8 +5803,9 @@ function drawKnowledge(w,h,music){
     const glow=size*(hov||sel?2.12:1.42),g=ctx.createRadialGradient(sp.x,sp.y,2,sp.x,sp.y,glow);
     g.addColorStop(0,`rgba(${col.r},${col.g},${col.b},${sel?.32:hov?.25:.10})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(sp.x,sp.y,glow,0,Math.PI*2);ctx.fill();
     ctx.fillStyle=n.kind==='root'?`rgba(${col.r},${col.g},${col.b},.82)`:n.kind==='document'?`rgba(${col.r},${col.g},${col.b},${hov||sel?.82:.54})`:n.kind==='chain'?`rgba(${col.r},${col.g},${col.b},${hov||sel?.79:.47})`:`rgba(${col.r},${col.g},${col.b},${hov||sel?.69:.29})`;
-    const sq=size*.92,sx=sp.x-sq/2,sy=sp.y-sq/2;ctx.fillRect(sx,sy,sq,sq);
-    ctx.strokeStyle=sel?'rgba(255,244,226,.95)':hov?'rgba(255,240,216,.76)':'rgba(255,255,255,.24)';ctx.lineWidth=sel?2.2:hov?1.6:1;ctx.strokeRect(sx-.5,sy-.5,sq+1,sq+1);
+    const nodeSide=size;
+    ctx.fillRect(sp.x-nodeSide*.5,sp.y-nodeSide*.5,nodeSide,nodeSide);
+    ctx.strokeStyle=sel?'rgba(255,244,226,.95)':hov?'rgba(255,240,216,.76)':'rgba(255,255,255,.24)';ctx.lineWidth=sel?2.2:hov?1.6:1;ctx.strokeRect(sp.x-nodeSide*.5,sp.y-nodeSide*.5,nodeSide,nodeSide);
 
     ctx.fillStyle=hov||sel?'#fff2df':'#d7c8b4';ctx.textAlign='center';ctx.textBaseline='middle';
     const font=n.kind==='root'?11:n.kind==='document'?9:n.kind==='chain'?7.8:n.depth<=1?7:6.2;
@@ -5856,7 +5826,7 @@ function drawKnowledge(w,h,music){
   positionKnowledgeWorldCards(layout)
 }
 function draw(){
-  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const anchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y);const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=360,lyricHeight=mobileCore?52:58;ui.centerStack.style.left=`${anchorScreen.x}px`;ui.centerStack.style.top=`${anchorScreen.y}px`;ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,-50%) scale(1)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('width',`${coreSize}px`,'important');ui.centerCard.style.setProperty('height',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('width',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('height',`${coreSize}px`,'important');ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const gasC={r:214,g:145,b:72};const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gasC.r},${gasC.g},${gasC.b},${((easter?.10:.045)+.11*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gasC.r},${gasC.g},${gasC.b},${(.024+.045*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
+  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const anchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y);const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=360,lyricHeight=mobileCore?52:58;ui.centerStack.style.left=`${anchorScreen.x}px`;ui.centerStack.style.top=`${anchorScreen.y}px`;ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,-50%) scale(1)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('width',`${coreSize}px`,'important');ui.centerCard.style.setProperty('height',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('width',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('height',`${coreSize}px`,'important');ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
   if(viewMode==='knowledge'){
     drawKnowledge(w,h,music);
     document.documentElement.style.setProperty('--audio-level',level.toFixed(3));
@@ -5868,10 +5838,10 @@ function draw(){
   const focus=hoverIndex>=0?hoverIndex:index,focusNode=nodes[focus],parentCentroids=new Map();for(const p of parentLanes){const members=nodes.filter(n=>n.parent===p.name);if(!members.length)continue;const wx=members.reduce((a,n)=>a+n.baseX,0)/members.length,wy=members.reduce((a,n)=>a+n.baseY,0)/members.length,sp=viewToScreen(wx,wy);parentCentroids.set(p.name,{x:sp.x,y:sp.y,count:members.length})}
   drawClusterBoundaries(anchorScreen);
   drawParentSeparators(anchorScreen);
-  ctx.textAlign='center';for(const p of parentLanes){const pc=parentCentroids.get(p.name);if(!pc)continue;const active=!activeParent||activeParent===p.name,sample=nodes.find(n=>n.parent===p.name)?.t,cc=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#806040'),rr=(105+Math.sqrt(pc.count)*22)*camera.zoom,g=ctx.createRadialGradient(pc.x,pc.y,8,pc.x,pc.y,Math.max(50,rr));g.addColorStop(0,`rgba(${cc.r},${cc.g},${cc.b},${(active?.10:.018)*visualLamp})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pc.x,pc.y,Math.max(50,rr),0,Math.PI*2);ctx.fill();if(camera.zoom>.34){const label=p.name.toUpperCase(),ly=pc.y-Math.max(58,rr*.64);ctx.font=`900 ${Math.max(11,Math.min(18,12.5*Math.max(.72,camera.zoom)))}px Courier New`;ctx.lineWidth=4;ctx.strokeStyle=active?'rgba(0,0,0,.82)':'rgba(0,0,0,.64)';ctx.strokeText(label,pc.x,ly);ctx.fillStyle=active?'rgba(246,232,210,.94)':'rgba(195,181,161,.48)';ctx.shadowColor=active?`rgba(${cc.r},${cc.g},${cc.b},.48)`:'transparent';ctx.shadowBlur=active?9:0;ctx.fillText(label,pc.x,ly);ctx.shadowBlur=0}}
-  if(camera.zoom>.48){const seen=new Set();ctx.textAlign='left';for(const n of nodes){const key=n.cluster;if(seen.has(key))continue;seen.add(key);const group=nodes.filter(x=>x.cluster===key),wx=group.reduce((a,x)=>a+x.baseX,0)/group.length,wy=group.reduce((a,x)=>a+x.baseY,0)/group.length,sp=viewToScreen(wx,wy),label=n.child.toUpperCase(),lc=rgb(n.t.genre?.child_colour||'#c9b394');ctx.font=`900 ${Math.max(10,Math.min(14,10.5*Math.max(.72,camera.zoom)))}px Courier New`;ctx.lineWidth=3.5;ctx.strokeStyle='rgba(0,0,0,.86)';ctx.strokeText(label,sp.x+48*camera.zoom,sp.y-46*camera.zoom);ctx.fillStyle='rgba(238,224,204,.88)';ctx.shadowColor=`rgba(${lc.r},${lc.g},${lc.b},.42)`;ctx.shadowBlur=7;ctx.fillText(label,sp.x+48*camera.zoom,sp.y-46*camera.zoom);ctx.shadowBlur=0}}
+  ctx.textAlign='center';for(const p of parentLanes){const pc=parentCentroids.get(p.name);if(!pc)continue;const active=!activeParent||activeParent===p.name,sample=nodes.find(n=>n.parent===p.name)?.t,cc=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#806040'),rr=(105+Math.sqrt(pc.count)*22)*camera.zoom,g=ctx.createRadialGradient(pc.x,pc.y,8,pc.x,pc.y,Math.max(50,rr));g.addColorStop(0,`rgba(${cc.r},${cc.g},${cc.b},${(active?.10:.018)*visualLamp})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pc.x,pc.y,Math.max(50,rr),0,Math.PI*2);ctx.fill();if(camera.zoom>.24){const labelY=pc.y-Math.max(58,rr*.64);ctx.font='900 14px Courier New';ctx.lineWidth=4;ctx.strokeStyle='rgba(0,0,0,.88)';ctx.strokeText(p.name.toUpperCase(),pc.x,labelY);ctx.fillStyle=active?`rgba(${Math.min(255,cc.r+120)},${Math.min(255,cc.g+120)},${Math.min(255,cc.b+120)},.96)`:'rgba(188,176,160,.48)';ctx.shadowColor=`rgba(${cc.r},${cc.g},${cc.b},.55)`;ctx.shadowBlur=8;ctx.fillText(p.name.toUpperCase(),pc.x,labelY);ctx.shadowBlur=0}}
+  if(camera.zoom>.30){const seen=new Set();ctx.textAlign='left';for(const n of nodes){const key=n.cluster;if(seen.has(key))continue;seen.add(key);const group=nodes.filter(x=>x.cluster===key),wx=group.reduce((a,x)=>a+x.baseX,0)/group.length,wy=group.reduce((a,x)=>a+x.baseY,0)/group.length,sp=viewToScreen(wx,wy),cc=rgb(n.t?.genre?.child_colour||'#c49a6c'),lx=sp.x+Math.max(34,50*camera.zoom),ly=sp.y-Math.max(32,48*camera.zoom);ctx.font='800 12px Courier New';ctx.lineWidth=4;ctx.strokeStyle='rgba(0,0,0,.90)';ctx.strokeText(n.child.toUpperCase(),lx,ly);ctx.fillStyle=`rgba(${Math.min(255,cc.r+105)},${Math.min(255,cc.g+105)},${Math.min(255,cc.b+105)},.94)`;ctx.shadowColor=`rgba(${cc.r},${cc.g},${cc.b},.52)`;ctx.shadowBlur=7;ctx.fillText(n.child.toUpperCase(),lx,ly);ctx.shadowBlur=0}}
   if(focusNode){const fs=focus===index?anchorScreen:viewToScreen(focusNode.x,focusNode.y);for(const n of nodes){if(n.i===focus)continue;if(n.t.composition&&n.t.composition===focusNode.t.composition){const ns=viewToScreen(n.x,n.y);ctx.strokeStyle=`rgba(${c.r},${c.g},${c.b},.32)`;ctx.lineWidth=Math.max(1,1.25*camera.zoom);ctx.beginPath();ctx.moveTo(fs.x,fs.y);ctx.lineTo(ns.x,ns.y);ctx.stroke()}}}
-  document.documentElement.style.setProperty('--audio-level',level.toFixed(3));if(anchorScreen.x>-500&&anchorScreen.x<w+500&&anchorScreen.y>-500&&anchorScreen.y<h+500){const ag=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,80,anchorScreen.x,anchorScreen.y,250+level*110);ag.addColorStop(0,`rgba(${gasC.r},${gasC.g},${gasC.b},${(.12+level*.24)*visualLamp})`);ag.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=ag;ctx.fillRect(anchorScreen.x-380,anchorScreen.y-380,760,760)}
+  document.documentElement.style.setProperty('--audio-level',level.toFixed(3));if(anchorScreen.x>-500&&anchorScreen.x<w+500&&anchorScreen.y>-500&&anchorScreen.y<h+500){const ag=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,80,anchorScreen.x,anchorScreen.y,250+level*110);ag.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${(.10+level*.22)*visualLamp})`);ag.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=ag;ctx.fillRect(anchorScreen.x-380,anchorScreen.y-380,760,760)}
   for(const n of nodes){
     const laneActive=!activeParent||n.parent===activeParent,sel=n.i===index,hov=n.i===hoverIndex;
     if(sel)continue;
@@ -5928,7 +5898,7 @@ function drawStars(w,h,music={level:0,high:0,bpm:110,beatClock:0,beatPulse:0,sub
     const gasFieldDrive=st.field?visualLamp:1;const alpha=st.a*ambient*reveal*gasFieldDrive*(1+fancy*(st.field?1.7:2.65));
     const radius=st.r*(1+fancy*(st.field?.48:.78));
 
-    starCtx.globalAlpha=Math.min(.94,alpha);starCtx.fillStyle=st.field?'rgb(242,201,143)':'#fffdf7';starCtx.beginPath();starCtx.arc(sp.x,sp.y,radius,0,Math.PI*2);starCtx.fill();
+    starCtx.globalAlpha=Math.min(.94,alpha);starCtx.fillStyle=st.field?'rgb(255,190,108)':'#fffdf7';starCtx.beginPath();starCtx.arc(sp.x,sp.y,radius,0,Math.PI*2);starCtx.fill();
     if(!st.field&&st.r>.72&&fancy>.16){
       starCtx.globalAlpha=Math.min(.34,alpha*fancy*.76);starCtx.strokeStyle='#fffdf7';starCtx.lineWidth=.42;
       const ray=radius*(1.7+fancy*1.35);starCtx.beginPath();starCtx.moveTo(sp.x-ray,sp.y);starCtx.lineTo(sp.x+ray,sp.y);starCtx.moveTo(sp.x,sp.y-ray);starCtx.lineTo(sp.x,sp.y+ray);starCtx.stroke()
