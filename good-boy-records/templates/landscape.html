@@ -4421,6 +4421,34 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
 }
 </style>
 <!-- GBR_BUILD: v10.10.10 GAS_CONTROL_CASCADE_FIX -->
+<style id="v101011-playing-cover-architecture-fix">
+/* v10.10.11: playing artwork is a DOM image overlay, deliberately NOT a canvas.
+   Only its screen position comes from the world->screen projection. Its box size
+   is constant CSS pixels and never multiplies by camera.zoom. */
+#fixedCover.playing-cover-overlay{
+  position:absolute!important;
+  display:block!important;
+  inset:auto!important;
+  right:auto!important;bottom:auto!important;
+  width:360px!important;height:360px!important;
+  min-width:360px!important;max-width:360px!important;
+  min-height:360px!important;max-height:360px!important;
+  transform:translate(-50%,-50%)!important;
+  transform-origin:50% 50%!important;
+  object-fit:cover!important;
+  pointer-events:none!important;
+  z-index:526!important;
+}
+@media(max-width:900px){
+  #fixedCover.playing-cover-overlay{
+    width:252px!important;height:252px!important;
+    min-width:252px!important;max-width:252px!important;
+    min-height:252px!important;max-height:252px!important;
+  }
+}
+</style>
+<!-- GBR_BUILD: v10.10.11 PLAYING_COVER_ARCHITECTURE_FIX -->
+
 </head>
 <!-- GBR_BUILD: v10.10.9 TRUE_CLUSTER_LABELS_FIXED_WORLD_COVER_GAS_UI -->
 <body data-power="on">
@@ -4428,7 +4456,7 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
   <main class="stage" id="stage" tabindex="0">
     <canvas id="canvas"></canvas>
     <canvas id="starCanvas" aria-hidden="true"></canvas>
-    <canvas id="fixedCover" class="playing-cover-overlay" width="360" height="360" aria-label="Now playing artwork"></canvas>
+    <img id="fixedCover" class="playing-cover-overlay" alt="" aria-hidden="true">
     <div class="knowledge-world-cards" id="knowledgeWorldCards" aria-live="polite"></div>
     <div class="hud">
       <div class="genre-label"><strong class="mobile-song-title" id="mobileSongTitle">loading</strong><strong class="genre-parent" id="genreParent">Loading</strong><small id="genreChild">—</small></div><div class="map-tip" id="mapTip"><strong></strong><small></small></div>
@@ -5161,7 +5189,7 @@ async function load(){
   const parentMap=new Map();for(const tr of tracks){const name=tr.genre?.parent_genre||'Unclassified';if(!parentMap.has(name))parentMap.set(name,{name,colour:tr.genre?.parent_colour||'#808080',order:tr.genre?.parent_order??tr.genre?.taxonomy_order??1e9})}
   parentLanes=[...parentMap.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.order-b.order||a.name.localeCompare(b.name));buildGenreStrip();ui.loading.hidden=true;setVolume(.5);setLamp(.5);select(0,false);resize()
 }
-function paintFixedCover(){if(!ui.fixedCover||!ui.cover)return;const fc=ui.fixedCover,cc=fc.getContext('2d');fc.width=720;fc.height=720;cc.clearRect(0,0,720,720);if(ui.cover.complete&&ui.cover.naturalWidth)cc.drawImage(ui.cover,0,0,720,720)}
+function paintFixedCover(){if(!ui.fixedCover||!ui.cover)return;const src=ui.cover.currentSrc||ui.cover.src;if(src&&ui.fixedCover.src!==src)ui.fixedCover.src=src}
 function mediaSessionSupported(){return 'mediaSession' in navigator}
 function updateMediaPositionState(){
   if(!mediaSessionSupported()||typeof navigator.mediaSession.setPositionState!=='function')return;
@@ -5195,7 +5223,7 @@ function installMediaSessionControls(){
   set('stop',()=>{audio.pause();try{audio.currentTime=0}catch(_){ }});
 }
 installMediaSessionControls();
-function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');syncMediaSession(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.cover.src=artOf(t);ui.cover.alt=`Album artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows()}
+function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');syncMediaSession(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.fixedCover.onerror=()=>{if(ui.fixedCover.src!==FALLBACK_ART)ui.fixedCover.src=FALLBACK_ART};const artwork=artOf(t);ui.cover.src=artwork;ui.fixedCover.src=artwork;ui.cover.alt=`Album artwork for ${titleOf(t)}`;ui.fixedCover.alt=`Now playing artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows()}
 function seededUnit(text){let h=2166136261;for(const ch of String(text)){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return((h>>>0)%10000)/10000}
 
 const KNOWLEDGE_MANIFEST_URL='knowledge-manifest.json';
@@ -6181,7 +6209,7 @@ if(ui.deskFormatToggle)ui.deskFormatToggle.onclick=()=>{
   clickSound('toggle');
   switchAudioFormat(preferredAudioFormat==='flac'?'mp3':'flac');
 };
-function hitNode(clientX,clientY){if(viewMode==='knowledge')return hitKnowledgeNode(clientX,clientY);const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top,anchor={x:ui.stage.clientWidth*.5,y:ui.stage.clientHeight*.5},mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,coreMargin=mobileCore?52:76;let best=null;for(const n of nodes){if(n.i===index)continue;const settled=viewToScreen(n.x,n.y),baseSize=nodeDisplaySize(n,false,false,false),halfCore=coreSize/2+coreMargin;if(settled.x+baseSize/2>anchor.x-halfCore&&settled.x-baseSize/2<anchor.x+halfCore&&settled.y+baseSize/2>anchor.y-halfCore&&settled.y-baseSize/2<anchor.y+halfCore+52+coreMargin*.72)continue;const shimmerX=(Math.sin(phase*(.72+n.seed1*.65)+n.seed2*6.283)*n.drift+Math.cos(phase*(.37+n.seed3*.44)+n.seed4*6.283)*n.drift*.35),shimmerY=(Math.cos(phase*(.69+n.seed2*.72)+n.seed1*6.283)*n.drift*.82+Math.sin(phase*(.41+n.seed4*.38)+n.seed3*6.283)*n.drift*.28),sp=viewToScreen(n.x+shimmerX,n.y+shimmerY),hit=Math.max(34,nodeDisplaySize(n,false,false,false)*.58),d=Math.hypot(sx-sp.x,sy-sp.y);if(d<hit&&(!best||d<best.d))best={d,n,sp}}return{best,sx,sy,r}}
+function hitNode(clientX,clientY){if(viewMode==='knowledge')return hitKnowledgeNode(clientX,clientY);const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top,anchor=viewToScreen(playingAnchor.x,playingAnchor.y),mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,coreMargin=mobileCore?52:76;let best=null;for(const n of nodes){if(n.i===index)continue;const settled=viewToScreen(n.x,n.y),baseSize=nodeDisplaySize(n,false,false,false),halfCore=coreSize/2+coreMargin;if(settled.x+baseSize/2>anchor.x-halfCore&&settled.x-baseSize/2<anchor.x+halfCore&&settled.y+baseSize/2>anchor.y-halfCore&&settled.y-baseSize/2<anchor.y+halfCore+52+coreMargin*.72)continue;const shimmerX=(Math.sin(phase*(.72+n.seed1*.65)+n.seed2*6.283)*n.drift+Math.cos(phase*(.37+n.seed3*.44)+n.seed4*6.283)*n.drift*.35),shimmerY=(Math.cos(phase*(.69+n.seed2*.72)+n.seed1*6.283)*n.drift*.82+Math.sin(phase*(.41+n.seed4*.38)+n.seed3*6.283)*n.drift*.28),sp=viewToScreen(n.x+shimmerX,n.y+shimmerY),hit=Math.max(34,nodeDisplaySize(n,false,false,false)*.58),d=Math.hypot(sx-sp.x,sy-sp.y);if(d<hit&&(!best||d<best.d))best={d,n,sp}}return{best,sx,sy,r}}
 canvas.addEventListener('mousemove',e=>{if(pointer.down)return;const {best,sx,sy,r}=hitNode(e.clientX,e.clientY);if(viewMode==='knowledge'){knowledgeHoverId=best?.n?.id||null;hoverIndex=-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=best.n.title;ui.mapTip.querySelector('small').textContent=best.n.kind==='root'?"HOW IT'S MADE":best.n.kind==='document'?`${best.n.title} · STAGE`:best.n.kind==='chain'?`${best.n.docLabel} · DOCUMENT`:`${best.n.docLabel} · DETAIL`}else ui.mapTip.style.display='none';return}hoverIndex=best?best.n.i:-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=titleOf(best.n.t);ui.mapTip.querySelector('small').textContent=[best.n.t.genre?.child_genre||variantOf(best.n.t),best.n.t.genre?.parent_genre,'ORBIT = PARENT · RADIUS = CHILD'].filter(Boolean).join(' · ')}else ui.mapTip.style.display='none'});
 canvas.addEventListener('mouseleave',()=>{if(!pointer.down){hoverIndex=-1;knowledgeHoverId=null;ui.mapTip.style.display='none'}});
 ui.stage.addEventListener('pointerdown',e=>{if(e.target.closest('.utility-nav,.knowledge-density,.knowledge-reader,.knowledge-world-card,.side-panel,.genre-strip,.zoom-controls'))return;if(!power)return;try{ui.stage.setPointerCapture(e.pointerId)}catch(_){};if(e.pointerType==='touch'){touches.set(e.pointerId,{x:e.clientX,y:e.clientY});if(touches.size===2){const pts=[...touches.values()],cx=(pts[0].x+pts[1].x)/2,cy=(pts[0].y+pts[1].y)/2,d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y),r=canvas.getBoundingClientRect();pinch={distance:d,zoom:camera.targetZoom,world:screenToWorld(cx-r.left,cy-r.top)};pointer.down=false}else if(touches.size===1){pointer={down:true,id:e.pointerId,startX:e.clientX,startY:e.clientY,camX:camera.targetX,camY:camera.targetY,moved:false}}}else pointer={down:true,id:e.pointerId,startX:e.clientX,startY:e.clientY,camX:camera.targetX,camY:camera.targetY,moved:false};ui.stage.classList.add('is-panning')});
