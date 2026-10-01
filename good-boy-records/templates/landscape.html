@@ -3781,6 +3781,14 @@ body.fx-test .fx-test-button{
 </style>
 
 
+<style id="v10104-knowledge-tabs-how-made">
+.knowledge-tabs{display:none;position:absolute;z-index:24;left:50%;top:14px;transform:translateX(-50%);align-items:center;gap:5px;padding:4px;border:1px solid rgba(var(--accent-rgb),.24);border-radius:4px;background:#090a08e8;box-shadow:0 5px 18px #0008}
+body[data-view="knowledge"] .knowledge-tabs{display:flex}
+.knowledge-tab{height:30px;padding:0 14px;border:1px solid #5b4835;border-radius:3px;background:linear-gradient(#22231f,#11120f);color:#a89578;font:800 8px/1 "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.knowledge-tab.active{color:#f0dfc5;border-color:var(--accent);box-shadow:inset 0 0 12px rgba(var(--accent-rgb),.16)}
+@media(max-width:900px){.knowledge-tabs{top:8px;left:50%;max-width:56vw}.knowledge-tab{height:27px;padding:0 9px;font-size:7px;white-space:nowrap}}
+</style>
+
 <style id="v10100-knowledge-compact-rich-track-groups">
 /* ----------------------- KNOWLEDGE: DENSITY ----------------------- */
 .knowledge-density{
@@ -4225,6 +4233,9 @@ body:not([data-view="knowledge"]) .knowledge-world-cards{display:none}
       <button class="utility-button" id="knowledgeButton" type="button">Knowledge</button>
       <button class="utility-button" id="tracksButton" type="button">Tracks</button>
     </nav>
+    <nav class="knowledge-tabs" id="knowledgeTabs" aria-label="Knowledge maps">
+      <button class="knowledge-tab active" type="button" data-knowledge-tab="how-its-made">how it's made</button>
+    </nav>
     <div class="knowledge-density" id="knowledgeDensity" aria-label="Knowledge graph detail">
       <span>DETAIL</span>
       <button type="button" data-density="overview" class="active">OVERVIEW</button>
@@ -4404,7 +4415,6 @@ body:not([data-view="knowledge"]) .knowledge-world-cards{display:none}
   <span class="rack-collapse-icon" aria-hidden="true">‹</span>
   <span class="rack-collapse-label" aria-hidden="true">CTRL</span>
 </button>
-<!-- v10.10.3: OS/car media controls via Media Session API; stronger cluster separators -->
 <audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
 <script src="showcase-host.js"></script>
 <script>
@@ -4424,7 +4434,7 @@ function externaliseShowcasePaths(value){
   if(value&&typeof value==='object'){for(const k of Object.keys(value))value[k]=externaliseShowcasePaths(value[k]);return value}
   return typeof value==='string'?showcaseUrl(value):value;
 }
-const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),mobileSongTitle:$('mobileSongTitle'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
+const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),mobileSongTitle:$('mobileSongTitle'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),knowledgeTabs:$('knowledgeTabs'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
 deskGenreZones:$('deskGenreZones'),deskAlbumLight:$('deskAlbumLight'),deskPower:$('deskPower'),
 deskFormatToggle:$('deskFormatToggle'),deskIntensity:$('deskIntensity'),deskIntensityValue:$('deskIntensityValue'),
 deskSensitivity:$('deskSensitivity'),deskSensitivityValue:$('deskSensitivityValue'),
@@ -4432,6 +4442,7 @@ deskVolume:$('deskVolume'),deskTest:$('deskTest')};
 let tracks=[],mainTracks=[],easterTracks=[],index=0,audioCandidateIndex=0,preferredAudioFormat='flac',shuffle=false,power=true,easter=false,nodes=[],dpr=1,ac=null,analyser=null,source=null,freq=null,timeData=null,phase=0,volume=.5,lamp=.5,fxSensitivity=.333,lineLamp=.55,genreZonesEnabled=true,albumLightEnabled=true,testMode=false,parentLanes=[],hoverIndex=-1,activeParent=null,lyricLines=[],coverImages=new Map(),spectrumCtx=null,starCtx=null,powerCycleCount=0,powerCycleTimer=null,stars=[],lyricState={line:-1,word:-2};let world={w:1800,h:1100},playingAnchor={x:900,y:550},camera={x:900,y:550,zoom:1,targetX:900,targetY:550,targetZoom:1},pointer={down:false,id:null,startX:0,startY:0,camX:0,camY:0,moved:false},touches=new Map(),pinch=null;
 let viewMode='tracks',knowledgeReady=false,knowledgeLoading=false,knowledgeManifest=[],knowledgeNodes=[],knowledgeEdges=[],knowledgeHoverId=null,knowledgeSelectedId=null,knowledgeAlpha=0,trackCameraSnapshot=null;
 let knowledgeDensity='overview',knowledgeExpanded=new Set(),knowledgeReaderPinned=false,knowledgeReaderMode='peek';
+let activeKnowledgeTab='how-its-made';
 const trackGroupOpen=new Set();
 let knowledgeExpansionOrder=[],knowledgeRenderNodeId=null;
 function rgb(hex){const m=/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i.exec(hex||'');return m?{r:parseInt(m[1],16),g:parseInt(m[2],16),b:parseInt(m[3],16)}:{r:208,g:128,b:47}}
@@ -4486,28 +4497,6 @@ function startPlaybackNow(){
 const FALLBACK_ART='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><rect width="1024" height="1024" fill="#0a0b09"/><circle cx="512" cy="512" r="255" fill="none" stroke="#6f5b43" stroke-width="18"/><circle cx="512" cy="512" r="70" fill="#6f5b43"/><text x="512" y="830" text-anchor="middle" fill="#a78a65" font-family="monospace" font-size="48" letter-spacing="8">GOOD BOY RECORDS</text></svg>`);
 function artOf(t){if(t?.artwork_url)return showcaseUrl(t.artwork_url);const a=t?.artwork;if(typeof a==='string')return showcaseUrl(a);if(a?.url||a?.src)return showcaseUrl(a.url||a.src);return FALLBACK_ART}
 function fullArtOf(t){const direct=t?.artwork_url||t?.artwork?.url||t?.artwork?.src||'';if(direct)return showcaseUrl(direct);const id=t?.id||t?.slug||'';const comp=t?.composition||t?.song||'';if(id&&comp)return showcaseUrl(`showcase/${comp}/${id}/${id}.png`);return artOf(t)}
-function updateMediaSessionMetadata(t){
-  if(!('mediaSession' in navigator)||!t)return;
-  try{
-    const art=fullArtOf(t);
-    navigator.mediaSession.metadata=new MediaMetadata({
-      title:titleOf(t),
-      artist:'Good Boy Records',
-      album:[t?.genre?.child_genre||variantOf(t),t?.genre?.parent_genre].filter(Boolean).join(' · '),
-      artwork:art?[{src:new URL(art,location.href).href}]:[]
-    });
-  }catch(err){console.warn('Media Session metadata unavailable',err)}
-}
-function updateMediaSessionPosition(){
-  if(!('mediaSession' in navigator)||typeof navigator.mediaSession.setPositionState!=='function')return;
-  const duration=Number(audio.duration),position=Number(audio.currentTime);
-  if(!Number.isFinite(duration)||duration<=0||!Number.isFinite(position))return;
-  try{navigator.mediaSession.setPositionState({duration,playbackRate:Number(audio.playbackRate)||1,position:Math.max(0,Math.min(position,duration))})}catch(_){}
-}
-function setMediaSessionPlaybackState(state){
-  if(!('mediaSession' in navigator))return;
-  try{navigator.mediaSession.playbackState=state}catch(_){}
-}
 function imageFor(t){const src=artOf(t);let im=coverImages.get(src);if(!im){im=new Image();im.decoding='async';im.src=src;coverImages.set(src,im)}return im}
 function lyricOf(t){const l=t?.lyrics,raw=typeof l==='string'?l:l?.raw||t?.lyric||'';if(!raw)return' ';return raw.split(/\r?\n/).map(x=>x.trim()).find(x=>x&&!x.startsWith('['))||' '}
 async function loadLyrics(t){
@@ -4964,7 +4953,40 @@ async function load(){
   parentLanes=[...parentMap.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.order-b.order||a.name.localeCompare(b.name));buildGenreStrip();ui.loading.hidden=true;setVolume(.5);setLamp(.5);select(0,false);resize()
 }
 function paintFixedCover(){if(!ui.fixedCover||!ui.cover)return;const fc=ui.fixedCover,cc=fc.getContext('2d');fc.width=360;fc.height=360;fc.style.width='360px';fc.style.height='360px';cc.clearRect(0,0,360,360);if(ui.cover.complete&&ui.cover.naturalWidth)cc.drawImage(ui.cover,0,0,360,360)}
-function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');updateMediaSessionMetadata(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.cover.src=artOf(t);ui.cover.alt=`Album artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows()}
+function mediaSessionSupported(){return 'mediaSession' in navigator}
+function updateMediaPositionState(){
+  if(!mediaSessionSupported()||typeof navigator.mediaSession.setPositionState!=='function')return;
+  const duration=Number(audio.duration),position=Number(audio.currentTime),rate=Number(audio.playbackRate)||1;
+  if(!Number.isFinite(duration)||duration<=0||!Number.isFinite(position))return;
+  try{navigator.mediaSession.setPositionState({duration,playbackRate:rate,position:Math.max(0,Math.min(position,duration))})}catch(_){ }
+}
+function syncMediaSession(t=tracks[index]){
+  if(!mediaSessionSupported()||!t)return;
+  try{
+    const art=fullArtOf(t)||artOf(t),variant=variantOf(t),genre=t?.genre?.child_genre||variant;
+    navigator.mediaSession.metadata=new MediaMetadata({
+      title:titleOf(t),
+      artist:'Good Boy Records',
+      album:[variant,genre].filter((v,i,a)=>v&&a.indexOf(v)===i).join(' · '),
+      artwork:art&&art!==FALLBACK_ART?[{src:art,sizes:'1024x1024'}]:[]
+    });
+  }catch(err){console.warn('Media Session metadata unavailable',err)}
+  updateMediaPositionState();
+}
+function installMediaSessionControls(){
+  if(!mediaSessionSupported())return;
+  const set=(action,handler)=>{try{navigator.mediaSession.setActionHandler(action,handler)}catch(_){ }};
+  set('play',()=>{if(power&&audio.src)startPlaybackNow()});
+  set('pause',()=>audio.pause());
+  set('nexttrack',()=>{if(power)next()});
+  set('previoustrack',()=>{if(power)prev()});
+  set('seekbackward',details=>{if(Number.isFinite(audio.duration)){const step=Number(details?.seekOffset)||10;audio.currentTime=Math.max(0,(audio.currentTime||0)-step);updateMediaPositionState()}});
+  set('seekforward',details=>{if(Number.isFinite(audio.duration)){const step=Number(details?.seekOffset)||10;audio.currentTime=Math.min(audio.duration,(audio.currentTime||0)+step);updateMediaPositionState()}});
+  set('seekto',details=>{if(Number.isFinite(audio.duration)&&Number.isFinite(details?.seekTime)){audio.currentTime=Math.max(0,Math.min(Number(details.seekTime),audio.duration));updateMediaPositionState()}});
+  set('stop',()=>{audio.pause();try{audio.currentTime=0}catch(_){ }});
+}
+installMediaSessionControls();
+function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');syncMediaSession(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.cover.src=artOf(t);ui.cover.alt=`Album artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows()}
 function seededUnit(text){let h=2166136261;for(const ch of String(text)){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return((h>>>0)%10000)/10000}
 
 const KNOWLEDGE_MANIFEST_URL='knowledge-manifest.json';
@@ -5158,6 +5180,30 @@ function knowledgeTargetForHref(fromNode,href,docByKey,nodeByDocAnchor){
   }
   return `${targetDocId}:document`
 }
+const HOW_MADE_STAGES=[
+  {id:'prompting',title:'PROMPTING',colour:'#d0802f',keys:['prompt','caption','vocal details','arrangement','lyrics should','genre','song structure','inspiration']},
+  {id:'yaml-build',title:'YAML BUILD',colour:'#c49a45',keys:['yaml','schema','template','metadata','track yaml','version','duration','generation fields']},
+  {id:'models',title:'MODELS',colour:'#a9a04f',keys:['model','dit','vae','minimax music 3','weights','safetensors','model alias']},
+  {id:'text-encoding',title:'TEXT ENCODING',colour:'#77a167',keys:['text encoder','conditioning','encoder cfg','top-k','top_k','encode','clip']},
+  {id:'sampling',title:'SAMPLING',colour:'#5d9aa8',keys:['sampler','scheduler','steps','sampler cfg','seed','denoise','sampling']},
+  {id:'testing',title:'TESTING',colour:'#647fc3',keys:['test','matrix','comparison','experiment','baseline','good','bad','telemetry','performance']},
+  {id:'lyrics',title:'WHISPER / DEMUCS LYRICS',colour:'#8d6cbe',keys:['whisper','whisperx','demucs','lyrics.json','lyric timing','alignment','aligner','sofa','vocals']},
+  {id:'light-timings',title:'LIGHT TIMINGS',colour:'#b2679d',keys:['light','timing','beat','onset','audio analysis','playback.json','playback','timeline','energy','spectrum']},
+  {id:'formatting',title:'FORMATTING',colour:'#b86d62',keys:['format','catalogue','showcase','mp3','flac','artwork','r2','pages','deploy','site build','github pages','output']}
+];
+function howMadeStageFor(doc,md){
+  const hay=`${doc?.title||''} ${doc?.label||''} ${doc?.path||''} ${md||''}`.toLowerCase();
+  let best=HOW_MADE_STAGES[HOW_MADE_STAGES.length-1],bestScore=-1;
+  for(const st of HOW_MADE_STAGES){
+    let score=0;
+    for(const k of st.keys){
+      const needle=k.toLowerCase(),hits=hay.split(needle).length-1;
+      score+=Math.min(5,hits)*(needle.includes(' ')?3:1)
+    }
+    if(score>bestScore){best=st;bestScore=score}
+  }
+  return best
+}
 async function loadKnowledgeGraph(){
   if(knowledgeReady||knowledgeLoading)return;
   knowledgeLoading=true;
@@ -5171,87 +5217,82 @@ async function loadKnowledgeGraph(){
       }catch(error){return{doc,i,md:`# ${doc.title||doc.label||doc.id}\n\nDocument unavailable: ${error.message}`,error}}
     }));
 
-    const root={id:'knowledge-root',title:'KNOWLEDGE',kind:'root',level:0,depth:0,x:1500,y:1500,baseX:1500,baseY:1500,r:78,colour:'#d0802f',path:'Good Boy Records'};
-    const built=[root],edges=[],edgeSeen=new Set(),parsedDocs=[],docRadius=Math.max(820,760+loaded.length*18);
+    const cx=1500,cy=1500;
+    const root={id:'knowledge-root',title:"HOW IT'S MADE",kind:'root',level:0,depth:0,x:cx,y:cy,baseX:cx,baseY:cy,r:76,colour:'#d0802f',path:"Knowledge / how it's made"};
+    const built=[root],edges=[],edgeSeen=new Set(),parsedDocs=[];
 
-    loaded.forEach(({doc,i,md})=>{
-      const colour=KNOWLEDGE_COLOURS[i%KNOWLEDGE_COLOURS.length],parsed=knowledgeSections(md,doc),angle=-Math.PI/2+(i/Math.max(1,loaded.length))*Math.PI*2;
-      parsedDocs.push({doc,parsed,colour,angle});
-      const docPart=parsed.nodes[0],dx=1500+Math.cos(angle)*docRadius,dy=1500+Math.sin(angle)*docRadius;
-      const docNode={...docPart,x:dx,y:dy,baseX:dx,baseY:dy,r:58,colour,angle};
-      built.push(docNode);knowledgeAddEdge(edges,edgeSeen,'knowledge-root',docNode.id,'root');
-
-      const chains=parsed.nodes.filter(n=>n.kind==='chain');
-      let previous=docNode;
-      chains.forEach((part,j)=>{
-        // Spiral/chain around the document: order is spatially readable without
-        // collapsing the content back into the central KNOWLEDGE node.
-        const theta=angle-.95+j*.44;
-        const radial=190+Math.min(330,j*15);
-        const n={...part,x:dx+Math.cos(theta)*radial,y:dy+Math.sin(theta)*radial,baseX:0,baseY:0,r:35,colour,angle:theta};
-        n.baseX=n.x;n.baseY=n.y;
-        n.prevId=previous.id;
-        if(previous.kind!=='root')previous.nextId=n.id;
-        built.push(n);knowledgeAddEdge(edges,edgeSeen,previous.id,n.id,'chain');
-        previous=n
-      });
-
-      // Lay deeper headings out as actual branches from the chain/parent node.
-      const descendants=parsed.nodes.filter(n=>n.kind==='section').sort((a,b)=>a.depth-b.depth||a.level-b.level);
-      descendants.forEach(part=>{
-        const parent=built.find(n=>n.id===part.parentId)||docNode;
-        const siblings=descendants.filter(x=>x.parentId===part.parentId);
-        const si=siblings.findIndex(x=>x.id===part.id);
-        const spread=Math.min(.72,1.55/Math.max(1,siblings.length-1||1));
-        const fan=(si-(siblings.length-1)/2)*spread;
-        const side=(seededUnit(`${part.id}|side`)<.5?-1:1);
-        const theta=(parent.angle??angle)+side*(Math.PI*.46)+fan;
-        const radial=part.depth<=1?128:96;
-        const n={...part,x:parent.x+Math.cos(theta)*radial,y:parent.y+Math.sin(theta)*radial,baseX:0,baseY:0,r:part.depth<=1?25:19,colour,angle:theta,prevId:parent.id};
-        n.baseX=n.x;n.baseY=n.y;built.push(n);knowledgeAddEdge(edges,edgeSeen,parent.id,n.id,'branch')
-      })
+    // One ordered spiral: each stage follows the previous stage, then its current
+    // documentation branches locally from that stage.
+    let previousStage=root;
+    HOW_MADE_STAGES.forEach((st,i)=>{
+      const theta=-Math.PI/2+i*.78;
+      const radius=260+i*145;
+      const x=cx+Math.cos(theta)*radius,y=cy+Math.sin(theta)*radius;
+      const stageNode={id:`how-made:${st.id}`,docId:`how-made:${st.id}`,docLabel:"how it's made",title:st.title,kind:'document',level:0,depth:0,x,y,baseX:x,baseY:y,r:50,colour:st.colour,angle:theta,parentId:previousStage.id,prevId:previousStage.kind==='root'?null:previousStage.id,path:"how it's made",anchor:'',order:i,markdown:`# ${st.title}\n\nStage ${i+1} of ${HOW_MADE_STAGES.length} in the Good Boy Records production path. Existing project documentation relevant to this stage is grouped on the outward branches.`};
+      if(previousStage.kind!=='root')previousStage.nextId=stageNode.id;
+      built.push(stageNode);knowledgeAddEdge(edges,edgeSeen,previousStage.id,stageNode.id,'chain');
+      previousStage=stageNode
     });
+
+    const stageMap=new Map(HOW_MADE_STAGES.map(st=>[st.id,built.find(n=>n.id===`how-made:${st.id}`)]));
+    const stageDocs=new Map(HOW_MADE_STAGES.map(st=>[st.id,[]]));
+    loaded.forEach(item=>stageDocs.get(howMadeStageFor(item.doc,item.md).id).push(item));
+
+    for(const st of HOW_MADE_STAGES){
+      const stage=stageMap.get(st.id),items=stageDocs.get(st.id)||[];
+      items.sort((a,b)=>(Number(a.doc.order??9999)-Number(b.doc.order??9999))||String(a.doc.title||a.doc.label||a.doc.id).localeCompare(String(b.doc.title||b.doc.label||b.doc.id)));
+      items.forEach(({doc,md},j)=>{
+        const parsed=knowledgeSections(md,doc);parsedDocs.push({doc,parsed,colour:st.colour,angle:stage.angle});
+        const docPart=parsed.nodes[0],count=items.length;
+        const fan=(j-(count-1)/2)*Math.min(.32,1.15/Math.max(1,count));
+        const theta=stage.angle+Math.PI*.55+fan;
+        const radial=220+(j%2)*36;
+        const dx=stage.x+Math.cos(theta)*radial,dy=stage.y+Math.sin(theta)*radial;
+        const docNode={...docPart,x:dx,y:dy,baseX:dx,baseY:dy,r:34,colour:st.colour,angle:theta,parentId:stage.id,kind:'chain',docLabel:st.title};
+        built.push(docNode);knowledgeAddEdge(edges,edgeSeen,stage.id,docNode.id,'branch');
+
+        const descendants=parsed.nodes.filter(n=>n.kind!=='document').sort((a,b)=>a.depth-b.depth||a.level-b.level);
+        descendants.forEach((part,k)=>{
+          const originalParent=part.parentId===`${doc.id}:document`?docNode.id:part.parentId;
+          const parent=built.find(n=>n.id===originalParent)||docNode;
+          const siblings=descendants.filter(x=>x.parentId===part.parentId);
+          const si=siblings.findIndex(x=>x.id===part.id);
+          const spread=Math.min(.6,1.25/Math.max(1,siblings.length-1||1));
+          const sfan=(si-(siblings.length-1)/2)*spread;
+          const side=(seededUnit(`${part.id}|side`)<.5?-1:1);
+          const a=(parent.angle??theta)+side*(Math.PI*.42)+sfan;
+          const rr=part.depth<=1?118:88;
+          const n={...part,x:parent.x+Math.cos(a)*rr,y:parent.y+Math.sin(a)*rr,baseX:0,baseY:0,r:part.depth<=1?22:17,colour:st.colour,angle:a,parentId:parent.id,docLabel:st.title,prevId:parent.id};
+          n.baseX=n.x;n.baseY=n.y;built.push(n);knowledgeAddEdge(edges,edgeSeen,parent.id,n.id,'branch')
+        })
+      })
+    }
 
     const byId=new Map(built.map(n=>[n.id,n])),docByKey=new Map(),nodeByDocAnchor=new Map();
     for(const {doc} of parsedDocs){
-      const keys=[doc.id,doc.title,doc.label,doc.path,doc.filename].map(knowledgeDocKey).filter(Boolean);
-      for(const k of keys)docByKey.set(k,doc.id)
+      for(const k of [doc.id,doc.title,doc.label,doc.path,doc.filename].map(knowledgeDocKey).filter(Boolean))docByKey.set(k,doc.id)
     }
     for(const n of built){
       if(n.docId&&n.anchor)nodeByDocAnchor.set(`${n.docId}|${knowledgeSlug(n.anchor)}`,n.id);
       if(n.docId&&n.title)nodeByDocAnchor.set(`${n.docId}|${knowledgeSlug(n.title)}`,n.id)
     }
-
-    // Ordinary markdown links become cross-branch/cross-document graph edges.
     for(const {doc,parsed} of parsedDocs){
       for(const link of parsed.links){
         const from=byId.get(link.fromId);if(!from)continue;
         const target=knowledgeTargetForHref(from,link.href,docByKey,nodeByDocAnchor);
         if(target&&byId.has(target))knowledgeAddEdge(edges,edgeSeen,from.id,target,'cross',link.label)
       }
-      // Optional front matter:
-      // connect:
-      //   - workflow
-      //   - 03-technology.md#models
-      const from=byId.get(`${doc.id}:document`);
-      for(const href of (Array.isArray(doc.connect)?doc.connect:(doc.connect?[doc.connect]:[]))){
-        const target=knowledgeTargetForHref(from,String(href),docByKey,nodeByDocAnchor);
-        if(target&&byId.has(target))knowledgeAddEdge(edges,edgeSeen,from.id,target,'cross','related')
-      }
     }
-
     knowledgeNodes=built;knowledgeEdges=edges;knowledgeReady=true
   }finally{knowledgeLoading=false}
 }
 function knowledgeImmediateChildren(node){
   if(!node)return[];
-  if(node.kind==='root')return knowledgeNodes.filter(n=>n.kind==='document');
-  if(node.kind==='document')return knowledgeNodes.filter(n=>n.docId===node.docId&&n.kind==='chain');
   return knowledgeNodes.filter(n=>n.parentId===node.id)
 }
 function knowledgeVisibleIds(){
   const visible=new Set(['knowledge-root']);
-  for(const n of knowledgeNodes)if(n.kind==='document')visible.add(n.id);
+  const first=knowledgeNodes.find(n=>n.parentId==='knowledge-root');if(first)visible.add(first.id);
   let changed=true;
   while(changed){
     changed=false;
@@ -5279,6 +5320,10 @@ function knowledgeLayoutPositions(){
     const x=d.baseX??d.x,y=d.baseY??d.y;
     map.set(d.id,{x,y,angle:Math.atan2(y-root.y,x-root.x)})
   }
+  // Source documentation cards have fixed branch anchors too.
+  for(const d of knowledgeNodes.filter(n=>n.kind==='chain')){
+    const x=d.baseX??d.x,y=d.baseY??d.y;if(Number.isFinite(x)&&Number.isFinite(y))map.set(d.id,{x,y,angle:Math.atan2(y-root.y,x-root.x)})
+  }
 
   const placeChildren=parent=>{
     if(!parent||!knowledgeExpanded.has(parent.id))return;
@@ -5293,6 +5338,7 @@ function knowledgeLayoutPositions(){
     const radius=(parent.kind==='document'?470:390)+Math.max(0,count-6)*18;
 
     children.forEach((child,i)=>{
+      if(map.has(child.id)){placeChildren(child);return}
       const fan=(i-(count-1)/2)*step;
       const angle=outward+fan;
       const stagger=count>7&&i%2?34:0;
@@ -5375,7 +5421,7 @@ function knowledgeCardHtml(node){
   const previousRender=knowledgeRenderNodeId;knowledgeRenderNodeId=node.id;
   let body='';
   try{body=renderMarkdown(knowledgeOwnMarkdown(node))}finally{knowledgeRenderNodeId=previousRender}
-  const crumbs=node.kind==='document'?'KNOWLEDGE':`KNOWLEDGE / ${escapeHtml(node.docLabel||'')}`;
+  const crumbs=node.kind==='document'?`HOW IT'S MADE · ${escapeHtml(node.title)}`:`HOW IT'S MADE / ${escapeHtml(node.docLabel||'')}`;
   return `<article class="knowledge-world-card" data-node-id="${escapeHtml(node.id)}" style="--node-colour:${escapeHtml(node.colour||'#d0802f')}">
     <header class="knowledge-world-card-head">
       <span><small>${crumbs}</small><strong>${escapeHtml(node.title)}</strong></span>
@@ -5439,7 +5485,7 @@ function openKnowledgeReader(node){
   revealKnowledgeNode(node.id);
   knowledgeSelectedId=node.id;
   ui.knowledgeReaderTitle.textContent=node.title;
-  ui.knowledgeReaderPath.textContent=node.kind==='document'?`Knowledge / ${node.docLabel}`:`Knowledge / ${node.docLabel} / ${node.title}`;
+  ui.knowledgeReaderPath.textContent=node.kind==='document'?`how it's made / ${node.title}`:`how it's made / ${node.docLabel} / ${node.title}`;
   ui.knowledgeReaderBody.innerHTML=renderMarkdown(node.markdown);
   renderKnowledgeSectionRail(node);
   if(ui.knowledgePrev){ui.knowledgePrev.disabled=!node.prevId;ui.knowledgePrev.dataset.target=node.prevId||''}
@@ -5489,7 +5535,7 @@ async function enterKnowledge(){
   closePanel();closeKnowledgeReader();
   knowledgeExpanded.clear();knowledgeExpansionOrder=[];knowledgeSelectedId=null;
   viewMode='knowledge';document.body.dataset.view='knowledge';knowledgeHoverId=null;ui.knowledgeButton.classList.add('active');ui.knowledgeButton.textContent='Music';
-  ui.loading.hidden=false;ui.loading.textContent='Building knowledge constellation…';
+  ui.loading.hidden=false;ui.loading.textContent="Building how it's made spiral…";
   await loadKnowledgeGraph();
   syncKnowledgeWorldCards();
   ui.loading.hidden=true;fitKnowledge(false)
@@ -5633,7 +5679,7 @@ function drawClusterBoundaries(anchorScreen){
     if(hull.length<3)continue;
     const cx=hull.reduce((a,p)=>a+p.x,0)/hull.length,cy=hull.reduce((a,p)=>a+p.y,0)/hull.length,pad=Math.max(4,8*camera.zoom);
     const expanded=hull.map(p=>{const dx=p.x-cx,dy=p.y-cy,d=Math.hypot(dx,dy)||1;return{x:p.x+dx/d*pad,y:p.y+dy/d*pad}});
-    const lineDrive=testMode?1:(genreZonesEnabled?lineLamp:0);if(lineDrive<=.002)continue;ctx.save();ctx.strokeStyle=`rgba(${cc.r},${cc.g},${cc.b},${(camera.zoom>.62?.20:.14)*lineDrive*2.05})`;ctx.lineWidth=Math.max(1.05,1.35*camera.zoom);ctx.shadowColor=`rgba(${cc.r},${cc.g},${cc.b},${.20*lineDrive})`;ctx.shadowBlur=Math.max(1.5,3.0*camera.zoom);ctx.setLineDash([]);ctx.beginPath();
+    const lineDrive=testMode?1:(genreZonesEnabled?lineLamp:0);if(lineDrive<=.002)continue;ctx.save();ctx.strokeStyle=`rgba(${cc.r},${cc.g},${cc.b},${(camera.zoom>.62?.205:.145)*lineDrive*1.75})`;ctx.lineWidth=Math.max(1.15,1.55*camera.zoom);ctx.setLineDash([]);ctx.beginPath();
     for(let i=0;i<expanded.length;i++){const a=expanded[i],b=expanded[(i+1)%expanded.length],mx=(a.x+b.x)/2,my=(a.y+b.y)/2;if(i===0)ctx.moveTo(mx,my);else ctx.quadraticCurveTo(a.x,a.y,mx,my)}
     const first=expanded[0],last=expanded[expanded.length-1],fx=(first.x+last.x)/2,fy=(first.y+last.y)/2;ctx.quadraticCurveTo(last.x,last.y,fx,fy);ctx.closePath();ctx.stroke();ctx.restore();
   }
@@ -5660,11 +5706,9 @@ function drawParentSeparators(anchorScreen){
   const lineDrive=testMode?1:(genreZonesEnabled?lineLamp:0);
   if(lineDrive<=.002)return;
   ctx.save();
-  ctx.strokeStyle=`rgba(236,224,206,${.18*lineDrive*2.0})`;
-  ctx.lineWidth=Math.max(.95,1.20*camera.zoom);
-  ctx.shadowColor=`rgba(236,224,206,${.12*lineDrive})`;
-  ctx.shadowBlur=Math.max(1,2.2*camera.zoom);
-  ctx.setLineDash([5,7]);
+  ctx.strokeStyle=`rgba(236,224,206,${.19*lineDrive*1.75})`;
+  ctx.lineWidth=Math.max(1.0,1.25*camera.zoom);
+  ctx.setLineDash([4,7]);
   for(let i=0;i<parentData.length;i++){
     const cur=parentData[i],nxt=parentData[(i+1)%parentData.length],ang=midAngle(cur.angle,nxt.angle),r0=248,r1=Math.max(cur.maxR,nxt.maxR)+120*camera.zoom;
     ctx.beginPath();
@@ -5842,19 +5886,6 @@ function wildShuffleIndex(){
 }
 function next(){select(shuffle?wildShuffleIndex():index+1,true)}
 function prev(){select(shuffle?wildShuffleIndex():index-1,true)}
-function installMediaSessionHandlers(){
-  if(!('mediaSession' in navigator))return;
-  const bind=(action,handler)=>{try{navigator.mediaSession.setActionHandler(action,handler)}catch(_){}};
-  bind('play',()=>{if(power)startPlaybackNow()});
-  bind('pause',()=>audio.pause());
-  bind('stop',()=>{audio.pause();try{audio.currentTime=0}catch(_){}});
-  bind('previoustrack',()=>{if(power)prev()});
-  bind('nexttrack',()=>{if(power)next()});
-  bind('seekbackward',e=>{if(!Number.isFinite(audio.duration))return;audio.currentTime=Math.max(0,(audio.currentTime||0)-(Number(e?.seekOffset)||10));updateMediaSessionPosition()});
-  bind('seekforward',e=>{if(!Number.isFinite(audio.duration))return;audio.currentTime=Math.min(audio.duration,(audio.currentTime||0)+(Number(e?.seekOffset)||10));updateMediaSessionPosition()});
-  bind('seekto',e=>{if(!Number.isFinite(audio.duration)||!Number.isFinite(Number(e?.seekTime)))return;const target=Math.max(0,Math.min(Number(e.seekTime),audio.duration));try{if(e.fastSeek&&typeof audio.fastSeek==='function')audio.fastSeek(target);else audio.currentTime=target}catch(_){audio.currentTime=target}updateMediaSessionPosition()});
-}
-installMediaSessionHandlers();
 function setPower(on){power=!!on;document.body.dataset.power=power?'on':'off';ui.power.setAttribute('aria-pressed',String(power));if(ui.deskPower)ui.deskPower.setAttribute('aria-pressed',String(power));ui.statusLed.classList.toggle('on',power);clickSound('toggle');if(!power)audio.pause();else if(audio.src){graph().then(()=>ac.resume())}}
 ui.power.onclick=()=>{
   const wasOn=power;setPower(!power);
@@ -5877,7 +5908,7 @@ function updateSeekSegments(value){
     cells[i].classList.toggle('head',i===Math.max(0,lit-1)&&lit>0);
   }
 }
-ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound('transport');audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound('transport');next()}};ui.prev.onclick=()=>{if(power){clickSound('transport');prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'Shuffle ✓':'Shuffle';ui.shuffle.title=shuffle?'Shuffle on: wild genre jumps':'Shuffle off'};ui.seek.oninput=()=>{updateSeekSegments(ui.seek.value);if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>{ui.play.textContent='❚❚';setMediaSessionPlaybackState('playing');updateMediaSessionPosition();const actual=classifyAudioUrl(audio.currentSrc||audio.src);if(actual==='flac'||actual==='mp3'){ui.fmtFlac?.classList.toggle('active',actual==='flac');ui.fmtMp3?.classList.toggle('active',actual==='mp3');preferredAudioFormat=actual;syncDesktopFormat()}};audio.onpause=()=>{ui.play.textContent='▶';setMediaSessionPlaybackState('paused');updateMediaSessionPosition()};audio.onended=()=>{setMediaSessionPlaybackState('none');next()};audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0;updateSeekSegments(ui.seek.value);updateMediaSessionPosition()};audio.ondurationchange=updateMediaSessionPosition;
+ui.play.onclick=()=>{if(!power||!audio.src)return;clickSound('transport');audio.paused?startPlaybackNow():audio.pause()};ui.next.onclick=()=>{if(power){clickSound('transport');next()}};ui.prev.onclick=()=>{if(power){clickSound('transport');prev()}};ui.shuffle.onclick=()=>{if(!power)return;clickSound();shuffle=!shuffle;ui.shuffle.classList.toggle('active',shuffle);ui.shuffle.textContent=shuffle?'Shuffle ✓':'Shuffle';ui.shuffle.title=shuffle?'Shuffle on: wild genre jumps':'Shuffle off'};ui.seek.oninput=()=>{updateSeekSegments(ui.seek.value);if(Number.isFinite(audio.duration))audio.currentTime=Number(ui.seek.value)*audio.duration};audio.onplay=()=>{ui.play.textContent='❚❚';if(mediaSessionSupported()){try{navigator.mediaSession.playbackState='playing'}catch(_){ }}updateMediaPositionState();const actual=classifyAudioUrl(audio.currentSrc||audio.src);if(actual==='flac'||actual==='mp3'){ui.fmtFlac?.classList.toggle('active',actual==='flac');ui.fmtMp3?.classList.toggle('active',actual==='mp3');preferredAudioFormat=actual;syncDesktopFormat()}};audio.onpause=()=>{ui.play.textContent='▶';if(mediaSessionSupported()){try{navigator.mediaSession.playbackState='paused'}catch(_){ }}updateMediaPositionState()};audio.onended=next;audio.onerror=()=>{const t=tracks[index],c=audioCandidates(t);if(audioCandidateIndex+1<c.length){audioCandidateIndex+=1;audio.src=c[audioCandidateIndex];audio.load();if(power)startPlaybackNow()}else{console.warn('No playable audio source for',t?.id||titleOf(t));ui.metaSub.textContent='Audio unavailable'}};audio.ontimeupdate=()=>{updateLyrics();ui.time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;ui.seek.value=audio.duration?audio.currentTime/audio.duration:0;updateSeekSegments(ui.seek.value);updateMediaPositionState()};audio.onloadedmetadata=updateMediaPositionState;audio.ondurationchange=updateMediaPositionState;
 updateSeekSegments(0);
 bindSlider(ui.volumeKnob,setVolume);bindSlider(ui.lampKnob,setLamp);
 try{
@@ -5908,7 +5939,7 @@ if(ui.deskFormatToggle)ui.deskFormatToggle.onclick=()=>{
   switchAudioFormat(preferredAudioFormat==='flac'?'mp3':'flac');
 };
 function hitNode(clientX,clientY){if(viewMode==='knowledge')return hitKnowledgeNode(clientX,clientY);const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top,anchor=viewToScreen(playingAnchor.x,playingAnchor.y),mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?(innerWidth<=430?228:260):360,coreMargin=mobileCore?52:76;let best=null;for(const n of nodes){if(n.i===index)continue;const settled=viewToScreen(n.x,n.y),baseSize=nodeDisplaySize(n,false,false,false),halfCore=coreSize/2+coreMargin;if(settled.x+baseSize/2>anchor.x-halfCore&&settled.x-baseSize/2<anchor.x+halfCore&&settled.y+baseSize/2>anchor.y-halfCore&&settled.y-baseSize/2<anchor.y+halfCore+52+coreMargin*.72)continue;const shimmerX=(Math.sin(phase*(.72+n.seed1*.65)+n.seed2*6.283)*n.drift+Math.cos(phase*(.37+n.seed3*.44)+n.seed4*6.283)*n.drift*.35),shimmerY=(Math.cos(phase*(.69+n.seed2*.72)+n.seed1*6.283)*n.drift*.82+Math.sin(phase*(.41+n.seed4*.38)+n.seed3*6.283)*n.drift*.28),sp=viewToScreen(n.x+shimmerX,n.y+shimmerY),hit=Math.max(34,nodeDisplaySize(n,false,false,false)*.58),d=Math.hypot(sx-sp.x,sy-sp.y);if(d<hit&&(!best||d<best.d))best={d,n,sp}}return{best,sx,sy,r}}
-canvas.addEventListener('mousemove',e=>{if(pointer.down)return;const {best,sx,sy,r}=hitNode(e.clientX,e.clientY);if(viewMode==='knowledge'){knowledgeHoverId=best?.n?.id||null;hoverIndex=-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=best.n.title;ui.mapTip.querySelector('small').textContent=best.n.kind==='root'?'KNOWLEDGE ROOT':best.n.kind==='document'?`${best.n.docLabel} · CLUSTER`:best.n.kind==='chain'?`${best.n.docLabel} · NEXT STEP`:`${best.n.docLabel} · SUB-BRANCH`}else ui.mapTip.style.display='none';return}hoverIndex=best?best.n.i:-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=titleOf(best.n.t);ui.mapTip.querySelector('small').textContent=[best.n.t.genre?.child_genre||variantOf(best.n.t),best.n.t.genre?.parent_genre,'ORBIT = PARENT · RADIUS = CHILD'].filter(Boolean).join(' · ')}else ui.mapTip.style.display='none'});
+canvas.addEventListener('mousemove',e=>{if(pointer.down)return;const {best,sx,sy,r}=hitNode(e.clientX,e.clientY);if(viewMode==='knowledge'){knowledgeHoverId=best?.n?.id||null;hoverIndex=-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=best.n.title;ui.mapTip.querySelector('small').textContent=best.n.kind==='root'?"HOW IT'S MADE":best.n.kind==='document'?`${best.n.title} · STAGE`:best.n.kind==='chain'?`${best.n.docLabel} · DOCUMENT`:`${best.n.docLabel} · DETAIL`}else ui.mapTip.style.display='none';return}hoverIndex=best?best.n.i:-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=titleOf(best.n.t);ui.mapTip.querySelector('small').textContent=[best.n.t.genre?.child_genre||variantOf(best.n.t),best.n.t.genre?.parent_genre,'ORBIT = PARENT · RADIUS = CHILD'].filter(Boolean).join(' · ')}else ui.mapTip.style.display='none'});
 canvas.addEventListener('mouseleave',()=>{if(!pointer.down){hoverIndex=-1;knowledgeHoverId=null;ui.mapTip.style.display='none'}});
 ui.stage.addEventListener('pointerdown',e=>{if(e.target.closest('.utility-nav,.knowledge-density,.knowledge-reader,.knowledge-world-card,.side-panel,.genre-strip,.zoom-controls'))return;if(!power)return;try{ui.stage.setPointerCapture(e.pointerId)}catch(_){};if(e.pointerType==='touch'){touches.set(e.pointerId,{x:e.clientX,y:e.clientY});if(touches.size===2){const pts=[...touches.values()],cx=(pts[0].x+pts[1].x)/2,cy=(pts[0].y+pts[1].y)/2,d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y),r=canvas.getBoundingClientRect();pinch={distance:d,zoom:camera.targetZoom,world:screenToWorld(cx-r.left,cy-r.top)};pointer.down=false}else if(touches.size===1){pointer={down:true,id:e.pointerId,startX:e.clientX,startY:e.clientY,camX:camera.targetX,camY:camera.targetY,moved:false}}}else pointer={down:true,id:e.pointerId,startX:e.clientX,startY:e.clientY,camX:camera.targetX,camY:camera.targetY,moved:false};ui.stage.classList.add('is-panning')});
 ui.stage.addEventListener('pointermove',e=>{if(e.pointerType==='touch'&&touches.has(e.pointerId)){touches.set(e.pointerId,{x:e.clientX,y:e.clientY});if(touches.size===2&&pinch){const pts=[...touches.values()],cx=(pts[0].x+pts[1].x)/2,cy=(pts[0].y+pts[1].y)/2,d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y),r=canvas.getBoundingClientRect(),next=Math.max(.24,Math.min(10,pinch.zoom*d/Math.max(1,pinch.distance))),sx=cx-r.left,sy=cy-r.top,w=ui.stage.clientWidth,h=ui.stage.clientHeight;camera.targetZoom=next;camera.targetX=pinch.world.x-(sx-w/2)/next;camera.targetY=pinch.world.y-(sy-h/2)/next;updateZoomLabel();return}}if(!pointer.down||pointer.id!==e.pointerId)return;const dx=e.clientX-pointer.startX,dy=e.clientY-pointer.startY;if(Math.hypot(dx,dy)>4)pointer.moved=true;camera.targetX=pointer.camX-dx/camera.targetZoom;camera.targetY=pointer.camY-dy/camera.targetZoom;});
@@ -5938,6 +5969,7 @@ if($('knowledgeBranch'))$('knowledgeBranch').onclick=()=>{if(knowledgeSelectedId
 if($('knowledgeReaderExpand'))$('knowledgeReaderExpand').onclick=()=>{clickSound();setKnowledgeReaderMode(knowledgeReaderMode==='article'?'peek':'article')};
 if($('knowledgeReaderPin'))$('knowledgeReaderPin').onclick=()=>{clickSound('toggle');setKnowledgeReaderPinned(!knowledgeReaderPinned)};
 if($('knowledgeDensity'))$('knowledgeDensity').addEventListener('click',e=>{const b=e.target.closest('[data-density]');if(!b)return;clickSound('toggle');setKnowledgeDensity(b.dataset.density)});
+if(ui.knowledgeTabs)ui.knowledgeTabs.addEventListener('click',e=>{const b=e.target.closest('[data-knowledge-tab]');if(!b)return;clickSound('toggle');activeKnowledgeTab=b.dataset.knowledgeTab||'how-its-made';ui.knowledgeTabs.querySelectorAll('.knowledge-tab').forEach(x=>x.classList.toggle('active',x===b));if(viewMode==='knowledge'){knowledgeExpanded.clear();knowledgeExpansionOrder=[];closeKnowledgeReader();fitKnowledge(false)}});
 if($('knowledgeReaderSections'))$('knowledgeReaderSections').addEventListener('click',e=>{
   const b=e.target.closest('[data-section]');if(!b)return;clickSound();
   setKnowledgeReaderMode('article');
