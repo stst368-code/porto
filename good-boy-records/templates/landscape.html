@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Good Boy Records — Sonic Landscape</title>
+<!-- GBR_BUILD: v10.10.15 RESTRAINED_GENRE_LYRIC_FONTS -->
 <style>
 :root{--accent:#d0802f;--accent-rgb:208,128,47;--lamp:.5;--audio-level:0;--bg:#050606;--metal:#181817;--metal2:#0c0d0d;--line:#67452c;--text:#e8dfd1;--muted:#9c8d79}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020303;color:var(--text);font-family:Arial,Helvetica,sans-serif}button,input{font:inherit}
@@ -4499,15 +4500,13 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
 <style id="v101014-mobile-collapse-lyrics-typography">
 /* GBR v10.10.14 — final mobile collapse + larger genre-aware lyrics. */
 
-/* Genre-aware lyric faces use local/system fonts only; no network font dependency. */
-body[data-lyric-font="heavy"] .lyrics{font-family:Impact,"Arial Black",Haettenschweiler,sans-serif!important;letter-spacing:.018em!important;font-weight:700!important}
-body[data-lyric-font="urban"] .lyrics{font-family:"Arial Black","Helvetica Neue",Arial,sans-serif!important;letter-spacing:-.015em!important;font-weight:800!important}
-body[data-lyric-font="electronic"] .lyrics{font-family:"Trebuchet MS","Arial Narrow",Arial,sans-serif!important;letter-spacing:.045em!important;font-weight:700!important}
-body[data-lyric-font="theatrical"] .lyrics{font-family:Georgia,"Times New Roman",serif!important;letter-spacing:.01em!important;font-weight:700!important}
-body[data-lyric-font="roots"] .lyrics{font-family:Georgia,"Palatino Linotype",Palatino,serif!important;letter-spacing:.008em!important;font-weight:700!important}
-body[data-lyric-font="soul"] .lyrics{font-family:"Palatino Linotype",Palatino,Georgia,serif!important;letter-spacing:.006em!important;font-weight:700!important;font-style:italic!important}
-body[data-lyric-font="world"] .lyrics{font-family:Verdana,"Trebuchet MS",Arial,sans-serif!important;letter-spacing:.012em!important;font-weight:700!important}
-body[data-lyric-font="default"] .lyrics{font-family:Georgia,serif!important}
+/* Restrained genre-aware lyric typography: broad musical families, local/system fonts only. */
+body[data-lyric-font="heavy"] .lyrics{font-family:"Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif!important;letter-spacing:.005em!important;font-weight:800!important;font-style:normal!important}
+body[data-lyric-font="modern"] .lyrics{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif!important;letter-spacing:.008em!important;font-weight:700!important;font-style:normal!important}
+body[data-lyric-font="soul"] .lyrics{font-family:"Palatino Linotype",Palatino,Book Antiqua,Georgia,serif!important;letter-spacing:.003em!important;font-weight:700!important;font-style:normal!important}
+body[data-lyric-font="roots"] .lyrics{font-family:Rockwell,"Roboto Slab","Palatino Linotype",Georgia,serif!important;letter-spacing:.002em!important;font-weight:700!important;font-style:normal!important}
+body[data-lyric-font="classical"] .lyrics{font-family:Baskerville,"Times New Roman",Georgia,serif!important;letter-spacing:.008em!important;font-weight:700!important;font-style:normal!important}
+body[data-lyric-font="default"] .lyrics{font-family:Georgia,"Times New Roman",serif!important;letter-spacing:0!important;font-weight:700!important;font-style:normal!important}
 
 /* Slightly larger karaoke everywhere, while retaining the one-line current lyric contract. */
 .lyrics{font-size:25px!important}
@@ -5327,13 +5326,12 @@ installMediaSessionControls();
 function setLyricTypography(t){
   const raw=[t?.genre?.cluster,t?.genre?.parent_genre,t?.genre?.child_genre,variantOf(t)].filter(Boolean).join(' ').toLowerCase();
   let family='default';
-  if(/metal|hardcore|punk|rock|grunge/.test(raw)) family='heavy';
-  else if(/hip.?hop|rap|trap|grime|drill|g.?funk/.test(raw)) family='urban';
-  else if(/disco|electro|electronic|techno|house|synth|hyper.?pop|city.?pop|dance|club|phonk|jungle|garage/.test(raw)) family='electronic';
-  else if(/classical|orchestral|opera|operatic|choral|choir|showtune|musical|baroque|romantic/.test(raw)) family='theatrical';
-  else if(/country|folk|bluegrass|americana|western/.test(raw)) family='roots';
-  else if(/jazz|soul|r.?b|funk|crooner|gospel/.test(raw)) family='soul';
-  else if(/reggae|ska|samba|bossa|latin|mariachi|flamenco|tropical/.test(raw)) family='world';
+  // Keep the treatment broad and restrained: the accent colour carries most of the genre identity.
+  if(/metal|hardcore|punk|rock|grunge|industrial/.test(raw)) family='heavy';
+  else if(/hip.?hop|rap|trap|grime|drill|g.?funk|disco|electro|electronic|techno|house|synth|hyper.?pop|city.?pop|dance|club|phonk|jungle|garage|reggae|ska/.test(raw)) family='modern';
+  else if(/jazz|soul|r.?b|funk|crooner|gospel|blues/.test(raw)) family='soul';
+  else if(/country|folk|bluegrass|americana|western|acoustic|singer.?songwriter|samba|bossa|latin|mariachi|flamenco|tropical/.test(raw)) family='roots';
+  else if(/classical|orchestral|opera|operatic|choral|choir|showtune|musical|baroque|romantic/.test(raw)) family='classical';
   document.body.dataset.lyricFont=family;
 }
 function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);setLyricTypography(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');syncMediaSession(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.fixedCover.onerror=()=>{if(ui.fixedCover.src!==FALLBACK_ART)ui.fixedCover.src=FALLBACK_ART};if(ui.playingCoverScreen)ui.playingCoverScreen.onerror=()=>{if(ui.playingCoverScreen.src!==FALLBACK_ART)ui.playingCoverScreen.src=FALLBACK_ART};const artwork=artOf(t);ui.cover.src=artwork;ui.fixedCover.src=artwork;if(ui.playingCoverScreen)ui.playingCoverScreen.src=artwork;ui.cover.alt=`Album artwork for ${titleOf(t)}`;ui.fixedCover.alt=`Now playing artwork for ${titleOf(t)}`;if(ui.playingCoverScreen)ui.playingCoverScreen.alt=`Now playing artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows()}
