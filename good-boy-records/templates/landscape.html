@@ -4357,6 +4357,70 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
 }
 </style>
 
+
+<style id="v101010-gas-control-cascade-fix">
+/* v10.10.10 — authoritative GAS LIGHT desktop UI colour.
+   Historical amber rules remain harmless because this block is last, and the
+   old inline !important attributes have been removed from the markup. The
+   physical control follows the current interface accent; the emitted map light
+   remains controlled separately by --gas-rgb. */
+@media(min-width:901px){
+  body .album-light-column .desktop-switch-label,
+  body .album-light-column .toggle-state,
+  body .album-light-column .toggle-state span,
+  body .album-light-column .desktop-dial-label,
+  body .album-light-column .desktop-dial-label::after,
+  body .album-light-column .dial-scale,
+  body .album-light-column .dial-scale span,
+  body .album-light-column .desktop-dial-readout{
+    color:color-mix(in srgb,var(--accent) 74%,#f5eadb 26%)!important;
+    text-shadow:0 0 7px rgba(var(--accent-rgb),.20)!important;
+  }
+  body .album-light-column .guarded-switch-shell::before,
+  body .album-light-column .guarded-switch-shell::after{
+    border-color:color-mix(in srgb,var(--accent) 42%,#b6a38b 58%)!important;
+  }
+  body .album-light-column .guarded-toggle{
+    border-color:color-mix(in srgb,var(--accent) 52%,#9a856d 48%)!important;
+    box-shadow:inset 0 0 0 3px #0c0d0c,inset 0 0 10px #000,0 3px 7px #000b,0 0 8px rgba(var(--accent-rgb),.10)!important;
+  }
+  body .album-light-column .guarded-toggle[aria-pressed="true"]{
+    box-shadow:inset 0 0 0 3px #0c0d0c,inset 0 0 12px rgba(var(--accent-rgb),.18),0 3px 7px #000b,0 0 13px rgba(var(--accent-rgb),.24)!important;
+  }
+  body .album-light-column .guarded-toggle[aria-pressed="true"] .toggle-lever{
+    filter:drop-shadow(0 0 4px rgba(var(--accent-rgb),.62))!important;
+  }
+  body .album-light-column .desktop-dial{
+    border-top-color:rgba(var(--accent-rgb),.18)!important;
+  }
+  body .album-light-column .desktop-dial::before{
+    background:linear-gradient(to bottom,rgba(var(--accent-rgb),.18),rgba(var(--accent-rgb),.72))!important;
+    box-shadow:0 0 6px rgba(var(--accent-rgb),.25)!important;
+  }
+  body .album-light-column .desktop-dial::after{
+    border-color:color-mix(in srgb,var(--accent) 66%,#81715e 34%)!important;
+    background:color-mix(in srgb,var(--accent) 78%,#f0e4d1 22%)!important;
+    box-shadow:0 0 5px rgba(var(--accent-rgb),.52),inset 0 0 2px rgba(255,255,255,.45)!important;
+  }
+  body .album-light-column .desktop-dial-ring{
+    background:repeating-conic-gradient(from 225deg,color-mix(in srgb,var(--accent) 58%,#bbaa92 42%) 0 1deg,transparent 1deg 15deg)!important;
+  }
+  body .album-light-column .desktop-dial-ring .desktop-knob{
+    border-color:color-mix(in srgb,var(--accent) 54%,#8d7965 46%)!important;
+    box-shadow:inset 0 0 0 3px #10110f,inset 0 0 13px #000,0 4px 8px #000b,0 0 9px rgba(var(--accent-rgb),.16)!important;
+  }
+  body .album-light-column .desktop-dial-ring .desktop-knob::before{
+    background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 88%,white 12%),var(--accent) 62%,color-mix(in srgb,var(--accent) 65%,#3a241f 35%))!important;
+    box-shadow:0 0 4px rgba(var(--accent-rgb),.72),0 0 9px rgba(var(--accent-rgb),.34)!important;
+  }
+  body .album-light-column .desktop-dial-ring .desktop-knob::after{
+    border-color:color-mix(in srgb,var(--accent) 72%,white 28%)!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.58),transparent 40%),color-mix(in srgb,var(--accent) 90%,white 10%)!important;
+    box-shadow:inset 0 0 2px rgba(255,255,255,.55),0 0 5px rgba(var(--accent-rgb),.92),0 0 11px rgba(var(--accent-rgb),.48)!important;
+  }
+}
+</style>
+<!-- GBR_BUILD: v10.10.10 GAS_CONTROL_CASCADE_FIX -->
 </head>
 <!-- GBR_BUILD: v10.10.9 TRUE_CLUSTER_LABELS_FIXED_WORLD_COVER_GAS_UI -->
 <body data-power="on">
@@ -4435,24 +4499,24 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
         </div>
 
         <div class="desktop-control-column album-light-column">
-          <span class="desktop-switch-label" style="color:#ffb15b!important;text-shadow:0 0 8px rgba(255,174,82,.42)!important">GAS<br>LIGHT</span>
+          <span class="desktop-switch-label">GAS<br>LIGHT</span>
           <div class="guarded-switch-shell">
             <button class="guarded-toggle" id="deskAlbumLight" type="button"
                     aria-label="Album light" aria-pressed="true" title="Toggle album lighting">
               <span class="toggle-lever" aria-hidden="true"></span>
             </button>
           </div>
-          <div class="toggle-state" style="color:#c88748!important"><span style="color:#c88748!important">OFF</span><span style="color:#c88748!important">ON</span></div>
+          <div class="toggle-state"><span>OFF</span><span>ON</span></div>
 
-          <div class="desktop-dial" style="color:#c88748!important">
-            <span class="desktop-dial-label" style="color:#c88748!important">SENSITIVITY</span>
+          <div class="desktop-dial">
+            <span class="desktop-dial-label">SENSITIVITY</span>
             <div class="desktop-dial-ring">
               <button class="knob desktop-knob" id="deskSensitivity" type="button" role="slider"
                       aria-label="Light effects sensitivity" aria-valuemin="0" aria-valuemax="100"
                       aria-valuenow="33"></button>
             </div>
-            <div class="dial-scale" style="color:#c88748!important"><span style="color:#c88748!important">MIN</span><span style="color:#c88748!important">MAX</span></div>
-            <output class="desktop-dial-readout" id="deskSensitivityValue" style="color:#c88748!important">1.0×</output>
+            <div class="dial-scale"><span>MIN</span><span>MAX</span></div>
+            <output class="desktop-dial-readout" id="deskSensitivityValue">1.0×</output>
           </div>
         </div>
 
