@@ -4420,7 +4420,7 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
   }
 }
 </style>
-<!-- GBR_BUILD: v10.10.10 GAS_CONTROL_CASCADE_FIX -->
+<!-- GBR_BUILD: v10.10.14 MOBILE_COLLAPSE_GENRE_LYRICS
 <style id="v101011-playing-cover-architecture-fix">
 /* v10.10.11: playing artwork is a DOM image overlay, deliberately NOT a canvas.
    Only its screen position comes from the world->screen projection. Its box size
@@ -4447,7 +4447,7 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
   }
 }
 </style>
-<!-- GBR_BUILD: v10.10.11 PLAYING_COVER_ARCHITECTURE_FIX -->
+<!-- GBR_BUILD: v10.10.14 MOBILE_COLLAPSE_GENRE_LYRICS
 
 
 <style id="v101012-canvas-playing-cover-fix">
@@ -4457,7 +4457,7 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
    image/cache target only. */
 #fixedCover.playing-cover-overlay{display:none!important}
 </style>
-<!-- GBR_BUILD: v10.10.12 CANVAS_FIXED_PIXEL_PLAYING_COVER -->
+<!-- GBR_BUILD: v10.10.14 MOBILE_COLLAPSE_GENRE_LYRICS
 
 <style id="v101013-true-independent-playing-cover">
 /* v10.10.13 — selected sleeve is completely outside the map/stage rendering tree.
@@ -4494,9 +4494,63 @@ body .album-light-column .dial-scale span,body .album-light-column .desktop-dial
   }
 }
 </style>
-<!-- GBR_BUILD: v10.10.13 INDEPENDENT_FIXED_PLAYING_COVER -->
+<!-- GBR_BUILD: v10.10.14 MOBILE_COLLAPSE_GENRE_LYRICS
+
+<style id="v101014-mobile-collapse-lyrics-typography">
+/* GBR v10.10.14 — final mobile collapse + larger genre-aware lyrics. */
+
+/* Genre-aware lyric faces use local/system fonts only; no network font dependency. */
+body[data-lyric-font="heavy"] .lyrics{font-family:Impact,"Arial Black",Haettenschweiler,sans-serif!important;letter-spacing:.018em!important;font-weight:700!important}
+body[data-lyric-font="urban"] .lyrics{font-family:"Arial Black","Helvetica Neue",Arial,sans-serif!important;letter-spacing:-.015em!important;font-weight:800!important}
+body[data-lyric-font="electronic"] .lyrics{font-family:"Trebuchet MS","Arial Narrow",Arial,sans-serif!important;letter-spacing:.045em!important;font-weight:700!important}
+body[data-lyric-font="theatrical"] .lyrics{font-family:Georgia,"Times New Roman",serif!important;letter-spacing:.01em!important;font-weight:700!important}
+body[data-lyric-font="roots"] .lyrics{font-family:Georgia,"Palatino Linotype",Palatino,serif!important;letter-spacing:.008em!important;font-weight:700!important}
+body[data-lyric-font="soul"] .lyrics{font-family:"Palatino Linotype",Palatino,Georgia,serif!important;letter-spacing:.006em!important;font-weight:700!important;font-style:italic!important}
+body[data-lyric-font="world"] .lyrics{font-family:Verdana,"Trebuchet MS",Arial,sans-serif!important;letter-spacing:.012em!important;font-weight:700!important}
+body[data-lyric-font="default"] .lyrics{font-family:Georgia,serif!important}
+
+/* Slightly larger karaoke everywhere, while retaining the one-line current lyric contract. */
+.lyrics{font-size:25px!important}
+.lyrics .karaoke-current{font-size:inherit!important}
+
+@media (max-width:900px){
+  .lyrics{font-size:24px!important}
+
+  /* Collapse means collapse: the entire mobile rack becomes non-rendering.
+     CTRL is outside .hardware and therefore stays available for recovery. */
+  body.rack-collapsed .hardware{
+    transform:translateY(calc(100% + 8px))!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  body.rack-collapsed .hardware *,
+  body.rack-collapsed .master-module,
+  body.rack-collapsed .master-controls,
+  body.rack-collapsed .slider-control,
+  body.rack-collapsed .transport-module,
+  body.rack-collapsed .transport,
+  body.rack-collapsed .seek-rack,
+  body.rack-collapsed .seek-segments,
+  body.rack-collapsed .seek{
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
+
+@media (max-width:900px) and (orientation:landscape) and (max-height:600px){
+  .lyrics{font-size:21px!important}
+  body.rack-collapsed .hardware{
+    transform:translateY(calc(100% + 10px))!important;
+    opacity:0!important;
+    visibility:hidden!important;
+  }
+}
+</style>
+
 </head>
-<!-- GBR_BUILD: v10.10.9 TRUE_CLUSTER_LABELS_FIXED_WORLD_COVER_GAS_UI -->
+<!-- GBR_BUILD: v10.10.14 MOBILE_COLLAPSE_GENRE_LYRICS
 <body data-power="on">
 <div id="playingCoverViewport" aria-hidden="true"><img id="playingCoverScreen" alt=""></div>
 <div class="app">
@@ -5270,7 +5324,19 @@ function installMediaSessionControls(){
   set('stop',()=>{audio.pause();try{audio.currentTime=0}catch(_){ }});
 }
 installMediaSessionControls();
-function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');syncMediaSession(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.fixedCover.onerror=()=>{if(ui.fixedCover.src!==FALLBACK_ART)ui.fixedCover.src=FALLBACK_ART};if(ui.playingCoverScreen)ui.playingCoverScreen.onerror=()=>{if(ui.playingCoverScreen.src!==FALLBACK_ART)ui.playingCoverScreen.src=FALLBACK_ART};const artwork=artOf(t);ui.cover.src=artwork;ui.fixedCover.src=artwork;if(ui.playingCoverScreen)ui.playingCoverScreen.src=artwork;ui.cover.alt=`Album artwork for ${titleOf(t)}`;ui.fixedCover.alt=`Now playing artwork for ${titleOf(t)}`;if(ui.playingCoverScreen)ui.playingCoverScreen.alt=`Now playing artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows()}
+function setLyricTypography(t){
+  const raw=[t?.genre?.cluster,t?.genre?.parent_genre,t?.genre?.child_genre,variantOf(t)].filter(Boolean).join(' ').toLowerCase();
+  let family='default';
+  if(/metal|hardcore|punk|rock|grunge/.test(raw)) family='heavy';
+  else if(/hip.?hop|rap|trap|grime|drill|g.?funk/.test(raw)) family='urban';
+  else if(/disco|electro|electronic|techno|house|synth|hyper.?pop|city.?pop|dance|club|phonk|jungle|garage/.test(raw)) family='electronic';
+  else if(/classical|orchestral|opera|operatic|choral|choir|showtune|musical|baroque|romantic/.test(raw)) family='theatrical';
+  else if(/country|folk|bluegrass|americana|western/.test(raw)) family='roots';
+  else if(/jazz|soul|r.?b|funk|crooner|gospel/.test(raw)) family='soul';
+  else if(/reggae|ska|samba|bossa|latin|mariachi|flamenco|tropical/.test(raw)) family='world';
+  document.body.dataset.lyricFont=family;
+}
+function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);setLyricTypography(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');syncMediaSession(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.fixedCover.onerror=()=>{if(ui.fixedCover.src!==FALLBACK_ART)ui.fixedCover.src=FALLBACK_ART};if(ui.playingCoverScreen)ui.playingCoverScreen.onerror=()=>{if(ui.playingCoverScreen.src!==FALLBACK_ART)ui.playingCoverScreen.src=FALLBACK_ART};const artwork=artOf(t);ui.cover.src=artwork;ui.fixedCover.src=artwork;if(ui.playingCoverScreen)ui.playingCoverScreen.src=artwork;ui.cover.alt=`Album artwork for ${titleOf(t)}`;ui.fixedCover.alt=`Now playing artwork for ${titleOf(t)}`;if(ui.playingCoverScreen)ui.playingCoverScreen.alt=`Now playing artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows()}
 function seededUnit(text){let h=2166136261;for(const ch of String(text)){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return((h>>>0)%10000)/10000}
 
 const KNOWLEDGE_MANIFEST_URL='knowledge-manifest.json';
