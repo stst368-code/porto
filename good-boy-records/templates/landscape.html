@@ -4246,8 +4246,64 @@ body:not([data-view="knowledge"]) .knowledge-world-cards{display:none}
 @media(max-width:900px){.knowledge-world-card{width:300px!important;height:300px!important;border-radius:0!important}}
 </style>
 
+
+<style id="v10107-targeted-render-corrections">
+/* GBR v10.10.7 — targeted corrections from live render feedback. */
+:root{--gas-label:#ffb15b;--gas-label-dim:#c88748}
+
+/* GAS LIGHT is a physical amber lamp. Its own legends do not inherit the
+   currently browsed genre accent. */
+.album-light-column .desktop-switch-label{
+  color:var(--gas-label)!important;
+  text-shadow:0 0 8px rgba(255,174,82,.42)!important;
+}
+.album-light-column .toggle-state,
+.album-light-column .toggle-state span{
+  color:var(--gas-label-dim)!important;
+}
+.album-light-column .desktop-dial-label,
+.album-light-column .desktop-dial-label::after,
+.album-light-column .dial-scale,
+.album-light-column .dial-scale span,
+.album-light-column .desktop-dial-readout{
+  color:var(--gas-label-dim)!important;
+  text-shadow:none!important;
+}
+.album-light-column .desktop-dial{border-top-color:rgba(255,174,82,.30)!important}
+.album-light-column .desktop-dial::before{
+  background:linear-gradient(to bottom,rgba(255,174,82,.18),rgba(255,174,82,.78))!important;
+  box-shadow:0 0 6px rgba(255,174,82,.30)!important;
+}
+.album-light-column .desktop-dial::after{
+  border-color:#b87639!important;background:#e59a4c!important;
+  box-shadow:0 0 6px rgba(255,174,82,.50),inset 0 0 2px rgba(255,255,255,.42)!important;
+}
+
+/* The now-playing sleeve is HUD chrome, not a world-map node. Keep it pinned
+   to the stage centre at one CSS-pixel size; camera zoom/pan cannot scale it. */
+.center-stack{
+  left:50%!important;top:50%!important;
+  width:360px!important;min-width:360px!important;max-width:360px!important;
+  transform:translate(-50%,-50%)!important;zoom:1!important;
+}
+.center-card,.center-card #fixedCover{
+  width:360px!important;height:360px!important;
+  min-width:360px!important;max-width:360px!important;
+  min-height:360px!important;max-height:360px!important;
+  transform:none!important;zoom:1!important;
+}
+@media(max-width:900px){
+  .center-stack{width:252px!important;min-width:252px!important;max-width:252px!important}
+  .center-card,.center-card #fixedCover{
+    width:252px!important;height:252px!important;
+    min-width:252px!important;max-width:252px!important;
+    min-height:252px!important;max-height:252px!important;
+  }
+}
+</style>
+
 </head>
-<!-- GBR_BUILD: v10.10.6 FRESH_RENDER_FIX -->
+<!-- GBR_BUILD: v10.10.7 TARGETED_RENDER_CORRECTIONS -->
 <body data-power="on">
 <div class="app">
   <main class="stage" id="stage" tabindex="0">
@@ -5826,7 +5882,7 @@ function drawKnowledge(w,h,music){
   positionKnowledgeWorldCards(layout)
 }
 function draw(){
-  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const anchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y);const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=360,lyricHeight=mobileCore?52:58;ui.centerStack.style.left=`${anchorScreen.x}px`;ui.centerStack.style.top=`${anchorScreen.y}px`;ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,-50%) scale(1)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('width',`${coreSize}px`,'important');ui.centerCard.style.setProperty('height',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('width',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('height',`${coreSize}px`,'important');ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
+  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),anchorScreen={x:w*.5,y:h*.5};const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?52:58;ui.centerStack.style.removeProperty('left');ui.centerStack.style.removeProperty('top');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,-50%)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('width',`${coreSize}px`,'important');ui.centerCard.style.setProperty('height',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('width',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('height',`${coreSize}px`,'important');ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
   if(viewMode==='knowledge'){
     drawKnowledge(w,h,music);
     document.documentElement.style.setProperty('--audio-level',level.toFixed(3));
@@ -5836,10 +5892,10 @@ function draw(){
   }
   knowledgeAlpha=0;
   const focus=hoverIndex>=0?hoverIndex:index,focusNode=nodes[focus],parentCentroids=new Map();for(const p of parentLanes){const members=nodes.filter(n=>n.parent===p.name);if(!members.length)continue;const wx=members.reduce((a,n)=>a+n.baseX,0)/members.length,wy=members.reduce((a,n)=>a+n.baseY,0)/members.length,sp=viewToScreen(wx,wy);parentCentroids.set(p.name,{x:sp.x,y:sp.y,count:members.length})}
-  drawClusterBoundaries(anchorScreen);
-  drawParentSeparators(anchorScreen);
-  ctx.textAlign='center';for(const p of parentLanes){const pc=parentCentroids.get(p.name);if(!pc)continue;const active=!activeParent||activeParent===p.name,sample=nodes.find(n=>n.parent===p.name)?.t,cc=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#806040'),rr=(105+Math.sqrt(pc.count)*22)*camera.zoom,g=ctx.createRadialGradient(pc.x,pc.y,8,pc.x,pc.y,Math.max(50,rr));g.addColorStop(0,`rgba(${cc.r},${cc.g},${cc.b},${(active?.10:.018)*visualLamp})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pc.x,pc.y,Math.max(50,rr),0,Math.PI*2);ctx.fill();if(camera.zoom>.24){const labelY=pc.y-Math.max(58,rr*.64);ctx.font='900 14px Courier New';ctx.lineWidth=4;ctx.strokeStyle='rgba(0,0,0,.88)';ctx.strokeText(p.name.toUpperCase(),pc.x,labelY);ctx.fillStyle=active?`rgba(${Math.min(255,cc.r+120)},${Math.min(255,cc.g+120)},${Math.min(255,cc.b+120)},.96)`:'rgba(188,176,160,.48)';ctx.shadowColor=`rgba(${cc.r},${cc.g},${cc.b},.55)`;ctx.shadowBlur=8;ctx.fillText(p.name.toUpperCase(),pc.x,labelY);ctx.shadowBlur=0}}
-  if(camera.zoom>.30){const seen=new Set();ctx.textAlign='left';for(const n of nodes){const key=n.cluster;if(seen.has(key))continue;seen.add(key);const group=nodes.filter(x=>x.cluster===key),wx=group.reduce((a,x)=>a+x.baseX,0)/group.length,wy=group.reduce((a,x)=>a+x.baseY,0)/group.length,sp=viewToScreen(wx,wy),cc=rgb(n.t?.genre?.child_colour||'#c49a6c'),lx=sp.x+Math.max(34,50*camera.zoom),ly=sp.y-Math.max(32,48*camera.zoom);ctx.font='800 12px Courier New';ctx.lineWidth=4;ctx.strokeStyle='rgba(0,0,0,.90)';ctx.strokeText(n.child.toUpperCase(),lx,ly);ctx.fillStyle=`rgba(${Math.min(255,cc.r+105)},${Math.min(255,cc.g+105)},${Math.min(255,cc.b+105)},.94)`;ctx.shadowColor=`rgba(${cc.r},${cc.g},${cc.b},.52)`;ctx.shadowBlur=7;ctx.fillText(n.child.toUpperCase(),lx,ly);ctx.shadowBlur=0}}
+  drawClusterBoundaries(worldAnchorScreen);
+  drawParentSeparators(worldAnchorScreen);
+  ctx.textAlign='center';for(const p of parentLanes){const pc=parentCentroids.get(p.name);if(!pc)continue;const active=!activeParent||activeParent===p.name,sample=nodes.find(n=>n.parent===p.name)?.t,cc=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#806040'),rr=(105+Math.sqrt(pc.count)*22)*camera.zoom,g=ctx.createRadialGradient(pc.x,pc.y,8,pc.x,pc.y,Math.max(50,rr));g.addColorStop(0,`rgba(${cc.r},${cc.g},${cc.b},${(active?.10:.018)*visualLamp})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pc.x,pc.y,Math.max(50,rr),0,Math.PI*2);ctx.fill();if(camera.zoom>.48){const labelY=pc.y-Math.max(58,rr*.64);ctx.font='800 9px Courier New';ctx.lineWidth=3;ctx.strokeStyle='rgba(0,0,0,.78)';ctx.strokeText(p.name.toUpperCase(),pc.x,labelY);ctx.fillStyle=active?`rgba(${Math.min(255,cc.r+72)},${Math.min(255,cc.g+72)},${Math.min(255,cc.b+72)},.58)`:'rgba(170,160,146,.28)';ctx.shadowBlur=0;ctx.fillText(p.name.toUpperCase(),pc.x,labelY)}}
+  if(camera.zoom>.18){const seen=new Set();ctx.textAlign='left';for(const n of nodes){const key=n.cluster;if(seen.has(key))continue;seen.add(key);const group=nodes.filter(x=>x.cluster===key),wx=group.reduce((a,x)=>a+x.baseX,0)/group.length,wy=group.reduce((a,x)=>a+x.baseY,0)/group.length,sp=viewToScreen(wx,wy),cc=rgb(n.t?.genre?.child_colour||'#c49a6c'),lx=sp.x+Math.max(38,52*camera.zoom),ly=sp.y-Math.max(34,50*camera.zoom);ctx.font='900 14px Courier New';ctx.lineWidth=5;ctx.strokeStyle='rgba(0,0,0,.94)';ctx.strokeText(n.child.toUpperCase(),lx,ly);ctx.fillStyle=`rgba(${Math.min(255,cc.r+120)},${Math.min(255,cc.g+120)},${Math.min(255,cc.b+120)},.98)`;ctx.shadowColor=`rgba(${cc.r},${cc.g},${cc.b},.64)`;ctx.shadowBlur=9;ctx.fillText(n.child.toUpperCase(),lx,ly);ctx.shadowBlur=0}}
   if(focusNode){const fs=focus===index?anchorScreen:viewToScreen(focusNode.x,focusNode.y);for(const n of nodes){if(n.i===focus)continue;if(n.t.composition&&n.t.composition===focusNode.t.composition){const ns=viewToScreen(n.x,n.y);ctx.strokeStyle=`rgba(${c.r},${c.g},${c.b},.32)`;ctx.lineWidth=Math.max(1,1.25*camera.zoom);ctx.beginPath();ctx.moveTo(fs.x,fs.y);ctx.lineTo(ns.x,ns.y);ctx.stroke()}}}
   document.documentElement.style.setProperty('--audio-level',level.toFixed(3));if(anchorScreen.x>-500&&anchorScreen.x<w+500&&anchorScreen.y>-500&&anchorScreen.y<h+500){const ag=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,80,anchorScreen.x,anchorScreen.y,250+level*110);ag.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${(.10+level*.22)*visualLamp})`);ag.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=ag;ctx.fillRect(anchorScreen.x-380,anchorScreen.y-380,760,760)}
   for(const n of nodes){
@@ -5972,7 +6028,7 @@ if(ui.deskFormatToggle)ui.deskFormatToggle.onclick=()=>{
   clickSound('toggle');
   switchAudioFormat(preferredAudioFormat==='flac'?'mp3':'flac');
 };
-function hitNode(clientX,clientY){if(viewMode==='knowledge')return hitKnowledgeNode(clientX,clientY);const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top,anchor=viewToScreen(playingAnchor.x,playingAnchor.y),mobileCore=matchMedia('(max-width:900px)').matches,coreSize=360,coreMargin=mobileCore?52:76;let best=null;for(const n of nodes){if(n.i===index)continue;const settled=viewToScreen(n.x,n.y),baseSize=nodeDisplaySize(n,false,false,false),halfCore=coreSize/2+coreMargin;if(settled.x+baseSize/2>anchor.x-halfCore&&settled.x-baseSize/2<anchor.x+halfCore&&settled.y+baseSize/2>anchor.y-halfCore&&settled.y-baseSize/2<anchor.y+halfCore+52+coreMargin*.72)continue;const shimmerX=(Math.sin(phase*(.72+n.seed1*.65)+n.seed2*6.283)*n.drift+Math.cos(phase*(.37+n.seed3*.44)+n.seed4*6.283)*n.drift*.35),shimmerY=(Math.cos(phase*(.69+n.seed2*.72)+n.seed1*6.283)*n.drift*.82+Math.sin(phase*(.41+n.seed4*.38)+n.seed3*6.283)*n.drift*.28),sp=viewToScreen(n.x+shimmerX,n.y+shimmerY),hit=Math.max(34,nodeDisplaySize(n,false,false,false)*.58),d=Math.hypot(sx-sp.x,sy-sp.y);if(d<hit&&(!best||d<best.d))best={d,n,sp}}return{best,sx,sy,r}}
+function hitNode(clientX,clientY){if(viewMode==='knowledge')return hitKnowledgeNode(clientX,clientY);const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top,anchor={x:ui.stage.clientWidth*.5,y:ui.stage.clientHeight*.5},mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,coreMargin=mobileCore?52:76;let best=null;for(const n of nodes){if(n.i===index)continue;const settled=viewToScreen(n.x,n.y),baseSize=nodeDisplaySize(n,false,false,false),halfCore=coreSize/2+coreMargin;if(settled.x+baseSize/2>anchor.x-halfCore&&settled.x-baseSize/2<anchor.x+halfCore&&settled.y+baseSize/2>anchor.y-halfCore&&settled.y-baseSize/2<anchor.y+halfCore+52+coreMargin*.72)continue;const shimmerX=(Math.sin(phase*(.72+n.seed1*.65)+n.seed2*6.283)*n.drift+Math.cos(phase*(.37+n.seed3*.44)+n.seed4*6.283)*n.drift*.35),shimmerY=(Math.cos(phase*(.69+n.seed2*.72)+n.seed1*6.283)*n.drift*.82+Math.sin(phase*(.41+n.seed4*.38)+n.seed3*6.283)*n.drift*.28),sp=viewToScreen(n.x+shimmerX,n.y+shimmerY),hit=Math.max(34,nodeDisplaySize(n,false,false,false)*.58),d=Math.hypot(sx-sp.x,sy-sp.y);if(d<hit&&(!best||d<best.d))best={d,n,sp}}return{best,sx,sy,r}}
 canvas.addEventListener('mousemove',e=>{if(pointer.down)return;const {best,sx,sy,r}=hitNode(e.clientX,e.clientY);if(viewMode==='knowledge'){knowledgeHoverId=best?.n?.id||null;hoverIndex=-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=best.n.title;ui.mapTip.querySelector('small').textContent=best.n.kind==='root'?"HOW IT'S MADE":best.n.kind==='document'?`${best.n.title} · STAGE`:best.n.kind==='chain'?`${best.n.docLabel} · DOCUMENT`:`${best.n.docLabel} · DETAIL`}else ui.mapTip.style.display='none';return}hoverIndex=best?best.n.i:-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=titleOf(best.n.t);ui.mapTip.querySelector('small').textContent=[best.n.t.genre?.child_genre||variantOf(best.n.t),best.n.t.genre?.parent_genre,'ORBIT = PARENT · RADIUS = CHILD'].filter(Boolean).join(' · ')}else ui.mapTip.style.display='none'});
 canvas.addEventListener('mouseleave',()=>{if(!pointer.down){hoverIndex=-1;knowledgeHoverId=null;ui.mapTip.style.display='none'}});
 ui.stage.addEventListener('pointerdown',e=>{if(e.target.closest('.utility-nav,.knowledge-density,.knowledge-reader,.knowledge-world-card,.side-panel,.genre-strip,.zoom-controls'))return;if(!power)return;try{ui.stage.setPointerCapture(e.pointerId)}catch(_){};if(e.pointerType==='touch'){touches.set(e.pointerId,{x:e.clientX,y:e.clientY});if(touches.size===2){const pts=[...touches.values()],cx=(pts[0].x+pts[1].x)/2,cy=(pts[0].y+pts[1].y)/2,d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y),r=canvas.getBoundingClientRect();pinch={distance:d,zoom:camera.targetZoom,world:screenToWorld(cx-r.left,cy-r.top)};pointer.down=false}else if(touches.size===1){pointer={down:true,id:e.pointerId,startX:e.clientX,startY:e.clientY,camX:camera.targetX,camY:camera.targetY,moved:false}}}else pointer={down:true,id:e.pointerId,startX:e.clientX,startY:e.clientY,camX:camera.targetX,camY:camera.targetY,moved:false};ui.stage.classList.add('is-panning')});
