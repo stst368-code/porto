@@ -4302,8 +4302,21 @@ body:not([data-view="knowledge"]) .knowledge-world-cards{display:none}
 }
 </style>
 
+
+<style id="v10108-world-anchor-cluster-labels">
+/* v10.10.8: the playing sleeve is fixed-size SCREEN geometry at a fixed WORLD
+   coordinate (playingAnchor). Panning/zooming the galaxy moves the world past
+   the viewport; it does not turn the sleeve into viewport-following HUD. */
+.center-stack{position:absolute!important;zoom:1!important}
+/* GAS LIGHT typography is deliberately independent of genre accent. */
+body .album-light-column .desktop-switch-label{color:#ffb15b!important}
+body .album-light-column .toggle-state,body .album-light-column .toggle-state span,
+body .album-light-column .desktop-dial-label,body .album-light-column .dial-scale,
+body .album-light-column .dial-scale span,body .album-light-column .desktop-dial-readout{color:#c88748!important}
+</style>
+
 </head>
-<!-- GBR_BUILD: v10.10.7 TARGETED_RENDER_CORRECTIONS -->
+<!-- GBR_BUILD: v10.10.8 WORLD_ANCHORED_CORE_CLUSTER_LABELS -->
 <body data-power="on">
 <div class="app">
   <main class="stage" id="stage" tabindex="0">
@@ -4379,24 +4392,24 @@ body:not([data-view="knowledge"]) .knowledge-world-cards{display:none}
         </div>
 
         <div class="desktop-control-column album-light-column">
-          <span class="desktop-switch-label">GAS<br>LIGHT</span>
+          <span class="desktop-switch-label" style="color:#ffb15b!important;text-shadow:0 0 8px rgba(255,174,82,.42)!important">GAS<br>LIGHT</span>
           <div class="guarded-switch-shell">
             <button class="guarded-toggle" id="deskAlbumLight" type="button"
                     aria-label="Album light" aria-pressed="true" title="Toggle album lighting">
               <span class="toggle-lever" aria-hidden="true"></span>
             </button>
           </div>
-          <div class="toggle-state"><span>OFF</span><span>ON</span></div>
+          <div class="toggle-state" style="color:#c88748!important"><span style="color:#c88748!important">OFF</span><span style="color:#c88748!important">ON</span></div>
 
-          <div class="desktop-dial">
-            <span class="desktop-dial-label">SENSITIVITY</span>
+          <div class="desktop-dial" style="color:#c88748!important">
+            <span class="desktop-dial-label" style="color:#c88748!important">SENSITIVITY</span>
             <div class="desktop-dial-ring">
               <button class="knob desktop-knob" id="deskSensitivity" type="button" role="slider"
                       aria-label="Light effects sensitivity" aria-valuemin="0" aria-valuemax="100"
                       aria-valuenow="33"></button>
             </div>
-            <div class="dial-scale"><span>MIN</span><span>MAX</span></div>
-            <output class="desktop-dial-readout" id="deskSensitivityValue">1.0×</output>
+            <div class="dial-scale" style="color:#c88748!important"><span style="color:#c88748!important">MIN</span><span style="color:#c88748!important">MAX</span></div>
+            <output class="desktop-dial-readout" id="deskSensitivityValue" style="color:#c88748!important">1.0×</output>
           </div>
         </div>
 
@@ -5882,7 +5895,7 @@ function drawKnowledge(w,h,music){
   positionKnowledgeWorldCards(layout)
 }
 function draw(){
-  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),anchorScreen={x:w*.5,y:h*.5};const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?52:58;ui.centerStack.style.removeProperty('left');ui.centerStack.style.removeProperty('top');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,-50%)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('width',`${coreSize}px`,'important');ui.centerCard.style.setProperty('height',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('width',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('height',`${coreSize}px`,'important');ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
+  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),anchorScreen=worldAnchorScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?52:58;ui.centerStack.style.setProperty('left',`${worldAnchorScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${worldAnchorScreen.y}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,-50%)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('width',`${coreSize}px`,'important');ui.centerCard.style.setProperty('height',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('width',`${coreSize}px`,'important');ui.fixedCover.style.setProperty('height',`${coreSize}px`,'important');ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
   if(viewMode==='knowledge'){
     drawKnowledge(w,h,music);
     document.documentElement.style.setProperty('--audio-level',level.toFixed(3));
@@ -5894,8 +5907,8 @@ function draw(){
   const focus=hoverIndex>=0?hoverIndex:index,focusNode=nodes[focus],parentCentroids=new Map();for(const p of parentLanes){const members=nodes.filter(n=>n.parent===p.name);if(!members.length)continue;const wx=members.reduce((a,n)=>a+n.baseX,0)/members.length,wy=members.reduce((a,n)=>a+n.baseY,0)/members.length,sp=viewToScreen(wx,wy);parentCentroids.set(p.name,{x:sp.x,y:sp.y,count:members.length})}
   drawClusterBoundaries(worldAnchorScreen);
   drawParentSeparators(worldAnchorScreen);
-  ctx.textAlign='center';for(const p of parentLanes){const pc=parentCentroids.get(p.name);if(!pc)continue;const active=!activeParent||activeParent===p.name,sample=nodes.find(n=>n.parent===p.name)?.t,cc=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#806040'),rr=(105+Math.sqrt(pc.count)*22)*camera.zoom,g=ctx.createRadialGradient(pc.x,pc.y,8,pc.x,pc.y,Math.max(50,rr));g.addColorStop(0,`rgba(${cc.r},${cc.g},${cc.b},${(active?.10:.018)*visualLamp})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pc.x,pc.y,Math.max(50,rr),0,Math.PI*2);ctx.fill();if(camera.zoom>.48){const labelY=pc.y-Math.max(58,rr*.64);ctx.font='800 9px Courier New';ctx.lineWidth=3;ctx.strokeStyle='rgba(0,0,0,.78)';ctx.strokeText(p.name.toUpperCase(),pc.x,labelY);ctx.fillStyle=active?`rgba(${Math.min(255,cc.r+72)},${Math.min(255,cc.g+72)},${Math.min(255,cc.b+72)},.58)`:'rgba(170,160,146,.28)';ctx.shadowBlur=0;ctx.fillText(p.name.toUpperCase(),pc.x,labelY)}}
-  if(camera.zoom>.18){const seen=new Set();ctx.textAlign='left';for(const n of nodes){const key=n.cluster;if(seen.has(key))continue;seen.add(key);const group=nodes.filter(x=>x.cluster===key),wx=group.reduce((a,x)=>a+x.baseX,0)/group.length,wy=group.reduce((a,x)=>a+x.baseY,0)/group.length,sp=viewToScreen(wx,wy),cc=rgb(n.t?.genre?.child_colour||'#c49a6c'),lx=sp.x+Math.max(38,52*camera.zoom),ly=sp.y-Math.max(34,50*camera.zoom);ctx.font='900 14px Courier New';ctx.lineWidth=5;ctx.strokeStyle='rgba(0,0,0,.94)';ctx.strokeText(n.child.toUpperCase(),lx,ly);ctx.fillStyle=`rgba(${Math.min(255,cc.r+120)},${Math.min(255,cc.g+120)},${Math.min(255,cc.b+120)},.98)`;ctx.shadowColor=`rgba(${cc.r},${cc.g},${cc.b},.64)`;ctx.shadowBlur=9;ctx.fillText(n.child.toUpperCase(),lx,ly);ctx.shadowBlur=0}}
+  ctx.textAlign='center';for(const p of parentLanes){const pc=parentCentroids.get(p.name);if(!pc)continue;const active=!activeParent||activeParent===p.name,sample=nodes.find(n=>n.parent===p.name)?.t,cc=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#806040'),rr=(105+Math.sqrt(pc.count)*22)*camera.zoom,g=ctx.createRadialGradient(pc.x,pc.y,8,pc.x,pc.y,Math.max(50,rr));g.addColorStop(0,`rgba(${cc.r},${cc.g},${cc.b},${(active?.10:.018)*visualLamp})`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pc.x,pc.y,Math.max(50,rr),0,Math.PI*2);ctx.fill();if(camera.zoom>.16){const labelY=pc.y-Math.max(70,rr*.66);ctx.font='900 18px Courier New';ctx.lineWidth=6;ctx.strokeStyle='rgba(0,0,0,.96)';ctx.strokeText(p.name.toUpperCase(),pc.x,labelY);ctx.fillStyle=active?`rgba(${Math.min(255,cc.r+125)},${Math.min(255,cc.g+125)},${Math.min(255,cc.b+125)},.99)`:'rgba(190,180,166,.44)';ctx.shadowColor=`rgba(${cc.r},${cc.g},${cc.b},.58)`;ctx.shadowBlur=10;ctx.fillText(p.name.toUpperCase(),pc.x,labelY);ctx.shadowBlur=0}}
+  if(camera.zoom>.42){const seen=new Set();ctx.textAlign='left';for(const n of nodes){const key=n.cluster;if(seen.has(key))continue;seen.add(key);const group=nodes.filter(x=>x.cluster===key),wx=group.reduce((a,x)=>a+x.baseX,0)/group.length,wy=group.reduce((a,x)=>a+x.baseY,0)/group.length,sp=viewToScreen(wx,wy),cc=rgb(n.t?.genre?.child_colour||'#c49a6c'),lx=sp.x+Math.max(26,34*camera.zoom),ly=sp.y-Math.max(22,30*camera.zoom);ctx.font='800 8px Courier New';ctx.lineWidth=3;ctx.strokeStyle='rgba(0,0,0,.88)';ctx.strokeText(n.child.toUpperCase(),lx,ly);ctx.fillStyle=`rgba(${Math.min(255,cc.r+82)},${Math.min(255,cc.g+82)},${Math.min(255,cc.b+82)},.62)`;ctx.shadowBlur=0;ctx.fillText(n.child.toUpperCase(),lx,ly)}}
   if(focusNode){const fs=focus===index?anchorScreen:viewToScreen(focusNode.x,focusNode.y);for(const n of nodes){if(n.i===focus)continue;if(n.t.composition&&n.t.composition===focusNode.t.composition){const ns=viewToScreen(n.x,n.y);ctx.strokeStyle=`rgba(${c.r},${c.g},${c.b},.32)`;ctx.lineWidth=Math.max(1,1.25*camera.zoom);ctx.beginPath();ctx.moveTo(fs.x,fs.y);ctx.lineTo(ns.x,ns.y);ctx.stroke()}}}
   document.documentElement.style.setProperty('--audio-level',level.toFixed(3));if(anchorScreen.x>-500&&anchorScreen.x<w+500&&anchorScreen.y>-500&&anchorScreen.y<h+500){const ag=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,80,anchorScreen.x,anchorScreen.y,250+level*110);ag.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${(.10+level*.22)*visualLamp})`);ag.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=ag;ctx.fillRect(anchorScreen.x-380,anchorScreen.y-380,760,760)}
   for(const n of nodes){
