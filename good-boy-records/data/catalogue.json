@@ -1,7 +1,67 @@
 {
   "format": "gbr-sonic-catalogue-v1",
-  "trackCount": 132,
+  "trackCount": 154,
   "tracks": [
+    {
+      "id": "pupeii-space-rock",
+      "composition": "pupeii",
+      "title": "pupeii",
+      "displayTitle": "Pupeii",
+      "variant": "space-rock",
+      "version": "space-rock",
+      "genre": {
+        "cluster": "rock",
+        "parent_genre": "alternative rock",
+        "child_genre": "space rock",
+        "parent_colour": "#DCB250",
+        "child_colour": "#DFBE65",
+        "taxonomy_order": 167,
+        "parent_order": 6
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/pupeii/pupeii-space-rock/pupeii-space-rock.flac",
+          "mp3": "showcase/pupeii/pupeii-space-rock/pupeii-space-rock.mp3"
+        }
+      },
+      "artwork_url": "showcase/pupeii/pupeii-space-rock/pupeii-space-rock.png",
+      "lyrics": {
+        "raw": "[intro]\n(Woof... woof...)\n(slow) Yeah... two goldens...\ndrifting... drifting...\n[verse]\nI am the golden one... copper and cold...\nDrifting through the rooms that my grumbles control...\nI don't chase the ball... no, the ball comes to me...\nQueen of every shadow, all the world is my sea...\nEarn your place, little one... bring me something sweet...\nAnd the floor where I'm lying is my throne you can meet...\n[chorus]\nTwooo goldens... one home in the haze...\nOne drifts like a queen through her echoing days...\nOne bounds like a comet, all sunlight and sound...\nTwooo golden hearts turning the world around...\n(distant) two goldens... drifting on...\n[verse]\nAnd the big one comes slow... like a wave on the shore...\nOne thought in his mind, and that thought is no more...\nSay the word go... and he's gone... and he's lost his own name...\nGot a mouth soft as velvet and a heart full of flame...\nHe loves every soul... every stranger, every friend...\nOnly Teddy (why?)... and that mystery won't end...\n[chorus]\nTwooo goldens... one home in the haze...\nOne drifts like a queen through her echoing days...\nOne bounds like a comet, all sunlight and sound...\nTwooo golden hearts turning the world around...\n(distant) two goldens... drifting on...\n[solo]\n[bridge]\n(rising) Two sides of a golden... one heart underneath...\nShe's the calm and the cunning... he's the joy and the teeth...\nOne little gremlin in the swirling light...\nOne slobbering comet burning soft through the night...\n(peak) Doja... Bam Bam... drifting on...\n[chorus]\nTwooo goldens... one home in the haze...\nOne drifts like a queen through her echoing days...\nOne bounds like a comet, all sunlight and sound...\nTwooo golden hearts turning the world around...\n(distant) two goldens... drifting on...\n[outro]\nTwo goldens... one home... and we have it all...\n(fading) go on... fetch... the ball...\nTwenty twenty-six... walking on... on... on...\n(echo, gone) I'm outside now... goodbye... woof...",
+        "wordTiming": {
+          "src": "showcase/pupeii/pupeii-space-rock/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/pupeii/pupeii-space-rock/gbr.playback.json",
+      "yamlUrl": "showcase/pupeii/pupeii-space-rock/pupeii-space-rock.yaml",
+      "story": "This one started life as a montage of pink floyds live at pomepeii but quickly became its own thing, you can still hear some of its roots if you listen closely",
+      "style": {
+        "inspiration": "Original?",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 730291328563512,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 97818104899074,
+        "steps": 40
+      },
+      "playback_url": "showcase/pupeii/pupeii-space-rock/gbr.playback.json",
+      "audio_analysis_url": "showcase/pupeii/pupeii-space-rock/gbr.audio.json"
+    },
     {
       "id": "paws-off-the-velvet-bluegrass",
       "composition": "paws-off-the-velvet",
@@ -181,6 +241,66 @@
       },
       "playback_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bluegrass/gbr.playback.json",
       "audio_analysis_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bluegrass/gbr.audio.json"
+    },
+    {
+      "id": "johnny-three-fridges-neo-soul",
+      "composition": "johnny-three-fridges",
+      "title": "johnny-three-fridges",
+      "displayTitle": "Johnny Three Fridges",
+      "variant": "neo-soul",
+      "version": "neo-soul",
+      "genre": {
+        "cluster": "country / folk",
+        "parent_genre": "country",
+        "child_genre": "neo soul",
+        "parent_colour": "#BDCC66",
+        "child_colour": "#C7D072",
+        "taxonomy_order": 1001,
+        "parent_order": 681
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/johnny-three-fridges-neo-soul.flac",
+          "mp3": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/johnny-three-fridges-neo-soul.mp3"
+        }
+      },
+      "artwork_url": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/johnny-three-fridges-neo-soul.png",
+      "lyrics": {
+        "raw": "[intro]\nthey call him Johnny\n...\nJohnny, Three Fridges\na name enough to chill the bone\nonce you've heard my story\ni'll let you judge if you're safe at home\n[verse]\nso,\nwhat's a man to do with three whole fridges\none for food, one for beer\nthird one you'll never get near\nhe'll have you over, n' cook you dinner\ndelicious to eat, calories for a sinner\nhear it hum, hear it shiver\ngo near fridge three and you'll hear him snigger\n[pre-chorus]\nso what he heck is going down\nin that sweet ol' minnesota town?\nwell keep on 'a listenin'\ncuz I know the story,\ni wrote it down\n[chorus]\nol' Johnny Three Fridges, sinister by name\nlivin' the dream, playin' his all American game\nwhat's he got in 'em?\nday to day, never the same\ndon't get nosey, don't go pryin'\nelse you'll be the one runnin' away cryin'\n[instrumental]\n[post-chorus]\nso, listen up and listen real close\nwon't be long before i'm gone ghost\ni'm spillin' the beans\non ol Johnny Three Fridges dreams\n[verse]\nsee, ain't nothin' sinister\nain't nothin' chillin'\nexcept a white tailed deer\nand some ruffed grouse dead from killin'\nthat's it that's all\nleast that's all he'll tell ya' he got chilling'\n[pre-chorus]\nso, listen again, listen well\nmy song my story should ring a bell\nwhat's in fridge number three ain' nobody around to tell\n[chorus]\nol' Johnny Three Fridges, sinister by name\nlivin' the dream, playin' his all American game\nwhat's he got in 'em?\nday to day, never the same\ndon't get nosey, don't go pryin'\nelse you'll be the one runnin' away cryin'\n[post-chorus]\nfamily man, family man\nol' Johnny Three Fridges got a big family,\nman\nmouths to feed from dawn till eve\nmaybe three fridges ain't so hard to believe\n[verse]\nbet with that revelation\nyou're startin' to relax now but hear my hesitation\none's in the kitchen, ordinary as can be\nsecond in the garage, nothin' hauntin' there still\nbut when you find that third fridge\ntucked behind the basement door\nyou'll see why Johnny told me\nI ain't welcome anymore\n[chorus]\nol' Johnny Three Fridges, sinister by name\nlivin' the dream, playin' his all American game\nwhat's he got in 'em?\nday to day, never the same\ndon't get nosey, don't go pryin'\nelse you'll be the one runnin' away cryin'\n[post-chorus]\nol' Johnny Three Fridges, sinister by name\nwhat's he got in 'em?\n[outro]\nso dear friend\ntime's now for this here song to end\nhear my message, understand my warnin'\nmaybe you'll wake to a delicious breakfast in the mornin'\nsuperchaosialidocious",
+        "wordTiming": {
+          "src": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/gbr.playback.json",
+      "yamlUrl": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/johnny-three-fridges-neo-soul.yaml",
+      "story": "In a town, in a state, there's lives a strange fella, three fridges' what he got, if you'll take a moment to listen, my story I'd like to sell ya'",
+      "style": {
+        "inspiration": "All original, 100% yank free",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 761076907484537,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 844945775023943,
+        "steps": 40
+      },
+      "playback_url": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/gbr.playback.json",
+      "audio_analysis_url": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/gbr.audio.json"
     },
     {
       "id": "the-endless-game-neo-soul",
@@ -903,6 +1023,186 @@
       "audio_analysis_url": "showcase/moses-supposes/moses-supposes-choral/gbr.audio.json"
     },
     {
+      "id": "self-rightous-gremelin-choral",
+      "composition": "self-rightous-gremelin",
+      "title": "self-rightous-gremelin",
+      "displayTitle": "Self Rightous Gremelin",
+      "variant": "choral",
+      "version": "choral",
+      "genre": {
+        "cluster": "electronic music",
+        "parent_genre": "downtempo",
+        "child_genre": "choral",
+        "parent_colour": "#FF227A",
+        "child_colour": "#FD3979",
+        "taxonomy_order": 1314,
+        "parent_order": 1209
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/self-rightous-gremelin/self-rightous-gremelin-choral/self-rightous-gremelin-choral.flac",
+          "mp3": "showcase/self-rightous-gremelin/self-rightous-gremelin-choral/self-rightous-gremelin-choral.mp3"
+        }
+      },
+      "artwork_url": "showcase/self-rightous-gremelin/self-rightous-gremelin-choral/self-rightous-gremelin-choral.png",
+      "lyrics": {
+        "raw": "[intro]\n\"We're rolling Gremelin\"\n[verse]\nMama! (mama)\nGrab a lead and put your little shoes on!\nHide your phone and forget about your makeup!\nWhy'd you leave the treats upon the table?\nHere you go, create another fable!\nYou wanted to!\nGrab a lead and put your little shoes on!\nYou wanted to!\nHide your phone and forget about your makeup!\nYou wanted to!\nWhy'd you leave the treats upon the table?\nYou wanted to!\n[chorus]\nI don't think you trust!\nIn!\nmy!\nself-righteous gremelin!\nI!\ncry!\nwhen BamBam deserve outside!\n[instrumental]\n[post-chorus]\nI don't think you trust!\nself-righteous gremelin!\n[verse]\nRah, Mama! (mama)\nGrab a lead and put your little shoes on! (The little ones)\nHide your phone and forget about your makeup!\nWhy'd you leave the treats upon the table?\nHere you go, create another fable!\nYou wanted to!\nGrab a lead and put your little shoes on!\nYou wanted to!\nHide your phone and forget about your makeup!\nYou wanted to!\nWhy'd you leave the treats upon the table?\nYou wanted to!\n[chorus]\nI don't think you trust!\nIn my self-righteous gremelin!\nI cry when BamBam deserve outside!\nIn my self-righteous gremelin!\nI cry when BamBam deserve outside!\n[post-chorus]\nI don't think you trust!\nself-righteous gremelin!\n[bridge]\nMother, (Mother), Mother, (Mother)\nMother,\ninto your hands I commend my spirit\nMother, into your hands\nWhy have you forsaken me?\nIn your eyes, forsaken me?\nIn your thoughts, forsaken me?\nIn your heart, forsaken me? Oh!\n[chorus]\nTrust!\nIn my self-righteous gremelin!\nI cry when BamBam deserve outside!\nIn my self-righteous gremelin!\nI cry when BamBam deserve outside!\n[post-chorus]\nI don't think you trust!\nself-righteous gremelin!",
+        "wordTiming": {
+          "src": "showcase/self-rightous-gremelin/self-rightous-gremelin-choral/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/self-rightous-gremelin/self-rightous-gremelin-choral/gbr.playback.json",
+      "yamlUrl": "showcase/self-rightous-gremelin/self-rightous-gremelin-choral/self-rightous-gremelin-choral.yaml",
+      "story": "She really doesn't like to wait, and when Bam goes out without her... well there's nothing more she can hate.",
+      "style": {
+        "inspiration": "System of a Down - Chop Suey",
+        "inspirationUrl": "https://www.youtube.com/watch?v=CSvFpBOe8eY"
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 440999796395388,
+        "topK": 45,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 356674506656635,
+        "steps": 40
+      },
+      "playback_url": "showcase/self-rightous-gremelin/self-rightous-gremelin-choral/gbr.playback.json",
+      "audio_analysis_url": "showcase/self-rightous-gremelin/self-rightous-gremelin-choral/gbr.audio.json"
+    },
+    {
+      "id": "the-endless-game-choral",
+      "composition": "the-endless-game",
+      "title": "the-endless-game",
+      "displayTitle": "The Endless Game",
+      "variant": "choral",
+      "version": "choral",
+      "genre": {
+        "cluster": "electronic music",
+        "parent_genre": "downtempo",
+        "child_genre": "choral",
+        "parent_colour": "#FF227A",
+        "child_colour": "#FD3979",
+        "taxonomy_order": 1314,
+        "parent_order": 1209
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/the-endless-game/the-endless-game-choral/the-endless-game-choral.flac",
+          "mp3": "showcase/the-endless-game/the-endless-game-choral/the-endless-game-choral.mp3"
+        }
+      },
+      "artwork_url": "showcase/the-endless-game/the-endless-game-choral/the-endless-game-choral.png",
+      "lyrics": {
+        "raw": "[intro]\nBall!\n...\n...\n...\nBALL!!\n...\n...\n...\nBAAALLLL!!\n[verse]\nSwallowed by the endless void\nWater and current ball now destroyed\nMonoliths of nature rise\nTaking out my sphere shaped prize\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the eternal game\n[instrumental]\n[post-chorus]\nFeeding on the darkened void\nCrush my crown, erase the name\n[verse]\nFootballs my mouth cannot abide\nChained in teeth, trapped inside\nHear my declaration cry\nThis ball, my mouth, will not comply\n[bridge]\nFall. Into. The. Deep.\nThe cycle ends, the waters sweep.\nFall. From. The. Mouth.\nThe water, my ball does keep.\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the eternal game\n[post-chorus]\nAfraid? Afraid?\nA...FRAID\n[verse]\nWhat heavy monster!?\nLost my ball!?\nYou think it's me?\nI cannot accept that!\nThat chunky monster\nBE AFRAID!\nNow I've brought my metal\nAnd the monster is slayed\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the eternal game\n[post-chorus]\nFeeding on the darkened void\nCrush my crown, erase the name\n[outro]\nErase the name!\nConsumed by!\n...\nthe endless game",
+        "wordTiming": {
+          "src": "showcase/the-endless-game/the-endless-game-choral/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/the-endless-game/the-endless-game-choral/gbr.playback.json",
+      "yamlUrl": "showcase/the-endless-game/the-endless-game-choral/the-endless-game-choral.yaml",
+      "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+      "style": {
+        "inspiration": "All original, delivered by mother nature",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 888187160149918,
+        "topK": 45,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 964726648784759,
+        "steps": 30
+      },
+      "playback_url": "showcase/the-endless-game/the-endless-game-choral/gbr.playback.json",
+      "audio_analysis_url": "showcase/the-endless-game/the-endless-game-choral/gbr.audio.json"
+    },
+    {
+      "id": "where-golden-flowers-grow-choral",
+      "composition": "where-golden-flowers-grow",
+      "title": "where-golden-flowers-grow",
+      "displayTitle": "Where Golden Flowers Grow",
+      "variant": "choral",
+      "version": "choral",
+      "genre": {
+        "cluster": "electronic music",
+        "parent_genre": "downtempo",
+        "child_genre": "choral",
+        "parent_colour": "#FF227A",
+        "child_colour": "#FD3979",
+        "taxonomy_order": 1314,
+        "parent_order": 1209
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-choral/where-golden-flowers-grow-choral.flac",
+          "mp3": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-choral/where-golden-flowers-grow-choral.mp3"
+        }
+      },
+      "artwork_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-choral/where-golden-flowers-grow-choral.png",
+      "lyrics": {
+        "raw": "[intro]\n[verse]\nCome through the garden\nThe morning is blue\nSunlight is falling\nIn circles on you\nDoja lies dreaming\nWhere yellow flowers grow\nBam hears a ball bounce\nAnd suddenly goes\n[verse]\nGolden as daylight\nSoft as the rain\nOne watches quietly\nOne runs again\nWhere are you going?\nNobody knows\nOver the hillside\nWhere the warm river flows\n[chorus]\nRun through the colours\nRun through the light\nFollow the fields\nTill they fall out of sight\nI'll be beside you\nWherever you roam\nTwo golden shadows\nWill always come home\n[instrumental]\n[verse]\nDoja sees kingdoms\nInside every tree\nBam sees a tennis ball\nFloating at sea\nOne asks the questions\nOne simply runs\nBoth disappear\nIn the afternoon sun\n[bridge]\nMaybe the garden\nGoes on without end\nMaybe the pathway\nComes round again\nMaybe tomorrow\nWe'll wake up and find\nGolden pawprints\nAll over the sky\n[chorus]\nRun through the colours\nRun through the light\nFollow the fields\nTill they fall out of sight\nI'll be beside you\nWherever you roam\nTwo golden shadows\nWill always come home\n[outro]\nDoja in sunlight\nBam in the blue\nWherever this road goes\nI'll follow you\nFollow you...\nFollow you...\nWoof.",
+        "wordTiming": {
+          "src": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-choral/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-choral/gbr.playback.json",
+      "yamlUrl": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-choral/where-golden-flowers-grow-choral.yaml",
+      "story": "Sometimes, gold is yellow, sometimes, gold is the sound waves vibrating your ear drums, let's not worry about specifics.",
+      "style": {
+        "inspiration": "All original, germinated, like a flower, bursting towards the sunlight",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 489447097437387,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 323769880507881,
+        "steps": 30
+      },
+      "playback_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-choral/gbr.playback.json",
+      "audio_analysis_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-choral/gbr.audio.json"
+    },
+    {
       "id": "dogtushya-classical",
       "composition": "dogtushya",
       "title": "dogtushya",
@@ -1141,6 +1441,66 @@
       },
       "playback_url": "showcase/the-endless-game/the-endless-game-gregorian-chant/gbr.playback.json",
       "audio_analysis_url": "showcase/the-endless-game/the-endless-game-gregorian-chant/gbr.audio.json"
+    },
+    {
+      "id": "where-golden-flowers-grow-gregorian-chant",
+      "composition": "where-golden-flowers-grow",
+      "title": "where-golden-flowers-grow",
+      "displayTitle": "Where Golden Flowers Grow",
+      "variant": "gregorian-chant",
+      "version": "gregorian-chant",
+      "genre": {
+        "cluster": "electronic music",
+        "parent_genre": "downtempo",
+        "child_genre": "gregorian chant",
+        "parent_colour": "#FF227A",
+        "child_colour": "#FF2683",
+        "taxonomy_order": 1421,
+        "parent_order": 1209
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-gregorian-chant/where-golden-flowers-grow-gregorian-chant.flac",
+          "mp3": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-gregorian-chant/where-golden-flowers-grow-gregorian-chant.mp3"
+        }
+      },
+      "artwork_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-gregorian-chant/where-golden-flowers-grow-gregorian-chant.png",
+      "lyrics": {
+        "raw": "[intro]\n[verse]\nCome through the garden\nThe morning is blue\nSunlight is falling\nIn circles on you\nDoja lies dreaming\nWhere yellow flowers grow\nBam hears a ball bounce\nAnd suddenly goes\n[verse]\nGolden as daylight\nSoft as the rain\nOne watches quietly\nOne runs again\nWhere are you going?\nNobody knows\nOver the hillside\nWhere the warm river flows\n[chorus]\nRun through the colours\nRun through the light\nFollow the fields\nTill they fall out of sight\nI'll be beside you\nWherever you roam\nTwo golden shadows\nWill always come home\n[verse]\nDoja sees kingdoms\nInside every tree\nBam sees a tennis ball\nFloating at sea\nOne asks the questions\nOne simply runs\nBoth disappear\nIn the afternoon sun\n[bridge]\nMaybe the garden\nGoes on without end\nMaybe the pathway\nComes round again\nMaybe tomorrow\nWe'll wake up and find\nGolden pawprints\nAll over the sky\n[chorus]\nRun through the colours\nRun through the light\nFollow the fields\nTill they fall out of sight\nI'll be beside you\nWherever you roam\nTwo golden shadows\nWill always come home\n[outro]\nDoja in sunlight\nBam in the blue\nWherever this road goes\nI'll follow you\nFollow you...\nFollow you...\nWoof.",
+        "wordTiming": {
+          "src": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-gregorian-chant/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-gregorian-chant/gbr.playback.json",
+      "yamlUrl": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-gregorian-chant/where-golden-flowers-grow-gregorian-chant.yaml",
+      "story": "Sometimes, gold is yellow, sometimes, gold is the sound waves vibrating your ear drums, let's not worry about specifics.",
+      "style": {
+        "inspiration": "All original, germinated, like a flower, bursting towards the sunlight",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 859047424454754,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 435353173137579,
+        "steps": 30
+      },
+      "playback_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-gregorian-chant/gbr.playback.json",
+      "audio_analysis_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-gregorian-chant/gbr.audio.json"
     },
     {
       "id": "california-rear-view-industrial-techno",
@@ -1443,6 +1803,126 @@
       "audio_analysis_url": "showcase/golden-rhapsody/golden-rhapsody-house/gbr.audio.json"
     },
     {
+      "id": "the-endless-game-house",
+      "composition": "the-endless-game",
+      "title": "the-endless-game",
+      "displayTitle": "The Endless Game",
+      "variant": "house",
+      "version": "house",
+      "genre": {
+        "cluster": "electronic music",
+        "parent_genre": "electronic music",
+        "child_genre": "house",
+        "parent_colour": "#D52633",
+        "child_colour": "#D52633",
+        "taxonomy_order": 1822,
+        "parent_order": 1816
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/the-endless-game/the-endless-game-house/the-endless-game-house.flac",
+          "mp3": null
+        }
+      },
+      "artwork_url": "showcase/the-endless-game/the-endless-game-house/the-endless-game-house.png",
+      "lyrics": {
+        "raw": "[intro]\nBall!\n...\n...\n...\nBALL!!\n...\n...\n...\nBAAALLLL!!\n[verse]\nSwallowed by the endless void\nWater and current ball now destroyed\nMonoliths of nature rise\nTaking out my sphere shaped prize\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the eternal game\n[post-chorus]\nFeeding on the darkened void\nCrush my crown, erase the name\n[verse]\nFootballs my mouth cannot abide\nChained in teeth, trapped inside\nHear my declaration cry\nThis ball, my mouth, will not comply\n[bridge]\nFall. Into. The. Deep.\nThe cycle ends, the waters sweep.\nFall. From. The. Mouth.\nThe water, my ball does keep.\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the eternal game\n[post-chorus]\nAfraid? Afraid?\nA...FRAID\n[verse]\nWhat heavy monster!?\nLost my ball!?\nYou think it's me?\nI cannot accept that!\nThat chunky monster\nBE AFRAID!\nNow I've brought my metal\nAnd the monster is slayed\n[instrumental]\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the eternal game\n[post-chorus]\nFeeding on the darkened void\nCrush my crown, erase the name\n[outro]\nErase the name!\nConsumed by!\n...\nthe endless game",
+        "wordTiming": {
+          "src": "showcase/the-endless-game/the-endless-game-house/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/the-endless-game/the-endless-game-house/gbr.playback.json",
+      "yamlUrl": "showcase/the-endless-game/the-endless-game-house/the-endless-game-house.yaml",
+      "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+      "style": {
+        "inspiration": "All original, delivered by mother nature",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 715491956321402,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 433280552799055,
+        "steps": 30
+      },
+      "playback_url": "showcase/the-endless-game/the-endless-game-house/gbr.playback.json",
+      "audio_analysis_url": "showcase/the-endless-game/the-endless-game-house/gbr.audio.json"
+    },
+    {
+      "id": "california-rear-view-techno",
+      "composition": "california-rear-view",
+      "title": "california-rear-view",
+      "displayTitle": "California Rear View",
+      "variant": "techno",
+      "version": "techno",
+      "genre": {
+        "cluster": "electronic music",
+        "parent_genre": "electronic music",
+        "child_genre": "techno",
+        "parent_colour": "#D52633",
+        "child_colour": "#D52633",
+        "taxonomy_order": 1823,
+        "parent_order": 1816
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/california-rear-view/california-rear-view-techno/california-rear-view-techno.flac",
+          "mp3": "showcase/california-rear-view/california-rear-view-techno/california-rear-view-techno.mp3"
+        }
+      },
+      "artwork_url": "showcase/california-rear-view/california-rear-view-techno/california-rear-view-techno.png",
+      "lyrics": {
+        "raw": "[intro]\nmmm mmm mmm mmm\nI saw your name light up again\nLike some bad sign I should've read\nYou say we're nothing, say we're friends\nFunny how that story never ends\n[verse]\nI don't need another explanation\nDon't need another late-night conversation\nYou had me building something in my head\nWhile you were somewhere else instead\nNow I'm riding round with nowhere to be\nCheap coffee, back seat, quarter past three\nEverybody told me what I couldn't see\nGuess the joke was always me\n[pre-chorus]\nYou pull me close, then tell me go\nMake up your mind, I need to know\nOne minute yes, the next minute no\nI'm already halfway down the road\n[chorus]\nBaby, take me out to California (oh)\nDrive until the morning comes (oh ho)\nYou can tell me that you want me\nThen pretend that we're just having fun\nIf you're leaving, keep on leaving\nIf you're staying, do your thing\nI've been waiting, I've been dreaming\nI've been cutting every string\n[instrumental]\n[post-chorus]\nYour name rolls round like a mantra\nBack of a Hyundai, maybe an Lancia\nBad behaviour, baby, I'm your karma\nKeep playing games and my girls might haunt ya\nBlueberry pancakes at a quarter to eight\nYou say come over, then you make me wait\nEngine running while you change your mind\nPut it in gear, baby, don't waste my time\n[bridge]\nDo what you do\nDon't stop now\nDo what you do\nYou know how\nDo what you do\nIf you're gonna come through\nDon't keep me hanging\nI've got things to do\n[verse]\nThen I see you standing out with her\nHeard you call her name, fuck you Jennifer\nSuddenly every little rumour has words\nAll those nights you said I was absurd\nNow the truth looks worse than what I'd heard\nSo go on, tell everybody we're cool\nTell them I'm dramatic, tell them I'm cruel\nI'll be the one that slipped through your hands\nYou can keep my made up future plans\n[pre-chorus]\nI stayed awake with one eye open\nWhile every promise came back broken\nNow you're asking why I'm going\nFunny how you never noticed\n[chorus]\nBaby, take me out to California (oh)\nDrive until the morning comes (oh ho)\nYou can tell me that you want me\nThen pretend that we're just having fun\nIf you're leaving, keep on leaving\nIf you're staying, do your thing\nI've been waiting, I've been dreaming\nI've been cutting every string\n[verse]\nI don't want another little fight\nI just want the truth for once tonight\nYou say stay, then disappear from sight\nBaby, pick a lane and drive it right\nMaybe we could make it till tomorrow\nMaybe all we've got is borrowed\nMaybe I should pack and let it go\nYou already know\nYou already know\n[bridge]\nDon't stop, don't stop\nIf you're gonna do it, do it\nDon't talk, don't talk\nLike there's nothing running through it\nI need somebody I can count on\nSomebody there when the lights go out\nNot another name that I obsess on\nNot another reason for doubt\nSo do your thing\nI'll do mine\nYou had your shot\nYou had your time\nDon't reload\nA death sentence, I already got mine\n[pre-chorus]\nCalifornia in the rear-view\nYour perfume on my clothes\nI could spend another year here\nWaiting for a door you've closed\nBut I'd rather be the story\nThat you tell somebody new\nAbout the girl who finally left you\nWhen she figured out the truth\n[chorus]\nBaby, take yourself to California (oh)\nI don't care where you go (oh ho)\nYou can tell her that you love her\nYou can put on your little show\nI'm not waiting, I'm not dreaming\nI'm not hanging by a string\nYou can keep your explanations\nYou can go and do your thing\n[outro]\nDo your thing\nDo your thing\nGo ahead and do your thing\nCalifornia's getting smaller\nIn the mirror as I leave\nDo your thing\nDo your thing\nJust don't come looking back for me",
+        "wordTiming": {
+          "src": "showcase/california-rear-view/california-rear-view-techno/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/california-rear-view/california-rear-view-techno/gbr.playback.json",
+      "yamlUrl": "showcase/california-rear-view/california-rear-view-techno/california-rear-view-techno.yaml",
+      "story": "A strange, sometimes depressing, mashup of three different songs, take a guess what they are.",
+      "style": {
+        "inspiration": "",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 252599317666689,
+        "topK": 45,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 51999835065567,
+        "steps": 40
+      },
+      "playback_url": "showcase/california-rear-view/california-rear-view-techno/gbr.playback.json",
+      "audio_analysis_url": "showcase/california-rear-view/california-rear-view-techno/gbr.audio.json"
+    },
+    {
       "id": "the-endless-game-g-funk",
       "composition": "the-endless-game",
       "title": "the-endless-game",
@@ -1621,6 +2101,66 @@
       },
       "playback_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-folk-rock/gbr.playback.json",
       "audio_analysis_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-folk-rock/gbr.audio.json"
+    },
+    {
+      "id": "new-mills-new-mills-hard-rock",
+      "composition": "new-mills-new-mills",
+      "title": "new-mills-new-mills",
+      "displayTitle": "New Mills New Mills",
+      "variant": "hard-rock",
+      "version": "hard-rock",
+      "genre": {
+        "cluster": "rock",
+        "parent_genre": "golden age rock",
+        "child_genre": "hard rock",
+        "parent_colour": "#DCB250",
+        "child_colour": "#DEA958",
+        "taxonomy_order": 2002,
+        "parent_order": 1858
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/new-mills-new-mills/new-mills-new-mills-hard-rock/new-mills-new-mills-hard-rock.flac",
+          "mp3": null
+        }
+      },
+      "artwork_url": "showcase/new-mills-new-mills/new-mills-new-mills-hard-rock/new-mills-new-mills-hard-rock.png",
+      "lyrics": {
+        "raw": "[intro]\n[verse]\nStart spreadin' the toys\nI'm leavin' today\nI want to be a part of it\nNew Mills, New Mills\n[verse]\nThese vagabond paws\nAre longin' to stray\nRight through the very heart of it\nNew Mills, New Mills\n[chorus]\nI wanna wake up\nIn a town that's half a-sleep\nAnd find I'm king of the hill\nTop of the heap\n[verse]\nThese little town blues\nAre melting away\nI'll make a brand new start of it\nIn old New Mills\n[chorus]\nIf I can make it there\nI'll make it anywhere\nIt's up to you\nNew Mills, New Mills\nNew Mills, New Mills\n[verse]\nI want to wake up\nIn a town that's half a-sleep\nAnd find I'm A-number one\nTop of the list\nKing of the hill\nA-number one\n[verse]\nThese little town blues\nAre melting away\nI'll make a brand new start of it\nIn old New Mills\n[bridge]\n[chorus]\nAnnddd-uh if I can make it there\nI'm gonna make it anywhere\nIt's-up-to-you\nNew Millssss!\nNew Millssss!\nNew Mills!\n[solo]\n[outro]",
+        "wordTiming": {
+          "src": "showcase/new-mills-new-mills/new-mills-new-mills-hard-rock/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/new-mills-new-mills/new-mills-new-mills-hard-rock/gbr.playback.json",
+      "yamlUrl": "showcase/new-mills-new-mills/new-mills-new-mills-hard-rock/new-mills-new-mills-hard-rock.yaml",
+      "story": "Pretty obscure track, not sure if you'll have heard of it",
+      "style": {
+        "inspiration": "Frank Sinatra - New York",
+        "inspirationUrl": "https://www.youtube.com/watch?v=le1QF3uoQNg"
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 998606381592464,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 342032730623278,
+        "steps": 30
+      },
+      "playback_url": "showcase/new-mills-new-mills/new-mills-new-mills-hard-rock/gbr.playback.json",
+      "audio_analysis_url": "showcase/new-mills-new-mills/new-mills-new-mills-hard-rock/gbr.audio.json"
     },
     {
       "id": "johnny-three-fridges-indie-folk",
@@ -2703,6 +3243,66 @@
       "audio_analysis_url": "showcase/fluffies/fluffies-hyperpop/gbr.audio.json"
     },
     {
+      "id": "paws-on-your-nightstand-hyperpop",
+      "composition": "paws-on-your-nightstand",
+      "title": "paws-on-your-nightstand",
+      "displayTitle": "Paws On Your Nightstand",
+      "variant": "hyperpop",
+      "version": "hyperpop",
+      "genre": {
+        "cluster": "pop",
+        "parent_genre": "pop",
+        "child_genre": "hyperpop",
+        "parent_colour": "#FFEB91",
+        "child_colour": "#FDEC9C",
+        "taxonomy_order": 4614,
+        "parent_order": 2889
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-hyperpop/paws-on-your-nightstand-hyperpop.flac",
+          "mp3": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-hyperpop/paws-on-your-nightstand-hyperpop.mp3"
+        }
+      },
+      "artwork_url": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-hyperpop/paws-on-your-nightstand-hyperpop.png",
+      "lyrics": {
+        "raw": "[intro]\n(pitched-up) Woof, woof\nYeah, it's Doja\nBam Bam, get off the couch\nUgh\nLet's go\n[verse]\nI'm that golden girl, blonde hair, cold stare\nWalk in the room and you better beware\nI don't chase the ball, I make the ball chase me\nPrincess of the house and the whole world's my pantry\nScratch behind my ears? You can earn that, peasant\nBring me a treat and maybe you'll be present\nEyes like a sniper, posture like a queen\nPrettiest, pettiest golden you ever seen\nOpossum face if it don't go my way\n(yeah)\nThen here come Bam Bam, big dumb and golden\nBrain the size of a pea but his heart wide open\nOne neuron firing and it only says \"FETCH\"\nSlobber on the floor, that's my Bam Bam, what a catch\n(Woof!)\n[chorus]\nGolden girl, don't test me\nRun this whole house, you can't arrest me\nPretty and petty, I do what I want\nPrincess with the teeth, watch me flaunt\n(Woof!)\nDoja, Doja, run it\nBam Bam, Bam Bam, golden\nTwo of us, one throne\nMove, this whole house is my own\n(Woof!)\n[instrumental]\n[verse]\nBALL! Did somebody say ball?\nI'm Bam Bam, I love everybody, that's all\nBig soft mouth, fit your neck inside it\nI'm not a threat, I'm just happy, can't hide it\nRain or shine, I'm answering the call\nWreckin' ball baby, bouncin' off the wall\nLove every human, love every friend\nExcept Teddy (why?) nobody comprehend\nFluff Teddy, fluff Teddy\n(Doja: ugh, focus)\nHeard \"ready set go\" and forgot my own name\nStick me on repeat, I'll do it all again\n(Woof!)\n[chorus]\nGolden girl, don't test me\nRun this whole house, you can't arrest me\nPretty and petty, I do what I want\nPrincess with the teeth, watch me flaunt\n(Woof!)\nDoja, Doja, run it\nBam Bam, Bam Bam, golden\nTwo of us, one throne\nMove, this whole house is my own\n(Woof!)\n[bridge]\nTwo sides of a golden, same heart underneath\nShe's the brains and the beauty, he's the chaos and teeth\nOne's a little gremlin, one's a slobber machine\nPrettiest, dumbest, sweetest team you've seen\nDoja! Bam Bam!\nOne girl, one boy\nSame breed, different toy\n(Woof!)\n[chorus]\nGolden girl, don't test me\nRun this whole house, you can't arrest me\nPretty and petty, I do what I want\nPrincess with the teeth, watch me flaunt\n(Woof!)\nDoja, Doja, run it\nBam Bam, Bam Bam, golden\nTwo of us, one throne\nMove, this whole house is my own\n(Woof!)\n[outro]\nDoja the princess, Bam Bam the chunk\nOne holds it down, one's a golden drunk\nTwo goldens, one home, we got it all\nTwenty twenty six, hear the golden call\nGo get that treat!\nWalk it on repeat!\n(Woof! Woof!)\nUgh, I'm outside\nBye",
+        "wordTiming": {
+          "src": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-hyperpop/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-hyperpop/gbr.playback.json",
+      "yamlUrl": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-hyperpop/paws-on-your-nightstand-hyperpop.yaml",
+      "story": "She's a gremlin, it cannot be denied",
+      "style": {
+        "inspiration": "Original",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 405435595942547,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 147449473538373,
+        "steps": 40
+      },
+      "playback_url": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-hyperpop/gbr.playback.json",
+      "audio_analysis_url": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-hyperpop/gbr.audio.json"
+    },
+    {
       "id": "pity-pawty-hyper-pop",
       "composition": "pity-pawty",
       "title": "pity-pawty",
@@ -2881,6 +3481,66 @@
       },
       "playback_url": "showcase/california-rear-view/california-rear-view-indie-pop/gbr.playback.json",
       "audio_analysis_url": "showcase/california-rear-view/california-rear-view-indie-pop/gbr.audio.json"
+    },
+    {
+      "id": "california-rear-view-indie-pop-69db505",
+      "composition": "california-rear-view",
+      "title": "california-rear-view",
+      "displayTitle": "California Rear View",
+      "variant": "indie-pop",
+      "version": "indie-pop",
+      "genre": {
+        "cluster": "pop",
+        "parent_genre": "pop",
+        "child_genre": "indie pop",
+        "parent_colour": "#FFEB91",
+        "child_colour": "#FEEB8C",
+        "taxonomy_order": 4627,
+        "parent_order": 2889
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/california-rear-view/california-rear-view-sad-pop/california-rear-view-sad-pop.flac",
+          "mp3": "showcase/california-rear-view/california-rear-view-sad-pop/california-rear-view-sad-pop.mp3"
+        }
+      },
+      "artwork_url": "showcase/california-rear-view/california-rear-view-sad-pop/california-rear-view-sad-pop.png",
+      "lyrics": {
+        "raw": "[intro]\nmmm mmm mmm mmm\nI saw your name light up again\nLike some bad sign I should've read\nYou say we're nothing, say we're friends\nFunny how that story never ends\n[verse]\nI don't need another explanation\nDon't need another late-night conversation\nYou had me building something in my head\nWhile you were somewhere else instead\nNow I'm riding round with nowhere to be\nCheap coffee, back seat, quarter past three\nEverybody told me what I couldn't see\nGuess the joke was always me\n[pre-chorus]\nYou pull me close, then tell me go\nMake up your mind, I need to know\nOne minute yes, the next minute no\nI'm already halfway down the road\n[chorus]\nBaby, take me out to California (oh)\nDrive until the morning comes (oh ho)\nYou can tell me that you want me\nThen pretend that we're just having fun\nIf you're leaving, keep on leaving\nIf you're staying, do your thing\nI've been waiting, I've been dreaming\nI've been cutting every string\n[post-chorus]\nYour name rolls round like a mantra\nBack of a Hyundai, maybe an Lancia\nBad behaviour, baby, I'm your karma\nKeep playing games and my girls might haunt ya\nBlueberry pancakes at a quarter to eight\nYou say come over, then you make me wait\nEngine running while you change your mind\nPut it in gear, baby, don't waste my time\n[bridge]\nDo what you do\nDon't stop now\nDo what you do\nYou know how\nDo what you do\nIf you're gonna come through\nDon't keep me hanging\nI've got things to do\n[verse]\nThen I see you standing out with her\nHeard you call her name, fuck you Jennifer\nSuddenly every little rumour has words\nAll those nights you said I was absurd\nNow the truth looks worse than what I'd heard\nSo go on, tell everybody we're cool\nTell them I'm dramatic, tell them I'm cruel\nI'll be the one that slipped through your hands\nYou can keep my made up future plans\n[pre-chorus]\nI stayed awake with one eye open\nWhile every promise came back broken\nNow you're asking why I'm going\nFunny how you never noticed\n[chorus]\nBaby, take me out to California (oh)\nDrive until the morning comes (oh ho)\nYou can tell me that you want me\nThen pretend that we're just having fun\nIf you're leaving, keep on leaving\nIf you're staying, do your thing\nI've been waiting, I've been dreaming\nI've been cutting every string\n[verse]\nI don't want another little fight\nI just want the truth for once tonight\nYou say stay, then disappear from sight\nBaby, pick a lane and drive it right\nMaybe we could make it till tomorrow\nMaybe all we've got is borrowed\nMaybe I should pack and let it go\nYou already know\nYou already know\n[bridge]\nDon't stop, don't stop\nIf you're gonna do it, do it\nDon't talk, don't talk\nLike there's nothing running through it\nI need somebody I can count on\nSomebody there when the lights go out\nNot another name that I obsess on\nNot another reason for doubt\nSo do your thing\nI'll do mine\nYou had your shot\nYou had your time\nDon't reload\nA death sentence, I already got mine\n[pre-chorus]\nCalifornia in the rear-view\nYour perfume on my clothes\nI could spend another year here\nWaiting for a door you've closed\nBut I'd rather be the story\nThat you tell somebody new\nAbout the girl who finally left you\nWhen she figured out the truth\n[chorus]\nBaby, take yourself to California (oh)\nI don't care where you go (oh ho)\nYou can tell her that you love her\nYou can put on your little show\nI'm not waiting, I'm not dreaming\nI'm not hanging by a string\nYou can keep your explanations\nYou can go and do your thing\n[outro]\nDo your thing\nDo your thing\nGo ahead and do your thing\nCalifornia's getting smaller\nIn the mirror as I leave\nDo your thing\nDo your thing\nJust don't come looking back for me",
+        "wordTiming": {
+          "src": "showcase/california-rear-view/california-rear-view-sad-pop/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/california-rear-view/california-rear-view-sad-pop/gbr.playback.json",
+      "yamlUrl": "showcase/california-rear-view/california-rear-view-sad-pop/california-rear-view-sad-pop.yaml",
+      "story": "A strange, sometimes depressing, mashup of three different songs, take a guess what they are.",
+      "style": {
+        "inspiration": "",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 839988897225481,
+        "topK": 45,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 449729844736180,
+        "steps": 40
+      },
+      "playback_url": "showcase/california-rear-view/california-rear-view-sad-pop/gbr.playback.json",
+      "audio_analysis_url": "showcase/california-rear-view/california-rear-view-sad-pop/gbr.audio.json"
     },
     {
       "id": "lie-by-the-fire-indie-pop",
@@ -4863,6 +5523,66 @@
       "audio_analysis_url": "showcase/self-rightous-gremelin/self-rightous-gremelin-trap-soul/gbr.audio.json"
     },
     {
+      "id": "new-mills-new-mills-death-metal",
+      "composition": "new-mills-new-mills",
+      "title": "new-mills-new-mills",
+      "displayTitle": "New Mills New Mills",
+      "variant": "death-metal",
+      "version": "death-metal",
+      "genre": {
+        "cluster": "heavy / experimental",
+        "parent_genre": "metal",
+        "child_genre": "death metal",
+        "parent_colour": "#D0802F",
+        "child_colour": "#BE7731",
+        "taxonomy_order": 4041,
+        "parent_order": 3948
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/new-mills-new-mills/new-mills-new-mills-death-metal/new-mills-new-mills-death-metal.flac",
+          "mp3": "showcase/new-mills-new-mills/new-mills-new-mills-death-metal/new-mills-new-mills-death-metal.mp3"
+        }
+      },
+      "artwork_url": "showcase/new-mills-new-mills/new-mills-new-mills-death-metal/new-mills-new-mills-death-metal.png",
+      "lyrics": {
+        "raw": "[intro]\n[verse]\nStart spreadin' the toys\nI'm leavin' today\nI want to be a part of it\nNew Mills, New Mills\n[verse]\nThese vagabond paws\nAre longin' to stray\nRight through the very heart of it\nNew Mills, New Mills\n[chorus]\nI wanna wake up\nIn a town that's half a-sleep\nAnd find I'm king of the hill\nTop of the heap\n[verse]\nThese little town blues\nAre melting away\nI'll make a brand new start of it\nIn old New Mills\n[chorus]\nIf I can make it there\nI'll make it anywhere\nIt's up to you\nNew Mills, New Mills\nNew Mills, New Mills\n[verse]\nI want to wake up\nIn a town that's half a-sleep\nAnd find I'm A-number one\nTop of the list\nKing of the hill\nA-number one\n[verse]\nThese little town blues\nAre melting away\nI'll make a brand new start of it\nIn old New Mills\n[bridge]\n[chorus]\nAnnddd-uh if I can make it there\nI'm gonna make it anywhere\nIt's-up-to-you\nNew Millssss!\nNew Millssss!\nNew Mills!\n[solo]\n[outro]",
+        "wordTiming": {
+          "src": "showcase/new-mills-new-mills/new-mills-new-mills-death-metal/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/new-mills-new-mills/new-mills-new-mills-death-metal/gbr.playback.json",
+      "yamlUrl": "showcase/new-mills-new-mills/new-mills-new-mills-death-metal/new-mills-new-mills-death-metal.yaml",
+      "story": "Pretty obscure track, not sure if you'll have heard of it",
+      "style": {
+        "inspiration": "Frank Sinatra - New York",
+        "inspirationUrl": "https://www.youtube.com/watch?v=le1QF3uoQNg"
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 959465929508023,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 32109047314532,
+        "steps": 30
+      },
+      "playback_url": "showcase/new-mills-new-mills/new-mills-new-mills-death-metal/gbr.playback.json",
+      "audio_analysis_url": "showcase/new-mills-new-mills/new-mills-new-mills-death-metal/gbr.audio.json"
+    },
+    {
       "id": "lie-by-the-fire-heavy-metal",
       "composition": "lie-by-the-fire",
       "title": "lie-by-the-fire",
@@ -5101,6 +5821,66 @@
       },
       "playback_url": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-power-metal/gbr.playback.json",
       "audio_analysis_url": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-power-metal/gbr.audio.json"
+    },
+    {
+      "id": "new-mills-new-mills-thrash-metal",
+      "composition": "new-mills-new-mills",
+      "title": "new-mills-new-mills",
+      "displayTitle": "New Mills New Mills",
+      "variant": "thrash-metal",
+      "version": "thrash-metal",
+      "genre": {
+        "cluster": "heavy / experimental",
+        "parent_genre": "metal",
+        "child_genre": "thrash metal",
+        "parent_colour": "#D0802F",
+        "child_colour": "#BD692E",
+        "taxonomy_order": 4335,
+        "parent_order": 3948
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/new-mills-new-mills/new-mills-new-mills-thrash-metal/new-mills-new-mills-thrash-metal.flac",
+          "mp3": "showcase/new-mills-new-mills/new-mills-new-mills-thrash-metal/new-mills-new-mills-thrash-metal.mp3"
+        }
+      },
+      "artwork_url": "showcase/new-mills-new-mills/new-mills-new-mills-thrash-metal/new-mills-new-mills-thrash-metal.png",
+      "lyrics": {
+        "raw": "[intro]\n[verse]\nStart spreadin' the toys\nI'm leavin' today\nI want to be a part of it\nNew Mills, New Mills\n[verse]\nThese vagabond paws\nAre longin' to stray\nRight through the very heart of it\nNew Mills, New Mills\n[chorus]\nI wanna wake up\nIn a town that's half a-sleep\nAnd find I'm king of the hill\nTop of the heap\n[verse]\nThese little town blues\nAre melting away\nI'll make a brand new start of it\nIn old New Mills\n[chorus]\nIf I can make it there\nI'll make it anywhere\nIt's up to you\nNew Mills, New Mills\nNew Mills, New Mills\n[verse]\nI want to wake up\nIn a town that's half a-sleep\nAnd find I'm A-number one\nTop of the list\nKing of the hill\nA-number one\n[verse]\nThese little town blues\nAre melting away\nI'll make a brand new start of it\nIn old New Mills\n[bridge]\n[chorus]\nAnnddd-uh if I can make it there\nI'm gonna make it anywhere\nIt's-up-to-you\nNew Millssss!\nNew Millssss!\nNew Mills!\n[solo]\n[outro]",
+        "wordTiming": {
+          "src": "showcase/new-mills-new-mills/new-mills-new-mills-thrash-metal/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/new-mills-new-mills/new-mills-new-mills-thrash-metal/gbr.playback.json",
+      "yamlUrl": "showcase/new-mills-new-mills/new-mills-new-mills-thrash-metal/new-mills-new-mills-thrash-metal.yaml",
+      "story": "Pretty obscure track, not sure if you'll have heard of it",
+      "style": {
+        "inspiration": "Frank Sinatra - New York",
+        "inspirationUrl": "https://www.youtube.com/watch?v=le1QF3uoQNg"
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 79545179649114,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 242599928880720,
+        "steps": 40
+      },
+      "playback_url": "showcase/new-mills-new-mills/new-mills-new-mills-thrash-metal/gbr.playback.json",
+      "audio_analysis_url": "showcase/new-mills-new-mills/new-mills-new-mills-thrash-metal/gbr.audio.json"
     },
     {
       "id": "golden-rhapsody-musical",
@@ -6423,6 +7203,126 @@
       "audio_analysis_url": "showcase/many-manele/many-manele-manele/gbr.audio.json"
     },
     {
+      "id": "you-make-me-holy-rap",
+      "composition": "you-make-me-holy",
+      "title": "you-make-me-holy",
+      "displayTitle": "You Make Me Holy",
+      "variant": "rap",
+      "version": "rap",
+      "genre": {
+        "cluster": "rap / hip hop",
+        "parent_genre": "rap / hip hop",
+        "child_genre": "rap",
+        "parent_colour": "#843D79",
+        "child_colour": "#903F86",
+        "taxonomy_order": 5374,
+        "parent_order": 5266
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/you-make-me-holy/you-make-me-holy-rap/you-make-me-holy-rap.flac",
+          "mp3": "showcase/you-make-me-holy/you-make-me-holy-rap/you-make-me-holy-rap.mp3"
+        }
+      },
+      "artwork_url": null,
+      "lyrics": {
+        "raw": "[intro]\nYou make me holy\nYou make me turn my hands up onto the skies and pray\nI could never complain whilst I have you\nClick, c-c-click, c-c-click, click (Woof)\nYou like my holy books?\nI could lend them to you like a little garden fruit\nAttitude and the prayer will save you\n[verse]\nYour holy saviour\nRed wine, holy bread, he can cure a tumor\nCan't believe we'd ever let hands stray from him (no no)\nI count my blessings, you count yours\nGot a life of meaning too, call it his will\nBet your contribution that I'ma pray here\nAbsoloute gospel\nWise headed brother, holy hearted sister\nLiving life so good, we were born in his garden\nShare a verse with me (believer)\nShine the lords light upon he\nCount the days until we preach again (it's tomorrow)\nI'm holy\nYou raise my life up then you say, (Don't be bad)\nYou know your way around a Holy book, (call you Dad)\nThrowing sermons every time I go to Church (Preach brother, preach)\nI'm glad, give big thanks, I'm glad (Praise the lord)\n[chorus]\nYou make me holy\nYou make me turn my hands up onto the skies and pray\nI could never complain whilst I have you\nClick, c-c-click, c-c-click, click (Woof)\nYou like my holy books?\nI could lend them to you like a little garden fruit\nAttitude and the prayer will save you\n[instrumental]\n[verse]\nHello, waitress\nI want this bread for dinner, paper plate it\nCut this loaf  first, let's share and enjoy it\nI'm abrasive?\nI'm a follower, devout and unbroken\nHoly preaching, spread the good word\nBrain-expanding preacher, coming for you, I'm contagious (ha ha)\nProtecting what is sacred\nI am living good before your holy words\nI always preach it\nNow you're crying and you're shaking?\nTake your tears and enjoy the lords gifts\nYour beautiful\nI'm holy\nYou raise my life up then you say, (Don't be bad)\nYou know your way around a Holy book, (call you Dad)\nThrowing sermons every time I go to Church (Preach brother, preach)\nI'm glad, give big thanks, I'm glad (Praise the lord)\n[solo]\n[outro]\nYou make me holy\nYou make me turn my hands up onto the skies and pray\nI could never complain whilst I have you\nClick, c-c-click, c-c-click, click (Woof)",
+        "wordTiming": {
+          "src": "showcase/you-make-me-holy/you-make-me-holy-rap/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/you-make-me-holy/you-make-me-holy-rap/gbr.playback.json",
+      "yamlUrl": "showcase/you-make-me-holy/you-make-me-holy-rap/you-make-me-holy-rap.yaml",
+      "story": "This is a 180 degree parody, you gotta check the inspiration to understand the lords message on this one",
+      "style": {
+        "inspiration": "Ashnikko - You Make Me Sick!",
+        "inspirationUrl": "https://www.youtube.com/watch?v=yP6b4BeL6Zk"
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 604074987399413,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 797893058896342,
+        "steps": 40
+      },
+      "playback_url": "showcase/you-make-me-holy/you-make-me-holy-rap/gbr.playback.json",
+      "audio_analysis_url": "showcase/you-make-me-holy/you-make-me-holy-rap/gbr.audio.json"
+    },
+    {
+      "id": "a-golden-life-trap",
+      "composition": "a-golden-life",
+      "title": "a-golden-life",
+      "displayTitle": "A Golden Life",
+      "variant": "trap",
+      "version": "trap",
+      "genre": {
+        "cluster": "rap / hip hop",
+        "parent_genre": "rap / hip hop",
+        "child_genre": "trap",
+        "parent_colour": "#843D79",
+        "child_colour": "#8B467B",
+        "taxonomy_order": 5410,
+        "parent_order": 5266
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/a-golden-life/a-golden-life-trap/a-golden-life-trap.flac",
+          "mp3": "showcase/a-golden-life/a-golden-life-trap/a-golden-life-trap.mp3"
+        }
+      },
+      "artwork_url": "showcase/a-golden-life/a-golden-life-trap/a-golden-life-trap.png",
+      "lyrics": {
+        "raw": "[verse]\nYeah, two goldens in the house but they built different\nDoja move silent, got that cold ambition\nWorking line princess, never askin' permission\nHead high, eyes sharp, always on her mission\nManipulate the crowd, she extorting scratches\nBathe in golden rays, never overheating\nIndependent energy, but always chasing the attention\nMeanwhile Bam Bam crashing through the scene\nBig fluff,\nbig smile,\nbig hips energy\nWhen a ball bounce he gone like a missile\nSingle neuron mind\nonly got a single focus\nMantle-piece going crazy\ntongue flapping in the wind\nBring it back once, he'll do it all again\nStick that boy on repeat and the retrieving never ends\nGolden-hearted giant\nTrying so hard just to keep everyone safe\nBut he can fit ya neck in his mouth\nWoof\n[chorus]\nDoja got that boss walk, lone wolf, regal vibe\nBam Bam got that good boy, don't cry, down-for-the-ride\nOne runs her kingdom, one living life for mama\nDifferent type of legends, side by side\nDoja barking orders, Bam Bam toy circling with pride\nOne stays cool, one plays all night\nFrom the break of dawn to the nights moonlight\nThat's the golden retriever life, yeah that's their life\nWoof\n[instrumental]\n[verse]\nDoja like, \"I got this,\nthis universe-is mine,\nyou can stop scratchin' where I call time\"\nReading every situation like you owe her your life\nCalculated movements, cold maturity\nRunning every field with total authority\nIf she wants affection then she'll let you know\nOtherwise she's busy with her beauty sleep\nA golden girls-gotta-glow\nNever been a follower\nThat's not her role\nOpossum face burned into her soul\nTail never stops wagging\nIf you offer her a treat, your hand she'll take it all\nBam Bam bursts in like a wrecking ball\nHeard somebody say-\nready, set,\ngo\nand he forgot it all\nCould be rain, could be snow, could be spring, could be fall\nWhen the ball gets touched-he's answering the call\nLiving every moment, giving it his all\nGot enough love in him for every human and friend, except Teddy,\nfluff Teddy\nnobody knows why, fluff Teddy\nWoof\n[chorus]\nDoja got that boss walk, lone wolf, regal vibe\nBam Bam got that good boy, don't cry, down-for-the-ride\nOne runs her kingdom, one living life for mama\nDifferent type of legends, side by side\nDoja barking orders, Bam Bam toy circling with pride\nOne stays cool, one plays all night\nFrom the break of dawn to the nights moonlight\nThat's the golden retriever life, yeah that's their life\nWoof\n[bridge]\nTwo sides of a golden, same heart underneath\nOne brings the wisdom, one brings never ending energy\nDoja bein gremlin\nBam-Bam spreadin' slobber\nPerfect fluffy team, one girl, one boy\nDifferent paths, same breed\nDifferent ways to play the game\nWoof\n[outro]\nYeah...\nDoja the princess, Bam Bam the chunk\nOne holds it steady, one can't get enough\nTwo goldens, one home, they got it all\nDoja and Bam Bam, living life in full\nYeah...\nAnd I'm out- side\n2026\nGo get that treat!\nWalk this on repeat!\nWoof",
+        "wordTiming": {
+          "src": "showcase/a-golden-life/a-golden-life-trap/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/a-golden-life/a-golden-life-trap/gbr.playback.json",
+      "yamlUrl": "showcase/a-golden-life/a-golden-life-trap/a-golden-life-trap.yaml",
+      "story": "Two dogs, living their lives, ones moves silent and the other can fit your neck in his mouth",
+      "style": {
+        "inspiration": "All original",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 13496913559628,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 26936141996445,
+        "steps": 30
+      },
+      "playback_url": "showcase/a-golden-life/a-golden-life-trap/gbr.playback.json",
+      "audio_analysis_url": "showcase/a-golden-life/a-golden-life-trap/gbr.audio.json"
+    },
+    {
       "id": "paws-off-trap",
       "composition": "paws-off",
       "title": "paws-off",
@@ -6841,6 +7741,126 @@
       },
       "playback_url": "showcase/paws-off/paws-off-bossa-nova/gbr.playback.json",
       "audio_analysis_url": "showcase/paws-off/paws-off-bossa-nova/gbr.audio.json"
+    },
+    {
+      "id": "so-stupid-bossa-nova",
+      "composition": "so-stupid",
+      "title": "so-stupid",
+      "displayTitle": "So Stupid",
+      "variant": "bossa-nova",
+      "version": "bossa-nova",
+      "genre": {
+        "cluster": "rhythm music",
+        "parent_genre": "rhythm 'n' blues",
+        "child_genre": "bossa nova",
+        "parent_colour": "#66CC99",
+        "child_colour": "#7BD19D",
+        "taxonomy_order": 5514,
+        "parent_order": 5448
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/a-golden-life/a-golden-life-bossa-nova/a-golden-life-bossa-nova.flac",
+          "mp3": "showcase/a-golden-life/a-golden-life-bossa-nova/a-golden-life-bossa-nova.mp3"
+        }
+      },
+      "artwork_url": "showcase/a-golden-life/a-golden-life-bossa-nova/a-golden-life-bossa-nova.png",
+      "lyrics": {
+        "raw": "[intro]\n(group) Sha-la-la... doo-wop...\n(Woof)\nOh, two little goldens...\n[verse]\nThere's a golden girl with a cold little stare (ooh-ooh)\nCopper-coated princess and she hasn't a care (sha-la-la)\nShe won't chase the ball, no, she's much too refined\nThe prettiest, pettiest golden you'll find\n[chorus]\nTwo goldens (doo-wop) one little home (bom-bom)\nOne is a princess on her velvet throne (sha-la-la)\nOne is a sweetheart, all slobber and sun (ooh-ooh)\nTwo golden hearts beating, two beating as one\n(Woof)\n[instrumental]\n[verse]\nHere's her big chunk with the heart open wide (ooh-ooh)\nOne thought, go fetch, and he's off on the ride (bom-bom)\nHe loves every soul that he ever did see\nBut Teddy, oh Teddy, no friend will he be (why-y-y?)\n[bridge]\nTwo sides of a golden, one heart down below (ahhh)\nShe's the brains and the beauty, he's the heart and the glow\n(group) Doo-wop... Doja... Bam Bam...\n[outro]\nTwo goldens, one home, and they have it all (sha-la-la)\n(slowing) Go on, sweethearts... fetch the ball...\n(group) Bom... bom... (Woof)",
+        "wordTiming": {
+          "src": "showcase/a-golden-life/a-golden-life-bossa-nova/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/a-golden-life/a-golden-life-bossa-nova/gbr.playback.json",
+      "yamlUrl": "showcase/a-golden-life/a-golden-life-bossa-nova/a-golden-life-bossa-nova.yaml",
+      "story": "Two dogs, living their lives, ones moves silent and the other can fit your neck in his mouth",
+      "style": {
+        "inspiration": "Ashnikko - STUPID (feat. Yung Baby Tate)",
+        "inspirationUrl": "https://www.youtube.com/watch?v=VbQrhOWkonk"
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 664468955081893,
+        "topK": 45,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 61079985966092,
+        "steps": 30
+      },
+      "playback_url": "showcase/a-golden-life/a-golden-life-bossa-nova/gbr.playback.json",
+      "audio_analysis_url": "showcase/a-golden-life/a-golden-life-bossa-nova/gbr.audio.json"
+    },
+    {
+      "id": "where-golden-flowers-grow-bossa-nova",
+      "composition": "where-golden-flowers-grow",
+      "title": "where-golden-flowers-grow",
+      "displayTitle": "Where Golden Flowers Grow",
+      "variant": "bossa-nova",
+      "version": "bossa-nova",
+      "genre": {
+        "cluster": "rhythm music",
+        "parent_genre": "rhythm 'n' blues",
+        "child_genre": "bossa nova",
+        "parent_colour": "#66CC99",
+        "child_colour": "#7BD19D",
+        "taxonomy_order": 5514,
+        "parent_order": 5448
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bossa-nova/where-golden-flowers-grow-bossa-nova.flac",
+          "mp3": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bossa-nova/where-golden-flowers-grow-bossa-nova.mp3"
+        }
+      },
+      "artwork_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bossa-nova/where-golden-flowers-grow-bossa-nova.png",
+      "lyrics": {
+        "raw": "[intro]\n[verse]\nCome through the garden\nThe morning is blue\nSunlight is falling\nIn circles on you\nDoja lies dreaming\nWhere yellow flowers grow\nBam hears a ball bounce\nAnd suddenly goes\n[verse]\nGolden as daylight\nSoft as the rain\nOne watches quietly\nOne runs again\nWhere are you going?\nNobody knows\nOver the hillside\nWhere the warm river flows\n[chorus]\nRun through the colours\nRun through the light\nFollow the fields\nTill they fall out of sight\nI'll be beside you\nWherever you roam\nTwo golden shadows\nWill always come home\n[instrumental]\n[verse]\nDoja sees kingdoms\nInside every tree\nBam sees a tennis ball\nFloating at sea\nOne asks the questions\nOne simply runs\nBoth disappear\nIn the afternoon sun\n[bridge]\nMaybe the garden\nGoes on without end\nMaybe the pathway\nComes round again\nMaybe tomorrow\nWe'll wake up and find\nGolden pawprints\nAll over the sky\n[chorus]\nRun through the colours\nRun through the light\nFollow the fields\nTill they fall out of sight\nI'll be beside you\nWherever you roam\nTwo golden shadows\nWill always come home\n[outro]\nDoja in sunlight\nBam in the blue\nWherever this road goes\nI'll follow you\nFollow you...\nFollow you...\nWoof.",
+        "wordTiming": {
+          "src": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bossa-nova/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bossa-nova/gbr.playback.json",
+      "yamlUrl": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bossa-nova/where-golden-flowers-grow-bossa-nova.yaml",
+      "story": "Sometimes, gold is yellow, sometimes, gold is the sound waves vibrating your ear drums, let's not worry about specifics.",
+      "style": {
+        "inspiration": "All original, germinated, like a flower, bursting towards the sunlight",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 580031377445874,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 622264137896388,
+        "steps": 40
+      },
+      "playback_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bossa-nova/gbr.playback.json",
+      "audio_analysis_url": "showcase/where-golden-flowers-grow/where-golden-flowers-grow-bossa-nova/gbr.audio.json"
     },
     {
       "id": "gimmie-gimmie-ball-disco",
@@ -7743,6 +8763,66 @@
       "audio_analysis_url": "showcase/you-make-me-holy/you-make-me-holy-pop-punk/gbr.audio.json"
     },
     {
+      "id": "a-golden-life-pop-fusion",
+      "composition": "a-golden-life",
+      "title": "a-golden-life",
+      "displayTitle": "A Golden Life",
+      "variant": "pop-fusion",
+      "version": "pop-fusion",
+      "genre": {
+        "cluster": "unclassified",
+        "parent_genre": "Unclassified",
+        "child_genre": "Pop Fusion",
+        "parent_colour": "#808080",
+        "child_colour": "#909090",
+        "taxonomy_order": 1000000,
+        "parent_order": 1000000
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/a-golden-life/a-golden-life-pop-fusion/a-golden-life-pop-fusion.flac",
+          "mp3": "showcase/a-golden-life/a-golden-life-pop-fusion/a-golden-life-pop-fusion.mp3"
+        }
+      },
+      "artwork_url": "showcase/a-golden-life/a-golden-life-pop-fusion/a-golden-life-pop-fusion.png",
+      "lyrics": {
+        "raw": "[verse]\nYeah, two goldens in the house but they built different\nDoja move silent, got that cold ambition\nWorking line princess, never askin' permission\nHead high, eyes sharp, always on her mission\nManipulate the crowd, she extorting scratches\nBathe in golden rays, never overheating\nIndependent energy, but always chasing the attention\nMeanwhile Bam Bam crashing through the scene\nBig fluff,\nbig smile,\nbig hips energy\nWhen a ball bounce he gone like a missile\nSingle neuron mind\nonly got a single focus\nMantle-piece going crazy\ntongue flapping in the wind\nBring it back once, he'll do it all again\nStick that boy on repeat and the retrieving never ends\nGolden-hearted giant\nTrying so hard just to keep everyone safe\nBut he can fit ya neck in his mouth\nWoof\n[chorus]\nDoja got that boss walk, lone wolf, regal vibe\nBam Bam got that good boy, don't cry, down-for-the-ride\nOne runs her kingdom, one living life for mama\nDifferent type of legends, side by side\nDoja barking orders, Bam Bam toy circling with pride\nOne stays cool, one plays all night\nFrom the break of dawn to the nights moonlight\nThat's the golden retriever life, yeah that's their life\nWoof\n[instrumental]\n[verse]\nDoja like, \"I got this,\nthis universe-is mine,\nyou can stop scratchin' where I call time\"\nReading every situation like you owe her your life\nCalculated movements, cold maturity\nRunning every field with total authority\nIf she wants affection then she'll let you know\nOtherwise she's busy with her beauty sleep\nA golden girls-gotta-glow\nNever been a follower\nThat's not her role\nOpossum face burned into her soul\nTail never stops wagging\nIf you offer her a treat, your hand she'll take it all\nBam Bam bursts in like a wrecking ball\nHeard somebody say-\nready, set,\ngo\nand he forgot it all\nCould be rain, could be snow, could be spring, could be fall\nWhen the ball gets touched-he's answering the call\nLiving every moment, giving it his all\nGot enough love in him for every human and friend, except Teddy,\nfluff Teddy\nnobody knows why, fluff Teddy\nWoof\n[chorus]\nDoja got that boss walk, lone wolf, regal vibe\nBam Bam got that good boy, don't cry, down-for-the-ride\nOne runs her kingdom, one living life for mama\nDifferent type of legends, side by side\nDoja barking orders, Bam Bam toy circling with pride\nOne stays cool, one plays all night\nFrom the break of dawn to the nights moonlight\nThat's the golden retriever life, yeah that's their life\nWoof\n[bridge]\nTwo sides of a golden, same heart underneath\nOne brings the wisdom, one brings never ending energy\nDoja bein gremlin\nBam-Bam spreadin' slobber\nPerfect fluffy team, one girl, one boy\nDifferent paths, same breed\nDifferent ways to play the game\nWoof\n[outro]\nYeah...\nDoja the princess, Bam Bam the chunk\nOne holds it steady, one can't get enough\nTwo goldens, one home, they got it all\nDoja and Bam Bam, living life in full\nYeah...\nAnd I'm out- side\n2026\nGo get that treat!\nWalk this on repeat!\nWoof",
+        "wordTiming": {
+          "src": "showcase/a-golden-life/a-golden-life-pop-fusion/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/a-golden-life/a-golden-life-pop-fusion/gbr.playback.json",
+      "yamlUrl": "showcase/a-golden-life/a-golden-life-pop-fusion/a-golden-life-pop-fusion.yaml",
+      "story": "Two dogs, living their lives, ones moves silent and the other can fit your neck in his mouth",
+      "style": {
+        "inspiration": "All original",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 962516208070617,
+        "topK": 45,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 756501896792643,
+        "steps": 40
+      },
+      "playback_url": "showcase/a-golden-life/a-golden-life-pop-fusion/gbr.playback.json",
+      "audio_analysis_url": "showcase/a-golden-life/a-golden-life-pop-fusion/gbr.audio.json"
+    },
+    {
       "id": "california-rear-view-liquid-drum-and-bass",
       "composition": "california-rear-view",
       "title": "california-rear-view",
@@ -7801,6 +8881,66 @@
       },
       "playback_url": "showcase/california-rear-view/california-rear-view-pop/gbr.playback.json",
       "audio_analysis_url": "showcase/california-rear-view/california-rear-view-pop/gbr.audio.json"
+    },
+    {
+      "id": "gimmie-gimmie-ball-crooner",
+      "composition": "gimmie-gimmie-ball",
+      "title": "gimmie-gimmie-ball",
+      "displayTitle": "Gimmie Gimmie Ball",
+      "variant": "crooner",
+      "version": "crooner",
+      "genre": {
+        "cluster": "unclassified",
+        "parent_genre": "Unclassified",
+        "child_genre": "Crooner",
+        "parent_colour": "#808080",
+        "child_colour": "#909090",
+        "taxonomy_order": 1000000,
+        "parent_order": 1000000
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/gimmie-gimmie-ball/gimmie-gimmie-crooner/gimmie-gimmie-crooner.flac",
+          "mp3": "showcase/gimmie-gimmie-ball/gimmie-gimmie-crooner/gimmie-gimmie-crooner.mp3"
+        }
+      },
+      "artwork_url": "showcase/gimmie-gimmie-ball/gimmie-gimmie-crooner/gimmie-gimmie-crooner.png",
+      "lyrics": {
+        "raw": "[intro]\n[verse]\nthe time was half past chunk upon the clock\nthe atmosphere was humid, heavy, locked\nmy breath has grown so weighted in the air\nthis summer heat is more than i can bear\nit is hard to picture any greater loss\nmother has vanished, sleeping once again\nhigh above, the moon burns cold and bright\ncutting through the darkness of the night\nwithin the distance, nothing seems to move\nno creature stirs, no rolling ball appears\ni search the silent garden and the ground\nyet still my purpose cannot quite be found\n[pre-chorus]\ni am all alone here in the chasm of my mind\nthere are no balls that wander\nall the humans sleep so sound\nthis oppressive atmosphere\nkeeps my golden body down\n[chorus]\nall i ask\nall i ask of thee\ngive me the ball\neven after midnight\ngive me the ball\ngive it to me\ni do not care how it is delivered unto me\njust give me the ball\nand set my troubled mind free\nonce i hold that most sacred ball\nmy life i dedicate to thee\nend these long and sleepless nights\nend my waiting\nend my hunger\nthere can be no sense of loss\nif that ball and i reunite\ngive me\ngive me\ngive me\nthe ball\nafter midnight\n[instrumental]\n[verse]\nmy dear doja companion does not share my fright\nshe sleeps in peace beside our mother tonight\nno anguish disturbs her\nno loss or confusion\nher peaceful mind is untouched by my delusion\ni sit at the window\nreceiving these visions of darkness\nhark\nhear my sorrow\nas night receives my voice\ni bark into nothing\nyet nobody answers\nno bouncing\nno throwing\nno fluff-covered treasure returning to me\n[pre-chorus]\ni am all alone here in the chasm of my mind\nthere are no balls that wander\nall the humans sleep so sound\nthis oppressive atmosphere\nkeeps my golden body down\n[chorus]\nall i ask\nall i ask of thee\ngive me the ball\neven after midnight\ngive me the ball\ngive it to me\ni do not care how it is delivered unto me\njust give me the ball\nand set my troubled mind free\nonce i hold that most sacred ball\nmy life i dedicate to thee\nend these long and sleepless nights\nend my waiting\nend my hunger\nthere can be no sense of loss\nif that ball and i reunite\ngive me\ngive me\ngive me\nthe ball\nafter midnight\n[solo]\n[bridge]\ni have my window\nfrom which i watch the great dark nothing\nfour paws across the floor\nmy balance golden\ni wait for the sound\nthe sacred bounce\nthe throw\nand my pounce\n[chorus]\nall i ask\nall i ask of thee\ngive me the ball\neven after midnight\ngive me the ball\ngive it to me\ni do not care how it is delivered unto me\njust give me the ball\nand set my troubled mind free\nonce i hold that most sacred ball\nmy life i dedicate to thee\nend these long and sleepless nights\nend my waiting\nend my hunger\nthere can be no sense of loss\nif that ball and i reunite\ngive me\ngive me\ngive me\ngive me\ngive me\nthe ball\nafter midnight\n[outro]\nwooooooooooooof",
+        "wordTiming": {
+          "src": "showcase/gimmie-gimmie-ball/gimmie-gimmie-crooner/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/gimmie-gimmie-ball/gimmie-gimmie-crooner/gbr.playback.json",
+      "yamlUrl": "showcase/gimmie-gimmie-ball/gimmie-gimmie-crooner/gimmie-gimmie-crooner.yaml",
+      "story": "Poor lonely BamBam, he sits at night longing for a ball. The humans are asleep, the world is seemingly asleep. This is his song, his trouble, his nightmare.",
+      "style": {
+        "inspiration": "Abba - Gimmie Gimmie",
+        "inspirationUrl": "https://www.youtube.com/watch?v=XEjLoHdbVeE"
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 557293483754585,
+        "topK": 45,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 681524289369419,
+        "steps": 30
+      },
+      "playback_url": "showcase/gimmie-gimmie-ball/gimmie-gimmie-crooner/gbr.playback.json",
+      "audio_analysis_url": "showcase/gimmie-gimmie-ball/gimmie-gimmie-crooner/gbr.audio.json"
     },
     {
       "id": "know-the-hedge-choir",
@@ -7921,6 +9061,186 @@
       },
       "playback_url": "showcase/paws-off/paws-off-spanish-mariachi/gbr.playback.json",
       "audio_analysis_url": "showcase/paws-off/paws-off-spanish-mariachi/gbr.audio.json"
+    },
+    {
+      "id": "paws-on-your-nightstand-4",
+      "composition": "paws-on-your-nightstand",
+      "title": "paws-on-your-nightstand",
+      "displayTitle": "Paws On Your Nightstand",
+      "variant": "4",
+      "version": "4",
+      "genre": {
+        "cluster": "unclassified",
+        "parent_genre": "Unclassified",
+        "child_genre": "4",
+        "parent_colour": "#808080",
+        "child_colour": "#909090",
+        "taxonomy_order": 1000000,
+        "parent_order": 1000000
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-pop/paws-on-your-nightstand-pop.flac",
+          "mp3": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-pop/paws-on-your-nightstand-pop.mp3"
+        }
+      },
+      "artwork_url": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-pop/paws-on-your-nightstand-pop.png",
+      "lyrics": {
+        "raw": "[Intro]\n(pitched-up) Woof, woof\nYeah, it's Doja\nBam Bam, get off the couch\nUgh\nLet's go\n\n[Verse 1]\nI'm that golden girl, blonde hair, cold stare\nWalk in the room and you better beware\nI don't chase the ball, I make the ball chase me\nPrincess of the house and the whole world's my pantry\nScratch behind my ears? You can earn that, peasant\nBring me a treat and maybe you'll be present\nEyes like a sniper, posture like a queen\nPrettiest, pettiest golden you ever seen\nOpossum face if it don't go my way\n(yeah)\nThen here come Bam Bam, big dumb and golden\nBrain the size of a pea but his heart wide open\nOne neuron firing and it only says \"FETCH\"\nSlobber on the floor, that's my Bam Bam, what a catch\n(Woof!)\n\n[Chorus]\nGolden girl, don't test me\nRun this whole house, you can't arrest me\nPretty and petty, I do what I want\nPrincess with the teeth, watch me flaunt\n(Woof!)\nDoja, Doja, run it\nBam Bam, Bam Bam, golden\nTwo of us, one throne\nMove, this whole house is my own\n(Woof!)\n\n[Verse 2]\nBALL! Did somebody say ball?\nI'm Bam Bam, I love everybody, that's all\nBig soft mouth, fit your neck inside it\nI'm not a threat, I'm just happy, can't hide it\nRain or shine, I'm answering the call\nWreckin' ball baby, bouncin' off the wall\nLove every human, love every friend\nExcept Teddy (why?) nobody comprehend\nFluff Teddy, fluff Teddy\n(Doja: ugh, focus)\nHeard \"ready set go\" and forgot my own name\nStick me on repeat, I'll do it all again\n(Woof!)\n\n[Chorus]\nGolden girl, don't test me\nRun this whole house, you can't arrest me\nPretty and petty, I do what I want\nPrincess with the teeth, watch me flaunt\n(Woof!)\nDoja, Doja, run it\nBam Bam, Bam Bam, golden\nTwo of us, one throne\nMove, this whole house is my own\n(Woof!)\n\n[Bridge]\nTwo sides of a golden, same heart underneath\nShe's the brains and the beauty, he's the chaos and teeth\nOne's a little gremlin, one's a slobber machine\nPrettiest, dumbest, sweetest team you've seen\nDoja! Bam Bam!\nOne girl, one boy\nSame breed, different toy\n(Woof!)\n\n[Outro]\nDoja the princess, Bam Bam the chunk\nOne holds it down, one's a golden drunk\nTwo goldens, one home, we got it all\nTwenty twenty six, hear the golden call\nGo get that treat!\nWalk it on repeat!\n(Woof! Woof!)\nUgh, I'm outside\nBye",
+        "wordTiming": {
+          "src": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-pop/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-pop/gbr.playback.json",
+      "yamlUrl": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-pop/paws-on-your-nightstand-pop.yaml",
+      "story": "She's a gremlin, it cannot be denied",
+      "style": {
+        "inspiration": "original",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "MiniMax Music 3 FP16",
+        "dit": "",
+        "textEncoder": ""
+      },
+      "generation": {
+        "encoderCfg": null,
+        "encoderSeed": null,
+        "topK": null,
+        "sampler": "",
+        "scheduler": "",
+        "samplerCfg": null,
+        "samplerSeed": null,
+        "steps": null
+      },
+      "playback_url": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-pop/gbr.playback.json",
+      "audio_analysis_url": "showcase/paws-on-your-nightstand/paws-on-your-nightstand-pop/gbr.audio.json"
+    },
+    {
+      "id": "the-ball-beyond-the-gate-spanish-flamenco-rock",
+      "composition": "the-ball-beyond-the-gate",
+      "title": "the-ball-beyond-the-gate",
+      "displayTitle": "The Ball Beyond The Gate",
+      "variant": "spanish-flamenco-rock",
+      "version": "spanish-flamenco-rock",
+      "genre": {
+        "cluster": "unclassified",
+        "parent_genre": "Unclassified",
+        "child_genre": "Spanish Flamenco Rock",
+        "parent_colour": "#808080",
+        "child_colour": "#909090",
+        "taxonomy_order": 1000000,
+        "parent_order": 1000000
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-spanish-flamenco-rock/the-ball-beyond-the-gate-spanish-flamenco-rock.flac",
+          "mp3": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-spanish-flamenco-rock/the-ball-beyond-the-gate-spanish-flamenco-rock.mp3"
+        }
+      },
+      "artwork_url": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-spanish-flamenco-rock/the-ball-beyond-the-gate-spanish-flamenco-rock.png",
+      "lyrics": {
+        "raw": "[intro]\nMás allá de la puerta\nEstá la pelota\n[verse]\nCon la primera luz Doja sale a vigilar\nTodo el jardín es suyo, nadie va a discutir\nDesde el viejo sofá hasta el borde del lugar\nCada premio y cada sombra le pertenecen al pasar\nPero tiembla el pasillo, se levanta el campeón\nBam Bam viene corriendo con fuego en el corazón\nUna sola idea manda toda su voluntad\nHa escuchado una pelota detrás de la puerta sonar\n[pre-chorus]\nLa oye rebotando\nLa siente llamar\nNo existe una barrera\nQue lo pueda parar\n[chorus]\nLa pelota más allá\nLo está llamando\nLa pelota más allá\nY Bam Bam va galopando\nLluvia, viento, oscuridad\nLánzala una vez y vuelve a empezar\nNingún muro puede hacerlo esperar\nPor la pelota más allá\n[verse]\nDoja mira desde arriba con desprecio señorial\nTen un poco de decoro, esto parece criminal\nPero Bam Bam ya no escucha, su destino es recuperar\nCada esfera abandonada que se pueda rescatar\nEntonces llega un nombre y todo queda en tensión\nTeddy cruza por la mente como una provocación\nDoja muestra los colmillos, Bam Bam deja de jugar\nPor un segundo el reino entero deja de respirar\n[bridge]\nDoja no necesita profecía ni altar\nCada silla de la casa ya la sabe coronar\nPero escucha la bolsa de premios al sonar\nY hasta la reina dice\nAbre ya\n[chorus]\nLa pelota más allá\nAhora los dos avanzan\nLa pelota más allá\nCon el día que se levanta\nCorre Doja, Bam Bam va\nLánzala una vez y vuelve a empezar\nDos dorados salen sin mirar atrás\nPor la pelota más allá\n[outro]\nBam Bam\nTráela\nPelota\nWoof",
+        "wordTiming": {
+          "src": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-spanish-flamenco-rock/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-spanish-flamenco-rock/gbr.playback.json",
+      "yamlUrl": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-spanish-flamenco-rock/the-ball-beyond-the-gate-spanish-flamenco-rock.yaml",
+      "story": "Inspired by how desperate Doja Dog is to sit by the gate, shoving her face out into the world of the humans and by how BamBam is so desperate to protect the same gate, as if... it controls their fate, which it does... but don't tell them.",
+      "style": {
+        "inspiration": "O.g original gatekeeping",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 937874296065917,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 928180019398893,
+        "steps": 40
+      },
+      "playback_url": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-spanish-flamenco-rock/gbr.playback.json",
+      "audio_analysis_url": "showcase/the-ball-beyond-the-gate/the-ball-beyond-the-gate-spanish-flamenco-rock/gbr.audio.json"
+    },
+    {
+      "id": "the-endless-game-german-darkwave",
+      "composition": "the-endless-game",
+      "title": "the-endless-game",
+      "displayTitle": "The Endless Game",
+      "variant": "german-darkwave",
+      "version": "german-darkwave",
+      "genre": {
+        "cluster": "unclassified",
+        "parent_genre": "Unclassified",
+        "child_genre": "German Darkwave",
+        "parent_colour": "#808080",
+        "child_colour": "#909090",
+        "taxonomy_order": 1000000,
+        "parent_order": 1000000
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/the-endless-game/the-endless-game-german-darkwave/the-endless-game-german-darkwave.flac",
+          "mp3": "showcase/the-endless-game/the-endless-game-german-darkwave/the-endless-game-german-darkwave.mp3"
+        }
+      },
+      "artwork_url": "showcase/the-endless-game/the-endless-game-german-darkwave/the-endless-game-german-darkwave.png",
+      "lyrics": {
+        "raw": "[intro]\nBall\nBall\nDer Ball\n[verse]\nVom Wasser fortgerissen\nVerschluckt vom schwarzen Lauf\nDer Fluss nimmt meine Beute\nUnd gibt sie nicht mehr auf\nDie Steine stehen schweigend\nDie Strömung zieht vorbei\nMein runder kleiner Schatz ist fort\nUnd nichts macht ihn mehr frei\n[chorus]\nDas endlose Spiel\nDer Ball verschwindet\nDas endlose Spiel\nBis alles neu beginnt\nDer Fluss nimmt, was ich liebe\nIch suche trotzdem weiter\nDas endlose Spiel\nUnd ich werde nicht gescheiter\n[verse]\nEin Fußball passt nicht richtig\nMein Maul sagt klarerweise nein\nIch trage ihn, ich kämpfe\nDoch er will zu groß nur sein\nDann sehe ich das Monster\nSchwer, dunkel, voller Macht\nIch bringe mein Metall heran\nUnd habe es zu Fall gebracht\n[bridge]\nFall in die Tiefe\nKreis ohne Ziel\nWasser nimmt den Ball\nUnd beginnt wieder das Spiel\n[chorus]\nDas endlose Spiel\nDer Ball verschwindet\nDas endlose Spiel\nBis alles neu beginnt\nDer Fluss nimmt, was ich liebe\nIch suche trotzdem weiter\nDas endlose Spiel\nUnd ich werde nicht gescheiter\n[outro]\nDer Name vergeht\nDer Ball vergeht\nDas Spiel bleibt",
+        "wordTiming": {
+          "src": "showcase/the-endless-game/the-endless-game-german-darkwave/gbr.playback.json",
+          "format": "gbr-playback-v2",
+          "coverage": null,
+          "rating": null,
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/the-endless-game/the-endless-game-german-darkwave/gbr.playback.json",
+      "yamlUrl": "showcase/the-endless-game/the-endless-game-german-darkwave/the-endless-game-german-darkwave.yaml",
+      "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+      "style": {
+        "inspiration": "All original, delivered by mother nature",
+        "inspirationUrl": ""
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 300079383732137,
+        "topK": 45,
+        "sampler": "seeds_2",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 380053490985485,
+        "steps": 40
+      },
+      "playback_url": "showcase/the-endless-game/the-endless-game-german-darkwave/gbr.playback.json",
+      "audio_analysis_url": "showcase/the-endless-game/the-endless-game-german-darkwave/gbr.audio.json"
     }
   ],
   "easter": {
