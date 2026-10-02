@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Good Boy Records — Sonic Landscape</title>
-<!-- GBR_BUILD: v10.10.17 MOBILE_LYRICS_BOX_SUBGENRE_BORDER_CLEANUP -->
+<!-- GBR_BUILD: v10.11.0 KNOWLEDGE_NETWORK_NON_OVERLAP -->
 <style>
 :root{--accent:#d0802f;--accent-rgb:208,128,47;--lamp:.5;--audio-level:0;--bg:#050606;--metal:#181817;--metal2:#0c0d0d;--line:#67452c;--text:#e8dfd1;--muted:#9c8d79}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020303;color:var(--text);font-family:Arial,Helvetica,sans-serif}button,input{font:inherit}
@@ -5956,7 +5956,8 @@ async function enterKnowledge(){
 function exitKnowledge(){
   if(viewMode!=='knowledge')return;
   knowledgeExpanded.clear();knowledgeExpansionOrder=[];knowledgeSelectedId=null;syncKnowledgeWorldCards();
-  closeKnowledgeReader();viewMode='tracks';document.body.dataset.view='tracks';knowledgeHoverId=null;ui.knowledgeButton.classList.remove('active');ui.knowledgeButton.textContent='Knowledge';
+  closeKnowledgeReader();viewMode='tracks';
+document.body.dataset.view='tracks';knowledgeHoverId=null;ui.knowledgeButton.classList.remove('active');ui.knowledgeButton.textContent='Knowledge';
   if(trackCameraSnapshot){Object.assign(camera,trackCameraSnapshot);trackCameraSnapshot=null}else setExplorationStart()
 }
 function openTracksPanel(){
@@ -6167,6 +6168,14 @@ function drawKnowledge(w,h,music){
       ctx.lineWidth=selected?2.1:1.2
     }
     ctx.beginPath();ctx.moveTo(ap.x,ap.y);ctx.lineTo(bp.x,bp.y);ctx.stroke();
+    if(e.label&&(selected||hovered)){
+      const lx=(ap.x+bp.x)/2,ly=(ap.y+bp.y)/2;
+      ctx.font='800 7px Courier New';ctx.textAlign='center';ctx.textBaseline='middle';
+      const label=String(e.label).toUpperCase(),tw=ctx.measureText(label).width+10;
+      ctx.fillStyle='rgba(5,6,5,.88)';ctx.fillRect(lx-tw/2,ly-8,tw,16);
+      ctx.strokeStyle=selected?'rgba(255,223,174,.55)':'rgba(215,184,142,.34)';ctx.lineWidth=1;ctx.strokeRect(lx-tw/2,ly-8,tw,16);
+      ctx.fillStyle=selected?'#f0dcc0':'#baa98f';ctx.fillText(label,lx,ly+.5)
+    }
 
     if(e.type!=='cross'){
       const t=.72,mx=ap.x+(bp.x-ap.x)*t,my=ap.y+(bp.y-ap.y)*t,ang=Math.atan2(bp.y-ap.y,bp.x-ap.x),s=5.1;
@@ -6429,6 +6438,9 @@ if($('knowledgeReaderSections'))$('knowledgeReaderSections').addEventListener('c
 });
 if(ui.knowledgeReaderBody){
   ui.knowledgeReaderBody.addEventListener('click',e=>{
+    const related=e.target.closest('.knowledge-related-link');
+    if(related){const target=knowledgeNodes.find(n=>n.id===related.dataset.relatedId);if(target){clickSound();knowledgeExpandNode(target)}return}
+
     const action=e.target.closest('.knowledge-action-button');
     if(action){
       e.preventDefault();clickSound();
@@ -6465,6 +6477,9 @@ if(knowledgeWorldCards){
 
     const close=e.target.closest('.knowledge-card-close');
     if(close){clickSound('toggle');knowledgeCollapseNode(nodeId);return}
+
+    const related=e.target.closest('.knowledge-related-link');
+    if(related){const target=knowledgeNodes.find(n=>n.id===related.dataset.relatedId);if(target){clickSound();knowledgeExpandNode(target)}return}
 
     const action=e.target.closest('.knowledge-action-button');
     if(action){
@@ -6503,9 +6518,179 @@ document.addEventListener('keydown',e=>{
   }
   if(viewMode==='knowledge')exitKnowledge()
 });
+
+/* ========================================================================
+   GBR v10.11.0 — KNOWLEDGE NETWORK
+   Replaces the old linear/recursive production tree with a persistent graph
+   of tools, formats, concepts and outputs. Open cards and visible nodes are
+   collision-resolved in screen space so fixed-size cards cannot overlap.
+   ======================================================================== */
+const GBR_KNOWLEDGE_NODES = [
+  {id:'knowledge-root',title:'GOOD BOY RECORDS',kind:'root',x:1500,y:1500,colour:'#d0802f',group:'system',markdown:`# Good Boy Records\n\nThe knowledge map is a network rather than a fixed lesson order. Each square is a **tool, format, concept, parameter or output**. Lines describe how those things relate.\n\nOpen any node and follow its connections. There is no required starting point.`},
+
+  {id:'prompt',title:'PROMPT',kind:'document',x:1500,y:-650,colour:'#d19145',group:'creative',markdown:`# Prompt\n\nThe generation prompt has two components: **caption** and **lyrics**. Together they describe both what the song should sound like and what is sung.\n\nThe prompt is stored inside the track YAML so creative instruction and generation configuration travel together.`},
+  {id:'caption',title:'CAPTION',kind:'chain',x:400,y:-1650,colour:'#d19145',group:'creative',markdown:`# Caption\n\nThe caption captures the spirit of the song: its meaning and emotion, instrumentation, vocal character, arrangement, tempo and production direction.\n\nFor MiniMax music generation it acts as the principal natural-language description of the desired recording.`},
+  {id:'lyrics',title:'LYRICS',kind:'chain',x:2600,y:-1650,colour:'#d19145',group:'creative',markdown:`# Lyrics\n\nThe lyrics are an ordered time-series-like sequence of words to be sung, structured with section markers such as **[intro]**, **[verse]**, **[chorus]** and **[outro]**.\n\nThe same lyrics later become the known text used during lyric alignment.`},
+  {id:'sections',title:'SONG SECTIONS',kind:'section',x:3550,y:-2550,colour:'#d19145',group:'creative',markdown:`# Song sections\n\nSection markers give the lyric text explicit musical structure. Common examples are intro, verse, pre-chorus, chorus, bridge and outro.\n\nThe exact structure can change between genre variants when the arrangement demands it.`},
+  {id:'genre',title:'GENRE / VERSION',kind:'section',x:1500,y:-2850,colour:'#d19145',group:'creative',markdown:`# Genre / version\n\nA title can exist in many stylistically different recordings. **version** is the primary genre label for a particular track variant.\n\nThe combination of **title + version** identifies the intended variant in the YAML workflow.`},
+
+  {id:'yaml',title:'YAML',kind:'document',x:-1550,y:1500,colour:'#c6a04c',group:'data',markdown:`# YAML\n\nPrompts are built into human-readable **.yaml** documents. The YAML also carries track identity, model definitions, generation parameters and optional lore/meta.\n\n## Identification\n\n**title** — non-unique song title.  \n**version** — primary genre used for this variant.\n\n## Model definitions\n\n**model** — model family.  \n**dit** — specific diffusion-transformer model/weight or quant.  \n**text_encoder** — specific encoder model/weight or quant.\n\n## Text encoder parameters\n\n**encoder_cfg**, **encoder_seed**, **top_k**.\n\n## Diffusion sampler parameters\n\n**sampler**, **scheduler**, **sampler_cfg**, **sampler_seed**, **sampler_steps**.\n\n## Lore / meta\n\n**language**, **inspiration**, **inspirationyt**, **story**.\n\n## Prompt\n\n**caption** and **lyrics**.`},
+  {id:'identity',title:'TRACK IDENTITY',kind:'chain',x:-3100,y:300,colour:'#c6a04c',group:'data',markdown:`# Track identity\n\nThe YAML uses **title** and **version** to describe which song variant a job represents. Title alone is not expected to be unique.`},
+  {id:'model-defs',title:'MODEL DEFINITIONS',kind:'chain',x:-3100,y:1300,colour:'#c6a04c',group:'data',markdown:`# Model definitions\n\nThe YAML records which model family and concrete model components are intended or were used for generation: **model**, **dit** and **text_encoder**.`},
+  {id:'generation-params',title:'GENERATION PARAMETERS',kind:'chain',x:-3100,y:2300,colour:'#c6a04c',group:'data',markdown:`# Generation parameters\n\nGeneration settings are stored with the creative material so a result can be reproduced or deliberately varied. Encoder settings and diffusion-sampling settings are kept distinct.`},
+  {id:'lore',title:'LORE / META',kind:'chain',x:-3100,y:3300,colour:'#c6a04c',group:'data',markdown:`# Lore / meta\n\nOptional fields document where the song came from and information needed downstream.\n\n**language** is present for non-English tracks and is used by WhisperX during lyric alignment. **inspiration**, **inspirationyt** and **story** preserve human context around the track.`},
+
+  {id:'comfyui',title:'COMFYUI',kind:'document',x:4650,y:1500,colour:'#72a36f',group:'generation',markdown:`# ComfyUI\n\nComfyUI is the node-based inference environment used to assemble and execute the core music-generation workflow.\n\nThe GBR automation layer drives this workflow rather than requiring each song to be configured manually.`},
+  {id:'workflow',title:'WORKFLOW',kind:'chain',x:6150,y:300,colour:'#72a36f',group:'generation',markdown:`# Workflow\n\nThe ComfyUI workflow connects model loading, text encoding / conditioning, sampling and audio output.\n\nGBR's runner supplies values and jobs to this underlying graph.`},
+  {id:'minimax',title:'MINIMAX H3 MUSIC',kind:'chain',x:6150,y:1500,colour:'#72a36f',group:'generation',markdown:`# MiniMax H3 music\n\nThe music model consumes encoded conditioning and generation parameters to create the recording.\n\nThe YAML separates the model family from specific weights/quantisations so the generation record can describe both.`},
+  {id:'text-encoder',title:'TEXT ENCODER',kind:'chain',x:6150,y:2700,colour:'#72a36f',group:'generation',markdown:`# Text encoder\n\nThe text encoder converts the caption and lyrics into numerical conditioning used by the music model.\n\nIn the split-compute pipeline this conditioning can be created on one worker, cached, then consumed by another.`},
+  {id:'conditioning',title:'CONDITIONING',kind:'section',x:7650,y:2700,colour:'#72a36f',group:'generation',markdown:`# Conditioning\n\nConditioning is the encoded representation of the prompt that is passed to generation. Caching it decouples text encoding from diffusion sampling.`},
+  {id:'dit',title:'DIFFUSION TRANSFORMER',kind:'section',x:7650,y:1200,colour:'#72a36f',group:'generation',markdown:`# Diffusion transformer\n\nThe **dit** YAML field identifies the specific diffusion-transformer weight or quantisation used for the generation stage.`},
+
+  {id:'encoder-cfg',title:'ENCODER CFG',kind:'section',x:7650,y:3600,colour:'#8ba86a',group:'parameters',markdown:`# encoder_cfg\n\nClassifier-free-guidance value used in the text-encoder/conditioning stage. It is recorded independently from the sampler CFG.`},
+  {id:'encoder-seed',title:'ENCODER SEED',kind:'section',x:8850,y:3000,colour:'#8ba86a',group:'parameters',markdown:`# encoder_seed\n\nOrigin seed associated with text encoding. Keeping it in the YAML allows conditioning generation to be controlled separately from the sampler seed.`},
+  {id:'top-k',title:'TOP K',kind:'section',x:8850,y:4000,colour:'#8ba86a',group:'parameters',markdown:`# top_k\n\nThe top-k token-selection setting used by the text-encoding stage.`},
+  {id:'sampler',title:'SAMPLER',kind:'section',x:7650,y:-600,colour:'#77a5a0',group:'parameters',markdown:`# sampler\n\nThe algorithm applied during the diffusion sampling process. GBR can preserve the value stored in a YAML or override it from the runner configuration for controlled reruns.`},
+  {id:'scheduler',title:'SCHEDULER',kind:'section',x:8850,y:-100,colour:'#77a5a0',group:'parameters',markdown:`# scheduler\n\nThe schedule applied to the sampling algorithm across the diffusion process. It is tracked separately from the sampler itself.`},
+  {id:'sampler-cfg',title:'SAMPLER CFG',kind:'section',x:8850,y:900,colour:'#77a5a0',group:'parameters',markdown:`# sampler_cfg\n\nClassifier-free-guidance value used during diffusion sampling. This is distinct from **encoder_cfg**.`},
+  {id:'sampler-seed',title:'SAMPLER SEED',kind:'section',x:8850,y:1900,colour:'#77a5a0',group:'parameters',markdown:`# sampler_seed\n\nOrigin seed for the diffusion sampling stage. Changing it is one way to generate a different result while keeping the song description and other settings fixed.`},
+  {id:'steps',title:'SAMPLER STEPS',kind:'section',x:7650,y:300,colour:'#77a5a0',group:'parameters',markdown:`# sampler_steps\n\nThe number of sampling steps used to produce the output recording. GBR's knowledge content can later attach controlled listening comparisons here.`},
+
+  {id:'pipeline',title:'PIPELINE RUNNER',kind:'document',x:1500,y:4650,colour:'#4e9f91',group:'automation',markdown:`# Pipeline runner\n\nThe Python runner automates batches of YAML jobs and dispatches them to available generation workers. It can operate over a selected directory rather than requiring a single fixed source location.\n\nPer generation parameter, the runner can either respect the value in the YAML or use the runner configuration. It also supports cached-conditioning and full-generation modes.`},
+  {id:'directory-mode',title:'DIRECTORY TARGETING',kind:'section',x:300,y:6100,colour:'#4e9f91',group:'automation',markdown:`# Directory targeting\n\nThe runner can be pointed at a specific directory. Pointing it at the showcase can rerun relevant YAMLs below that tree; pointing it elsewhere makes the same machinery reusable for another batch.`},
+  {id:'override-mode',title:'YAML / CFG OVERRIDES',kind:'section',x:1500,y:6500,colour:'#4e9f91',group:'automation',markdown:`# YAML / runner overrides\n\nEach generation variable can be configured to either **copy the value from the YAML** or **take the value from the runner configuration**. This makes controlled reruns practical without rewriting source YAMLs.`},
+  {id:'cache-mode',title:'CACHED MODE',kind:'section',x:2700,y:6100,colour:'#4e9f91',group:'automation',markdown:`# Cached mode\n\nText conditioning is built and persisted before the diffusion stage. This allows encoder work and full generation to run on different machines or at different times.`},
+  {id:'full-gen-mode',title:'FULL GEN MODE',kind:'section',x:3800,y:5350,colour:'#4e9f91',group:'automation',markdown:`# Full generation mode\n\nThe runner can bypass conditioning-cache creation and perform a complete generation in one pass.`},
+  {id:'workers',title:'WORKERS',kind:'chain',x:-200,y:5150,colour:'#4e9f91',group:'automation',markdown:`# Workers\n\nGeneration jobs can be distributed across local and cloud workers. Worker capability determines which parts of the workflow are suitable for that machine.`},
+  {id:'runpod',title:'RUNPOD',kind:'section',x:-1500,y:6000,colour:'#4e9f91',group:'automation',markdown:`# RunPod\n\nCloud GPU workers provide additional VRAM and generation capacity when the local machine is not the best place to run a workload.`},
+  {id:'local-gpu',title:'LOCAL GPU',kind:'section',x:-1500,y:5000,colour:'#4e9f91',group:'automation',markdown:`# Local GPU\n\nLocal compute can participate in the same pipeline where its available model and VRAM requirements fit the requested stage.`},
+
+  {id:'audio',title:'GENERATED AUDIO',kind:'document',x:1500,y:8250,colour:'#5d9baa',group:'output',markdown:`# Generated audio\n\nThe immediate product of music generation. GBR then has a human review decision: archive it or promote it into the showcase workflow.`},
+  {id:'review',title:'LISTEN / REVIEW',kind:'chain',x:200,y:9300,colour:'#5d9baa',group:'output',markdown:`# Listen / review\n\nQuality control is intentionally human: listen to the generated recording, keep the useful one, or archive it. Creative or technical experiments can then loop back to prompts or generation parameters.`},
+  {id:'showcase',title:'SHOWCASE',kind:'chain',x:2800,y:9300,colour:'#5d9baa',group:'output',markdown:`# Showcase\n\nThe showcase directory is the curated source for published Good Boy Records content. Accepted recordings and their supporting files live here.`},
+  {id:'album-art',title:'ALBUM ARTWORK',kind:'section',x:4100,y:10100,colour:'#5d9baa',group:'output',markdown:`# Album artwork\n\nArtwork is created per recording and displayed by the Good Boy Records player alongside the audio and metadata.`},
+
+  {id:'analysis',title:'POST-PROCESSING',kind:'document',x:-3000,y:8250,colour:'#667fc0',group:'analysis',markdown:`# Post-processing\n\nAccepted recordings are prepared for the player. Lyric alignment and audio analysis are independent passes and can be rerun separately before being combined into playback data.`},
+  {id:'demucs',title:'DEMUCS',kind:'chain',x:-4550,y:7300,colour:'#667fc0',group:'analysis',markdown:`# Demucs\n\nDemucs separates the vocal stem so lyric alignment can work against a cleaner vocal signal.`},
+  {id:'whisperx',title:'WHISPERX',kind:'chain',x:-4550,y:8500,colour:'#667fc0',group:'analysis',markdown:`# WhisperX\n\nWhisperX aligns the known song lyrics to the audio at word level. For non-English tracks the YAML **language** field supplies the language information required by this process.`},
+  {id:'lyric-data',title:'LYRIC ALIGNMENT DATA',kind:'section',x:-6000,y:9000,colour:'#667fc0',group:'analysis',markdown:`# Lyric alignment data\n\nWord timing data lets the player highlight lyrics in synchronisation with playback.`},
+  {id:'audio-analysis',title:'AUDIO ANALYSIS',kind:'chain',x:-3000,y:10000,colour:'#667fc0',group:'analysis',markdown:`# Audio analysis\n\nA separate analysis pass follows musical progression and produces data used by the site's playback visualisation and lighting behaviour.`},
+  {id:'playback-data',title:'PLAYBACK DATA',kind:'chain',x:-1250,y:9400,colour:'#667fc0',group:'analysis',markdown:`# Playback data\n\nThe prepared playback layer combines the information needed by the site: timed lyrics and musical analysis alongside the track itself.`},
+
+  {id:'catalogue',title:'CATALOGUE',kind:'document',x:-3000,y:12000,colour:'#8c6dba',group:'publish',markdown:`# Catalogue\n\nThe site build scans curated showcase content and produces **data/catalogue.json**, which describes the recordings available to the player.`},
+  {id:'cloudflare',title:'CLOUDFLARE R2',kind:'chain',x:-4600,y:13100,colour:'#8c6dba',group:'publish',markdown:`# Cloudflare R2\n\nPublished media is hosted in Cloudflare R2 rather than being bundled directly into the application repository.`},
+  {id:'rclone',title:'RCLONE',kind:'section',x:-6000,y:12500,colour:'#8c6dba',group:'publish',markdown:`# rclone\n\nrclone synchronises published media with the Cloudflare R2 storage layer.`},
+  {id:'github-pages',title:'GITHUB PAGES',kind:'chain',x:-3000,y:13900,colour:'#8c6dba',group:'publish',markdown:`# GitHub Pages\n\nGitHub Pages serves the Good Boy Records web application.`},
+  {id:'player',title:'GBR PLAYER',kind:'document',x:1500,y:12600,colour:'#b16b9e',group:'player',markdown:`# GBR player\n\nThe presentation layer combines the published recording, album artwork, catalogue metadata, synchronised lyrics and analysis data into the interactive cassette-style Good Boy Records experience.`},
+  {id:'karaoke',title:'SYNCED LYRICS',kind:'section',x:300,y:13900,colour:'#b16b9e',group:'player',markdown:`# Synchronised lyrics\n\nWord-level timing drives the lyric display so the currently sung word can be highlighted during playback.`},
+  {id:'visuals',title:'AUDIO-REACTIVE VISUALS',kind:'section',x:2700,y:13900,colour:'#b16b9e',group:'player',markdown:`# Audio-reactive visuals\n\nAudio-analysis data drives visual behaviour such as lighting and musical progression cues in the player.`}
+];
+
+const GBR_KNOWLEDGE_LINKS = [
+  ['knowledge-root','prompt','contains','creative input'],['knowledge-root','yaml','uses','job format'],['knowledge-root','comfyui','generates with','inference'],['knowledge-root','pipeline','automates','runner'],['knowledge-root','audio','produces','recording'],['knowledge-root','analysis','prepares','post-processing'],['knowledge-root','catalogue','publishes','catalogue'],['knowledge-root','player','presents','site'],
+  ['prompt','caption','contains','caption'],['prompt','lyrics','contains','lyrics'],['prompt','yaml','stored in','prompt fields'],['caption','text-encoder','encoded by','conditioning'],['lyrics','text-encoder','encoded by','conditioning'],['lyrics','sections','structured by','sections'],['genre','yaml','stored as','version'],['genre','caption','shapes','style'],['genre','lyrics','can reshape','song form'],
+  ['yaml','identity','contains','title + version'],['yaml','model-defs','contains','models'],['yaml','generation-params','contains','parameters'],['yaml','lore','contains','context'],['yaml','prompt','contains','caption + lyrics'],['yaml','pipeline','consumed by','jobs'],['yaml','comfyui','configures','workflow values'],
+  ['model-defs','minimax','selects','model family'],['model-defs','dit','selects','dit'],['model-defs','text-encoder','selects','encoder'],
+  ['generation-params','encoder-cfg','contains','encoder_cfg'],['generation-params','encoder-seed','contains','encoder_seed'],['generation-params','top-k','contains','top_k'],['generation-params','sampler','contains','sampler'],['generation-params','scheduler','contains','scheduler'],['generation-params','sampler-cfg','contains','sampler_cfg'],['generation-params','sampler-seed','contains','sampler_seed'],['generation-params','steps','contains','sampler_steps'],
+  ['comfyui','workflow','loads','graph'],['workflow','text-encoder','runs','encode'],['workflow','conditioning','passes','conditioning'],['workflow','minimax','runs','generation'],['workflow','sampler','uses','sampling'],['workflow','scheduler','uses','schedule'],['workflow','audio','outputs','audio'],['text-encoder','conditioning','produces','conditioning'],['encoder-cfg','text-encoder','controls','guidance'],['encoder-seed','text-encoder','controls','seed'],['top-k','text-encoder','controls','token selection'],['conditioning','minimax','conditions','generation'],['dit','minimax','implements','weight'],['sampler','minimax','samples','diffusion'],['scheduler','sampler','schedules','sampling'],['sampler-cfg','sampler','controls','guidance'],['sampler-seed','sampler','controls','seed'],['steps','sampler','controls','iterations'],
+  ['pipeline','directory-mode','supports','scope'],['pipeline','override-mode','supports','reruns'],['pipeline','cache-mode','mode','cached'],['pipeline','full-gen-mode','mode','full'],['pipeline','workers','dispatches to','workers'],['pipeline','yaml','reads','jobs'],['pipeline','comfyui','drives','workflow'],['cache-mode','conditioning','stores','conditioning'],['full-gen-mode','workflow','runs','one pass'],['workers','runpod','includes','cloud'],['workers','local-gpu','includes','local'],['runpod','text-encoder','can run','encoding'],['local-gpu','minimax','can run','generation'],
+  ['audio','review','listened to','human QC'],['review','showcase','promotes to','keeper'],['review','prompt','loops back','creative change'],['review','generation-params','loops back','technical change'],['showcase','analysis','feeds','preparation'],['showcase','catalogue','scanned into','catalogue'],['showcase','album-art','includes','art'],
+  ['analysis','demucs','uses','vocal split'],['demucs','whisperx','feeds vocals','alignment'],['lyrics','whisperx','known text','alignment'],['lore','whisperx','language field','non-English'],['whisperx','lyric-data','produces','word timings'],['analysis','audio-analysis','runs','music analysis'],['lyric-data','playback-data','combined into','playback'],['audio-analysis','playback-data','combined into','playback'],
+  ['catalogue','player','feeds','track metadata'],['showcase','cloudflare','media stored in','published media'],['rclone','cloudflare','syncs to','storage'],['github-pages','player','serves','application'],['cloudflare','player','serves media to','playback'],['album-art','player','displayed by','artwork'],['audio','player','played by','audio'],['playback-data','player','drives','timing + visuals'],['lyric-data','karaoke','drives','word highlight'],['audio-analysis','visuals','drives','lighting'],['karaoke','player','rendered in','lyrics'],['visuals','player','rendered in','visuals']
+];
+
+loadKnowledgeGraph = async function(){
+  if(knowledgeReady||knowledgeLoading)return;
+  knowledgeLoading=true;
+  try{
+    knowledgeManifest=[];
+    knowledgeNodes=GBR_KNOWLEDGE_NODES.map((n,i)=>({...n,baseX:n.x,baseY:n.y,r:n.kind==='root'?76:n.kind==='document'?50:n.kind==='chain'?34:22,docLabel:(n.group||'knowledge').toUpperCase(),path:`Knowledge / ${n.group||'system'} / ${n.title}`,order:i,parentId:null,level:0,depth:0,anchor:knowledgeSlug(n.title)}));
+    const ids=new Set(knowledgeNodes.map(n=>n.id)),seen=new Set();
+    knowledgeEdges=[];
+    for(const [a,b,type,label] of GBR_KNOWLEDGE_LINKS){if(ids.has(a)&&ids.has(b))knowledgeAddEdge(knowledgeEdges,seen,a,b,type||'related',label||'')}
+    knowledgeReady=true;
+  }finally{knowledgeLoading=false}
+};
+
+function knowledgeNeighbours(node){
+  if(!node)return[];
+  const ids=new Set();
+  for(const e of knowledgeEdges){if(e.a===node.id)ids.add(e.b);else if(e.b===node.id)ids.add(e.a)}
+  return [...ids].map(id=>knowledgeNodes.find(n=>n.id===id)).filter(Boolean)
+}
+knowledgeImmediateChildren = function(node){return knowledgeNeighbours(node)};
+knowledgeVisibleIds = function(){return new Set(knowledgeNodes.map(n=>n.id))};
+knowledgeHiddenChildCount = function(){return 0};
+
+knowledgeLayoutPositions = function(){
+  const map=new Map();
+  for(const n of knowledgeNodes)map.set(n.id,{x:n.baseX??n.x,y:n.baseY??n.y,angle:0});
+  const zoom=Math.max(.24,Number(camera.zoom)||1),mobile=matchMedia('(max-width:900px)').matches;
+  const cardSide=mobile?300:360,screenGap=34;
+  const expanded=new Set(knowledgeExpanded);
+  const movable=knowledgeNodes.filter(n=>n.id!=='knowledge-root');
+  // Screen-space collision solver. Only pairs involving an open card need the
+  // expensive clearance; ordinary closed nodes already have generous spacing.
+  for(let pass=0;pass<18;pass++){
+    let moved=false;
+    for(let i=0;i<knowledgeNodes.length;i++)for(let j=i+1;j<knowledgeNodes.length;j++){
+      const a=knowledgeNodes[i],b=knowledgeNodes[j];
+      if(!expanded.has(a.id)&&!expanded.has(b.id))continue;
+      const pa=map.get(a.id),pb=map.get(b.id);if(!pa||!pb)continue;
+      const sa=expanded.has(a.id)?cardSide:knowledgeNodeSize(a),sb=expanded.has(b.id)?cardSide:knowledgeNodeSize(b);
+      const needX=(sa+sb)/2+screenGap,needY=(sa+sb)/2+screenGap;
+      let dx=(pb.x-pa.x)*zoom,dy=(pb.y-pa.y)*zoom;
+      const ox=needX-Math.abs(dx),oy=needY-Math.abs(dy);
+      if(ox<=0||oy<=0)continue;
+      moved=true;
+      let ux=0,uy=0,push=0;
+      if(ox<oy){ux=dx>=0?1:-1;push=ox/zoom}else{uy=dy>=0?1:-1;push=oy/zoom}
+      const aFixed=a.id==='knowledge-root',bFixed=b.id==='knowledge-root';
+      if(aFixed){pb.x+=ux*push;pb.y+=uy*push}
+      else if(bFixed){pa.x-=ux*push;pa.y-=uy*push}
+      else{pa.x-=ux*push*.5;pa.y-=uy*push*.5;pb.x+=ux*push*.5;pb.y+=uy*push*.5}
+    }
+    if(!moved)break
+  }
+  return map
+};
+
+knowledgeOwnMarkdown = function(node){return String(node?.markdown||`# ${node?.title||'Knowledge'}\n\nNo additional notes have been written for this node yet.`)};
+knowledgeExpandPath = function(id){const n=knowledgeNodes.find(x=>x.id===id);if(n)knowledgeExpandNode(n)};
+knowledgeCollapseNode = function(id){knowledgeExpanded.delete(id);knowledgeExpansionOrder=knowledgeExpansionOrder.filter(x=>x!==id);if(knowledgeSelectedId===id)knowledgeSelectedId=null;syncKnowledgeWorldCards()};
+knowledgeExpandNode = function(node){if(!node||node.kind==='root')return;knowledgeExpanded.add(node.id);knowledgeSelectedId=node.id;knowledgeExpansionOrder=knowledgeExpansionOrder.filter(x=>x!==node.id);knowledgeExpansionOrder.push(node.id);syncKnowledgeWorldCards()};
+knowledgeToggleNode = function(node){if(!node||node.kind==='root')return;if(knowledgeExpanded.has(node.id))knowledgeCollapseNode(node.id);else knowledgeExpandNode(node)};
+
+knowledgeCardHtml = function(node){
+  const related=knowledgeNeighbours(node),previousRender=knowledgeRenderNodeId;knowledgeRenderNodeId=node.id;let body='';
+  try{body=renderMarkdown(knowledgeOwnMarkdown(node))}finally{knowledgeRenderNodeId=previousRender}
+  const links=related.slice(0,12).map(n=>`<button type="button" class="knowledge-related-link" data-related-id="${escapeHtml(n.id)}">${escapeHtml(n.title)}</button>`).join('');
+  return `<article class="knowledge-world-card" data-node-id="${escapeHtml(node.id)}" style="--node-colour:${escapeHtml(node.colour||'#d0802f')}">
+    <header class="knowledge-world-card-head"><span><small>${escapeHtml((node.group||'KNOWLEDGE').toUpperCase())}</small><strong>${escapeHtml(node.title)}</strong></span><button class="knowledge-card-close" type="button" title="Close" aria-label="Close ${escapeHtml(node.title)}">×</button></header>
+    <div class="knowledge-world-card-body">${body}${links?`<h3>Connected to</h3><div class="knowledge-related-list">${links}</div>`:''}</div>
+    <footer class="knowledge-world-card-foot"><span>${related.length} CONNECTION${related.length===1?'':'S'}</span><span>TOOLS · DATA · PROCESS</span></footer>
+  </article>`
+};
+
+fitKnowledge = function(immediate=false){
+  const root=knowledgeNodes.find(n=>n.id==='knowledge-root');if(!root)return;
+  const r=ui.stage.getBoundingClientRect();
+  camera.targetX=root.x;camera.targetY=root.y;camera.targetZoom=Math.max(.55,Math.min(1,Math.min(r.width/1800,r.height/1200)));
+  if(immediate){camera.x=camera.targetX;camera.y=camera.targetY;camera.zoom=camera.targetZoom}
+  updateZoomLabel()
+};
+
 document.body.dataset.view='tracks';
 load().then(()=>draw()).catch(err=>{ui.loading.textContent=`Landscape build error: ${err.message}`;console.error(err)});
 </script>
+
+<style id="v10110-knowledge-network">
+body[data-view="knowledge"] .knowledge-tabs{display:none!important}
+.knowledge-world-card{z-index:2}
+.knowledge-related-list{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0 2px}
+.knowledge-related-link{border:1px solid color-mix(in srgb,var(--node-colour) 45%,#514438 55%);background:#0c0d0b;color:#cdbda8;padding:5px 7px;border-radius:3px;font:800 7px/1.1 "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.knowledge-related-link:hover{border-color:var(--node-colour);color:#fff0dc}
+</style>
 </body>
 </html>
 <style>
