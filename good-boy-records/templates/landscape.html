@@ -4559,6 +4559,28 @@ body[data-lyric-font="default"] .lyrics{font-family:Outfit,"Segoe UI",Arial,sans
 }
 </style>
 
+<style id="v101018-playing-cover-final-fix">
+/* GBR v10.10.18 — playing sleeve size is CSS-owned, never render-loop-owned.
+   Knowledge view explicitly suppresses the external fixed cover viewport. */
+#playingCoverScreen{
+  width:360px!important;height:360px!important;
+  min-width:360px!important;max-width:360px!important;
+  min-height:360px!important;max-height:360px!important;
+}
+body[data-view="knowledge"] #playingCoverViewport,
+body[data-view="knowledge"] #playingCoverScreen{
+  opacity:0!important;visibility:hidden!important;display:none!important;
+}
+@media(max-width:900px){
+  #playingCoverScreen{
+    width:252px!important;height:252px!important;
+    min-width:252px!important;max-width:252px!important;
+    min-height:252px!important;max-height:252px!important;
+  }
+}
+</style>
+<!-- GBR_BUILD: v10.10.18 FIXED_PLAYING_COVER_KNOWLEDGE_HIDE -->
+
 </head>
 <!-- GBR_BUILD: v10.10.14.1 MOBILE_COLLAPSE_GENRE_LYRICS_REPAIR -->
 <body data-power="on">
@@ -6159,7 +6181,7 @@ function drawKnowledge(w,h,music){
   positionKnowledgeWorldCards(layout)
 }
 function draw(){
-  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),anchorScreen=worldAnchorScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?96:58;if(ui.playingCoverViewport&&ui.playingCoverScreen){const sr=ui.stage.getBoundingClientRect();ui.playingCoverViewport.style.left=`${sr.left}px`;ui.playingCoverViewport.style.top=`${sr.top}px`;ui.playingCoverViewport.style.width=`${sr.width}px`;ui.playingCoverViewport.style.height=`${sr.height}px`;ui.playingCoverScreen.style.left=`${worldAnchorScreen.x}px`;ui.playingCoverScreen.style.top=`${worldAnchorScreen.y}px`;ui.playingCoverScreen.style.width=`${coreSize}px`;ui.playingCoverScreen.style.height=`${coreSize}px`;ui.playingCoverScreen.style.minWidth=`${coreSize}px`;ui.playingCoverScreen.style.maxWidth=`${coreSize}px`;ui.playingCoverScreen.style.minHeight=`${coreSize}px`;ui.playingCoverScreen.style.maxHeight=`${coreSize}px`;ui.playingCoverScreen.style.visibility=(worldAnchorScreen.x+coreSize/2<0||worldAnchorScreen.x-coreSize/2>sr.width||worldAnchorScreen.y+coreSize/2<0||worldAnchorScreen.y-coreSize/2>sr.height)?'hidden':'visible';}ui.centerStack.style.setProperty('left',`${worldAnchorScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${worldAnchorScreen.y+coreSize/2+10}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,0)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('display','none','important');if(ui.playingCoverScreen)ui.playingCoverScreen.dataset.renderSize=`${coreSize}x${coreSize}`;ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
+  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),anchorScreen=worldAnchorScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?96:58;if(ui.playingCoverViewport&&ui.playingCoverScreen){const sr=ui.stage.getBoundingClientRect();ui.playingCoverViewport.style.left=`${sr.left}px`;ui.playingCoverViewport.style.top=`${sr.top}px`;ui.playingCoverViewport.style.width=`${sr.width}px`;ui.playingCoverViewport.style.height=`${sr.height}px`;ui.playingCoverScreen.style.left=`${worldAnchorScreen.x}px`;ui.playingCoverScreen.style.top=`${worldAnchorScreen.y}px`;const coverOffscreen=(worldAnchorScreen.x+coreSize/2<0||worldAnchorScreen.x-coreSize/2>sr.width||worldAnchorScreen.y+coreSize/2<0||worldAnchorScreen.y-coreSize/2>sr.height);ui.playingCoverScreen.style.visibility=(viewMode==='knowledge'||coverOffscreen)?'hidden':'visible';}ui.centerStack.style.setProperty('left',`${worldAnchorScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${worldAnchorScreen.y+coreSize/2+10}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,0)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('display','none','important');if(ui.playingCoverScreen)ui.playingCoverScreen.dataset.renderSize=`${coreSize}x${coreSize}`;ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
   if(viewMode==='knowledge'){
     drawKnowledge(w,h,music);
     document.documentElement.style.setProperty('--audio-level',level.toFixed(3));
