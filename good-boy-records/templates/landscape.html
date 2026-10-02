@@ -4579,6 +4579,7 @@ body[data-view="knowledge"] #playingCoverScreen{
   }
 }
 </style>
+<!-- GBR_BUILD: v10.11.1 KNOWLEDGE_OVERVIEW_TRACK_PANEL_TOGGLE -->
 <!-- GBR_BUILD: v10.10.18 FIXED_PLAYING_COVER_KNOWLEDGE_HIDE -->
 
 
@@ -4626,7 +4627,7 @@ body[data-view="knowledge"] #playingCoverScreen{display:none!important}
     </div>
     <nav class="utility-nav" id="utilityNav" aria-label="Good Boy Records views">
       <button class="utility-button" id="knowledgeButton" type="button">Knowledge</button>
-      <button class="utility-button" id="tracksButton" type="button">Tracks</button>
+      <button class="utility-button" id="tracksButton" type="button" aria-expanded="false">Tracks</button>
     </nav>
     <nav class="knowledge-tabs" id="knowledgeTabs" aria-label="Knowledge maps">
       <button class="knowledge-tab active" type="button" data-knowledge-tab="how-its-made">how it's made</button>
@@ -5309,7 +5310,8 @@ function viewToScreen(wx,wy){const w=ui.stage.clientWidth,h=ui.stage.clientHeigh
 function screenToWorld(sx,sy){const w=ui.stage.clientWidth,h=ui.stage.clientHeight;return{x:(sx-w/2)/camera.zoom+camera.x,y:(sy-h/2)/camera.zoom+camera.y}}
 function updateZoomLabel(){if(ui.zoomLevel)ui.zoomLevel.textContent=`${Math.round(camera.targetZoom*100)}%`}
 function fitCamera(immediate=false){if(!nodes.length)return;const r=ui.stage.getBoundingClientRect(),pad=120,minX=Math.min(...nodes.map(n=>n.baseX))-pad,maxX=Math.max(...nodes.map(n=>n.baseX))+pad,minY=Math.min(...nodes.map(n=>n.baseY))-pad,maxY=Math.max(...nodes.map(n=>n.baseY))+pad,z=Math.min(r.width/Math.max(1,maxX-minX),r.height/Math.max(1,maxY-minY))*.96;camera.targetX=(minX+maxX)/2;camera.targetY=(minY+maxY)/2;camera.targetZoom=Math.max(.30,Math.min(2.2,z));if(immediate){camera.x=camera.targetX;camera.y=camera.targetY;camera.zoom=camera.targetZoom}updateZoomLabel()}
-function zoomAt(sx,sy,factor){const before=screenToWorld(sx,sy),next=Math.max(.24,Math.min(10,camera.targetZoom*factor)),w=ui.stage.clientWidth,h=ui.stage.clientHeight;camera.targetZoom=next;camera.targetX=before.x-(sx-w/2)/next;camera.targetY=before.y-(sy-h/2)/next;updateZoomLabel()}
+function cameraMinZoom(){return viewMode==='knowledge'?.06:.24}
+function zoomAt(sx,sy,factor){const before=screenToWorld(sx,sy),next=Math.max(cameraMinZoom(),Math.min(10,camera.targetZoom*factor)),w=ui.stage.clientWidth,h=ui.stage.clientHeight;camera.targetZoom=next;camera.targetX=before.x-(sx-w/2)/next;camera.targetY=before.y-(sy-h/2)/next;updateZoomLabel()}
 function setExplorationStart(){camera.x=playingAnchor.x;camera.y=playingAnchor.y;camera.targetX=camera.x;camera.targetY=camera.y;camera.zoom=.92;camera.targetZoom=.92;updateZoomLabel()}
 function refreshParentLanes(){const parentMap=new Map();for(const tr of tracks){const name=tr.genre?.parent_genre||'Unclassified';if(!parentMap.has(name))parentMap.set(name,{name,colour:tr.genre?.parent_colour||'#808080',order:tr.genre?.parent_order??tr.genre?.taxonomy_order??1e9})}parentLanes=[...parentMap.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.order-b.order||a.name.localeCompare(b.name));buildGenreStrip()}
 function buildGenreStrip(){
@@ -5961,10 +5963,11 @@ document.body.dataset.view='tracks';knowledgeHoverId=null;ui.knowledgeButton.cla
   if(trackCameraSnapshot){Object.assign(camera,trackCameraSnapshot);trackCameraSnapshot=null}else setExplorationStart()
 }
 function openTracksPanel(){
+  if(openTab==='tracks'&&ui.sidePanel.classList.contains('open')){closePanel();return}
   if(viewMode==='knowledge')exitKnowledge();
-  openTab='tracks';ui.panelTitle.textContent='Tracks';ui.sidePanel.classList.add('open');renderTrackBrowser()
+  openTab='tracks';ui.panelTitle.textContent='Tracks';ui.sidePanel.classList.add('open');ui.tracksButton?.classList.add('active');ui.tracksButton?.setAttribute('aria-expanded','true');renderTrackBrowser()
 }
-function closePanel(){openTab=null;ui.sidePanel.classList.remove('open')}
+function closePanel(){openTab=null;ui.sidePanel.classList.remove('open');ui.tracksButton?.classList.remove('active');ui.tracksButton?.setAttribute('aria-expanded','false')}
 
 function trackValue(t,key){if(key==='title')return titleOf(t);if(key==='variant')return variantOf(t);if(key==='parent')return t.genre?.parent_genre||'';if(key==='child')return t.genre?.child_genre||'';if(key==='order')return Number(t.genre?.taxonomy_order??1e9);return''}
 function renderTrackBrowser(){
@@ -6402,7 +6405,7 @@ function hitNode(clientX,clientY){if(viewMode==='knowledge')return hitKnowledgeN
 canvas.addEventListener('mousemove',e=>{if(pointer.down)return;const {best,sx,sy,r}=hitNode(e.clientX,e.clientY);if(viewMode==='knowledge'){knowledgeHoverId=best?.n?.id||null;hoverIndex=-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=best.n.title;ui.mapTip.querySelector('small').textContent=best.n.kind==='root'?"HOW IT'S MADE":best.n.kind==='document'?`${best.n.title} · STAGE`:best.n.kind==='chain'?`${best.n.docLabel} · DOCUMENT`:`${best.n.docLabel} · DETAIL`}else ui.mapTip.style.display='none';return}hoverIndex=best?best.n.i:-1;if(best){ui.mapTip.style.display='block';ui.mapTip.style.left=`${Math.min(r.width-260,sx+16)}px`;ui.mapTip.style.top=`${Math.max(44,sy-22)}px`;ui.mapTip.querySelector('strong').textContent=titleOf(best.n.t);ui.mapTip.querySelector('small').textContent=[best.n.t.genre?.child_genre||variantOf(best.n.t),best.n.t.genre?.parent_genre,'ORBIT = PARENT · RADIUS = CHILD'].filter(Boolean).join(' · ')}else ui.mapTip.style.display='none'});
 canvas.addEventListener('mouseleave',()=>{if(!pointer.down){hoverIndex=-1;knowledgeHoverId=null;ui.mapTip.style.display='none'}});
 ui.stage.addEventListener('pointerdown',e=>{if(e.target.closest('.utility-nav,.knowledge-density,.knowledge-reader,.knowledge-world-card,.side-panel,.genre-strip,.zoom-controls'))return;if(!power)return;try{ui.stage.setPointerCapture(e.pointerId)}catch(_){};if(e.pointerType==='touch'){touches.set(e.pointerId,{x:e.clientX,y:e.clientY});if(touches.size===2){const pts=[...touches.values()],cx=(pts[0].x+pts[1].x)/2,cy=(pts[0].y+pts[1].y)/2,d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y),r=canvas.getBoundingClientRect();pinch={distance:d,zoom:camera.targetZoom,world:screenToWorld(cx-r.left,cy-r.top)};pointer.down=false}else if(touches.size===1){pointer={down:true,id:e.pointerId,startX:e.clientX,startY:e.clientY,camX:camera.targetX,camY:camera.targetY,moved:false}}}else pointer={down:true,id:e.pointerId,startX:e.clientX,startY:e.clientY,camX:camera.targetX,camY:camera.targetY,moved:false};ui.stage.classList.add('is-panning')});
-ui.stage.addEventListener('pointermove',e=>{if(e.pointerType==='touch'&&touches.has(e.pointerId)){touches.set(e.pointerId,{x:e.clientX,y:e.clientY});if(touches.size===2&&pinch){const pts=[...touches.values()],cx=(pts[0].x+pts[1].x)/2,cy=(pts[0].y+pts[1].y)/2,d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y),r=canvas.getBoundingClientRect(),next=Math.max(.24,Math.min(10,pinch.zoom*d/Math.max(1,pinch.distance))),sx=cx-r.left,sy=cy-r.top,w=ui.stage.clientWidth,h=ui.stage.clientHeight;camera.targetZoom=next;camera.targetX=pinch.world.x-(sx-w/2)/next;camera.targetY=pinch.world.y-(sy-h/2)/next;updateZoomLabel();return}}if(!pointer.down||pointer.id!==e.pointerId)return;const dx=e.clientX-pointer.startX,dy=e.clientY-pointer.startY;if(Math.hypot(dx,dy)>4)pointer.moved=true;camera.targetX=pointer.camX-dx/camera.targetZoom;camera.targetY=pointer.camY-dy/camera.targetZoom;});
+ui.stage.addEventListener('pointermove',e=>{if(e.pointerType==='touch'&&touches.has(e.pointerId)){touches.set(e.pointerId,{x:e.clientX,y:e.clientY});if(touches.size===2&&pinch){const pts=[...touches.values()],cx=(pts[0].x+pts[1].x)/2,cy=(pts[0].y+pts[1].y)/2,d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y),r=canvas.getBoundingClientRect(),next=Math.max(cameraMinZoom(),Math.min(10,pinch.zoom*d/Math.max(1,pinch.distance))),sx=cx-r.left,sy=cy-r.top,w=ui.stage.clientWidth,h=ui.stage.clientHeight;camera.targetZoom=next;camera.targetX=pinch.world.x-(sx-w/2)/next;camera.targetY=pinch.world.y-(sy-h/2)/next;updateZoomLabel();return}}if(!pointer.down||pointer.id!==e.pointerId)return;const dx=e.clientX-pointer.startX,dy=e.clientY-pointer.startY;if(Math.hypot(dx,dy)>4)pointer.moved=true;camera.targetX=pointer.camX-dx/camera.targetZoom;camera.targetY=pointer.camY-dy/camera.targetZoom;});
 function endPointer(e){
   if(e.pointerType==='touch'){
     const wasSingle=touches.size===1&&touches.has(e.pointerId),wasTap=wasSingle&&pointer.down&&pointer.id===e.pointerId&&!pointer.moved;
@@ -6625,7 +6628,7 @@ knowledgeHiddenChildCount = function(){return 0};
 knowledgeLayoutPositions = function(){
   const map=new Map();
   for(const n of knowledgeNodes)map.set(n.id,{x:n.baseX??n.x,y:n.baseY??n.y,angle:0});
-  const zoom=Math.max(.24,Number(camera.zoom)||1),mobile=matchMedia('(max-width:900px)').matches;
+  const zoom=Math.max(.06,Number(camera.zoom)||1),mobile=matchMedia('(max-width:900px)').matches;
   const cardSide=mobile?300:360,screenGap=34;
   const expanded=new Set(knowledgeExpanded);
   const movable=knowledgeNodes.filter(n=>n.id!=='knowledge-root');
@@ -6673,9 +6676,17 @@ knowledgeCardHtml = function(node){
 };
 
 fitKnowledge = function(immediate=false){
-  const root=knowledgeNodes.find(n=>n.id==='knowledge-root');if(!root)return;
-  const r=ui.stage.getBoundingClientRect();
-  camera.targetX=root.x;camera.targetY=root.y;camera.targetZoom=Math.max(.55,Math.min(1,Math.min(r.width/1800,r.height/1200)));
+  if(!knowledgeNodes.length)return;
+  const r=ui.stage.getBoundingClientRect(),layout=knowledgeLayoutPositions();
+  const pts=knowledgeNodes.map(n=>layout.get(n.id)||{x:n.baseX??n.x,y:n.baseY??n.y}).filter(p=>Number.isFinite(p?.x)&&Number.isFinite(p?.y));
+  if(!pts.length)return;
+  const minX=Math.min(...pts.map(p=>p.x)),maxX=Math.max(...pts.map(p=>p.x)),minY=Math.min(...pts.map(p=>p.y)),maxY=Math.max(...pts.map(p=>p.y));
+  const cx=(minX+maxX)/2,cy=(minY+maxY)/2,spanX=Math.max(1,maxX-minX),spanY=Math.max(1,maxY-minY);
+  // Nodes are fixed-size screen objects, so reserve real pixels around the outer centres.
+  const screenPad=matchMedia('(max-width:900px)').matches?72:96;
+  const usableW=Math.max(1,r.width-screenPad*2),usableH=Math.max(1,r.height-screenPad*2);
+  const z=Math.min(usableW/spanX,usableH/spanY)*.96;
+  camera.targetX=cx;camera.targetY=cy;camera.targetZoom=Math.max(.06,Math.min(1,z));
   if(immediate){camera.x=camera.targetX;camera.y=camera.targetY;camera.zoom=camera.targetZoom}
   updateZoomLabel()
 };
@@ -6683,6 +6694,12 @@ fitKnowledge = function(immediate=false){
 document.body.dataset.view='tracks';
 load().then(()=>draw()).catch(err=>{ui.loading.textContent=`Landscape build error: ${err.message}`;console.error(err)});
 </script>
+
+<style id="v10111-panel-layer-and-knowledge-zoom">
+/* GBR v10.11.1 — shared desktop/mobile panel stacking and knowledge overview. */
+.side-panel{z-index:580!important}
+.utility-button#tracksButton.active{color:#fff1dd!important;border-color:var(--accent)!important;box-shadow:inset 0 0 14px rgba(var(--accent-rgb),.18),0 0 9px rgba(var(--accent-rgb),.12)!important}
+</style>
 
 <style id="v10110-knowledge-network">
 body[data-view="knowledge"] .knowledge-tabs{display:none!important}
