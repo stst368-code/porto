@@ -4581,6 +4581,31 @@ body[data-view="knowledge"] #playingCoverScreen{
 </style>
 <!-- GBR_BUILD: v10.10.18 FIXED_PLAYING_COVER_KNOWLEDGE_HIDE -->
 
+
+<style id="v101019-true-screen-space-geometry">
+/* GBR v10.10.19 — authoritative screen-space geometry.
+   Zoom changes coordinates only. It cannot change sleeve or Knowledge node size. */
+#playingCoverViewport{transform:none!important;zoom:1!important}
+#playingCoverScreen{
+  box-sizing:border-box!important;
+  width:360px!important;height:360px!important;
+  min-width:360px!important;max-width:360px!important;
+  min-height:360px!important;max-height:360px!important;
+  transform:translate(-50%,-50%)!important;
+  scale:none!important;zoom:1!important;
+  contain:strict!important;
+}
+@media(max-width:900px){
+  #playingCoverScreen{
+    width:252px!important;height:252px!important;
+    min-width:252px!important;max-width:252px!important;
+    min-height:252px!important;max-height:252px!important;
+  }
+}
+body[data-view="knowledge"] #playingCoverViewport,
+body[data-view="knowledge"] #playingCoverScreen{display:none!important}
+</style>
+<!-- GBR_BUILD: v10.10.19 TRUE_SCREEN_SPACE_GEOMETRY -->
 </head>
 <!-- GBR_BUILD: v10.10.14.1 MOBILE_COLLAPSE_GENRE_LYRICS_REPAIR -->
 <body data-power="on">
@@ -6108,11 +6133,12 @@ function drawParentSeparators(anchorScreen){
 }
 
 function knowledgeNodeSize(n){
-  const z=Math.max(.28,camera.zoom);
-  if(n.kind==='root')return Math.max(48,Math.min(104,82*Math.pow(z,.62)));
-  if(n.kind==='document')return Math.max(36,Math.min(84,62*Math.pow(z,.72)));
-  if(n.kind==='chain')return Math.max(27,Math.min(64,45*Math.pow(z,.72)));
-  return n.depth<=1?Math.max(22,Math.min(52,37*Math.pow(z,.72))):Math.max(16,Math.min(38,27*Math.pow(z,.72)))
+  // v10.10.19: node geometry is SCREEN geometry. Camera zoom changes only
+  // world positions/distances, never the rendered size of a node.
+  if(n.kind==='root')return 82;
+  if(n.kind==='document')return 62;
+  if(n.kind==='chain')return 45;
+  return n.depth<=1?37:27
 }
 function hitKnowledgeNode(clientX,clientY){
   const r=canvas.getBoundingClientRect(),sx=clientX-r.left,sy=clientY-r.top,visible=knowledgeVisibleIds(),layout=knowledgeLayoutPositions();let best=null;
@@ -6164,7 +6190,7 @@ function drawKnowledge(w,h,music){
 
     ctx.fillStyle=hov||sel?'#fff2df':'#d7c8b4';ctx.textAlign='center';ctx.textBaseline='middle';
     const font=n.kind==='root'?11:n.kind==='document'?9:n.kind==='chain'?7.8:n.depth<=1?7:6.2;
-    ctx.font=`800 ${Math.max(6,font*Math.max(.82,Math.min(1.45,camera.zoom)))}px Courier New`;
+    ctx.font=`800 ${font}px Courier New`;
     const label=n.title.toUpperCase(),maxChars=n.kind==='document'?20:n.kind==='root'?18:26,shown=label.length>maxChars?label.slice(0,maxChars-1)+'…':label;
     ctx.fillText(shown,sp.x,sp.y+size*.72);
 
