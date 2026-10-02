@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Good Boy Records — Sonic Landscape</title>
-<!-- GBR_BUILD: v10.10.16 INTENTIONAL_GENRE_LYRIC_FONTS -->
+<!-- GBR_BUILD: v10.10.17 MOBILE_LYRICS_BOX_SUBGENRE_BORDER_CLEANUP -->
 <style>
 :root{--accent:#d0802f;--accent-rgb:208,128,47;--lamp:.5;--audio-level:0;--bg:#050606;--metal:#181817;--metal2:#0c0d0d;--line:#67452c;--text:#e8dfd1;--muted:#9c8d79}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020303;color:var(--text);font-family:Arial,Helvetica,sans-serif}button,input{font:inherit}
@@ -4517,7 +4517,14 @@ body[data-lyric-font="default"] .lyrics{font-family:Outfit,"Segoe UI",Arial,sans
 .lyrics .karaoke-current{font-size:inherit!important}
 
 @media (max-width:900px){
-  .lyrics{font-size:24px!important}
+  /* v10.10.17: the larger mobile lyric type needs a genuinely larger box.
+     Reset the old 48px one-line line-height inherited from the mobile reset. */
+  .lyrics{
+    height:96px!important;min-height:96px!important;max-height:96px!important;flex:0 0 96px!important;
+    padding:10px 14px!important;font-size:24px!important;line-height:1.14!important;
+  }
+  .lyrics .karaoke-current{font-size:inherit!important;line-height:1.14!important;max-height:55px!important;overflow:hidden!important}
+  .lyrics .karaoke-next{margin-top:5px!important;line-height:1.15!important;min-height:1.15em!important}
 
   /* Collapse means collapse: the entire mobile rack becomes non-rendering.
      CTRL is outside .hardware and therefore stays available for recovery. */
@@ -6152,7 +6159,7 @@ function drawKnowledge(w,h,music){
   positionKnowledgeWorldCards(layout)
 }
 function draw(){
-  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),anchorScreen=worldAnchorScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?52:58;if(ui.playingCoverViewport&&ui.playingCoverScreen){const sr=ui.stage.getBoundingClientRect();ui.playingCoverViewport.style.left=`${sr.left}px`;ui.playingCoverViewport.style.top=`${sr.top}px`;ui.playingCoverViewport.style.width=`${sr.width}px`;ui.playingCoverViewport.style.height=`${sr.height}px`;ui.playingCoverScreen.style.left=`${worldAnchorScreen.x}px`;ui.playingCoverScreen.style.top=`${worldAnchorScreen.y}px`;ui.playingCoverScreen.style.width=`${coreSize}px`;ui.playingCoverScreen.style.height=`${coreSize}px`;ui.playingCoverScreen.style.minWidth=`${coreSize}px`;ui.playingCoverScreen.style.maxWidth=`${coreSize}px`;ui.playingCoverScreen.style.minHeight=`${coreSize}px`;ui.playingCoverScreen.style.maxHeight=`${coreSize}px`;ui.playingCoverScreen.style.visibility=(worldAnchorScreen.x+coreSize/2<0||worldAnchorScreen.x-coreSize/2>sr.width||worldAnchorScreen.y+coreSize/2<0||worldAnchorScreen.y-coreSize/2>sr.height)?'hidden':'visible';}ui.centerStack.style.setProperty('left',`${worldAnchorScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${worldAnchorScreen.y+coreSize/2+10}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,0)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('display','none','important');if(ui.playingCoverScreen)ui.playingCoverScreen.dataset.renderSize=`${coreSize}x${coreSize}`;ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
+  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),anchorScreen=worldAnchorScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?96:58;if(ui.playingCoverViewport&&ui.playingCoverScreen){const sr=ui.stage.getBoundingClientRect();ui.playingCoverViewport.style.left=`${sr.left}px`;ui.playingCoverViewport.style.top=`${sr.top}px`;ui.playingCoverViewport.style.width=`${sr.width}px`;ui.playingCoverViewport.style.height=`${sr.height}px`;ui.playingCoverScreen.style.left=`${worldAnchorScreen.x}px`;ui.playingCoverScreen.style.top=`${worldAnchorScreen.y}px`;ui.playingCoverScreen.style.width=`${coreSize}px`;ui.playingCoverScreen.style.height=`${coreSize}px`;ui.playingCoverScreen.style.minWidth=`${coreSize}px`;ui.playingCoverScreen.style.maxWidth=`${coreSize}px`;ui.playingCoverScreen.style.minHeight=`${coreSize}px`;ui.playingCoverScreen.style.maxHeight=`${coreSize}px`;ui.playingCoverScreen.style.visibility=(worldAnchorScreen.x+coreSize/2<0||worldAnchorScreen.x-coreSize/2>sr.width||worldAnchorScreen.y+coreSize/2<0||worldAnchorScreen.y-coreSize/2>sr.height)?'hidden':'visible';}ui.centerStack.style.setProperty('left',`${worldAnchorScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${worldAnchorScreen.y+coreSize/2+10}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,0)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('display','none','important');if(ui.playingCoverScreen)ui.playingCoverScreen.dataset.renderSize=`${coreSize}x${coreSize}`;ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
   if(viewMode==='knowledge'){
     drawKnowledge(w,h,music);
     document.documentElement.style.setProperty('--audio-level',level.toFixed(3));
@@ -6162,7 +6169,9 @@ function draw(){
   }
   knowledgeAlpha=0;
   const focus=hoverIndex>=0?hoverIndex:index,focusNode=nodes[focus];
-  drawClusterBoundaries(worldAnchorScreen);
+  /* v10.10.17: phone map keeps the higher-level separator lines, but drops
+     the closed borders around each child/subgenre group. */
+  if(!mobileCore)drawClusterBoundaries(worldAnchorScreen);
   drawParentSeparators(worldAnchorScreen);
 
   const edgeLabelPoint=(group,padPx)=>{
