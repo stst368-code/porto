@@ -5865,7 +5865,7 @@ function syncKnowledgeWorldCards(){
 function positionKnowledgeWorldCards(layout=knowledgeLayoutPositions()){
   const layer=$('knowledgeWorldCards');if(!layer||viewMode!=='knowledge')return;
   const w=ui.stage.clientWidth,h=ui.stage.clientHeight;
-  const scale=Math.max(.58,Math.min(1.10,camera.zoom));
+  const scale=1; /* v10.10.20: expanded Knowledge cards are screen-space; zoom moves them, never resizes them */
   for(const card of layer.querySelectorAll('.knowledge-world-card')){
     const p=layout.get(card.dataset.nodeId);if(!p)continue;
     const sp=viewToScreen(p.x,p.y);
