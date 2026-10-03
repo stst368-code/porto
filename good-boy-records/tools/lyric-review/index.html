@@ -1,0 +1,77 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GBR Lyric Review</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#eee;background:#101114}*{box-sizing:border-box}body{margin:0;height:100vh;display:grid;grid-template-columns:330px 1fr}
+aside{border-right:1px solid #333;overflow:auto;padding:14px}.track{padding:10px;border:1px solid #2c2e34;border-radius:8px;margin:7px 0;cursor:pointer}.track:hover,.track.active{background:#20232a}.bad{color:#ffb2a9}.good{color:#a8e6b0}
+main{display:grid;grid-template-rows:auto auto 1fr;min-width:0}.top{padding:16px;border-bottom:1px solid #333;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+button,input{font:inherit;background:#20232a;color:#eee;border:1px solid #444;border-radius:6px;padding:7px 10px}button{cursor:pointer}button.primary{background:#eee;color:#111}
+audio{width:min(700px,100%)}.workspace{padding:18px;overflow:auto}.context{font-size:24px;line-height:1.7;margin:14px 0}.word{padding:3px 5px;border-radius:4px;cursor:pointer}.word.suspect{background:#55251f}.word.selected{outline:2px solid #fff}.word.done{background:#193c25}
+.editor{border:1px solid #3a3d44;border-radius:12px;padding:18px;max-width:950px}.focus{font-size:38px;font-weight:750;margin:5px 0 14px}.timing{display:flex;gap:10px;align-items:end;flex-wrap:wrap}.timing label{display:grid;gap:4px}.timing input{width:130px}
+.bar{height:72px;position:relative;background:#191b20;border-radius:8px;margin:18px 0;overflow:hidden}.range{position:absolute;top:0;bottom:0;background:#464b57}.playhead{position:absolute;top:0;bottom:0;width:2px;background:white}
+small{color:#aaa}.keys{color:#aaa;font-size:13px}.empty{padding:30px;color:#aaa}.search{width:100%;margin-bottom:8px}
+</style></head><body>
+<aside><h2>Lyric Review</h2><input id="search" class="search" placeholder="Filter tracks"><div id="tracks"></div></aside>
+<main><div class="top"><div><b id="title">Select a track</b><br><small id="status"></small></div><button id="prev">Previous issue</button><button id="next" class="primary">Accept + next</button><button id="save">Save</button></div>
+<div class="top"><audio id="audio" controls></audio><label><input type="checkbox" id="loop" checked> loop issue</label><span class="keys">Space play · Enter accept/next · [ ] start −/+10ms · ; ' end −/+10ms · Shift = 50ms · R replay</span></div>
+<div class="workspace"><div id="empty" class="empty">Tracks with unresolved words are listed first.</div><div id="editor" class="editor" hidden>
+<div id="line" class="context"></div><div id="focus" class="focus"></div><div class="timing">
+<label>Start <input id="start" type="number" step=".001"></label><label>End <input id="end" type="number" step=".001"></label>
+<button id="play">Play context</button><button id="mark">Mark unresolved</button></div><div id="bar" class="bar"><div id="range" class="range"></div><div id="head" class="playhead"></div></div>
+<small id="detail"></small></div></div></main>
+<script>
+let tracks=[], current=null, data=null, flat=[], idx=-1, dirty=false;
+const $=id=>document.getElementById(id), audio=$('audio');
+async function j(url,opt){let r=await fetch(url,opt);let x=await r.json();if(!r.ok)throw Error(x.error||r.status);return x}
+function renderTracks(){
+ let q=$('search').value.toLowerCase(); $('tracks').innerHTML='';
+ tracks.filter(t=>(t.title+' '+t.dir).toLowerCase().includes(q)).forEach(t=>{
+  let d=document.createElement('div');d.className='track '+(current&&current.id===t.id?'active':'');
+  d.innerHTML=`<b>${esc(t.title)}</b><br><small>${esc(t.dir)}</small><br><span class="${t.unresolved?'bad':'good'}">${(t.coverage*100).toFixed(1)}% · ${t.unresolved} unresolved</span>`;
+  d.onclick=()=>load(t);$('tracks').appendChild(d)
+ })
+}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function rebuild(){
+ flat=[];(data.lines||[]).forEach((l,li)=>(l.words||[]).forEach((w,wi)=>flat.push({l,li,w,wi})));
+}
+async function load(t){
+ if(dirty&&!confirm('Unsaved timing changes. Discard them?'))return;
+ current=t;let x=await j('/api/track?id='+encodeURIComponent(t.id));data=x.lyrics;audio.src=x.audio;dirty=false;rebuild();
+ $('title').textContent=(data.title||t.title)+(data.song_version!=null?' · '+data.song_version:'');renderTracks();
+ idx=flat.findIndex(x=>!x.w.matched);if(idx<0)idx=0;show();$('editor').hidden=!flat.length;$('empty').hidden=!!flat.length;
+}
+function show(){
+ if(!flat.length)return; idx=Math.max(0,Math.min(idx,flat.length-1));let x=flat[idx], words=x.l.words||[];
+ $('line').innerHTML=words.map((w,i)=>`<span class="word ${!w.matched?'suspect':'done'} ${i===x.wi?'selected':''}" data-i="${i}">${esc(w.text)}</span>`).join(' ');
+ [...$('line').querySelectorAll('.word')].forEach(e=>e.onclick=()=>{let target=flat.findIndex(y=>y.li===x.li&&y.wi===+e.dataset.i);if(target>=0){idx=target;show();}});
+ $('focus').textContent=x.w.text;$('start').value=(+x.w.start).toFixed(3);$('end').value=(+x.w.end).toFixed(3);
+ $('detail').textContent=`${idx+1}/${flat.length} · ${x.w.matched?'linked/reviewed':'INTERPOLATED — review required'} · line ${x.li+1}`;
+ $('status').textContent=`${flat.filter(y=>y.w.matched).length}/${flat.length} linked (${(100*flat.filter(y=>y.w.matched).length/flat.length).toFixed(1)}%)${dirty?' · UNSAVED':''}`;
+ updateBar();
+}
+function apply(){
+ let x=flat[idx],s=+$('start').value,e=+$('end').value;if(!(s>=0&&e>s)){alert('End must be after start.');return false}
+ x.w.start=+s.toFixed(3);x.w.end=+e.toFixed(3);dirty=true;show();return true
+}
+function acceptNext(){if(!apply())return;flat[idx].w.matched=true;dirty=true;let n=flat.findIndex((x,i)=>i>idx&&!x.w.matched);if(n<0)n=flat.findIndex(x=>!x.w.matched);if(n>=0)idx=n;else idx=Math.min(idx+1,flat.length-1);show();playContext()}
+function issue(dir){let n=idx;for(let k=0;k<flat.length;k++){n=(n+dir+flat.length)%flat.length;if(!flat[n].w.matched){idx=n;show();playContext();return}}}
+function playContext(){let x=flat[idx].w;audio.currentTime=Math.max(0,+x.start-.65);audio.play()}
+function updateBar(){if(!flat.length)return;let w=flat[idx].w,s=Math.max(0,+w.start-1),e=+w.end+1,span=e-s;$('range').style.left=((+w.start-s)/span*100)+'%';$('range').style.width=((+w.end-+w.start)/span*100)+'%';}
+audio.ontimeupdate=()=>{if(!flat.length)return;let w=flat[idx].w,s=Math.max(0,+w.start-1),e=+w.end+1,span=e-s;$('head').style.left=Math.max(0,Math.min(100,(audio.currentTime-s)/span*100))+'%';if($('loop').checked&&audio.currentTime>+w.end+.65){audio.currentTime=Math.max(0,+w.start-.65);}}
+$('start').onchange=apply;$('end').onchange=apply;$('next').onclick=acceptNext;$('prev').onclick=()=>issue(-1);$('play').onclick=playContext;
+$('mark').onclick=()=>{flat[idx].w.matched=false;dirty=true;show()};$('search').oninput=renderTracks;
+$('save').onclick=async()=>{if(!current)return;if(!apply())return;let x=await j('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:current.id,lyrics:data})});dirty=false;
+ current.coverage=x.coverage;current.unresolved=x.total-x.matched;show();renderTracks();};
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;let step=e.shiftKey?.05:.01;
+ if(e.code==='Space'){e.preventDefault();audio.paused?audio.play():audio.pause()}
+ else if(e.key==='Enter'){e.preventDefault();acceptNext()}
+ else if(e.key==='r'||e.key==='R'){playContext()}
+ else if(e.key==='['){$('start').value=(+$('start').value-step).toFixed(3);apply()}
+ else if(e.key===']'){$('start').value=(+$('start').value+step).toFixed(3);apply()}
+ else if(e.key===';'){$('end').value=(+$('end').value-step).toFixed(3);apply()}
+ else if(e.key==="'"){$('end').value=(+$('end').value+step).toFixed(3);apply()}
+});
+window.onbeforeunload=()=>dirty?'Unsaved lyric timing changes':undefined;
+(async()=>{tracks=(await j('/api/tracks')).tracks;renderTracks();if(tracks.length){let t=tracks.find(x=>x.unresolved)||tracks[0];load(t)}})();
+</script></body></html>

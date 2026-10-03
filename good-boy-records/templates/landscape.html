@@ -43,6 +43,28 @@ body[data-power="off"] #canvas{filter:brightness(.74) saturate(.72)}body[data-po
 body[data-easter="true"] .axis-guide{opacity:.2}body[data-easter="true"] .genre-strip{opacity:.32}body[data-easter="true"] .brand{letter-spacing:.24em;text-shadow:0 0 16px rgba(var(--accent-rgb),.85)}body[data-easter="true"] .stage{background:radial-gradient(circle at 50% 50%,rgba(var(--accent-rgb),.10),transparent 50%)}
 
 @media(max-width:900px){.app{grid-template-columns:minmax(0,1fr) 78px!important;grid-template-rows:1fr!important}.hardware{width:78px;padding:6px 5px;height:100dvh;gap:5px}.hardware .legend,.hardware .meta,.hardware .time{display:none}.hardware .module{padding:5px;min-width:0}.power{width:58px}.knob-module{display:grid;grid-template-columns:1fr;gap:6px}.vu-module{display:none}.spectrum-module{display:none!important}.transport-module{display:flex;flex-direction:column;padding-top:5px}.transport{display:grid;grid-template-columns:1fr 1fr}.hw-button,.hw-button.main{min-width:28px;width:28px;height:30px}.format-row{justify-content:center}.format-button{min-width:40px;height:22px;font-size:7px}.seek{display:none}.time-module{display:flex;padding:5px}.tab-rail{right:0;top:76px;bottom:76px;width:39px;padding:4px 3px}.rail-tab{width:31px;min-height:48px}.side-panel{right:39px;top:56px;bottom:56px;width:calc(100vw - 122px)}.track-row{grid-template-columns:minmax(120px,1.6fr) minmax(76px,.8fr)}.track-row span:nth-of-type(n+2),.track-head button:nth-child(n+3){display:none}.track-tools{grid-template-columns:1fr}.genre-label{right:52px}.zoom-controls{right:48px}}
+
+/* v10.11.5 — combined song/version provenance */
+.utility-button#storyButton.active{color:#fff1dd!important;border-color:var(--accent)!important;box-shadow:inset 0 0 14px rgba(var(--accent-rgb),.18),0 0 9px rgba(var(--accent-rgb),.12)!important}
+.story-panel{max-width:720px;margin:0 auto}
+.story-hero{padding:2px 0 16px;border-bottom:1px solid color-mix(in srgb,var(--accent) 30%,#332c25 70%)}
+.story-hero small{font:800 9px/1 Arial,sans-serif;letter-spacing:.18em;color:var(--accent)}
+.story-hero h1{margin:7px 0 3px!important;font-size:30px!important}
+.story-hero p{margin:0;color:#9f907d;font:700 11px/1.3 Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.story-section{padding:18px 0 4px;border-bottom:1px solid #ffffff0d}
+.story-section:last-child{border-bottom:0}
+.story-section h2{margin:0 0 10px!important;font-size:18px!important}
+.story-copy{color:#d8cebf;font:16px/1.62 Georgia,serif;white-space:normal}
+.story-inspiration{margin-top:14px;padding:11px 12px;border-left:2px solid var(--accent);background:rgba(var(--accent-rgb),.045)}
+.story-inspiration small{display:block;margin-bottom:5px;color:#958875;font:800 8px/1 Arial,sans-serif;letter-spacing:.14em}
+.story-inspiration a,.story-source-link{color:color-mix(in srgb,var(--accent) 70%,#fff 30%);text-decoration:none}
+.story-source{margin-top:10px;font:700 9px/1 Arial,sans-serif;text-transform:uppercase;letter-spacing:.09em}
+.story-facts dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:0}
+.story-facts dl>div{padding:8px 9px;border:1px solid #ffffff0d;background:#ffffff05}
+.story-facts dt{color:#8e8272;font:800 8px/1 Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em}
+.story-facts dd{margin:5px 0 0;color:#d8cebf;font:700 12px/1.2 Arial,sans-serif}
+@media(max-width:600px){.story-copy{font-size:15px}.story-facts dl{grid-template-columns:1fr}.story-hero h1{font-size:25px!important}}
+
 </style>
 
 <style id="v101-responsive-rack">
@@ -4640,6 +4662,7 @@ body[data-view="knowledge"] #easterStoryOverlay{display:none!important}
     <nav class="utility-nav" id="utilityNav" aria-label="Good Boy Records views">
       <button class="utility-button" id="knowledgeButton" type="button">Knowledge</button>
       <button class="utility-button" id="tracksButton" type="button" aria-expanded="false">Tracks</button>
+      <button class="utility-button" id="storyButton" type="button" aria-expanded="false">Story</button>
     </nav>
     <nav class="knowledge-tabs" id="knowledgeTabs" aria-label="Knowledge maps">
       <button class="knowledge-tab active" type="button" data-knowledge-tab="how-its-made">how it's made</button>
@@ -4842,7 +4865,7 @@ function externaliseShowcasePaths(value){
   if(value&&typeof value==='object'){for(const k of Object.keys(value))value[k]=externaliseShowcasePaths(value[k]);return value}
   return typeof value==='string'?showcaseUrl(value):value;
 }
-const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),mobileSongTitle:$('mobileSongTitle'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),playingCoverViewport:$('playingCoverViewport'),playingCoverScreen:$('playingCoverScreen'),easterStoryOverlay:$('easterStoryOverlay'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),knowledgeTabs:$('knowledgeTabs'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
+const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),mobileSongTitle:$('mobileSongTitle'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),playingCoverViewport:$('playingCoverViewport'),playingCoverScreen:$('playingCoverScreen'),easterStoryOverlay:$('easterStoryOverlay'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),storyButton:$('storyButton'),knowledgeTabs:$('knowledgeTabs'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
 deskGenreZones:$('deskGenreZones'),deskAlbumLight:$('deskAlbumLight'),deskPower:$('deskPower'),
 deskFormatToggle:$('deskFormatToggle'),deskIntensity:$('deskIntensity'),deskIntensityValue:$('deskIntensityValue'),
 deskSensitivity:$('deskSensitivity'),deskSensitivityValue:$('deskSensitivityValue'),
@@ -5409,7 +5432,7 @@ function setLyricTypography(t){
   else if(/pop|disco|dance|club|city.?pop|hyper.?pop/.test(raw)) family='pop';
   document.body.dataset.lyricFont=family;
 }
-function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);setLyricTypography(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');updateEasterStory(t);syncMediaSession(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.fixedCover.onerror=()=>{if(ui.fixedCover.src!==FALLBACK_ART)ui.fixedCover.src=FALLBACK_ART};if(ui.playingCoverScreen)ui.playingCoverScreen.onerror=()=>{if(ui.playingCoverScreen.src!==FALLBACK_ART)ui.playingCoverScreen.src=FALLBACK_ART};const artwork=artOf(t);ui.cover.src=artwork;ui.fixedCover.src=artwork;if(ui.playingCoverScreen)ui.playingCoverScreen.src=artwork;ui.cover.alt=`Album artwork for ${titleOf(t)}`;ui.fixedCover.alt=`Now playing artwork for ${titleOf(t)}`;if(ui.playingCoverScreen)ui.playingCoverScreen.alt=`Now playing artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows()}
+function select(i,autoplay=true){if(!tracks.length)return;index=(i%tracks.length+tracks.length)%tracks.length;const t=tracks[index],candidates=audioCandidates(t),src=candidates[0]||'';audioCandidateIndex=0;accent(t);setLyricTypography(t);updateFormatButtons(t);ui.title.textContent=titleOf(t);ui.variant.textContent=variantOf(t);ui.mobileSongTitle.textContent=String(titleOf(t)||'').toLowerCase();ui.genreParent.textContent=t.genre?.parent_genre||'Unclassified';ui.genreChild.textContent=t.genre?.child_genre||variantOf(t);ui.metaTitle.textContent=titleOf(t);ui.metaSub.textContent=[variantOf(t),t.genre?.cluster].filter(Boolean).join(' · ');updateEasterStory(t);syncMediaSession(t);loadLyrics(t);ui.cover.onload=paintFixedCover;ui.cover.onerror=()=>{if(ui.cover.src!==FALLBACK_ART)ui.cover.src=FALLBACK_ART};ui.fixedCover.onerror=()=>{if(ui.fixedCover.src!==FALLBACK_ART)ui.fixedCover.src=FALLBACK_ART};if(ui.playingCoverScreen)ui.playingCoverScreen.onerror=()=>{if(ui.playingCoverScreen.src!==FALLBACK_ART)ui.playingCoverScreen.src=FALLBACK_ART};const artwork=artOf(t);ui.cover.src=artwork;ui.fixedCover.src=artwork;if(ui.playingCoverScreen)ui.playingCoverScreen.src=artwork;ui.cover.alt=`Album artwork for ${titleOf(t)}`;ui.fixedCover.alt=`Now playing artwork for ${titleOf(t)}`;if(ui.playingCoverScreen)ui.playingCoverScreen.alt=`Now playing artwork for ${titleOf(t)}`;if(src&&audio.src!==new URL(src,location.href).href){audio.src=src;audio.load()}if(autoplay&&src&&power)startPlaybackNow();if(openTab==='tracks')renderTrackRows();if(openTab==='story')renderStoryPanel()}
 function seededUnit(text){let h=2166136261;for(const ch of String(text)){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return((h>>>0)%10000)/10000}
 
 const KNOWLEDGE_MANIFEST_URL='knowledge-manifest.json';
@@ -5981,8 +6004,53 @@ function openTracksPanel(){
   if(viewMode==='knowledge')exitKnowledge();
   openTab='tracks';ui.panelTitle.textContent='Tracks';ui.sidePanel.classList.add('open');ui.tracksButton?.classList.add('active');ui.tracksButton?.setAttribute('aria-expanded','true');renderTrackBrowser()
 }
-function closePanel(){openTab=null;ui.sidePanel.classList.remove('open');ui.tracksButton?.classList.remove('active');ui.tracksButton?.setAttribute('aria-expanded','false')}
+function closePanel(){openTab=null;ui.sidePanel.classList.remove('open');ui.tracksButton?.classList.remove('active');ui.tracksButton?.setAttribute('aria-expanded','false');ui.storyButton?.classList.remove('active');ui.storyButton?.setAttribute('aria-expanded','false')}
 
+function provenanceText(value){return typeof value==='string'?value.trim():''}
+function sameProvenance(a,b){return provenanceText(a).replace(/\s+/g,' ').toLowerCase()===provenanceText(b).replace(/\s+/g,' ').toLowerCase()}
+function provenanceLink(label,url){
+  const href=showcaseUrl(url||'');
+  return href?`<a class="story-source-link" href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`:''
+}
+function provenanceSection(label,story,inspiration,inspirationUrl,yamlUrl,compare){
+  story=provenanceText(story);inspiration=provenanceText(inspiration);
+  if(compare){
+    if(sameProvenance(story,compare.story))story='';
+    if(sameProvenance(inspiration,compare.inspiration)&&String(inspirationUrl||'')===String(compare.inspirationUrl||''))inspiration='';
+  }
+  if(!story&&!inspiration&&!inspirationUrl&&!yamlUrl)return'';
+  const bits=[];
+  if(story)bits.push(`<div class="story-copy">${escapeHtml(story).replace(/\n/g,'<br>')}</div>`);
+  if(inspiration||inspirationUrl){
+    const linked=inspirationUrl?`<a href="${escapeHtml(inspirationUrl)}" target="_blank" rel="noopener">${escapeHtml(inspiration||'Open inspiration')}</a>`:escapeHtml(inspiration);
+    bits.push(`<div class="story-inspiration"><small>INSPIRATION</small><div>${linked}</div></div>`)
+  }
+  if(yamlUrl)bits.push(`<div class="story-source">${provenanceLink('source YAML',yamlUrl)}</div>`);
+  return `<section class="story-section"><h2>${escapeHtml(label)}</h2>${bits.join('')}</section>`
+}
+function renderStoryPanel(){
+  const t=tracks[index];if(!t){ui.panelBody.innerHTML='<div class="track-empty">NO TRACK SELECTED</div>';return}
+  const p=t.provenance||{},song=p.song||{},version=p.version||{};
+  const legacy={story:storyOf(t),inspiration:t?.style?.inspiration||'',inspirationUrl:t?.style?.inspirationUrl||'',yamlUrl:t?.yamlUrl||''};
+  const hasStructured=Object.values(song).some(Boolean)||Object.values(version).some(Boolean);
+  const songBlock=hasStructured?provenanceSection('The Song',song.story,song.inspiration,song.inspirationUrl,song.yamlUrl):'';
+  const versionBlock=hasStructured?provenanceSection('This Version',version.story,version.inspiration,version.inspirationUrl,version.yamlUrl,song):provenanceSection('About This Track',legacy.story,legacy.inspiration,legacy.inspirationUrl,legacy.yamlUrl);
+  const g=t.generation||{},model=t.model||{};
+  const facts=[
+    ['Version',variantOf(t)],['Genre',t.genre?.child_genre||''],['Model',model.name||model.dit||''],
+    ['CFG',g.samplerCfg],['Steps',g.steps],['Sampler',g.sampler],['Scheduler',g.scheduler]
+  ].filter(([,v])=>v!==''&&v!==null&&v!==undefined);
+  const factHtml=facts.length?`<section class="story-section story-facts"><h2>How This Version Was Made</h2><dl>${facts.map(([k,v])=>`<div><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd></div>`).join('')}</dl></section>`:'';
+  const empty=!songBlock&&!versionBlock&&!factHtml;
+  ui.panelBody.innerHTML=`<article class="story-panel"><header class="story-hero"><small>BEHIND THE SONG</small><h1>${escapeHtml(titleOf(t))}</h1><p>${escapeHtml(variantOf(t))}</p></header>${empty?'<div class="track-empty">No story or inspiration has been added for this track yet.</div>':songBlock+versionBlock+factHtml}</article>`
+}
+function openStoryPanel(){
+  if(openTab==='story'&&ui.sidePanel.classList.contains('open')){closePanel();return}
+  if(viewMode==='knowledge')exitKnowledge();
+  openTab='story';ui.panelTitle.textContent='Behind the Song';ui.sidePanel.classList.add('open');
+  ui.tracksButton?.classList.remove('active');ui.tracksButton?.setAttribute('aria-expanded','false');
+  ui.storyButton?.classList.add('active');ui.storyButton?.setAttribute('aria-expanded','true');renderStoryPanel()
+}
 function trackValue(t,key){if(key==='title')return titleOf(t);if(key==='variant')return variantOf(t);if(key==='parent')return t.genre?.parent_genre||'';if(key==='child')return t.genre?.child_genre||'';if(key==='order')return Number(t.genre?.taxonomy_order??1e9);return''}
 function renderTrackBrowser(){
   const body=ui.panelBody;
@@ -6438,6 +6506,7 @@ document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&viewMode==='tra
 if(ui.mobileMixToggle){ui.mobileMixToggle.onclick=()=>{document.body.classList.remove('mobile-mix-open');ui.mobileMixToggle.setAttribute('aria-expanded','false')}}
 if(ui.knowledgeButton)ui.knowledgeButton.onclick=()=>{clickSound();enterKnowledge()};
 if(ui.tracksButton)ui.tracksButton.onclick=()=>{clickSound();openTracksPanel()};
+if(ui.storyButton)ui.storyButton.onclick=()=>{clickSound();openStoryPanel()};
 if(ui.panelClose)ui.panelClose.onclick=closePanel;
 if(ui.knowledgeReaderClose)ui.knowledgeReaderClose.onclick=()=>{clickSound();closeKnowledgeReader()};
 if(ui.knowledgePrev)ui.knowledgePrev.onclick=()=>{const id=ui.knowledgePrev.dataset.target;if(id){clickSound();openKnowledgeTarget(id)}};

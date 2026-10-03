@@ -305,6 +305,7 @@ def build_track(
     raw: dict[str, Any],
     composition_id: str,
     common: dict[str, Any],
+    common_yaml_path: Path | None,
     taxonomy: Taxonomy,
     seen_ids: set[str],
 ) -> dict[str, Any]:
@@ -328,11 +329,17 @@ def build_track(
         )
     )
 
-    inspiration = str(raw.get("inspiration") or common.get("inspiration") or "").strip()
-    inspiration_url = str(
-        raw.get("inspirationyt") or raw.get("inspiration_url")
-        or common.get("inspirationyt") or common.get("inspiration_url") or ""
-    ).strip()
+    song_story = str(common.get("story") or "").strip()
+    song_inspiration = str(common.get("inspiration") or "").strip()
+    song_inspiration_url = str(common.get("inspirationyt") or common.get("inspiration_url") or "").strip()
+    version_story = str(raw.get("story") or "").strip()
+    version_inspiration = str(raw.get("inspiration") or "").strip()
+    version_inspiration_url = str(raw.get("inspirationyt") or raw.get("inspiration_url") or "").strip()
+
+    # Preserve both creative layers.  The old flattened story/style fields remain
+    # as compatibility fallbacks for existing player code and older catalogues.
+    inspiration = version_inspiration or song_inspiration
+    inspiration_url = version_inspiration_url or song_inspiration_url
 
     track = {
         "id": track_id,
@@ -366,10 +373,24 @@ def build_track(
         },
         "lyrics_url": timing_url,
         "yamlUrl": showcase_url(yaml_path),
-        "story": str(raw.get("story") or common.get("story") or "").strip(),
+        "story": version_story or song_story,
         "style": {
             "inspiration": inspiration,
             "inspirationUrl": inspiration_url,
+        },
+        "provenance": {
+            "song": {
+                "story": song_story,
+                "inspiration": song_inspiration,
+                "inspirationUrl": song_inspiration_url,
+                "yamlUrl": showcase_url(common_yaml_path) if common_yaml_path else "",
+            },
+            "version": {
+                "story": version_story,
+                "inspiration": version_inspiration,
+                "inspirationUrl": version_inspiration_url,
+                "yamlUrl": showcase_url(yaml_path),
+            },
         },
         "model": {
             "name": str(raw.get("model") or "").strip(),
@@ -461,7 +482,7 @@ def build(output: Path) -> int:
         if p.is_dir() and not p.name.startswith(".") and p.name.casefold() not in RESERVED_TOP | {"one-off", "oneoff"}
     ]
     for song_dir in sorted(song_dirs, key=lambda p: p.name.casefold()):
-        _, common = composition_yaml(song_dir)
+        common_yaml_path, common = composition_yaml(song_dir)
         composition_id = slugify(common.get("title") or song_dir.name)
         yamls = variant_yamls(song_dir)
         if not yamls:
@@ -470,7 +491,7 @@ def build(output: Path) -> int:
             raw = load_yaml(yaml_path)
             if not raw or not raw.get("lyrics"):
                 continue
-            tracks.append(build_track(yaml_path, raw, composition_id, common, taxonomy, seen_ids))
+            tracks.append(build_track(yaml_path, raw, composition_id, common, common_yaml_path, taxonomy, seen_ids))
 
     # Standalone/one-off bank remains supported without giving it a second
     # catalogue architecture.
@@ -486,7 +507,7 @@ def build(output: Path) -> int:
             if not raw.get("version"):
                 raw = dict(raw)
                 raw["version"] = raw.get("one_off_label") or "one-off"
-            tracks.append(build_track(yaml_path, raw, composition_id, {}, taxonomy, seen_ids))
+            tracks.append(build_track(yaml_path, raw, composition_id, {}, None, taxonomy, seen_ids))
 
     slot = {t["id"] for t in tracks}
     if len(slot) != len(tracks):
