@@ -412,23 +412,39 @@ def build_easter() -> list[dict[str, Any]]:
 
     tracks = []
     for index, key in enumerate(sorted(grouped, key=lambda x: labels[x].casefold()), start=1):
+        label = labels[key]
         sources = {fmt: showcase_url(path) for fmt, path in grouped[key].items()}
-        tracks.append({
-            "id": f"easter-{index:02d}-{slugify(labels[key])}",
-            "title": labels[key],
-            "displayTitle": humanise(labels[key]),
-            "variant": "Hidden Track",
+        yaml_candidates = [p for p in directory.iterdir() if p.is_file() and p.stem.casefold() == key and p.suffix.lower() in {".yaml", ".yml"}]
+        image_candidates = [p for p in directory.iterdir() if p.is_file() and p.stem.casefold() == key and p.suffix.lower() in IMAGE_EXTS]
+        yaml_path = sorted(yaml_candidates, key=lambda p: p.name.casefold())[0] if yaml_candidates else None
+        raw = load_yaml(yaml_path) if yaml_path else {}
+        raw = raw or {}
+        title = str(raw.get("title") or raw.get("song_title") or raw.get("track_title") or label).strip()
+        version = str(raw.get("version") or raw.get("genre") or raw.get("song_genre") or "Hidden Track").strip()
+        track = {
+            "id": f"easter-{index:02d}-{slugify(label)}",
+            "title": title,
+            "displayTitle": title if title != label else humanise(label),
+            "variant": version,
             "genre": {
                 "cluster": "easter",
                 "parent_genre": "Easter Universe",
-                "child_genre": "Hidden Track",
+                "child_genre": version,
                 "parent_colour": "#D0802F",
                 "child_colour": "#D9A65E",
                 "taxonomy_order": index,
                 "parent_order": 0,
             },
             "audio": {"sources": sources},
-        })
+        }
+        if yaml_path:
+            track["yamlUrl"] = showcase_url(yaml_path)
+            story = str(raw.get("story") or "").strip()
+            if story:
+                track["story"] = story
+        if image_candidates:
+            track["artwork_url"] = showcase_url(sorted(image_candidates, key=lambda p: p.name.casefold())[0])
+        tracks.append(track)
     return tracks
 
 
