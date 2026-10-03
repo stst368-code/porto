@@ -406,6 +406,15 @@ def build_track(
             "samplerCfg": number(raw, "sampler_cfg", "cfg"),
             "samplerSeed": number(raw, "sampler_seed", "seed"),
             "steps": number(raw, "sampler_steps", "steps"),
+            "temperature": number(raw, "temperature"),
+            "topP": number(raw, "top_p", "topp"),
+            "shift": number(raw, "shift"),
+            "duration": number(raw, "duration", "duration_seconds", "seconds"),
+            "batchSize": number(raw, "batch_size", "batch"),
+            "denoise": number(raw, "denoise"),
+            "weight": number(raw, "weight", "model_weight"),
+            "ditWeight": number(raw, "dit_weight"),
+            "textEncoderWeight": number(raw, "text_encoder_weight", "encoder_weight"),
         },
     }
     # Future timeline hooks are only present when the files actually exist.

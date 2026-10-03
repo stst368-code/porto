@@ -4727,6 +4727,42 @@ body[data-view="knowledge"] #easterStoryOverlay{display:none!important}
   .track-row span{font-size:9px!important}
 }
 </style>
+<style id="v10118-grouped-tracks-scale">
+/* v10.11.8 — actual grouped Tracks catalogue scaling */
+.track-song-group{margin-bottom:10px!important}
+.track-song-group summary{
+  min-height:82px!important;
+  grid-template-columns:66px minmax(0,1fr) 38px!important;
+  gap:14px!important;padding:8px 12px!important
+}
+.track-song-group summary>img{width:64px!important;height:64px!important}
+.track-song-copy b{font-size:17px!important;line-height:1.15!important}
+.track-song-copy small{margin-top:7px!important;font-size:9px!important;line-height:1.1!important}
+.track-song-chevron{font-size:25px!important}
+.track-version-list{padding:7px!important}
+.track-version-row{
+  min-height:70px!important;
+  grid-template-columns:54px minmax(0,1fr) 76px!important;
+  gap:12px!important;padding:8px 9px!important
+}
+.track-version-art img{width:52px!important;height:52px!important}
+.track-version-main b{font-size:12px!important;line-height:1.15!important}
+.track-version-main small{margin-top:6px!important;font-size:9px!important;line-height:1.15!important}
+.track-version-play{height:38px!important;font-size:9px!important}
+.track-empty{font-size:10px!important}
+@media(max-width:900px){
+  .track-song-group summary{min-height:72px!important;grid-template-columns:58px minmax(0,1fr) 30px!important;gap:10px!important;padding:7px 9px!important}
+  .track-song-group summary>img{width:56px!important;height:56px!important}
+  .track-song-copy b{font-size:15px!important}
+  .track-song-copy small{font-size:8px!important}
+  .track-song-chevron{font-size:22px!important}
+  .track-version-row{min-height:64px!important;grid-template-columns:48px minmax(0,1fr) 68px!important;gap:9px!important;padding:7px!important}
+  .track-version-art img{width:46px!important;height:46px!important}
+  .track-version-main b{font-size:11px!important}
+  .track-version-main small{font-size:8px!important}
+  .track-version-play{height:36px!important;font-size:8px!important}
+}
+</style>
 </head>
 <!-- GBR_BUILD: v10.10.14.1 MOBILE_COLLAPSE_GENRE_LYRICS_REPAIR -->
 <body data-power="on">
@@ -6127,10 +6163,29 @@ function renderStoryPanel(){
   const versionBlock=hasStructured?provenanceSection('This Version',version.story,version.inspiration,version.inspirationUrl,version.yamlUrl,song):provenanceSection('About This Track',legacy.story,legacy.inspiration,legacy.inspirationUrl,legacy.yamlUrl);
   const g=t.generation||{},model=t.model||{};
   const facts=[
-    ['Version',variantOf(t)],['Genre',t.genre?.child_genre||''],['Model',model.name||model.dit||''],
-    ['CFG',g.samplerCfg],['Steps',g.steps],['Sampler',g.sampler],['Scheduler',g.scheduler]
+    ['Genre',t.genre?.child_genre||t.genre?.requested||''],
+    ['Model',model.name||''],
+    ['DiT',model.dit||''],
+    ['Text encoder',model.textEncoder||''],
+    ['Model weight',g.weight],
+    ['DiT weight',g.ditWeight],
+    ['Encoder weight',g.textEncoderWeight],
+    ['Sampler seed',g.samplerSeed],
+    ['Encoder seed',g.encoderSeed],
+    ['CFG',g.samplerCfg],
+    ['Encoder CFG',g.encoderCfg],
+    ['Steps',g.steps],
+    ['Sampler',g.sampler],
+    ['Scheduler',g.scheduler],
+    ['Top K',g.topK],
+    ['Top P',g.topP],
+    ['Temperature',g.temperature],
+    ['Shift',g.shift],
+    ['Denoise',g.denoise],
+    ['Duration',g.duration],
+    ['Batch size',g.batchSize]
   ].filter(([,v])=>v!==''&&v!==null&&v!==undefined);
-  const factHtml=facts.length?`<section class="story-section story-facts"><h2>How This Version Was Made</h2><dl>${facts.map(([k,v])=>`<div><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd></div>`).join('')}</dl></section>`:'';
+  const factHtml=facts.length?`<section class="story-section story-facts"><h2>Parameters</h2><dl>${facts.map(([k,v])=>`<div><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd></div>`).join('')}</dl></section>`:'';
   const empty=!songBlock&&!versionBlock&&!factHtml;
   ui.panelBody.innerHTML=`<article class="story-panel"><header class="story-hero"><small>BEHIND THE SONG</small><h1>${escapeHtml(titleOf(t))}</h1><p>${escapeHtml(variantOf(t))}</p></header>${empty?'<div class="track-empty">No story or inspiration has been added for this track yet.</div>':songBlock+versionBlock+factHtml}</article>`
 }
