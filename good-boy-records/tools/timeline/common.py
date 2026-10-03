@@ -2,12 +2,11 @@
 """Shared discovery/path helpers for GBR timeline tools.
 
 The important rule is: identity comes from the variant DIRECTORY, not from an
-audio filename. Lyrics use the human-readable variant directory name while the
-other derived sidecars keep fixed names:
+audio filename. All derived sidecars use the human-readable variant directory name:
 
     <variant-folder>.lyrics.json
-    gbr.audio.json
-    gbr.playback.json
+    <variant-folder>.audio.json
+    <variant-folder>.playback.json
 
 The lyric JSON contains content fingerprints rather than absolute source paths.
 """
@@ -30,8 +29,8 @@ AUDIO_EXTS = {".flac", ".wav", ".mp3", ".opus", ".ogg", ".m4a", ".aac"}
 AUDIO_RANK = {".flac": 0, ".wav": 1, ".opus": 2, ".ogg": 3, ".mp3": 4, ".m4a": 5, ".aac": 6}
 
 LEGACY_LYRICS_NAME = "gbr.lyrics.json"
-AUDIO_NAME = "gbr.audio.json"
-PLAYBACK_NAME = "gbr.playback.json"
+LEGACY_AUDIO_NAME = "gbr.audio.json"
+LEGACY_PLAYBACK_NAME = "gbr.playback.json"
 
 LYRICS_FORMAT = "gbr-word-lyrics-v2"
 AUDIO_FORMAT = "gbr-audio-analysis-v2"
@@ -68,6 +67,34 @@ def lyrics_path(variant: Variant) -> Path:
 def legacy_lyrics_path(variant: Variant) -> Path:
     return variant.directory / LEGACY_LYRICS_NAME
 
+
+
+def audio_name(variant: Variant) -> str:
+    return f"{variant.directory.name}.audio.json"
+
+def audio_path(variant: Variant) -> Path:
+    return variant.directory / audio_name(variant)
+
+def legacy_audio_path(variant: Variant) -> Path:
+    return variant.directory / LEGACY_AUDIO_NAME
+
+def playback_name(variant: Variant) -> str:
+    return f"{variant.directory.name}.playback.json"
+
+def playback_path(variant: Variant) -> Path:
+    return variant.directory / playback_name(variant)
+
+def legacy_playback_path(variant: Variant) -> Path:
+    return variant.directory / LEGACY_PLAYBACK_NAME
+
+def migrate_fixed_sidecar(target: Path, legacy: Path) -> Path | None:
+    if target.is_file():
+        return target
+    if legacy.is_file():
+        legacy.replace(target)
+        print(f"  ~ renamed sidecar: {legacy.name} -> {target.name}")
+        return target
+    return None
 
 def repo_root() -> Path:
     # good-boy-records/tools/timeline/common.py -> good-boy-records
