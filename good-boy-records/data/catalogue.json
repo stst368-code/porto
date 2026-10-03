@@ -1,6 +1,6 @@
 {
   "format": "gbr-sonic-catalogue-v1",
-  "trackCount": 155,
+  "trackCount": 157,
   "tracks": [
     {
       "id": "pupeii-space-rock",
@@ -2584,6 +2584,87 @@
         "samplerCfg": 1.7,
         "samplerSeed": 51999835065567,
         "steps": 40,
+        "temperature": null,
+        "topP": null,
+        "shift": null,
+        "duration": null,
+        "batchSize": null,
+        "denoise": null,
+        "weight": null,
+        "ditWeight": null,
+        "textEncoderWeight": null
+      }
+    },
+    {
+      "id": "the-endless-game-techno",
+      "composition": "the-endless-game",
+      "title": "the-endless-game",
+      "displayTitle": "The Endless Game",
+      "variant": "techno",
+      "version": "techno",
+      "genre": {
+        "cluster": "electronic music",
+        "parent_genre": "electronic music",
+        "child_genre": "techno",
+        "parent_colour": "#D52633",
+        "child_colour": "#D52633",
+        "taxonomy_order": 1823,
+        "parent_order": 1816
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/the-endless-game/the-endless-game-techno/the-endless-game-techno.flac",
+          "mp3": "showcase/the-endless-game/the-endless-game-techno/the-endless-game-techno.mp3"
+        }
+      },
+      "artwork_url": "showcase/the-endless-game/the-endless-game-techno/the-endless-game-techno.png",
+      "lyrics": {
+        "raw": "[intro]\nBall.\nGone.\n[verse]\nWater takes.\nNothing stays.\nMy ball.\nGone again.\n[chorus]\nEndless game.\nEndless game.\n[instrumental]\n[verse]\nToo wide.\nCan't hold.\nMy mouth.\nLet go.\n[bridge]\nFall.\nInto the deep.\nFall.\nThe water keeps.\n[verse]\nBam. Another ball.\nYou lost mine. Again.\nWhat heavy monster?\nYou think it's me?\nI won't accept that.\nYou chunky monster.\nBE AFRAID!\n[instrumental]\n[chorus]\nEndless game.\nEndless game.\n[instrumental]\n[outro]\nGone again.\nEndless game.",
+        "wordTiming": {
+          "src": "showcase/the-endless-game/the-endless-game-techno/the-endless-game-techno.lyrics.json",
+          "format": "gbr-word-lyrics-v2",
+          "coverage": 0.918,
+          "rating": "good",
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/the-endless-game/the-endless-game-techno/the-endless-game-techno.lyrics.json",
+      "yamlUrl": "showcase/the-endless-game/the-endless-game-techno/the-endless-game-techno.yaml",
+      "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+      "style": {
+        "inspiration": "All original, delivered by mother nature",
+        "inspirationUrl": ""
+      },
+      "provenance": {
+        "song": {
+          "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+          "inspiration": "All original, delivered by mother nature",
+          "inspirationUrl": "",
+          "yamlUrl": "showcase/the-endless-game/the-endless-game.yaml"
+        },
+        "version": {
+          "story": "",
+          "inspiration": "",
+          "inspirationUrl": "",
+          "yamlUrl": "showcase/the-endless-game/the-endless-game-techno/the-endless-game-techno.yaml"
+        }
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.7,
+        "encoderSeed": 128427361685397,
+        "topK": 40,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 139420242032882,
+        "steps": 35,
         "temperature": null,
         "topP": null,
         "shift": null,
@@ -7768,6 +7849,87 @@
         "samplerCfg": 1.7,
         "samplerSeed": 8651493446,
         "steps": 37,
+        "temperature": null,
+        "topP": null,
+        "shift": null,
+        "duration": null,
+        "batchSize": null,
+        "denoise": null,
+        "weight": null,
+        "ditWeight": null,
+        "textEncoderWeight": null
+      }
+    },
+    {
+      "id": "the-endless-game-heavy-metal-250ea41",
+      "composition": "the-endless-game",
+      "title": "the-endless-game",
+      "displayTitle": "The Endless Game",
+      "variant": "heavy-metal",
+      "version": "heavy-metal",
+      "genre": {
+        "cluster": "heavy / experimental",
+        "parent_genre": "metal",
+        "child_genre": "heavy metal",
+        "parent_colour": "#D0802F",
+        "child_colour": "#D88A38",
+        "taxonomy_order": 4109,
+        "parent_order": 3948
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/the-endless-game/the-endless-game-metal/the-endless-game-metal.flac",
+          "mp3": "showcase/the-endless-game/the-endless-game-metal/the-endless-game-metal.mp3"
+        }
+      },
+      "artwork_url": "showcase/the-endless-game/the-endless-game-metal/the-endless-game-metal.png",
+      "lyrics": {
+        "raw": "[intro]\nBall!\nMy ball!\n[verse]\nSwallowed by the endless void\nCaught in the current, my prize destroyed\nMonoliths of nature rise\nShadows over my stolen prize\n[chorus]\nRipped apart, my ball it bleeds\nThe darkened water swallows me\nCrush my crown, erase the name\nConsumed inside the endless game\n[verse]\nA football that my mouth denies\nCaught in my teeth, too wide inside\nHear my declaration cry\nThis ball, my mouth, will not comply\n[bridge]\nFall into the deep\nThe waters sweep\nFall out of my mouth\nThe river keeps\n[verse]\nBam, you've lost another ball!\nAnother one of mine!\nWhat heavy monster?\nYou think it's me?\nI won't accept that!\nThe blame is yours to keep!\nYou chunky monster\nBE AFRAID!\n[solo]\n[chorus]\nRipped apart, my ball it bleeds\nThe darkened water swallows me\nCrush my crown, erase the name\nConsumed inside the endless game\n[post-chorus]\nCrush my crown!\nErase the name!\n[outro]\nConsumed inside\nThe endless game!",
+        "wordTiming": {
+          "src": "showcase/the-endless-game/the-endless-game-metal/the-endless-game-metal.lyrics.json",
+          "format": "gbr-word-lyrics-v2",
+          "coverage": 0.9799,
+          "rating": "excellent",
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/the-endless-game/the-endless-game-metal/the-endless-game-metal.lyrics.json",
+      "yamlUrl": "showcase/the-endless-game/the-endless-game-metal/the-endless-game-metal.yaml",
+      "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+      "style": {
+        "inspiration": "All original, delivered by mother nature",
+        "inspirationUrl": ""
+      },
+      "provenance": {
+        "song": {
+          "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+          "inspiration": "All original, delivered by mother nature",
+          "inspirationUrl": "",
+          "yamlUrl": "showcase/the-endless-game/the-endless-game.yaml"
+        },
+        "version": {
+          "story": "",
+          "inspiration": "",
+          "inspirationUrl": "",
+          "yamlUrl": "showcase/the-endless-game/the-endless-game-metal/the-endless-game-metal.yaml"
+        }
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.7,
+        "encoderSeed": 979343592156165,
+        "topK": 60,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 285670488185972,
+        "steps": 35,
         "temperature": null,
         "topP": null,
         "shift": null,
