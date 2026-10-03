@@ -14,9 +14,9 @@ if not exist showcase\NUL (
 )
 
 echo Uploading changed/new showcase files...
-rclone copy "showcase" "%R2_REMOTE%:%R2_BUCKET%/showcase" --progress --create-empty-src-dirs || exit /b 1
+rclone copy "showcase" "%R2_REMOTE%:%R2_BUCKET%/showcase" -L --progress --create-empty-src-dirs || exit /b 1
 
 echo Verifying local files exist remotely...
-rclone check "showcase" "%R2_REMOTE%:%R2_BUCKET%/showcase" --one-way || exit /b 1
+rclone check "showcase" "%R2_REMOTE%:%R2_BUCKET%/showcase" -L --one-way
 
 echo Done. Remote-only stale files are intentionally left alone.
