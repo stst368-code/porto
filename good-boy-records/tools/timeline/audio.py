@@ -87,17 +87,21 @@ def main():
             matched=source_matches(old,sig)
             if matched is True: print(f'skip {v.directory.relative_to(showcase)}: audio analysis current'); continue
             if matched is None and old.get('format')==AUDIO_FORMAT: adopt_signature(target,old,sig); print(f'skip {v.directory.relative_to(showcase)}: adopted source signature'); continue
-        jobs.append((v,sig))
+        jobs.append((v,sig,target))
     print(f'Jobs: {len(jobs)}')
     if args.list:
-        for v,_ in jobs: print('  ',v.directory.relative_to(showcase),'->',v.audio.name)
+        for v,_,target in jobs: print('  ',v.directory.relative_to(showcase),'->',target.name)
         return 0
     failures=0
-    for v,sig in jobs:
-        print(f'\\n{v.directory.relative_to(showcase)}')
+    for v,sig,target in jobs:
+        print(f'\n{v.directory.relative_to(showcase)}')
         try:
-            payload=analyse(v.audio,sig,args.frame_hz,args.event_threshold,args.event_gap); atomic_json(target,payload)
-            print(f"  + {audio_name(v)}: {payload['bpm']:.1f} BPM, {len(payload['dance']['frames'])} dance frames, {len(payload['dance']['events'])} pulsar candidate(s)")
+            payload=analyse(v.audio,sig,args.frame_hz,args.event_threshold,args.event_gap)
+            atomic_json(target,payload)
+            written=read_json(target)
+            if not written or written.get('format')!=AUDIO_FORMAT or source_matches(written,sig) is not True:
+                raise RuntimeError(f'write verification failed: {target.name}')
+            print(f"  + {target.name}: {payload['bpm']:.1f} BPM, {len(payload['dance']['frames'])} dance frames, {len(payload['dance']['events'])} pulsar candidate(s)")
         except Exception as exc: failures+=1; print(f'  ERROR: {exc}')
     print(f'\\nComplete: {len(jobs)-failures} succeeded, {failures} failed.'); return 1 if failures else 0
 if __name__=='__main__': raise SystemExit(main())
