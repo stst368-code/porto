@@ -1,6 +1,6 @@
 {
   "format": "gbr-sonic-catalogue-v1",
-  "trackCount": 154,
+  "trackCount": 155,
   "tracks": [
     {
       "id": "pupeii-space-rock",
@@ -351,11 +351,11 @@
       },
       "artwork_url": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/johnny-three-fridges-neo-soul.png",
       "lyrics": {
-        "raw": "[intro]\nthey call him Johnny\n...\nJohnny, Three Fridges\na name enough to chill the bone\nonce you've heard my story\ni'll let you judge if you're safe at home\n[verse]\nso,\nwhat's a man to do with three whole fridges\none for food, one for beer\nthird one you'll never get near\nhe'll have you over, n' cook you dinner\ndelicious to eat, calories for a sinner\nhear it hum, hear it shiver\ngo near fridge three and you'll hear him snigger\n[pre-chorus]\nso what he heck is going down\nin that sweet ol' minnesota town?\nwell keep on 'a listenin'\ncuz I know the story,\ni wrote it down\n[chorus]\nol' Johnny Three Fridges, sinister by name\nlivin' the dream, playin' his all American game\nwhat's he got in 'em?\nday to day, never the same\ndon't get nosey, don't go pryin'\nelse you'll be the one runnin' away cryin'\n[instrumental]\n[post-chorus]\nso, listen up and listen real close\nwon't be long before i'm gone ghost\ni'm spillin' the beans\non ol Johnny Three Fridges dreams\n[verse]\nsee, ain't nothin' sinister\nain't nothin' chillin'\nexcept a white tailed deer\nand some ruffed grouse dead from killin'\nthat's it that's all\nleast that's all he'll tell ya' he got chilling'\n[pre-chorus]\nso, listen again, listen well\nmy song my story should ring a bell\nwhat's in fridge number three ain' nobody around to tell\n[chorus]\nol' Johnny Three Fridges, sinister by name\nlivin' the dream, playin' his all American game\nwhat's he got in 'em?\nday to day, never the same\ndon't get nosey, don't go pryin'\nelse you'll be the one runnin' away cryin'\n[post-chorus]\nfamily man, family man\nol' Johnny Three Fridges got a big family,\nman\nmouths to feed from dawn till eve\nmaybe three fridges ain't so hard to believe\n[verse]\nbet with that revelation\nyou're startin' to relax now but hear my hesitation\none's in the kitchen, ordinary as can be\nsecond in the garage, nothin' hauntin' there still\nbut when you find that third fridge\ntucked behind the basement door\nyou'll see why Johnny told me\nI ain't welcome anymore\n[chorus]\nol' Johnny Three Fridges, sinister by name\nlivin' the dream, playin' his all American game\nwhat's he got in 'em?\nday to day, never the same\ndon't get nosey, don't go pryin'\nelse you'll be the one runnin' away cryin'\n[post-chorus]\nol' Johnny Three Fridges, sinister by name\nwhat's he got in 'em?\n[outro]\nso dear friend\ntime's now for this here song to end\nhear my message, understand my warnin'\nmaybe you'll wake to a delicious breakfast in the mornin'\nsuperchaosialidocious",
+        "raw": "[intro]\nthey call him Johnny\n...\nJohnny, Three Fridges\na name enough to chill the bone\nonce you've heard my story\ni'll let you judge if you're safe at home\n[verse]\nso, what's a man to do with three whole fridges\none for food, one for beer\nthird one you'll never get near\nhe'll have you over, n' cook you dinner\ndelicious to eat, calories for a sinner\nhear it hum, hear it shiver\ngo near fridge three and you'll hear him snigger\n[pre-chorus]\nso what he heck is going down\nin that sweet ol' minnesota town?\nwell keep on 'a listenin'\ncuz I know the story, i wrote it down\n[chorus]\nol' Johnny Three Fridges, sinister by name\nlivin' the dream, playin' his all American game\nwhat's he got in 'em?\nday to day, never the same\ndon't get nosey, don't go pryin'\nelse you'll be the one runnin' away cryin'\n[post-chorus]\nso, listen up and listen real close\nwon't be long before i'm gone ghost\ni'm spillin' the beans\non ol Johnny Three Fridges dreams\n[verse]\nsee, ain't nothin' sinister\nain't nothin' chillin'\nexcept a white tailed deer\nand some ruffed grouse dead from killin'\nthat's it that's all\nleast that's all he'll tell ya' he got chilling'\n[pre-chorus]\nso, listen again, listen well\nmy song my story should ring a bell\nwhat's in fridge number three ain' nobody around to tell\n[instrumental]\n[chorus]\nol' Johnny Three Fridges, sinister by name\nlivin' the dream, playin' his all American game\nwhat's he got in 'em?\nday to day, never the same\ndon't get nosey, don't go pryin'\nelse you'll be the one runnin' away cryin'\n[post-chorus]\nfamily man, family man\nol' Johnny Three Fridges got a big family, man\nmouths to feed from dawn till eve\nmaybe three fridges ain't so hard to believe\n[verse]\nbet with that revelation\nyou're startin' to relax now but hear my hesitation\none's in the kitchen, ordinary as can be\nsecond in the garage, nothin' hauntin' there still\nbut when you find that third fridge\ntucked behind the basement door\nyou'll see why Johnny told me\nI ain't welcome anymore\n[outro]\nso dear friend\ntime's now for this here song to end\nhear my message, understand my warnin'\nmaybe you'll wake to a delicious breakfast in the mornin'",
         "wordTiming": {
           "src": "showcase/johnny-three-fridges/johnny-three-fridges-neo-soul/johnny-three-fridges-neo-soul.lyrics.json",
           "format": "gbr-word-lyrics-v2",
-          "coverage": 0.9553,
+          "coverage": 0.9651,
           "rating": "excellent",
           "reviewRequired": false,
           "approved": false,
@@ -389,14 +389,14 @@
         "textEncoder": "bf16"
       },
       "generation": {
-        "encoderCfg": 1.7,
+        "encoderCfg": 1.6,
         "encoderSeed": 761076907484537,
-        "topK": 20,
+        "topK": 60,
         "sampler": "dpmpp_sde_gpu",
         "scheduler": "ddim_uniform",
         "samplerCfg": 1.7,
         "samplerSeed": 844945775023943,
-        "steps": 40,
+        "steps": 35,
         "temperature": null,
         "topP": null,
         "shift": null,
@@ -5026,6 +5026,87 @@
       }
     },
     {
+      "id": "moses-supposes-nu-metal",
+      "composition": "moses-supposes",
+      "title": "moses-supposes",
+      "displayTitle": "Moses Supposes",
+      "variant": "nu-metal",
+      "version": "nu-metal",
+      "genre": {
+        "cluster": "pop",
+        "parent_genre": "pop",
+        "child_genre": "nu metal",
+        "parent_colour": "#FFEB91",
+        "child_colour": "#FDE48C",
+        "taxonomy_order": 4749,
+        "parent_order": 2889
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/moses-supposes/moses-supposes-nu-metal/moses-supposes-nu-metal.flac",
+          "mp3": "showcase/moses-supposes/moses-supposes-nu-metal/moses-supposes-nu-metal.mp3"
+        }
+      },
+      "artwork_url": "showcase/moses-supposes/moses-supposes-nu-metal/moses-supposes-nu-metal.png",
+      "lyrics": {
+        "raw": "[intro]\nMoses...\nsupposes...\nhis toeses...\nare Roses...\nBut Moses...\nsupposes...\nErroneously...\n[verse]\nMoses supposes his toeses are Roses\nBut Moses supposes Erroneously\nMoses he knowses his toeses aren't roses\nAs Moses supposes his toeses to be!\nMoses supposes his toeses are Roses\nBut Moses supposes Erroneously\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nmose (mose) rose (rose) toes (toes)\nHooptie doodie doodle\ndoodle doodie hooptie\n(ha ha ha ha ha ha)\n[verse]\nPeter (Peter)\nPiper (Piper)\nPeter Piper picked a peck of pickled peppers\nA peck of pickled peppers Peter Piper picked\nIf Peter Piper picked a peck of pickled peppers\nWhere's the peck of pickled peppers Peter Piper picked?\n(ugh!)\nHow much wood would a woodchuck chuck if a woodchuck could chuck wood?\nif a woodchuck could chuck wood How much wood would a woodchuck chuck\n(i don't give a fuck!)\nWell Mary...\nshe sells seashells by the seashore.\nthe shells she sells are seashells, I'm sure\nSix sticky skeletons and Silas sees six swans\nSharp sharks seek snacks and Selfish shellfish sellers\n(ugh!)\nkitty cat? kitty kitty cat cat?\nwould a kit-kat eating kitty kat eat a kit-kat snapped?\nor would that kitten kitty-kat eat its kit-kat whole?\nwould it make any difference if that kitty-kat was a city-cat?\nwould the kitty-kat-city-cat eat it's city-bitty-kit-kat snapped?\nor would the city-kitty-kat be sitting-pretty-kat\nnot a fussy-pussy but a busy little pussy-cat?\nbusy kitty, pretty kitty\npicky kitty, city kitty\nbitty kit-kat, ate its kitty-kat\nwhich kitty gets the kitty's kit-kat?\nand which kitty-kat is the real twa-splat!\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nHooptie doodie doodle\ndoodle doodie hooptie\ndoodle doodle doodie\nhooptie\n(ha ha haha ha haha)\n[verse]\nI wish to wish the wish you wish to wish\nbut if you wish the wish the witch wishes\nI won't wish the wish you wish to wish\nI wish you were the fish in my dish\nFresh fried fish, fish fresh fried,\nfried fish fresh, fish fried fresh\nFour fresh fish flashed fins at five fat frogs\nfive fat frogs flipped fast from five flat logs\nSix slick snakes slipped straight through six small slots\nwhile six shocked sheep shouted\n(stop stop stop!)\n(neighhhh ugh!)\nOne one was a racehorse\ntwo two was one too\none one won one race\nand two two won one too\nEleven elves licked eleven little licorice lollipops\nI thought a thought (ugh)\nbut the thought I thought\nwasn't the thought I thought I thought (hmm)\n....\n(ha-ha-ha-ha)\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nHooptie doodie doodle\ndoodle doodie hooptie\n(hahahahahaha)\ndoodle doodle\ndoodie doodie\nhooptie hooptie\nugh!\n[verse]\nRed lorry, yellow lorry\nlorry yellow, lorry red\nRed lorry, yellow lorry\nlorry yellow, lorry red\nRed lorry, yellow lorry\nlorry yellow, lorry red\nRed leather, yellow leather\nyellow leather, leather red\nred-dead-bed-head-simon-sed\n(ugh!)\nCrisp crusts crackle crunchily (crackle)\nRound the rugged rock, the ragged rascal ran\nIf two witches were watching two wrist watches\nwhich witch would watch which wrist watch? (tick tock)\nIf “there” is there (there)\nand “their” is theirs (their)\nand “they’re” means they are (they're)\nthen where are they? (huh?)\n(ha ha)\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nHooptie doodie doodle\ndoodle doodie hooptie\n(mwhahahahahaha)\n[bridge]\nVery well, very well, very well...\n(huh?)\nIron-Maiden\nJudas-Priest\nBlack-Sabbath\nMotörhead, Anthrax, Testament, Overkill\nMegadeth, Metallica, Slayer, Exodus\nSepultura, Kreator, Sodom, Destruction\nPantera-Machine-Head-Fear-Factory-Ministry\nNapalm-Death-Carcass-Obituary-Morbid-Angel\nCannibal-Corpse-Deicide-Suffocation-Immolation\n(ha ha)\nSlip-knot (knot)\nMudvayne, Coal-Chamber, Soulfly\nMastodon-Gojira\nMeshuggah-Lamb-of-God\nVenom-Bathory-Mayhem-Darkthrone\nEmperor-Immortal-Satyricon-Enslaved\nBehemoth-Belphegor-Dimmu-Borgir\nNecrophagist-Nile-Cryptopsy\nOpeth-Katatonia-Amorphis\nIn-Flames-Dark-Tranquillity-At-the-Gates\nArch-Enemy-Children-of-Bodom\nNapalm-Death-Death-Death\n(you're lost in the dark)\nha ha\n[outro]\nA mose a rose a tose (tose)\nA rose a tose a mose (mose)\nA tose a mose a rose (rose)\n(ha ha ha ha ha ha)",
+        "wordTiming": {
+          "src": "showcase/moses-supposes/moses-supposes-nu-metal/moses-supposes-nu-metal.lyrics.json",
+          "format": "gbr-word-lyrics-v2",
+          "coverage": 0.7953,
+          "rating": "review",
+          "reviewRequired": true,
+          "approved": false,
+          "usable": false
+        }
+      },
+      "lyrics_url": "showcase/moses-supposes/moses-supposes-nu-metal/moses-supposes-nu-metal.lyrics.json",
+      "yamlUrl": "showcase/moses-supposes/moses-supposes-nu-metal/moses-supposes-nu-metal.yaml",
+      "story": "The intro and chorus were inspired by Singin' in the Rain, everything inbetween is a post coffee sprint of my own making, taking inspiration from famous tongue twisters, reshaping some and building some city-kitty ones of my own. Try and keep up!",
+      "style": {
+        "inspiration": "Gene Kelly & Donald O'Connor Moses Supposes from Singin' in the Rain",
+        "inspirationUrl": "https://www.youtube.com/watch?v=OmrUJ3ssLPM"
+      },
+      "provenance": {
+        "song": {
+          "story": "The intro and chorus were inspired by Singin' in the Rain, everything inbetween is a post coffee sprint of my own making, taking inspiration from famous tongue twisters, reshaping some and building some city-kitty ones of my own. Try and keep up!",
+          "inspiration": "Gene Kelly & Donald O'Connor Moses Supposes from Singin' in the Rain",
+          "inspirationUrl": "https://www.youtube.com/watch?v=OmrUJ3ssLPM",
+          "yamlUrl": "showcase/moses-supposes/moses-supposes.yaml"
+        },
+        "version": {
+          "story": "",
+          "inspiration": "",
+          "inspirationUrl": "",
+          "yamlUrl": "showcase/moses-supposes/moses-supposes-nu-metal/moses-supposes-nu-metal.yaml"
+        }
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.6,
+        "encoderSeed": 1837164916,
+        "topK": 10,
+        "sampler": "dpmpp_2m_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.6,
+        "samplerSeed": 4548661068,
+        "steps": 40,
+        "temperature": null,
+        "topP": null,
+        "shift": null,
+        "duration": null,
+        "batchSize": null,
+        "denoise": null,
+        "weight": null,
+        "ditWeight": null,
+        "textEncoderWeight": null
+      }
+    },
+    {
       "id": "self-rightous-gremelin-nu-metal",
       "composition": "self-rightous-gremelin",
       "title": "self-rightous-gremelin",
@@ -7722,12 +7803,12 @@
       },
       "artwork_url": "showcase/moses-supposes/moses-supposes-pop-punk/moses-supposes-pop-punk.png",
       "lyrics": {
-        "raw": "[intro]\nMoses...\nsupposes...\nhis toeses...\nare Roses...\nBut Moses...\nsupposes...\nErroneously...\n[verse]\nMoses supposes his toeses are Roses\nBut Moses supposes Erroneously\nMoses he knowses his toeses aren't roses\nAs Moses supposes his toeses to be!\nMoses supposes his toeses are Roses\nBut Moses supposes Erroneously\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nmose (mose) rose (rose) toes (toes)\nHooptie doodie doodle\ndoodle doodie hooptie\n(ha ha ha ha ha ha)\n[verse]\nPeter (Peter)\nPiper (Piper)\nPeter Piper picked a peck of pickled peppers\nA peck of pickled peppers Peter Piper picked\nIf Peter Piper picked a peck of pickled peppers\nWhere's the peck of pickled peppers Peter Piper picked?\n(ugh!)\nHow much wood would a woodchuck chuck if a woodchuck could chuck wood?\nif a woodchuck could chuck wood How much wood would a woodchuck chuck\n(i don't give a fuck!)\nWell Mary...\nshe sells seashells by the seashore.\nthe shells she sells are seashells, I'm sure\nSix sticky skeletons and Silas sees six swans\nSharp sharks seek snacks and Selfish shellfish sellers\n(ugh!)\nkitty cat? kitty kitty cat cat?\nwould a kit-kat eating kitty kat eat a kit-kat snapped?\nor would that kitten kitty-kat eat its kit-kat whole?\nwould it make any difference if that kitty-kat was a city-cat?\nwould the kitty-kat-city-cat eat it's city-bitty-kit-kat snapped?\nor would the city-kitty-kat be sitting-pretty-kat\nnot a fussy-pussy but a busy little pussy-cat?\nbusy kitty, pretty kitty\npicky kitty, city kitty\nbitty kit-kat, ate its kitty-kat\nwhich kitty gets the kitty's kit-kat?\nand which kitty-kat is the real twa-splat!\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nHooptie doodie doodle\ndoodle doodie hooptie\ndoodle doodle doodie\nhooptie\n(ha ha haha ha haha)\n[verse]\nI wish to wish the wish you wish to wish\nbut if you wish the wish the witch wishes\nI won't wish the wish you wish to wish\nI wish you were the fish in my dish\nFresh fried fish, fish fresh fried,\nfried fish fresh, fish fried fresh\nFour fresh fish flashed fins at five fat frogs\nfive fat frogs flipped fast from five flat logs\nSix slick snakes slipped straight through six small slots\nwhile six shocked sheep shouted\n(stop stop stop!)\n(neighhhh ugh!)\nOne one was a racehorse\ntwo two was one too\none one won one race\nand two two won one too\nEleven elves licked eleven little licorice lollipops\nI thought a thought (ugh)\nbut the thought I thought\nwasn't the thought I thought I thought (hmm)\n....\n(ha-ha-ha-ha)\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nHooptie doodie doodle\ndoodle doodie hooptie\n(hahahahahaha)\ndoodle doodle\ndoodie doodie\nhooptie hooptie\nugh!\n[verse]\nRed lorry, yellow lorry\nlorry yellow, lorry red\nRed lorry, yellow lorry\nlorry yellow, lorry red\nRed lorry, yellow lorry\nlorry yellow, lorry red\nRed leather, yellow leather\nyellow leather, leather red\nred-dead-bed-head-simon-sed\n(ugh!)\nCrisp crusts crackle crunchily (crackle)\nRound the rugged rock, the ragged rascal ran\nIf two witches were watching two wrist watches\nwhich witch would watch which wrist watch? (tick tock)\nIf “there” is there (there)\nand “their” is theirs (their)\nand “they’re” means they are (they're)\nthen where are they? (huh?)\n(ha ha)\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nHooptie doodie doodle\ndoodle doodie hooptie\n(mwhahahahahaha)\n[bridge]\nVery well, very well, very well...\n(huh?)\nIron-Maiden\nJudas-Priest\nBlack-Sabbath\nMotörhead, Anthrax, Testament, Overkill\nMegadeth, Metallica, Slayer, Exodus\nSepultura, Kreator, Sodom, Destruction\nPantera-Machine-Head-Fear-Factory-Ministry\nNapalm-Death-Carcass-Obituary-Morbid-Angel\nCannibal-Corpse-Deicide-Suffocation-Immolation\n(ha ha)\nSlip-knot (knot)\nMudvayne, Coal-Chamber, Soulfly\nMastodon-Gojira\nMeshuggah-Lamb-of-God\nVenom-Bathory-Mayhem-Darkthrone\nEmperor-Immortal-Satyricon-Enslaved\nBehemoth-Belphegor-Dimmu-Borgir\nNecrophagist-Nile-Cryptopsy\nOpeth-Katatonia-Amorphis\nIn-Flames-Dark-Tranquillity-At-the-Gates\nArch-Enemy-Children-of-Bodom\nNapalm-Death-Death-Death\n(you're lost in the dark)\nha ha\n[outro]\nA mose a rose a tose (tose)\nA rose a tose a mose (mose)\nA tose a mose a rose (rose)\n(ha ha ha ha ha ha)",
+        "raw": "[intro]\nMoses...\nsupposes... \nhis toeses...\nare Roses... \nBut Moses...\nsupposes...\nErroneously... \n[verse]\nMoses supposes his toeses are Roses\nBut Moses supposes Erroneously\nMoses he knowses his toeses aren't roses\nAs Moses supposes his toeses to be!\nMoses supposes his toeses are Roses\nBut Moses supposes Erroneously\n[chorus]\nA mose is a mose!\nA rose is a rose! \nA toes is a toes!\nmose rose toes (mose rose toes)\nHooptie doodie doodle\ndoodle doodie hooptie\n(hey hey hey)\n[verse]\nPeter (Peter) Piper (Piper)\nPeter Piper picked a peck of pickled peppers\nA peck of pickled peppers Peter Piper picked\nIf Peter Piper picked a peck of pickled peppers\nWhere's the peck of pickled peppers Peter Piper picked?\n(Did you look in the woods?)\nHow much wood would a woodchuck chuck if a woodchuck could chuck wood?\nif a woodchuck could chuck wood How much wood would a woodchuck chuck\n(Did you try asking Mary?)\nWell, she sells seashells by the seashore.\nthe shells she sells are seashells, I'm sure\nwhat she sells in her sea shell store by the seashore\nisn't a woodchuck chuck book for sure\n(so who will have the aswers?)\nSharp sharks seek snacks and Selfish shellfish sellers\nSix sticky skeletons scuttle slippy sidewalks\nSeven small Dwarves swing, sing and sling short little picks\n(who gets pick of the litter?)\nkitty cat? kitty cat?\nwould a kitkat eating kitty kat eat a kitkat?\nwould that kitten kitty kat eat its kitkat whole?\nwould it make any difference if that kitty kat was a city cat?\nwould the kitty kat city cat eat it's city bitty kitkat?\nor would the city kitty kat be a sittin' pretty kat\nnot a fussy pussy but a busy little pussy cat?\nbusy kitty, pretty kitty\npicky kitty, city kitty\nbitty kitkat, ate its kitty kat\nwhich kitty gets the kitty's kitkat?\nthe sittin' pretty city kat?\nor the itty bitty kitty kat?\nwhich kitty kat is the real fat kat?\n[chorus]\nA mose is a mose!\nA rose is a rose!\nA toes is a toes!\nmose rose toes (mose rose toes)\nHooptie doodie doodle\ndoodle doodie hooptie\n(hey hey hey)\n[verse]\nwell...\nI wish to wish the wish you wish to wish\nbut if you wish the wish the witch wishes\nI won't wish the wish you wish to wish\nI wish you were the fish in my dish\nFresh fried fish, fish fresh fried,\nfried fish fresh, fish fried fresh\nFour fresh fish flashed fins at five fat frogs\nfive fat frogs flipped fast from five flat logs\nSix slick snakes slipped straight through six small slots\nwhile six shocked sheep shouted stop!\n(neigh)\nOne one was a racehorse\ntwo two was one too\none one won one race\nand two two won one too\n[pre-chorus]\n(i've shared my ideas, what about you?)\nI thought a thought\nbut the thought I thought\nwasn't the thought I thought I thought\n....\n(ha-ha-ha-ha)\n[chorus]\nA mose is a mose!\nA rose is a rose! \nA toes is a toes!\nmose rose toes (mose rose toes)\nHooptie doodie doodle\ndoodle doodie hooptie\n(hey hey hey)\n[verse]\nRed lorry, yellow lorry\nlorry yellow, lorry red\nRed lorry, yellow lorry\nlorry yellow, lorry red\nRed lorry, yellow lorry\nlorry yellow, lorry red\nyellow leather, read leather\n(haha got you)\nA crisp crust crackles crunchily\nwith Peter Pipers pickled peppers\nthat ragged rascal ran 'round the rugged rock\nthe ragged rascal and his rugged flock\nmeanwhile\ntwo witches were watching two wrist watches\nwhich witch would watch which wrist watch\nwhich wrist would which which watch their wrist watch on?\nIf “there” is there\nand “their” is theirs\nand “they’re” means they are they are\nthen where are they?\n(hey)\n[chorus]\nA mose is a mose!\nA rose is a rose! \nA toes is a toes!\nmose rose toes (mose rose toes)\nHooptie doodie doodle\ndoodle doodie hooptie\ndoodle doodle doodie \nhooptie hooptie hoo\n(hey hey hey)\n[bridge]\nVery well, very well, very well...\nthe wrist watch witch casts a wicked spell\na hiccup in the pick up of the pickled pepper smell\nbut is a hiccup in a tea cup a hiccup you can pick up\nif you pick up a hiccup in a tea cup\nthat tea cup is now a hiccup cup, a pickup hiccup cup\nso a hiccup pickup tea cup cup will serve you well\n(you've lost me)\nwell let me try and explain again\n...\nPeter Piper's pickled pepers were lost in the woods\nThose wood chucking woodchucks could tell you more\nBut don't go asking questions down by the sea shore\nthe sharks, skeletons and the seashell seller don't know more\nso think of that itty bitty city kitty, always hungry for more\nthat kitkat city kat should make a fresh fish dish wish\nyou can search under five fat frogs and five flat logs\nwhile the six slick snakes leave six sleepy sheep shocked\nyou can search the forest faster riding one one who won one\nor two two who won one too, pick and choose, its up to you\nthink about it, thought about it, i thought you thought about it too\nif you find peter pipers pickled pepers\nload a red leather yellow lorry, a yellow leather red lorry\na red leather red lorry or a yellow leather red lorry (haha, got you again)\nfailing finding pickled peppers the ragged rascal likely stole the lot\naround the ragged rock, he drove his rugged flock\nbe careful two witches will be watching wrist watches\nthey're there, but they won't help you with your hiccup\nno pickup hiccup cup or pickle pepper pickup truck\nbut most importantly of all, there is\nno moses\nno roses\nor no toses to be seen\nhey\n[outro]\nA mose a rose a tose\nA rose a tose a mose\nA tose a mose a rose\n(hey hey hey)",
         "wordTiming": {
           "src": "showcase/moses-supposes/moses-supposes-pop-punk/moses-supposes-pop-punk.lyrics.json",
           "format": "gbr-word-lyrics-v2",
-          "coverage": 0.8266,
-          "rating": "fair",
+          "coverage": 0.8611,
+          "rating": "good",
           "reviewRequired": false,
           "approved": false,
           "usable": true
@@ -7762,12 +7843,12 @@
       "generation": {
         "encoderCfg": 1.6,
         "encoderSeed": 1837164916,
-        "topK": 10,
-        "sampler": "dpmpp_2m_sde_gpu",
-        "scheduler": "ddim_uniform",
-        "samplerCfg": 1.6,
+        "topK": 20,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "samplerCfg": 1.7,
         "samplerSeed": 4548661068,
-        "steps": 40,
+        "steps": 35,
         "temperature": null,
         "topP": null,
         "shift": null,
