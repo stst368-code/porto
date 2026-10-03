@@ -6756,71 +6756,125 @@ document.addEventListener('keydown',e=>{
    collision-resolved in screen space so fixed-size cards cannot overlap.
    ======================================================================== */
 const GBR_KNOWLEDGE_NODES = [
-  {id:'knowledge-root',title:'GOOD BOY RECORDS',kind:'root',x:1500,y:1500,colour:'#d0802f',group:'system',markdown:`# Good Boy Records\n\nThe knowledge map is a network of the creative, technical and publishing systems behind Good Boy Records. Shared concepts appear once and connect to every tool or workflow that uses them.`},
+  {id:'knowledge-root',title:'GOOD BOY RECORDS',kind:'root',x:0,y:0,colour:'#d0802f',group:'system',markdown:`# Good Boy Records
 
-  {id:'prompt',title:'PROMPT',kind:'document',x:1500,y:-900,colour:'#d19145',group:'creative',markdown:`# Prompt\n\nThe generation prompt combines **caption** and **lyrics**. Together they describe what the song should sound like and what is sung. Genre/version and song structure shape those instructions.`},
-  {id:'caption',title:'CAPTION',kind:'chain',x:250,y:-1900,colour:'#d19145',group:'creative',markdown:`# Caption\n\nThe caption describes the intended recording: meaning, emotion, instrumentation, vocal character, arrangement, tempo and production direction.`},
-  {id:'lyrics',title:'LYRICS',kind:'chain',x:2750,y:-1900,colour:'#d19145',group:'creative',markdown:`# Lyrics\n\nThe lyrics are the ordered words to be sung. Section markers such as **[intro]**, **[verse]**, **[chorus]** and **[outro]** provide explicit song structure. The same known text is later used for lyric alignment.`},
-  {id:'sections',title:'SONG SECTIONS',kind:'section',x:3900,y:-2850,colour:'#d19145',group:'creative',markdown:`# Song sections\n\nSection markers describe the musical form of the lyric: intro, verse, pre-chorus, chorus, bridge, outro and other arrangement-specific sections.`},
-  {id:'genre',title:'GENRE / VERSION',kind:'section',x:1500,y:-3150,colour:'#d19145',group:'creative',markdown:`# Genre / version\n\nA song can exist as many stylistically different recordings. **version** is the primary genre/style label for a particular variant and can affect caption, arrangement and lyric shape.`},
+Good Boy Records is the complete path from an idea for a song to a playable, documented release.
 
-  {id:'yaml',title:'YAML',kind:'document',x:-1700,y:1450,colour:'#c6a04c',group:'data',markdown:`# YAML\n\nThe YAML is the portable job definition. It keeps creative instructions and technical configuration together: track identity, prompt, model definitions, generation parameters and optional lore/meta.\n\nThe runner can preserve these stored values or override selected generation parameters for controlled reruns.`},
-  {id:'identity',title:'TRACK IDENTITY',kind:'chain',x:-3450,y:100,colour:'#c6a04c',group:'data',markdown:`# Track identity\n\n**title** identifies the song and **version** identifies the intended stylistic variant. Title alone is not expected to be unique.`},
-  {id:'model-defs',title:'MODEL DEFINITIONS',kind:'chain',x:-3550,y:1450,colour:'#c6a04c',group:'data',markdown:`# Model definitions\n\nThe model definition records the model family and concrete components used by the generation workflow, including the diffusion transformer and text encoder.`},
-  {id:'lore',title:'LORE / META',kind:'chain',x:-3400,y:3000,colour:'#c6a04c',group:'data',markdown:`# Lore / meta\n\nOptional context includes **language**, **inspiration**, **inspirationyt** and **story**. Language is also useful downstream for non-English lyric alignment.`},
+The map deliberately shows **systems**, not every implementation detail. Open a node to see the tools, settings and sub-processes that belong to it.`},
 
-  {id:'generation-params',title:'GENERATION PARAMETERS',kind:'document',x:4550,y:-900,colour:'#77a5a0',group:'parameters',markdown:`# Generation parameters\n\nThe shared controls that define or vary a generation. They are stored in YAML, can be overridden by the pipeline runner, and are consumed by the relevant generation stages.\n\nTypical parameters include **CFG / guidance**, **seed**, **steps**, **sampler**, **scheduler**, **top-k**, and stage-specific encoder or sampler values. CFG and seed are parameters in this shared category rather than separate conceptual branches.`},
-  {id:'sampling',title:'SAMPLING',kind:'chain',x:6500,y:-1150,colour:'#77a5a0',group:'parameters',markdown:`# Sampling\n\nSampling is the diffusion-generation process that turns conditioning into a recording. Its configuration comes from **Generation Parameters**: sampler, scheduler, sampling steps, sampler CFG/guidance and sampler seed.\n\nKeeping sampling as one concept avoids treating each setting as an independent system.`},
-  {id:'conditioning',title:'CONDITIONING',kind:'chain',x:6500,y:900,colour:'#72a36f',group:'generation',markdown:`# Conditioning\n\nConditioning is the encoded representation of the prompt supplied to generation. The text encoder produces it from caption and lyrics.\n\nIts relevant configuration also comes from **Generation Parameters**, including encoder CFG/guidance, encoder seed and top-k. Conditioning can be cached so encoding and sampling can run independently.`},
+  {id:'song-prompt',title:'SONG & PROMPT',kind:'document',x:-3600,y:-2100,colour:'#d19145',group:'creative',markdown:`# Song & prompt
 
-  {id:'comfyui',title:'COMFYUI',kind:'document',x:4650,y:2600,colour:'#72a36f',group:'generation',markdown:`# ComfyUI\n\nComfyUI is the node-based inference environment used to assemble and execute the core music-generation workflow. GBR's automation drives this graph rather than requiring each track to be configured manually.`},
-  {id:'workflow',title:'WORKFLOW',kind:'chain',x:6500,y:2600,colour:'#72a36f',group:'generation',markdown:`# Workflow\n\nThe ComfyUI workflow connects model loading, text encoding/conditioning, sampling and audio output. The runner supplies the job and generation parameters to this graph.`},
-  {id:'text-encoder',title:'TEXT ENCODER',kind:'chain',x:8200,y:900,colour:'#72a36f',group:'generation',markdown:`# Text encoder\n\nThe text encoder converts caption and lyrics into numerical conditioning. In split compute, this can run on a different worker from sampling.`},
-  {id:'minimax',title:'MINIMAX H3 MUSIC',kind:'chain',x:8200,y:2600,colour:'#72a36f',group:'generation',markdown:`# MiniMax H3 music\n\nThe music-generation model consumes conditioning and generation parameters to create the recording.`},
-  {id:'dit',title:'DIFFUSION TRANSFORMER',kind:'section',x:9700,y:2100,colour:'#72a36f',group:'generation',markdown:`# Diffusion transformer\n\nThe **dit** model definition identifies the diffusion-transformer weight or quantisation used by the generation stage.`},
+The creative definition of a recording.
 
-  {id:'pipeline',title:'PIPELINE RUNNER',kind:'document',x:1500,y:4800,colour:'#4e9f91',group:'automation',markdown:`# Pipeline runner\n\nThe Python runner automates batches of YAML jobs and dispatches them to available workers. It can target a selected directory, choose YAML or runner values per generation parameter, and operate in cached-conditioning or full-generation mode.`},
-  {id:'directory-mode',title:'DIRECTORY TARGETING',kind:'section',x:200,y:6250,colour:'#4e9f91',group:'automation',markdown:`# Directory targeting\n\nThe runner can process a chosen directory tree, including the showcase or another batch location.`},
-  {id:'override-mode',title:'PARAMETER OVERRIDES',kind:'section',x:1500,y:6650,colour:'#4e9f91',group:'automation',markdown:`# Parameter overrides\n\nFor each generation parameter, the runner can either preserve the value stored in the YAML or take the value from runner configuration. This supports controlled reruns without rewriting the source YAML.`},
-  {id:'cache-mode',title:'CACHED CONDITIONING',kind:'section',x:2800,y:6250,colour:'#4e9f91',group:'automation',markdown:`# Cached conditioning\n\nConditioning can be generated and saved separately from sampling. This lets encoding and diffusion run on different workers and avoids repeating expensive conditioning work.`},
-  {id:'full-gen-mode',title:'FULL GENERATION',kind:'section',x:4000,y:5600,colour:'#4e9f91',group:'automation',markdown:`# Full generation\n\nFull-generation mode runs the complete generation path without building and saving a separate conditioning cache.`},
-  {id:'workers',title:'WORKERS',kind:'chain',x:-200,y:4800,colour:'#4e9f91',group:'automation',markdown:`# Workers\n\nGeneration work can be distributed across available compute. Different stages can run where model and VRAM requirements fit best.`},
-  {id:'runpod',title:'RUNPOD',kind:'section',x:-1800,y:5900,colour:'#4e9f91',group:'automation',markdown:`# RunPod\n\nCloud GPU workers provide additional VRAM and generation capacity.`},
-  {id:'local-gpu',title:'LOCAL GPU',kind:'section',x:-1800,y:4800,colour:'#4e9f91',group:'automation',markdown:`# Local GPU\n\nLocal compute participates where the requested model and stage fit available VRAM.`},
+A prompt combines the **caption** and **lyrics**. The caption describes the intended sound, emotion, instrumentation and vocal delivery. Lyrics contain the words and structural markers such as intro, verse, chorus and outro.
 
-  {id:'audio',title:'GENERATED AUDIO',kind:'document',x:1500,y:8250,colour:'#5d9baa',group:'output',markdown:`# Generated audio\n\nThe immediate output of generation. A human listening pass decides whether a result is archived or promoted into the showcase workflow.`},
-  {id:'review',title:'LISTEN / REVIEW',kind:'chain',x:200,y:9300,colour:'#5d9baa',group:'output',markdown:`# Listen / review\n\nQuality control is human: listen, keep the useful result or archive it. Creative changes loop back to the prompt; technical experiments loop back to generation parameters.`},
-  {id:'showcase',title:'SHOWCASE',kind:'chain',x:2800,y:9300,colour:'#5d9baa',group:'output',markdown:`# Showcase\n\nThe showcase directory is the curated source for published Good Boy Records content. Accepted recordings and supporting files live here.`},
-  {id:'album-art',title:'ALBUM ARTWORK',kind:'section',x:4100,y:10100,colour:'#5d9baa',group:'output',markdown:`# Album artwork\n\nArtwork is created per recording and displayed by the Good Boy Records player alongside audio and metadata.`},
+A song can be interpreted in many genres. The composition-level YAML can also carry the original **story** and **inspiration**, while a generated variant can add its own story and inspiration for that interpretation.
 
-  {id:'analysis',title:'POST-PROCESSING',kind:'document',x:-3000,y:8250,colour:'#667fc0',group:'analysis',markdown:`# Post-processing\n\nAccepted recordings are prepared for the player. Lyric alignment and audio analysis are independent passes and can be rerun separately before being combined into playback data.`},
-  {id:'demucs',title:'DEMUCS',kind:'chain',x:-4550,y:7300,colour:'#667fc0',group:'analysis',markdown:`# Demucs\n\nDemucs separates the vocal stem so lyric alignment can work against a cleaner vocal signal.`},
-  {id:'whisperx',title:'WHISPERX',kind:'chain',x:-4550,y:8500,colour:'#667fc0',group:'analysis',markdown:`# WhisperX\n\nWhisperX aligns the known lyrics to the audio at word level. For non-English tracks the YAML language field supplies the required language information.`},
-  {id:'lyric-data',title:'LYRIC ALIGNMENT DATA',kind:'section',x:-6000,y:9000,colour:'#667fc0',group:'analysis',markdown:`# Lyric alignment data\n\nWord timing data lets the player highlight lyrics in synchronisation with playback.`},
-  {id:'audio-analysis',title:'AUDIO ANALYSIS',kind:'chain',x:-3000,y:10000,colour:'#667fc0',group:'analysis',markdown:`# Audio analysis\n\nA separate analysis pass follows musical progression and produces data used by playback visualisation and lighting behaviour.`},
-  {id:'playback-data',title:'PLAYBACK DATA',kind:'chain',x:-1250,y:9400,colour:'#667fc0',group:'analysis',markdown:`# Playback data\n\nThe playback layer combines timed lyrics and musical analysis alongside the track itself.`},
+This is one concept because caption, lyrics, genre, structure and inspiration are independent fields serving the same job: defining what the track is meant to be.`},
 
-  {id:'catalogue',title:'CATALOGUE',kind:'document',x:-3000,y:12000,colour:'#8c6dba',group:'publish',markdown:`# Catalogue\n\nThe site build scans curated showcase content and produces **data/catalogue.json**, describing the recordings available to the player.`},
-  {id:'cloudflare',title:'CLOUDFLARE R2',kind:'chain',x:-4600,y:13100,colour:'#8c6dba',group:'publish',markdown:`# Cloudflare R2\n\nPublished media is hosted in Cloudflare R2 rather than bundled directly into the application repository.`},
-  {id:'rclone',title:'RCLONE',kind:'section',x:-6000,y:12500,colour:'#8c6dba',group:'publish',markdown:`# rclone\n\nrclone synchronises published media with Cloudflare R2.`},
-  {id:'github-pages',title:'GITHUB PAGES',kind:'chain',x:-3000,y:13900,colour:'#8c6dba',group:'publish',markdown:`# GitHub Pages\n\nGitHub Pages serves the Good Boy Records web application.`},
-  {id:'player',title:'GBR PLAYER',kind:'document',x:1500,y:12600,colour:'#b16b9e',group:'player',markdown:`# GBR player\n\nThe presentation layer combines the published recording, album artwork, catalogue metadata, synchronised lyrics and analysis data into the cassette-style Good Boy Records experience.`},
-  {id:'karaoke',title:'SYNCED LYRICS',kind:'section',x:300,y:13900,colour:'#b16b9e',group:'player',markdown:`# Synchronised lyrics\n\nWord-level timing drives the lyric display so the currently sung word can be highlighted during playback.`},
-  {id:'visuals',title:'AUDIO-REACTIVE VISUALS',kind:'section',x:2700,y:13900,colour:'#b16b9e',group:'player',markdown:`# Audio-reactive visuals\n\nAudio-analysis data drives visual behaviour such as lighting and musical progression cues in the player.`}
-];
+  {id:'yaml',title:'TRACK YAML',kind:'document',x:-3600,y:0,colour:'#c6a04c',group:'data',markdown:`# Track YAML
+
+The portable specification for a generation.
+
+It brings the creative definition and technical recipe together in one file: title, genre/version, caption, lyrics, story, inspiration, model components and generation parameters.
+
+The pipeline reads it, the catalogue can expose relevant metadata from it, and the Story view combines composition-level and version-level provenance.
+
+YAML appears once on this map even though several systems touch it.`},
+
+  {id:'generation-params',title:'GENERATION PARAMETERS',kind:'document',x:-3600,y:2100,colour:'#77a5a0',group:'parameters',markdown:`# Generation parameters
+
+The complete technical recipe that can vary between generations.
+
+This includes model / DiT / text-encoder choices and weights where used, sampler and scheduler, steps, sampler CFG, sampler seed, encoder CFG, encoder seed, top-k and other supported generation controls.
+
+The runner can preserve values from YAML or override selected values for controlled reruns. Individual settings are not separate systems, so they are consolidated here.`},
+
+  {id:'generation-engine',title:'GENERATION ENGINE',kind:'document',x:0,y:-2100,colour:'#72a36f',group:'generation',markdown:`# Generation engine
+
+The inference system that turns the prompt and parameters into audio.
+
+GBR currently drives a **ComfyUI** workflow around the music model. Internally that workflow loads model components, encodes text into conditioning, performs sampling and writes generated audio.
+
+Text encoding / conditioning and diffusion sampling can be separated when useful, including cached-conditioning workflows. Those are stages inside the generation engine rather than independent concepts on the main map.`},
+
+  {id:'pipeline',title:'PIPELINE RUNNER',kind:'document',x:0,y:0,colour:'#4e9f91',group:'automation',markdown:`# Pipeline runner
+
+The automation layer around generation.
+
+It discovers YAML jobs in a selected directory, chooses whether each generation setting comes from YAML or runner configuration, dispatches work to suitable compute and tracks the queue.
+
+Compute may be local or remote (for example RunPod). The runner can use cached-conditioning mode or full-generation mode. Workers and modes are implementation choices owned by the runner, so they are kept inside this node.`},
+
+  {id:'generated-track',title:'GENERATED TRACK',kind:'document',x:0,y:2100,colour:'#5d9baa',group:'output',markdown:`# Generated track
+
+The audio result of a generation job.
+
+The generated recording remains associated with the YAML recipe that produced it. A generation is not automatically a release: it first passes through human listening and selection.`},
+
+  {id:'review',title:'REVIEW & PROMOTION',kind:'document',x:3600,y:-2100,colour:'#5d9baa',group:'output',markdown:`# Review & promotion
+
+Human quality control.
+
+A generated track is listened to and either kept, rejected / archived, or sent back for another generation. Creative problems normally lead back to the song/prompt; technical experiments lead back to generation parameters.
+
+Accepted recordings are promoted into the showcase workflow.`},
+
+  {id:'timeline',title:'TIMELINE & ANALYSIS',kind:'document',x:3600,y:0,colour:'#667fc0',group:'analysis',markdown:`# Timeline & analysis
+
+Preparation for rich playback.
+
+**Lyric alignment** uses the known lyrics and speech/alignment tooling to produce word timings. The lyric-review tool lets uncertain or interpolated words be corrected manually.
+
+**Audio analysis** extracts timing / musical information used by playback features. Where required, vocal separation such as Demucs can support alignment.
+
+The resulting lyric, audio-analysis and playback sidecars belong to this one preparation stage rather than being separate top-level systems.`},
+
+  {id:'showcase',title:'SHOWCASE LIBRARY',kind:'document',x:3600,y:2100,colour:'#5d9baa',group:'output',markdown:`# Showcase library
+
+The curated source of tracks that Good Boy Records presents.
+
+A showcased variant can contain audio, its YAML, album artwork and generated playback / lyric / analysis sidecars. Composition and variant YAMLs also provide the provenance shown in **Behind the Song**.
+
+The showcase directory is the authoritative content collection; artwork is part of the track package, not a separate system.`},
+
+  {id:'publishing',title:'PUBLISHING',kind:'document',x:7200,y:-1050,colour:'#8068a0',group:'publishing',markdown:`# Publishing
+
+The deployment path from the curated showcase to the public site.
+
+The site build creates the catalogue and player assets. Media is copied to Cloudflare R2 with rclone, while the application is served through the site's hosting/deployment path.
+
+Catalogue generation, R2 sync and hosting are parts of one publishing concern, so they are aggregated here.`},
+
+  {id:'player',title:'GBR PLAYER',kind:'document',x:7200,y:1050,colour:'#a45b88',group:'player',markdown:`# GBR player
+
+The listener-facing result.
+
+The player consumes the catalogue and showcase media to provide audio playback, album artwork, genre browsing, synchronized lyrics, audio-reactive presentation, Tracks, Story / provenance and this knowledge view.
+
+Karaoke, artwork, visual reactions and metadata presentation are player features rather than independent systems.`}
+]
 
 const GBR_KNOWLEDGE_LINKS = [
-  ['knowledge-root','prompt','contains','creative input'],['knowledge-root','yaml','uses','job format'],['knowledge-root','generation-params','controls','generation'],['knowledge-root','comfyui','generates with','inference'],['knowledge-root','pipeline','automates','runner'],['knowledge-root','audio','produces','recording'],['knowledge-root','analysis','prepares','post-processing'],['knowledge-root','catalogue','publishes','catalogue'],['knowledge-root','player','presents','site'],
-  ['prompt','caption','contains','caption'],['prompt','lyrics','contains','lyrics'],['prompt','yaml','stored in','prompt fields'],['caption','conditioning','encoded into','conditioning'],['lyrics','conditioning','encoded into','conditioning'],['lyrics','sections','structured by','sections'],['genre','yaml','stored as','version'],['genre','caption','shapes','style'],['genre','lyrics','can reshape','song form'],
-  ['yaml','identity','contains','title + version'],['yaml','model-defs','contains','models'],['yaml','generation-params','stores','parameters'],['yaml','lore','contains','context'],['yaml','prompt','contains','caption + lyrics'],['yaml','pipeline','consumed by','jobs'],['yaml','comfyui','configures','workflow values'],
-  ['generation-params','sampling','configures','sampler / scheduler / steps / CFG / seed'],['generation-params','conditioning','configures','encoder CFG / seed / top-k'],['pipeline','generation-params','can override','parameter values'],['generation-params','workflow','supplied to','workflow'],
-  ['model-defs','minimax','selects','model family'],['model-defs','dit','selects','dit'],['model-defs','text-encoder','selects','encoder'],
-  ['comfyui','workflow','loads','graph'],['workflow','text-encoder','runs','encode'],['workflow','conditioning','passes','conditioning'],['workflow','sampling','runs','sampling'],['workflow','minimax','runs','generation'],['workflow','audio','outputs','audio'],['text-encoder','conditioning','produces','conditioning'],['conditioning','minimax','conditions','generation'],['dit','minimax','implements','weight'],['sampling','minimax','samples','diffusion'],
-  ['pipeline','directory-mode','supports','scope'],['pipeline','override-mode','supports','reruns'],['override-mode','generation-params','selects source for','parameters'],['pipeline','cache-mode','mode','cached'],['pipeline','full-gen-mode','mode','full'],['pipeline','workers','dispatches to','workers'],['pipeline','yaml','reads','jobs'],['pipeline','comfyui','drives','workflow'],['cache-mode','conditioning','stores','conditioning'],['full-gen-mode','workflow','runs','one pass'],['workers','runpod','includes','cloud'],['workers','local-gpu','includes','local'],['runpod','text-encoder','can run','encoding'],['local-gpu','sampling','can run','generation'],
-  ['audio','review','listened to','human QC'],['review','showcase','promotes to','keeper'],['review','prompt','loops back','creative change'],['review','generation-params','loops back','technical change'],['showcase','analysis','feeds','preparation'],['showcase','catalogue','scanned into','catalogue'],['showcase','album-art','includes','art'],
-  ['analysis','demucs','uses','vocal split'],['demucs','whisperx','feeds vocals','alignment'],['lyrics','whisperx','known text','alignment'],['lore','whisperx','language field','non-English'],['whisperx','lyric-data','produces','word timings'],['analysis','audio-analysis','runs','music analysis'],['lyric-data','playback-data','combined into','playback'],['audio-analysis','playback-data','combined into','playback'],
-  ['catalogue','player','feeds','track metadata'],['showcase','cloudflare','media stored in','published media'],['rclone','cloudflare','syncs to','storage'],['github-pages','player','serves','application'],['cloudflare','player','serves media to','playback'],['album-art','player','displayed by','artwork'],['audio','player','played by','audio'],['playback-data','player','drives','timing + visuals'],['lyric-data','karaoke','drives','word highlight'],['audio-analysis','visuals','drives','lighting'],['karaoke','player','rendered in','lyrics'],['visuals','player','rendered in','visuals']
-];
+  ['knowledge-root','song-prompt','starts with','creative definition'],
+  ['song-prompt','yaml','captured in','track specification'],
+  ['yaml','generation-params','defines','technical recipe'],
+  ['yaml','pipeline','queued by','automation'],
+  ['generation-params','pipeline','controls','generation jobs'],
+  ['pipeline','generation-engine','drives','inference'],
+  ['song-prompt','generation-engine','conditions','music generation'],
+  ['generation-params','generation-engine','configures','inference'],
+  ['generation-engine','generated-track','produces','audio'],
+  ['generated-track','review','evaluated by','human QC'],
+  ['review','song-prompt','revises','creative changes'],
+  ['review','generation-params','revises','technical changes'],
+  ['review','showcase','promotes','accepted track'],
+  ['showcase','timeline','prepared by','timing + analysis'],
+  ['timeline','showcase','adds','playback sidecars'],
+  ['showcase','publishing','published through','build + storage'],
+  ['publishing','player','delivers','catalogue + media'],
+  ['showcase','player','describes','track content']
+]
 
 loadKnowledgeGraph = async function(){
   if(knowledgeReady||knowledgeLoading)return;
