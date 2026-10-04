@@ -4773,6 +4773,13 @@ body[data-view="knowledge"] #easterStoryOverlay{display:none!important}
 @media(max-width:900px){#playingCoverScreen{width:252px!important;height:252px!important;min-width:252px!important;max-width:252px!important;min-height:252px!important;max-height:252px!important}}
 </style>
 <!-- GBR_BUILD: v10.12.6 WORLD_ANCHORED_CORE_ORGANIC_STAR_CLOUDS -->
+
+<style id="gbr-media-background-controls">
+.wake-button{min-width:76px;font-size:9px;letter-spacing:.05em}
+.wake-button.active{box-shadow:inset 0 0 12px rgba(var(--accent-rgb),.32),0 0 8px rgba(var(--accent-rgb),.18);border-color:var(--accent);color:#f2e5d3}
+.wake-button:disabled{opacity:.42;cursor:not-allowed}
+@media(max-width:900px){.wake-button{min-width:68px;font-size:8px;padding-inline:5px}}
+</style>
 </head>
 <!-- GBR_BUILD: v10.10.14.1 MOBILE_COLLAPSE_GENRE_LYRICS_REPAIR -->
 <body data-power="on">
@@ -4966,7 +4973,7 @@ body[data-view="knowledge"] #easterStoryOverlay{display:none!important}
       </div>
     </section>
     <section class="module now-playing-module"><span class="legend">Now playing</span><div class="meta"><strong id="metaTitle">—</strong><span id="metaSub">—</span></div></section>
-    <section class="module transport-module"><span class="legend">Transport</span><div class="transport"><button class="hw-button" id="prev" title="Previous" aria-label="Previous">◀◀</button><button class="hw-button main" id="play" title="Play / Pause">▶</button><button class="hw-button" id="next" title="Next" aria-label="Next">▶▶</button><button class="hw-button shuffle-button" id="shuffle" title="Shuffle">Shuffle</button></div><div class="seek-rack">
+    <section class="module transport-module"><span class="legend">Transport</span><div class="transport"><button class="hw-button" id="prev" title="Previous" aria-label="Previous">◀◀</button><button class="hw-button main" id="play" title="Play / Pause">▶</button><button class="hw-button" id="next" title="Next" aria-label="Next">▶▶</button><button class="hw-button shuffle-button" id="shuffle" title="Shuffle">Shuffle</button><button class="hw-button wake-button" id="wakeLock" type="button" aria-pressed="false" title="Keep screen awake">AWAKE OFF</button></div><div class="seek-rack">
   <div class="seek-segments" id="seekSegments" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <input class="seek" id="seek" type="range" min="0" max="1" step="0.001" value="0" aria-label="Track position">
 </div></section>
@@ -4999,7 +5006,7 @@ function externaliseShowcasePaths(value){
   if(value&&typeof value==='object'){for(const k of Object.keys(value))value[k]=externaliseShowcasePaths(value[k]);return value}
   return typeof value==='string'?showcaseUrl(value):value;
 }
-const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),mobileSongTitle:$('mobileSongTitle'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),playingCoverViewport:$('playingCoverViewport'),playingCoverScreen:$('playingCoverScreen'),easterStoryOverlay:$('easterStoryOverlay'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),filterButton:$('filterButton'),storyButton:$('storyButton'),shareButton:$('shareButton'),knowledgeTabs:$('knowledgeTabs'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
+const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),mobileSongTitle:$('mobileSongTitle'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),playingCoverViewport:$('playingCoverViewport'),playingCoverScreen:$('playingCoverScreen'),easterStoryOverlay:$('easterStoryOverlay'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),wakeLock:$('wakeLock'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),filterButton:$('filterButton'),storyButton:$('storyButton'),shareButton:$('shareButton'),knowledgeTabs:$('knowledgeTabs'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
 deskGenreZones:$('deskGenreZones'),deskAlbumLight:$('deskAlbumLight'),deskPower:$('deskPower'),
 deskFormatToggle:$('deskFormatToggle'),deskIntensity:$('deskIntensity'),deskIntensityValue:$('deskIntensityValue'),
 deskSensitivity:$('deskSensitivity'),deskSensitivityValue:$('deskSensitivityValue'),
@@ -5139,6 +5146,7 @@ function switchAudioFormat(fmt){
 }
 function startPlaybackNow(){
   if(!power||!audio.src)return;
+  if(wakeLockWanted)acquireWakeLock();
   try{graph();if(ac&&ac.state==='suspended')ac.resume().catch(()=>{});const p=audio.play();if(p&&p.catch)p.catch(err=>console.warn('Playback failed',err))}catch(err){console.warn('Playback failed',err)}
 }
 const FALLBACK_ART='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><rect width="1024" height="1024" fill="#0a0b09"/><circle cx="512" cy="512" r="255" fill="none" stroke="#6f5b43" stroke-width="18"/><circle cx="512" cy="512" r="70" fill="#6f5b43"/><text x="512" y="830" text-anchor="middle" fill="#a78a65" font-family="monospace" font-size="48" letter-spacing="8">GOOD BOY RECORDS</text></svg>`);
@@ -5678,6 +5686,53 @@ function installMediaSessionControls(){
   set('stop',()=>{audio.pause();try{audio.currentTime=0}catch(_){ }});
 }
 installMediaSessionControls();
+
+// Background playback is owned by the media element, never by the visual/render loop.
+// Screen wake is optional: normal mode allows the display to sleep while audio continues.
+let wakeLock=null,wakeLockWanted=false;
+function wakeLockSupported(){return !!navigator.wakeLock?.request}
+function syncWakeButton(){
+  if(!ui.wakeLock)return;
+  if(!wakeLockSupported()){
+    ui.wakeLock.textContent='AWAKE N/A';ui.wakeLock.disabled=true;ui.wakeLock.title='Screen Wake Lock is not supported by this browser';return;
+  }
+  ui.wakeLock.disabled=false;
+  ui.wakeLock.textContent=wakeLockWanted?'AWAKE ON':'AWAKE OFF';
+  ui.wakeLock.classList.toggle('active',wakeLockWanted);
+  ui.wakeLock.setAttribute('aria-pressed',String(wakeLockWanted));
+  ui.wakeLock.title=wakeLockWanted?'Keep screen awake: on':'Keep screen awake: off';
+}
+async function acquireWakeLock(){
+  if(!wakeLockWanted||!wakeLockSupported()||document.visibilityState!=='visible'||wakeLock)return;
+  try{
+    wakeLock=await navigator.wakeLock.request('screen');
+    wakeLock.addEventListener('release',()=>{wakeLock=null;syncWakeButton()},{once:true});
+  }catch(err){console.warn('Screen wake lock unavailable',err);wakeLock=null}
+  syncWakeButton();
+}
+async function releaseWakeLock(){
+  const lock=wakeLock;wakeLock=null;
+  if(lock){try{await lock.release()}catch(_){ }}
+  syncWakeButton();
+}
+async function setWakeLockWanted(on,persist=true){
+  wakeLockWanted=!!on;
+  if(persist)try{localStorage.setItem('gbr:keep-awake',wakeLockWanted?'1':'0')}catch(_){ }
+  if(wakeLockWanted)await acquireWakeLock();else await releaseWakeLock();
+  syncWakeButton();
+}
+try{wakeLockWanted=localStorage.getItem('gbr:keep-awake')==='1'}catch(_){wakeLockWanted=false}
+syncWakeButton();
+if(ui.wakeLock)ui.wakeLock.onclick=()=>{clickSound('toggle');setWakeLockWanted(!wakeLockWanted)};
+document.addEventListener('visibilitychange',()=>{
+  // Browsers release screen wake locks when hidden. Reacquire only if the user opted in.
+  if(document.visibilityState==='visible')acquireWakeLock();
+  updateMediaPositionState();
+});
+window.addEventListener('pageshow',()=>{if(wakeLockWanted)acquireWakeLock();updateMediaPositionState()});
+
+// Where supported, identify GBR as a media-playback page to the OS/browser.
+try{if('audioSession' in navigator)navigator.audioSession.type='playback'}catch(_){ }
 function setLyricTypography(t){
   const raw=[t?.genre?.cluster,t?.genre?.parent_genre,t?.genre?.child_genre,variantOf(t)].filter(Boolean).join(' ').toLowerCase();
   let family='default';

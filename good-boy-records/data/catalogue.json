@@ -1,6 +1,6 @@
 {
   "format": "gbr-sonic-catalogue-v1",
-  "trackCount": 161,
+  "trackCount": 162,
   "tracks": [
     {
       "id": "pupeii-space-rock",
@@ -1237,6 +1237,89 @@
         "samplerCfg": 1.7,
         "samplerSeed": 511686542943509,
         "steps": 40,
+        "temperature": null,
+        "topP": null,
+        "shift": null,
+        "duration": null,
+        "batchSize": null,
+        "denoise": null,
+        "weight": null,
+        "ditWeight": null,
+        "textEncoderWeight": null
+      }
+    },
+    {
+      "id": "smooth-pawterator-chamber-folk-b0d5bf5",
+      "composition": "smooth-pawterator",
+      "title": "smooth-pawterator",
+      "displayTitle": "Smooth Pawterator",
+      "variant": "chamber-folk",
+      "version": "chamber-folk",
+      "language": "en",
+      "genre": {
+        "cluster": "electronic music",
+        "parent_genre": "downtempo",
+        "child_genre": "chamber folk",
+        "parent_colour": "#FF227A",
+        "child_colour": "#FF3779",
+        "taxonomy_order": 1304,
+        "parent_order": 1209
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/smooth-pawterator/smooth-pawterator-folk/smooth-pawterator-folk.flac",
+          "mp3": "showcase/smooth-pawterator/smooth-pawterator-folk/smooth-pawterator-folk.mp3"
+        }
+      },
+      "artwork_url": "showcase/smooth-pawterator/smooth-pawterator-folk/smooth-pawterator-folk.png",
+      "lyrics": {
+        "raw": "[intro]\n(Woof, soft)\nMmm... two goldens...\n[verse]\nShe moves through the room like she's made out of\nsilk\nCool as the morning, calm as the milk\nShe won't chase a thing,\nwhat she wants, It comes to her\nA golden-eyed lady, with that regal glow\n[chorus]\nShe's a smooth paw-ter-arator, running your home\nCool little princess on her velvet throne\nAnd her chunk's all heart,\nall sunshine and sway\nTwo goldens,\none home,\nat the end of the day\n(mmm)\n[solo]\n[verse]\nHe's a big gentle giant with a mouth soft and\nwide\nLoves every stranger,\ntakes them all in his stride\nBut Teddy, sweet Teddy, he just cannot abide\nAnd nobody knows what he's feeling inside\n[chorus]\nShe's a smooth paw-ter-arator, running your home\nCool little princess on her velvet throne\nAnd her chunk's all heart,\nall sunshine and sway\nTwo goldens,\none home,\nat the end of the day\n(mmm)\n[bridge]\nTwo sides of a golden,\none cool and one warm\nShe's the calm in the quiet,\nhe's the joy in the storm\n(soft) Doja... Bam Bam...\n[chorus]\nShe's a smooth paw-ter-arator, running your home\nCool little princess on her velvet throne\nAnd her chunk's all heart,\nall sunshine and sway\nTwo goldens,\none home,\nat the end of the day\n(mmm)\n[post-chorus]\nShe's a smooth paw-ter-arator, running your home\n(mmm)\n[outro]\nTwo goldens,\none home,\nand they've got it all\n(whispered) Go on... fetch the ball...\n(Woof)",
+        "wordTiming": {
+          "src": "showcase/smooth-pawterator/smooth-pawterator-folk/smooth-pawterator-folk.lyrics.json",
+          "format": "gbr-word-lyrics-v2",
+          "language": "en",
+          "coverage": 0.9391,
+          "rating": "excellent",
+          "reviewRequired": false,
+          "approved": false,
+          "usable": true
+        }
+      },
+      "lyrics_url": "showcase/smooth-pawterator/smooth-pawterator-folk/smooth-pawterator-folk.lyrics.json",
+      "yamlUrl": "showcase/smooth-pawterator/smooth-pawterator-folk/smooth-pawterator-folk.yaml",
+      "story": "Evidently the LLMs of the day have some challenges saying 'Pawterator', a completely made up original word so we can't blame the model for having no reference for pronounciation, enjoy it failing in several different styles.",
+      "style": {
+        "inspiration": "Sade - Smooth Operator",
+        "inspirationUrl": "https://www.youtube.com/watch?v=4TYv2PhG89A"
+      },
+      "provenance": {
+        "song": {
+          "story": "Evidently the LLMs of the day have some challenges saying 'Pawterator', a completely made up original word so we can't blame the model for having no reference for pronounciation, enjoy it failing in several different styles.",
+          "inspiration": "Sade - Smooth Operator",
+          "inspirationUrl": "https://www.youtube.com/watch?v=4TYv2PhG89A",
+          "yamlUrl": "showcase/smooth-pawterator/smooth-pawterator.yaml"
+        },
+        "version": {
+          "story": "",
+          "inspiration": "",
+          "inspirationUrl": "",
+          "yamlUrl": "showcase/smooth-pawterator/smooth-pawterator-folk/smooth-pawterator-folk.yaml"
+        }
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.7,
+        "encoderSeed": 2948023786791,
+        "topK": 30,
+        "sampler": "dpmpp_sde_gpu",
+        "scheduler": "ddim_uniform",
+        "samplerCfg": 1.7,
+        "samplerSeed": 904743655459066,
+        "steps": 37,
         "temperature": null,
         "topP": null,
         "shift": null,
