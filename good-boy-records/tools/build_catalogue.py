@@ -57,6 +57,21 @@ def humanise(value: Any) -> str:
     return re.sub(r"[-_]+", " ", str(value or "")).strip().title()
 
 
+def normalise_language(value: Any, default: str = "en") -> str:
+    """Return a compact language tag for catalogue filtering.
+
+    Variant YAML ``language`` is the source of truth. Legacy tracks default to
+    English, matching the lyric/timeline pipeline's existing behaviour.
+    """
+    text = str(value or default).strip().lower().replace("_", "-")
+    aliases = {"english": "en", "spanish": "es", "romanian": "ro", "ukrainian": "uk",
+               "polish": "pl", "japanese": "ja", "mongolian": "mn", "korean": "ko",
+               "luganda": "lg", "arabic": "ar", "turkish": "tr", "chinese": "zh",
+               "hindi": "hi", "german": "de", "french": "fr", "italian": "it",
+               "portuguese": "pt"}
+    return aliases.get(text, text or default)
+
+
 def norm(value: Any) -> str:
     """Aggressive lookup normalisation used only for taxonomy matching."""
     return re.sub(r"[^a-z0-9]+", "", str(value or "").casefold())
@@ -340,6 +355,9 @@ def build_track(
     # as compatibility fallbacks for existing player code and older catalogues.
     inspiration = version_inspiration or song_inspiration
     inspiration_url = version_inspiration_url or song_inspiration_url
+    timing_language = timing.get("language") if isinstance(timing, dict) else None
+    source_language = timing.get("source", {}).get("language") if isinstance(timing, dict) and isinstance(timing.get("source"), dict) else None
+    language = normalise_language(raw.get("language") or timing_language or source_language or common.get("language") or "en")
 
     track = {
         "id": track_id,
@@ -348,6 +366,7 @@ def build_track(
         "displayTitle": humanise(raw.get("title") or common.get("title") or title_id),
         "variant": version,
         "version": version,
+        "language": language,
         "genre": taxonomy.match(version),
         "audio": {
             "sources": {
@@ -362,6 +381,7 @@ def build_track(
                 {
                     "src": timing_url,
                     "format": timing.get("format") if isinstance(timing, dict) else None,
+                    "language": language,
                     "coverage": coverage,
                     "rating": quality.get("rating"),
                     "reviewRequired": review_required,

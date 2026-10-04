@@ -178,6 +178,7 @@ def build_tracks(root: str, existing: dict[str, dict[str, Any]] | None = None) -
         title = first_text(raw, "title", "song_title", "track_title") or label
         version = first_text(raw, "version", "genre", "song_genre") or "Hidden Track"
         story = first_text(raw, "story")
+        language = (first_text(raw, "language") or "en").strip().lower().replace("_", "-")
         # If an R2 YAML object exists but could not be read/parsed, keep the
         # locally-built story for the same audio stem instead of erasing it.
         # A successfully-read blank story remains intentionally blank.
@@ -186,11 +187,15 @@ def build_tracks(root: str, existing: dict[str, dict[str, Any]] | None = None) -
             previous_story = previous.get("story")
             if isinstance(previous_story, str) and previous_story.strip():
                 story = previous_story.strip()
+            previous_language = previous.get("language")
+            if isinstance(previous_language, str) and previous_language.strip():
+                language = previous_language.strip().lower().replace("_", "-")
         track: dict[str, Any] = {
             "id": f"easter-{index:02d}-{slugify(label)}",
             "title": title,
             "displayTitle": title if title != label else humanise(label),
             "variant": version,
+            "language": language,
             "genre": {
                 "cluster": "easter",
                 "parent_genre": "Easter Universe",
