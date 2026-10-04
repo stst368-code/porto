@@ -4785,6 +4785,7 @@ body[data-view="knowledge"] #easterStoryOverlay{display:none!important}
       <button class="utility-button" id="knowledgeButton" type="button">Knowledge</button>
       <button class="utility-button" id="tracksButton" type="button" aria-expanded="false">Tracks</button>
       <button class="utility-button" id="storyButton" type="button" aria-expanded="false">Story</button>
+      <button class="utility-button" id="shareButton" type="button" title="Copy a link to this exact recording">Share</button>
     </nav>
     <nav class="knowledge-tabs" id="knowledgeTabs" aria-label="Knowledge maps">
       <button class="knowledge-tab active" type="button" data-knowledge-tab="how-its-made">how it's made</button>
@@ -4987,7 +4988,7 @@ function externaliseShowcasePaths(value){
   if(value&&typeof value==='object'){for(const k of Object.keys(value))value[k]=externaliseShowcasePaths(value[k]);return value}
   return typeof value==='string'?showcaseUrl(value):value;
 }
-const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),mobileSongTitle:$('mobileSongTitle'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),playingCoverViewport:$('playingCoverViewport'),playingCoverScreen:$('playingCoverScreen'),easterStoryOverlay:$('easterStoryOverlay'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),storyButton:$('storyButton'),knowledgeTabs:$('knowledgeTabs'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
+const ui={stage:$('stage'),starCanvas:$('starCanvas'),loading:$('loading'),brandText:$('brandText'),title:$('title'),variant:$('variant'),mobileSongTitle:$('mobileSongTitle'),genreParent:$('genreParent'),genreChild:$('genreChild'),cover:$('cover'),fixedCover:$('fixedCover'),playingCoverViewport:$('playingCoverViewport'),playingCoverScreen:$('playingCoverScreen'),easterStoryOverlay:$('easterStoryOverlay'),centerStack:$('centerStack'),centerCard:$('centerCard'),lyric:$('lyric'),metaTitle:$('metaTitle'),metaSub:$('metaSub'),play:$('play'),prev:$('prev'),next:$('next'),shuffle:$('shuffle'),seek:$('seek'),seekSegments:$('seekSegments'),time:$('time'),power:$('power'),volumeKnob:$('volumeKnob'),lampKnob:$('lampKnob'),vuL:$('vuL'),vuR:$('vuR'),statusLed:$('statusLed'),genreStrip:$('genreStrip'),mapTip:$('mapTip'),spectrum:$('spectrum'),zoomIn:$('zoomIn'),zoomOut:$('zoomOut'),zoomReset:$('zoomReset'),zoomLevel:$('zoomLevel'),utilityNav:$('utilityNav'),knowledgeButton:$('knowledgeButton'),tracksButton:$('tracksButton'),storyButton:$('storyButton'),shareButton:$('shareButton'),knowledgeTabs:$('knowledgeTabs'),sidePanel:$('sidePanel'),panelTitle:$('panelTitle'),panelBody:$('panelBody'),panelClose:$('panelClose'),knowledgeReader:$('knowledgeReader'),knowledgeReaderTitle:$('knowledgeReaderTitle'),knowledgeReaderPath:$('knowledgeReaderPath'),knowledgeReaderBody:$('knowledgeReaderBody'),knowledgePrev:$('knowledgePrev'),knowledgeNext:$('knowledgeNext'),knowledgeReaderClose:$('knowledgeReaderClose'),mobileMixToggle:$('mobileMixToggle'),fmtFlac:$('fmtFlac'),fmtMp3:$('fmtMp3'),fxSensitivity:$('fxSensitivity'),fxSensitivityValue:$('fxSensitivityValue'),lineLamp:$('lineLamp'),lineLampValue:$('lineLampValue'),fxTest:$('fxTest'),
 deskGenreZones:$('deskGenreZones'),deskAlbumLight:$('deskAlbumLight'),deskPower:$('deskPower'),
 deskFormatToggle:$('deskFormatToggle'),deskIntensity:$('deskIntensity'),deskIntensityValue:$('deskIntensityValue'),
 deskSensitivity:$('deskSensitivity'),deskSensitivityValue:$('deskSensitivityValue'),
@@ -5005,6 +5006,85 @@ function colourCompare(a,b){const ca=oklch(a||'#808080'),cb=oklch(b||'#808080');
 function accent(track){const c=track?.genre?.child_colour||'#d0802f',v=rgb(c);document.documentElement.style.setProperty('--accent',c);document.documentElement.style.setProperty('--accent-rgb',`${v.r},${v.g},${v.b}`);return v}
 function titleOf(t){return t?.displayTitle||t?.composition||t?.title||t?.id||'Untitled'}
 function variantOf(t){return t?.variant||t?.version||t?.genre?.child_genre||'—'}
+
+/* Share links are deliberately opaque and short. The track id itself never appears
+   in the shared URL, and the ?s= token is removed from the address bar immediately
+   on arrival before the catalogue is fetched. */
+const SHARE_PARAM='s';
+const SHARE_ALPHABET='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let shareIndex=new Map(),shareTokensByKey=new Map();
+function shareHash64(value){
+  let h=1469598103934665603n;
+  for(const ch of String(value||'')){h^=BigInt(ch.codePointAt(0));h=BigInt.asUintN(64,h*1099511628211n)}
+  return h
+}
+function shareBase62(value){
+  let n=value<0n?-value:value,out='';
+  do{out=SHARE_ALPHABET[Number(n%62n)]+out;n/=62n}while(n>0n);
+  return out
+}
+function shareTokenFor(t,scope=(easter?'e':'m')){
+  const raw=shareBase62(shareHash64(`${scope}:${t?.id||titleOf(t)}:${variantOf(t)}`));
+  return raw.padStart(8,'0').slice(-8)
+}
+function rebuildShareIndex(){
+  shareIndex=new Map();shareTokensByKey=new Map();
+  for(const [scope,list] of [['m',mainTracks],['e',easterTracks]]){
+    for(const t of list){
+      let token=shareTokenFor(t,scope),salt=0;
+      while(shareIndex.has(token)){salt+=1;token=shareBase62(shareHash64(`${scope}:${t?.id}:${salt}`)).padStart(8,'0').slice(-8)}
+      shareIndex.set(token,{scope,id:t.id});shareTokensByKey.set(`${scope}:${t.id}`,token)
+    }
+  }
+}
+function consumeIncomingShareToken(){
+  try{
+    const url=new URL(location.href),token=(url.searchParams.get(SHARE_PARAM)||'').trim();
+    if(!token)return'';
+    url.searchParams.delete(SHARE_PARAM);url.hash='';
+    url.pathname=url.pathname.replace(/\/index\.html$/i,'/')||'/';
+    const clean=`${url.pathname}${url.search}${url.hash}`||'/';
+    history.replaceState(history.state,'',clean);
+    return token
+  }catch(_){return''}
+}
+const pendingShareToken=consumeIncomingShareToken();
+function setEasterState(enabled){
+  easter=Boolean(enabled&&easterTracks.length);
+  document.body.dataset.easter=easter?'true':'false';
+  tracks=easter?easterTracks:mainTracks;
+  if(!tracks.length)tracks=mainTracks;
+  hoverIndex=-1;activeParent=null;coverImages.clear();
+  refreshParentLanes();buildNodes(true);
+  if(ui.brandText)ui.brandText.textContent=easter?'Good Boy Records / Easter Universe':'Good Boy Records / Sonic Landscape'
+}
+function openSharedTrack(token){
+  const target=shareIndex.get(String(token||''));
+  if(!target)return false;
+  setEasterState(target.scope==='e');
+  const i=tracks.findIndex(t=>t.id===target.id);
+  if(i<0)return false;
+  select(i,false);setExplorationStart();return true
+}
+function currentShareUrl(){
+  const t=tracks[index];if(!t)return'';
+  const scope=easter?'e':'m',url=new URL(location.href);url.search='';url.hash='';
+  url.pathname=url.pathname.replace(/\/index\.html$/i,'/')||'/';
+  url.searchParams.set(SHARE_PARAM,shareTokensByKey.get(`${scope}:${t.id}`)||shareTokenFor(t,scope));
+  return url.href
+}
+async function copyShareLink(){
+  const link=currentShareUrl();if(!link)return false;
+  try{
+    if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(link)}
+    else{
+      const ta=document.createElement('textarea');ta.value=link;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()
+    }
+    return true
+  }catch(_){
+    try{const ta=document.createElement('textarea');ta.value=link;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok}catch(__){return false}
+  }
+}
 function storyOf(t){const v=t?.story??t?.yaml?.story??t?.metadata?.story;return typeof v==='string'?v.trim():''}
 function updateEasterStory(t){if(!ui.easterStoryOverlay)return;const story=easter?storyOf(t):'';ui.easterStoryOverlay.textContent=story;ui.easterStoryOverlay.classList.toggle('visible',Boolean(story));ui.easterStoryOverlay.setAttribute('aria-hidden',story?'false':'true')}
 function classifyAudioUrl(url){const clean=String(url||'').split('#')[0].split('?')[0].toLowerCase();if(clean.endsWith('.flac'))return 'flac';if(clean.endsWith('.mp3'))return 'mp3';return 'other'}
@@ -5550,7 +5630,7 @@ async function load(){
   if(!tracks.length)throw new Error('No catalogue tracks found');
   sortGenreSequence(mainTracks);sortGenreSequence(easterTracks);tracks=mainTracks;
   const parentMap=new Map();for(const tr of tracks){const name=tr.genre?.parent_genre||'Unclassified';if(!parentMap.has(name))parentMap.set(name,{name,colour:tr.genre?.parent_colour||'#808080',order:tr.genre?.parent_order??tr.genre?.taxonomy_order??1e9})}
-  parentLanes=[...parentMap.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.order-b.order||a.name.localeCompare(b.name));buildGenreStrip();ui.loading.hidden=true;setVolume(.5);setLamp(.5);select(0,false);resize()
+  parentLanes=[...parentMap.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.order-b.order||a.name.localeCompare(b.name));buildGenreStrip();rebuildShareIndex();ui.loading.hidden=true;setVolume(.5);setLamp(.5);if(!openSharedTrack(pendingShareToken))select(0,false);resize()
 }
 function paintFixedCover(){if(!ui.fixedCover||!ui.cover)return;const src=ui.cover.currentSrc||ui.cover.src;if(src&&ui.fixedCover.src!==src)ui.fixedCover.src=src}
 function mediaSessionSupported(){return 'mediaSession' in navigator}
@@ -6716,6 +6796,14 @@ document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&viewMode==='tra
 if(ui.mobileMixToggle){ui.mobileMixToggle.onclick=()=>{document.body.classList.remove('mobile-mix-open');ui.mobileMixToggle.setAttribute('aria-expanded','false')}}
 if(ui.knowledgeButton)ui.knowledgeButton.onclick=()=>{clickSound();enterKnowledge()};
 if(ui.tracksButton)ui.tracksButton.onclick=()=>{clickSound();openTracksPanel()};
+if(ui.shareButton)ui.shareButton.onclick=async()=>{
+  clickSound();
+  const original='Share',ok=await copyShareLink();
+  ui.shareButton.textContent=ok?'Copied':'Copy failed';
+  ui.shareButton.classList.toggle('active',ok);
+  clearTimeout(ui.shareButton._resetTimer);
+  ui.shareButton._resetTimer=setTimeout(()=>{ui.shareButton.textContent=original;ui.shareButton.classList.remove('active')},1500)
+};
 if(ui.storyButton)ui.storyButton.onclick=()=>{clickSound();openStoryPanel()};
 if(ui.panelClose)ui.panelClose.onclick=closePanel;
 if(ui.knowledgeReaderClose)ui.knowledgeReaderClose.onclick=()=>{clickSound();closeKnowledgeReader()};
@@ -7048,6 +7136,19 @@ body[data-view="knowledge"] .knowledge-tabs{display:none!important}
 .knowledge-related-link{border:1px solid color-mix(in srgb,var(--node-colour) 45%,#514438 55%);background:#0c0d0b;color:#cdbda8;padding:5px 7px;border-radius:3px;font:800 7px/1.1 "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
 .knowledge-related-link:hover{border-color:var(--node-colour);color:#fff0dc}
 </style>
+
+<style id="v10124-share-links">
+/* v10.12.4 — compact share button; four top controls still fit phone widths. */
+#shareButton.active{color:#fff4e3!important;border-color:var(--accent)!important;box-shadow:inset 0 0 15px rgba(var(--accent-rgb),.18),0 0 10px rgba(var(--accent-rgb),.15)!important}
+@media(max-width:900px){
+  .utility-button{min-width:80px!important;width:80px!important;padding:0 8px!important;font-size:10px!important}
+}
+@media(max-width:350px){
+  .utility-nav{gap:4px!important;right:5px!important}
+  .utility-button{min-width:76px!important;width:76px!important;padding:0 6px!important;font-size:9px!important}
+}
+</style>
+<!-- GBR_BUILD: v10.12.4 SHARE_LINKS -->
 </body>
 </html>
 <style>
