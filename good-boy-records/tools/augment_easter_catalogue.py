@@ -29,11 +29,28 @@ def humanise(value: Any) -> str:
     return re.sub(r"[-_]+", " ", str(value or "")).strip().title()
 
 
+def _decode(data: bytes | str | None) -> str:
+    if data is None:
+        return ""
+    if isinstance(data, str):
+        return data
+    # rclone emits UTF-8. Decode it ourselves instead of allowing Windows'
+    # locale (commonly cp1252) to decode the pipe in subprocess reader threads.
+    return data.decode("utf-8-sig", errors="replace")
+
+
 def run(*args: str) -> str:
-    p = subprocess.run(["rclone", *args], text=True, capture_output=True)
+    p = subprocess.run(
+        ["rclone", *args],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=False,
+    )
+    stdout = _decode(p.stdout)
+    stderr = _decode(p.stderr)
     if p.returncode:
-        raise RuntimeError(p.stderr.strip() or p.stdout.strip() or f"rclone exited {p.returncode}")
-    return p.stdout
+        raise RuntimeError(stderr.strip() or stdout.strip() or f"rclone exited {p.returncode}")
+    return stdout
 
 
 def remote_root() -> str:
@@ -46,13 +63,62 @@ def public_path(name: str) -> str:
     return "showcase/easter/" + name.replace("\\", "/")
 
 
-def load_remote_yaml(root: str, name: str) -> dict[str, Any]:
+def repair_literal_block_indentation(text: str, keys: tuple[str, ...] = ("lyrics",)) -> str:
+    """Mirror the normal catalogue YAML repair for generated literal blocks."""
+    lines = text.splitlines()
+    repaired: list[str] = []
+    block_key: str | None = None
+    block_indent = 0
+    key_re = re.compile(
+        r"^(?P<indent>\s*)(?P<key>" + "|".join(re.escape(k) for k in keys) + r")\s*:\s*[|>]\s*[-+]?\s*$",
+        re.IGNORECASE,
+    )
+    yaml_key_re = re.compile(r"^[A-Za-z0-9_.-]+\s*:\s*(?:\S.*)?$")
+    for line in lines:
+        match = key_re.match(line)
+        if match:
+            block_key = match.group("key").lower()
+            block_indent = len(match.group("indent"))
+            repaired.append(line)
+            continue
+        if block_key is not None and line.strip():
+            indent = len(line) - len(line.lstrip(" "))
+            if indent <= block_indent:
+                stripped = line.strip()
+                if indent == 0 and yaml_key_re.match(stripped) and not stripped.startswith("["):
+                    block_key = None
+                    repaired.append(line)
+                    continue
+                repaired.append(" " * (block_indent + 2) + line.lstrip())
+                continue
+        repaired.append(line)
+    return "\n".join(repaired) + ("\n" if text.endswith("\n") else "")
+
+
+def parse_yaml_text(text: str, name: str) -> tuple[dict[str, Any], bool]:
     try:
-        raw = yaml.safe_load(run("cat", f"{root}/{name}")) or {}
-        return raw if isinstance(raw, dict) else {}
+        raw = yaml.safe_load(text) or {}
+    except yaml.YAMLError:
+        try:
+            raw = yaml.safe_load(repair_literal_block_indentation(text)) or {}
+        except Exception as exc:
+            print(f"warn Easter YAML {name}: invalid YAML ({exc})")
+            return {}, False
+    except Exception as exc:
+        print(f"warn Easter YAML {name}: invalid YAML ({exc})")
+        return {}, False
+    if not isinstance(raw, dict):
+        print(f"warn Easter YAML {name}: YAML root is not a mapping")
+        return {}, False
+    return raw, True
+
+
+def load_remote_yaml(root: str, name: str) -> tuple[dict[str, Any], bool]:
+    try:
+        return parse_yaml_text(run("cat", f"{root}/{name}"), name)
     except Exception as exc:
         print(f"warn Easter YAML {name}: {exc}")
-        return {}
+        return {}, False
 
 
 def first_text(raw: dict[str, Any], *keys: str) -> str:
@@ -63,7 +129,23 @@ def first_text(raw: dict[str, Any], *keys: str) -> str:
     return ""
 
 
-def build_tracks(root: str) -> list[dict[str, Any]]:
+def _existing_by_stem(data: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    out: dict[str, dict[str, Any]] = {}
+    for track in ((data.get("easter") or {}).get("tracks") or []):
+        if not isinstance(track, dict):
+            continue
+        sources = ((track.get("audio") or {}).get("sources") or {})
+        if not isinstance(sources, dict):
+            continue
+        for value in sources.values():
+            if isinstance(value, str) and value.strip():
+                out.setdefault(Path(value.replace("\\", "/")).stem.casefold(), track)
+                break
+    return out
+
+
+def build_tracks(root: str, existing: dict[str, dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+    existing = existing or {}
     names = [x.strip().replace("\\", "/") for x in run("lsf", root, "--files-only", "-R").splitlines() if x.strip()]
     # Easter is intentionally flat for track ownership. Ignore nested objects rather than pairing ambiguously.
     names = [n for n in names if "/" not in n]
@@ -82,7 +164,11 @@ def build_tracks(root: str) -> list[dict[str, Any]]:
         label = Path(sorted(audio, key=str.casefold)[0]).stem
         yaml_names = [n for n in members if Path(n).suffix.lower() in {".yaml", ".yml"}]
         image_names = [n for n in members if Path(n).suffix.lower() in IMAGE_EXTS]
-        raw = load_remote_yaml(root, sorted(yaml_names, key=str.casefold)[0]) if yaml_names else {}
+        yaml_ok = True
+        if yaml_names:
+            raw, yaml_ok = load_remote_yaml(root, sorted(yaml_names, key=str.casefold)[0])
+        else:
+            raw = {}
 
         sources: dict[str, str] = {}
         for name in sorted(audio, key=str.casefold):
@@ -92,6 +178,14 @@ def build_tracks(root: str) -> list[dict[str, Any]]:
         title = first_text(raw, "title", "song_title", "track_title") or label
         version = first_text(raw, "version", "genre", "song_genre") or "Hidden Track"
         story = first_text(raw, "story")
+        # If an R2 YAML object exists but could not be read/parsed, keep the
+        # locally-built story for the same audio stem instead of erasing it.
+        # A successfully-read blank story remains intentionally blank.
+        if yaml_names and not yaml_ok and not story:
+            previous = existing.get(stem_key) or {}
+            previous_story = previous.get("story")
+            if isinstance(previous_story, str) and previous_story.strip():
+                story = previous_story.strip()
         track: dict[str, Any] = {
             "id": f"easter-{index:02d}-{slugify(label)}",
             "title": title,
@@ -125,7 +219,7 @@ def main() -> int:
     data = json.loads(catalogue_path.read_text(encoding="utf-8"))
     root = remote_root()
     try:
-        tracks = build_tracks(root)
+        tracks = build_tracks(root, _existing_by_stem(data))
     except (FileNotFoundError, RuntimeError) as exc:
         # Do not destroy a valid locally-built Easter catalogue merely because rclone/R2 is unavailable.
         print(f"warn Easter R2 refresh skipped: {exc}")
@@ -134,7 +228,13 @@ def main() -> int:
     # Support either catalogue shape consumed by the player.
     data.pop("easter_tracks", None)
     catalogue_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Easter R2 refresh: {len(tracks)} track(s) from {root}")
+    yaml_count = sum(1 for t in tracks if t.get("yamlUrl"))
+    story_count = sum(1 for t in tracks if isinstance(t.get("story"), str) and t.get("story", "").strip())
+    artwork_count = sum(1 for t in tracks if t.get("artwork_url"))
+    print(
+        f"Easter R2 refresh: {len(tracks)} track(s) from {root}; "
+        f"YAML: {yaml_count}; stories: {story_count}; artwork: {artwork_count}"
+    )
     return 0
 
 
