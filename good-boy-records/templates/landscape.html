@@ -4763,6 +4763,15 @@ body[data-view="knowledge"] #easterStoryOverlay{display:none!important}
   .track-version-play{height:36px!important;font-size:8px!important}
 }
 </style>
+
+<style id="v10125-territory-layout">
+/* GBR v10.12.5 — the playing sleeve + karaoke are HUD geometry. They remain
+   centred and pixel-fixed while only the landscape beneath them pans/zooms. */
+#playingCoverViewport{transform:none!important;zoom:1!important}
+#playingCoverScreen{width:360px!important;height:360px!important;min-width:360px!important;max-width:360px!important;min-height:360px!important;max-height:360px!important;transform:translate(-50%,-50%)!important;zoom:1!important}
+@media(max-width:900px){#playingCoverScreen{width:252px!important;height:252px!important;min-width:252px!important;max-width:252px!important;min-height:252px!important;max-height:252px!important}}
+</style>
+<!-- GBR_BUILD: v10.12.5 FIXED_CORE_TERRITORY_LAYOUT_GENRE_MOTIFS -->
 </head>
 <!-- GBR_BUILD: v10.10.14.1 MOBILE_COLLAPSE_GENRE_LYRICS_REPAIR -->
 <body data-power="on">
@@ -5592,10 +5601,10 @@ const BRIGHT_SKY=[
 function viewToScreen(wx,wy){const w=ui.stage.clientWidth,h=ui.stage.clientHeight;return{x:(wx-camera.x)*camera.zoom+w/2,y:(wy-camera.y)*camera.zoom+h/2}}
 function screenToWorld(sx,sy){const w=ui.stage.clientWidth,h=ui.stage.clientHeight;return{x:(sx-w/2)/camera.zoom+camera.x,y:(sy-h/2)/camera.zoom+camera.y}}
 function updateZoomLabel(){if(ui.zoomLevel)ui.zoomLevel.textContent=`${Math.round(camera.targetZoom*100)}%`}
-function fitCamera(immediate=false){if(!nodes.length)return;const r=ui.stage.getBoundingClientRect(),pad=120,minX=Math.min(...nodes.map(n=>n.baseX))-pad,maxX=Math.max(...nodes.map(n=>n.baseX))+pad,minY=Math.min(...nodes.map(n=>n.baseY))-pad,maxY=Math.max(...nodes.map(n=>n.baseY))+pad,z=Math.min(r.width/Math.max(1,maxX-minX),r.height/Math.max(1,maxY-minY))*.96;camera.targetX=(minX+maxX)/2;camera.targetY=(minY+maxY)/2;camera.targetZoom=Math.max(.30,Math.min(2.2,z));if(immediate){camera.x=camera.targetX;camera.y=camera.targetY;camera.zoom=camera.targetZoom}updateZoomLabel()}
-function cameraMinZoom(){return viewMode==='knowledge'?.06:.24}
+function fitCamera(immediate=false){if(!nodes.length)return;const r=ui.stage.getBoundingClientRect();if(easter){const pad=120,minX=Math.min(...nodes.map(n=>n.baseX))-pad,maxX=Math.max(...nodes.map(n=>n.baseX))+pad,minY=Math.min(...nodes.map(n=>n.baseY))-pad,maxY=Math.max(...nodes.map(n=>n.baseY))+pad,z=Math.min(r.width/Math.max(1,maxX-minX),r.height/Math.max(1,maxY-minY))*.96;camera.targetX=(minX+maxX)/2;camera.targetY=(minY+maxY)/2;camera.targetZoom=Math.max(.30,Math.min(2.2,z))}else{const pad=190,minX=Math.min(...nodes.map(n=>n.baseX))-pad,maxX=Math.max(...nodes.map(n=>n.baseX))+pad,minY=Math.min(...nodes.map(n=>n.baseY))-pad,maxY=Math.max(...nodes.map(n=>n.baseY))+pad,z=Math.min(r.width/Math.max(1,maxX-minX),r.height/Math.max(1,maxY-minY))*.86;camera.targetX=(minX+maxX)/2;camera.targetY=(minY+maxY)/2;camera.targetZoom=Math.max(.10,Math.min(2.2,z))}if(immediate){camera.x=camera.targetX;camera.y=camera.targetY;camera.zoom=camera.targetZoom}updateZoomLabel()}
+function cameraMinZoom(){return viewMode==='knowledge'?.06:(easter?.24:.10)}
 function zoomAt(sx,sy,factor){const before=screenToWorld(sx,sy),next=Math.max(cameraMinZoom(),Math.min(10,camera.targetZoom*factor)),w=ui.stage.clientWidth,h=ui.stage.clientHeight;camera.targetZoom=next;camera.targetX=before.x-(sx-w/2)/next;camera.targetY=before.y-(sy-h/2)/next;updateZoomLabel()}
-function setExplorationStart(){camera.x=playingAnchor.x;camera.y=playingAnchor.y;camera.targetX=camera.x;camera.targetY=camera.y;camera.zoom=.92;camera.targetZoom=.92;updateZoomLabel()}
+function setExplorationStart(){if(!easter&&nodes.length){fitCamera(true);return}camera.x=playingAnchor.x;camera.y=playingAnchor.y;camera.targetX=camera.x;camera.targetY=camera.y;camera.zoom=.92;camera.targetZoom=.92;updateZoomLabel()}
 function refreshParentLanes(){const parentMap=new Map();for(const tr of tracks){const name=tr.genre?.parent_genre||'Unclassified';if(!parentMap.has(name))parentMap.set(name,{name,colour:tr.genre?.parent_colour||'#808080',order:tr.genre?.parent_order??tr.genre?.taxonomy_order??1e9})}parentLanes=[...parentMap.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.order-b.order||a.name.localeCompare(b.name));buildGenreStrip()}
 function buildGenreStrip(){
   if(!ui.genreStrip)return;
@@ -6379,7 +6388,7 @@ function renderTrackRows(){
 }
 function buildNodes(refit=true){
   if(!tracks.length)return;
-  playingAnchor={x:1500,y:1500};world={w:3000,h:3000};
+  playingAnchor=easter?{x:1500,y:1500}:{x:3500,y:3500};world=easter?{w:3000,h:3000}:{w:7000,h:7000};
   const starTiming=(key,field=false)=>{
     const periods=field?[4,4,6,8,8,12,16]:[2,4,4,6,8,12,16];
     const period=periods[Math.floor(seededUnit(`${key}|period`)*periods.length)%periods.length];
@@ -6403,19 +6412,46 @@ function buildNodes(refit=true){
     parentLanes=[{name:'Easter Universe',colour:tracks[index]?.genre?.child_colour||'#d0802f'}];buildGenreStrip();
     const rings=Math.max(1,Math.ceil(tracks.length/9));nodes=tracks.map((tr,i)=>{const ring=Math.floor(i/9),slot=i%9,count=Math.min(9,tracks.length-ring*9),a=(slot/Math.max(1,count))*Math.PI*2+(ring*.38),rad=700+ring*340,x=playingAnchor.x+Math.cos(a)*rad,y=playingAnchor.y+Math.sin(a)*rad,s1=seededUnit(`easter|${i}|a`),s2=seededUnit(`easter|${i}|b`),s3=seededUnit(`easter|${i}|c`),s4=seededUnit(`easter|${i}|d`);return{x,y,baseX:x,baseY:y,vx:0,vy:0,r:58,i,t:tr,parent:'Easter Universe',child:'Hidden Track',cluster:'easter',seed1:s1,seed2:s2,seed3:s3,seed4:s4,drift:3.5+s3*4}});
   }else{
-    const parentInfo=new Map();
-    for(const t of tracks){const parent=t.genre?.parent_genre||'Unclassified',child=t.genre?.child_genre||t.genre?.matched_genre||t.genre?.requested||'Unknown';let p=parentInfo.get(parent);if(!p){p={name:parent,colour:t.genre?.parent_colour||'#808080',children:new Map()};parentInfo.set(parent,p)}let ch=p.children.get(child);if(!ch){ch={name:child,colour:t.genre?.child_colour||'#9a9a9a',tracks:[]};p.children.set(child,ch)}ch.tracks.push(t)}
-    const parents=[...parentInfo.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name));parentLanes=parents.map(p=>({name:p.name,colour:p.colour}));buildGenreStrip();for(const p of parents)p.sortedChildren=[...p.children.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name));
-    const bucketIndex=new Map(),parentCount=Math.max(1,parents.length),sector=(Math.PI*2)/parentCount;
-    nodes=tracks.map((t,i)=>{const parent=t.genre?.parent_genre||'Unclassified',child=t.genre?.child_genre||t.genre?.matched_genre||t.genre?.requested||'Unknown',p=parentInfo.get(parent),pi=parents.indexOf(p),ci=Math.max(0,p?.sortedChildren.findIndex(ch=>ch.name===child)??0),childCount=Math.max(1,p?.sortedChildren.length||1),key=`${parent}|${child}`,n=bucketIndex.get(key)||0;bucketIndex.set(key,n+1);const total=p?.children.get(child)?.tracks.length||1,angleBase=-Math.PI/2+pi*sector,childAngle=(ci-(childCount-1)/2)*Math.min(.12,sector*.22),localAngle=(n-(total-1)/2)*.06,angle=angleBase+childAngle+localAngle,radialBase=760+(childCount===1?0:(ci/(childCount-1))*620),localRadius=(n%3-1)*96,rad=radialBase+localRadius,x=playingAnchor.x+Math.cos(angle)*rad,y=playingAnchor.y+Math.sin(angle)*rad,s1=seededUnit(`${key}|${i}|a`),s2=seededUnit(`${key}|${i}|b`),s3=seededUnit(`${key}|${i}|c`),s4=seededUnit(`${key}|${i}|d`);return{x,y,baseX:x,baseY:y,vx:0,vy:0,r:54,i,t,parent,child,cluster:key,seed1:s1,seed2:s2,seed3:s3,seed4:s4,drift:1.2+s3*2.4}});
-    const exclusion=720;
-    for(let pass=0;pass<110;pass++){for(let i=0;i<nodes.length;i++){const a=nodes[i],adx=a.x-playingAnchor.x,ady=a.y-playingAnchor.y,ad=Math.hypot(adx,ady)||1;let fx=(a.baseX-a.x)*.07,fy=(a.baseY-a.y)*.07;if(ad<exclusion){const q=(exclusion-ad)*.13;fx+=adx/ad*q;fy+=ady/ad*q}for(let j=i+1;j<nodes.length;j++){const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||.01,minD=156;if(d<minD){const push=(minD-d)*.08,ux=dx/d,uy=dy/d;fx+=ux*push;fy+=uy*push;b.vx-=ux*push;b.vy-=uy*push}}a.vx=(a.vx+fx)*.62;a.vy=(a.vy+fy)*.62;a.x+=a.vx;a.y+=a.vy}for(const n of nodes){n.x=Math.max(90,Math.min(world.w-90,n.x));n.y=Math.max(90,Math.min(world.h-90,n.y));n.vx*=.38;n.vy*=.38}}
+    /* v10.12.5 — build the map from the TOP taxonomy level first. Previous
+       builds laid parents around the ring and only labelled clusters afterwards,
+       which let related genres bunch together and gave the map no real territories. */
+    const clusterOrder=['rap / hip hop','electronic music','classical','heavy / experimental','rock','unclassified','pop','country / folk','rhythm music'];
+    const norm=v=>String(v||'unclassified').trim().toLowerCase();
+    const clusterInfo=new Map();
+    for(const t of tracks){
+      const clusterRaw=t.genre?.cluster||'unclassified',clusterKey=norm(clusterRaw),parent=t.genre?.parent_genre||'Unclassified',child=t.genre?.child_genre||t.genre?.matched_genre||t.genre?.requested||'Unknown';
+      let c=clusterInfo.get(clusterKey);if(!c){c={key:clusterKey,name:clusterRaw,colour:t.genre?.parent_colour||t.genre?.child_colour||'#808080',parents:new Map(),tracks:[]};clusterInfo.set(clusterKey,c)}c.tracks.push(t);
+      let p=c.parents.get(parent);if(!p){p={name:parent,colour:t.genre?.parent_colour||'#808080',children:new Map(),tracks:[]};c.parents.set(parent,p)}p.tracks.push(t);
+      let ch=p.children.get(child);if(!ch){ch={name:child,colour:t.genre?.child_colour||'#9a9a9a',tracks:[]};p.children.set(child,ch)}ch.tracks.push(t)
+    }
+    const clusters=[...clusterInfo.values()].sort((a,b)=>{const ai=clusterOrder.indexOf(a.key),bi=clusterOrder.indexOf(b.key);if(ai>=0||bi>=0)return(ai<0?999:ai)-(bi<0?999:bi);return colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name)});
+    parentLanes=[];for(const c of clusters)for(const p of [...c.parents.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name)))parentLanes.push({name:p.name,colour:p.colour});buildGenreStrip();
+
+    const sector=(Math.PI*2)/Math.max(1,clusters.length),startAngle=-130*Math.PI/180,territoryRadius=1900,trackGap=180,parentGap=130,rowGap=150,maxTerritoryWidth=1100;
+    const bucketIndex=new Map(),made=[];
+    const blockFor=p=>{const count=Math.max(1,p.tracks.length),cols=Math.min(5,Math.max(1,Math.ceil(Math.sqrt(count)))),rows=Math.ceil(count/cols);return{p,count,cols,rows,w:112+Math.max(0,cols-1)*trackGap,h:112+Math.max(0,rows-1)*trackGap}};
+    clusters.forEach((c,ci)=>{
+      const angle=startAngle+ci*sector,radial={x:Math.cos(angle),y:Math.sin(angle)},tangent={x:-radial.y,y:radial.x};
+      const parents=[...c.parents.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name)),blocks=parents.map(blockFor),rows=[];let row=[];let rowW=0;let rowH=0;
+      const flush=()=>{if(!row.length)return;rows.push({blocks:row,width:rowW,height:rowH});row=[];rowW=0;rowH=0};
+      for(const b of blocks){const nextW=row.length?rowW+parentGap+b.w:b.w;if(row.length&&nextW>maxTerritoryWidth)flush();if(row.length)rowW+=parentGap;row.push(b);rowW+=b.w;rowH=Math.max(rowH,b.h)}flush();
+      let depthCursor=0;
+      for(const r of rows){let tCursor=-r.width/2;const rowCenterR=depthCursor+r.height/2;for(const b of r.blocks){const parentCenterT=tCursor+b.w/2,parentCenterR=rowCenterR;tCursor+=b.w+parentGap;const p=b.p,children=[...p.children.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name));let flat=[];for(const ch of children)for(const tr of ch.tracks)flat.push({tr,ch});
+          flat.forEach(({tr,ch},localIndex)=>{const col=localIndex%b.cols,rowIndex=Math.floor(localIndex/b.cols),localT=(col-(b.cols-1)/2)*trackGap,localR=(rowIndex-(b.rows-1)/2)*trackGap,wx=playingAnchor.x+radial.x*(territoryRadius+parentCenterR+localR)+tangent.x*(parentCenterT+localT),wy=playingAnchor.y+radial.y*(territoryRadius+parentCenterR+localR)+tangent.y*(parentCenterT+localT),i=tracks.indexOf(tr),key=`${p.name}|${ch.name}`,s1=seededUnit(`${c.key}|${key}|${i}|a`),s2=seededUnit(`${c.key}|${key}|${i}|b`),s3=seededUnit(`${c.key}|${key}|${i}|c`),s4=seededUnit(`${c.key}|${key}|${i}|d`);made.push({x:wx,y:wy,baseX:wx,baseY:wy,vx:0,vy:0,r:54,i,t:tr,parent:p.name,child:ch.name,cluster:c.key,clusterLabel:c.name,seed1:s1,seed2:s2,seed3:s3,seed4:s4,drift:1.1+s3*2.0})})}
+        depthCursor+=r.height+rowGap
+      }
+    });
+    nodes=made.sort((a,b)=>a.i-b.i);
+    /* A light collision settle keeps thumbnails distinct without dissolving the
+       territory structure. Base-position springing is deliberately stronger. */
+    const exclusion=690;
+    for(let pass=0;pass<72;pass++){for(let i=0;i<nodes.length;i++){const a=nodes[i],adx=a.x-playingAnchor.x,ady=a.y-playingAnchor.y,ad=Math.hypot(adx,ady)||1;let fx=(a.baseX-a.x)*.115,fy=(a.baseY-a.y)*.115;if(ad<exclusion){const q=(exclusion-ad)*.18;fx+=adx/ad*q;fy+=ady/ad*q}for(let j=i+1;j<nodes.length;j++){const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||.01,minD=126;if(d<minD){const push=(minD-d)*.075,ux=dx/d,uy=dy/d;fx+=ux*push;fy+=uy*push;b.vx-=ux*push;b.vy-=uy*push}}a.vx=(a.vx+fx)*.56;a.vy=(a.vy+fy)*.56;a.x+=a.vx;a.y+=a.vy}for(const n of nodes){n.x=Math.max(120,Math.min(world.w-120,n.x));n.y=Math.max(120,Math.min(world.h-120,n.y));n.vx*=.34;n.vy*=.34}}
   }
   if(refit)setExplorationStart();
 }
 function resize(){dpr=Math.min(2,devicePixelRatio||1);const r=ui.stage.getBoundingClientRect();canvas.width=Math.max(1,Math.round(r.width*dpr));canvas.height=Math.max(1,Math.round(r.height*dpr));canvas.style.width=`${r.width}px`;canvas.style.height=`${r.height}px`;ctx.setTransform(dpr,0,0,dpr,0,0);if(ui.starCanvas){ui.starCanvas.width=canvas.width;ui.starCanvas.height=canvas.height;ui.starCanvas.style.width=`${r.width}px`;ui.starCanvas.style.height=`${r.height}px`;starCtx=ui.starCanvas.getContext('2d');starCtx.setTransform(dpr,0,0,dpr,0,0)}if(!nodes.length)buildNodes(true);updateZoomLabel()}
 
-function nodeDisplaySize(n,hovered=false,sameComp=false,sameChild=false){const z=Math.max(.24,camera.zoom),base=96*Math.pow(z,1.12),limit=Math.max(230,Math.min(ui.stage.clientWidth,ui.stage.clientHeight)*.94);return Math.max(28,Math.min(limit,hovered?base*1.86:sameComp?base*1.34:sameChild?base*1.22:base*1.12))}
+function nodeDisplaySize(n,hovered=false,sameComp=false,sameChild=false){if(easter){const z=Math.max(.24,camera.zoom),base=96*Math.pow(z,1.12),limit=Math.max(230,Math.min(ui.stage.clientWidth,ui.stage.clientHeight)*.94);return Math.max(28,Math.min(limit,hovered?base*1.86:sameComp?base*1.34:sameChild?base*1.22:base*1.12))}const z=Math.max(.10,camera.zoom),base=82*Math.pow(z,.56),minSize=z<.22?28:z<.38?34:z<.55?39:42,limit=Math.max(230,Math.min(ui.stage.clientWidth,ui.stage.clientHeight)*.94),normal=Math.max(minSize,base);return Math.min(limit,hovered?normal*1.72:sameComp?normal*1.30:sameChild?normal*1.18:normal)}
 function convexHull(points){
   const pts=[...points].sort((a,b)=>a.x===b.x?a.y-b.y:a.x-b.x);
   if(pts.length<=1)return pts;
@@ -6448,65 +6484,43 @@ function drawClusterBoundaries(anchorScreen){
     const first=expanded[0],last=expanded[expanded.length-1],fx=(first.x+last.x)/2,fy=(first.y+last.y)/2;ctx.quadraticCurveTo(last.x,last.y,fx,fy);ctx.closePath();ctx.stroke();ctx.restore();
   }
 }
-let genreRayEnvelope=0;
-function drawParentSeparators(anchorScreen,music={level:0,high:0,beat:0,beatPulse:0,subPulse:0}){
-  if(parentLanes.length<2)return;
-  const parentData=parentLanes.map(p=>{
-    const members=nodes.filter(n=>n.parent===p.name);
-    if(!members.length)return null;
-    const wx=members.reduce((a,n)=>a+n.x,0)/members.length,wy=members.reduce((a,n)=>a+n.y,0)/members.length;
-    const screen=viewToScreen(wx,wy);
-    const angle=Math.atan2(screen.y-anchorScreen.y,screen.x-anchorScreen.x);
-    let maxR=0;
-    for(const n of members){const sp=viewToScreen(n.x,n.y);maxR=Math.max(maxR,Math.hypot(sp.x-anchorScreen.x,sp.y-anchorScreen.y))}
-    return {name:p.name,colour:p.colour,angle,maxR:Math.max(maxR,340)};
-  }).filter(Boolean).sort((a,b)=>a.angle-b.angle);
-  if(parentData.length<2)return;
-  const midAngle=(a,b)=>{
-    let d=b-a;
-    while(d<=-Math.PI)d+=Math.PI*2;
-    while(d>Math.PI)d-=Math.PI*2;
-    return a+d/2;
-  };
-
-  // Genre dividers are no longer persistent map furniture. They fire only on
-  // sparse pulsar/peak events from gbr.playback.json (the existing audio-analysis
-  // logic). If a sidecar is unavailable, the live analyser + BPM clock is the
-  // fallback. LINES remains the master intensity and GENRE ZONES the enable switch.
-  const lineDrive=testMode?1:(genreZonesEnabled?lineLamp:0);
-  if(lineDrive<=.002){genreRayEnvelope*=.82;return}
-  const target=Math.max(0,Math.min(1,Number(music.peakMoment)||0));
-  const response=target>genreRayEnvelope?.46:.075;
-  genreRayEnvelope+=(target-genreRayEnvelope)*response;
-  const rayDrive=Math.max(0,Math.min(1,genreRayEnvelope))*lineDrive;
-  if(rayDrive<.025)return;
-
-  const travel=testMode?1:Math.max(.08,Math.min(1,Number(music.peakProgress)||0));
-  ctx.save();
-  ctx.setLineDash([]);
-  ctx.globalCompositeOperation='screen';
-  for(let i=0;i<parentData.length;i++){
-    const cur=parentData[i],nxt=parentData[(i+1)%parentData.length],ang=midAngle(cur.angle,nxt.angle);
-    const r0=220;
-    const fullR=Math.max(cur.maxR,nxt.maxR)+150*camera.zoom;
-    const span=Math.max(60,fullR-r0);
-    const head=r0+span*(.18+.82*travel);
-    const tail=Math.max(r0,head-span*(.18+.34*rayDrive));
-    const x0=anchorScreen.x+Math.cos(ang)*tail,y0=anchorScreen.y+Math.sin(ang)*tail;
-    const x1=anchorScreen.x+Math.cos(ang)*head,y1=anchorScreen.y+Math.sin(ang)*head;
-    const c0=rgb(cur.colour||'#d6c6ae'),c1=rgb(nxt.colour||'#d6c6ae');
-    const rr=Math.round((c0.r+c1.r)/2),gg=Math.round((c0.g+c1.g)/2),bb=Math.round((c0.b+c1.b)/2);
-    const grad=ctx.createLinearGradient(x0,y0,x1,y1);
-    grad.addColorStop(0,`rgba(${rr},${gg},${bb},0)`);
-    grad.addColorStop(.58,`rgba(${rr},${gg},${bb},${.26*rayDrive})`);
-    grad.addColorStop(1,`rgba(255,242,220,${.92*rayDrive})`);
-    ctx.strokeStyle=grad;
-    ctx.lineWidth=1.1+3.2*rayDrive;
-    ctx.shadowColor=`rgba(${rr},${gg},${bb},${.85*rayDrive})`;
-    ctx.shadowBlur=5+22*rayDrive;
-    ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.stroke();
+/* v10.12.5 — genre territories replace the old peak-event "firework" rays.
+   These are low-opacity local motifs: they explain ownership of space and react
+   gently to the music rather than shooting lines across the whole map. */
+function drawGenreTerritories(anchorScreen,music={level:0,high:0,beat:0,beatPulse:0,subPulse:0}){
+  if(easter||!nodes.length)return;
+  const lineDrive=testMode?1:(genreZonesEnabled?lineLamp:0);if(lineDrive<=.003)return;
+  const groups=new Map();for(const n of nodes){const key=String(n.cluster||n.t?.genre?.cluster||'unclassified').toLowerCase();if(!groups.has(key))groups.set(key,[]);groups.get(key).push(n)}
+  const pulse=.82+.18*Math.max(Number(music.beatPulse)||0,Number(music.subPulse)||0),energy=.72+.28*Math.max(Number(music.level)||0,Number(music.high)||0);
+  const strokeLocal=(col,a=.16,w=1.25)=>{ctx.strokeStyle=`rgba(${col.r},${col.g},${col.b},${a*lineDrive*energy})`;ctx.lineWidth=w;ctx.lineCap='round';ctx.lineJoin='round'};
+  for(const [key,group] of groups){
+    const pts=group.map(n=>viewToScreen(n.x,n.y)),cx=pts.reduce((a,p)=>a+p.x,0)/pts.length,cy=pts.reduce((a,p)=>a+p.y,0)/pts.length;if(cx<-420||cx>ui.stage.clientWidth+420||cy<-420||cy>ui.stage.clientHeight+420)continue;
+    let radius=0;for(const p of pts)radius=Math.max(radius,Math.hypot(p.x-cx,p.y-cy));radius=Math.max(62,Math.min(300,radius+34));
+    const sample=group[0]?.t,col=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#8a7559'),ang=Math.atan2(cy-anchorScreen.y,cx-anchorScreen.x);
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(ang+Math.PI/2);ctx.globalCompositeOperation='screen';
+    if(key.includes('electronic')){
+      for(let k=0;k<3;k++){ctx.save();ctx.setLineDash([2,8+k*2]);strokeLocal(col,.13+k*.018,1.05);ctx.beginPath();ctx.arc(0,0,radius*(.76+k*.10)*pulse,-2.45,.72);ctx.stroke();ctx.restore()}
+      ctx.fillStyle=`rgba(${col.r},${col.g},${col.b},${.22*lineDrive*energy})`;for(let i=0;i<7;i++){const a=-2.35+i*.49,r=radius*(.88+(i%2)*.08);ctx.beginPath();ctx.arc(Math.cos(a)*r,Math.sin(a)*r,1.6+(i%3===0?1:0),0,Math.PI*2);ctx.fill()}
+    }else if(key.includes('classical')){
+      strokeLocal(col,.115,1);for(let k=-2;k<=2;k++){ctx.beginPath();ctx.moveTo(-radius*.82,k*8);ctx.bezierCurveTo(-radius*.28,k*8-13,radius*.28,k*8+13,radius*.82,k*8);ctx.stroke()}
+      ctx.fillStyle=`rgba(${col.r},${col.g},${col.b},${.20*lineDrive})`;for(let i=-1;i<=1;i++){ctx.beginPath();ctx.arc(radius*.28+i*radius*.22,-3+i*5,2.2,0,Math.PI*2);ctx.fill()}
+    }else if(key.includes('heavy')||key.includes('experimental')){
+      strokeLocal(col,.15,1.45);const rr=radius*.92*pulse;for(let band=0;band<2;band++){ctx.beginPath();for(let i=0;i<=12;i++){const x=-rr+i*(rr*2/12),y=(i%2?1:-1)*(11+band*7)+(Math.sin(i*1.7+band)*5);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)}ctx.stroke()}
+    }else if(key.includes('country')||key.includes('folk')){
+      ctx.save();ctx.setLineDash([7,8]);strokeLocal(col,.14,1.15);ctx.beginPath();ctx.ellipse(0,0,radius*.86,radius*.48,0,0,Math.PI*2);ctx.stroke();ctx.restore();strokeLocal(col,.12,.9);for(let i=-4;i<=4;i++){const x=i*radius*.16;ctx.beginPath();ctx.moveTo(x,-radius*.45-4);ctx.lineTo(x+7,-radius*.45+4);ctx.stroke()}
+    }else if(key.includes('rap')||key.includes('hip hop')){
+      strokeLocal(col,.15,2);for(let i=-6;i<=6;i++){const x=i*radius*.115,h=(18+Math.abs(Math.sin(i*2.31))*34)*(1+.16*(Number(music.beatPulse)||0));ctx.beginPath();ctx.moveTo(x,-h/2);ctx.lineTo(x,h/2);ctx.stroke()}
+    }else if(key.includes('rhythm')){
+      strokeLocal(col,.13,1.15);for(let band=-1;band<=1;band++){ctx.beginPath();for(let i=0;i<=28;i++){const x=-radius*.88+i*(radius*1.76/28),y=band*15+Math.sin(i*.72+band*1.7)*9*pulse;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)}ctx.stroke()}
+    }else if(key==='pop'||key.includes('pop')){
+      strokeLocal(col,.12,1.15);for(let k=0;k<4;k++){ctx.beginPath();ctx.arc((k-1.5)*radius*.20,(k%2?1:-1)*radius*.08,radius*(.28+k*.08)*pulse,0,Math.PI*2);ctx.stroke()}
+    }else if(key.includes('rock')){
+      strokeLocal(col,.14,1.35);for(let k=0;k<3;k++){const rr=radius*(.62+k*.13);for(let seg=0;seg<4;seg++){const a0=-2.65+seg*1.42+(k*.16),a1=a0+.82;ctx.beginPath();ctx.arc(0,0,rr,a0,a1);ctx.stroke()}}
+    }else{
+      ctx.fillStyle=`rgba(${col.r},${col.g},${col.b},${.18*lineDrive*energy})`;for(let i=0;i<18;i++){const a=i*2.3999632297,r=radius*(.24+.68*((i%7)/7));ctx.beginPath();ctx.arc(Math.cos(a)*r,Math.sin(a)*r,1+(i%4===0?1.2:0),0,Math.PI*2);ctx.fill()}
+    }
+    ctx.restore()
   }
-  ctx.restore();
 }
 
 function knowledgeNodeSize(n){
@@ -6592,7 +6606,7 @@ function drawKnowledge(w,h,music){
   positionKnowledgeWorldCards(layout)
 }
 function draw(){
-  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),anchorScreen=worldAnchorScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?96:58;if(ui.playingCoverViewport&&ui.playingCoverScreen){const sr=ui.stage.getBoundingClientRect();ui.playingCoverViewport.style.left=`${sr.left}px`;ui.playingCoverViewport.style.top=`${sr.top}px`;ui.playingCoverViewport.style.width=`${sr.width}px`;ui.playingCoverViewport.style.height=`${sr.height}px`;ui.playingCoverScreen.style.left=`${worldAnchorScreen.x}px`;ui.playingCoverScreen.style.top=`${worldAnchorScreen.y}px`;if(ui.easterStoryOverlay){ui.easterStoryOverlay.style.left=`${worldAnchorScreen.x}px`;ui.easterStoryOverlay.style.top=`${worldAnchorScreen.y}px`;ui.easterStoryOverlay.style.width=`${coreSize}px`;ui.easterStoryOverlay.style.height=`${coreSize}px`;}const coverOffscreen=(worldAnchorScreen.x+coreSize/2<0||worldAnchorScreen.x-coreSize/2>sr.width||worldAnchorScreen.y+coreSize/2<0||worldAnchorScreen.y-coreSize/2>sr.height);ui.playingCoverScreen.style.visibility=(viewMode==='knowledge'||coverOffscreen)?'hidden':'visible';if(ui.easterStoryOverlay)ui.easterStoryOverlay.style.visibility=(viewMode==='knowledge'||coverOffscreen)?'hidden':'visible';}ui.centerStack.style.setProperty('left',`${worldAnchorScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${worldAnchorScreen.y+coreSize/2+10}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,0)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('display','none','important');if(ui.playingCoverScreen)ui.playingCoverScreen.dataset.renderSize=`${coreSize}x${coreSize}`;ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,36,anchorScreen.x,anchorScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
+  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),coreScreen={x:w/2,y:h/2},anchorScreen=coreScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?96:58;if(ui.playingCoverViewport&&ui.playingCoverScreen){const sr=ui.stage.getBoundingClientRect();ui.playingCoverViewport.style.left=`${sr.left}px`;ui.playingCoverViewport.style.top=`${sr.top}px`;ui.playingCoverViewport.style.width=`${sr.width}px`;ui.playingCoverViewport.style.height=`${sr.height}px`;ui.playingCoverScreen.style.left=`${coreScreen.x}px`;ui.playingCoverScreen.style.top=`${coreScreen.y}px`;if(ui.easterStoryOverlay){ui.easterStoryOverlay.style.left=`${coreScreen.x}px`;ui.easterStoryOverlay.style.top=`${coreScreen.y}px`;ui.easterStoryOverlay.style.width=`${coreSize}px`;ui.easterStoryOverlay.style.height=`${coreSize}px`;}ui.playingCoverScreen.style.visibility=viewMode==='knowledge'?'hidden':'visible';if(ui.easterStoryOverlay)ui.easterStoryOverlay.style.visibility=viewMode==='knowledge'?'hidden':'visible';}ui.centerStack.style.setProperty('left',`${coreScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${coreScreen.y+coreSize/2+10}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,0)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('display','none','important');if(ui.playingCoverScreen)ui.playingCoverScreen.dataset.renderSize=`${coreSize}x${coreSize}`;ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(coreScreen.x,coreScreen.y,36,coreScreen.x,coreScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
   if(viewMode==='knowledge'){
     drawKnowledge(w,h,music);
     document.documentElement.style.setProperty('--audio-level',level.toFixed(3));
@@ -6604,7 +6618,7 @@ function draw(){
   const focus=hoverIndex>=0?hoverIndex:index,focusNode=nodes[focus];
   /* v10.11.6: child/subgenre closed borders are removed on every layout.
      Parent cluster separators remain as the only geographic structure. */
-  drawParentSeparators(worldAnchorScreen,music);
+  drawGenreTerritories(worldAnchorScreen,music);
 
   const edgeLabelPoint=(group,padPx)=>{
     if(!group.length)return null;
@@ -6627,20 +6641,23 @@ function draw(){
   /* Highest taxonomy level: genre.cluster. These are the prominent map labels. */
   const clusterGroups=new Map();
   for(const n of nodes){const name=n.t?.genre?.cluster||n.parent||'Unclassified';if(!clusterGroups.has(name))clusterGroups.set(name,[]);clusterGroups.get(name).push(n)}
-  for(const [name,group] of clusterGroups){const sample=group[0]?.t,col=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#8a7559'),sp=edgeLabelPoint(group,150);drawMapLabel(name,sp,col,18,.98,900)}
+  for(const [name,group] of clusterGroups){const sample=group[0]?.t,col=rgb(sample?.genre?.parent_colour||sample?.genre?.child_colour||'#8a7559'),sp=edgeLabelPoint(group,camera.zoom<.42?52:156);drawMapLabel(name,sp,col,camera.zoom<.42?17:20,.98,900)}
 
-  /* Parent genres are deliberately smaller and sit just outside their cover group. */
-  const parentGroups=new Map();
-  for(const n of nodes){const name=n.parent||'Unclassified';if(!parentGroups.has(name))parentGroups.set(name,[]);parentGroups.get(name).push(n)}
-  for(const [name,group] of parentGroups){const sample=group[0]?.t,col=rgb(sample?.genre?.parent_colour||'#8a7559'),sp=edgeLabelPoint(group,82);drawMapLabel(name,sp,col,9,.78,800)}
+  /* At overview distance the large territory names are enough. Parent labels return
+     once there is room for them, preventing the fully-fit view becoming a text cloud. */
+  if(camera.zoom>.34){
+    const parentGroups=new Map();
+    for(const n of nodes){const name=n.parent||'Unclassified';if(!parentGroups.has(name))parentGroups.set(name,[]);parentGroups.get(name).push(n)}
+    for(const [name,group] of parentGroups){const sample=group[0]?.t,col=rgb(sample?.genre?.parent_colour||'#8a7559'),sp=edgeLabelPoint(group,72);drawMapLabel(name,sp,col,9,.76,800)}
+  }
 
-  /* Child/subgenre labels are tertiary and only appear once the map is reasonably close. */
-  if(camera.zoom>.46){
+  /* Child/subgenre labels are tertiary and only appear once the map is close. */
+  if(camera.zoom>.58){
     const childGroups=new Map();
     for(const n of nodes){const key=`${n.parent}|${n.child}`;if(!childGroups.has(key))childGroups.set(key,[]);childGroups.get(key).push(n)}
     for(const group of childGroups.values()){const n=group[0],col=rgb(n.t?.genre?.child_colour||'#c49a6c'),sp=edgeLabelPoint(group,38);drawMapLabel(n.child,sp,col,7,.58,800)}
   }
-  if(focusNode){const fs=focus===index?anchorScreen:viewToScreen(focusNode.x,focusNode.y);for(const n of nodes){if(n.i===focus)continue;if(n.t.composition&&n.t.composition===focusNode.t.composition){const ns=viewToScreen(n.x,n.y);ctx.strokeStyle=`rgba(${c.r},${c.g},${c.b},.32)`;ctx.lineWidth=Math.max(1,1.25*camera.zoom);ctx.beginPath();ctx.moveTo(fs.x,fs.y);ctx.lineTo(ns.x,ns.y);ctx.stroke()}}}
+  if(focusNode){const fs=focus===index?coreScreen:viewToScreen(focusNode.x,focusNode.y);for(const n of nodes){if(n.i===focus)continue;if(n.t.composition&&n.t.composition===focusNode.t.composition){const ns=viewToScreen(n.x,n.y);ctx.strokeStyle=`rgba(${c.r},${c.g},${c.b},.32)`;ctx.lineWidth=Math.max(1,1.25*camera.zoom);ctx.beginPath();ctx.moveTo(fs.x,fs.y);ctx.lineTo(ns.x,ns.y);ctx.stroke()}}}
   document.documentElement.style.setProperty('--audio-level',level.toFixed(3));if(anchorScreen.x>-500&&anchorScreen.x<w+500&&anchorScreen.y>-500&&anchorScreen.y<h+500){const ag=ctx.createRadialGradient(anchorScreen.x,anchorScreen.y,80,anchorScreen.x,anchorScreen.y,250+level*110);ag.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${(.10+level*.22)*visualLamp})`);ag.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=ag;ctx.fillRect(anchorScreen.x-380,anchorScreen.y-380,760,760)}
   for(const n of nodes){
     const laneActive=!activeParent||n.parent===activeParent,sel=n.i===index,hov=n.i===hoverIndex;
@@ -6653,7 +6670,7 @@ function draw(){
     // Cull against the settled node position, not the animated shimmer position.
     // This prevents covers at the edge of the centre exclusion zone blinking
     // in/out as their decorative drift crosses the boundary.
-    const stableSp=viewToScreen(n.x,n.y),stableSize=nodeDisplaySize(n,false,false,false),coreMargin=mobileCore?52:76;
+    const stableSp=viewToScreen(n.x,n.y),stableSize=nodeDisplaySize(n,false,false,false),coreMargin=camera.zoom<.22?(mobileCore?16:28):(mobileCore?52:76);
     const halfCore=coreSize/2+coreMargin,coreLeft=anchorScreen.x-halfCore,coreRight=anchorScreen.x+halfCore,coreTop=anchorScreen.y-halfCore,coreBottom=anchorScreen.y+halfCore+lyricHeight+coreMargin*.72;
     const overlapsCore=(stableSp.x+stableSize/2>coreLeft&&stableSp.x-stableSize/2<coreRight&&stableSp.y+stableSize/2>coreTop&&stableSp.y-stableSize/2<coreBottom);
     if(overlapsCore)continue;
