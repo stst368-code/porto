@@ -4764,14 +4764,15 @@ body[data-view="knowledge"] #easterStoryOverlay{display:none!important}
 }
 </style>
 
-<style id="v10125-territory-layout">
-/* GBR v10.12.5 — the playing sleeve + karaoke are HUD geometry. They remain
-   centred and pixel-fixed while only the landscape beneath them pans/zooms. */
+<style id="v10126-galaxy-anchor-star-clouds">
+/* GBR v10.12.6 — the playing sleeve + karaoke are WORLD-ANCHORED at
+   playingAnchor but SCREEN-SIZED. Camera pan/zoom changes their projected
+   centre only; it never changes their CSS-pixel dimensions. */
 #playingCoverViewport{transform:none!important;zoom:1!important}
 #playingCoverScreen{width:360px!important;height:360px!important;min-width:360px!important;max-width:360px!important;min-height:360px!important;max-height:360px!important;transform:translate(-50%,-50%)!important;zoom:1!important}
 @media(max-width:900px){#playingCoverScreen{width:252px!important;height:252px!important;min-width:252px!important;max-width:252px!important;min-height:252px!important;max-height:252px!important}}
 </style>
-<!-- GBR_BUILD: v10.12.5 FIXED_CORE_TERRITORY_LAYOUT_GENRE_MOTIFS -->
+<!-- GBR_BUILD: v10.12.6 WORLD_ANCHORED_CORE_ORGANIC_STAR_CLOUDS -->
 </head>
 <!-- GBR_BUILD: v10.10.14.1 MOBILE_COLLAPSE_GENRE_LYRICS_REPAIR -->
 <body data-power="on">
@@ -6427,25 +6428,57 @@ function buildNodes(refit=true){
     const clusters=[...clusterInfo.values()].sort((a,b)=>{const ai=clusterOrder.indexOf(a.key),bi=clusterOrder.indexOf(b.key);if(ai>=0||bi>=0)return(ai<0?999:ai)-(bi<0?999:bi);return colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name)});
     parentLanes=[];for(const c of clusters)for(const p of [...c.parents.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name)))parentLanes.push({name:p.name,colour:p.colour});buildGenreStrip();
 
-    const sector=(Math.PI*2)/Math.max(1,clusters.length),startAngle=-130*Math.PI/180,territoryRadius=1900,trackGap=180,parentGap=130,rowGap=150,maxTerritoryWidth=1100;
-    const bucketIndex=new Map(),made=[];
-    const blockFor=p=>{const count=Math.max(1,p.tracks.length),cols=Math.min(5,Math.max(1,Math.ceil(Math.sqrt(count)))),rows=Math.ceil(count/cols);return{p,count,cols,rows,w:112+Math.max(0,cols-1)*trackGap,h:112+Math.max(0,rows-1)*trackGap}};
+    /* v10.12.6 — organic, deterministic galaxy placement. The top-level
+       taxonomy still owns broad territory, but albums are distributed as
+       irregular star clouds instead of rows/columns. Parent/child genres form
+       loose local constellations with stable seeded randomness. */
+    const sector=(Math.PI*2)/Math.max(1,clusters.length),startAngle=-130*Math.PI/180,territoryRadius=1900,golden=Math.PI*(3-Math.sqrt(5));
+    const made=[];
+    const stableTrackSort=(a,b)=>{
+      const ap=String(a.genre?.parent_genre||''),bp=String(b.genre?.parent_genre||'');if(ap!==bp)return ap.localeCompare(bp);
+      const ac=String(a.genre?.child_genre||a.genre?.matched_genre||''),bc=String(b.genre?.child_genre||b.genre?.matched_genre||'');if(ac!==bc)return ac.localeCompare(bc);
+      return String(titleOf(a)).localeCompare(String(titleOf(b)))||String(variantOf(a)).localeCompare(String(variantOf(b)))
+    };
     clusters.forEach((c,ci)=>{
-      const angle=startAngle+ci*sector,radial={x:Math.cos(angle),y:Math.sin(angle)},tangent={x:-radial.y,y:radial.x};
-      const parents=[...c.parents.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name)),blocks=parents.map(blockFor),rows=[];let row=[];let rowW=0;let rowH=0;
-      const flush=()=>{if(!row.length)return;rows.push({blocks:row,width:rowW,height:rowH});row=[];rowW=0;rowH=0};
-      for(const b of blocks){const nextW=row.length?rowW+parentGap+b.w:b.w;if(row.length&&nextW>maxTerritoryWidth)flush();if(row.length)rowW+=parentGap;row.push(b);rowW+=b.w;rowH=Math.max(rowH,b.h)}flush();
-      let depthCursor=0;
-      for(const r of rows){let tCursor=-r.width/2;const rowCenterR=depthCursor+r.height/2;for(const b of r.blocks){const parentCenterT=tCursor+b.w/2,parentCenterR=rowCenterR;tCursor+=b.w+parentGap;const p=b.p,children=[...p.children.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name));let flat=[];for(const ch of children)for(const tr of ch.tracks)flat.push({tr,ch});
-          flat.forEach(({tr,ch},localIndex)=>{const col=localIndex%b.cols,rowIndex=Math.floor(localIndex/b.cols),localT=(col-(b.cols-1)/2)*trackGap,localR=(rowIndex-(b.rows-1)/2)*trackGap,wx=playingAnchor.x+radial.x*(territoryRadius+parentCenterR+localR)+tangent.x*(parentCenterT+localT),wy=playingAnchor.y+radial.y*(territoryRadius+parentCenterR+localR)+tangent.y*(parentCenterT+localT),i=tracks.indexOf(tr),key=`${p.name}|${ch.name}`,s1=seededUnit(`${c.key}|${key}|${i}|a`),s2=seededUnit(`${c.key}|${key}|${i}|b`),s3=seededUnit(`${c.key}|${key}|${i}|c`),s4=seededUnit(`${c.key}|${key}|${i}|d`);made.push({x:wx,y:wy,baseX:wx,baseY:wy,vx:0,vy:0,r:54,i,t:tr,parent:p.name,child:ch.name,cluster:c.key,clusterLabel:c.name,seed1:s1,seed2:s2,seed3:s3,seed4:s4,drift:1.1+s3*2.0})})}
-        depthCursor+=r.height+rowGap
-      }
+      const angle=startAngle+ci*sector+(seededUnit(`${c.key}|angle-jitter`)-.5)*sector*.30,radial={x:Math.cos(angle),y:Math.sin(angle)},tangent={x:-radial.y,y:radial.x};
+      const clusterCount=Math.max(1,c.tracks.length),clusterScale=Math.max(.82,Math.min(1.32,Math.sqrt(clusterCount/18)));
+      const clusterCentreR=territoryRadius+(seededUnit(`${c.key}|centre-r`)-.5)*360;
+      const clusterCentreT=(seededUnit(`${c.key}|centre-t`)-.5)*260;
+      const parents=[...c.parents.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name));
+      parents.forEach((p,pi)=>{
+        /* Parent constellations use a jittered phyllotaxis pattern, which gives
+           natural-looking negative space without changing between reloads. */
+        const pCount=Math.max(1,p.tracks.length),pPhase=seededUnit(`${c.key}|${p.name}|phase`)*Math.PI*2;
+        const pNorm=parents.length<=1?0:Math.sqrt((pi+.42)/parents.length),pAng=pPhase+pi*golden;
+        const parentSpreadT=520*clusterScale,parentSpreadR=430*clusterScale;
+        const parentT=(parents.length<=1?0:Math.cos(pAng)*parentSpreadT*pNorm)+(seededUnit(`${c.key}|${p.name}|pt`)-.5)*155;
+        const parentR=(parents.length<=1?0:Math.sin(pAng)*parentSpreadR*pNorm)+(seededUnit(`${c.key}|${p.name}|pr`)-.5)*145;
+        const children=[...p.children.values()].sort((a,b)=>colourCompare(a.colour,b.colour)||a.name.localeCompare(b.name));
+        children.forEach((ch,chi)=>{
+          const ordered=[...ch.tracks].sort(stableTrackSort),childCount=Math.max(1,ordered.length);
+          const chPhase=seededUnit(`${c.key}|${p.name}|${ch.name}|phase`)*Math.PI*2;
+          const chNorm=children.length<=1?0:Math.sqrt((chi+.38)/children.length),chAng=chPhase+chi*golden;
+          const childOrbit=Math.min(330,120+Math.sqrt(pCount)*42);
+          const childT=(children.length<=1?0:Math.cos(chAng)*childOrbit*chNorm)+(seededUnit(`${c.key}|${p.name}|${ch.name}|ct`)-.5)*95;
+          const childR=(children.length<=1?0:Math.sin(chAng)*childOrbit*.76*chNorm)+(seededUnit(`${c.key}|${p.name}|${ch.name}|cr`)-.5)*85;
+          const cloudRadius=Math.max(90,Math.min(330,80+Math.sqrt(childCount)*78));
+          ordered.forEach((tr,localIndex)=>{
+            const i=tracks.indexOf(tr),key=`${p.name}|${ch.name}`,s1=seededUnit(`${c.key}|${key}|${i}|a`),s2=seededUnit(`${c.key}|${key}|${i}|b`),s3=seededUnit(`${c.key}|${key}|${i}|c`),s4=seededUnit(`${c.key}|${key}|${i}|d`);
+            const q=Math.sqrt((localIndex+.32+s1*.28)/Math.max(1,childCount)),a=chPhase+localIndex*golden+(s2-.5)*1.05;
+            const rr=cloudRadius*q*(.72+s3*.48),localT=Math.cos(a)*rr+(s4-.5)*82,localR=Math.sin(a)*rr*.76+(s1-.5)*74;
+            const totalT=clusterCentreT+parentT+childT+localT,totalR=clusterCentreR+parentR+childR+localR;
+            const wx=playingAnchor.x+radial.x*totalR+tangent.x*totalT,wy=playingAnchor.y+radial.y*totalR+tangent.y*totalT;
+            made.push({x:wx,y:wy,baseX:wx,baseY:wy,vx:0,vy:0,r:54,i,t:tr,parent:p.name,child:ch.name,cluster:c.key,clusterLabel:c.name,seed1:s1,seed2:s2,seed3:s3,seed4:s4,drift:1.1+s3*2.0})
+          })
+        })
+      })
     });
     nodes=made.sort((a,b)=>a.i-b.i);
-    /* A light collision settle keeps thumbnails distinct without dissolving the
-       territory structure. Base-position springing is deliberately stronger. */
-    const exclusion=690;
-    for(let pass=0;pass<72;pass++){for(let i=0;i<nodes.length;i++){const a=nodes[i],adx=a.x-playingAnchor.x,ady=a.y-playingAnchor.y,ad=Math.hypot(adx,ady)||1;let fx=(a.baseX-a.x)*.115,fy=(a.baseY-a.y)*.115;if(ad<exclusion){const q=(exclusion-ad)*.18;fx+=adx/ad*q;fy+=ady/ad*q}for(let j=i+1;j<nodes.length;j++){const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||.01,minD=126;if(d<minD){const push=(minD-d)*.075,ux=dx/d,uy=dy/d;fx+=ux*push;fy+=uy*push;b.vx-=ux*push;b.vy-=uy*push}}a.vx=(a.vx+fx)*.56;a.vy=(a.vy+fy)*.56;a.x+=a.vx;a.y+=a.vy}for(const n of nodes){n.x=Math.max(120,Math.min(world.w-120,n.x));n.y=Math.max(120,Math.min(world.h-120,n.y));n.vx*=.34;n.vy*=.34}}
+    /* Collision settle protects readability while preserving the seeded cloud
+       character. Springs are intentionally weak so nodes do not snap back into
+       regimented-looking formations. */
+    const exclusion=760;
+    for(let pass=0;pass<92;pass++){for(let i=0;i<nodes.length;i++){const a=nodes[i],adx=a.x-playingAnchor.x,ady=a.y-playingAnchor.y,ad=Math.hypot(adx,ady)||1;let fx=(a.baseX-a.x)*.032,fy=(a.baseY-a.y)*.032;if(ad<exclusion){const q=(exclusion-ad)*.16;fx+=adx/ad*q;fy+=ady/ad*q}for(let j=i+1;j<nodes.length;j++){const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||.01,minD=138;if(d<minD){const push=(minD-d)*.070,ux=dx/d,uy=dy/d;fx+=ux*push;fy+=uy*push;b.vx-=ux*push;b.vy-=uy*push}}a.vx=(a.vx+fx)*.58;a.vy=(a.vy+fy)*.58;a.x+=a.vx;a.y+=a.vy}for(const n of nodes){n.x=Math.max(120,Math.min(world.w-120,n.x));n.y=Math.max(120,Math.min(world.h-120,n.y));n.vx*=.30;n.vy*=.30}}
   }
   if(refit)setExplorationStart();
 }
@@ -6606,7 +6639,7 @@ function drawKnowledge(w,h,music){
   positionKnowledgeWorldCards(layout)
 }
 function draw(){
-  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),coreScreen={x:w/2,y:h/2},anchorScreen=coreScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?96:58;if(ui.playingCoverViewport&&ui.playingCoverScreen){const sr=ui.stage.getBoundingClientRect();ui.playingCoverViewport.style.left=`${sr.left}px`;ui.playingCoverViewport.style.top=`${sr.top}px`;ui.playingCoverViewport.style.width=`${sr.width}px`;ui.playingCoverViewport.style.height=`${sr.height}px`;ui.playingCoverScreen.style.left=`${coreScreen.x}px`;ui.playingCoverScreen.style.top=`${coreScreen.y}px`;if(ui.easterStoryOverlay){ui.easterStoryOverlay.style.left=`${coreScreen.x}px`;ui.easterStoryOverlay.style.top=`${coreScreen.y}px`;ui.easterStoryOverlay.style.width=`${coreSize}px`;ui.easterStoryOverlay.style.height=`${coreSize}px`;}ui.playingCoverScreen.style.visibility=viewMode==='knowledge'?'hidden':'visible';if(ui.easterStoryOverlay)ui.easterStoryOverlay.style.visibility=viewMode==='knowledge'?'hidden':'visible';}ui.centerStack.style.setProperty('left',`${coreScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${coreScreen.y+coreSize/2+10}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,0)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('display','none','important');if(ui.playingCoverScreen)ui.playingCoverScreen.dataset.renderSize=`${coreSize}x${coreSize}`;ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(coreScreen.x,coreScreen.y,36,coreScreen.x,coreScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
+  const w=ui.stage.clientWidth,h=ui.stage.clientHeight,t=tracks[index],c=accent(t),gas={r:255,g:174,b:82},music=musicVisualState(t),level=music.level,visualLamp=testMode?1:(albumLightEnabled?lamp:0);camera.x+=(camera.targetX-camera.x)*.14;camera.y+=(camera.targetY-camera.y)*.14;camera.zoom+=(camera.targetZoom-camera.zoom)*.14;ctx.clearRect(0,0,w,h);const worldAnchorScreen=viewToScreen(playingAnchor.x,playingAnchor.y),coreScreen=worldAnchorScreen,anchorScreen=worldAnchorScreen;const mobileCore=matchMedia('(max-width:900px)').matches,coreSize=mobileCore?252:360,lyricHeight=mobileCore?96:58;if(ui.playingCoverViewport&&ui.playingCoverScreen){const sr=ui.stage.getBoundingClientRect();ui.playingCoverViewport.style.left=`${sr.left}px`;ui.playingCoverViewport.style.top=`${sr.top}px`;ui.playingCoverViewport.style.width=`${sr.width}px`;ui.playingCoverViewport.style.height=`${sr.height}px`;ui.playingCoverScreen.style.left=`${coreScreen.x}px`;ui.playingCoverScreen.style.top=`${coreScreen.y}px`;if(ui.easterStoryOverlay){ui.easterStoryOverlay.style.left=`${coreScreen.x}px`;ui.easterStoryOverlay.style.top=`${coreScreen.y}px`;ui.easterStoryOverlay.style.width=`${coreSize}px`;ui.easterStoryOverlay.style.height=`${coreSize}px`;}ui.playingCoverScreen.style.visibility=viewMode==='knowledge'?'hidden':'visible';if(ui.easterStoryOverlay)ui.easterStoryOverlay.style.visibility=viewMode==='knowledge'?'hidden':'visible';}ui.centerStack.style.setProperty('left',`${coreScreen.x}px`,'important');ui.centerStack.style.setProperty('top',`${coreScreen.y+coreSize/2+10}px`,'important');ui.centerStack.style.setProperty('width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('min-width',`${coreSize}px`,'important');ui.centerStack.style.setProperty('max-width',`${coreSize}px`,'important');ui.centerStack.style.transform='translate(-50%,0)';ui.centerStack.style.zoom='1';ui.centerCard.style.setProperty('display','none','important');if(ui.playingCoverScreen)ui.playingCoverScreen.dataset.renderSize=`${coreSize}x${coreSize}`;ui.lyric.style.setProperty('width',`${coreSize}px`,'important');ui.lyric.style.setProperty('height',`${lyricHeight}px`,'important');const grad=ctx.createRadialGradient(coreScreen.x,coreScreen.y,36,coreScreen.x,coreScreen.y,Math.max(w,h)*.62);grad.addColorStop(0,`rgba(${gas.r},${gas.g},${gas.b},${((easter?.08:.028)+.08*visualLamp)*visualLamp})`);grad.addColorStop(.35,`rgba(${gas.r},${gas.g},${gas.b},${(.018+.035*visualLamp)*visualLamp})`);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);drawStars(w,h,music);
   if(viewMode==='knowledge'){
     drawKnowledge(w,h,music);
     document.documentElement.style.setProperty('--audio-level',level.toFixed(3));
