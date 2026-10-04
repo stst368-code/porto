@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Good Boy Records — Sonic Landscape</title>
-<!-- GBR_BUILD: v10.12.7 AUTOPLAY_FILTERS -->
+<!-- GBR_BUILD: v10.12.8 CLUSTER_FILTERS -->
 <style>
 :root{--accent:#d0802f;--accent-rgb:208,128,47;--lamp:.5;--audio-level:0;--bg:#050606;--metal:#181817;--metal2:#0c0d0d;--line:#67452c;--text:#e8dfd1;--muted:#9c8d79}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020303;color:var(--text);font-family:Arial,Helvetica,sans-serif}button,input{font:inherit}
@@ -5696,13 +5696,18 @@ function seededUnit(text){let h=2166136261;for(const ch of String(text)){h^=ch.c
 const KNOWLEDGE_MANIFEST_URL='knowledge-manifest.json';
 const KNOWLEDGE_COLOURS=['#d0802f','#b89a4b','#77a167','#5d9aa8','#647fc3','#8d6cbe','#b2679d','#b86d62','#9b8469','#6d9b91','#ad7858','#7e7aa9'];
 let openTab=null,trackSort={key:'title',dir:1},trackFilter='';
-const disabledParentGenres=new Set(),disabledLanguages=new Set();
+const disabledGenreClusters=new Set(),disabledLanguages=new Set();
 const languageDisplayNames=(()=>{try{return new Intl.DisplayNames([document.documentElement.lang||'en'],{type:'language'})}catch(_){return null}})();
 const LANGUAGE_LABELS={en:'English',es:'Spanish',ro:'Romanian',uk:'Ukrainian',pl:'Polish',ja:'Japanese',mn:'Mongolian',ko:'Korean',lg:'Luganda',ar:'Arabic',tr:'Turkish',zh:'Chinese',hi:'Hindi',fr:'French',de:'German',it:'Italian',pt:'Portuguese'};
 function languageCodeOf(t){const raw=t?.language??t?.lyrics?.wordTiming?.language??t?.metadata?.language??'en';return String(raw||'en').trim().toLowerCase().replace(/_/g,'-')||'en'}
 function languageLabel(code){const c=String(code||'en').toLowerCase(),base=c.split('-')[0];if(LANGUAGE_LABELS[c]||LANGUAGE_LABELS[base])return LANGUAGE_LABELS[c]||LANGUAGE_LABELS[base];try{return languageDisplayNames?.of(c)||languageDisplayNames?.of(base)||c.toUpperCase()}catch(_){return c.replace(/-/g,' ').replace(/\b\w/g,m=>m.toUpperCase())}}
 function parentGenreOf(t){return String(t?.genre?.parent_genre||'Unclassified').trim()||'Unclassified'}
-function isTrackEligible(t){return !disabledParentGenres.has(parentGenreOf(t))&&!disabledLanguages.has(languageCodeOf(t))}
+function genreClusterOf(t){return String(t?.genre?.cluster||'unclassified').trim().toLowerCase()||'unclassified'}
+function genreClusterLabel(value){
+  const key=String(value||'unclassified').trim().toLowerCase();
+  return ({'rap / hip hop':'Rap / Hip Hop','electronic music':'Electronic Music','classical':'Classical','heavy / experimental':'Heavy / Experimental','rock':'Rock','unclassified':'Unclassified','pop':'Pop','country / folk':'Country / Folk','rhythm music':'Rhythm Music','easter':'Easter Universe'})[key]||key.replace(/\b\w/g,m=>m.toUpperCase())
+}
+function isTrackEligible(t){return !disabledGenreClusters.has(genreClusterOf(t))&&!disabledLanguages.has(languageCodeOf(t))}
 function eligibleCount(){return tracks.reduce((n,t)=>n+(isTrackEligible(t)?1:0),0)}
 function nextEligibleIndex(direction=1){if(!tracks.length)return index;const dir=direction<0?-1:1;for(let step=1;step<=tracks.length;step++){const i=(index+dir*step+tracks.length)%tracks.length;if(isTrackEligible(tracks[i]))return i}return index}
 
@@ -6278,31 +6283,30 @@ function closePanel(){openTab=null;ui.sidePanel.classList.remove('open');documen
 function filterPushButton(type,value,on,colour,count){
   return `<button type="button" class="analogue-filter-push" data-filter-type="${escapeHtml(type)}" data-filter-value="${escapeHtml(value)}" aria-pressed="${on?'true':'false'}" style="--push-colour:${escapeHtml(colour||'#d0802f')}" title="${on?'Included in autoplay':'Excluded from autoplay'}"><span class="push-lens" aria-hidden="true"></span><span class="sr-only">${on?'On':'Off'}</span></button>`
 }
-function filterParentGroups(){
-  const groups=new Map();
+function filterGenreClusters(){
+  const map=new Map(),clusterOrder=['rap / hip hop','electronic music','classical','heavy / experimental','rock','unclassified','pop','country / folk','rhythm music','easter'];
   for(const t of tracks){
-    const parent=parentGenreOf(t),cluster=String(t?.genre?.cluster||'Unclassified').trim()||'Unclassified',colour=t?.genre?.parent_colour||t?.genre?.child_colour||'#808080',order=Number(t?.genre?.parent_order??t?.genre?.taxonomy_order??1e9);
-    if(!groups.has(cluster))groups.set(cluster,new Map());const parents=groups.get(cluster);
-    if(!parents.has(parent))parents.set(parent,{name:parent,colour,order,count:0});parents.get(parent).count++
+    const key=genreClusterOf(t),colour=t?.genre?.parent_colour||t?.genre?.child_colour||'#808080';
+    if(!map.has(key))map.set(key,{key,label:genreClusterLabel(key),colour,count:0});map.get(key).count++
   }
-  const clusterOrder=['rap / hip hop','electronic music','classical','heavy / experimental','rock','unclassified','pop','country / folk','rhythm music'];
-  return [...groups.entries()].sort((a,b)=>{const ai=clusterOrder.indexOf(a[0].toLowerCase()),bi=clusterOrder.indexOf(b[0].toLowerCase());return(ai<0?999:ai)-(bi<0?999:bi)||a[0].localeCompare(b[0])}).map(([cluster,parents])=>({cluster,parents:[...parents.values()].sort((a,b)=>a.order-b.order||a.name.localeCompare(b.name))}))
+  return [...map.values()].sort((a,b)=>{const ai=clusterOrder.indexOf(a.key),bi=clusterOrder.indexOf(b.key);return(ai<0?999:ai)-(bi<0?999:bi)||a.label.localeCompare(b.label)})
 }
 function filterLanguages(){
   const map=new Map();for(const t of tracks){const code=languageCodeOf(t);if(!map.has(code))map.set(code,{code,label:languageLabel(code),count:0});map.get(code).count++}
   return [...map.values()].sort((a,b)=>a.label.localeCompare(b.label,undefined,{sensitivity:'base'}))
 }
 function renderFilterPanel(){
-  const body=ui.panelBody,groups=filterParentGroups(),languages=filterLanguages(),armed=eligibleCount();
-  const parentHtml=groups.map(g=>`<div class="filter-cluster"><h3>${escapeHtml(g.cluster)}</h3>${g.parents.map(p=>{const on=!disabledParentGenres.has(p.name);return `<div class="filter-option ${on?'on':'off'}"><span class="filter-option-copy"><b>${escapeHtml(p.name)}</b><small>${p.count} TRACK${p.count===1?'':'S'}</small></span>${filterPushButton('parent',p.name,on,p.colour,p.count)}</div>`}).join('')}</div>`).join('');
+  const body=ui.panelBody,clusters=filterGenreClusters(),languages=filterLanguages(),armed=eligibleCount();
+  const clusterHtml=clusters.map(c=>{const on=!disabledGenreClusters.has(c.key);return `<div class="filter-option ${on?'on':'off'}"><span class="filter-option-copy"><b>${escapeHtml(c.label)}</b><small>${c.count} TRACK${c.count===1?'':'S'}</small></span>${filterPushButton('cluster',c.key,on,c.colour,c.count)}</div>`}).join('');
   const langHtml=languages.map(l=>{const on=!disabledLanguages.has(l.code);return `<div class="filter-option ${on?'on':'off'}"><span class="filter-option-copy"><b>${escapeHtml(l.label)}</b><small>${l.count} TRACK${l.count===1?'':'S'}</small></span>${filterPushButton('language',l.code,on,'#d0802f',l.count)}</div>`}).join('');
-  body.innerHTML=`<div class="filter-panel"><div class="filter-status"><span>AUTOPLAY ARMED</span><strong>${armed} / ${tracks.length}</strong><small>Off tracks remain in the galaxy and can still be played manually.</small></div><section class="filter-section"><header><div><small>GENRE FILTER</small><h2>Parent genres</h2></div></header><div class="filter-clusters">${parentHtml||'<div class="track-empty">NO GENRES FOUND</div>'}</div></section><section class="filter-section"><header><div><small>LANGUAGE FILTER</small><h2>Languages</h2></div></header><div class="filter-language-grid">${langHtml||'<div class="track-empty">NO LANGUAGES FOUND</div>'}</div></section></div>`;
+  body.innerHTML=`<div class="filter-panel"><div class="filter-status"><span>AUTOPLAY ARMED</span><strong>${armed} / ${tracks.length}</strong><small>Off tracks remain in the galaxy and can still be played manually.</small></div><section class="filter-section"><header><div><small>GENRE FILTER</small><h2>Genre clusters</h2></div></header><div class="filter-clusters">${clusterHtml||'<div class="track-empty">NO GENRE CLUSTERS FOUND</div>'}</div></section><section class="filter-section"><header><div><small>LANGUAGE FILTER</small><h2>Languages</h2></div></header><div class="filter-language-grid">${langHtml||'<div class="track-empty">NO LANGUAGES FOUND</div>'}</div></section></div>`;
   body.querySelectorAll('.analogue-filter-push').forEach(btn=>btn.onclick=()=>{
-    clickSound('toggle');const type=btn.dataset.filterType,value=btn.dataset.filterValue,set=type==='parent'?disabledParentGenres:disabledLanguages;
+    clickSound('toggle');const type=btn.dataset.filterType,value=btn.dataset.filterValue,set=type==='cluster'?disabledGenreClusters:disabledLanguages;
     if(set.has(value))set.delete(value);else set.add(value);
     renderFilterPanel();if(openTab==='tracks')renderTrackRows()
   })
 }
+
 function openFilterPanel(){
   if(openTab==='filter'&&ui.sidePanel.classList.contains('open')){closePanel();return}
   if(viewMode==='knowledge')exitKnowledge();
@@ -7253,14 +7257,14 @@ body[data-view="knowledge"] .knowledge-tabs{display:none!important}
 <!-- GBR_BUILD: v10.12.4 SHARE_LINKS -->
 
 <style id="v10127-autoplay-filters">
-/* GBR v10.12.7 — analogue autoplay filters. Filtering never removes music from
+/* GBR v10.12.8 — analogue cluster/language autoplay filters. Filtering never removes music from
    the galaxy; it only changes visual emphasis and automatic-selection eligibility. */
 #filterButton.active{color:#fff1dd!important;border-color:var(--accent)!important;box-shadow:inset 0 0 14px rgba(var(--accent-rgb),.18),0 0 9px rgba(var(--accent-rgb),.12)!important}
 .filter-panel{max-width:760px;margin:0 auto;display:grid;gap:22px;padding-bottom:18px}
 .filter-status{display:grid;grid-template-columns:1fr auto;gap:4px 14px;align-items:end;padding:13px 14px;border:1px solid color-mix(in srgb,var(--accent) 36%,#40372f 64%);border-radius:6px;background:linear-gradient(180deg,#11120f,#080908);box-shadow:inset 0 1px rgba(255,255,255,.035)}
 .filter-status>span{color:#8e806e;font:900 8px/1 "Courier New",monospace;letter-spacing:.15em}.filter-status>strong{color:color-mix(in srgb,var(--accent) 72%,#f4eadb 28%);font:900 22px/1 "Courier New",monospace}.filter-status>small{grid-column:1/-1;color:#8f8577;font:12px/1.4 Arial,sans-serif}
 .filter-section{padding:0;border:0}.filter-section>header{display:flex;align-items:end;justify-content:space-between;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #ffffff10}.filter-section>header small{display:block;margin-bottom:4px;color:var(--accent);font:900 8px/1 "Courier New",monospace;letter-spacing:.15em}.filter-section>header h2{margin:0!important;color:#e9dece!important;font:700 20px/1.05 Georgia,serif!important}
-.filter-clusters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.filter-cluster{min-width:0;padding:10px;border:1px solid #ffffff0d;border-radius:5px;background:#090a09}.filter-cluster h3{margin:0 0 8px!important;color:#8f816d!important;font:900 9px/1.1 "Courier New",monospace!important;letter-spacing:.12em;text-transform:uppercase}
+.filter-clusters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 10px}
 .filter-language-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 10px}
 .filter-option{--push-colour:#d0802f;display:grid;grid-template-columns:minmax(0,1fr) 38px;align-items:center;gap:8px;min-height:48px;padding:7px 7px 7px 10px;border:1px solid #ffffff0b;border-radius:4px;background:linear-gradient(180deg,#10110f,#090a09);transition:opacity .15s ease,border-color .15s ease,background .15s ease}.filter-option.on{border-color:color-mix(in srgb,var(--push-colour) 26%,#ffffff12 74%)}.filter-option.off{opacity:.58;background:#070807}.filter-option-copy{min-width:0}.filter-option-copy b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#ddd2c2;font:800 11px/1.1 Arial,sans-serif;text-transform:uppercase;letter-spacing:.035em}.filter-option-copy small{display:block;margin-top:4px;color:#7f7466;font:800 7px/1 "Courier New",monospace;letter-spacing:.09em}
 .analogue-filter-push{--push-colour:#d0802f;position:relative;width:32px;height:32px;padding:0;border-radius:50%;border:1px solid #766a5d;background:radial-gradient(circle at 42% 36%,#5e5b55 0 8%,#353530 22%,#171815 58%,#080908 72%);box-shadow:inset 0 0 0 3px #0a0b09,inset 0 1px 2px #ffffff25,0 2px 5px #000c;cursor:pointer;justify-self:end}.analogue-filter-push::after{content:"";position:absolute;inset:-3px;border:1px solid #252622;border-radius:50%;box-shadow:0 1px 0 #ffffff10,inset 0 1px #000}.analogue-filter-push .push-lens{position:absolute;inset:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#5a554d,#252520 55%,#10110f);box-shadow:inset 0 1px 2px #ffffff12,inset 0 -2px 3px #000b;transition:.12s ease}.analogue-filter-push[aria-pressed="true"] .push-lens{background:radial-gradient(circle at 38% 30%,#fff5d4 0 8%,color-mix(in srgb,var(--push-colour) 78%,#fff 22%) 25%,var(--push-colour) 58%,color-mix(in srgb,var(--push-colour) 62%,#000 38%) 100%);box-shadow:0 0 9px color-mix(in srgb,var(--push-colour) 80%,transparent),0 0 18px color-mix(in srgb,var(--push-colour) 38%,transparent),inset 0 1px 2px #fff8}.analogue-filter-push:active{transform:translateY(1px);box-shadow:inset 0 0 0 3px #0a0b09,inset 0 2px 5px #000,0 1px 2px #000}.analogue-filter-push:focus-visible{outline:2px solid #fff4d7;outline-offset:3px}
@@ -7274,7 +7278,7 @@ body[data-view="knowledge"] .knowledge-tabs{display:none!important}
 }
 @media(max-width:350px){.utility-button{min-width:58px!important;width:58px!important;font-size:7px!important}.utility-nav{gap:3px!important}}
 </style>
-<!-- GBR_BUILD: v10.12.7 AUTOPLAY_FILTERS -->
+<!-- GBR_BUILD: v10.12.8 CLUSTER_FILTERS -->
 
 </body>
 </html>
