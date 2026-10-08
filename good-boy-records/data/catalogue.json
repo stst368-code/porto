@@ -1,6 +1,6 @@
 {
   "format": "gbr-sonic-catalogue-v1",
-  "trackCount": 162,
+  "trackCount": 163,
   "tracks": [
     {
       "id": "pupeii-space-rock",
@@ -7960,6 +7960,80 @@
         "samplerCfg": 1.7,
         "samplerSeed": 764692052596083,
         "steps": 33,
+        "temperature": null,
+        "topP": null,
+        "shift": null,
+        "duration": null,
+        "batchSize": null,
+        "denoise": null,
+        "weight": null,
+        "ditWeight": null,
+        "textEncoderWeight": null
+      }
+    },
+    {
+      "id": "the-endless-game-black-metal-c7b40e7",
+      "composition": "the-endless-game",
+      "title": "the-endless-game",
+      "displayTitle": "The Endless Game",
+      "variant": "black-metal",
+      "version": "black-metal",
+      "language": "en",
+      "genre": {
+        "cluster": "heavy / experimental",
+        "parent_genre": "metal",
+        "child_genre": "black metal",
+        "parent_colour": "#D0802F",
+        "child_colour": "#C78E31",
+        "taxonomy_order": 3982,
+        "parent_order": 3948
+      },
+      "audio": {
+        "sources": {
+          "flac": "showcase/the-endless-game/the-endless-game-death-metal/the-endless-game-black-metal-0002.flac",
+          "mp3": null
+        }
+      },
+      "artwork_url": null,
+      "lyrics": {
+        "raw": "[intro]\nBall!\n...\n...\n...\nBALL!!\n...\n...\n...\nBAAALLLL!!\n[verse]\nSwallowed by the endless void\nWater and current ball now destroyed\nMonoliths of nature rise\nTaking out my sphere shaped prize\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the endless game\n[Verse]\nFootballs my mouth cannot abide\nChained in teeth, trapped inside\nHear my declaration cry\nThis ball, my mouth, will not comply\n[bridge]\nFall. Into. The. Deep.\nThe cycle ends, the waters sweep.\nFall. From. The. Mouth.\nThe water, my ball does keep.\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the endless game\n[post-chorus]\nAfraid? Afraid?\nA...FRAID\n[verse]\nDoja speaks...\nWhat heavy monster!?\nLost my ball!?\nYou think it's me?\nI cannot accept that!\nThat chunky monster\nBE AFRAID!\nNow I've brought my metal\nAnd the monster is slayed\n[chorus]\nRipped apart, my ball it bleeds\nFeeding on the darkened void\nCrush my crown, erase the name\nConsumed inside the endless game\n[outro]\nErase the name!\nConsumed by!\n...\nthe endless game",
+        "wordTiming": null
+      },
+      "lyrics_url": null,
+      "yamlUrl": "showcase/the-endless-game/the-endless-game-death-metal/the-endless-game-black-metal-0002.yaml",
+      "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+      "style": {
+        "inspiration": "All original, delivered by mother nature",
+        "inspirationUrl": ""
+      },
+      "provenance": {
+        "song": {
+          "story": "Life isn't all pets and treats, sometimes you lose your ball in the river... yes, sometimes its also the eternal game.",
+          "inspiration": "All original, delivered by mother nature",
+          "inspirationUrl": "",
+          "yamlUrl": "showcase/the-endless-game/the-endless-game.yaml"
+        },
+        "version": {
+          "story": "",
+          "inspiration": "",
+          "inspirationUrl": "",
+          "yamlUrl": "showcase/the-endless-game/the-endless-game-death-metal/the-endless-game-black-metal-0002.yaml"
+        }
+      },
+      "model": {
+        "name": "minimax H3",
+        "dit": "fp32",
+        "textEncoder": "bf16"
+      },
+      "generation": {
+        "encoderCfg": 1.7,
+        "encoderSeed": 420378838917714,
+        "topK": 40,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "samplerCfg": 1.6,
+        "samplerSeed": 188107633223333,
+        "steps": 30,
         "temperature": null,
         "topP": null,
         "shift": null,
