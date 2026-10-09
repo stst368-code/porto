@@ -8,7 +8,7 @@ from profiler import profile_audio
 from catalogue import catalogue_reference
 
 AUDIO_EXT={'.flac','.mp3','.wav','.ogg','.m4a','.opus'}
-SCORES={'good':5,'above-average':4,'average':3,'below-average':2,'bad':1}
+SCORES={'good':5,'above-average':4,'average':3,'below-average':2,'bad':1,'unlistenable':0}
 
 
 def normalized_name(path):
@@ -80,7 +80,7 @@ def scan_root(root, quality, db, cat_audio, cat_yaml, errors, profile_missing=Fa
 def scan(args):
  db=connect(args.db)
  errors=[];cat_audio,cat_yaml=catalogue_reference(args.catalogue)
- for rating,folder in [('good',args.good),('above-average',args.above_average),('average',args.average),('below-average',args.below_average),('bad',args.bad)]:
+ for rating,folder in [('good',args.good),('above-average',args.above_average),('average',args.average),('below-average',args.below_average),('bad',args.bad),('unlistenable',args.unlistenable)]:
   if folder:scan_root(folder,SCORES[rating],db,cat_audio,cat_yaml,errors,getattr(args,"profile_missing",False))
  for path,msg in errors:db.execute('INSERT INTO scan_errors(file_path,message,observed_at) VALUES(?,?,?)',(path,msg,now()))
  n=db.execute('SELECT COUNT(*) FROM generations').fetchone()[0]

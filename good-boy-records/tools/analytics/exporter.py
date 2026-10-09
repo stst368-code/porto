@@ -20,7 +20,7 @@ def export(args):
  data={'format':'gbr-generation-analytics-v1','generated_at':now(),'count':len(public),'generations':public}
  (out/'generations.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
  (out/'generations.json.gz').write_bytes(gzip.compress(json.dumps(data,ensure_ascii=False,separators=(',',':')).encode(),compresslevel=9))
- buckets={str(i):0 for i in range(1,6)}
+ buckets={str(i):0 for i in range(0,6)}
  for r in public:buckets[str(r['quality_score'])]+=1
  summary={'format':'gbr-generation-summary-v1','generated_at':data['generated_at'],'total':len(public),'ratings':buckets,
           'mean_rating':round(statistics.fmean(r['quality_score'] for r in public),3) if public else None,

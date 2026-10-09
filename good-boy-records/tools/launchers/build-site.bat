@@ -54,6 +54,7 @@ copy /y analytics\analytics.js _site\analytics\analytics.js >nul || exit /b 1
 copy /y analytics\analytics.css _site\analytics\analytics.css >nul || exit /b 1
 copy /y data\analytics\generations.json _site\data\analytics\generations.json >nul || exit /b 1
 copy /y data\analytics\summary.json _site\data\analytics\summary.json >nul || exit /b 1
+if exist data\analytics\cost-analysis.json copy /y data\analytics\cost-analysis.json _site\data\analytics\cost-analysis.json >nul || exit /b 1
 
 echo [6/6] Adding analytics navigation and verifying...
 py -3 tools\analytics\inject_link.py _site\index.html _site\landscape.html || exit /b 1
