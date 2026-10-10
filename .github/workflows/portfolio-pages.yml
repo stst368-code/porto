@@ -60,6 +60,24 @@ jobs:
           cp templates/landscape.html _site/landscape.html
           cp templates/landscape.html _site/index.html
 
+          # Stage the Signal Observatory, including the Generation Simulator.
+          # GitHub Actions rebuilds _site; local _site is intentionally ignored by Git.
+          test -f analytics/index.html
+          test -f analytics/analytics.js
+          test -f analytics/analytics.css
+          test -f data/analytics/generations.json
+          test -f data/analytics/summary.json
+          mkdir -p _site/analytics _site/data/analytics
+          cp analytics/index.html analytics/analytics.js analytics/analytics.css _site/analytics/
+          cp data/analytics/generations.json data/analytics/summary.json _site/data/analytics/
+          if [ -f data/analytics/cost-analysis.json ]; then
+            cp data/analytics/cost-analysis.json _site/data/analytics/
+          fi
+
+          # Same first-class Analytics navigation as the local Windows build.
+          test -f tools/analytics/inject_link.py
+          python tools/analytics/inject_link.py _site/index.html _site/landscape.html
+
           # Media is served by R2; Pages must stay small.
           rm -rf _site/showcase
 
@@ -70,6 +88,13 @@ jobs:
           grep -q 'GBR_SHOWCASE_ROOT' _site/showcase-host.js
           test -f _site/catalogue.json
           test -f _site/knowledge-manifest.json
+          test -f _site/analytics/index.html
+          test -f _site/analytics/analytics.js
+          test -f _site/analytics/analytics.css
+          test -f _site/data/analytics/generations.json
+          test -f _site/data/analytics/summary.json
+          grep -q 'id="gbrAnalyticsButton"' _site/index.html
+          grep -q 'data-view="simulator"' _site/analytics/index.html
           test ! -d _site/showcase
 
       - name: Assemble portfolio routes
@@ -83,6 +108,13 @@ jobs:
           test -f _pages/good-boy-records/catalogue.json
           test -f _pages/good-boy-records/knowledge-manifest.json
           test -f _pages/good-boy-records/showcase-host.js
+          test -f _pages/good-boy-records/analytics/index.html
+          test -f _pages/good-boy-records/analytics/analytics.js
+          test -f _pages/good-boy-records/analytics/analytics.css
+          test -f _pages/good-boy-records/data/analytics/generations.json
+          test -f _pages/good-boy-records/data/analytics/summary.json
+          grep -q 'id="gbrAnalyticsButton"' _pages/good-boy-records/index.html
+          grep -q 'data-view="simulator"' _pages/good-boy-records/analytics/index.html
           test ! -d _pages/good-boy-records/showcase
 
       - name: Configure Pages
