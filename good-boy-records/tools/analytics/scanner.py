@@ -85,6 +85,8 @@ def scan(args):
  for path,msg in errors:db.execute('INSERT INTO scan_errors(file_path,message,observed_at) VALUES(?,?,?)',(path,msg,now()))
  n=db.execute('SELECT COUNT(*) FROM generations').fetchone()[0]
  db.execute('INSERT INTO analysis_runs(ran_at,generation_count,config_json) VALUES(?,?,?)',(now(),n,json.dumps({k:v for k,v in vars(args).items() if k!="func"})))
+ # Retain unresolved historical errors only: successfully profiled files can be recognised by path.
+ db.execute("DELETE FROM scan_errors WHERE message LIKE '%librosa%' AND EXISTS (SELECT 1 FROM generations g JOIN audio_metrics a ON a.generation_id=g.id WHERE g.audio_path=scan_errors.file_path OR g.audio_path=REPLACE(scan_errors.file_path,'.audio.json','.flac'))")
  db.commit();db.close();print('Scanned. Database records:',n,'Errors:',len(errors))
  for p,msg in errors[:10]:print('ERROR',p,msg,file=sys.stderr)
 

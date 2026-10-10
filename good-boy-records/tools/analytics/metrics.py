@@ -19,7 +19,10 @@ def parse_yaml(p):
  if not isinstance(d,dict):raise ValueError('YAML root must be object')
  cap=text_stats(str(d.get('caption') or ''))
  lyr=text_stats(str(d.get('lyrics') or ''),True)
- v={k:d.get(k) for k in ['title','cluster','version','model','dit','text_encoder','sampler','scheduler']}
+ source=d.get('caption_source')
+ if source is not None and source not in ('sample','custom'):
+  raise ValueError(f'Unsupported caption_source: {source!r}')
+ v={k:d.get(k) for k in ['caption_source','title','cluster','version','model','dit','text_encoder','sampler','scheduler']}
  for k in ['encoder_cfg','sampler_cfg']:v[k]=scalar_number(d.get(k))
  for k in ['top_k','sampler_steps']:v[k]=scalar_int(d.get(k))
  for k in ['encoder_seed','sampler_seed']:v[k]=string(d.get(k))

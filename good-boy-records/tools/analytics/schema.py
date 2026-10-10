@@ -5,7 +5,7 @@ SCHEMA = '''
 PRAGMA foreign_keys=ON;
 CREATE TABLE IF NOT EXISTS generations (
  id TEXT PRIMARY KEY, audio_hash TEXT, audio_path TEXT, yaml_path TEXT, source_root TEXT,
- title TEXT, cluster TEXT, version TEXT, model TEXT, dit TEXT, text_encoder TEXT,
+ title TEXT, cluster TEXT, version TEXT, model TEXT, dit TEXT, text_encoder TEXT, caption_source TEXT,
  encoder_cfg REAL, encoder_seed TEXT, top_k INTEGER, sampler_cfg REAL, sampler_seed TEXT,
  sampler_steps INTEGER, sampler TEXT, scheduler TEXT,
  caption_chars INTEGER, caption_words INTEGER, caption_lines INTEGER, caption_avg_word_length REAL,
@@ -42,4 +42,7 @@ def connect(path):
     db=sqlite3.connect(path)
     db.execute("PRAGMA foreign_keys=ON")
     db.executescript(SCHEMA)
+    columns={row[1] for row in db.execute("PRAGMA table_info(generations)")}
+    if "caption_source" not in columns:
+        db.execute("ALTER TABLE generations ADD COLUMN caption_source TEXT")
     return db
